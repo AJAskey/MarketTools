@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="lib" path="lib/commons-text-1.8/commons-text-1.8.jar" sourcepath="lib/commons-text-1.8/commons-text-1.8-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/MarketTools/lib/commons-text-1.8/commons-text-1.8-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons-io-2.6/commons-io-2.6.jar" sourcepath="lib/commons-io-2.6/commons-io-2.6-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/MarketTools/lib/commons-io-2.6/commons-io-2.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.1/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/apache.commons.math/commons-math3-3.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/MarketTools/lib/apache.commons.math/commons-math3-3.5-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
