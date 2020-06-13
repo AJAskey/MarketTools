@@ -75,7 +75,8 @@ public class MovingAverages {
       this.smaTot += val;
       this.sma = this.smaTot / this.knt;
       this.ema = this.sma;
-    } else {
+    }
+    else {
       final double pEma = this.ema;
       this.ema = (val - pEma) * this.emaMultipler + pEma;
     }
@@ -108,7 +109,7 @@ public class MovingAverages {
   }
 
   /**
-   * 
+   *
    * @param days
    * @return
    */

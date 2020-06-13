@@ -35,7 +35,9 @@ public class SharesFileData {
   private long     volume3m;
   private double   dollar3m;
 
-  private static List<SharesFileData> sfdList = new ArrayList<>();
+  public SharesFileData() {
+    // TODO Auto-generated constructor stub
+  }
 
   public SharesFileData(String[] fld) {
     this.name = fld[0].trim();
@@ -62,14 +64,6 @@ public class SharesFileData {
     this.sharesY = SipUtils.parseDoubles(fld, 46, 7);
     this.volume3m = SipUtils.parseLong(fld[57]);
     this.dollar3m = SipUtils.parseDouble(fld[58]);
-  }
-
-  public SharesFileData() {
-    // TODO Auto-generated constructor stub
-  }
-
-  public static int getListCount() {
-    return sfdList.size();
   }
 
   public double getBeta() {
@@ -168,54 +162,6 @@ public class SharesFileData {
     return this.volume3m;
   }
 
-  @Override
-  public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
-    ret += String.format("  Price / Beta                 : %s  %s%n", SipOutput.fmt(this.price, 1, 2), SipOutput.fmt(this.beta, 1, 3));
-    ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volume3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
-    ret += String.format("  Float / MCap / Insiders      : %s %s  %s%%  %s%% %n", SipOutput.fmt(this.floatshr, 1, 3),
-        SipOutput.ifmt((long) this.mktCap, 1), SipOutput.fmt(this.insiderOwnership, 1, 3), SipOutput.fmt(this.insiderNetPercentOutstanding, 1, 2));
-    ret += String.format("  Institutions B/S Num Percent : %s  %s  %s  %s%% %n", SipOutput.ifmt(this.instBuyShrs, 1),
-        SipOutput.ifmt(this.instSellShrs, 1), SipOutput.ifmt(this.instShareholders, 1), SipOutput.fmt(this.instOwnership, 1, 1));
-    ret += String.format("  Insider B / S / Net          : %d-%d  %d-%d  %d%n", this.insiderBuys, this.insiderBuyShrs, this.insiderSells,
-        this.insiderSellShrs, this.insiderNetTrades);
-    ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
-    ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
-    return ret;
-  }
-
-  /**
-   * 
-   * @param filename
-   * @return
-   */
-  public static void readData(String filename) {
-
-    List<String> shrData = TextUtils.readTextFile(filename, true);
-    for (String s : shrData) {
-      String[] fld = s.replace("\"", "").split(Utils.TAB);
-      SharesFileData sfd = new SharesFileData(fld);
-      sfdList.add(sfd);
-    }
-  }
-
-  public static SharesFileData find(String ticker) {
-    for (SharesFileData s : sfdList) {
-      if (s.getTicker().equalsIgnoreCase(ticker)) {
-        return s;
-      }
-    }
-    return null;
-  }
-
-  public static String listToString() {
-    String ret = "";
-    for (SharesFileData s : sfdList) {
-      ret += s.toString();
-    }
-    return ret;
-  }
-
   public String report() {
     String ret = "";
     ret += String.format("  price               : %f%n", this.price);
@@ -241,6 +187,60 @@ public class SharesFileData {
 
   public void setFromReport(int year, int quarter) {
 
+  }
+
+  @Override
+  public String toString() {
+    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
+    ret += String.format("  Price / Beta                 : %s  %s%n", SipOutput.fmt(this.price, 1, 2), SipOutput.fmt(this.beta, 1, 3));
+    ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volume3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
+    ret += String.format("  Float / MCap / Insiders      : %s %s  %s%%  %s%% %n", SipOutput.fmt(this.floatshr, 1, 3),
+        SipOutput.ifmt((long) this.mktCap, 1), SipOutput.fmt(this.insiderOwnership, 1, 3), SipOutput.fmt(this.insiderNetPercentOutstanding, 1, 2));
+    ret += String.format("  Institutions B/S Num Percent : %s  %s  %s  %s%% %n", SipOutput.ifmt(this.instBuyShrs, 1),
+        SipOutput.ifmt(this.instSellShrs, 1), SipOutput.ifmt(this.instShareholders, 1), SipOutput.fmt(this.instOwnership, 1, 1));
+    ret += String.format("  Insider B / S / Net          : %d-%d  %d-%d  %d%n", this.insiderBuys, this.insiderBuyShrs, this.insiderSells,
+        this.insiderSellShrs, this.insiderNetTrades);
+    ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
+    ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
+    return ret;
+  }
+
+  private static List<SharesFileData> sfdList = new ArrayList<>();
+
+  public static SharesFileData find(String ticker) {
+    for (final SharesFileData s : SharesFileData.sfdList) {
+      if (s.getTicker().equalsIgnoreCase(ticker)) {
+        return s;
+      }
+    }
+    return null;
+  }
+
+  public static int getListCount() {
+    return SharesFileData.sfdList.size();
+  }
+
+  public static String listToString() {
+    String ret = "";
+    for (final SharesFileData s : SharesFileData.sfdList) {
+      ret += s.toString();
+    }
+    return ret;
+  }
+
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static void readData(String filename) {
+
+    final List<String> shrData = TextUtils.readTextFile(filename, true);
+    for (final String s : shrData) {
+      final String[] fld = s.replace("\"", "").split(Utils.TAB);
+      final SharesFileData sfd = new SharesFileData(fld);
+      SharesFileData.sfdList.add(sfd);
+    }
   }
 
 }

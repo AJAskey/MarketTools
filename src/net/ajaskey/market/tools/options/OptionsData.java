@@ -33,8 +33,7 @@ public class OptionsData {
    * @param iv
    * @param exp
    */
-  public OptionsData(final double cprice, final double sprice, final double intrate, final double iv,
-      final Calendar exp) {
+  public OptionsData(final double cprice, final double sprice, final double intrate, final double iv, final Calendar exp) {
 
     this.currentPriceOfUnderlying = cprice;
     this.strikePrice = sprice;

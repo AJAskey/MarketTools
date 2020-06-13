@@ -71,7 +71,8 @@ public class ProcessOptions {
       typeInt = OptionsProcessor.APUT;
       System.out.println("Processing PUTs on : " + fname);
       // DataItem.dbgPw.println("Processing PUTs on : " + fname);
-    } else {
+    }
+    else {
       System.out.println("Processing CALLs on : " + fname);
       // DataItem.dbgPw.println("Processing CALLs on : " + fname);
     }
@@ -106,8 +107,7 @@ public class ProcessOptions {
 //
       final String note = String.format("Assume %d%% price change in %d days", (int) (priceChg * 100.0), daysToSell);
 
-      pw.printf("%s %.2f,Created:,%s,%sGain/Loss on $%d Position,,,,,,%s%n", code, cPrice, new DateTime(), commas,
-          (int) positionSize, note);
+      pw.printf("%s %.2f,Created:,%s,%sGain/Loss on $%d Position,,,,,,%s%n", code, cPrice, new DateTime(), commas, (int) positionSize, note);
 //
       pw.println(
           "Type,Expiry,Id,Vol,OI,IV,Delta,Theta,Gamma,Strike,Current,Calculated,Premium,,IV*1.0,IV*1.5,IV*2.0,,IV*1.0,IV*1.5,IV*2.0,,Contracts,Price,Date Of Sale");
@@ -116,14 +116,16 @@ public class ProcessOptions {
       closeDate.add(DateTime.DATE, daysToSell);
       System.out.println("Closing position on : " + closeDate);
       if (typeInt == OptionsProcessor.ACALL) {
-      } else {
+      }
+      else {
       }
 
       for (final CboeOptionData od : dil) {
         CboeCallPutData cpd = null;
         if (typeInt == OptionsProcessor.ACALL) {
           cpd = od.call;
-        } else {
+        }
+        else {
           cpd = od.put;
         }
         if (cpd.mark > ProcessOptions.minLast && cpd.iv > ProcessOptions.minIv && cpd.oi > ProcessOptions.minOi) {

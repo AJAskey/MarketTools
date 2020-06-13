@@ -15,7 +15,7 @@ import net.ajaskey.market.optuma.TickerPriceData;
  * This class parses VIX Model Signal data and various index data. The open and
  * close from the signal model are found in the index data. Change and
  * Cumulative change are calculated.
- * 
+ *
  * Output is written in CSV format for manual import into Excel.
  *
  * <p>
@@ -50,59 +50,60 @@ public class VixModelSignals {
 
   public static void main(String[] args) throws FileNotFoundException {
 
-    tickers.add("AMEX,SPY");
-    tickers.add("NASDAQ,QQQ");
-    tickers.add("AMEX,SPXL");
-    tickers.add("AMEX,SPXU");
-    tickers.add("NASDAQ,TQQQ");
-    tickers.add("NASDAQ,SQQQ");
-    tickers.add("NASDAQ,TLT");
-    tickers.add("NASDAQ,IEF");
+    VixModelSignals.tickers.add("AMEX,SPY");
+    VixModelSignals.tickers.add("NASDAQ,QQQ");
+    VixModelSignals.tickers.add("AMEX,SPXL");
+    VixModelSignals.tickers.add("AMEX,SPXU");
+    VixModelSignals.tickers.add("NASDAQ,TQQQ");
+    VixModelSignals.tickers.add("NASDAQ,SQQQ");
+    VixModelSignals.tickers.add("NASDAQ,TLT");
+    VixModelSignals.tickers.add("NASDAQ,IEF");
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+    final SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
 
     // Reads data file as a list of strings.
     final List<String> data = TextUtils.readTextFile("data/VIX Model Signals.csv", true);
 
     final String header = "Trade Date,Signal,Position,Open,Close,Chg,TotChg";
 
-    for (String t : tickers) {
+    for (final String t : VixModelSignals.tickers) {
 
-      String tnames[] = t.split(",");
+      final String tnames[] = t.split(",");
 
       // Reads Optuma formatted price data to a list
-      TickerPriceData tixData = new TickerPriceData(tnames[0], tnames[1]);
-      DateTime tixFirstDate = tixData.getFirstDate();
+      final TickerPriceData tixData = new TickerPriceData(tnames[0], tnames[1]);
+      final DateTime tixFirstDate = tixData.getFirstDate();
 
       // For each VixModelSignals string, find correspond day of price data.
       // Do some calculations and write out data in CSV for import back into Excel.
       String fld[] = data.get(0).split(",");
       String sDt = fld[0].trim();
-      DateTime firstDate = new DateTime(sDt, sdf);
+      final DateTime firstDate = new DateTime(sDt, sdf);
 
       PriceData pd = null;
       if (tixFirstDate.isGreaterThan(firstDate)) {
         pd = tixData.getData(tixFirstDate);
-      } else {
+      }
+      else {
         pd = tixData.getData(firstDate);
       }
 
-      double firstClose = pd.close;
+      final double firstClose = pd.close;
       double prevClose = firstClose;
 
-      String fname = String.format("out/%s-vms.csv", tnames[1].trim());
+      final String fname = String.format("out/%s-vms.csv", tnames[1].trim());
       try (PrintWriter pw = new PrintWriter(fname)) {
         pw.println(header);
 
-        for (String s : data) {
+        for (final String s : data) {
           fld = s.split(",");
           sDt = fld[0].trim();
-          DateTime dt = new DateTime(sDt, sdf);
+          final DateTime dt = new DateTime(sDt, sdf);
           if (dt.isGreaterThanOrEqual(tixFirstDate)) {
             pd = tixData.getData(dt);
             if (pd != null) {
-              double chg = (pd.close - prevClose) / prevClose * 100.0;
-              double cummChg = (pd.close - firstClose) / firstClose * 100.0;
+              final double chg = (pd.close - prevClose) / prevClose * 100.0;
+              final double cummChg = (pd.close - firstClose) / firstClose * 100.0;
               pw.printf("%s, %.2f, %.2f, %.1f%%, %.1f%%%n", s, pd.open, pd.close, chg, cummChg);
               prevClose = pd.close;
             }

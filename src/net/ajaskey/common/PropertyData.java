@@ -7,147 +7,152 @@ import java.util.Properties;
 
 public class PropertyData {
 
-	private final Properties prop = new Properties();
+  private final Properties prop = new Properties();
 
-	private final static double errVal = -123454321.0;
+  private String propFile = "";
 
-	private String propFile = "";
+  /**
+   *
+   * @param filePathAndName
+   */
+  public PropertyData(String filePathAndName) {
+    this.propFile = filePathAndName;
+    this.readProperties();
 
-	public static boolean isErr(double val) {
-		return (val == errVal);
-	}
+  }
 
-	public static boolean isErr(int val) {
-		return (val == (int) errVal);
-	}
+  /**
+   * 
+   * @param key
+   * @return
+   */
+  public Boolean getPropertyB(String key) {
 
-	public static boolean isErr(long val) {
-		return (val == (long) errVal);
-	}
+    Boolean ret = false;
+    try {
+      final String value = this.prop.getProperty(key);
+      ret = Boolean.parseBoolean(value);
+    }
+    catch (final Exception e) {
+      ret = false;
+      e.printStackTrace();
+    }
+    return ret;
+  }
 
-	/**
-	 *
-	 * @param filePathAndName
-	 */
-	public PropertyData(String filePathAndName) {
-		this.propFile = filePathAndName;
-		this.readProperties();
+  /**
+   *
+   * @param key
+   * @return
+   */
+  public Double getPropertyD(String key) {
 
-	}
+    Double ret = 0.0;
+    try {
+      final String value = this.prop.getProperty(key);
+      ret = Double.parseDouble(value);
+    }
+    catch (final Exception e) {
+      ret = PropertyData.errVal;
+      // e.printStackTrace();
+    }
+    return ret;
+  }
 
-	/**
-	 *
-	 * @param key
-	 * @return
-	 */
-	public String getPropertyS(String key) {
+  /**
+   * 
+   * @param key
+   * @return
+   */
+  public Integer getPropertyI(String key) {
 
-		return this.prop.getProperty(key);
-	}
+    Integer ret = 0;
+    try {
+      final String value = this.prop.getProperty(key);
+      ret = Integer.parseInt(value);
+    }
+    catch (final Exception e) {
+      ret = (int) PropertyData.errVal;
+      e.printStackTrace();
+    }
+    return ret;
+  }
 
-	/**
-	 *
-	 * @param key
-	 * @return
-	 */
-	public Double getPropertyD(String key) {
+  /**
+   * 
+   * @param key
+   * @return
+   */
+  public Long getPropertyL(String key) {
 
-		Double ret = 0.0;
-		try {
-			final String value = this.prop.getProperty(key);
-			ret = Double.parseDouble(value);
-		} catch (final Exception e) {
-			ret = errVal;
-			// e.printStackTrace();
-		}
-		return ret;
-	}
+    Long ret = 0L;
+    try {
+      final String value = this.prop.getProperty(key);
+      ret = Long.parseLong(value);
+    }
+    catch (final Exception e) {
+      ret = (long) PropertyData.errVal;
+      e.printStackTrace();
+    }
+    return ret;
+  }
 
-	/**
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public Integer getPropertyI(String key) {
+  /**
+   *
+   * @param key
+   * @return
+   */
+  public String getPropertyS(String key) {
 
-		Integer ret = 0;
-		try {
-			final String value = this.prop.getProperty(key);
-			ret = Integer.parseInt(value);
-		} catch (final Exception e) {
-			ret = (int) errVal;
-			e.printStackTrace();
-		}
-		return ret;
-	}
+    return this.prop.getProperty(key);
+  }
 
-	/**
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public Long getPropertyL(String key) {
+  /**
+   *
+   */
+  private void readProperties() {
+    try (InputStream input = new FileInputStream(this.propFile)) {
 
-		Long ret = 0L;
-		try {
-			final String value = this.prop.getProperty(key);
-			ret = Long.parseLong(value);
-		} catch (final Exception e) {
-			ret = (long) errVal;
-			e.printStackTrace();
-		}
-		return ret;
-	}
+      this.prop.load(input);
 
-	/**
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public Boolean getPropertyB(String key) {
+    }
+    catch (final IOException ex) {
+      ex.printStackTrace();
+    }
+  }
 
-		Boolean ret = false;
-		try {
-			final String value = this.prop.getProperty(key);
-			ret = Boolean.parseBoolean(value);
-		} catch (final Exception e) {
-			ret = false;
-			e.printStackTrace();
-		}
-		return ret;
-	}
+  private final static double errVal = -123454321.0;
 
-	/**
-	 *
-	 */
-	private void readProperties() {
-		try (InputStream input = new FileInputStream(this.propFile)) {
+  public static boolean isErr(double val) {
+    return val == PropertyData.errVal;
+  }
 
-			this.prop.load(input);
+  public static boolean isErr(int val) {
+    return val == (int) PropertyData.errVal;
+  }
 
-		} catch (final IOException ex) {
-			ex.printStackTrace();
-		}
-	}
+  public static boolean isErr(long val) {
+    return val == (long) PropertyData.errVal;
+  }
 
-	/**
-	 *
-	 * @param args
-	 */
-	public static void main(String[] args) {
+  /**
+   *
+   * @param args
+   */
+  public static void main(String[] args) {
 
-		final PropertyData oprop = new PropertyData("D:\\dev\\eclipse-workspace\\Market\\option.properties");
+    final PropertyData oprop = new PropertyData("D:\\dev\\eclipse-workspace\\Market\\option.properties");
 
-		final String code = oprop.getPropertyS("price.code");
-		final Double ulBuy = oprop.getPropertyD("price.ulBuy");
-		final Double ulSell = oprop.getPropertyD("price.ulSell");
-		final Integer holdDays = oprop.getPropertyI("price.hold");
+    final String code = oprop.getPropertyS("price.code");
+    final Double ulBuy = oprop.getPropertyD("price.ulBuy");
+    final Double ulSell = oprop.getPropertyD("price.ulSell");
+    final Integer holdDays = oprop.getPropertyI("price.hold");
 
-		System.out.println(code);
-		System.out.println(ulBuy);
-		System.out.println(ulSell);
-		System.out.println(holdDays);
+    System.out.println(code);
+    System.out.println(ulBuy);
+    System.out.println(ulSell);
+    System.out.println(holdDays);
 
-	}
+  }
 
 }

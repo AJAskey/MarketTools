@@ -10,7 +10,7 @@ public class SheetModel {
   private List<RowModel> sheetRows = new ArrayList<>();
 
   /**
-   * 
+   *
    * @param name
    */
   public SheetModel(String name) {
@@ -19,7 +19,7 @@ public class SheetModel {
   }
 
   /**
-   * 
+   *
    * @param name
    * @param wbParent
    */
@@ -30,8 +30,8 @@ public class SheetModel {
   }
 
   public int addRow() {
-    RowModel row = new RowModel();
-    addRow(row);
+    final RowModel row = new RowModel();
+    this.addRow(row);
     return row.getRowNumber();
   }
 
@@ -42,42 +42,44 @@ public class SheetModel {
     return rm.getRowNumber();
   }
 
+  public String getName() {
+    return this.sheetName;
+  }
+
   public WorkbookModel getParent() {
     return this.parent;
   }
 
-  public String getName() {
-    return this.sheetName;
+  public RowModel getRow(int row) {
+    if (row < 1) {
+      return null;
+    }
+    else if (row > this.sheetRows.size()) {
+      return null;
+    }
+    else {
+      return this.sheetRows.get(row - 1);
+    }
+  }
+
+  public List<RowModel> getRows() {
+    return this.sheetRows;
   }
 
   public List<RowModel> getSheetRows() {
     return this.sheetRows;
   }
 
-  public void setParent(WorkbookModel parent) {
-    this.parent = parent;
-  }
-
   public void setName(String sheetName) {
     this.sheetName = sheetName;
   }
 
+  public void setParent(WorkbookModel parent) {
+    this.parent = parent;
+  }
+
   public void setSheetRows(List<RowModel> sheetRows) {
     this.sheetRows = sheetRows;
-  }
-
-  public List<RowModel> getRows() {
-    return sheetRows;
-  }
-
-  public RowModel getRow(int row) {
-    if (row < 1) {
-      return null;
-    } else if (row > sheetRows.size()) {
-      return null;
-    } else {
-      return sheetRows.get(row - 1);
-    }
   }
 
 }

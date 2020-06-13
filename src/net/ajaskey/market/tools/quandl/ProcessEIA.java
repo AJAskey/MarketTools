@@ -61,65 +61,7 @@ public class ProcessEIA {
   private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
   private static DocumentBuilderFactory dbFactory = null;
-  private static DocumentBuilder dBuilder = null;
-
-  private static List<PriceData> getData(final String url) {
-
-    final List<PriceData> ret = new ArrayList<>();
-
-    String resp;
-    try {
-      dBuilder = dbFactory.newDocumentBuilder();
-
-      System.out.println("Processing : " + url);
-
-      resp = Utils.getFromUrl(url);
-      // System.out.println(resp);
-
-      final Document doc = dBuilder.parse(new InputSource(new StringReader(resp)));
-
-      doc.getDocumentElement().normalize();
-
-      final NodeList nResp = doc.getElementsByTagName("row");
-      for (int knt = 0; knt < nResp.getLength(); knt++) {
-        final Node nodeResp = nResp.item(knt);
-        if (nodeResp.getNodeType() == Node.ELEMENT_NODE) {
-          final NodeList nrList = nodeResp.getChildNodes();
-          // Calendar cal = null;
-          DateTime dt = null;
-          for (int cnt = 0; cnt < nrList.getLength(); cnt++) {
-            final Node nr = nrList.item(cnt);
-            if (nr.getNodeType() == Node.ELEMENT_NODE) {
-              final String s = nr.getNodeName();
-              if (s.contains("date")) {
-                // System.out.println(nr.getNodeName() + " " + nr.getTextContent());
-                final Date date = sdf.parse(nr.getTextContent().trim());
-                // cal = Calendar.getInstance();
-                // cal.setTime(date);
-                dt = new DateTime(date);
-
-              } else if (s.contains("value")) {
-                // System.out.println(nr.getNodeName() + " " + nr.getTextContent());
-                if (dt != null) {
-                  final double c = Double.parseDouble(nr.getTextContent().trim());
-                  final PriceData d = new PriceData(dt, c, c, c, c, 0);
-                  dt = null;
-                  ret.add(d);
-                  // System.out.println(d.toShortString());
-                }
-              }
-            }
-          }
-        }
-      }
-
-    } catch (final Exception e) {
-      ret.clear();
-      e.printStackTrace();
-    }
-
-    return ret;
-  }
+  private static DocumentBuilder        dBuilder  = null;
 
   /**
    * net.ajaskey.market.tools.main
@@ -136,7 +78,7 @@ public class ProcessEIA {
     final String gasURL = "http://api.eia.gov/series/?api_key=" + apiKey + "&series_id=PET.WGFUPUS2.W&out=xml";
     final String keroURL = "http://api.eia.gov/series/?api_key=" + apiKey + "&series_id=PET.WKJUPUS2.W&out=xml";
 
-    dbFactory = DocumentBuilderFactory.newInstance();
+    ProcessEIA.dbFactory = DocumentBuilderFactory.newInstance();
 
     final List<PriceData> gas = ProcessEIA.getData(gasURL);
     ProcessEIA.writeList(gas, "gasoline_demand");
@@ -144,6 +86,66 @@ public class ProcessEIA {
     final List<PriceData> kero = ProcessEIA.getData(keroURL);
     ProcessEIA.writeList(kero, "kerosene_demand");
 
+  }
+
+  private static List<PriceData> getData(final String url) {
+
+    final List<PriceData> ret = new ArrayList<>();
+
+    String resp;
+    try {
+      ProcessEIA.dBuilder = ProcessEIA.dbFactory.newDocumentBuilder();
+
+      System.out.println("Processing : " + url);
+
+      resp = Utils.getFromUrl(url);
+      // System.out.println(resp);
+
+      final Document doc = ProcessEIA.dBuilder.parse(new InputSource(new StringReader(resp)));
+
+      doc.getDocumentElement().normalize();
+
+      final NodeList nResp = doc.getElementsByTagName("row");
+      for (int knt = 0; knt < nResp.getLength(); knt++) {
+        final Node nodeResp = nResp.item(knt);
+        if (nodeResp.getNodeType() == Node.ELEMENT_NODE) {
+          final NodeList nrList = nodeResp.getChildNodes();
+          // Calendar cal = null;
+          DateTime dt = null;
+          for (int cnt = 0; cnt < nrList.getLength(); cnt++) {
+            final Node nr = nrList.item(cnt);
+            if (nr.getNodeType() == Node.ELEMENT_NODE) {
+              final String s = nr.getNodeName();
+              if (s.contains("date")) {
+                // System.out.println(nr.getNodeName() + " " + nr.getTextContent());
+                final Date date = ProcessEIA.sdf.parse(nr.getTextContent().trim());
+                // cal = Calendar.getInstance();
+                // cal.setTime(date);
+                dt = new DateTime(date);
+
+              }
+              else if (s.contains("value")) {
+                // System.out.println(nr.getNodeName() + " " + nr.getTextContent());
+                if (dt != null) {
+                  final double c = Double.parseDouble(nr.getTextContent().trim());
+                  final PriceData d = new PriceData(dt, c, c, c, c, 0);
+                  dt = null;
+                  ret.add(d);
+                  // System.out.println(d.toShortString());
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+    catch (final Exception e) {
+      ret.clear();
+      e.printStackTrace();
+    }
+
+    return ret;
   }
 
   private static void writeList(final List<PriceData> list, final String fname) {
@@ -156,7 +158,8 @@ public class ProcessEIA {
       }
       System.out.println(list.get(list.size() - 1).date);
 
-    } catch (final FileNotFoundException e) {
+    }
+    catch (final FileNotFoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }

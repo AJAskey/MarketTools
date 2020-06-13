@@ -8,19 +8,19 @@ public class YearQuarterData {
   double[] quarter;
 
   public YearQuarterData(double[] yearData, double[] qtrData) {
-    year = yearData;
-    quarter = qtrData;
+    this.year = yearData;
+    this.quarter = qtrData;
   }
 
   @Override
   public String toString() {
     String ret = "";
-    for (int i = 1; i < year.length; i++) {
-      ret += String.format(" %.3f", year[i]);
+    for (int i = 1; i < this.year.length; i++) {
+      ret += String.format(" %.3f", this.year[i]);
     }
     ret += Utils.NL;
-    for (int i = 1; i < quarter.length; i++) {
-      ret += String.format(" %.3f", quarter[i]);
+    for (int i = 1; i < this.quarter.length; i++) {
+      ret += String.format(" %.3f", this.quarter[i]);
     }
     return ret;
   }

@@ -32,7 +32,8 @@ public class CallPutList {
         if (od.expiry.sameDate(x)) {
           if (type == OptionsProcessor.ACALL) {
             return od.call;
-          } else {
+          }
+          else {
             return od.put;
           }
         }
@@ -56,7 +57,7 @@ public class CallPutList {
   }
 
   /**
-   * 
+   *
    * @param args
    * @throws FileNotFoundException
    */
@@ -65,7 +66,7 @@ public class CallPutList {
     CallPutList.odList.clear();
     CallPutList.odList = CallPutList.readCboeData("data/options/spy-options.dat", new DateTime(), new DateTime(), 0);
 
-    for (CboeOptionData od : odList) {
+    for (final CboeOptionData od : CallPutList.odList) {
       System.out.println(od);
     }
 
@@ -90,17 +91,16 @@ public class CallPutList {
     final String fld[] = data.get(0).split(",");
     CallPutList.code = fld[0].trim();
     CallPutList.cPrice = Double.parseDouble(fld[1].trim());
-    String tmp = data.get(1).trim();
-    int idx = tmp.indexOf(",Ask,");
+    final String tmp = data.get(1).trim();
+    final int idx = tmp.indexOf(",Ask,");
     CallPutList.info = tmp.substring(0, idx).trim().replace(",Bid,", " Bid=");
 
     for (int i = 3; i < data.size(); i++) {
 
-      final CboeOptionData od = new CboeOptionData(data.get(i), CallPutList.cPrice, CallPutList.code, firstExpiry,
-          bDate);
+      final CboeOptionData od = new CboeOptionData(data.get(i), CallPutList.cPrice, CallPutList.code, firstExpiry, bDate);
 
-      int oi = od.call.oi + od.put.oi;
-      if ((od.valid) && (oi >= minOi)) {
+      final int oi = od.call.oi + od.put.oi;
+      if (od.valid && oi >= minOi) {
         retList.add(od);
       }
     }
@@ -110,7 +110,7 @@ public class CallPutList {
 
   /**
    * Find data for one strike.
-   * 
+   *
    * @param fname
    * @param theExpiry
    * @param minOi
@@ -126,16 +126,16 @@ public class CallPutList {
     final String fld[] = data.get(0).split(",");
     CallPutList.code = fld[0].trim();
     CallPutList.cPrice = Double.parseDouble(fld[1].trim());
-    String tmp = data.get(1).trim();
-    int idx = tmp.indexOf(",Ask,");
+    final String tmp = data.get(1).trim();
+    final int idx = tmp.indexOf(",Ask,");
     CallPutList.info = tmp.substring(0, idx).trim().replace(",Bid,", " Bid=");
 
     for (int i = 3; i < data.size(); i++) {
 
       final CboeOptionData od = new CboeOptionData(data.get(i), CallPutList.cPrice, CallPutList.code, theExpiry);
 
-      int oi = od.call.oi + od.put.oi;
-      if ((od.valid) && (oi >= minOi)) {
+      final int oi = od.call.oi + od.put.oi;
+      if (od.valid && oi >= minOi) {
         retList.add(od);
       }
     }

@@ -45,88 +45,88 @@ import java.util.zip.ZipOutputStream;
 
 public class Zip {
 
-	static final int BUFFER = 2048;
+  static final int BUFFER = 2048;
 
-	/**
-	 *
-	 * net.ajaskey.market.misc.create
-	 *
-	 * @param dirs
-	 * @param files
-	 * @param outdir
-	 * @param outfile
-	 */
-	public static void create(final List<String> dirs, final List<String> files, final String outdir,
-	      final String outfile) {
+  /**
+   *
+   * net.ajaskey.market.misc.create
+   *
+   * @param dirs
+   * @param files
+   * @param outdir
+   * @param outfile
+   */
+  public static void create(final List<String> dirs, final List<String> files, final String outdir, final String outfile) {
 
-		try {
+    try {
 
-			final FileOutputStream dest = new FileOutputStream(outdir + "\\" + outfile);
-			final ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
+      final FileOutputStream dest = new FileOutputStream(outdir + "\\" + outfile);
+      final ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
 
-			final List<File> fileList = new ArrayList<>();
+      final List<File> fileList = new ArrayList<>();
 
-			BufferedInputStream origin = null;
-			out.setMethod(ZipOutputStream.DEFLATED);
-			final byte data[] = new byte[Zip.BUFFER];
+      BufferedInputStream origin = null;
+      out.setMethod(ZipOutputStream.DEFLATED);
+      final byte data[] = new byte[Zip.BUFFER];
 
-			/**
-			 * Add files from directories
-			 */
-			for (final String dir : dirs) {
-				final File[] fils = new File(dir).listFiles();
+      /**
+       * Add files from directories
+       */
+      for (final String dir : dirs) {
+        final File[] fils = new File(dir).listFiles();
 
-				for (final File ff : fils) {
-					fileList.add(ff);
-				}
-			}
+        for (final File ff : fils) {
+          fileList.add(ff);
+        }
+      }
 
-			/**
-			 * Add individual files
-			 */
-			for (final String fil : files) {
-				fileList.add(new File(fil));
-			}
+      /**
+       * Add individual files
+       */
+      for (final String fil : files) {
+        fileList.add(new File(fil));
+      }
 
-			/**
-			 * Process list of files and add to zip
-			 */
-			for (final File ff : fileList) {
-				// System.out.println("Adding: " + ff.getAbsolutePath());
+      /**
+       * Process list of files and add to zip
+       */
+      for (final File ff : fileList) {
+        // System.out.println("Adding: " + ff.getAbsolutePath());
 
-				final FileInputStream fi = new FileInputStream(ff);
-				origin = new BufferedInputStream(fi, Zip.BUFFER);
+        final FileInputStream fi = new FileInputStream(ff);
+        origin = new BufferedInputStream(fi, Zip.BUFFER);
 
-				final ZipEntry entry = new ZipEntry(ff.getPath());
-				out.putNextEntry(entry);
-				int count;
-				while ((count = origin.read(data, 0, Zip.BUFFER)) != -1) {
-					out.write(data, 0, count);
-				}
-				origin.close();
-			}
+        final ZipEntry entry = new ZipEntry(ff.getPath());
+        out.putNextEntry(entry);
+        int count;
+        while ((count = origin.read(data, 0, Zip.BUFFER)) != -1) {
+          out.write(data, 0, count);
+        }
+        origin.close();
+      }
 
-			out.close();
-		} catch (final Exception e) {
-			e.printStackTrace();
-		}
-	}
+      out.close();
+    }
+    catch (final Exception e) {
+      e.printStackTrace();
+    }
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.misc.main
-	 *
-	 * @param argv
-	 */
-	public static void main(final String argv[]) {
+  /**
+   *
+   * net.ajaskey.market.misc.main
+   *
+   * @param argv
+   */
+  public static void main(final String argv[]) {
 
-		final List<String> dir = new ArrayList<>();
-		dir.add("output\\SIP");
-		final List<String> fil = new ArrayList<>();
-		fil.add("data\\SP-Stocks.txt");
-		fil.add("data\\SP-Stocks-B.txt");
+    final List<String> dir = new ArrayList<>();
+    dir.add("output\\SIP");
+    final List<String> fil = new ArrayList<>();
+    fil.add("data\\SP-Stocks.txt");
+    fil.add("data\\SP-Stocks-B.txt");
 
-		Zip.create(dir, fil, "archive", "newSip.zip");
+    Zip.create(dir, fil, "archive", "newSip.zip");
 
-	}
+  }
 }

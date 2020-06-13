@@ -15,8 +15,8 @@ public class IndexImpliedVolatility {
     System.out.println(spxClose);
     System.out.println(spx30dma);
 
-    final OptionsProcessor spxOp = new OptionsProcessor(OptionsProcessor.APUT, "SPX", spx30dma, spxClose,
-        new DateTime(2019, DateTime.DECEMBER, 10), 10.0);
+    final OptionsProcessor spxOp = new OptionsProcessor(OptionsProcessor.APUT, "SPX", spx30dma, spxClose, new DateTime(2019, DateTime.DECEMBER, 10),
+        10.0);
 
     final double price = spxOp.getPrice();
     System.out.println(price);

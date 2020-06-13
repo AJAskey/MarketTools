@@ -16,6 +16,88 @@ public class CboeOptionData {
   public CboeCallPutData call;
   public CboeCallPutData put;
 
+  public CboeOptionData(String data, double ulPrice, String c, DateTime theExpiry) {
+
+    try {
+
+      this.valid = false;
+
+      this.inputData = data;
+      this.code = c;
+
+      final String[] fld = data.split(",");
+
+      this.call = new CboeCallPutData();
+      this.put = new CboeCallPutData();
+
+      this.expiry = new DateTime(fld[0].trim(), CboeOptionData.inSdf);
+      this.expiry.setSdf(CboeOptionData.outSdf);
+
+      if (this.expiry.isEqual(theExpiry)) {
+
+        this.valid = true;
+
+        this.strike = Double.parseDouble(fld[11].trim());
+        this.call.strike = this.strike;
+        this.put.strike = this.strike;
+
+        // Call data
+        this.call.id = fld[1].trim();
+        this.call.last = Double.parseDouble(fld[2].trim());
+        this.call.net = Double.parseDouble(fld[3].trim());
+        this.call.bid = Double.parseDouble(fld[4].trim());
+        this.call.ask = Double.parseDouble(fld[5].trim());
+        this.call.vol = Integer.parseInt(fld[6].trim());
+        this.call.iv = Double.parseDouble(fld[7].trim());
+        this.call.delta = Double.parseDouble(fld[8].trim());
+        this.call.gamma = Double.parseDouble(fld[9].trim());
+        this.call.oi = Integer.parseInt(fld[10].trim());
+
+        this.call.premium = 0.0;
+
+        if (this.call.iv > 0.0) {
+          final double iv = this.call.iv * 1.04;
+          this.call.optionData = new OptionsProcessor(OptionsProcessor.ACALL, this.call.id, this.strike, ulPrice, this.expiry, iv);
+        }
+
+        // Put data
+        this.put.id = fld[12].trim();
+        this.put.last = Double.parseDouble(fld[13].trim());
+        this.put.net = Double.parseDouble(fld[14].trim());
+        this.put.bid = Double.parseDouble(fld[15].trim());
+        this.put.ask = Double.parseDouble(fld[16].trim());
+        this.put.vol = Integer.parseInt(fld[17].trim());
+        this.put.iv = Double.parseDouble(fld[18].trim());
+        this.put.delta = Double.parseDouble(fld[19].trim());
+        this.put.gamma = Double.parseDouble(fld[20].trim());
+        this.put.oi = Integer.parseInt(fld[21].trim());
+        if (this.put.iv > 0.0) {
+          final double iv = this.put.iv * 1.00;
+          this.put.optionData = new OptionsProcessor(OptionsProcessor.APUT, this.put.id, this.strike, ulPrice, this.expiry, iv);
+        }
+        this.call.mark = (this.call.bid + this.call.ask) / 2.0;
+        this.put.mark = (this.put.bid + this.put.ask) / 2.0;
+
+        double price = this.call.getPrice();
+        this.call.premium = (this.call.mark - price) / price;
+        price = this.put.getPrice();
+        this.put.premium = (this.put.mark - price) / price;
+
+        if (this.call != null && this.inputData != null) {
+          this.valid = this.call.optionData.valid && this.put.optionData.valid;
+        }
+        else {
+          this.valid = false;
+        }
+      }
+    }
+    catch (final Exception e) {
+      this.valid = false;
+      // e.printStackTrace();
+    }
+
+  }
+
   public CboeOptionData(String data, double ulPrice, String c, DateTime firstExpiry, DateTime bDate) {
 
     try {
@@ -66,9 +148,8 @@ public class CboeOptionData {
       this.call.premium = 0.0;
 
       if (this.call.iv > 0.0) {
-        double iv = this.call.iv * 1.04;
-        this.call.optionData = new OptionsProcessor(OptionsProcessor.ACALL, this.call.id, this.strike, ulPrice,
-            this.expiry, iv);
+        final double iv = this.call.iv * 1.04;
+        this.call.optionData = new OptionsProcessor(OptionsProcessor.ACALL, this.call.id, this.strike, ulPrice, this.expiry, iv);
       }
 
       // Put data
@@ -83,9 +164,8 @@ public class CboeOptionData {
       this.put.gamma = Double.parseDouble(fld[20].trim());
       this.put.oi = Integer.parseInt(fld[21].trim());
       if (this.put.iv > 0.0) {
-        double iv = this.put.iv * 1.00;
-        this.put.optionData = new OptionsProcessor(OptionsProcessor.APUT, this.put.id, this.strike, ulPrice,
-            this.expiry, iv);
+        final double iv = this.put.iv * 1.00;
+        this.put.optionData = new OptionsProcessor(OptionsProcessor.APUT, this.put.id, this.strike, ulPrice, this.expiry, iv);
       }
       this.call.mark = (this.call.bid + this.call.ask) / 2.0;
       this.put.mark = (this.put.bid + this.put.ask) / 2.0;
@@ -97,93 +177,13 @@ public class CboeOptionData {
 
       if (this.call != null && this.inputData != null) {
         this.valid = this.call.optionData.valid && this.put.optionData.valid;
-      } else {
+      }
+      else {
         this.valid = false;
       }
 
-    } catch (final Exception e) {
-      this.valid = false;
-      // e.printStackTrace();
     }
-
-  }
-
-  public CboeOptionData(String data, double ulPrice, String c, DateTime theExpiry) {
-
-    try {
-
-      this.valid = false;
-
-      this.inputData = data;
-      this.code = c;
-
-      final String[] fld = data.split(",");
-
-      this.call = new CboeCallPutData();
-      this.put = new CboeCallPutData();
-
-      this.expiry = new DateTime(fld[0].trim(), CboeOptionData.inSdf);
-      this.expiry.setSdf(CboeOptionData.outSdf);
-
-      if (this.expiry.isEqual(theExpiry)) {
-
-        this.valid = true;
-
-        this.strike = Double.parseDouble(fld[11].trim());
-        this.call.strike = this.strike;
-        this.put.strike = this.strike;
-
-        // Call data
-        this.call.id = fld[1].trim();
-        this.call.last = Double.parseDouble(fld[2].trim());
-        this.call.net = Double.parseDouble(fld[3].trim());
-        this.call.bid = Double.parseDouble(fld[4].trim());
-        this.call.ask = Double.parseDouble(fld[5].trim());
-        this.call.vol = Integer.parseInt(fld[6].trim());
-        this.call.iv = Double.parseDouble(fld[7].trim());
-        this.call.delta = Double.parseDouble(fld[8].trim());
-        this.call.gamma = Double.parseDouble(fld[9].trim());
-        this.call.oi = Integer.parseInt(fld[10].trim());
-
-        this.call.premium = 0.0;
-
-        if (this.call.iv > 0.0) {
-          double iv = this.call.iv * 1.04;
-          this.call.optionData = new OptionsProcessor(OptionsProcessor.ACALL, this.call.id, this.strike, ulPrice,
-              this.expiry, iv);
-        }
-
-        // Put data
-        this.put.id = fld[12].trim();
-        this.put.last = Double.parseDouble(fld[13].trim());
-        this.put.net = Double.parseDouble(fld[14].trim());
-        this.put.bid = Double.parseDouble(fld[15].trim());
-        this.put.ask = Double.parseDouble(fld[16].trim());
-        this.put.vol = Integer.parseInt(fld[17].trim());
-        this.put.iv = Double.parseDouble(fld[18].trim());
-        this.put.delta = Double.parseDouble(fld[19].trim());
-        this.put.gamma = Double.parseDouble(fld[20].trim());
-        this.put.oi = Integer.parseInt(fld[21].trim());
-        if (this.put.iv > 0.0) {
-          double iv = this.put.iv * 1.00;
-          this.put.optionData = new OptionsProcessor(OptionsProcessor.APUT, this.put.id, this.strike, ulPrice,
-              this.expiry, iv);
-        }
-        this.call.mark = (this.call.bid + this.call.ask) / 2.0;
-        this.put.mark = (this.put.bid + this.put.ask) / 2.0;
-
-        double price = this.call.getPrice();
-        this.call.premium = (this.call.mark - price) / price;
-        price = this.put.getPrice();
-        this.put.premium = (this.put.mark - price) / price;
-
-        if (this.call != null && this.inputData != null) {
-          this.valid = this.call.optionData.valid && this.put.optionData.valid;
-        } else {
-          this.valid = false;
-        }
-      }
-    } catch (final Exception e) {
+    catch (final Exception e) {
       this.valid = false;
       // e.printStackTrace();
     }

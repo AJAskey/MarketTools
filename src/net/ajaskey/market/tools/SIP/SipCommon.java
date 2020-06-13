@@ -41,14 +41,8 @@ import net.ajaskey.common.DateTime;
  */
 public class SipCommon {
 
-  public final static double THOUSAND = 1e3;
-  public final static double MILLION = 1e6;
-  public final static double BILLION = 1e9;
-
-  private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-
-  private int ptr;
-  private final int INC;
+  private int          ptr;
+  private final int    INC;
   private final String splitChar;
 
   /**
@@ -84,7 +78,7 @@ public class SipCommon {
     final String fld[] = line.replace("\"", "").split(this.splitChar);
     final int len = fld.length - 1;
     final String sdate = fld[len].trim();
-    final Date d = sdf.parse(sdate);
+    final Date d = SipCommon.sdf.parse(sdate);
     final DateTime ret = new DateTime();
     ret.set(d);
     return ret;
@@ -105,5 +99,13 @@ public class SipCommon {
 
     this.ptr = 2;
   }
+
+  public final static double THOUSAND = 1e3;
+
+  public final static double MILLION = 1e6;
+
+  public final static double BILLION = 1e9;
+
+  private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
 }

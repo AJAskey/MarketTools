@@ -25,32 +25,34 @@ public class PriceRiskRange {
     firstExpiry.add(DateTime.DATE, 1);
 
     final List<String> data = TextUtils.readTextFile("data/options/DMPData.csv", true);
-    for (String s : data) {
+    for (final String s : data) {
 
       for (int activeType = 1; activeType < 3; activeType++) {
 
         String activeTrade = "";
         if (activeType == OptionsProcessor.ACALL) {
           activeTrade = "CALL";
-        } else {
+        }
+        else {
           activeTrade = "PUT";
         }
 
-        RiskRange rr = new RiskRange(s);
+        final RiskRange rr = new RiskRange(s);
         if (rr.isValid()) {
-          String activeCode = rr.code;
+          final String activeCode = rr.code;
 
           double ulBuy = 0.0;
           double ulSell = 0.0;
           if (activeType == OptionsProcessor.ACALL) {
             ulBuy = rr.dmp2l;
-            ulSell = rr.dmp2u + (rr.dmp2u * sellExtension);
-          } else {
+            ulSell = rr.dmp2u + rr.dmp2u * sellExtension;
+          }
+          else {
             ulBuy = rr.dmp2u;
-            ulSell = rr.dmp2l - (rr.dmp2l * sellExtension);
+            ulSell = rr.dmp2l - rr.dmp2l * sellExtension;
           }
 
-          String dbgFname = String.format("out/options/%s.dbg", activeCode);
+          final String dbgFname = String.format("out/options/%s.dbg", activeCode);
           try (PrintWriter pwDbg = new PrintWriter(dbgFname)) {
 
             pwDbg.printf("%s%n", rr);
@@ -59,45 +61,44 @@ public class PriceRiskRange {
             final String fname = String.format("data/options/%s-options.dat", activeCode);
             final List<CboeOptionData> dil = CallPutList.readCboeData(fname, firstExpiry, buyDate, minOI);
 
-            for (CboeOptionData cd : dil) {
+            for (final CboeOptionData cd : dil) {
               System.out.printf("%s\t%.2f\t%d\t%d%n", activeCode, cd.strike, cd.call.oi, cd.put.oi);
             }
 
-            String outfile = String.format("out/options/%s-%s-%d.csv", activeCode, activeTrade, (int) ulBuy);
+            final String outfile = String.format("out/options/%s-%s-%d.csv", activeCode, activeTrade, (int) ulBuy);
             try (PrintWriter pw = new PrintWriter(outfile)) {
 
-              pw.printf("Id,Expiry,Strike,Opt Buy,Opt Sell,Profit,IV,%s,%s,%.2f,%.2f%n", buyDate, sellDate, ulBuy,
-                  ulSell);
+              pw.printf("Id,Expiry,Strike,Opt Buy,Opt Sell,Profit,IV,%s,%s,%.2f,%.2f%n", buyDate, sellDate, ulBuy, ulSell);
               for (final CboeOptionData cod : dil) {
                 CboeCallPutData option = null;
                 if (activeType == OptionsProcessor.ACALL) {
                   option = cod.call;
-                } else {
+                }
+                else {
                   option = cod.put;
                 }
-                String id = option.id;
-                OptionsProcessor op = new OptionsProcessor(option.optionData);
+                final String id = option.id;
+                final OptionsProcessor op = new OptionsProcessor(option.optionData);
                 op.setUlPrice(ulBuy);
                 op.setSellDate(buyDate);
                 if (activeCode.equalsIgnoreCase("VIX")) {
-                  double newIv = option.iv * 1.75;
+                  final double newIv = option.iv * 1.75;
                   op.setIv(newIv);
                 }
-                double buyPrice = op.getPrice();
-                pwDbg.printf("%nInitial buy : %s\t%.2f\t%.2f\tStrike : %.2f\tIV : %.4f\tDIL IV : %.4f%n", buyDate,
-                    buyPrice, ulBuy, op.getStrike(), op.getIv(), op.getIv());
+                final double buyPrice = op.getPrice();
+                pwDbg.printf("%nInitial buy : %s\t%.2f\t%.2f\tStrike : %.2f\tIV : %.4f\tDIL IV : %.4f%n", buyDate, buyPrice, ulBuy, op.getStrike(),
+                    op.getIv(), op.getIv());
 
-                if ((buyPrice >= minBuyPrice) && (option.oi >= minOI)) {
+                if (buyPrice >= minBuyPrice && option.oi >= minOI) {
                   op.setSellDate(sellDate);
                   op.setUlPrice(ulSell);
-                  double sellPrice = op.getPrice();
+                  final double sellPrice = op.getPrice();
 
-                  double chg = (sellPrice - buyPrice) / buyPrice * 100.0;
-                  pwDbg.printf("Sell        : %s\t%.2f\t%.2f%nProfit      : %.2f%%%n%s%n  OI        : %d%n", sellDate,
-                      sellPrice, ulSell, chg, op, option.oi);
+                  final double chg = (sellPrice - buyPrice) / buyPrice * 100.0;
+                  pwDbg.printf("Sell        : %s\t%.2f\t%.2f%nProfit      : %.2f%%%n%s%n  OI        : %d%n", sellDate, sellPrice, ulSell, chg, op,
+                      option.oi);
 
-                  pw.printf("%s,%s,%.2f,%.2f,%.2f,%.2f%%,%.4f%n", id, op.getExpiry(), op.getStrike(), buyPrice,
-                      sellPrice, chg, option.iv);
+                  pw.printf("%s,%s,%.2f,%.2f,%.2f,%.2f%%,%.4f%n", id, op.getExpiry(), op.getStrike(), buyPrice, sellPrice, chg, option.iv);
                 }
               }
             }

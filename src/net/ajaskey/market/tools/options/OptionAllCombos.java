@@ -21,7 +21,8 @@ public class OptionAllCombos {
       final Path p = f.toPath();
       try {
         Files.deleteIfExists(p);
-      } catch (final IOException e) {
+      }
+      catch (final IOException e) {
         e.printStackTrace();
       }
     }
@@ -37,7 +38,8 @@ public class OptionAllCombos {
       OptionFindCombos.process(name, "PUT", "S");
       try {
         Thread.sleep(1000);
-      } catch (final InterruptedException e) {
+      }
+      catch (final InterruptedException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }

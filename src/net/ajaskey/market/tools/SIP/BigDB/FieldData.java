@@ -64,7 +64,7 @@ public class FieldData {
   private YearQuarterData dividend;
 
   /**
-   * 
+   *
    * @param cfd
    * @param efd
    * @param sfd
@@ -134,9 +134,405 @@ public class FieldData {
 
   }
 
+  public YearQuarterData getAcctPayable() {
+    return this.acctPayable;
+  }
+
+  public YearQuarterData getAcctRx() {
+    return this.acctRx;
+  }
+
+  public YearQuarterData getAdjToInc() {
+    return this.adjToInc;
+  }
+
+  public YearQuarterData getBvps() {
+    return this.bvps;
+  }
+
+  public YearQuarterData getCash() {
+    return this.cash;
+  }
+
+  public YearQuarterData getCogs() {
+    return this.cogs;
+  }
+
+  public CompanyFileData getCompanyInfo() {
+    return this.companyInfo;
+  }
+
+  public YearQuarterData getCurrAssets() {
+    return this.currAssets;
+  }
+
+  public YearQuarterData getCurrLiab() {
+    return this.currLiab;
+  }
+
+  public YearQuarterData getDepreciation() {
+    return this.depreciation;
+  }
+
+  public YearQuarterData getDividend() {
+    return this.dividend;
+  }
+
+  public YearQuarterData getEps() {
+    return this.eps;
+  }
+
+  public YearQuarterData getEpsCont() {
+    return this.epsCont;
+  }
+
+  public YearQuarterData getEpsDil() {
+    return this.epsDil;
+  }
+
+  public YearQuarterData getEpsDilCont() {
+    return this.epsDilCont;
+  }
+
+  public YearQuarterData getEquity() {
+    return this.equity;
+  }
+
+  public EstimateFileData getEstimateData() {
+    return this.estimateData;
+  }
+
+  public YearQuarterData getGoodwill() {
+    return this.goodwill;
+  }
+
+  public YearQuarterData getGrossInc() {
+    return this.grossInc;
+  }
+
+  public YearQuarterData getGrossOpInc() {
+    return this.grossOpInc;
+  }
+
+  public YearQuarterData getIncAfterTax() {
+    return this.incAfterTax;
+  }
+
+  public YearQuarterData getIncomeTax() {
+    return this.incomeTax;
+  }
+
+  public YearQuarterData getIncPrimaryEps() {
+    return this.incPrimaryEps;
+  }
+
+  public YearQuarterData getIntExp() {
+    return this.intExp;
+  }
+
+  public YearQuarterData getInventory() {
+    return this.inventory;
+  }
+
+  public YearQuarterData getLiabEquity() {
+    return this.liabEquity;
+  }
+
+  public YearQuarterData getLtDebt() {
+    return this.ltDebt;
+  }
+
+  public YearQuarterData getLtInvestments() {
+    return this.ltInvestments;
+  }
+
+  public YearQuarterData getNetFixedAssets() {
+    return this.netFixedAssets;
+  }
+
+  public YearQuarterData getNetInc() {
+    return this.netInc;
+  }
+
+  public YearQuarterData getNonrecurringItem() {
+    return this.nonrecurringItem;
+  }
+
+  public YearQuarterData getOtherCurrAssets() {
+    return this.otherCurrAssets;
+  }
+
+  public YearQuarterData getOtherCurrLiab() {
+    return this.otherCurrLiab;
+  }
+
+  public YearQuarterData getOtherInc() {
+    return this.otherInc;
+  }
+
+  public YearQuarterData getOtherIntExp() {
+    return this.otherIntExp;
+  }
+
+  public YearQuarterData getOtherLtAssets() {
+    return this.otherLtAssets;
+  }
+
+  public YearQuarterData getOtherLtLiab() {
+    return this.otherLtLiab;
+  }
+
+  public YearQuarterData getPrefLiab() {
+    return this.prefStock;
+  }
+
+  public YearQuarterData getPrefStock() {
+    return this.prefStock;
+  }
+
+  public YearQuarterData getPretaxInc() {
+    return this.pretaxInc;
+  }
+
+  public YearQuarterData getRd() {
+    return this.rd;
+  }
+
+  public YearQuarterData getSales() {
+    return this.sales;
+  }
+
+  public SharesFileData getShareData() {
+    return this.shareData;
+  }
+
+  public YearQuarterData getShares() {
+    return this.shares;
+  }
+
+  public YearQuarterData getStDebt() {
+    return this.stDebt;
+  }
+
+  public YearQuarterData getStInvestments() {
+    return this.stInvestments;
+  }
+
+  public YearQuarterData getTotalAssets() {
+    return this.totalAssets;
+  }
+
+  public YearQuarterData getTotalLiab() {
+    return this.totalLiab;
+  }
+
+  public YearQuarterData getTotOpExp() {
+    return this.totOpExp;
+  }
+
+  public YearQuarterData getUnusualInc() {
+    return this.unusualInc;
+  }
+
+  public void setAcctPayable(YearQuarterData acctPayable) {
+    this.acctPayable = acctPayable;
+  }
+
+  public void setAcctRx(YearQuarterData acctRx) {
+    this.acctRx = acctRx;
+  }
+
+  public void setAdjToInc(YearQuarterData adjToInc) {
+    this.adjToInc = adjToInc;
+  }
+
+  public void setBvps(YearQuarterData bvps) {
+    this.bvps = bvps;
+  }
+
+  public void setCash(YearQuarterData cash) {
+    this.cash = cash;
+  }
+
+  public void setCogs(YearQuarterData cogs) {
+    this.cogs = cogs;
+  }
+
+  public void setCompanyInfo(CompanyFileData companyInfo) {
+    this.companyInfo = companyInfo;
+  }
+
+  public void setCurrAssets(YearQuarterData currAssets) {
+    this.currAssets = currAssets;
+  }
+
+  public void setCurrLiab(YearQuarterData currLiab) {
+    this.currLiab = currLiab;
+  }
+
+  public void setDepreciation(YearQuarterData depreciation) {
+    this.depreciation = depreciation;
+  }
+
+  public void setDividend(YearQuarterData dividend) {
+    this.dividend = dividend;
+  }
+
+  public void setEps(YearQuarterData eps) {
+    this.eps = eps;
+  }
+
+  public void setEpsCont(YearQuarterData epsCont) {
+    this.epsCont = epsCont;
+  }
+
+  public void setEpsDil(YearQuarterData epsDil) {
+    this.epsDil = epsDil;
+  }
+
+  public void setEpsDilCont(YearQuarterData epsDilCont) {
+    this.epsDilCont = epsDilCont;
+  }
+
+  public void setEquity(YearQuarterData equity) {
+    this.equity = equity;
+  }
+
+  public void setEstimateData(EstimateFileData estimateData) {
+    this.estimateData = estimateData;
+  }
+
+  public void setGoodwill(YearQuarterData goodwill) {
+    this.goodwill = goodwill;
+  }
+
+  public void setGrossInc(YearQuarterData grossInc) {
+    this.grossInc = grossInc;
+  }
+
+  public void setGrossOpInc(YearQuarterData grossOpInc) {
+    this.grossOpInc = grossOpInc;
+  }
+
+  public void setIncAfterTax(YearQuarterData incAfterTax) {
+    this.incAfterTax = incAfterTax;
+  }
+
+  public void setIncomeTax(YearQuarterData incomeTax) {
+    this.incomeTax = incomeTax;
+  }
+
+  public void setIncPrimaryEps(YearQuarterData incPrimaryEps) {
+    this.incPrimaryEps = incPrimaryEps;
+  }
+
+  public void setIntExp(YearQuarterData intExp) {
+    this.intExp = intExp;
+  }
+
+  public void setInventory(YearQuarterData inventory) {
+    this.inventory = inventory;
+  }
+
+  public void setLiabEquity(YearQuarterData liabEquity) {
+    this.liabEquity = liabEquity;
+  }
+
+  public void setLtDebt(YearQuarterData ltDebt) {
+    this.ltDebt = ltDebt;
+  }
+
+  public void setLtInvestments(YearQuarterData ltInvestments) {
+    this.ltInvestments = ltInvestments;
+  }
+
+  public void setNetFixedAssets(YearQuarterData netFixedAssets) {
+    this.netFixedAssets = netFixedAssets;
+  }
+
+  public void setNetInc(YearQuarterData netInc) {
+    this.netInc = netInc;
+  }
+
+  public void setNonrecurringItem(YearQuarterData nonrecurringItem) {
+    this.nonrecurringItem = nonrecurringItem;
+  }
+
+  public void setOtherCurrAssets(YearQuarterData otherCurrAssets) {
+    this.otherCurrAssets = otherCurrAssets;
+  }
+
+  public void setOtherCurrLiab(YearQuarterData otherCurrLiab) {
+    this.otherCurrLiab = otherCurrLiab;
+  }
+
+  public void setOtherInc(YearQuarterData otherInc) {
+    this.otherInc = otherInc;
+  }
+
+  public void setOtherIntExp(YearQuarterData otherIntExp) {
+    this.otherIntExp = otherIntExp;
+  }
+
+  public void setOtherLtAssets(YearQuarterData otherLtAssets) {
+    this.otherLtAssets = otherLtAssets;
+  }
+
+  public void setOtherLtLiab(YearQuarterData otherLtLiab) {
+    this.otherLtLiab = otherLtLiab;
+  }
+
+  public void setPrefStock(YearQuarterData prefStock) {
+    this.prefStock = prefStock;
+  }
+
+  public void setPretaxInc(YearQuarterData pretaxInc) {
+    this.pretaxInc = pretaxInc;
+  }
+
+  public void setRd(YearQuarterData rd) {
+    this.rd = rd;
+  }
+
+  public void setSales(YearQuarterData sales) {
+    this.sales = sales;
+  }
+
+  public void setShareData(SharesFileData shareData) {
+    this.shareData = shareData;
+  }
+
+  public void setShares(YearQuarterData shares) {
+    this.shares = shares;
+  }
+
+  public void setStDebt(YearQuarterData stDebt) {
+    this.stDebt = stDebt;
+  }
+
+  public void setStInvestments(YearQuarterData stInvestments) {
+    this.stInvestments = stInvestments;
+  }
+
+  public void setTotalAssets(YearQuarterData totalAssets) {
+    this.totalAssets = totalAssets;
+  }
+
+  public void setTotalLiab(YearQuarterData totalLiab) {
+    this.totalLiab = totalLiab;
+  }
+
+  public void setTotOpExp(YearQuarterData totOpExp) {
+    this.totOpExp = totOpExp;
+  }
+
+  public void setUnusualInc(YearQuarterData unusualInc) {
+    this.unusualInc = unusualInc;
+  }
+
   @Override
   public String toString() {
-    String ret = this.companyInfo.report();
+    final String ret = this.companyInfo.report();
     return ret;
   }
 
@@ -145,19 +541,19 @@ public class FieldData {
     final String inbasedir = String.format("D:/dev/eclipse-workspace/Market/out/BigDB/");
     final String indir = String.format("%s%s/Q%d/", inbasedir, year, quarter);
 
-    List<FieldData> fdList = new ArrayList<>();
+    final List<FieldData> fdList = new ArrayList<>();
 
-    String[] ext = { "txt" };
-    List<File> fList = Utils.getDirTree(indir, ext);
-    for (File f : fList) {
+    final String[] ext = { "txt" };
+    final List<File> fList = Utils.getDirTree(indir, ext);
+    for (final File f : fList) {
 
-      List<String> data = TextUtils.readTextFile(f, true);
+      final List<String> data = TextUtils.readTextFile(f, true);
 
-      FieldData fd = new FieldData();
+      final FieldData fd = new FieldData();
 
       for (final String s : data) {
 
-        String[] tfld = s.split(":");
+        final String[] tfld = s.split(":");
 
         // System.out.println(s);
         // System.out.println(tfld.length);
@@ -165,10 +561,9 @@ public class FieldData {
         final String fld = tfld[0].trim();
 
         String val = "";
-        String val2 = "";
         if (tfld.length > 2) {
           val = "http:";
-          val2 = tfld[2].trim();
+          tfld[2].trim();
         }
         else if (tfld.length > 1) {
           val = tfld[1].trim();
@@ -237,402 +632,6 @@ public class FieldData {
       fdList.add(fd);
     }
     return fdList;
-  }
-
-  public SharesFileData getShareData() {
-    return shareData;
-  }
-
-  public void setShareData(SharesFileData shareData) {
-    this.shareData = shareData;
-  }
-
-  public YearQuarterData getShares() {
-    return shares;
-  }
-
-  public void setShares(YearQuarterData shares) {
-    this.shares = shares;
-  }
-
-  public YearQuarterData getPrefStock() {
-    return prefStock;
-  }
-
-  public void setPrefStock(YearQuarterData prefStock) {
-    this.prefStock = prefStock;
-  }
-
-  public void setCompanyInfo(CompanyFileData companyInfo) {
-    this.companyInfo = companyInfo;
-  }
-
-  public void setEstimateData(EstimateFileData estimateData) {
-    this.estimateData = estimateData;
-  }
-
-  public void setCash(YearQuarterData cash) {
-    this.cash = cash;
-  }
-
-  public void setStInvestments(YearQuarterData stInvestments) {
-    this.stInvestments = stInvestments;
-  }
-
-  public void setAcctRx(YearQuarterData acctRx) {
-    this.acctRx = acctRx;
-  }
-
-  public void setInventory(YearQuarterData inventory) {
-    this.inventory = inventory;
-  }
-
-  public void setOtherCurrAssets(YearQuarterData otherCurrAssets) {
-    this.otherCurrAssets = otherCurrAssets;
-  }
-
-  public void setCurrAssets(YearQuarterData currAssets) {
-    this.currAssets = currAssets;
-  }
-
-  public void setNetFixedAssets(YearQuarterData netFixedAssets) {
-    this.netFixedAssets = netFixedAssets;
-  }
-
-  public void setLtInvestments(YearQuarterData ltInvestments) {
-    this.ltInvestments = ltInvestments;
-  }
-
-  public void setGoodwill(YearQuarterData goodwill) {
-    this.goodwill = goodwill;
-  }
-
-  public void setOtherLtAssets(YearQuarterData otherLtAssets) {
-    this.otherLtAssets = otherLtAssets;
-  }
-
-  public void setTotalAssets(YearQuarterData totalAssets) {
-    this.totalAssets = totalAssets;
-  }
-
-  public void setAcctPayable(YearQuarterData acctPayable) {
-    this.acctPayable = acctPayable;
-  }
-
-  public void setStDebt(YearQuarterData stDebt) {
-    this.stDebt = stDebt;
-  }
-
-  public void setOtherCurrLiab(YearQuarterData otherCurrLiab) {
-    this.otherCurrLiab = otherCurrLiab;
-  }
-
-  public void setCurrLiab(YearQuarterData currLiab) {
-    this.currLiab = currLiab;
-  }
-
-  public void setLtDebt(YearQuarterData ltDebt) {
-    this.ltDebt = ltDebt;
-  }
-
-  public void setOtherLtLiab(YearQuarterData otherLtLiab) {
-    this.otherLtLiab = otherLtLiab;
-  }
-
-  public void setTotalLiab(YearQuarterData totalLiab) {
-    this.totalLiab = totalLiab;
-  }
-
-  public void setEquity(YearQuarterData equity) {
-    this.equity = equity;
-  }
-
-  public void setLiabEquity(YearQuarterData liabEquity) {
-    this.liabEquity = liabEquity;
-  }
-
-  public void setBvps(YearQuarterData bvps) {
-    this.bvps = bvps;
-  }
-
-  public void setSales(YearQuarterData sales) {
-    this.sales = sales;
-  }
-
-  public void setCogs(YearQuarterData cogs) {
-    this.cogs = cogs;
-  }
-
-  public void setGrossInc(YearQuarterData grossInc) {
-    this.grossInc = grossInc;
-  }
-
-  public void setRd(YearQuarterData rd) {
-    this.rd = rd;
-  }
-
-  public void setDepreciation(YearQuarterData depreciation) {
-    this.depreciation = depreciation;
-  }
-
-  public void setIntExp(YearQuarterData intExp) {
-    this.intExp = intExp;
-  }
-
-  public void setUnusualInc(YearQuarterData unusualInc) {
-    this.unusualInc = unusualInc;
-  }
-
-  public void setTotOpExp(YearQuarterData totOpExp) {
-    this.totOpExp = totOpExp;
-  }
-
-  public void setGrossOpInc(YearQuarterData grossOpInc) {
-    this.grossOpInc = grossOpInc;
-  }
-
-  public void setOtherIntExp(YearQuarterData otherIntExp) {
-    this.otherIntExp = otherIntExp;
-  }
-
-  public void setOtherInc(YearQuarterData otherInc) {
-    this.otherInc = otherInc;
-  }
-
-  public void setPretaxInc(YearQuarterData pretaxInc) {
-    this.pretaxInc = pretaxInc;
-  }
-
-  public void setIncomeTax(YearQuarterData incomeTax) {
-    this.incomeTax = incomeTax;
-  }
-
-  public void setIncAfterTax(YearQuarterData incAfterTax) {
-    this.incAfterTax = incAfterTax;
-  }
-
-  public void setAdjToInc(YearQuarterData adjToInc) {
-    this.adjToInc = adjToInc;
-  }
-
-  public void setIncPrimaryEps(YearQuarterData incPrimaryEps) {
-    this.incPrimaryEps = incPrimaryEps;
-  }
-
-  public void setNonrecurringItem(YearQuarterData nonrecurringItem) {
-    this.nonrecurringItem = nonrecurringItem;
-  }
-
-  public void setNetInc(YearQuarterData netInc) {
-    this.netInc = netInc;
-  }
-
-  public void setEps(YearQuarterData eps) {
-    this.eps = eps;
-  }
-
-  public void setEpsCont(YearQuarterData epsCont) {
-    this.epsCont = epsCont;
-  }
-
-  public void setEpsDil(YearQuarterData epsDil) {
-    this.epsDil = epsDil;
-  }
-
-  public void setEpsDilCont(YearQuarterData epsDilCont) {
-    this.epsDilCont = epsDilCont;
-  }
-
-  public void setDividend(YearQuarterData dividend) {
-    this.dividend = dividend;
-  }
-
-  public CompanyFileData getCompanyInfo() {
-    return companyInfo;
-  }
-
-  public EstimateFileData getEstimateData() {
-    return estimateData;
-  }
-
-  public YearQuarterData getCash() {
-    return cash;
-  }
-
-  public YearQuarterData getStInvestments() {
-    return stInvestments;
-  }
-
-  public YearQuarterData getAcctRx() {
-    return acctRx;
-  }
-
-  public YearQuarterData getInventory() {
-    return inventory;
-  }
-
-  public YearQuarterData getOtherCurrAssets() {
-    return otherCurrAssets;
-  }
-
-  public YearQuarterData getCurrAssets() {
-    return currAssets;
-  }
-
-  public YearQuarterData getNetFixedAssets() {
-    return netFixedAssets;
-  }
-
-  public YearQuarterData getLtInvestments() {
-    return ltInvestments;
-  }
-
-  public YearQuarterData getGoodwill() {
-    return goodwill;
-  }
-
-  public YearQuarterData getOtherLtAssets() {
-    return otherLtAssets;
-  }
-
-  public YearQuarterData getTotalAssets() {
-    return totalAssets;
-  }
-
-  public YearQuarterData getAcctPayable() {
-    return acctPayable;
-  }
-
-  public YearQuarterData getStDebt() {
-    return stDebt;
-  }
-
-  public YearQuarterData getOtherCurrLiab() {
-    return otherCurrLiab;
-  }
-
-  public YearQuarterData getCurrLiab() {
-    return currLiab;
-  }
-
-  public YearQuarterData getLtDebt() {
-    return ltDebt;
-  }
-
-  public YearQuarterData getOtherLtLiab() {
-    return otherLtLiab;
-  }
-
-  public YearQuarterData getTotalLiab() {
-    return totalLiab;
-  }
-
-  public YearQuarterData getPrefLiab() {
-    return prefStock;
-  }
-
-  public YearQuarterData getEquity() {
-    return equity;
-  }
-
-  public YearQuarterData getLiabEquity() {
-    return liabEquity;
-  }
-
-  public YearQuarterData getBvps() {
-    return bvps;
-  }
-
-  public YearQuarterData getSales() {
-    return sales;
-  }
-
-  public YearQuarterData getCogs() {
-    return cogs;
-  }
-
-  public YearQuarterData getGrossInc() {
-    return grossInc;
-  }
-
-  public YearQuarterData getRd() {
-    return rd;
-  }
-
-  public YearQuarterData getDepreciation() {
-    return depreciation;
-  }
-
-  public YearQuarterData getIntExp() {
-    return intExp;
-  }
-
-  public YearQuarterData getUnusualInc() {
-    return unusualInc;
-  }
-
-  public YearQuarterData getTotOpExp() {
-    return totOpExp;
-  }
-
-  public YearQuarterData getGrossOpInc() {
-    return grossOpInc;
-  }
-
-  public YearQuarterData getOtherIntExp() {
-    return otherIntExp;
-  }
-
-  public YearQuarterData getOtherInc() {
-    return otherInc;
-  }
-
-  public YearQuarterData getPretaxInc() {
-    return pretaxInc;
-  }
-
-  public YearQuarterData getIncomeTax() {
-    return incomeTax;
-  }
-
-  public YearQuarterData getIncAfterTax() {
-    return incAfterTax;
-  }
-
-  public YearQuarterData getAdjToInc() {
-    return adjToInc;
-  }
-
-  public YearQuarterData getIncPrimaryEps() {
-    return incPrimaryEps;
-  }
-
-  public YearQuarterData getNonrecurringItem() {
-    return nonrecurringItem;
-  }
-
-  public YearQuarterData getNetInc() {
-    return netInc;
-  }
-
-  public YearQuarterData getEps() {
-    return eps;
-  }
-
-  public YearQuarterData getEpsCont() {
-    return epsCont;
-  }
-
-  public YearQuarterData getEpsDil() {
-    return epsDil;
-  }
-
-  public YearQuarterData getEpsDilCont() {
-    return epsDilCont;
-  }
-
-  public YearQuarterData getDividend() {
-    return dividend;
   }
 
 }

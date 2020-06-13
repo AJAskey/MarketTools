@@ -43,18 +43,19 @@ import net.ajaskey.common.DateTime;
  */
 public class PriceData {
 
+  public DateTime date;
+
+  public double    open;
+  public double    high;
+  public double    low;
+  public double    close;
+  public long      volume;
+  private FormType form;
+  private boolean  valid;
+
   public enum FormType {
     SHORT, FULL
   }
-
-  public DateTime date;
-  public double open;
-  public double high;
-  public double low;
-  public double close;
-  public long volume;
-  private FormType form;
-  private boolean valid;
 
   /**
    * This method serves as a constructor for the class.
@@ -88,7 +89,8 @@ public class PriceData {
 
       this.valid = true;
 
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
       this.valid = false;
     }
@@ -109,28 +111,6 @@ public class PriceData {
     return this.valid;
   }
 
-  /**
-   *
-   * net.ajaskey.market.tools.helpers.setForm
-   *
-   */
-  private void setForm() {
-
-    if (this.open == this.high && this.high == this.low && this.low == this.close) {
-      this.setForm(FormType.SHORT);
-    } else {
-      this.setForm(FormType.FULL);
-    }
-  }
-
-  /**
-   * @param form the form to set
-   */
-  private void setForm(final FormType form) {
-
-    this.form = form;
-  }
-
   public String toShortString() {
 
     final String ret = String.format("%s, %.2f", this.date.format("yyyy-MM-dd"), this.close);
@@ -145,38 +125,36 @@ public class PriceData {
   @Override
   public String toString() {
 
-    final String ret = String.format("%s, %.2f, %.2f, %.2f, %.2f, %d", this.date.format("yyyy-MM-dd"), this.open,
-        this.high, this.low, this.close, this.volume);
+    final String ret = String.format("%s, %.2f, %.2f, %.2f, %.2f, %d", this.date.format("yyyy-MM-dd"), this.open, this.high, this.low, this.close,
+        this.volume);
     return ret;
   }
 
   /**
-   * 
-   * @param prices
-   * @return
+   *
+   * net.ajaskey.market.tools.helpers.setForm
+   *
    */
-  public static double getLatestPrice(List<PriceData> prices) {
-    try {
-      return prices.get(prices.size() - 1).close;
-    } catch (final Exception e) {
-      return 0.0;
-    }
-  }
+  private void setForm() {
 
-  public static PriceData queryDate(DateTime dt, List<PriceData> prices) {
-    for (final PriceData d : prices) {
-      if (d.date.isEqual(dt)) {
-        return d;
-      } else if (d.date.isGreaterThan(dt)) {
-        return d;
-      }
+    if (this.open == this.high && this.high == this.low && this.low == this.close) {
+      this.setForm(FormType.SHORT);
     }
-    // Return last data point
-    return prices.get(prices.size() - 1);
+    else {
+      this.setForm(FormType.FULL);
+    }
   }
 
   /**
-   * 
+   * @param form the form to set
+   */
+  private void setForm(final FormType form) {
+
+    this.form = form;
+  }
+
+  /**
+   *
    * @param index
    * @return
    * @throws IOException
@@ -193,18 +171,18 @@ public class PriceData {
 
       while (line != null) {
         line = br.readLine();
-        if ((line != null) && (line.length() > 0)) {
+        if (line != null && line.length() > 0) {
           final String fld[] = line.split(",");
           // final PriceData dd = new PriceData();
           DateTime dt = new DateTime();
           dt = dt.parse(fld[0].trim(), "yyyy-MM-dd");
-          double open = Double.parseDouble(fld[1].trim());
-          double high = Double.parseDouble(fld[2].trim());
-          double low = Double.parseDouble(fld[3].trim());
-          double close = Double.parseDouble(fld[5].trim());
-          long volume = Long.parseLong(fld[6].trim());
+          final double open = Double.parseDouble(fld[1].trim());
+          final double high = Double.parseDouble(fld[2].trim());
+          final double low = Double.parseDouble(fld[3].trim());
+          final double close = Double.parseDouble(fld[5].trim());
+          final long volume = Long.parseLong(fld[6].trim());
 
-          PriceData dd = new PriceData(dt, open, high, low, close, volume);
+          final PriceData dd = new PriceData(dt, open, high, low, close, volume);
 
           ret.add(dd);
         }
@@ -212,6 +190,33 @@ public class PriceData {
     }
 
     return ret;
+  }
+
+  /**
+   *
+   * @param prices
+   * @return
+   */
+  public static double getLatestPrice(List<PriceData> prices) {
+    try {
+      return prices.get(prices.size() - 1).close;
+    }
+    catch (final Exception e) {
+      return 0.0;
+    }
+  }
+
+  public static PriceData queryDate(DateTime dt, List<PriceData> prices) {
+    for (final PriceData d : prices) {
+      if (d.date.isEqual(dt)) {
+        return d;
+      }
+      else if (d.date.isGreaterThan(dt)) {
+        return d;
+      }
+    }
+    // Return last data point
+    return prices.get(prices.size() - 1);
   }
 
   private static String getFilename(String index) {

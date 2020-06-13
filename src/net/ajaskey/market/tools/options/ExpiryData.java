@@ -168,8 +168,28 @@ public class ExpiryData {
     this.vol = vol;
   }
 
+  @Override
+  public String toString() {
+    String ret = "";
+
+    ret += String.format("Id       : %s%n", this.id);
+    ret += String.format(" Expiry  : %s%n", this.expiry);
+    ret += String.format(" Strike  : %.2f%n", this.strike);
+    ret += String.format(" Last    : %.2f%n", this.last);
+    ret += String.format(" Bid     : %.2f%n", this.bid);
+    ret += String.format(" Ask     : %.2f%n", this.ask);
+    ret += String.format(" Mark    : %.2f%n", this.mark);
+    ret += String.format(" Volume  : %d%n", this.vol);
+    ret += String.format(" OI      : %d%n", this.oi);
+    ret += String.format(" IV      : %.4f%n", this.iv);
+    ret += String.format(" Delta   : %.4f%n", this.delta);
+    ret += String.format(" Gamma   : %.4f%n", this.gamma);
+
+    return ret;
+  }
+
   /**
-   * 
+   *
    * @param args
    * @throws FileNotFoundException
    */
@@ -177,13 +197,14 @@ public class ExpiryData {
 
     try {
       AddCboeDataFiles.main(null);
-    } catch (IOException e) {
+    }
+    catch (final IOException e) {
     }
 
     final List<ExpiryDataList> l = new ArrayList<>();
 
-    String code = "spy";
-    int activeType = OptionsProcessor.APUT;
+    final String code = "spy";
+    final int activeType = OptionsProcessor.APUT;
     double ulMove = 0.15;
 
     if (activeType == OptionsProcessor.ACALL) {
@@ -199,14 +220,15 @@ public class ExpiryData {
     final String fname = String.format("data/options/%s-options.dat", code);
     final List<CboeOptionData> dil = CallPutList.readCboeData(fname, firstExpiry, buyDate, 50);
 
-    for (CboeOptionData cod : dil) {
+    for (final CboeOptionData cod : dil) {
       boolean found = false;
-      for (ExpiryDataList ex : l) {
+      for (final ExpiryDataList ex : l) {
         if (cod.expiry.isEqual(ex.expiry)) {
           ExpiryData e = null;
           if (activeType == OptionsProcessor.APUT) {
             e = new ExpiryData(cod.put, ex.expiry, OptionsProcessor.APUT);
-          } else {
+          }
+          else {
             e = new ExpiryData(cod.call, ex.expiry, OptionsProcessor.ACALL);
           }
           ex.exList.add(e);
@@ -215,11 +237,12 @@ public class ExpiryData {
         }
       }
       if (!found) {
-        ExpiryDataList etmp = new ExpiryDataList(cod.expiry, CallPutList.getcPrice());
+        final ExpiryDataList etmp = new ExpiryDataList(cod.expiry, CallPutList.getcPrice());
         ExpiryData e = null;
         if (activeType == OptionsProcessor.APUT) {
           e = new ExpiryData(cod.put, etmp.expiry, OptionsProcessor.APUT);
-        } else {
+        }
+        else {
           e = new ExpiryData(cod.call, etmp.expiry, OptionsProcessor.ACALL);
         }
         etmp.exList.add(e);
@@ -227,55 +250,53 @@ public class ExpiryData {
       }
     }
 
-    double tmpUl = CallPutList.getcPrice() * (1.0 + Math.abs(ulMove));
+    final double tmpUl = CallPutList.getcPrice() * (1.0 + Math.abs(ulMove));
     try (PrintWriter pw = new PrintWriter("out/options/ExpiryData.out")) {
 
-      for (ExpiryDataList ex : l) {
+      for (final ExpiryDataList ex : l) {
 
         Collections.sort(ex.exList, new SortByStrike());
 
-        int ulPos = getCallPos(ex.ul, ex.exList);
+        final int ulPos = ExpiryData.getCallPos(ex.ul, ex.exList);
         double newUl = 0.0;
         if (activeType == OptionsProcessor.APUT) {
           newUl = ex.ul * (1.0 - ulMove);
-        } else {
+        }
+        else {
           newUl = ex.ul * (1.0 + ulMove);
         }
 
-        pw.printf("%n%s\t%.2f\t%.2f\t%d\t%.2f\t\t%.2f%%%n", ex.expiry, ex.ul, tmpUl, ulPos, newUl,
-            Math.abs(ulMove * 100.0));
+        pw.printf("%n%s\t%.2f\t%.2f\t%d\t%.2f\t\t%.2f%%%n", ex.expiry, ex.ul, tmpUl, ulPos, newUl, Math.abs(ulMove * 100.0));
 
         double lastPrice = 0.0;
         double buy = 0.0;
         double sell = 0.0;
         for (int i = 0; i < ex.exList.size(); i++) {
 
-          ExpiryData ed = ex.exList.get(i);
-          double chgUl = (ed.strike - ex.ul) / ex.ul * 100.0;
-          double chg = 0.0;
-
+          final ExpiryData ed = ex.exList.get(i);
           if (lastPrice > 0.0) {
-            chg = (lastPrice - ed.mark) / ed.mark * 100.0;
           }
 
           double posUl = 0.0;
           int pos = -1;
           if (activeType == OptionsProcessor.ACALL) {
             posUl = ed.strike * (1.0 + ulMove);
-            pos = getCallPos(posUl, ex.exList);
-          } else {
+            pos = ExpiryData.getCallPos(posUl, ex.exList);
+          }
+          else {
             posUl = ed.strike * (1.0 - ulMove);
-            pos = getPutPos(posUl, ex.exList);
+            pos = ExpiryData.getPutPos(posUl, ex.exList);
           }
 
           double profit = 0.0;
           if (pos >= 0) {
 
-            if ((ed.mark > 0.0499) && (ex.exList.get(pos).mark > 0.0499)) {
+            if (ed.mark > 0.0499 && ex.exList.get(pos).mark > 0.0499) {
               if (activeType == OptionsProcessor.ACALL) {
                 buy = ed.mark;
                 sell = ex.exList.get(pos).mark;
-              } else {
+              }
+              else {
                 buy = ex.exList.get(pos).mark;
                 sell = ed.mark;
               }
@@ -283,8 +304,8 @@ public class ExpiryData {
             }
           }
 
-          pw.printf("\t%3d %15s %6.1f %7.2f %7.2f %5d %7.2f %7.2f %10.1f%% %10d%n", i, ed.id, ed.strike, posUl, ed.mark,
-              pos, buy, sell, profit, ed.vol);
+          pw.printf("\t%3d %15s %6.1f %7.2f %7.2f %5d %7.2f %7.2f %10.1f%% %10d%n", i, ed.id, ed.strike, posUl, ed.mark, pos, buy, sell, profit,
+              ed.vol);
 
           lastPrice = ed.mark;
 
@@ -307,22 +328,9 @@ public class ExpiryData {
     return ret;
   }
 
-  private static int getPutPos(double ul, List<ExpiryData> ex) {
-    int ret = -1;
-
-    for (int i = ex.size() - 1; i >= 0; i--) {
-      if (ex.get(i).strike <= ul) {
-        ret = i;
-        break;
-      }
-    }
-
-    return ret;
-  }
-
   private static int getPosOffset(double price, double offset, List<ExpiryData> ex) {
     int ret = -1;
-    double prOff = price + offset;
+    final double prOff = price + offset;
 
     for (int i = 0; i < ex.size(); i++) {
       if (ex.get(i).strike >= prOff) {
@@ -334,22 +342,15 @@ public class ExpiryData {
     return ret;
   }
 
-  @Override
-  public String toString() {
-    String ret = "";
+  private static int getPutPos(double ul, List<ExpiryData> ex) {
+    int ret = -1;
 
-    ret += String.format("Id       : %s%n", this.id);
-    ret += String.format(" Expiry  : %s%n", this.expiry);
-    ret += String.format(" Strike  : %.2f%n", this.strike);
-    ret += String.format(" Last    : %.2f%n", this.last);
-    ret += String.format(" Bid     : %.2f%n", this.bid);
-    ret += String.format(" Ask     : %.2f%n", this.ask);
-    ret += String.format(" Mark    : %.2f%n", this.mark);
-    ret += String.format(" Volume  : %d%n", this.vol);
-    ret += String.format(" OI      : %d%n", this.oi);
-    ret += String.format(" IV      : %.4f%n", this.iv);
-    ret += String.format(" Delta   : %.4f%n", this.delta);
-    ret += String.format(" Gamma   : %.4f%n", this.gamma);
+    for (int i = ex.size() - 1; i >= 0; i--) {
+      if (ex.get(i).strike <= ul) {
+        ret = i;
+        break;
+      }
+    }
 
     return ret;
   }

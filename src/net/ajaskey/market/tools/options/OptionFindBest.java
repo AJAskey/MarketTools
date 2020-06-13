@@ -42,8 +42,8 @@ public class OptionFindBest {
     final String type = args[1].trim();
     int typeInt = OptionsProcessor.ACALL;
 
-    final String outfile = String.format("out/%s-%d-%s-%d-options-analysis.csv", code.toUpperCase(), (int) dilCPrice,
-        type.toUpperCase(), (int) Math.round(chg * 100.0));
+    final String outfile = String.format("out/%s-%d-%s-%d-options-analysis.csv", code.toUpperCase(), (int) dilCPrice, type.toUpperCase(),
+        (int) Math.round(chg * 100.0));
 
     if (type.toUpperCase().contains("P")) {
       typeInt = OptionsProcessor.APUT;
@@ -56,8 +56,8 @@ public class OptionFindBest {
 
       // final double y = firstExpiry.getDeltaYears(today);
 
-      pw.printf("Expiry,Strike,,Price,Mark,Premium,,Delta,IV,,SellPrice,Profit,,LossPrice,Loss,,Id,,%s,%s,%.2f,%.2f%n",
-          CallPutList.getCode(), sellDate, dilCPrice, ul);
+      pw.printf("Expiry,Strike,,Price,Mark,Premium,,Delta,IV,,SellPrice,Profit,,LossPrice,Loss,,Id,,%s,%s,%.2f,%.2f%n", CallPutList.getCode(),
+          sellDate, dilCPrice, ul);
 
       for (final CboeOptionData cod : dil) {
 
@@ -66,7 +66,8 @@ public class OptionFindBest {
           CboeCallPutData option = null;
           if (typeInt == OptionsProcessor.ACALL) {
             option = cod.call;
-          } else {
+          }
+          else {
             option = cod.put;
           }
 
@@ -96,8 +97,8 @@ public class OptionFindBest {
 
               op.setGreeks();
 
-              pw.printf("%s,%.2f,,%.2f,%.2f,%.2f%%,,%.4f,%.4f,,%.2f,%.2f%%,,%.2f,%.2f%%,,%s%n", cod.expiry, cod.strike,
-                  price, option.mark, premium, option.delta, option.iv, sellPrice, profit, lossPrice, loss, option.id);
+              pw.printf("%s,%.2f,,%.2f,%.2f,%.2f%%,,%.4f,%.4f,,%.2f,%.2f%%,,%.2f,%.2f%%,,%s%n", cod.expiry, cod.strike, price, option.mark, premium,
+                  option.delta, option.iv, sellPrice, profit, lossPrice, loss, option.id);
 
               final String s = String.format("main() :: Writing instance data%n%s%n", op.toString());
               OptionsProcessor.printDbg(s);

@@ -11,29 +11,15 @@ import net.ajaskey.common.Utils;
 
 public class TickerPriceData {
 
-  static private List<DateTime> holidays  = new ArrayList<>();
-  final private String          NL        = Utils.NL;
-  private int                   numPrices = 0;
-  private String                ticker;
-
-  public String getTicker() {
-    return ticker;
-  }
-
+  final private String    NL           = Utils.NL;
+  private int             numPrices    = 0;
+  private String          ticker;
   private List<PriceData> tickerPrices = null;
-  private String          id;
 
-  public void addId(String desc) {
-    this.id += String.format("\t%s", desc);
-  }
-
-  public List<PriceData> getTickerPrices() {
-    System.out.printf("%s has %d%n", this.id, this.numPrices);
-    return tickerPrices;
-  }
+  private String id;
 
   public TickerPriceData(String code) {
-    String tkr[] = code.split(" ");
+    final String tkr[] = code.split(" ");
     this.ticker = tkr[0];
     this.id = code;
     this.numPrices = 0;
@@ -42,11 +28,20 @@ public class TickerPriceData {
   }
 
   public TickerPriceData(String exch, String code) {
-    build(exch, code, "");
+    this.build(exch, code, "");
   }
 
   public TickerPriceData(String exch, String code, String desc) {
-    build(exch, code, desc);
+    this.build(exch, code, desc);
+  }
+
+  public void addId(String desc) {
+    this.id += String.format("\t%s", desc);
+  }
+
+  public void addPriceData(PriceData pd) {
+    this.tickerPrices.add(pd);
+
   }
 
   /**
@@ -84,8 +79,8 @@ public class TickerPriceData {
         return;
       }
       final String subdir = code.trim().substring(0, 1);
-      final String path   = exchange + "\\" + subdir + "\\";                   // "NYSE\\G\\"
-      String       sid    = String.format("%s - %s\t%s", exchange, code, desc);
+      final String path = exchange + "\\" + subdir + "\\"; // "NYSE\\G\\"
+      final String sid = String.format("%s - %s\t%s", exchange, code, desc);
       this.id = sid.trim();
       this.tickerPrices = OptumaPriceData.getPriceData(OptumaCommon.optumaPricePath + path + code + ".csv");
       this.numPrices = this.tickerPrices.size();
@@ -97,6 +92,28 @@ public class TickerPriceData {
       this.numPrices = 0;
       e.printStackTrace();
     }
+  }
+
+  /**
+   *
+   * @param date
+   * @return
+   */
+  public double getActualClose(final DateTime date) {
+
+    double ret = -1.0;
+
+    for (final PriceData pd : this.tickerPrices) {
+
+      if (pd.date.isEqual(date)) {
+        ret = pd.close;
+        break;
+      }
+      else if (pd.date.isGreaterThan(date)) {
+        break;
+      }
+    }
+    return ret;
   }
 
   /**
@@ -119,28 +136,6 @@ public class TickerPriceData {
       }
     }
     return 0;
-  }
-
-  /**
-   * 
-   * @param date
-   * @return
-   */
-  public double getActualClose(final DateTime date) {
-
-    double ret = -1.0;
-
-    for (final PriceData pd : this.tickerPrices) {
-
-      if (pd.date.isEqual(date)) {
-        ret = pd.close;
-        break;
-      }
-      else if (pd.date.isGreaterThan(date)) {
-        break;
-      }
-    }
-    return ret;
   }
 
   /**
@@ -181,6 +176,10 @@ public class TickerPriceData {
     return this.tickerPrices.get(0).date;
   }
 
+  public String getId() {
+    return this.id;
+  }
+
   /**
    *
    * @return
@@ -207,9 +206,9 @@ public class TickerPriceData {
 //      for (int i = numPrices - 1; i > last; i--) {
 //         ret.add(this.tickerPrices.get(i));
 //      }
-    int       knt       = 0;
-    boolean   isHoliday = false;
-    final int start     = this.tickerPrices.size() - 1;
+    int knt = 0;
+    boolean isHoliday = false;
+    final int start = this.tickerPrices.size() - 1;
     for (int i = start; i > 0; i--) {
       final PriceData pd = this.tickerPrices.get(i);
       for (final DateTime dt : TickerPriceData.holidays) {
@@ -239,8 +238,8 @@ public class TickerPriceData {
     double ret = 0.0;
     if (days > 0 && days < this.numPrices) {
       final int first = this.numPrices - 1;
-      final int last  = first - days;
-      double    sum   = 0.0;
+      final int last = first - days;
+      double sum = 0.0;
       for (int i = first; i > last; i--) {
         sum += this.tickerPrices.get(i).close;
       }
@@ -287,6 +286,19 @@ public class TickerPriceData {
     return this.tickerPrices;
   }
 
+  public String getTicker() {
+    return this.ticker;
+  }
+
+  public List<PriceData> getTickerPrices() {
+    System.out.printf("%s has %d%n", this.id, this.numPrices);
+    return this.tickerPrices;
+  }
+
+  public void reversePriceData() {
+    Collections.reverse(this.tickerPrices);
+  }
+
   /*
    * (non-Javadoc)
    *
@@ -301,13 +313,15 @@ public class TickerPriceData {
     return ret;
   }
 
+  static private List<DateTime> holidays = new ArrayList<>();
+
   public static void main(final String[] args) {
     final TickerPriceData code = new TickerPriceData("NASDAQ", "aapl");
     System.out.println(code);
     System.out.println("Latest      : " + code.getLatest());
     System.out.println("Latest Date : " + code.getLatestDate());
     final DateTime dt = new DateTime(2019, DateTime.MARCH, 15);
-    final double   pd = code.getClose(dt);
+    final double pd = code.getClose(dt);
     System.out.println(dt + "\t" + pd);
     PriceData tpd = code.getOffset(125);
     System.out.println(tpd);
@@ -320,18 +334,5 @@ public class TickerPriceData {
    */
   private static void addHolidays() {
     TickerPriceData.holidays.add(new DateTime(2020, DateTime.APRIL, 10));
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void addPriceData(PriceData pd) {
-    this.tickerPrices.add(pd);
-
-  }
-
-  public void reversePriceData() {
-    Collections.reverse(this.tickerPrices);
   }
 }

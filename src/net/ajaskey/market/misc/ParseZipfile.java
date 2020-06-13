@@ -64,8 +64,7 @@ public class ParseZipfile {
       // stream
       ZipEntry entry;
       while ((entry = stream.getNextEntry()) != null) {
-        final String s = String.format("Entry: %s len %d added %TD", entry.getName(), entry.getSize(),
-            new Date(entry.getTime()));
+        final String s = String.format("Entry: %s len %d added %TD", entry.getName(), entry.getSize(), new Date(entry.getTime()));
         System.out.println(s);
 
         // Once we get the entry from the stream, the stream is
@@ -79,14 +78,16 @@ public class ParseZipfile {
           while ((len = stream.read(buffer)) > 0) {
             output.write(buffer, 0, len);
           }
-        } finally {
+        }
+        finally {
           // we must always close the output file
           if (output != null) {
             output.close();
           }
         }
       }
-    } finally {
+    }
+    finally {
       // we must always close the zip file.
       stream.close();
     }

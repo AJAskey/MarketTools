@@ -5,199 +5,201 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class Statistics {
 
-	final private static String	NL	= "\n";
-	final private static String	TAB	= "\t";
+  public String                       name;
+  private final DescriptiveStatistics ds;
 
-	/**
-	 * net.ajaskey.market.tools.SIP.main
-	 *
-	 * @param args
-	 */
-	public static void main(final String[] args) {
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public Statistics(final String n) {
 
-		final Statistics stats = new Statistics("atest");
-		for (double i = -200.0; i < 100.0; i += 1.5) {
-			stats.addValue(i);
-		}
-		for (double i = 1000.0; i < 2000.0; i += .255) {
-			stats.addValue(i);
-		}
-		stats.addValue(5000.0);
-		stats.addValue(0.0);
+    this.ds = new DescriptiveStatistics();
+    this.name = n;
+  }
 
-		System.out.println(stats.ds.getMin());
-		System.out.println(stats.ds.getMax());
-		System.out.println(stats.ds.getStandardDeviation());
-		System.out.println(stats.getN());
-		System.out.println(stats.getMean());
-		System.out.println(stats.getMedian());
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.addValue
+   *
+   * @param d
+   */
+  public void addValue(final double d) {
 
-	}
+    if (d != 0.0) {
+      this.ds.addValue(d);
+    }
+  }
 
-	public String name;
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.addValues
+   *
+   * @param qd
+   */
+  public void addValues(final QuarterlyData qd) {
 
-	private final DescriptiveStatistics ds;
+    if (qd.q1 != 0.0) {
+      this.ds.addValue(qd.q1);
+    }
+    if (qd.q2 != 0.0) {
+      this.ds.addValue(qd.q2);
+    }
+    if (qd.q3 != 0.0) {
+      this.ds.addValue(qd.q3);
+    }
+    if (qd.q4 != 0.0) {
+      this.ds.addValue(qd.q4);
+    }
+    if (qd.q5 != 0.0) {
+      this.ds.addValue(qd.q5);
+    }
+    if (qd.q6 != 0.0) {
+      this.ds.addValue(qd.q6);
+    }
+    if (qd.q7 != 0.0) {
+      this.ds.addValue(qd.q7);
+    }
+    if (qd.q8 != 0.0) {
+      this.ds.addValue(qd.q8);
+    }
+  }
 
-	/**
-	 * This method serves as a constructor for the class.
-	 *
-	 */
-	public Statistics(final String n) {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getMax
+   *
+   * @return
+   */
+  public double getMax() {
 
-		this.ds = new DescriptiveStatistics();
-		this.name = n;
-	}
+    return this.ds.getMax();
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.addValue
-	 *
-	 * @param d
-	 */
-	public void addValue(final double d) {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getMean
+   *
+   * @return
+   */
+  public double getMean() {
 
-		if (d != 0.0) {
-			this.ds.addValue(d);
-		}
-	}
+    return this.ds.getMean();
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.addValues
-	 *
-	 * @param qd
-	 */
-	public void addValues(final QuarterlyData qd) {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getMedian
+   *
+   * @return
+   */
+  public double getMedian() {
 
-		if (qd.q1 != 0.0) {
-			this.ds.addValue(qd.q1);
-		}
-		if (qd.q2 != 0.0) {
-			this.ds.addValue(qd.q2);
-		}
-		if (qd.q3 != 0.0) {
-			this.ds.addValue(qd.q3);
-		}
-		if (qd.q4 != 0.0) {
-			this.ds.addValue(qd.q4);
-		}
-		if (qd.q5 != 0.0) {
-			this.ds.addValue(qd.q5);
-		}
-		if (qd.q6 != 0.0) {
-			this.ds.addValue(qd.q6);
-		}
-		if (qd.q7 != 0.0) {
-			this.ds.addValue(qd.q7);
-		}
-		if (qd.q8 != 0.0) {
-			this.ds.addValue(qd.q8);
-		}
-	}
+    return this.ds.getPercentile(50);
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getMax
-	 *
-	 * @return
-	 */
-	public double getMax() {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getMin
+   *
+   * @return
+   */
+  public double getMin() {
 
-		return this.ds.getMax();
-	}
+    return this.ds.getMin();
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getMean
-	 *
-	 * @return
-	 */
-	public double getMean() {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getN
+   *
+   * @return
+   */
+  public long getN() {
 
-		return this.ds.getMean();
-	}
+    return this.ds.getN();
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getMedian
-	 *
-	 * @return
-	 */
-	public double getMedian() {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getStdDev
+   *
+   * @return
+   */
+  public double getStdDev() {
 
-		return this.ds.getPercentile(50);
-	}
+    return this.ds.getStandardDeviation();
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getMin
-	 *
-	 * @return
-	 */
-	public double getMin() {
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.getSum
+   *
+   * @return
+   */
+  public double getSum() {
 
-		return this.ds.getMin();
-	}
+    return this.ds.getSum();
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getN
-	 *
-	 * @return
-	 */
-	public long getN() {
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
 
-		return this.ds.getN();
-	}
+    String ret = "Stats for " + this.name + Statistics.NL;
+    ret += Statistics.TAB + "Count  : " + this.getN() + Statistics.NL;
+    ret += Statistics.TAB + "Mean   : " + QuarterlyData.fmt(this.getMean()) + Statistics.NL;
+    ret += Statistics.TAB + "StdDev : " + QuarterlyData.fmt(this.getStdDev()) + Statistics.NL;
+    ret += Statistics.TAB + "Min    : " + QuarterlyData.fmt(this.getMin()) + Statistics.NL;
+    ret += Statistics.TAB + "  -2 StdDev : " + QuarterlyData.fmt(this.getPercentile(5)) + " (knt=" + (int) (this.getN() * 0.05) + ")" + Statistics.NL;
+    ret += Statistics.TAB + "  Median    : " + QuarterlyData.fmt(this.getMedian()) + Statistics.NL;
+    ret += Statistics.TAB + "  +2 StdDev : " + QuarterlyData.fmt(this.getPercentile(95)) + Statistics.NL;
+    ret += Statistics.TAB + "Max    : " + QuarterlyData.fmt(this.getMax()) + Statistics.NL;
+    return ret;
+  }
 
-	/**
-	 * net.ajaskey.market.tools.SIP.getPercentile
-	 *
-	 * @param i
-	 * @return
-	 */
-	private double getPercentile(final int percentile) {
+  /**
+   * net.ajaskey.market.tools.SIP.getPercentile
+   *
+   * @param i
+   * @return
+   */
+  private double getPercentile(final int percentile) {
 
-		return this.ds.getPercentile(percentile);
-	}
+    return this.ds.getPercentile(percentile);
+  }
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getStdDev
-	 *
-	 * @return
-	 */
-	public double getStdDev() {
+  final private static String NL = "\n";
 
-		return this.ds.getStandardDeviation();
-	}
+  final private static String TAB = "\t";
 
-	/**
-	 *
-	 * net.ajaskey.market.tools.SIP.getSum
-	 *
-	 * @return
-	 */
-	public double getSum() {
+  /**
+   * net.ajaskey.market.tools.SIP.main
+   *
+   * @param args
+   */
+  public static void main(final String[] args) {
 
-		return this.ds.getSum();
-	}
+    final Statistics stats = new Statistics("atest");
+    for (double i = -200.0; i < 100.0; i += 1.5) {
+      stats.addValue(i);
+    }
+    for (double i = 1000.0; i < 2000.0; i += .255) {
+      stats.addValue(i);
+    }
+    stats.addValue(5000.0);
+    stats.addValue(0.0);
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
+    System.out.println(stats.ds.getMin());
+    System.out.println(stats.ds.getMax());
+    System.out.println(stats.ds.getStandardDeviation());
+    System.out.println(stats.getN());
+    System.out.println(stats.getMean());
+    System.out.println(stats.getMedian());
 
-		String ret = "Stats for " + this.name + NL;
-		ret += TAB + "Count  : " + this.getN() + NL;
-		ret += TAB + "Mean   : " + QuarterlyData.fmt(this.getMean()) + NL;
-		ret += TAB + "StdDev : " + QuarterlyData.fmt(this.getStdDev()) + NL;
-		ret += TAB + "Min    : " + QuarterlyData.fmt(this.getMin()) + NL;
-		ret += TAB + "  -2 StdDev : " + QuarterlyData.fmt(this.getPercentile(5)) + " (knt=" + (int) (this.getN() * 0.05) + ")" + NL;
-		ret += TAB + "  Median    : " + QuarterlyData.fmt(this.getMedian()) + NL;
-		ret += TAB + "  +2 StdDev : " + QuarterlyData.fmt(this.getPercentile(95)) + NL;
-		ret += TAB + "Max    : " + QuarterlyData.fmt(this.getMax()) + NL;
-		return ret;
-	}
+  }
 }

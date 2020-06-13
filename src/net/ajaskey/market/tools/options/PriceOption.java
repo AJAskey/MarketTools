@@ -12,7 +12,8 @@ public class PriceOption {
 
     try {
       AddCboeDataFiles.main(null);
-    } catch (IOException e) {
+    }
+    catch (final IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
@@ -27,7 +28,7 @@ public class PriceOption {
     final Integer minOi = oprop.getPropertyI("price.minoi");
     final Double minOptPrice = oprop.getPropertyD("price.minoptprice");
     Double ivScaler = 1.0;
-    double tmp = oprop.getPropertyD("price.ivscaler");
+    final double tmp = oprop.getPropertyD("price.ivscaler");
     if (!PropertyData.isErr(tmp)) {
       ivScaler = tmp;
     }
@@ -51,28 +52,29 @@ public class PriceOption {
     final String fname = String.format("data/options/%s-options.dat", code);
     final List<CboeOptionData> dil = CallPutList.readCboeData(fname, firstExpiry, buyDate, minOi);
 
-    for (CboeOptionData cod : dil) {
+    for (final CboeOptionData cod : dil) {
       CboeCallPutData option = null;
       if (activeType == OptionsProcessor.ACALL) {
         option = cod.call;
-      } else {
+      }
+      else {
         option = cod.put;
       }
-      String id = option.id;
-      OptionsProcessor op = new OptionsProcessor(option.optionData);
+      final String id = option.id;
+      final OptionsProcessor op = new OptionsProcessor(option.optionData);
       op.setUlPrice(ulBuy);
       op.setSellDate(buyDate);
-      double newIv = op.getIv() * ivScaler;
+      final double newIv = op.getIv() * ivScaler;
       op.setIv(newIv);
-      double price = op.getPrice();
+      final double price = op.getPrice();
       if (price >= minOptPrice) {
         op.setUlPrice(ulSell);
         op.setSellDate(sellDate);
-        double sellprice = op.getPrice();
-        double profit = (sellprice - price) / price * 100.0;
-        if ((sellprice > price) && (profit > 249.9)) {
-          System.out.printf("%s\t%s\t%.2f\t%.2f\t%s\t%.2f\t%.1f%%\t--\t%.4f\t--\t%.2f  %.2f%n", op.getExpiry(), id,
-              op.getStrike(), price, sellDate, sellprice, profit, op.getIv(), ulBuy, ulSell);
+        final double sellprice = op.getPrice();
+        final double profit = (sellprice - price) / price * 100.0;
+        if (sellprice > price && profit > 249.9) {
+          System.out.printf("%s\t%s\t%.2f\t%.2f\t%s\t%.2f\t%.1f%%\t--\t%.4f\t--\t%.2f  %.2f%n", op.getExpiry(), id, op.getStrike(), price, sellDate,
+              sellprice, profit, op.getIv(), ulBuy, ulSell);
         }
       }
     }

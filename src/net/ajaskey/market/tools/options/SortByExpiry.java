@@ -11,7 +11,8 @@ public class SortByExpiry implements Comparator<ExpiryData>
     int ret = 0;
     if (ex0.getExpiry().isLessThan(ex1.getExpiry())) {
       ret = 1;
-    } else if (ex0.getExpiry().isGreaterThan(ex1.getExpiry())) {
+    }
+    else if (ex0.getExpiry().isGreaterThan(ex1.getExpiry())) {
       ret = -1;
     }
     return ret;

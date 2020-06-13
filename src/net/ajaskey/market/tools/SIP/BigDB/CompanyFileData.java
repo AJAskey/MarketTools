@@ -29,10 +29,6 @@ public class CompanyFileData {
   private String  web;
   private int     numEmployees;
 
-  public void readDBFile() {
-
-  }
-
   public String getCity() {
     return this.city;
   }
@@ -105,6 +101,10 @@ public class CompanyFileData {
     return this.drp;
   }
 
+  public void readDBFile() {
+
+  }
+
   public String report() {
     String ret = String.format("ticker     : %s%n", this.ticker);
     ret += String.format("  name      : %s%n", this.name);
@@ -127,18 +127,6 @@ public class CompanyFileData {
     return ret;
   }
 
-  @Override
-  public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
-    ret += String.format("  SIC     : %s%n", this.getSic());
-    ret += String.format("  Index   : %-10s\t%-12s\t%s\t%s%n", this.getSnpIndex(), this.dowIndex, this.isAdr(), this.isDrp());
-    ret += String.format("  Num Emp : %d%n", this.getNumEmployees());
-    ret += String.format("  Address : %s\t%s\t%s\t%s\t%s\t%s%n", this.getStreet(), this.getCity(), this.getState(), this.getCountry(), this.getZip(),
-        this.getPhone());
-    ret += String.format("  Web     : %s%n", this.getWeb());
-    return ret;
-  }
-
   /**
    *
    * @param i
@@ -146,13 +134,13 @@ public class CompanyFileData {
    */
   public List<String> set(List<String> data) {
 
-    List<String> notFound = new ArrayList<>();
+    final List<String> notFound = new ArrayList<>();
 
-    for (String s : data) {
+    for (final String s : data) {
 
-      String[] tfld = s.split(":");
+      final String[] tfld = s.split(":");
 
-      String fld = tfld[0].trim();
+      final String fld = tfld[0].trim();
 
       String val = "";
       String val2 = "";
@@ -228,30 +216,128 @@ public class CompanyFileData {
     return notFound;
   }
 
-  private static List<CompanyFileData> cfdList = new ArrayList<>();
+  public void setAdr(String adr) {
+    this.adr = SipUtils.parseBoolean(adr);
+  }
 
-  private static String fld[] = null;
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public void setDowIndex(String dowIndex) {
+    this.dowIndex = dowIndex;
+  }
+
+  public void setDrp(String drp) {
+    this.drp = SipUtils.parseBoolean(drp);
+  }
+
+  public void setExchange(String exchange) {
+    this.exchange = exchange;
+  }
+
+  public void setIndustry(String industry) {
+    this.industry = industry;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setNumEmployees(String numEmployees) {
+    this.numEmployees = SipUtils.parseInt(numEmployees);
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public void setSector(String sector) {
+    this.sector = sector;
+  }
+
+  public void setSic(String sic) {
+    this.sic = sic;
+  }
+
+  public void setSnpIndex(String snpIndex) {
+    this.snpIndex = snpIndex;
+  }
+
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  public void setStreet(String street) {
+    this.street = street;
+  }
+
+  public void setTicker(String ticker) {
+    this.ticker = ticker;
+  }
+
+  public void setWeb(String web) {
+    this.web = web;
+  }
+
+  public void setZip(String zip) {
+    this.zip = zip;
+  }
+
+  @Override
+  public String toString() {
+    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
+    ret += String.format("  SIC     : %s%n", this.getSic());
+    ret += String.format("  Index   : %-10s\t%-12s\t%s\t%s%n", this.getSnpIndex(), this.dowIndex, this.isAdr(), this.isDrp());
+    ret += String.format("  Num Emp : %d%n", this.getNumEmployees());
+    ret += String.format("  Address : %s\t%s\t%s\t%s\t%s\t%s%n", this.getStreet(), this.getCity(), this.getState(), this.getCountry(), this.getZip(),
+        this.getPhone());
+    ret += String.format("  Web     : %s%n", this.getWeb());
+    return ret;
+  }
+
+  private static List<CompanyFileData> cfdList = new ArrayList<>();
+  private static String                fld[]   = null;
 
   private static int NAME = 0;
 
   private static int TICKER = 1;
 
   private static int EXCHANGE = 2;
-  private static int SECTOR   = 3;
+
+  private static int SECTOR = 3;
+
   private static int INDUSTRY = 4;
-  private static int SIC      = 5;
-  private static int ADR      = 6;
-  private static int DOW      = 7;
-  private static int SNP      = 8;
-  private static int DRP      = 9;
-  private static int STREET   = 10;
-  private static int CITY     = 11;
-  private static int STATE    = 12;
-  private static int COUNTRY  = 13;
-  private static int ZIP      = 14;
-  private static int PHONE    = 15;
-  private static int WEB      = 16;
-  private static int EMP      = 17;
+
+  private static int SIC = 5;
+
+  private static int ADR = 6;
+
+  private static int DOW = 7;
+
+  private static int SNP = 8;
+
+  private static int DRP = 9;
+
+  private static int STREET = 10;
+
+  private static int CITY = 11;
+
+  private static int STATE = 12;
+
+  private static int COUNTRY = 13;
+
+  private static int ZIP = 14;
+
+  private static int PHONE = 15;
+
+  private static int WEB = 16;
+
+  private static int EMP = 17;
 
   /**
    *
@@ -259,12 +345,52 @@ public class CompanyFileData {
    * @return
    */
   public static CompanyFileData find(String ticker) {
-    for (CompanyFileData c : CompanyFileData.cfdList) {
+    for (final CompanyFileData c : CompanyFileData.cfdList) {
       if (c.getTicker().equalsIgnoreCase(ticker)) {
         return c;
       }
     }
     return null;
+  }
+
+  public static int getADR() {
+    return CompanyFileData.ADR;
+  }
+
+  public static List<CompanyFileData> getCfdList() {
+    return CompanyFileData.cfdList;
+  }
+
+  public static int getCITY() {
+    return CompanyFileData.CITY;
+  }
+
+  public static int getCOUNTRY() {
+    return CompanyFileData.COUNTRY;
+  }
+
+  public static int getDOW() {
+    return CompanyFileData.DOW;
+  }
+
+  public static int getDRP() {
+    return CompanyFileData.DRP;
+  }
+
+  public static int getEMP() {
+    return CompanyFileData.EMP;
+  }
+
+  public static int getEXCHANGE() {
+    return CompanyFileData.EXCHANGE;
+  }
+
+  public static String[] getFld() {
+    return CompanyFileData.fld;
+  }
+
+  public static int getINDUSTRY() {
+    return CompanyFileData.INDUSTRY;
   }
 
   public static List<CompanyFileData> getList() {
@@ -275,13 +401,53 @@ public class CompanyFileData {
     return CompanyFileData.cfdList.size();
   }
 
+  public static int getNAME() {
+    return CompanyFileData.NAME;
+  }
+
+  public static int getPHONE() {
+    return CompanyFileData.PHONE;
+  }
+
+  public static int getSECTOR() {
+    return CompanyFileData.SECTOR;
+  }
+
+  public static int getSIC() {
+    return CompanyFileData.SIC;
+  }
+
+  public static int getSNP() {
+    return CompanyFileData.SNP;
+  }
+
+  public static int getSTATE() {
+    return CompanyFileData.STATE;
+  }
+
+  public static int getSTREET() {
+    return CompanyFileData.STREET;
+  }
+
+  public static int getTICKER() {
+    return CompanyFileData.TICKER;
+  }
+
+  public static int getWEB() {
+    return CompanyFileData.WEB;
+  }
+
+  public static int getZIP() {
+    return CompanyFileData.ZIP;
+  }
+
   /**
    *
    * @return
    */
   public static String listToString() {
     String ret = "";
-    for (CompanyFileData c : CompanyFileData.cfdList) {
+    for (final CompanyFileData c : CompanyFileData.cfdList) {
       ret += c.toString();
     }
     return ret;
@@ -294,13 +460,13 @@ public class CompanyFileData {
    */
   public static void readData(String filename) {
 
-    List<String> data = TextUtils.readTextFile(filename, true);
+    final List<String> data = TextUtils.readTextFile(filename, true);
 
-    for (String c : data) {
+    for (final String c : data) {
 
       CompanyFileData.fld = c.replace("\"", "").split(Utils.TAB);
 
-      CompanyFileData cfd = new CompanyFileData();
+      final CompanyFileData cfd = new CompanyFileData();
 
       cfd.ticker = CompanyFileData.fld[CompanyFileData.TICKER].trim();
       cfd.name = CompanyFileData.fld[CompanyFileData.NAME].trim();
@@ -308,7 +474,7 @@ public class CompanyFileData {
       cfd.sector = CompanyFileData.fld[CompanyFileData.SECTOR].trim();
       cfd.industry = CompanyFileData.fld[CompanyFileData.INDUSTRY].trim();
       cfd.sic = CompanyFileData.fld[CompanyFileData.SIC].trim();
-      String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
+      final String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
       if (tmp.equals("500")) {
         cfd.snpIndex = "SP500";
       }
@@ -337,236 +503,84 @@ public class CompanyFileData {
     }
   }
 
-  public static List<CompanyFileData> getCfdList() {
-    return cfdList;
+  public static void setADR(int aDR) {
+    CompanyFileData.ADR = aDR;
   }
 
   public static void setCfdList(List<CompanyFileData> cfdList) {
     CompanyFileData.cfdList = cfdList;
   }
 
-  public static String[] getFld() {
-    return fld;
+  public static void setCITY(int cITY) {
+    CompanyFileData.CITY = cITY;
+  }
+
+  public static void setCOUNTRY(int cOUNTRY) {
+    CompanyFileData.COUNTRY = cOUNTRY;
+  }
+
+  public static void setDOW(int dOW) {
+    CompanyFileData.DOW = dOW;
+  }
+
+  public static void setDRP(int dRP) {
+    CompanyFileData.DRP = dRP;
+  }
+
+  public static void setEMP(int eMP) {
+    CompanyFileData.EMP = eMP;
+  }
+
+  public static void setEXCHANGE(int eXCHANGE) {
+    CompanyFileData.EXCHANGE = eXCHANGE;
   }
 
   public static void setFld(String[] fld) {
     CompanyFileData.fld = fld;
   }
 
-  public static int getNAME() {
-    return NAME;
+  public static void setINDUSTRY(int iNDUSTRY) {
+    CompanyFileData.INDUSTRY = iNDUSTRY;
   }
 
   public static void setNAME(int nAME) {
-    NAME = nAME;
-  }
-
-  public static int getTICKER() {
-    return TICKER;
-  }
-
-  public static void setTICKER(int tICKER) {
-    TICKER = tICKER;
-  }
-
-  public static int getEXCHANGE() {
-    return EXCHANGE;
-  }
-
-  public static void setEXCHANGE(int eXCHANGE) {
-    EXCHANGE = eXCHANGE;
-  }
-
-  public static int getSECTOR() {
-    return SECTOR;
-  }
-
-  public static void setSECTOR(int sECTOR) {
-    SECTOR = sECTOR;
-  }
-
-  public static int getINDUSTRY() {
-    return INDUSTRY;
-  }
-
-  public static void setINDUSTRY(int iNDUSTRY) {
-    INDUSTRY = iNDUSTRY;
-  }
-
-  public static int getSIC() {
-    return SIC;
-  }
-
-  public static void setSIC(int sIC) {
-    SIC = sIC;
-  }
-
-  public static int getADR() {
-    return ADR;
-  }
-
-  public static void setADR(int aDR) {
-    ADR = aDR;
-  }
-
-  public static int getDOW() {
-    return DOW;
-  }
-
-  public static void setDOW(int dOW) {
-    DOW = dOW;
-  }
-
-  public static int getSNP() {
-    return SNP;
-  }
-
-  public static void setSNP(int sNP) {
-    SNP = sNP;
-  }
-
-  public static int getDRP() {
-    return DRP;
-  }
-
-  public static void setDRP(int dRP) {
-    DRP = dRP;
-  }
-
-  public static int getSTREET() {
-    return STREET;
-  }
-
-  public static void setSTREET(int sTREET) {
-    STREET = sTREET;
-  }
-
-  public static int getCITY() {
-    return CITY;
-  }
-
-  public static void setCITY(int cITY) {
-    CITY = cITY;
-  }
-
-  public static int getSTATE() {
-    return STATE;
-  }
-
-  public static void setSTATE(int sTATE) {
-    STATE = sTATE;
-  }
-
-  public static int getCOUNTRY() {
-    return COUNTRY;
-  }
-
-  public static void setCOUNTRY(int cOUNTRY) {
-    COUNTRY = cOUNTRY;
-  }
-
-  public static int getZIP() {
-    return ZIP;
-  }
-
-  public static void setZIP(int zIP) {
-    ZIP = zIP;
-  }
-
-  public static int getPHONE() {
-    return PHONE;
+    CompanyFileData.NAME = nAME;
   }
 
   public static void setPHONE(int pHONE) {
-    PHONE = pHONE;
+    CompanyFileData.PHONE = pHONE;
   }
 
-  public static int getWEB() {
-    return WEB;
+  public static void setSECTOR(int sECTOR) {
+    CompanyFileData.SECTOR = sECTOR;
+  }
+
+  public static void setSIC(int sIC) {
+    CompanyFileData.SIC = sIC;
+  }
+
+  public static void setSNP(int sNP) {
+    CompanyFileData.SNP = sNP;
+  }
+
+  public static void setSTATE(int sTATE) {
+    CompanyFileData.STATE = sTATE;
+  }
+
+  public static void setSTREET(int sTREET) {
+    CompanyFileData.STREET = sTREET;
+  }
+
+  public static void setTICKER(int tICKER) {
+    CompanyFileData.TICKER = tICKER;
   }
 
   public static void setWEB(int wEB) {
-    WEB = wEB;
+    CompanyFileData.WEB = wEB;
   }
 
-  public static int getEMP() {
-    return EMP;
-  }
-
-  public static void setEMP(int eMP) {
-    EMP = eMP;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setTicker(String ticker) {
-    this.ticker = ticker;
-  }
-
-  public void setExchange(String exchange) {
-    this.exchange = exchange;
-  }
-
-  public void setSector(String sector) {
-    this.sector = sector;
-  }
-
-  public void setIndustry(String industry) {
-    this.industry = industry;
-  }
-
-  public void setSic(String sic) {
-    this.sic = sic;
-  }
-
-  public void setAdr(String adr) {
-    this.adr = SipUtils.parseBoolean(adr);
-  }
-
-  public void setDowIndex(String dowIndex) {
-    this.dowIndex = dowIndex;
-  }
-
-  public void setSnpIndex(String snpIndex) {
-    this.snpIndex = snpIndex;
-  }
-
-  public void setDrp(String drp) {
-    this.drp = SipUtils.parseBoolean(drp);
-  }
-
-  public void setStreet(String street) {
-    this.street = street;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
-
-  public void setZip(String zip) {
-    this.zip = zip;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-  public void setWeb(String web) {
-    this.web = web;
-  }
-
-  public void setNumEmployees(String numEmployees) {
-    this.numEmployees = SipUtils.parseInt(numEmployees);
+  public static void setZIP(int zIP) {
+    CompanyFileData.ZIP = zIP;
   }
 
 }

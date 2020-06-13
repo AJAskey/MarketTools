@@ -11,31 +11,16 @@ import net.ajaskey.market.optuma.TickerPriceData;
 
 public class ParseDataNew {
 
-  public static void main(final String[] args) {
-
-    try {
-      final List<String> l = getTickerList("data/PreFiltered.csv");
-      for (final String s : l) {
-        System.out.println(s);
-        TickerPriceData pd = getPriceData(s);
-      }
-      System.out.println(l.size());
-    } catch (final IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
-
   public static TickerPriceData getPriceData(String ticker) {
 
-    String fld[] = ticker.split(":");
-    TickerPriceData tpd = new TickerPriceData(fld[1], fld[0]);
+    final String fld[] = ticker.split(":");
+    final TickerPriceData tpd = new TickerPriceData(fld[1], fld[0]);
 
     return tpd;
   }
 
   /**
-   * 
+   *
    * @param filename
    * @return
    * @throws FileNotFoundException
@@ -46,21 +31,37 @@ public class ParseDataNew {
     final List<String> list = new ArrayList<>();
 
     final File f = new File(filename);
-    List<String> data = TextUtils.readTextFile(f, true);
+    final List<String> data = TextUtils.readTextFile(f, true);
 
-    for (String line : data) {
+    for (final String line : data) {
       if (line != null && line.trim().length() > 0) {
         final String sline = line.trim().toLowerCase();
         if (!sline.contains("code") && !sline.contains("last")) {
           final String fld[] = line.trim().split(",");
           if (fld[0].trim().length() > 0) {
-            String str = String.format("%s:%s", fld[0].trim(), fld[1].trim());
+            final String str = String.format("%s:%s", fld[0].trim(), fld[1].trim());
             list.add(str);
           }
         }
       }
     }
     return list;
+  }
+
+  public static void main(final String[] args) {
+
+    try {
+      final List<String> l = ParseDataNew.getTickerList("data/PreFiltered.csv");
+      for (final String s : l) {
+        System.out.println(s);
+        ParseDataNew.getPriceData(s);
+      }
+      System.out.println(l.size());
+    }
+    catch (final IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
 }

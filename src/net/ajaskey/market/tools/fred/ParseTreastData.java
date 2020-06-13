@@ -74,8 +74,7 @@ public class ParseTreastData {
    * @param futureDvList
    * @throws FileNotFoundException
    */
-  public static void process(final List<DateValue> pastDvList, final List<DateValue> futureDvList)
-      throws FileNotFoundException {
+  public static void process(final List<DateValue> pastDvList, final List<DateValue> futureDvList) throws FileNotFoundException {
 
     final List<DateValue> cumList = new ArrayList<>();
 
@@ -143,8 +142,7 @@ public class ParseTreastData {
    * @throws FileNotFoundException
    * @throws IOException
    */
-  public static List<DateValue> readFile(final String fname, final int fldptr)
-      throws FileNotFoundException, IOException {
+  public static List<DateValue> readFile(final String fname, final int fldptr) throws FileNotFoundException, IOException {
 
     final List<DateValue> dvList = new ArrayList<>();
 

@@ -24,6 +24,10 @@ public class EstimateFileData {
   private double   epsY1;
   private double   epsY2;
 
+  public EstimateFileData() {
+    // TODO Auto-generated constructor stub
+  }
+
   public EstimateFileData(String[] fld) {
 
     this.name = fld[0].trim();
@@ -38,14 +42,6 @@ public class EstimateFileData {
     this.epsY0 = SipUtils.parseDouble(fld[9]);
     this.epsY1 = SipUtils.parseDouble(fld[10]);
     this.epsY2 = SipUtils.parseDouble(fld[11]);
-  }
-
-  public EstimateFileData() {
-    // TODO Auto-generated constructor stub
-  }
-
-  public static int getListCount() {
-    return efdList.size();
   }
 
   public DateTime getCurrFiscalYear() {
@@ -108,12 +104,12 @@ public class EstimateFileData {
   private static List<EstimateFileData> efdList = new ArrayList<>();
 
   /**
-   * 
+   *
    * @param ticker
    * @return
    */
   public static EstimateFileData find(String ticker) {
-    for (EstimateFileData e : EstimateFileData.efdList) {
+    for (final EstimateFileData e : EstimateFileData.efdList) {
       if (e.getTicker().equalsIgnoreCase(ticker)) {
         return e;
       }
@@ -121,13 +117,17 @@ public class EstimateFileData {
     return null;
   }
 
+  public static int getListCount() {
+    return EstimateFileData.efdList.size();
+  }
+
   /**
-   * 
+   *
    * @return
    */
   public static String listToString() {
     String ret = "";
-    for (EstimateFileData e : EstimateFileData.efdList) {
+    for (final EstimateFileData e : EstimateFileData.efdList) {
       ret += e.toString();
     }
     return ret;
@@ -140,10 +140,10 @@ public class EstimateFileData {
    */
   public static void readData(String filename) {
 
-    List<String> estData = TextUtils.readTextFile(filename, true);
-    for (String s : estData) {
-      String[] fld = s.replace("\"", "").split(Utils.TAB);
-      EstimateFileData efd = new EstimateFileData(fld);
+    final List<String> estData = TextUtils.readTextFile(filename, true);
+    for (final String s : estData) {
+      final String[] fld = s.replace("\"", "").split(Utils.TAB);
+      final EstimateFileData efd = new EstimateFileData(fld);
       EstimateFileData.efdList.add(efd);
     }
 

@@ -22,11 +22,11 @@ public class PercentInTD {
 
   public static void main(String[] args) throws IOException {
     //
-    DateTime now = new DateTime();
+    final DateTime now = new DateTime();
     //
     final String header = "\tMT\t\t\tDay Gone\t\tVol\t\tVolGuess\tVolChg\t10dmaVol";
     //
-    File f = new File("out/volume-check.txt");
+    final File f = new File("out/volume-check.txt");
     if (!f.exists()) {
       try (PrintWriter pw = new PrintWriter(f)) {
         pw.println(header);
@@ -35,37 +35,37 @@ public class PercentInTD {
     //
     try (FileWriter fw = new FileWriter("out/volume-check.txt", true); PrintWriter pw = new PrintWriter(fw)) {
       //
-      NumberFormat nf = NumberFormat.getInstance();
+      final NumberFormat nf = NumberFormat.getInstance();
       nf.setGroupingUsed(true);
       //
-      TickerPriceData spy = new TickerPriceData("AMEX", "SPY");
+      final TickerPriceData spy = new TickerPriceData("AMEX", "SPY");
       final long dayVol = 10;
-      List<PriceData> pdList = spy.getLatestList((int) dayVol);
+      final List<PriceData> pdList = spy.getLatestList((int) dayVol);
       //
       long svol = 0L;
-      for (PriceData pd : pdList) {
+      for (final PriceData pd : pdList) {
         svol += pd.volume;
       }
-      long avol = svol / dayVol;
+      final long avol = svol / dayVol;
       //
-      now.setSdf(sdftime);
-      String sNow = now.toString();
-      int idx = sNow.indexOf(':');
+      now.setSdf(PercentInTD.sdftime);
+      final String sNow = now.toString();
+      final int idx = sNow.indexOf(':');
       //
-      String sStartDay = String.format("%s:073000", sNow.substring(0, idx));
+      final String sStartDay = String.format("%s:073000", sNow.substring(0, idx));
       // System.out.println(sStartDay);
-      startDay = new DateTime(sStartDay, sdftime);
-      System.out.println(startDay);
+      PercentInTD.startDay = new DateTime(sStartDay, PercentInTD.sdftime);
+      System.out.println(PercentInTD.startDay);
       System.out.println(sNow);
       //
-      String sEndDay = String.format("%s:140000", sNow.substring(0, idx));
+      final String sEndDay = String.format("%s:140000", sNow.substring(0, idx));
       // System.out.println(sEndDay);
-      endDay = new DateTime(sEndDay, sdftime);
-      System.out.println(endDay);
+      PercentInTD.endDay = new DateTime(sEndDay, PercentInTD.sdftime);
+      System.out.println(PercentInTD.endDay);
       //
-      long dsecDay = startDay.getDeltaMilliSeconds(endDay);
+      final long dsecDay = PercentInTD.startDay.getDeltaMilliSeconds(PercentInTD.endDay);
       //
-      long dsec = startDay.getDeltaMilliSeconds(now);
+      long dsec = PercentInTD.startDay.getDeltaMilliSeconds(now);
       double eodRush = 1.05;
       if (dsec > dsecDay) {
         dsec = dsecDay;
@@ -74,22 +74,22 @@ public class PercentInTD {
       System.out.printf("%nMS in Day : %d%n", dsecDay / 1000);
       System.out.printf("MS in Now : %d%n", dsec / 1000);
       //
-      double perDay = (double) dsec / (double) dsecDay;
+      final double perDay = (double) dsec / (double) dsecDay;
       System.out.printf("%n%.2f%% expired.%n", perDay * 100.0);
       //
-      double guessVol = (double) vol / perDay;
+      final double guessVol = PercentInTD.vol / perDay;
       //
-      System.out.printf("%n%s%n", nf.format((long) avol));
-      System.out.printf("%n%s%n", nf.format((long) vol));
+      System.out.printf("%n%s%n", nf.format(avol));
+      System.out.printf("%n%s%n", nf.format(PercentInTD.vol));
       System.out.printf("%n%s%n", nf.format((long) guessVol));
-      double endDayVolGuess = (double) guessVol * eodRush;
+      final double endDayVolGuess = guessVol * eodRush;
       System.out.printf("%s%n", nf.format((long) endDayVolGuess));
       //
-      double volChg = (double) (endDayVolGuess / (double) avol * 100.0);
+      final double volChg = endDayVolGuess / avol * 100.0;
       System.out.printf("%n%s%%%n", nf.format((long) volChg));
       //
-      pw.printf("%s\t%s%%\t\t%s\t%s\t%s%%\t\t%s%n", now, nf.format((long) (perDay * 100.0)), nf.format(vol), nf.format((long) endDayVolGuess),
-          nf.format((long) volChg), nf.format(avol));
+      pw.printf("%s\t%s%%\t\t%s\t%s\t%s%%\t\t%s%n", now, nf.format((long) (perDay * 100.0)), nf.format(PercentInTD.vol),
+          nf.format((long) endDayVolGuess), nf.format((long) volChg), nf.format(avol));
       // pw.println(header);
     }
   }

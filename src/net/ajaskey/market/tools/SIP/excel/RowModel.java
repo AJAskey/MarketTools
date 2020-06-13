@@ -2,39 +2,40 @@ package net.ajaskey.market.tools.SIP.excel;
 
 public class RowModel {
 
-  private static final int MAXCOL = 1000;
+  private SheetModel parent;
 
-  private SheetModel  parent;
-  private int         rowNumber;
-  private CellModel[] rowCells = new CellModel[100];
+  private int               rowNumber;
+  private final CellModel[] rowCells = new CellModel[100];
 
-  public SheetModel getParent() {
-    return parent;
+  public CellModel get(int col) {
+    if (col > 0 && col < RowModel.MAXCOL) {
+      return this.rowCells[col];
+    }
+    return null;
   }
 
-  protected void setParent(SheetModel parent) {
-    this.parent = parent;
+  public SheetModel getParent() {
+    return this.parent;
   }
 
   public int getRowNumber() {
-    return rowNumber;
+    return this.rowNumber;
+  }
+
+  public void set(CellModel cm, int col) {
+    if (col > 0 && col < RowModel.MAXCOL) {
+      this.rowCells[col] = cm;
+    }
   }
 
   public void setRowNumber(int rowNumber) {
     this.rowNumber = rowNumber;
   }
 
-  public void set(CellModel cm, int col) {
-    if (col > 0 && col < MAXCOL) {
-      rowCells[col] = cm;
-    }
+  protected void setParent(SheetModel parent) {
+    this.parent = parent;
   }
 
-  public CellModel get(int col) {
-    if (col > 0 && col < MAXCOL) {
-      return rowCells[col];
-    }
-    return null;
-  }
+  private static final int MAXCOL = 1000;
 
 }

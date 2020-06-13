@@ -44,7 +44,7 @@ import org.apache.commons.io.FileUtils;
 public class InventoryShipments {
 
   /**
-   * 
+   *
    * net.ajaskey.market.tools.fred.processing.findFullName
    *
    * @param title
@@ -91,11 +91,9 @@ public class InventoryShipments {
             final String tmp2 = s2.replace("VS.csv", "");
             if (tmp2.equals(tmp1)) {
 
-              final String fullname = FredCommon.findFullName(tmp1, files, "[U", "TI]", "Total Inventories",
-                  "Inventory to Shipments");
+              final String fullname = FredCommon.findFullName(tmp1, files, "[U", "TI]", "Total Inventories", "Inventory to Shipments");
               System.out.println(fullname);
-              IngestOptumaFile.process(FredCommon.fredPath + s1, FredCommon.fredPath + s2, fullname,
-                  IngestOptumaFile.DIVIDE, 1.0);
+              IngestOptumaFile.process(FredCommon.fredPath + s1, FredCommon.fredPath + s2, fullname, IngestOptumaFile.DIVIDE, 1.0);
 
             }
           }

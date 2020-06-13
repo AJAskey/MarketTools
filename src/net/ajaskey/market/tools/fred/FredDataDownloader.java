@@ -58,7 +58,7 @@ public class FredDataDownloader {
   // Logger.getLogger(FredDataDownloader.class.getName());
 
   public static PrintWriter tryAgainFile = null;
-  public static int retryCount = 0;
+  public static int         retryCount   = 0;
 
   /**
    * net.ajaskey.market.tools.fred.main
@@ -70,7 +70,7 @@ public class FredDataDownloader {
 
     Debug.init("FredDataDownloader.log");
 
-    tryAgainFile = new PrintWriter("fred-try-again.txt");
+    FredDataDownloader.tryAgainFile = new PrintWriter("fred-try-again.txt");
 
     Utils.makeDir(FredCommon.fredPath);
 
@@ -80,9 +80,9 @@ public class FredDataDownloader {
 
     codeNames = FredCommon.readSeriesList(FredCommon.fredPath + "/fred-series-new-names.txt");
     Collections.sort(codeNames);
-    String codes = "Processing codes :" + NL;
+    String codes = "Processing codes :" + FredDataDownloader.NL;
     for (final String s : codeNames) {
-      codes += s + NL;
+      codes += s + FredDataDownloader.NL;
     }
     Debug.log(codes);
 
@@ -96,7 +96,7 @@ public class FredDataDownloader {
       FredDataDownloader.process(dsi);
     }
 
-    tryAgainFile.close();
+    FredDataDownloader.tryAgainFile.close();
 
     System.out.println("Done.");
   }
@@ -117,40 +117,40 @@ public class FredDataDownloader {
     Debug.log("Querying for data values ...\n");
 
     List<DataValues> dvList = null;
-    for (int i = 0; i <= maxRetries; i++) {
-      Utils.sleep((1000 * (5 * i)) + 250);
+    for (int i = 0; i <= FredDataDownloader.maxRetries; i++) {
+      Utils.sleep(1000 * 5 * i + 250);
       dvList = ds.getValues(0.0, false, false);
       if (dvList.size() > 0) {
         System.out.println(seriesDsi.getName());
-        retryCount = 0;
+        FredDataDownloader.retryCount = 0;
         break;
       }
-      retryCount++;
-      if (i < maxRetries) {
+      FredDataDownloader.retryCount++;
+      if (i < FredDataDownloader.maxRetries) {
         Debug.log(String.format("\tQuery dvList retry for %s ...%n", seriesDsi.getName()));
       }
     }
 
-    if ((dvList != null) && (dvList.size() > 0)) {
+    if (dvList != null && dvList.size() > 0) {
 
       Debug.log(String.format("Writing to Optuma%n%s%nvalues : %d%n", ds, dvList.size()));
 
       final String outname = FredCommon.toFullFileName(seriesDsi.getName(), seriesDsi.getTitle());
 
-      FredCommon.writeToOptuma(dvList, outname, seriesDsi.getName(), seriesDsi.getUnits(), seriesDsi.getFrequency(),
-          false);
+      FredCommon.writeToOptuma(dvList, outname, seriesDsi.getName(), seriesDsi.getUnits(), seriesDsi.getFrequency(), false);
 
       // Debug.pwDbg.println(ds);
-    } else {
+    }
+    else {
       Debug.log(String.format("%nZero Data Values: %s : %s%n", seriesDsi.getName(), seriesDsi.getTitle()));
 
-      tryAgainFile.println(seriesDsi.getName());
-      tryAgainFile.flush();
-      if (retryCount > consecutiveRetryFailures) {
-        Debug.log(String.format("Too many retries (%d). Sleeping %d seconds.%n", retryCount, (longSleep / 1000)));
+      FredDataDownloader.tryAgainFile.println(seriesDsi.getName());
+      FredDataDownloader.tryAgainFile.flush();
+      if (FredDataDownloader.retryCount > FredDataDownloader.consecutiveRetryFailures) {
+        Debug.log(String.format("Too many retries (%d). Sleeping %d seconds.%n", FredDataDownloader.retryCount, FredDataDownloader.longSleep / 1000));
 
-        Utils.sleep(longSleep);
-        retryCount = 0;
+        Utils.sleep(FredDataDownloader.longSleep);
+        FredDataDownloader.retryCount = 0;
       }
     }
 

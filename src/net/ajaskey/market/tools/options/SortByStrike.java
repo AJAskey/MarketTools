@@ -11,7 +11,8 @@ public class SortByStrike implements Comparator<ExpiryData>
     int ret = 0;
     if (ex0.getStrike() < ex1.getStrike()) {
       ret = -1;
-    } else if (ex0.getStrike() > ex1.getStrike()) {
+    }
+    else if (ex0.getStrike() > ex1.getStrike()) {
       ret = 1;
     }
     return ret;

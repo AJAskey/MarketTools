@@ -87,23 +87,6 @@ public class ProcessIshares {
 
   /**
    *
-   * net.ajaskey.market.tools.isNumber
-   *
-   * @param s
-   * @return
-   */
-  private static boolean isNumber(final String s) {
-
-    try {
-      Long.parseLong(s);
-      return true;
-    } catch (final Exception e) {
-      return false;
-    }
-  }
-
-  /**
-   *
    * net.ajaskey.market.tools.isValid
    *
    * @param s
@@ -179,6 +162,24 @@ public class ProcessIshares {
 
   /**
    *
+   * net.ajaskey.market.tools.isNumber
+   *
+   * @param s
+   * @return
+   */
+  private static boolean isNumber(final String s) {
+
+    try {
+      Long.parseLong(s);
+      return true;
+    }
+    catch (final Exception e) {
+      return false;
+    }
+  }
+
+  /**
+   *
    * net.ajaskey.market.tools.processIshare
    *
    * @param iShare
@@ -189,55 +190,79 @@ public class ProcessIshares {
     String url = null;
 
     if (iShare.contains("ITB")) {
-      url = ITB;
-    } else if (iShare.contains("SOXX")) {
-      url = SOXX;
-    } else if (iShare.contains("IYC")) {
-      url = IYC;
-    } else if (iShare.contains("IYK")) {
-      url = IYK;
-    } else if (iShare.contains("IYG")) {
-      url = IYG;
-    } else if (iShare.contains("IAT")) {
-      url = IAT;
-    } else if (iShare.contains("IAK")) {
-      url = IAK;
-    } else if (iShare.contains("IAI")) {
-      url = IAI;
-    } else if (iShare.contains("IYH")) {
-      url = IYH;
-    } else if (iShare.contains("IBB")) {
-      url = IBB;
-    } else if (iShare.contains("IHI")) {
-      url = IHI;
-    } else if (iShare.contains("IHF")) {
-      url = IHF;
-    } else if (iShare.contains("IHE")) {
-      url = IHE;
-    } else if (iShare.contains("IYJ")) {
-      url = IYJ;
-    } else if (iShare.contains("ITA")) {
-      url = ITA;
-    } else if (iShare.contains("IYT")) {
-      url = IYT;
-    } else if (iShare.contains("IEO")) {
-      url = IEO;
-    } else if (iShare.contains("IEZ")) {
-      url = IEZ;
-    } else if (iShare.contains("IGE")) {
-      url = IGE;
-    } else if (iShare.contains("WOOD")) {
-      url = WOOD;
-    } else if (iShare.contains("RING")) {
-      url = RING;
-    } else if (iShare.contains("PICK")) {
-      url = PICK;
-    } else if (iShare.contains("IVV")) {
-      url = IVV;
-    } else if (iShare.contains("IJH")) {
-      url = IJH;
-    } else if (iShare.contains("IJR")) {
-      url = IJR;
+      url = ProcessIshares.ITB;
+    }
+    else if (iShare.contains("SOXX")) {
+      url = ProcessIshares.SOXX;
+    }
+    else if (iShare.contains("IYC")) {
+      url = ProcessIshares.IYC;
+    }
+    else if (iShare.contains("IYK")) {
+      url = ProcessIshares.IYK;
+    }
+    else if (iShare.contains("IYG")) {
+      url = ProcessIshares.IYG;
+    }
+    else if (iShare.contains("IAT")) {
+      url = ProcessIshares.IAT;
+    }
+    else if (iShare.contains("IAK")) {
+      url = ProcessIshares.IAK;
+    }
+    else if (iShare.contains("IAI")) {
+      url = ProcessIshares.IAI;
+    }
+    else if (iShare.contains("IYH")) {
+      url = ProcessIshares.IYH;
+    }
+    else if (iShare.contains("IBB")) {
+      url = ProcessIshares.IBB;
+    }
+    else if (iShare.contains("IHI")) {
+      url = ProcessIshares.IHI;
+    }
+    else if (iShare.contains("IHF")) {
+      url = ProcessIshares.IHF;
+    }
+    else if (iShare.contains("IHE")) {
+      url = ProcessIshares.IHE;
+    }
+    else if (iShare.contains("IYJ")) {
+      url = ProcessIshares.IYJ;
+    }
+    else if (iShare.contains("ITA")) {
+      url = ProcessIshares.ITA;
+    }
+    else if (iShare.contains("IYT")) {
+      url = ProcessIshares.IYT;
+    }
+    else if (iShare.contains("IEO")) {
+      url = ProcessIshares.IEO;
+    }
+    else if (iShare.contains("IEZ")) {
+      url = ProcessIshares.IEZ;
+    }
+    else if (iShare.contains("IGE")) {
+      url = ProcessIshares.IGE;
+    }
+    else if (iShare.contains("WOOD")) {
+      url = ProcessIshares.WOOD;
+    }
+    else if (iShare.contains("RING")) {
+      url = ProcessIshares.RING;
+    }
+    else if (iShare.contains("PICK")) {
+      url = ProcessIshares.PICK;
+    }
+    else if (iShare.contains("IVV")) {
+      url = ProcessIshares.IVV;
+    }
+    else if (iShare.contains("IJH")) {
+      url = ProcessIshares.IJH;
+    }
+    else if (iShare.contains("IJR")) {
+      url = ProcessIshares.IJR;
     }
 
     else {
@@ -254,8 +279,7 @@ public class ProcessIshares {
       if (resp != null) {
         int knt = 0;
         for (final String s : resp) {
-          if ((s.compareToIgnoreCase("USD") != 0) && (s.compareToIgnoreCase("BLKFDS") != 0)
-              && (ProcessIshares.isValid(s))) {
+          if (s.compareToIgnoreCase("USD") != 0 && s.compareToIgnoreCase("BLKFDS") != 0 && ProcessIshares.isValid(s)) {
             // System.out.println(s);
             pw.println(s);
             knt++;
@@ -265,7 +289,8 @@ public class ProcessIshares {
           }
         }
         System.out.println("Processed " + iShare + " : " + resp.size());
-      } else {
+      }
+      else {
         System.out.println("Error processing " + iShare);
       }
     }

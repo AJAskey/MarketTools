@@ -37,8 +37,123 @@ import net.ajaskey.common.Utils;
  */
 public class IncomeData {
 
+  public QuarterlyData sales;
+  public QuarterlyData cogs;
+
+  public QuarterlyData grossIncome;
+
+  public QuarterlyData rd;
+
+  public QuarterlyData depreciation;
+  public QuarterlyData interestExp;
+  public QuarterlyData unusualIncome;
+  public QuarterlyData totalOpExp;
+  public QuarterlyData grossOpIncome;
+  public QuarterlyData interestExpNonOp;
+  public QuarterlyData otherIncome;
+  public QuarterlyData pretaxIncome;
+  public QuarterlyData incomeTax;
+  public QuarterlyData incomeAfterTaxes;
+  public QuarterlyData adjustments;
+  public QuarterlyData incomeEps;
+  public QuarterlyData nonrecurring;
+  public QuarterlyData netIncome;
+  public QuarterlyData eps;
+  public QuarterlyData epsContinuing;
+  public QuarterlyData epsDiluted;
+  public QuarterlyData epsDilCont;
+  public QuarterlyData dividend;
+  public QuarterlyData totalInterest;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public IncomeData() {
+
+    this.sales = new QuarterlyData("sales");
+    this.cogs = new QuarterlyData("cogs");
+    this.grossIncome = new QuarterlyData("grossIncome");
+    this.rd = new QuarterlyData("rd");
+    this.depreciation = new QuarterlyData("depreciation");
+    this.interestExp = new QuarterlyData("interestExp");
+    this.unusualIncome = new QuarterlyData("unusualIncome");
+    this.totalOpExp = new QuarterlyData("totalOpExp");
+    this.grossOpIncome = new QuarterlyData("grossOpIncome");
+    this.interestExpNonOp = new QuarterlyData("interestExpNonOp");
+    this.otherIncome = new QuarterlyData("otherIncome");
+    this.pretaxIncome = new QuarterlyData("pretaxIncome");
+    this.incomeTax = new QuarterlyData("incomeTax");
+    this.incomeAfterTaxes = new QuarterlyData("incomeAfterTaxes");
+    this.adjustments = new QuarterlyData("adjustments");
+    this.incomeEps = new QuarterlyData("incomeEps");
+    this.nonrecurring = new QuarterlyData("nonrecurring");
+    this.netIncome = new QuarterlyData("netIncome");
+    this.eps = new QuarterlyData("eps");
+    this.epsContinuing = new QuarterlyData("epsContinuing");
+    this.epsDiluted = new QuarterlyData("epsDiluted");
+    this.epsDilCont = new QuarterlyData("epsDilCont");
+    this.dividend = new QuarterlyData("dividend");
+    this.totalInterest = new QuarterlyData("totalInterest");
+  }
+
+  public String getQoQ() {
+    String ret = "";
+    ret += String.format("Sales    -->  %s%n", this.sales.getQoQ());
+    ret += String.format("COGS     -->  %s%n", this.cogs.getQoQ());
+    ret += String.format("GrossOp  -->  %s%n", this.grossOpIncome.getQoQ());
+    ret += String.format("Net      -->  %s%n", this.netIncome.getQoQ());
+    ret += String.format("EPS      -->  %s%n", this.eps.getQoQ(100.0));
+    ret += String.format("Dividend -->  %s%n", this.dividend.getQoQ(100.0));
+    ret += String.format("IncTax   -->  %s%n", this.incomeTax.getQoQ());
+    ret += String.format("TotInt   -->  %s%n", this.totalInterest.getQoQ());
+
+    return ret;
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    String ret = "";
+    ret += IncomeData.TAB + this.sales;
+    ret += IncomeData.TAB + this.cogs;
+    ret += IncomeData.TAB + this.grossIncome;
+    ret += IncomeData.TAB + this.rd;
+    ret += IncomeData.TAB + this.depreciation;
+    ret += IncomeData.TAB + this.unusualIncome;
+
+    ret += IncomeData.TAB + this.totalOpExp;
+    ret += IncomeData.TAB + this.grossOpIncome;
+    ret += IncomeData.TAB + this.interestExp;
+    ret += IncomeData.TAB + this.interestExpNonOp;
+    ret += IncomeData.TAB + this.totalInterest;
+    ret += IncomeData.TAB + this.otherIncome;
+    ret += IncomeData.TAB + this.pretaxIncome;
+    ret += IncomeData.TAB + this.incomeTax;
+    ret += IncomeData.TAB + this.incomeAfterTaxes;
+
+    ret += IncomeData.TAB + this.adjustments;
+    ret += IncomeData.TAB + this.incomeEps;
+
+    ret += IncomeData.TAB + this.nonrecurring;
+    ret += IncomeData.TAB + this.netIncome;
+
+    ret += IncomeData.TAB + this.eps;
+    ret += IncomeData.TAB + this.epsContinuing;
+    ret += IncomeData.TAB + this.epsDiluted;
+    ret += IncomeData.TAB + this.epsDilCont;
+    ret += IncomeData.TAB + this.dividend;
+    return ret;
+  }
+
   final private static String TAB = "\t";
-  final private static String NL  = Utils.NL;
+
+  final private static String NL = Utils.NL;
 
   public static IncomeData setBalanceSheetInfo(final String[] fld) {
 
@@ -111,116 +226,5 @@ public class IncomeData {
     id.totalInterest.dd.calculate(id.totalInterest);
 
     return id;
-  }
-
-  public QuarterlyData sales;
-  public QuarterlyData cogs;
-  public QuarterlyData grossIncome;
-  public QuarterlyData rd;
-  public QuarterlyData depreciation;
-  public QuarterlyData interestExp;
-  public QuarterlyData unusualIncome;
-  public QuarterlyData totalOpExp;
-  public QuarterlyData grossOpIncome;
-  public QuarterlyData interestExpNonOp;
-  public QuarterlyData otherIncome;
-  public QuarterlyData pretaxIncome;
-  public QuarterlyData incomeTax;
-  public QuarterlyData incomeAfterTaxes;
-  public QuarterlyData adjustments;
-  public QuarterlyData incomeEps;
-  public QuarterlyData nonrecurring;
-  public QuarterlyData netIncome;
-  public QuarterlyData eps;
-  public QuarterlyData epsContinuing;
-  public QuarterlyData epsDiluted;
-  public QuarterlyData epsDilCont;
-  public QuarterlyData dividend;
-  public QuarterlyData totalInterest;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public IncomeData() {
-
-    this.sales = new QuarterlyData("sales");
-    this.cogs = new QuarterlyData("cogs");
-    this.grossIncome = new QuarterlyData("grossIncome");
-    this.rd = new QuarterlyData("rd");
-    this.depreciation = new QuarterlyData("depreciation");
-    this.interestExp = new QuarterlyData("interestExp");
-    this.unusualIncome = new QuarterlyData("unusualIncome");
-    this.totalOpExp = new QuarterlyData("totalOpExp");
-    this.grossOpIncome = new QuarterlyData("grossOpIncome");
-    this.interestExpNonOp = new QuarterlyData("interestExpNonOp");
-    this.otherIncome = new QuarterlyData("otherIncome");
-    this.pretaxIncome = new QuarterlyData("pretaxIncome");
-    this.incomeTax = new QuarterlyData("incomeTax");
-    this.incomeAfterTaxes = new QuarterlyData("incomeAfterTaxes");
-    this.adjustments = new QuarterlyData("adjustments");
-    this.incomeEps = new QuarterlyData("incomeEps");
-    this.nonrecurring = new QuarterlyData("nonrecurring");
-    this.netIncome = new QuarterlyData("netIncome");
-    this.eps = new QuarterlyData("eps");
-    this.epsContinuing = new QuarterlyData("epsContinuing");
-    this.epsDiluted = new QuarterlyData("epsDiluted");
-    this.epsDilCont = new QuarterlyData("epsDilCont");
-    this.dividend = new QuarterlyData("dividend");
-    this.totalInterest = new QuarterlyData("totalInterest");
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-
-    String ret = "";
-    ret += TAB + this.sales;
-    ret += TAB + this.cogs;
-    ret += TAB + this.grossIncome;
-    ret += TAB + this.rd;
-    ret += TAB + this.depreciation;
-    ret += TAB + this.unusualIncome;
-
-    ret += TAB + this.totalOpExp;
-    ret += TAB + this.grossOpIncome;
-    ret += TAB + this.interestExp;
-    ret += TAB + this.interestExpNonOp;
-    ret += TAB + this.totalInterest;
-    ret += TAB + this.otherIncome;
-    ret += TAB + this.pretaxIncome;
-    ret += TAB + this.incomeTax;
-    ret += TAB + this.incomeAfterTaxes;
-
-    ret += TAB + this.adjustments;
-    ret += TAB + this.incomeEps;
-
-    ret += TAB + this.nonrecurring;
-    ret += TAB + this.netIncome;
-
-    ret += TAB + this.eps;
-    ret += TAB + this.epsContinuing;
-    ret += TAB + this.epsDiluted;
-    ret += TAB + this.epsDilCont;
-    ret += TAB + this.dividend;
-    return ret;
-  }
-
-  public String getQoQ() {
-    String ret = "";
-    ret += String.format("Sales    -->  %s%n", this.sales.getQoQ());
-    ret += String.format("COGS     -->  %s%n", this.cogs.getQoQ());
-    ret += String.format("GrossOp  -->  %s%n", this.grossOpIncome.getQoQ());
-    ret += String.format("Net      -->  %s%n", this.netIncome.getQoQ());
-    ret += String.format("EPS      -->  %s%n", this.eps.getQoQ(100.0));
-    ret += String.format("Dividend -->  %s%n", this.dividend.getQoQ(100.0));
-    ret += String.format("IncTax   -->  %s%n", this.incomeTax.getQoQ());
-    ret += String.format("TotInt   -->  %s%n", this.totalInterest.getQoQ());
-
-    return ret;
   }
 }

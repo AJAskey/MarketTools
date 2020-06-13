@@ -32,7 +32,28 @@ public class SpxEarnings {
   public double   estNet1;
   private boolean valid;
 
-  private static Double spxTe[] = null;
+  /**
+   * Copy Constructor
+   *
+   * @param se
+   */
+  public SpxEarnings(SpxEarnings se) {
+    this.ticker = se.ticker;
+    this.name = se.name;
+    this.exchange = se.exchange;
+    this.sector = se.sector;
+    this.industry = se.industry;
+    this.currentFiscalYear = se.currentFiscalYear;
+    this.lastQtrEps = se.lastQtrEps;
+    for (int i = 0; i < SpxEarnings.QoD; i++) {
+      this.mktCap[i] = se.mktCap[i];
+      this.shares[i] = se.shares[i];
+      this.incEps[i] = se.incEps[i];
+    }
+    this.est1 = se.est1;
+    this.estNet1 = se.estNet1;
+    this.valid = se.valid;
+  }
 
   /**
    *
@@ -89,49 +110,27 @@ public class SpxEarnings {
 
     try {
 
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
       this.valid = false;
     }
   }
 
-  /**
-   * Copy Constructor
-   * 
-   * @param se
-   */
-  public SpxEarnings(SpxEarnings se) {
-    this.ticker = se.ticker;
-    this.name = se.name;
-    this.exchange = se.exchange;
-    this.sector = se.sector;
-    this.industry = se.industry;
-    this.currentFiscalYear = se.currentFiscalYear;
-    this.lastQtrEps = se.lastQtrEps;
-    for (int i = 0; i < QoD; i++) {
-      this.mktCap[i] = se.mktCap[i];
-      this.shares[i] = se.shares[i];
-      this.incEps[i] = se.incEps[i];
-    }
-    this.est1 = se.est1;
-    this.estNet1 = se.estNet1;
-    this.valid = se.valid;
-  }
-
   @Override
   public String toString() {
-    String ret = String.format("%s : %s : %s : %s : %s\t", this.ticker, this.name, this.exchange, this.sector,
-        this.industry);
+    String ret = String.format("%s : %s : %s : %s : %s\t", this.ticker, this.name, this.exchange, this.sector, this.industry);
     ret += String.format("  %s : %s%n", this.currentFiscalYear, this.lastQtrEps);
-    ret += String.format("  %12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%n", this.mktCap[1], this.mktCap[2],
-        this.mktCap[3], this.mktCap[4], this.mktCap[5], this.mktCap[6], this.mktCap[7]);
-    ret += String.format("  %12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%12.2f\t[%.2f -- %.2f]%n", this.incEps[1],
-        this.incEps[2], this.incEps[3], this.incEps[4], this.incEps[5], this.incEps[6], this.incEps[7], this.est1,
-        this.estNet1);
-    ret += String.format("  %12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%12.2f", this.shares[1], this.shares[2], this.shares[3],
-        this.shares[4], this.shares[5], this.shares[6], this.shares[7]);
+    ret += String.format("  %12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%n", this.mktCap[1], this.mktCap[2], this.mktCap[3], this.mktCap[4],
+        this.mktCap[5], this.mktCap[6], this.mktCap[7]);
+    ret += String.format("  %12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%12.2f\t[%.2f -- %.2f]%n", this.incEps[1], this.incEps[2], this.incEps[3],
+        this.incEps[4], this.incEps[5], this.incEps[6], this.incEps[7], this.est1, this.estNet1);
+    ret += String.format("  %12.2f%12.2f%12.2f%12.2f%12.2f%12.2f%12.2f", this.shares[1], this.shares[2], this.shares[3], this.shares[4],
+        this.shares[5], this.shares[6], this.shares[7]);
     return ret;
   }
+
+  private static Double spxTe[] = null;
 
   final private static int QoD = 8;
 
@@ -159,39 +158,39 @@ public class SpxEarnings {
       }
     }
 
-    List<String> allSectors = findSectors(spxList);
-    List<String> allIndustries = findIndustries(spxList);
+    final List<String> allSectors = SpxEarnings.findSectors(SpxEarnings.spxList);
+    final List<String> allIndustries = SpxEarnings.findIndustries(SpxEarnings.spxList);
 
     final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
     final double spxPrice = spxData.getLatest();
 
     String dir = "out/earnings";
     Utils.makeDir(dir);
-    DateTime today = new DateTime();
+    final DateTime today = new DateTime();
     today.setSdf(new SimpleDateFormat("yyyyMMdd"));
     String fname = String.format("%s/SPX_%s_Historic_Earnings.txt", dir, today);
-    spxTe = process(spxList, spxPrice, fname);
+    SpxEarnings.spxTe = SpxEarnings.process(SpxEarnings.spxList, spxPrice, fname);
 
-    for (String sec : allSectors) {
-      List<SpxEarnings> seList = findSectors(spxList, sec);
-      process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, sec, today));
+    for (final String sec : allSectors) {
+      final List<SpxEarnings> seList = SpxEarnings.findSectors(SpxEarnings.spxList, sec);
+      SpxEarnings.process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, sec, today));
     }
 
     dir += "/industry";
     Utils.makeDir(dir);
 
-    for (String ind : allIndustries) {
-      List<SpxEarnings> seList = findIndustries(spxList, ind);
-      process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, ind, today));
+    for (final String ind : allIndustries) {
+      final List<SpxEarnings> seList = SpxEarnings.findIndustries(SpxEarnings.spxList, ind);
+      SpxEarnings.process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, ind, today));
     }
 
     /**
      * Estimate 50 decline in earnings
      */
     final double earningsDrop = 0.65;
-    List<SpxEarnings> estList = new ArrayList<>();
-    for (SpxEarnings se : spxList) {
-      SpxEarnings tmp = new SpxEarnings(se);
+    final List<SpxEarnings> estList = new ArrayList<>();
+    for (final SpxEarnings se : SpxEarnings.spxList) {
+      final SpxEarnings tmp = new SpxEarnings(se);
       tmp.est1 = tmp.incEps[1] * earningsDrop;
       tmp.estNet1 = tmp.est1 * tmp.shares[1];
       tmp.incEps[0] = tmp.est1;
@@ -199,94 +198,8 @@ public class SpxEarnings {
     }
     dir = "out/earnings";
     fname = String.format("%s/SPX_%s_Estimated_Earnings.txt", dir, today);
-    process(estList, 0.0, fname);
+    SpxEarnings.process(estList, 0.0, fname);
 
-  }
-
-  /**
-   * 
-   * @param seList
-   * @throws FileNotFoundException
-   */
-  private static Double[] process(List<SpxEarnings> seList, double indexPrice, String filename)
-      throws FileNotFoundException {
-
-    System.out.println(filename);
-
-    Double[] te = new Double[QoD];
-    Double[] tePct = new Double[QoD];
-    for (int i = 0; i < QoD; i++) {
-      tePct[i] = 100.0;
-    }
-
-    SpxEarnings.calcTotals(spxList);
-
-    for (int i = 0; i < SpxEarnings.QoD; i++) {
-      te[i] = SpxEarnings.calcEarnings(i, seList);
-      if (spxTe != null) {
-        tePct[i] = te[i] / spxTe[i] * 100.0;
-      }
-    }
-
-    double pe0 = indexPrice / te[0];
-    double pe1 = indexPrice / te[1];
-    try (PrintWriter pw = new PrintWriter(filename)) {
-      pw.println(filename);
-      for (int i = 0; i < te.length; i++) {
-
-        double chg = 0.0;
-        if (i < (te.length - 1)) {
-          double delta = te[i] - te[i + 1];
-          chg = delta / te[i + 1] * 100.0;
-          if ((indexPrice > 0.0) && (i == 1)) {
-            pw.printf("  Year %d : %12.4f%10.1f%%\t--\t%7.1f%% of SPX\t\tPE: %.2f%n", i, te[i], chg, tePct[i], pe1);
-          } else if ((indexPrice > 0.0) && (i == 0)) {
-            pw.printf("  Year %d : %12.4f%10.1f%%\t--\t%7.1f%% of SPX\t\tPE: %.2f%n", i, te[i], chg, tePct[i], pe0);
-          } else {
-            pw.printf("  Year %d : %12.4f%10.1f%%\t--\t%7.1f%% of SPX%n", i, te[i], chg, tePct[i]);
-          }
-        } else {
-          pw.printf("  Year %d : %12.4f%n", i, te[i]);
-        }
-      }
-    }
-    return te;
-  }
-
-  private static void calcTotals(List<SpxEarnings> seList) {
-
-    for (int i = 0; i < QoD; i++) {
-      totalShares[i] = 0.0;
-      totalMCap[i] = 0.0;
-    }
-    for (final SpxEarnings se : seList) {
-      SpxEarnings.totalShares[1] += se.shares[1];
-      SpxEarnings.totalShares[2] += se.shares[2];
-      SpxEarnings.totalShares[3] += se.shares[3];
-      SpxEarnings.totalShares[4] += se.shares[4];
-      SpxEarnings.totalShares[5] += se.shares[5];
-      SpxEarnings.totalShares[6] += se.shares[6];
-      SpxEarnings.totalShares[7] += se.shares[7];
-      SpxEarnings.totalShares[0] += se.shares[1];
-
-      SpxEarnings.totalMCap[1] += se.mktCap[1];
-      SpxEarnings.totalMCap[2] += se.mktCap[2];
-      SpxEarnings.totalMCap[3] += se.mktCap[3];
-      SpxEarnings.totalMCap[4] += se.mktCap[4];
-      SpxEarnings.totalMCap[5] += se.mktCap[5];
-      SpxEarnings.totalMCap[6] += se.mktCap[6];
-      SpxEarnings.totalMCap[7] += se.mktCap[7];
-      SpxEarnings.totalMCap[0] += se.mktCap[1];
-    }
-
-    for (int i = 0; i < QoD; i++) {
-      System.out.printf("%15.2f", totalShares[i]);
-    }
-    System.out.println();
-    for (int i = 0; i < QoD; i++) {
-      System.out.printf("%15.2f", totalMCap[i]);
-    }
-    System.out.println();
   }
 
   /**
@@ -314,6 +227,42 @@ public class SpxEarnings {
     final double shrRatio = se.shares[i] / SpxEarnings.totalShares[i];
     final double ret = se.incEps[i] * capRatio * shrRatio;
     return ret;
+  }
+
+  private static void calcTotals(List<SpxEarnings> seList) {
+
+    for (int i = 0; i < SpxEarnings.QoD; i++) {
+      SpxEarnings.totalShares[i] = 0.0;
+      SpxEarnings.totalMCap[i] = 0.0;
+    }
+    for (final SpxEarnings se : seList) {
+      SpxEarnings.totalShares[1] += se.shares[1];
+      SpxEarnings.totalShares[2] += se.shares[2];
+      SpxEarnings.totalShares[3] += se.shares[3];
+      SpxEarnings.totalShares[4] += se.shares[4];
+      SpxEarnings.totalShares[5] += se.shares[5];
+      SpxEarnings.totalShares[6] += se.shares[6];
+      SpxEarnings.totalShares[7] += se.shares[7];
+      SpxEarnings.totalShares[0] += se.shares[1];
+
+      SpxEarnings.totalMCap[1] += se.mktCap[1];
+      SpxEarnings.totalMCap[2] += se.mktCap[2];
+      SpxEarnings.totalMCap[3] += se.mktCap[3];
+      SpxEarnings.totalMCap[4] += se.mktCap[4];
+      SpxEarnings.totalMCap[5] += se.mktCap[5];
+      SpxEarnings.totalMCap[6] += se.mktCap[6];
+      SpxEarnings.totalMCap[7] += se.mktCap[7];
+      SpxEarnings.totalMCap[0] += se.mktCap[1];
+    }
+
+    for (int i = 0; i < SpxEarnings.QoD; i++) {
+      System.out.printf("%15.2f", SpxEarnings.totalShares[i]);
+    }
+    System.out.println();
+    for (int i = 0; i < SpxEarnings.QoD; i++) {
+      System.out.printf("%15.2f", SpxEarnings.totalMCap[i]);
+    }
+    System.out.println();
   }
 
   /**
@@ -382,6 +331,58 @@ public class SpxEarnings {
     }
 
     return retList;
+  }
+
+  /**
+   *
+   * @param seList
+   * @throws FileNotFoundException
+   */
+  private static Double[] process(List<SpxEarnings> seList, double indexPrice, String filename) throws FileNotFoundException {
+
+    System.out.println(filename);
+
+    final Double[] te = new Double[SpxEarnings.QoD];
+    final Double[] tePct = new Double[SpxEarnings.QoD];
+    for (int i = 0; i < SpxEarnings.QoD; i++) {
+      tePct[i] = 100.0;
+    }
+
+    SpxEarnings.calcTotals(SpxEarnings.spxList);
+
+    for (int i = 0; i < SpxEarnings.QoD; i++) {
+      te[i] = SpxEarnings.calcEarnings(i, seList);
+      if (SpxEarnings.spxTe != null) {
+        tePct[i] = te[i] / SpxEarnings.spxTe[i] * 100.0;
+      }
+    }
+
+    final double pe0 = indexPrice / te[0];
+    final double pe1 = indexPrice / te[1];
+    try (PrintWriter pw = new PrintWriter(filename)) {
+      pw.println(filename);
+      for (int i = 0; i < te.length; i++) {
+
+        double chg = 0.0;
+        if (i < te.length - 1) {
+          final double delta = te[i] - te[i + 1];
+          chg = delta / te[i + 1] * 100.0;
+          if (indexPrice > 0.0 && i == 1) {
+            pw.printf("  Year %d : %12.4f%10.1f%%\t--\t%7.1f%% of SPX\t\tPE: %.2f%n", i, te[i], chg, tePct[i], pe1);
+          }
+          else if (indexPrice > 0.0 && i == 0) {
+            pw.printf("  Year %d : %12.4f%10.1f%%\t--\t%7.1f%% of SPX\t\tPE: %.2f%n", i, te[i], chg, tePct[i], pe0);
+          }
+          else {
+            pw.printf("  Year %d : %12.4f%10.1f%%\t--\t%7.1f%% of SPX%n", i, te[i], chg, tePct[i]);
+          }
+        }
+        else {
+          pw.printf("  Year %d : %12.4f%n", i, te[i]);
+        }
+      }
+    }
+    return te;
   }
 
 }

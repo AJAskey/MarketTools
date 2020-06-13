@@ -63,8 +63,7 @@ public class OptionPrice {
     final double price = odFound.getPrice();
     final double premium = (odFound.mark - price) / price * 100.0;
 
-    System.out.printf(
-        "%.2f on %s when underlying is at %.2f - Price Now  NewIV:%.4f on Mark:%.2f with premium of %.1f%%%n", price,
+    System.out.printf("%.2f on %s when underlying is at %.2f - Price Now  NewIV:%.4f on Mark:%.2f with premium of %.1f%%%n", price,
         odFound.getSellDate(), dilCPrice, newIv, odFound.mark, premium);
 
     if (typeInt == OptionsProcessor.APUT) {
@@ -82,8 +81,8 @@ public class OptionPrice {
       odFound.optionData.setSellDate(inTwoWeeks);
       odFound.optionData.setUlPrice(ul);
 
-      System.out.printf("%.2f on %s when underlying is at %.2f%n", odFound.optionData.getPrice(),
-          odFound.optionData.getSellDate(), odFound.optionData.getUlPrice());
+      System.out.printf("%.2f on %s when underlying is at %.2f%n", odFound.optionData.getPrice(), odFound.optionData.getSellDate(),
+          odFound.optionData.getUlPrice());
 
       // 1% change in underlying each 2-week period
       ul = dilCPrice * (1.0 + i * chg);

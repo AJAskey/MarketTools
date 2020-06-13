@@ -80,116 +80,97 @@ public class IncSheetFileData {
     int ptr = 5;
 
     this.salesQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.salesYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.salesYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.cogsQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.cogsYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.cogsYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.GrossIncQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.GrossIncYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.GrossIncYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.rdQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.rdYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.rdYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.depreciationQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.depreciationYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.depreciationYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.intExpQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.intExpYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.intExpYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.unusualIncQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.unusualIncYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.unusualIncYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.totalOpExpQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.totalOpExpYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.totalOpExpYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.grossOpExpQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.grossOpExpYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.grossOpExpYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.intExpNonOpQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.intExpNonOpYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.intExpNonOpYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.otherIncQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.otherIncYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.otherIncYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.preTaxIncQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.preTaxIncYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.preTaxIncYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.incTaxQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.incTaxYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.incTaxYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.incAfterTaxQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.incAfterTaxYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.incAfterTaxYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.adjToIncQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.adjToIncYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.adjToIncYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.incPrimaryEpsQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.incPrimaryEpsYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.incPrimaryEpsYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.nonrecurringItemsQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.nonrecurringItemsYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.nonrecurringItemsYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.netIncQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.netIncYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.netIncYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.epsQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.epsYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.epsYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.epsContQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.epsContYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.epsContYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.epsDilQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.epsDilYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.epsDilYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.epsDilContQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.epsDilContYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.epsDilContYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
     this.dividendQtr = SipUtils.parseDoubles(strFldQtr, ptr, 8);
-    this.dividendYr = slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
+    this.dividendYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
-  }
-
-  public static int getListCount() {
-    return ifdList.size();
-  }
-
-  /**
-   * 
-   * @param in
-   * @return
-   */
-  private double[] slideIncYearData(double[] in) {
-
-    double[] ret = new double[in.length - 1];
-    int knt = 0;
-    for (int i = 1; i < in.length; i++) {
-      ret[knt++] = in[i];
-    }
-    return ret;
   }
 
   public double[] getAdjToIncQtr() {
@@ -449,6 +430,21 @@ public class IncSheetFileData {
     return ret;
   }
 
+  /**
+   *
+   * @param in
+   * @return
+   */
+  private double[] slideIncYearData(double[] in) {
+
+    final double[] ret = new double[in.length - 1];
+    int knt = 0;
+    for (int i = 1; i < in.length; i++) {
+      ret[knt++] = in[i];
+    }
+    return ret;
+  }
+
   private static List<IncSheetFileData> ifdList = new ArrayList<>();
 
   /**
@@ -463,6 +459,10 @@ public class IncSheetFileData {
       }
     }
     return null;
+  }
+
+  public static int getListCount() {
+    return IncSheetFileData.ifdList.size();
   }
 
   /**

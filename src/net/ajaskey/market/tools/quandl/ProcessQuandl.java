@@ -56,7 +56,7 @@ public class ProcessQuandl {
    */
   public static void main(final String[] args) {
 
-    TickerPriceData spxData = new TickerPriceData("WI", "SPX");
+    final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
 
     final double lastSpxPrice = spxData.getLatest();
     final DateTime lastSpxDate = spxData.getLatestDate();
@@ -76,24 +76,13 @@ public class ProcessQuandl {
     ProcessQuandl.lastDataPoint.add(new LastDataPoint("SP500_EARNINGS_YIELD_MONTH", spxyield));
     ProcessQuandl.lastDataPoint.add(new LastDataPoint("SP500_EARNINGS", spxearn));
 
-    final String sp500URL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_REAL_PRICE_MONTH.xml?api_key="
-        + QuandlApi.key;
-    final String sp500EarnYldURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_EARNINGS_YIELD_MONTH.xml?api_key="
-        + QuandlApi.key;
-    final String sp500DivURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_DIV_MONTH.xml?api_key="
-        + QuandlApi.key;
-    final String bookValueURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_BVPS_YEAR.xml?api_key="
-        + QuandlApi.key;
-    final String shillerPeURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SHILLER_PE_RATIO_MONTH.xml?api_key="
-        + QuandlApi.key;
-    final String sp500SalesURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_SALES_QUARTER.xml?api_key="
-        + QuandlApi.key;
+    final String sp500URL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_REAL_PRICE_MONTH.xml?api_key=" + QuandlApi.key;
+    final String sp500EarnYldURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_EARNINGS_YIELD_MONTH.xml?api_key=" + QuandlApi.key;
+    final String sp500DivURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_DIV_MONTH.xml?api_key=" + QuandlApi.key;
+    final String bookValueURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_BVPS_YEAR.xml?api_key=" + QuandlApi.key;
+    final String shillerPeURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SHILLER_PE_RATIO_MONTH.xml?api_key=" + QuandlApi.key;
+    final String sp500SalesURL = "https://www.quandl.com/api/v3/datasets/MULTPL/SP500_SALES_QUARTER.xml?api_key=" + QuandlApi.key;
 
-    final String epcURL = "https://www.quandl.com/api/v3/datasets/CBOE/EQUITY_PC.xml?api_key=" + QuandlApi.key;
-    final String ipcURL = "https://www.quandl.com/api/v3/datasets/CBOE/INDEX_PC.xml?api_key=" + QuandlApi.key;
-    final String tpcURL = "https://www.quandl.com/api/v3/datasets/CBOE/TOTAL_PC.xml?api_key=" + QuandlApi.key;
-    final String spxpcURL = "https://www.quandl.com/api/v3/datasets/CBOE/SPX_PC.xml?api_key=" + QuandlApi.key;
-    final String vixpcURL = "https://www.quandl.com/api/v3/datasets/CBOE/VIX_PC.xml?api_key=" + QuandlApi.key;
     final String naaimURL = "https://www.quandl.com/api/v3/datasets/NAAIM/NAAIM.xml?api_key=" + QuandlApi.key;
 
     final OneValueData odv = new OneValueData(lastSpxDate, lastSpxPrice);
@@ -173,8 +162,7 @@ public class ProcessQuandl {
     final List<NaaimData> ret = new ArrayList<>();
     final List<CommonQuandlData> ddList = Qcommon.getData(url, 9);
     for (final CommonQuandlData cqd : ddList) {
-      final NaaimData na = new NaaimData(cqd.date, cqd.dd[0], cqd.dd[1], cqd.dd[2], cqd.dd[3], cqd.dd[4], cqd.dd[5],
-          cqd.dd[6], cqd.dd[7], cqd.dd[8]);
+      final NaaimData na = new NaaimData(cqd.date, cqd.dd[0], cqd.dd[1], cqd.dd[2], cqd.dd[3], cqd.dd[4], cqd.dd[5], cqd.dd[6], cqd.dd[7], cqd.dd[8]);
       ret.add(na);
       // System.out.println(na);
     }
@@ -206,15 +194,13 @@ public class ProcessQuandl {
    * @param epcURL
    * @return
    */
-  private static List<PriceData> getPutCallData(final String url, final int callIdx, final int putIdx, final int totIdx,
-      final int ratioIdx) {
+  private static List<PriceData> getPutCallData(final String url, final int callIdx, final int putIdx, final int totIdx, final int ratioIdx) {
 
     final List<PriceData> ret = new ArrayList<>();
 
     final List<CommonQuandlData> ddList = Qcommon.getData(url, 4);
     for (final CommonQuandlData cqd : ddList) {
-      final PriceData pc = new PriceData(cqd.date, cqd.dd[callIdx], cqd.dd[putIdx], cqd.dd[totIdx], cqd.dd[ratioIdx],
-          0);
+      final PriceData pc = new PriceData(cqd.date, cqd.dd[callIdx], cqd.dd[putIdx], cqd.dd[totIdx], cqd.dd[ratioIdx], 0);
       ret.add(pc);
     }
 
@@ -306,7 +292,8 @@ public class ProcessQuandl {
       }
       // System.out.println(Utils.getString(list.get(list.size() - 1).date));
 
-    } catch (final FileNotFoundException e) {
+    }
+    catch (final FileNotFoundException e) {
       e.printStackTrace();
     }
 
@@ -331,7 +318,8 @@ public class ProcessQuandl {
       }
       // System.out.println(Utils.getString(list.get(list.size() - 1).date));
 
-    } catch (final FileNotFoundException e) {
+    }
+    catch (final FileNotFoundException e) {
       e.printStackTrace();
     }
   }
@@ -364,7 +352,8 @@ public class ProcessQuandl {
       }
       // System.out.println(Utils.getString(list.get(list.size() - 1).date));
 
-    } catch (final FileNotFoundException e) {
+    }
+    catch (final FileNotFoundException e) {
       e.printStackTrace();
     }
 

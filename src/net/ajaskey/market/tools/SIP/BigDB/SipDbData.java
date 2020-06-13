@@ -16,16 +16,43 @@ public class SipDbData {
     SipDbData.readData(2020, 1);
   }
 
+  private static List<FieldData> setfromDB(int year, int quarter) {
+
+    final String inbasedir = String.format("D:/dev/eclipse-workspace/Market/out/BigDB/");
+    final String indir = String.format("%s%s/Q%d/", inbasedir, year, quarter);
+
+    final List<FieldData> retList = new ArrayList<>();
+
+    new ArrayList<>();
+
+    final String[] ext = { "txt" };
+    final List<File> fList = Utils.getDirTree(indir, ext);
+
+    for (final File f : fList) {
+//      System.out.println(f.getAbsolutePath());
+//      List<String> data = TextUtils.readTextFile(f, true);
+//      CompanyFileData cfd = new CompanyFileData();
+//      badFlds = cfd.set(data);
+//      Shares
+//      System.out.println(badFlds);
+
+    }
+
+    return retList;
+    // TODO Auto-generated method stub
+
+  }
+
   /**
-   * 
+   *
    * @param year
    * @param quarter
    * @throws FileNotFoundException
    */
   protected static void readData(int year, int quarter) throws FileNotFoundException {
 
-    final String dir = String.format("D:/dev/eclipse-workspace/Market/data/BigDB/%s/Q%d/", year, quarter);
-    final String tail = String.format("%dQ%d.txt", year, quarter);
+    String.format("D:/dev/eclipse-workspace/Market/data/BigDB/%s/Q%d/", year, quarter);
+    String.format("%dQ%d.txt", year, quarter);
 
 //    String head = String.format("CompanyInfo-");
 //    String ffname = String.format("%s%s%s", dir, head, tail);
@@ -73,38 +100,11 @@ public class SipDbData {
 //      }
 //    }
 
-    List<FieldData> fdList = FieldData.readData(2020, 1);
+    final List<FieldData> fdList = FieldData.readData(2020, 1);
 
-    for (FieldData fd : fdList) {
+    for (final FieldData fd : fdList) {
       System.out.println(fd);
     }
-
-  }
-
-  private static List<FieldData> setfromDB(int year, int quarter) {
-
-    final String inbasedir = String.format("D:/dev/eclipse-workspace/Market/out/BigDB/");
-    final String indir = String.format("%s%s/Q%d/", inbasedir, year, quarter);
-
-    List<FieldData> retList = new ArrayList<>();
-
-    List<String> badFlds = new ArrayList<>();
-
-    String[] ext = { "txt" };
-    List<File> fList = Utils.getDirTree(indir, ext);
-
-    for (File f : fList) {
-//      System.out.println(f.getAbsolutePath());
-//      List<String> data = TextUtils.readTextFile(f, true);
-//      CompanyFileData cfd = new CompanyFileData();
-//      badFlds = cfd.set(data);
-//      Shares
-//      System.out.println(badFlds);
-
-    }
-
-    return retList;
-    // TODO Auto-generated method stub
 
   }
 

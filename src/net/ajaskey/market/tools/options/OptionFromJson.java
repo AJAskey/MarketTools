@@ -9,7 +9,7 @@ import net.ajaskey.common.DateTime;
 
 public class OptionFromJson {
 
-  private Iterator<?> itr;
+  private final Iterator<?> itr;
 
   public String   contractName;
   public String   contractSize;
@@ -38,67 +38,68 @@ public class OptionFromJson {
   public DateTime updatedAt;
   public Long     daysBeforeExpiration;
 
-  public OptionFromJson(Iterator<?> inItr) {
-    itr = inItr;
-  }
-
   SimpleDateFormat sdftime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-  SimpleDateFormat sdf     = new SimpleDateFormat("yyyy-MM-dd");
-  SimpleDateFormat sdfOut  = new SimpleDateFormat("dd-MMM-yyyy");
+
+  SimpleDateFormat sdf    = new SimpleDateFormat("yyyy-MM-dd");
+  SimpleDateFormat sdfOut = new SimpleDateFormat("dd-MMM-yyyy");
+
+  public OptionFromJson(Iterator<?> inItr) {
+    this.itr = inItr;
+  }
 
   public void get() {
     String s = "";
-    while (itr.hasNext()) {
-      JSONObject jopt = (JSONObject) itr.next();
+    while (this.itr.hasNext()) {
+      final JSONObject jopt = (JSONObject) this.itr.next();
       this.contractName = (String) jopt.get("contractName");
       this.contractSize = (String) jopt.get("contractSize");
       this.currency = (String) jopt.get("currency");
       this.itm = Boolean.parseBoolean((String) jopt.get("inTheMoney"));
 
       s = (String) jopt.get("lastTradeDateTime");
-      this.lastTradeDateTime = new DateTime(s, sdftime);
+      this.lastTradeDateTime = new DateTime(s, this.sdftime);
       s = (String) jopt.get("expirationDate");
-      this.expirationDate = new DateTime(s, sdf, sdfOut);
+      this.expirationDate = new DateTime(s, this.sdf, this.sdfOut);
 
-      this.strike = getDouble(jopt, "strike");
-      this.lastPrice = getDouble(jopt, "lastPrice");
-      this.bid = getDouble(jopt, "bid");
-      this.ask = getDouble(jopt, "ask");
-      this.change = getDouble(jopt, "change");
-      this.volume = getLong(jopt, "volume");
-      this.openInterest = getLong(jopt, "openInterest");
+      this.strike = OptionFromJson.getDouble(jopt, "strike");
+      this.lastPrice = OptionFromJson.getDouble(jopt, "lastPrice");
+      this.bid = OptionFromJson.getDouble(jopt, "bid");
+      this.ask = OptionFromJson.getDouble(jopt, "ask");
+      this.change = OptionFromJson.getDouble(jopt, "change");
+      this.volume = OptionFromJson.getLong(jopt, "volume");
+      this.openInterest = OptionFromJson.getLong(jopt, "openInterest");
 
-      this.impliedVolatility = getDouble(jopt, "impliedVolatility");
-      this.delta = getDouble(jopt, "delta");
-      this.gamma = getDouble(jopt, "gamma");
-      this.theta = getDouble(jopt, "theta");
-      this.vega = getDouble(jopt, "vega");
-      this.rho = getDouble(jopt, "rho");
-      this.theoretical = getDouble(jopt, "theoretical");
-      this.intrinsicValue = getDouble(jopt, "intrinsicValue");
-      this.timeValue = getDouble(jopt, "timeValue");
+      this.impliedVolatility = OptionFromJson.getDouble(jopt, "impliedVolatility");
+      this.delta = OptionFromJson.getDouble(jopt, "delta");
+      this.gamma = OptionFromJson.getDouble(jopt, "gamma");
+      this.theta = OptionFromJson.getDouble(jopt, "theta");
+      this.vega = OptionFromJson.getDouble(jopt, "vega");
+      this.rho = OptionFromJson.getDouble(jopt, "rho");
+      this.theoretical = OptionFromJson.getDouble(jopt, "theoretical");
+      this.intrinsicValue = OptionFromJson.getDouble(jopt, "intrinsicValue");
+      this.timeValue = OptionFromJson.getDouble(jopt, "timeValue");
 
       s = (String) jopt.get("updatedAt");
-      this.updatedAt = new DateTime(s, sdftime, sdfOut);
-      this.daysBeforeExpiration = getLong(jopt, "daysBeforeExpiration");
+      this.updatedAt = new DateTime(s, this.sdftime, this.sdfOut);
+      this.daysBeforeExpiration = OptionFromJson.getLong(jopt, "daysBeforeExpiration");
 
     }
   }
 
-  private static Long getLong(JSONObject jo, String key) {
-    Long ret = 0L;
-    try {
-      return ((Number) jo.get(key)).longValue();
-    } catch (Exception e) {
-    }
+  @Override
+  public String toString() {
+    String ret = this.contractName;
+    ret += String.format("  %s  %s  %s  %s%n  %s  %.2f  %.2f  %.2f  %d  %d%n", this.contractSize, this.currency, this.itm, this.lastTradeDateTime,
+        this.expirationDate, this.strike, this.bid, this.ask, this.volume, this.openInterest);
     return ret;
   }
 
   private static Double getDouble(JSONObject jo, String key) {
-    Double ret = 0.0;
+    final Double ret = 0.0;
     try {
       return ((Number) jo.get(key)).doubleValue();
-    } catch (Exception e) {
+    }
+    catch (final Exception e) {
     }
     return ret;
   }
@@ -130,12 +131,13 @@ public class OptionFromJson {
 //  "updatedAt": "2020-03-13 23:45:39",
 //  "daysBeforeExpiration": 678
 
-  @Override
-  public String toString() {
-    String ret = this.contractName;
-    ret += String.format("  %s  %s  %s  %s%n  %s  %.2f  %.2f  %.2f  %d  %d%n", this.contractSize, this.currency,
-        this.itm, this.lastTradeDateTime, this.expirationDate, this.strike, this.bid, this.ask, this.volume,
-        this.openInterest);
+  private static Long getLong(JSONObject jo, String key) {
+    final Long ret = 0L;
+    try {
+      return ((Number) jo.get(key)).longValue();
+    }
+    catch (final Exception e) {
+    }
     return ret;
   }
 

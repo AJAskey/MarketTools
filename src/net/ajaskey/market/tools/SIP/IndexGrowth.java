@@ -132,7 +132,7 @@ public class IndexGrowth extends CompanyData {
         }
       }
       try (PrintWriter pw = new PrintWriter("out/NoEarningsReported.txt")) {
-        for (CompanyData cd : notIndexList) {
+        for (final CompanyData cd : notIndexList) {
           pw.printf("%-10s %s %10s %50s %55s%n", cd.ticker, cd.eoq, cd.spIndex, cd.sector, cd.industry);
         }
       }
@@ -164,13 +164,12 @@ public class IndexGrowth extends CompanyData {
       final String sData = td.process(s, IndexGrowth.yesterday);
 
       String dir = "out/Fundies";
-      String fld[] = criteria.split(",");
-      if ((fld.length > 3) && (fld[3].length() > 0)) {
+      final String fld[] = criteria.split(",");
+      if (fld.length > 3 && fld[3].length() > 0) {
         dir += "/" + fld[3];
       }
       Utils.makeDir(dir);
-      final String tdfn = String.format("%s/%s_TotalData_%s.txt", dir, criteria.replace(",", "_"),
-          IndexGrowth.yesterday.format("yyyy-MM-dd"));
+      final String tdfn = String.format("%s/%s_TotalData_%s.txt", dir, criteria.replace(",", "_"), IndexGrowth.yesterday.format("yyyy-MM-dd"));
       try (PrintWriter pw = new PrintWriter(tdfn)) {
         pw.printf("%s%n%n", sData);
         for (final String sDate : latestQDate) {
@@ -219,7 +218,8 @@ public class IndexGrowth extends CompanyData {
         System.out.printf("%s\t--\t%s%n", industry, cd.industry);
         if (cd.industry.equalsIgnoreCase("HOMEBUILDING")) {
           return true;
-        } else if (cd.industry.equalsIgnoreCase("REAL ESTATE SERVICES")) {
+        }
+        else if (cd.industry.equalsIgnoreCase("REAL ESTATE SERVICES")) {
           return true;
           // } else if (cd.industry.contains("Reits")) {
           // return true;
@@ -250,13 +250,17 @@ public class IndexGrowth extends CompanyData {
         System.out.printf("%s\t--\t%s%n", industry, cd.industry);
         if (cd.industry.toUpperCase().equalsIgnoreCase("AIRLINES")) {
           return true;
-        } else if (cd.industry.toUpperCase().contains("COURIER, POSTAL")) {
+        }
+        else if (cd.industry.toUpperCase().contains("COURIER, POSTAL")) {
           return true;
-        } else if (cd.industry.toUpperCase().contains("FREIGHT & LOGISTICS")) {
+        }
+        else if (cd.industry.toUpperCase().contains("FREIGHT & LOGISTICS")) {
           return true;
-        } else if (cd.industry.toUpperCase().contains("PASSENGER")) {
+        }
+        else if (cd.industry.toUpperCase().contains("PASSENGER")) {
           return true;
-        } else if (cd.industry.toUpperCase().contains("HIGHWAYS & RAIL")) {
+        }
+        else if (cd.industry.toUpperCase().contains("HIGHWAYS & RAIL")) {
           return true;
         }
         return false;
@@ -274,22 +278,27 @@ public class IndexGrowth extends CompanyData {
         if (!cd.spIndex.equalsIgnoreCase("SP500")) {
           if (sector.equalsIgnoreCase("ALL")) {
             return true;
-          } else if (cd.sector.equalsIgnoreCase(sector)) {
+          }
+          else if (cd.sector.equalsIgnoreCase(sector)) {
             return true;
           }
         }
-      } else if (index.equalsIgnoreCase("ALL")) {
+      }
+      else if (index.equalsIgnoreCase("ALL")) {
         if (sector.equalsIgnoreCase("ALL")) {
           return true;
-        } else if (cd.sector.equalsIgnoreCase(sector)) {
+        }
+        else if (cd.sector.equalsIgnoreCase(sector)) {
           if (industry.equalsIgnoreCase("ALL")) {
             return true;
           }
         }
-      } else if (cd.spIndex.equalsIgnoreCase(index)) {
+      }
+      else if (cd.spIndex.equalsIgnoreCase(index)) {
         if (sector.equalsIgnoreCase("ALL")) {
           return true;
-        } else if (cd.sector.equalsIgnoreCase(sector)) {
+        }
+        else if (cd.sector.equalsIgnoreCase(sector)) {
           return true;
         }
       }
@@ -307,7 +316,8 @@ public class IndexGrowth extends CompanyData {
     double ret = 0.0;
     if (val > 0.0) {
       ret = Math.min(val, lim);
-    } else {
+    }
+    else {
       ret = Math.max(val, -lim);
     }
     return ret;
@@ -373,7 +383,8 @@ public class IndexGrowth extends CompanyData {
         final String ind = cd.industry.replace(",", "");
         pw.printf("%s,%s,%s,%s,%s%n", cd.ticker, cd.sector, ind, cd.spIndex, cd.eoq);
       }
-    } catch (final FileNotFoundException e) {
+    }
+    catch (final FileNotFoundException e) {
       e.printStackTrace();
     }
 
@@ -477,7 +488,7 @@ public class IndexGrowth extends CompanyData {
   }
 
   /**
-   * 
+   *
    * @param spxOnly
    * @throws FileNotFoundException
    */

@@ -45,27 +45,6 @@ import net.ajaskey.common.Utils;
  */
 public class InputData {
 
-  /**
-   * net.ajaskey.market.optuma.main
-   *
-   * @param args
-   */
-  public static void main(final String[] args) {
-
-    final List<String> dNames = new ArrayList<>();
-    final List<String> ext = new ArrayList<>();
-    dNames.add("C:\\temp\\redline-master");
-    ext.add(".txt");
-    ext.add(".xml");
-    ext.add(".sh");
-    final InputData id = new InputData(dNames, ext);
-
-    for (final File f : id.files) {
-      System.out.println(f.getAbsolutePath() + "   " + Utils.getFileBaseName(f));
-    }
-
-  }
-
   private final List<File> files;
 
   /**
@@ -74,7 +53,7 @@ public class InputData {
    */
   public InputData(final List<String> paths, final List<String> exts) {
 
-    String[] arr = exts.toArray(new String[exts.size()]);
+    final String[] arr = exts.toArray(new String[exts.size()]);
 
     this.files = new ArrayList<>();
 
@@ -84,17 +63,6 @@ public class InputData {
         this.files.add(f);
       }
     }
-  }
-
-  private File getDataFile(final String tkr) {
-
-    for (final File f : this.files) {
-      final String name = Utils.getFileBaseName(f);
-      if (name.trim().equalsIgnoreCase(tkr.trim())) {
-        return f;
-      }
-    }
-    return null;
   }
 
   public TickerData read(final String tkr) throws FileNotFoundException, IOException {
@@ -120,6 +88,38 @@ public class InputData {
     }
 
     return td;
+
+  }
+
+  private File getDataFile(final String tkr) {
+
+    for (final File f : this.files) {
+      final String name = Utils.getFileBaseName(f);
+      if (name.trim().equalsIgnoreCase(tkr.trim())) {
+        return f;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * net.ajaskey.market.optuma.main
+   *
+   * @param args
+   */
+  public static void main(final String[] args) {
+
+    final List<String> dNames = new ArrayList<>();
+    final List<String> ext = new ArrayList<>();
+    dNames.add("C:\\temp\\redline-master");
+    ext.add(".txt");
+    ext.add(".xml");
+    ext.add(".sh");
+    final InputData id = new InputData(dNames, ext);
+
+    for (final File f : id.files) {
+      System.out.println(f.getAbsolutePath() + "   " + Utils.getFileBaseName(f));
+    }
 
   }
 

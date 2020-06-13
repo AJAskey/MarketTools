@@ -29,8 +29,7 @@ public class OptionFindCombos {
   public double          profit;
   public CboeCallPutData data;
 
-  public OptionFindCombos(double sk, double ul, double ulSell, double prem, double c, double prof, CboeCallPutData d,
-      DateTime bdate) {
+  public OptionFindCombos(double sk, double ul, double ulSell, double prem, double c, double prof, CboeCallPutData d, DateTime bdate) {
 
     this.strike = sk;
     this.bsBuyPrice = d.getPrice();
@@ -43,7 +42,7 @@ public class OptionFindCombos {
     this.data = d;
     this.buyDate = new DateTime(bdate);
     this.expiry = new DateTime(d.optionData.getExpiry());
-    double p = d.getPrice();
+    final double p = d.getPrice();
     this.optSellPrice = p; // * (1.0 + prem);
   }
 
@@ -112,7 +111,7 @@ public class OptionFindCombos {
   }
 
   /**
-   * 
+   *
    * @param code
    * @param type
    * @param timeFrame
@@ -129,10 +128,12 @@ public class OptionFindCombos {
     if (timeFrame.equalsIgnoreCase("S")) {
       sdOffset = 10;
       feOffset = 10;
-    } else if (timeFrame.equalsIgnoreCase("M")) {
+    }
+    else if (timeFrame.equalsIgnoreCase("M")) {
       sdOffset = 45;
       feOffset = 20;
-    } else {
+    }
+    else {
       sdOffset = 90;
       feOffset = 45;
     }
@@ -183,8 +184,8 @@ public class OptionFindCombos {
     for (final double d : OptionFindCombos.chg) {
       sCombo += String.format("_%d", (int) Math.round(d * 100.0));
     }
-    final String outfile = String.format("out/options/%s-%d-%s%s-options-analysis.csv", code.toUpperCase(),
-        (int) OptionFindCombos.ulPrice, type.toUpperCase(), sCombo);
+    final String outfile = String.format("out/options/%s-%d-%s%s-options-analysis.csv", code.toUpperCase(), (int) OptionFindCombos.ulPrice,
+        type.toUpperCase(), sCombo);
 
     if (type.toUpperCase().contains("P")) {
       typeInt = OptionsProcessor.APUT;
@@ -207,13 +208,14 @@ public class OptionFindCombos {
           CboeCallPutData option = null;
           if (typeInt == OptionsProcessor.ACALL) {
             option = cod.call;
-          } else {
+          }
+          else {
             option = cod.put;
           }
 
-          CboeCallPutData opt = new CboeCallPutData(option);
+          final CboeCallPutData opt = new CboeCallPutData(option);
 
-          double p = opt.getPrice();
+          final double p = opt.getPrice();
 
           final double price = option.getPrice();
 
@@ -240,12 +242,10 @@ public class OptionFindCombos {
 
               final List<OptionFindCombos> cList = OptionFindCombos.findChgList(d);
 
-              final OptionFindCombos ofc = new OptionFindCombos(cod.strike, OptionFindCombos.ulPrice, ul, opt.premium,
-                  d, profit, opt, buyDate);
+              final OptionFindCombos ofc = new OptionFindCombos(cod.strike, OptionFindCombos.ulPrice, ul, opt.premium, d, profit, opt, buyDate);
 
               cList.add(ofc);
-              System.out.printf("  2 : %.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f%n", ofc.optBuyPrice, ofc.optSellPrice,
-                  sellPrice, ofc.premium, p, sp);
+              System.out.printf("  2 : %.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f%n", ofc.optBuyPrice, ofc.optSellPrice, sellPrice, ofc.premium, p, sp);
             }
           }
         }
@@ -261,8 +261,8 @@ public class OptionFindCombos {
 
       final String sRepeat = ",,SellPriceUL,SellPriceOpt,Profit";
 
-      pw.printf("Expiry,Strike,,BuyPriceUL,BuyPriceOpt,Premium%s%s%s%s,,AvgProfit,,ToStrike,%s,%s,%s%n", sRepeat,
-          sRepeat, sRepeat, sRepeat, code.toUpperCase(), buyDate, sellDate);
+      pw.printf("Expiry,Strike,,BuyPriceUL,BuyPriceOpt,Premium%s%s%s%s,,AvgProfit,,ToStrike,%s,%s,%s%n", sRepeat, sRepeat, sRepeat, sRepeat,
+          code.toUpperCase(), buyDate, sellDate);
 
       for (final OptionFindCombos ofc2 : OptionFindCombos.c2List) {
 
@@ -287,11 +287,10 @@ public class OptionFindCombos {
                 final double toStrike = Math.abs((ofc1.strike - ofc1.ulBuyPrice) / ofc1.strike);
 
                 final String s = String.format(
-                    "%s,%.2f,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f%%,,%.4f",
-                    ofc1.expiry, ofc1.strike, ofc1.ulBuyPrice, ofc1.optBuyPrice, ofc1.premium * 100.0, ofc1.ulSellPrice,
-                    ofc1.optSellPrice, ofc1.profit, ofc2.ulSellPrice, ofc2.optSellPrice, ofc2.profit, ofc3.ulSellPrice,
-                    ofc3.optSellPrice, ofc3.profit, ofc4.ulSellPrice, ofc4.optSellPrice, ofc4.profit, avgProfit,
-                    toStrike);
+                    "%s,%.2f,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f,%.2f,%.2f%%,,%.2f%%,,%.4f", ofc1.expiry,
+                    ofc1.strike, ofc1.ulBuyPrice, ofc1.optBuyPrice, ofc1.premium * 100.0, ofc1.ulSellPrice, ofc1.optSellPrice, ofc1.profit,
+                    ofc2.ulSellPrice, ofc2.optSellPrice, ofc2.profit, ofc3.ulSellPrice, ofc3.optSellPrice, ofc3.profit, ofc4.ulSellPrice,
+                    ofc4.optSellPrice, ofc4.profit, avgProfit, toStrike);
                 pw.println(s);
               }
             }

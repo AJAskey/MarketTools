@@ -76,11 +76,13 @@ public class CommonQuandlData {
         final String ft = field.getType().toString();
         if (ft.equals("class java.util.Calendar")) {
           result.append(this.toString());
-        } else {
+        }
+        else {
           result.append(field.get(this));
         }
 
-      } catch (final IllegalAccessException ex) {
+      }
+      catch (final IllegalAccessException ex) {
         System.out.println(ex);
       }
       result.append(newLine);

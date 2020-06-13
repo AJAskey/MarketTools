@@ -110,8 +110,7 @@ public class OptionsProcessor {
    * @param bDate
    * @param iv
    */
-  public OptionsProcessor(int type, String id, double strike, double ulPrice, DateTime expiry, DateTime bDate,
-      double iv) {
+  public OptionsProcessor(int type, String id, double strike, double ulPrice, DateTime expiry, DateTime bDate, double iv) {
 
     OptionsProcessor.build(this, type, id, strike, ulPrice, expiry, bDate, iv);
 
@@ -134,7 +133,8 @@ public class OptionsProcessor {
     now.add(DateTime.DATE, 5);
     if (expiry.isGreaterThanOrEqual(now)) {
       OptionsProcessor.build(this, type, id, strike, ulPrice, expiry, new DateTime(), iv);
-    } else {
+    }
+    else {
       this.valid = false;
     }
   }
@@ -213,7 +213,8 @@ public class OptionsProcessor {
       if (Math.abs(diff) < OptionsProcessor.precision) {
         System.out.println("Iterations : " + i);
         return impVol;
-      } else if (diffdiff < OptionsProcessor.precision) {
+      }
+      else if (diffdiff < OptionsProcessor.precision) {
         System.out.println("Iterations : " + i);
         System.out.println("DiffDiff exit.");
         return impVol;
@@ -221,7 +222,8 @@ public class OptionsProcessor {
 
       if (diff > 0.0) {
         impVol *= 1.11;
-      } else {
+      }
+      else {
         impVol /= 1.07;
       }
 
@@ -281,7 +283,8 @@ public class OptionsProcessor {
 
         this.price = this.ulPrice * ccd1 - this.strike * Math.exp(-this.rate * this.years) * ccd2;
 
-      } else if (this.dataType == OptionsProcessor.APUT) {
+      }
+      else if (this.dataType == OptionsProcessor.APUT) {
 
         this.price = this.strike * Math.exp(-this.rate * this.years) * pcd2 - this.ulPrice * pcd1;
 
@@ -299,10 +302,10 @@ public class OptionsProcessor {
         OptionsProcessor.pwDbg.printf(" price      : %f%n", pr);
       }
 
-    } else {
+    }
+    else {
       if (OptionsProcessor.isPwDbgOpen) {
-        OptionsProcessor.pwDbg.printf("getPrice() :: Sell date : %s is later than expiry :%s.%n", this.sellDate,
-            this.expiry);
+        OptionsProcessor.pwDbg.printf("getPrice() :: Sell date : %s is later than expiry :%s.%n", this.sellDate, this.expiry);
       }
     }
 
@@ -386,7 +389,8 @@ public class OptionsProcessor {
           OptionsProcessor.pwDbg.printf(" theta      : %f%n", this.theta);
         }
 
-      } else if (this.dataType == OptionsProcessor.APUT) {
+      }
+      else if (this.dataType == OptionsProcessor.APUT) {
 
         final double pcd1 = OptionsProcessor.cumulativeDistribution(-d1);
         final double pcd2 = OptionsProcessor.cumulativeDistribution(-d2);
@@ -418,7 +422,8 @@ public class OptionsProcessor {
         OptionsProcessor.pwDbg.printf("setGreeks() :: Updated instance%n%s%n", this);
       }
 
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
     }
   }
@@ -456,7 +461,8 @@ public class OptionsProcessor {
     if (this.valid) {
       if (this.dataType == OptionsProcessor.ACALL) {
         ret = String.format("%s\t:\t%s%n", "CALL", this.id);
-      } else {
+      }
+      else {
         ret = String.format("%s\t:\t%s%n", "PUT", this.id);
       }
 
@@ -472,7 +478,8 @@ public class OptionsProcessor {
       ret += String.format("  Rho       : %.4f%n", this.rho);
       ret += String.format("  Rate      : %.4f%n", this.rate);
       ret += String.format("  Sell Date : %s", this.sellDate);
-    } else {
+    }
+    else {
       ret = "NOT VALID";
     }
     return ret;
@@ -493,7 +500,8 @@ public class OptionsProcessor {
 
       if (p2 != 0.0) {
         ret = p1 / p2;
-      } else {
+      }
+      else {
         System.out.println("Error : CalcD1 p2 is zero!");
       }
     }
@@ -584,7 +592,7 @@ public class OptionsProcessor {
     System.out.println(price);
     System.out.println(op.iv);
 
-    double iv = op.findIv(350.0, 1.0);
+    final double iv = op.findIv(350.0, 1.0);
     System.out.println(iv);
 
     // printDbg("\nmain() :: finding IV");
@@ -631,8 +639,8 @@ public class OptionsProcessor {
    * @param iv
    * @return
    */
-  private static OptionsProcessor build(OptionsProcessor op, int type, String id, double strike, double ulPrice,
-      DateTime expiry, DateTime bDate, double iv) {
+  private static OptionsProcessor build(OptionsProcessor op, int type, String id, double strike, double ulPrice, DateTime expiry, DateTime bDate,
+      double iv) {
 
     try {
 
@@ -662,10 +670,12 @@ public class OptionsProcessor {
         if (OptionsProcessor.isPwDbgOpen) {
           OptionsProcessor.pwDbg.printf("%nNew instance created%n%s%n", op);
         }
-      } else {
+      }
+      else {
         op.valid = false;
       }
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       op.valid = false;
     }
 

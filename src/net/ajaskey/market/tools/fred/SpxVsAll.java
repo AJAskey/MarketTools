@@ -85,7 +85,7 @@ public class SpxVsAll {
    */
   public static void main(final String[] args) throws FileNotFoundException, IOException {
 
-    TickerPriceData spxData = new TickerPriceData("WI", "SPX");
+    final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
 
     final double lastSpxPrice = spxData.getLatest();
     final DateTime lastSpxDate = spxData.getLatestDate();
@@ -148,9 +148,10 @@ public class SpxVsAll {
           String outfile = "";
           if (fname.contains("Quandl")) {
             outfile = "d:\\Data2\\MA\\CSV Data\\Quandl\\SPX Growth vs SP500 Earnings Growth.csv";
-          } else {
-            outfile = fname.replace("\\[", "\\[SPX Growth vs ").replace("- ", "- SPX Growth vs ")
-                .replace("]", " Growth]").replace(".csv", " Growth.csv");
+          }
+          else {
+            outfile = fname.replace("\\[", "\\[SPX Growth vs ").replace("- ", "- SPX Growth vs ").replace("]", " Growth]").replace(".csv",
+                " Growth.csv");
           }
           System.out.println(outfile);
 
@@ -182,12 +183,12 @@ public class SpxVsAll {
 
     for (int i = 1; i < ofd.size(); i++) {
 
-      double price1 = spxData.getClose(ofd.get(i - 1).date);
-      double price2 = spxData.getClose(ofd.get(i).date);
+      double price1 = SpxVsAll.spxData.getClose(ofd.get(i - 1).date);
+      double price2 = SpxVsAll.spxData.getClose(ofd.get(i).date);
 
       // System.out.println(ofd.get(i).date);
 
-      if ((Math.abs(price1) > 0.0) && (Math.abs(price2) > 0.0)) {
+      if (Math.abs(price1) > 0.0 && Math.abs(price2) > 0.0) {
 
         final double pChg = (price2 - price1) / price1;
 
@@ -195,9 +196,9 @@ public class SpxVsAll {
         price2 = ofd.get(i).val;
 
         double vChg = 0.0;
-        if ((Math.abs(price1) > 0.0) && (Math.abs(price2) > 0.0)) {
+        if (Math.abs(price1) > 0.0 && Math.abs(price2) > 0.0) {
           vChg = (price2 - price1) / price1;
-          totalChg += (pChg - vChg);
+          totalChg += pChg - vChg;
         }
 
         // System.out.printf("%.3f\t %.3f\t%.3f\t%.3f\t%.3f%n", pChg, vChg, totalChg,

@@ -90,13 +90,16 @@ public class FindBestReturns {
         for (final double minUlChg : FindBestReturns.changes) {
           int holdDays = 15;
           if (minUlChg < 5.01) {
-            holdDays = holdDays5;
-          } else if (minUlChg < 10.01) {
-            holdDays = holdDays10;
-          } else if (minUlChg < 15.00001) {
-            holdDays = holdDays15;
-          } else if (minUlChg > 15.0) {
-            holdDays = holdDays15;
+            holdDays = FindBestReturns.holdDays5;
+          }
+          else if (minUlChg < 10.01) {
+            holdDays = FindBestReturns.holdDays10;
+          }
+          else if (minUlChg < 15.00001) {
+            holdDays = FindBestReturns.holdDays15;
+          }
+          else if (minUlChg > 15.0) {
+            holdDays = FindBestReturns.holdDays15;
           }
           for (final String sExpiry : FindBestReturns.expiryDates) {
 
@@ -122,7 +125,8 @@ public class FindBestReturns {
             final double dilCPrice = CallPutList.getcPrice();
             if (otype == OptionsProcessor.ACALL) {
               ulMovePrice = (1.0 + minUlChg / 100.0) * dilCPrice;
-            } else {
+            }
+            else {
               ulMovePrice = (1.0 - minUlChg / 100.0) * dilCPrice;
             }
 
@@ -130,20 +134,20 @@ public class FindBestReturns {
 
             final String ofname = String.format("out/options/%s_%s_%d_%s.csv", code, sType, (int) minUlChg, theExpiry);
             try (PrintWriter pw = new PrintWriter(ofname)) {
-              pw.printf("Expiry,Strike,IV,Mark,Buy,Sell,Gain,%s,%.2f,%.2f,%s,%s%n", code, dilCPrice, ulMovePrice,
-                  buyDate, sellDate);
+              pw.printf("Expiry,Strike,IV,Mark,Buy,Sell,Gain,%s,%.2f,%.2f,%s,%s%n", code, dilCPrice, ulMovePrice, buyDate, sellDate);
 
               for (final CboeOptionData cod : dil) {
 
                 OptionsProcessor op = null;
                 if (otype == OptionsProcessor.ACALL) {
                   op = new OptionsProcessor(cod.call.optionData);
-                } else {
+                }
+                else {
                   op = new OptionsProcessor(cod.put.optionData);
                 }
                 op.setUlPrice(ulMovePrice);
                 op.setSellDate(sellDate);
-                double iv = cod.put.iv * 1.50;
+                final double iv = cod.put.iv * 1.50;
                 op.setIv(iv);
                 final double sellPrice = op.getPrice();
 
@@ -165,8 +169,8 @@ public class FindBestReturns {
    * @param sellPrice
    * @param pw
    */
-  private static void processIt(DateTime theExpiry, CboeOptionData cod, int otype, DateTime buyDate, double sellPrice,
-      DateTime sellDate, PrintWriter pw) {
+  private static void processIt(DateTime theExpiry, CboeOptionData cod, int otype, DateTime buyDate, double sellPrice, DateTime sellDate,
+      PrintWriter pw) {
 
     if (cod.expiry.isEqual(theExpiry)) {
 
@@ -190,32 +194,34 @@ public class FindBestReturns {
         opBuy.setSellDate(buyDate);
         if (FindBestReturns.useMarkBuy) {
           buyPrice = cod.call.mark;
-        } else {
+        }
+        else {
           buyPrice = opBuy.getPrice();
         }
-        if (cod.call.oi >= FindBestReturns.minOi && buyPrice > FindBestReturns.minOptionPrice
-            && buyPrice < FindBestReturns.maxOptionPrice) {
+        if (cod.call.oi >= FindBestReturns.minOi && buyPrice > FindBestReturns.minOptionPrice && buyPrice < FindBestReturns.maxOptionPrice) {
           pc += String.format("%nCall%n%s", cod.call);
           buyPrice = cod.call.optionData.getPrice();
           iv = cod.call.optionData.getIv() * 100.0;
           mark = cod.call.mark;
         }
-      } else if (otype == OptionsProcessor.APUT) {
+      }
+      else if (otype == OptionsProcessor.APUT) {
         opBuy = new OptionsProcessor(cod.put.optionData);
         opBuy.setSellDate(buyDate);
         if (FindBestReturns.useMarkBuy) {
           buyPrice = cod.put.mark;
-        } else {
+        }
+        else {
           buyPrice = opBuy.getPrice();
         }
-        if (cod.put.oi >= FindBestReturns.minOi && buyPrice > FindBestReturns.minOptionPrice
-            && buyPrice < FindBestReturns.maxOptionPrice) {
+        if (cod.put.oi >= FindBestReturns.minOi && buyPrice > FindBestReturns.minOptionPrice && buyPrice < FindBestReturns.maxOptionPrice) {
           pc += String.format("%nPut%n%s%n", cod.put);
           buyPrice = cod.put.optionData.getPrice();
           iv = cod.put.optionData.getIv() * 100.0;
           mark = cod.put.mark;
         }
-      } else {
+      }
+      else {
         System.out.printf("ERROR! Bad Option Type : %d%n", otype);
       }
       if (pc.length() > 0) {

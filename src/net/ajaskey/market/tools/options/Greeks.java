@@ -19,8 +19,7 @@ public class Greeks {
      * @param expiry
      * @param iv
      */
-    final OptionsProcessor op = new OptionsProcessor(OptionsProcessor.ACALL, "SPY 300", 300.0, 314.0,
-        new DateTime(2020, DateTime.APRIL, 17), 0.1747);
+    final OptionsProcessor op = new OptionsProcessor(OptionsProcessor.ACALL, "SPY 300", 300.0, 314.0, new DateTime(2020, DateTime.APRIL, 17), 0.1747);
 
     System.out.println(op);
     System.out.printf("Delta %.3f\tTheta %.3f%n", 0.70, 0.04);

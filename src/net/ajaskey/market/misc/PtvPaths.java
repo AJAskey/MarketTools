@@ -34,8 +34,8 @@ package net.ajaskey.market.misc;
  */
 public class PtvPaths {
 
-  public static final String drive = "d:";
-  public static final String data = "\\data2";
+  public static final String drive     = "d:";
+  public static final String data      = "\\data2";
   public static final String stockData = "C:\\Users\\ajask_000\\Documents\\Market Analyst 8\\CSV Data\\StockData\\";
 
 }

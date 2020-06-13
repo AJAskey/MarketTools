@@ -40,6 +40,17 @@ public class SipUtils {
     return ret;
   }
 
+  public static boolean parseBoolean(String fld) {
+    boolean ret = false;
+    try {
+      ret = Boolean.parseBoolean(fld.trim());
+    }
+    catch (final Exception e) {
+      ret = false;
+    }
+    return ret;
+  }
+
   /**
    * Returns a double value represent by fld.
    *
@@ -81,6 +92,10 @@ public class SipUtils {
     return ret;
   }
 
+  public static int parseInt(String fld) {
+    return (int) SipUtils.parseLong(fld);
+  }
+
   /**
    * Returns a long value represent by fld.
    *
@@ -105,21 +120,6 @@ public class SipUtils {
       ret = 0L;
     }
 
-    return ret;
-  }
-
-  public static int parseInt(String fld) {
-    return (int) parseLong(fld);
-  }
-
-  public static boolean parseBoolean(String fld) {
-    boolean ret = false;
-    try {
-      ret = Boolean.parseBoolean(fld.trim());
-    }
-    catch (Exception e) {
-      ret = false;
-    }
     return ret;
   }
 }

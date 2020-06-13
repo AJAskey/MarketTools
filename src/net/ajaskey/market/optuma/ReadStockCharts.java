@@ -46,7 +46,7 @@ import net.ajaskey.common.Utils;
 public class ReadStockCharts {
 
   /**
-   * 
+   *
    * net.ajaskey.market.ta.input.getData
    *
    * @param fname
@@ -61,7 +61,8 @@ public class ReadStockCharts {
     for (final String s : data) {
       if (s.contains("<pre>")) {
         process = true;
-      } else if (s.contains("</pre>")) {
+      }
+      else if (s.contains("</pre>")) {
         process = false;
         break;
       }
@@ -69,9 +70,11 @@ public class ReadStockCharts {
       if (process) {
         if (s.contains("Day")) {
           continue;
-        } else if (s.contains("===")) {
+        }
+        else if (s.contains("===")) {
           continue;
-        } else if (s.contains("<pre>")) {
+        }
+        else if (s.contains("<pre>")) {
           continue;
         }
         subdata.add(s);
@@ -85,7 +88,7 @@ public class ReadStockCharts {
   }
 
   /**
-   * 
+   *
    * @param data
    * @return
    */
@@ -104,10 +107,10 @@ public class ReadStockCharts {
    */
   public static void main(String[] args) throws FileNotFoundException {
 
-    String[] ext = { "html" };
+    final String[] ext = { "html" };
 
-    List<File> files = Utils.getDirTree("data/scdata", ext);
-    for (File f : files) {
+    final List<File> files = Utils.getDirTree("data/scdata", ext);
+    for (final File f : files) {
       System.out.println(f.getAbsolutePath());
       String fname = Utils.getFileBaseName(f);
       fname = fname.replace("-SC", "");

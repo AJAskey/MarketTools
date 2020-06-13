@@ -61,7 +61,7 @@ public class BalSheetFileData {
   private final double[] bvpsYr;
 
   /**
-   * 
+   *
    * @param fldQtr
    * @param fldYr
    */
@@ -184,13 +184,6 @@ public class BalSheetFileData {
     ptrYr += 7;
     this.bvpsQtr = SipUtils.parseDoubles(fldQtr, ptrQtr, 8);
     this.bvpsYr = SipUtils.parseDoubles(fldYr, ptrYr, 7);
-  }
-
-  private void debug(String code, String ticker, String desc, double[] yr, double[] qtr) {
-    if (code.equals(ticker)) {
-      System.out.println(SipOutput.buildArray(desc, yr, yr.length - 1, 3));
-      System.out.println(SipOutput.buildArray(desc, qtr, qtr.length - 1, 3));
-    }
   }
 
   public double[] getAcctPayableQtr() {
@@ -441,6 +434,13 @@ public class BalSheetFileData {
     return ret;
   }
 
+  private void debug(String code, String ticker, String desc, double[] yr, double[] qtr) {
+    if (code.equals(ticker)) {
+      System.out.println(SipOutput.buildArray(desc, yr, yr.length - 1, 3));
+      System.out.println(SipOutput.buildArray(desc, qtr, qtr.length - 1, 3));
+    }
+  }
+
   private static List<BalSheetFileData> bfdList = new ArrayList<>();
 
   /**
@@ -455,6 +455,10 @@ public class BalSheetFileData {
       }
     }
     return null;
+  }
+
+  public static int getListCount() {
+    return BalSheetFileData.bfdList.size();
   }
 
   /**
@@ -497,9 +501,5 @@ public class BalSheetFileData {
 
       }
     }
-  }
-
-  public static int getListCount() {
-    return bfdList.size();
   }
 }

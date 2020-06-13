@@ -47,9 +47,9 @@ public class Debug {
 
   private static final Logger LOGGER = Logger.getLogger("FredDataDownloader");
 
-  public static final Level INFO = Level.INFO;
+  public static final Level INFO    = Level.INFO;
   public static final Level WARNING = Level.WARNING;
-  public static final Level SEVERE = Level.SEVERE;
+  public static final Level SEVERE  = Level.SEVERE;
 
   private static boolean isInit = false;
 
@@ -82,7 +82,8 @@ public class Debug {
 
       Debug.isInit = true;
 
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
     }
   }

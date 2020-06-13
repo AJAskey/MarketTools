@@ -130,6 +130,50 @@ public class ProcessInternals {
   static TickerPriceData mccSumspx = null;
 
   /**
+   * Inits the.
+   */
+  public static void init() {
+    // Adv - Decl
+    ProcessInternals.addn = new TickerPriceData("WI", "ADDN", "NYSE Advances-Declines");
+    ProcessInternals.addq = new TickerPriceData("WI", "ADDQ", "NASD Advances-Declines");
+    ProcessInternals.addspx = new TickerPriceData("WI", "ADDSPX", "SPX Advances-Declines");
+
+    // a/d ratio
+    ProcessInternals.adrn = new TickerPriceData("WI", "ADRN", "NYSE Adv Decl Ratio");
+    ProcessInternals.adrq = new TickerPriceData("WI", "ADRS", "NASD Adv Decl Ratio");
+    ProcessInternals.adrspx = new TickerPriceData("WI", "ADRSPX", "SPX AdvDecl Ratio");
+
+    // advancing
+    ProcessInternals.advn = new TickerPriceData("WI", "ADVN", "NYSE Advancing");
+    ProcessInternals.advq = new TickerPriceData("WI", "ADVQ", "NASD Advancing");
+    ProcessInternals.advspx = new TickerPriceData("WI", "ADVSPX", "SPX Advancing");
+
+    // adv volume
+    ProcessInternals.avvn = new TickerPriceData("WI", "AVVN", "NYSE Adv Volume");
+    ProcessInternals.avvq = new TickerPriceData("WI", "AVVQ", "NASD Adv Volume");
+    ProcessInternals.avvspx = new TickerPriceData("WI", "AVVSPX");
+
+    // declining
+    ProcessInternals.decn = new TickerPriceData("WI", "DECN", "NYSE Declining");
+    ProcessInternals.decq = new TickerPriceData("WI", "DECQ", "NASD Declining");
+    ProcessInternals.decspx = new TickerPriceData("WI", "DECSPX", "SPX Declining");
+
+    // dec volume
+    ProcessInternals.dvcn = new TickerPriceData("WI", "DVCN", "NYSE Decl Volume");
+    ProcessInternals.dvcq = new TickerPriceData("WI", "DVCQ", "NASD Decl Volume");
+    ProcessInternals.dvcspx = new TickerPriceData("WI", "DVCSPX", "SPX Decl Volume");
+
+    ProcessInternals.spyData = new TickerPriceData("AMEX", "SPY", "SPY ETF Data");
+
+    ProcessInternals.vix = new TickerPriceData("CBOE", "VIX");
+    ProcessInternals.vxo = new TickerPriceData("CBOE", "VXO");
+
+    ProcessInternals.avvspxBm = new TickerPriceData("BM", "AVVSPX", "SPX Advancing Volume");
+    ProcessInternals.dvcspxBm = new TickerPriceData("BM", "DVCSPX", "SPX Declining Volume");
+
+  }
+
+  /**
    * The main method.
    *
    * @param args the arguments
@@ -137,130 +181,60 @@ public class ProcessInternals {
    */
   public static void main(String[] args) throws FileNotFoundException {
 
-    init();
+    ProcessInternals.init();
 
-    advrn = setRatio("ADVRN", avvn, dvcn, "NYSE Adv Decl Volume Ratio");
-    advrq = setRatio("ADVRQ", avvq, dvcq, "NASD Adv Decl Volume Ratio");
-    advrspx = setRatio("ADVRSPX", avvspx, dvcspx, "SPX Adv Decl Volume Ratio");
+    ProcessInternals.advrn = ProcessInternals.setRatio("ADVRN", ProcessInternals.avvn, ProcessInternals.dvcn, "NYSE Adv Decl Volume Ratio");
+    ProcessInternals.advrq = ProcessInternals.setRatio("ADVRQ", ProcessInternals.avvq, ProcessInternals.dvcq, "NASD Adv Decl Volume Ratio");
+    ProcessInternals.advrspx = ProcessInternals.setRatio("ADVRSPX", ProcessInternals.avvspx, ProcessInternals.dvcspx, "SPX Adv Decl Volume Ratio");
 
-    trinn = setRatio("TRIN-NYSE", adrn, advrn, "NYSE TRIN");
-    trinq = setRatio("TRIN-NASD", adrq, advrq, "NASD TRIN");
-    trinspx = setRatio("TRIN-SPX", adrspx, advrspx, "SPX TRIN");
+    ProcessInternals.trinn = ProcessInternals.setRatio("TRIN-NYSE", ProcessInternals.adrn, ProcessInternals.advrn, "NYSE TRIN");
+    ProcessInternals.trinq = ProcessInternals.setRatio("TRIN-NASD", ProcessInternals.adrq, ProcessInternals.advrq, "NASD TRIN");
+    ProcessInternals.trinspx = ProcessInternals.setRatio("TRIN-SPX", ProcessInternals.adrspx, ProcessInternals.advrspx, "SPX TRIN");
 
-    mccOscn = setMcClellanOscillator(addn, advn, avvn);
-    mccSumn = setMcClellanSummation(mccOscn);
+    ProcessInternals.mccOscn = ProcessInternals.setMcClellanOscillator(ProcessInternals.addn, ProcessInternals.advn, ProcessInternals.avvn);
+    ProcessInternals.mccSumn = ProcessInternals.setMcClellanSummation(ProcessInternals.mccOscn);
 
-    mccOscq = setMcClellanOscillator(addq, advq, avvq);
-    mccSumq = setMcClellanSummation(mccOscq);
+    ProcessInternals.mccOscq = ProcessInternals.setMcClellanOscillator(ProcessInternals.addq, ProcessInternals.advq, ProcessInternals.avvq);
+    ProcessInternals.mccSumq = ProcessInternals.setMcClellanSummation(ProcessInternals.mccOscq);
 
-    mccOscspx = setMcClellanOscillator(addspx, advspx, avvspx);
-    mccSumspx = setMcClellanSummation(mccOscspx);
+    ProcessInternals.mccOscspx = ProcessInternals.setMcClellanOscillator(ProcessInternals.addspx, ProcessInternals.advspx, ProcessInternals.avvspx);
+    ProcessInternals.mccSumspx = ProcessInternals.setMcClellanSummation(ProcessInternals.mccOscspx);
 
-    write(adrn);
-    write(advrn);
-    write(advrq);
-    write(advrspx);
-    write(trinn);
-    write(trinq);
-    write(trinspx);
+    ProcessInternals.write(ProcessInternals.adrn);
+    ProcessInternals.write(ProcessInternals.advrn);
+    ProcessInternals.write(ProcessInternals.advrq);
+    ProcessInternals.write(ProcessInternals.advrspx);
+    ProcessInternals.write(ProcessInternals.trinn);
+    ProcessInternals.write(ProcessInternals.trinq);
+    ProcessInternals.write(ProcessInternals.trinspx);
 
-    write(mccOscn);
-    write(mccSumn);
+    ProcessInternals.write(ProcessInternals.mccOscn);
+    ProcessInternals.write(ProcessInternals.mccSumn);
 
-    write(mccOscq);
-    write(mccSumq);
+    ProcessInternals.write(ProcessInternals.mccOscq);
+    ProcessInternals.write(ProcessInternals.mccSumq);
 
-    write(mccOscspx);
-    write(mccSumspx);
+    ProcessInternals.write(ProcessInternals.mccOscspx);
+    ProcessInternals.write(ProcessInternals.mccSumspx);
 
-    writeSpyVsSpxVolume(avvspxBm, dvcspxBm, spyData);
+    ProcessInternals.writeSpyVsSpxVolume(ProcessInternals.avvspxBm, ProcessInternals.dvcspxBm, ProcessInternals.spyData);
   }
 
   /**
-   * Write spy vs spx volume.
+   * Write.
    *
-   * @param avv the avv
-   * @param dvc the dvc
-   * @param spy the spy
+   * @param tpd the TickerPriceData
+   *
    * @throws FileNotFoundException the file not found exception
    */
-  private static void writeSpyVsSpxVolume(TickerPriceData avv, TickerPriceData dvc, TickerPriceData spy)
-      throws FileNotFoundException {
+  public static void write(TickerPriceData tpd) throws FileNotFoundException {
 
-    DateTime d1 = new DateTime(2010, DateTime.JANUARY, 2);
-
-    TickerPriceData totSpxVol = new TickerPriceData(" SPX volume");
-
-    DateTime today = new DateTime();
-    while (d1.isLessThanOrEqual(today)) {
-
-      double p1 = avv.getActualClose(d1);
-      if (p1 >= 0.0) {
-        double p2 = dvc.getActualClose(d1);
-        if (p2 >= 0.0) {
-
-          double    d   = (p1 + p2) * 1E06;
-          PriceData tot = new PriceData(d1, d, d, d, d, 0);
-          totSpxVol.addPriceData(tot);
-        }
-      }
-      d1.add(DateTime.DATE, 1);
-    }
-
-    String fname = "SPX-Total-Volume.csv";
+    final String fname = tpd.getTicker() + ".csv";
     try (PrintWriter pw = new PrintWriter(String.format("%sDC\\%s", OptumaCommon.optumaPath, fname))) {
-      for (PriceData pd : totSpxVol.getPriceData()) {
+      for (final PriceData pd : tpd.getPriceData()) {
         pw.printf("%s, %.2f%n", pd.date.format("yyyy-MM-dd"), pd.close);
       }
     }
-
-    // **********************************************/
-
-    List<PriceData> vrList = new ArrayList<>();
-    d1 = new DateTime(2010, DateTime.JANUARY, 2);
-    fname = "SPY-ETF-Total-Volume.csv";
-    try (PrintWriter pw = new PrintWriter(String.format("%sDC\\%s", OptumaCommon.optumaPath, fname))) {
-      for (PriceData pd : spy.getPriceData()) {
-        if (pd.date.isGreaterThanOrEqual(d1)) {
-          pw.printf("%s, %d%n", pd.date.format("yyyy-MM-dd"), pd.volume);
-          double p1 = totSpxVol.getActualClose(pd.date);
-          if (p1 > 0.0) {
-            double    d   = pd.volume / p1;
-            PriceData tot = new PriceData(pd.date, d, d, d, d, 0);
-            vrList.add(tot);
-          }
-
-        }
-      }
-    }
-
-    fname = "SPY-to-SPX-VolumeRatio.csv";
-    try (PrintWriter pw = new PrintWriter(String.format("%sDC\\%s", OptumaCommon.optumaPath, fname))) {
-      for (PriceData pd : vrList) {
-        pw.printf("%s, %f%n", pd.date.format("yyyy-MM-dd"), pd.close);
-      }
-    }
-
-  }
-
-  /**
-   * Sets the mc clellan summation.
-   *
-   * @param mccOsc the mcc osc
-   * @return the ticker price data
-   */
-  private static TickerPriceData setMcClellanSummation(TickerPriceData mccOsc) {
-
-    String          code = mccOsc.getTicker().replace("mco", "sum");
-    TickerPriceData ret  = new TickerPriceData(String.format("%s : Merged : %s", code, "McClellan Summation"));
-
-    double sum = 0.0;
-    for (PriceData pd : mccOsc.getTickerPrices()) {
-      sum += pd.close;
-      PriceData pdnew = new PriceData(pd.date, sum, sum, sum, sum, 0);
-      ret.addPriceData(pdnew);
-    }
-    return ret;
   }
 
   /**
@@ -273,33 +247,52 @@ public class ProcessInternals {
    */
   private static TickerPriceData setMcClellanOscillator(TickerPriceData ad, TickerPriceData adv, TickerPriceData dec) {
 
-    MovingAverages ema19 = new MovingAverages(19);
-    MovingAverages ema39 = new MovingAverages(39);
+    final MovingAverages ema19 = new MovingAverages(19);
+    final MovingAverages ema39 = new MovingAverages(39);
 
-    TickerPriceData ret = new TickerPriceData(
-        String.format("%s-mco : Merged : %s", ad.getTicker(), "McClellan Oscillator"));
+    final TickerPriceData ret = new TickerPriceData(String.format("%s-mco : Merged : %s", ad.getTicker(), "McClellan Oscillator"));
 
-    for (PriceData pd : ad.getPriceData()) {
+    for (final PriceData pd : ad.getPriceData()) {
 
-      DateTime dt = pd.date;
+      final DateTime dt = pd.date;
 
-      long advKnt = (long) adv.getClose(dt);
-      long decKnt = (long) dec.getClose(dt);
+      final long advKnt = (long) adv.getClose(dt);
+      final long decKnt = (long) dec.getClose(dt);
       if (advKnt > 100 && decKnt > 100) {
-        long adKnt = (long) ad.getClose(dt);
-        long total = advKnt + decKnt;
+        final long adKnt = (long) ad.getClose(dt);
+        final long total = advKnt + decKnt;
 
-        double rana = (double) adKnt / (double) total;
-        double mco  = (ema19.getEma() - ema39.getEma()) * 1000.0;
+        final double rana = (double) adKnt / (double) total;
+        final double mco = (ema19.getEma() - ema39.getEma()) * 1000.0;
         ema19.addValue(rana);
         ema39.addValue(rana);
 
-        PriceData pdnew = new PriceData(dt, mco, mco, mco, mco, 0);
+        final PriceData pdnew = new PriceData(dt, mco, mco, mco, mco, 0);
         ret.addPriceData(pdnew);
 
         // System.out.printf("%s\t%15.6f\t%12.4f\t%12.4f\t%12.4f %n", dt, rana,
         // ema19.getEma(), ema39.getEma(), mco);
       }
+    }
+    return ret;
+  }
+
+  /**
+   * Sets the mc clellan summation.
+   *
+   * @param mccOsc the mcc osc
+   * @return the ticker price data
+   */
+  private static TickerPriceData setMcClellanSummation(TickerPriceData mccOsc) {
+
+    final String code = mccOsc.getTicker().replace("mco", "sum");
+    final TickerPriceData ret = new TickerPriceData(String.format("%s : Merged : %s", code, "McClellan Summation"));
+
+    double sum = 0.0;
+    for (final PriceData pd : mccOsc.getTickerPrices()) {
+      sum += pd.close;
+      final PriceData pdnew = new PriceData(pd.date, sum, sum, sum, sum, 0);
+      ret.addPriceData(pdnew);
     }
     return ret;
   }
@@ -315,24 +308,24 @@ public class ProcessInternals {
    */
   private static TickerPriceData setRatio(String code, TickerPriceData list1, TickerPriceData list2, String desc) {
 
-    DateTime d1 = list1.getFirstDate();
-    DateTime d2 = list2.getFirstDate();
+    final DateTime d1 = list1.getFirstDate();
+    final DateTime d2 = list2.getFirstDate();
 
     System.out.println(d1);
     System.out.println(d2);
 
-    TickerPriceData ret = new TickerPriceData(String.format("%s : Merged : %s", code, desc));
+    final TickerPriceData ret = new TickerPriceData(String.format("%s : Merged : %s", code, desc));
     for (int i = 0; i < list1.getNumPrices(); i++) {
 
-      DateTime dt = list1.getOffsetDate(i);
+      final DateTime dt = list1.getOffsetDate(i);
       if (dt != null) {
-        double p2 = list2.getClose(dt);
-        double d  = 0.0;
+        final double p2 = list2.getClose(dt);
+        double d = 0.0;
         if (Math.abs(p2) > 0.0) {
-          double p1 = list1.getClose(dt);
+          final double p1 = list1.getClose(dt);
           d = p1 / p2;
         }
-        PriceData pd = new PriceData(dt, d, d, d, d, 0);
+        final PriceData pd = new PriceData(dt, d, d, d, d, 0);
         ret.addPriceData(pd);
       }
     }
@@ -342,70 +335,75 @@ public class ProcessInternals {
   }
 
   /**
-   * Write.
+   * Write spy vs spx volume.
    *
-   * @param tpd the TickerPriceData
-   * 
+   * @param avv the avv
+   * @param dvc the dvc
+   * @param spy the spy
    * @throws FileNotFoundException the file not found exception
    */
-  public static void write(TickerPriceData tpd) throws FileNotFoundException {
+  private static void writeSpyVsSpxVolume(TickerPriceData avv, TickerPriceData dvc, TickerPriceData spy) throws FileNotFoundException {
 
-    String fname = tpd.getTicker() + ".csv";
+    DateTime d1 = new DateTime(2010, DateTime.JANUARY, 2);
+
+    final TickerPriceData totSpxVol = new TickerPriceData(" SPX volume");
+
+    final DateTime today = new DateTime();
+    while (d1.isLessThanOrEqual(today)) {
+
+      final double p1 = avv.getActualClose(d1);
+      if (p1 >= 0.0) {
+        final double p2 = dvc.getActualClose(d1);
+        if (p2 >= 0.0) {
+
+          final double d = (p1 + p2) * 1E06;
+          final PriceData tot = new PriceData(d1, d, d, d, d, 0);
+          totSpxVol.addPriceData(tot);
+        }
+      }
+      d1.add(DateTime.DATE, 1);
+    }
+
+    String fname = "SPX-Total-Volume.csv";
     try (PrintWriter pw = new PrintWriter(String.format("%sDC\\%s", OptumaCommon.optumaPath, fname))) {
-      for (PriceData pd : tpd.getPriceData()) {
+      for (final PriceData pd : totSpxVol.getPriceData()) {
         pw.printf("%s, %.2f%n", pd.date.format("yyyy-MM-dd"), pd.close);
       }
     }
-  }
 
-  /**
-   * Inits the.
-   */
-  public static void init() {
-    // Adv - Decl
-    addn = new TickerPriceData("WI", "ADDN", "NYSE Advances-Declines");
-    addq = new TickerPriceData("WI", "ADDQ", "NASD Advances-Declines");
-    addspx = new TickerPriceData("WI", "ADDSPX", "SPX Advances-Declines");
+    // **********************************************/
 
-    // a/d ratio
-    adrn = new TickerPriceData("WI", "ADRN", "NYSE Adv Decl Ratio");
-    adrq = new TickerPriceData("WI", "ADRS", "NASD Adv Decl Ratio");
-    adrspx = new TickerPriceData("WI", "ADRSPX", "SPX AdvDecl Ratio");
+    final List<PriceData> vrList = new ArrayList<>();
+    d1 = new DateTime(2010, DateTime.JANUARY, 2);
+    fname = "SPY-ETF-Total-Volume.csv";
+    try (PrintWriter pw = new PrintWriter(String.format("%sDC\\%s", OptumaCommon.optumaPath, fname))) {
+      for (final PriceData pd : spy.getPriceData()) {
+        if (pd.date.isGreaterThanOrEqual(d1)) {
+          pw.printf("%s, %d%n", pd.date.format("yyyy-MM-dd"), pd.volume);
+          final double p1 = totSpxVol.getActualClose(pd.date);
+          if (p1 > 0.0) {
+            final double d = pd.volume / p1;
+            final PriceData tot = new PriceData(pd.date, d, d, d, d, 0);
+            vrList.add(tot);
+          }
 
-    // advancing
-    advn = new TickerPriceData("WI", "ADVN", "NYSE Advancing");
-    advq = new TickerPriceData("WI", "ADVQ", "NASD Advancing");
-    advspx = new TickerPriceData("WI", "ADVSPX", "SPX Advancing");
+        }
+      }
+    }
 
-    // adv volume
-    avvn = new TickerPriceData("WI", "AVVN", "NYSE Adv Volume");
-    avvq = new TickerPriceData("WI", "AVVQ", "NASD Adv Volume");
-    avvspx = new TickerPriceData("WI", "AVVSPX");
-
-    // declining
-    decn = new TickerPriceData("WI", "DECN", "NYSE Declining");
-    decq = new TickerPriceData("WI", "DECQ", "NASD Declining");
-    decspx = new TickerPriceData("WI", "DECSPX", "SPX Declining");
-
-    // dec volume
-    dvcn = new TickerPriceData("WI", "DVCN", "NYSE Decl Volume");
-    dvcq = new TickerPriceData("WI", "DVCQ", "NASD Decl Volume");
-    dvcspx = new TickerPriceData("WI", "DVCSPX", "SPX Decl Volume");
-
-    spyData = new TickerPriceData("AMEX", "SPY", "SPY ETF Data");
-
-    vix = new TickerPriceData("CBOE", "VIX");
-    vxo = new TickerPriceData("CBOE", "VXO");
-
-    avvspxBm = new TickerPriceData("BM", "AVVSPX", "SPX Advancing Volume");
-    dvcspxBm = new TickerPriceData("BM", "DVCSPX", "SPX Declining Volume");
+    fname = "SPY-to-SPX-VolumeRatio.csv";
+    try (PrintWriter pw = new PrintWriter(String.format("%sDC\\%s", OptumaCommon.optumaPath, fname))) {
+      for (final PriceData pd : vrList) {
+        pw.printf("%s, %f%n", pd.date.format("yyyy-MM-dd"), pd.close);
+      }
+    }
 
   }
 
 }
 
-// The Formula for Arms Index (TRIN) is: 
-// TRIN = (Advancing Volume/Declining Volume) / (Advancing Stocks/Declining Stocks) 
+// The Formula for Arms Index (TRIN) is:
+// TRIN = (Advancing Volume/Declining Volume) / (Advancing Stocks/Declining Stocks)
 
 //Ratio-Adjusted Net Advances (RANA): (Advances - Declines)/(Advances +Declines)
 //  McClellan Oscillator: 19-day EMA of RANA - 39-day EMA of RANA
@@ -415,6 +413,6 @@ public class ProcessInternals {
 //McClellan Summation
 //Previous day's Summation Index* + current day McClellan Oscillator
 
-//Initial SMA: 10-period sum / 10 
+//Initial SMA: 10-period sum / 10
 //  Multiplier: (2 / (Time periods + 1) ) = (2 / (10 + 1) ) = 0.1818 (18.18%)
 //  EMA: {Close - EMA(previous day)} x multiplier + EMA(previous day).

@@ -216,9 +216,9 @@ public class CompanyData {
     ret += CompanyData.TAB + this.industry + CompanyData.NL;
     ret += CompanyData.TAB + "Number Employees  : " + String.format("%15d", this.numEmp) + CompanyData.NL;
     try {
-      ret += CompanyData.TAB + "End of Quarter    : " + String.format("%15s", CompanyData.sdf.format(this.eoq))
-          + CompanyData.NL;
-    } catch (final Exception e) {
+      ret += CompanyData.TAB + "End of Quarter    : " + String.format("%15s", CompanyData.sdf.format(this.eoq)) + CompanyData.NL;
+    }
+    catch (final Exception e) {
       ret += CompanyData.TAB + "End of Quarter    : ERROR" + CompanyData.NL;
     }
     ret += CompanyData.TAB + "Insiders Own      : " + QuarterlyData.fmt(this.insiders) + CompanyData.NL;
@@ -294,7 +294,8 @@ public class CompanyData {
     String exch = "";
     if (cd.exchange.contains("New York")) {
       exch = "NYSE";
-    } else if (cd.exchange.contains("Nasdaq")) {
+    }
+    else if (cd.exchange.contains("Nasdaq")) {
       exch = "NASDAQ";
     }
     final String str = String.format("%s:%s", cd.ticker.toUpperCase(), exch);
@@ -316,7 +317,7 @@ public class CompanyData {
       return;
     }
 
-    DateTime yesterday = new DateTime();
+    final DateTime yesterday = new DateTime();
     yesterday.add(DateTime.DATE, -1);
 
     CompanyData.pwnktr = new PrintWriter("out/nktr.dbg");
@@ -350,7 +351,8 @@ public class CompanyData {
         final File to = new File("companyfinancials/" + f.getName());
         Files.copy(f.toPath(), to.toPath(), StandardCopyOption.REPLACE_EXISTING);
       }
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
     }
     fos.close();
     backupNames = null;
@@ -536,8 +538,7 @@ public class CompanyData {
 
     List<String> tgl = new ArrayList<>(CompanyData.theGoodList);
     Collections.sort(tgl);
-    try (PrintWriter pw = new PrintWriter("out/good-list.csv");
-        PrintWriter pwSc = new PrintWriter("out/good-list-sc.csv")) {
+    try (PrintWriter pw = new PrintWriter("out/good-list.csv"); PrintWriter pwSc = new PrintWriter("out/good-list-sc.csv")) {
       pw.println("code");
       for (final String s : tgl) {
         pw.println(s);
@@ -630,9 +631,11 @@ public class CompanyData {
             if (s.length() > 0) {
               if (s.contains("500")) {
                 cd.spIndex = "SP500";
-              } else if (s.contains("400")) {
+              }
+              else if (s.contains("400")) {
                 cd.spIndex = "SP400";
-              } else if (s.contains("600")) {
+              }
+              else if (s.contains("600")) {
                 cd.spIndex = "SP600";
               }
             }
@@ -697,7 +700,8 @@ public class CompanyData {
               if (sc < 0.0) {
                 CompanyData.totalBuyBacks += bbest;
                 CompanyData.buybackList.add(cd);
-              } else {
+              }
+              else {
                 CompanyData.totalNewShares += bbest;
               }
             }
@@ -885,7 +889,8 @@ public class CompanyData {
         if (wcfcf < 0.0) {
           return true;
 
-        } else {
+        }
+        else {
           final double ti = cd.id.totalInterest.getTtm();
           // final double fcf = cd.freeCashFlow;
           final double ratio = ti / wcfcf;
@@ -942,7 +947,8 @@ public class CompanyData {
     final int pos = secind.indexOf(" - ");
     if (pos > 0) {
       ret = str.substring(pos + 3, str.length()).trim();
-    } else {
+    }
+    else {
       ret = str;
     }
     return ret;
@@ -988,15 +994,14 @@ public class CompanyData {
     List<String> tickers = CompanyData.getTickers(CompanyData.incstatementFile);
     int tCount = tickers.size();
     if (btCount != tCount) {
-      System.out
-          .println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
+      System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
       ret = false;
-    } else {
+    }
+    else {
       for (int i = 0; i < btCount; i++) {
         if (!baseTickers.get(i).equals(tickers.get(i))) {
           ret = false;
-          System.out
-              .println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
+          System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
           break;
         }
       }

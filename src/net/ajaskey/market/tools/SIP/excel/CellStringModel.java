@@ -2,15 +2,15 @@ package net.ajaskey.market.tools.SIP.excel;
 
 public class CellStringModel extends CellModel {
 
+  private final String val;
+
   public CellStringModel(String s) {
-    val = s;
-    cellType = CellModel.StringType;
+    this.val = s;
+    this.cellType = CellModel.StringType;
   }
 
   public String getVal() {
-    return val;
+    return this.val;
   }
-
-  private String val;
 
 }

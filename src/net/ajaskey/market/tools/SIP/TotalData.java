@@ -42,21 +42,19 @@ import net.ajaskey.common.Utils;
  */
 public class TotalData {
 
-  public final static int printFormatShort = 1;
-  public final static int printFormatLong  = 2;
-
   // Balance Sheet
   public QuarterlyData cash;
   public QuarterlyData stInvestments;
 
   public QuarterlyData acctReceiveable;
+  public QuarterlyData inventory;
+
+  public QuarterlyData otherAssets;
 
   // public String name;
   // public String sector;
   // public String industry;
 
-  public QuarterlyData inventory;
-  public QuarterlyData otherAssets;
   public QuarterlyData currentAssets;
   public QuarterlyData fixedAssets;
   public QuarterlyData ltInvestments;
@@ -78,9 +76,9 @@ public class TotalData {
   public QuarterlyData sales;
   public QuarterlyData cogs;
   public QuarterlyData grossIncome;
-
   public QuarterlyData rd;
   public QuarterlyData capex;
+
   public QuarterlyData depreciation;
   public QuarterlyData interestExp;
   public QuarterlyData unusualIncome;
@@ -105,21 +103,20 @@ public class TotalData {
   public QuarterlyData cashFromFin;
   public QuarterlyData cashFromInv;
   public QuarterlyData cashNet;
+  public double        p0;
+  public double        p365;
 
-  public double p0;
-  public double p365;
-  public double p730;
-
+  public double  p730;
   private String outdir;
+  private int    knt;
 
-  private int knt;
   private int printFormat;
 
   DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
 
   /**
    * This method serves as a constructor for the class.
-   * 
+   *
    * @param day730
    * @param day365
    * @param day0
@@ -189,7 +186,7 @@ public class TotalData {
     this.cashNet = new QuarterlyData("cashNet");
 
     this.setOutdir("out/SPX-Fundies");
-    this.setPrintFormat(printFormatLong);
+    this.setPrintFormat(TotalData.printFormatLong);
 
   }
 
@@ -261,8 +258,16 @@ public class TotalData {
 
   }
 
+  public int getKnt() {
+    return this.knt;
+  }
+
+  public String getOutdir() {
+    return this.outdir;
+  }
+
   /**
-   * 
+   *
    * @param index
    * @param kntRecent
    * @param outdir
@@ -274,8 +279,12 @@ public class TotalData {
 //    return process(index, cdList, now);
 //  }
 
+  public int getPrintFormat() {
+    return this.printFormat;
+  }
+
   /**
-   * 
+   *
    * @param index
    * @param kntRecent
    * @throws FileNotFoundException
@@ -294,8 +303,8 @@ public class TotalData {
     // try (PrintWriter pw = new PrintWriter(tdfn)) {
 
     String ret = String.format(
-        "%n From AAII Stock Investor Pro -- Thomson/Reuters -- %s :: %s data.%n                               Q1               Q5%n",
-        index, now.format("dd-MMM-yyyy"));
+        "%n From AAII Stock Investor Pro -- Thomson/Reuters -- %s :: %s data.%n                               Q1               Q5%n", index,
+        now.format("dd-MMM-yyyy"));
 
     ret += String.format(" Sales         -->  %s%n", this.sales.getQoQ());
     ret += String.format(" COGS          -->  %s%n", this.cogs.getQoQ());
@@ -334,7 +343,7 @@ public class TotalData {
     ret += String.format(" BVPS          -->  %s%n", this.calcTotalBvps());
     ret += String.format(" Shares        -->  %s%n", this.shares.getQoQ());
 
-    if (this.getPrintFormat() == printFormatLong) {
+    if (this.getPrintFormat() == TotalData.printFormatLong) {
       double chg = 0.0;
 
 //      double t1 = 11.0;
@@ -344,18 +353,18 @@ public class TotalData {
 
       double pps1 = this.p0 / (this.netIncome.q1 / this.shares.q1);
       double pps5 = this.p365 / (this.netIncome.q5 / this.shares.q5);
-      chg = calcChg(pps1, pps5);
+      chg = this.calcChg(pps1, pps5);
 
       ret += String.format("%n Pps/Net       -->  %16.2f%17.2f   -->%13.2f%%%n", pps1, pps5, chg);
 
       pps1 = this.p0 / (this.cashFromOps.q1 / this.shares.q1);
       pps5 = this.p365 / (this.cashFromOps.q5 / this.shares.q5);
 
-      chg = calcChg(pps1, pps5);
+      chg = this.calcChg(pps1, pps5);
       ret += String.format(" Pps/CashOps   -->  %16.2f%17.2f   -->%13.2f%%%n", pps1, pps5, chg);
 
-      chg = calcChg(p0, p365);
-      ret += String.format("%n SPX Price     -->  %16.2f%17.2f   -->%13.2f%%%n", p0, p365, chg);
+      chg = this.calcChg(this.p0, this.p365);
+      ret += String.format("%n SPX Price     -->  %16.2f%17.2f   -->%13.2f%%%n", this.p0, this.p365, chg);
 
       ret += String.format("%n Knt : %d%n", this.knt);
     }
@@ -363,17 +372,12 @@ public class TotalData {
     return ret;
   }
 
-  public int getKnt() {
-    return knt;
+  public void setOutdir(String outdir) {
+    this.outdir = outdir;
   }
 
-  private double calcChg(double p1, double p5) {
-    double chg = 0.0;
-    double ap5 = Math.abs(p5);
-    if (Math.abs(ap5) > 0.0) {
-      chg = (p1 - p5) / ap5 * 100.0;
-    }
-    return chg;
+  public void setPrintFormat(int printFormat) {
+    this.printFormat = printFormat;
   }
 
   /**
@@ -494,9 +498,18 @@ public class TotalData {
 
     ret += TotalData.TAB + this.shares;
 
-    ret += String.format("%n%n%.2f\t%.2f\t%.2f\t--->", p0, p365, p730);
+    ret += String.format("%n%n%.2f\t%.2f\t%.2f\t--->", this.p0, this.p365, this.p730);
 
     return ret;
+  }
+
+  private double calcChg(double p1, double p5) {
+    double chg = 0.0;
+    final double ap5 = Math.abs(p5);
+    if (Math.abs(ap5) > 0.0) {
+      chg = (p1 - p5) / ap5 * 100.0;
+    }
+    return chg;
   }
 
   /**
@@ -518,9 +531,6 @@ public class TotalData {
     final long q1g = Long.parseLong(fldGoodwill[1].trim()) / 2;
     final long q5g = Long.parseLong(fldGoodwill[2].trim()) / 2;
 
-    long q1tmp = q1e - q1g;
-    long q5tmp = q5e - q5g;
-
     // Subtract half of goodwill as useless equity
     long q1bvps = 0L;
     if (Math.abs(q1s) > 0) {
@@ -534,7 +544,7 @@ public class TotalData {
     if (Math.abs(q5bvps) > 0) {
       final double r1 = q1bvps;
       final double r5 = q5bvps;
-      chg = calcChg(r1, r5);
+      chg = this.calcChg(r1, r5);
     }
 
     final double dq1 = q1bvps / 100.0;
@@ -589,7 +599,7 @@ public class TotalData {
     if (Math.abs(ret[1]) > 0) {
       final double r1 = ret[0];
       final double r5 = ret[1];
-      chg = calcChg(r1, r5);
+      chg = this.calcChg(r1, r5);
     }
     final String q1s = String.format("%,16d", ret[0]);
     final String q5s = String.format("%,16d", ret[1]);
@@ -628,7 +638,7 @@ public class TotalData {
     if (Math.abs(ret[1]) > 0) {
       final double r1 = ret[0];
       final double r5 = ret[1];
-      chg = calcChg(r1, r5);
+      chg = this.calcChg(r1, r5);
     }
     final String q1s = String.format("%,16d", ret[0]);
     final String q5s = String.format("%,16d", ret[1]);
@@ -660,7 +670,7 @@ public class TotalData {
     if (Math.abs(q5diff) > 0) {
       final double r1 = q1diff;
       final double r5 = q5diff;
-      chg = calcChg(r1, r5);
+      chg = this.calcChg(r1, r5);
     }
     final String q1s = String.format("%,16d", q1diff);
     final String q5s = String.format("%,16d", q5diff);
@@ -668,6 +678,10 @@ public class TotalData {
 
     return sRet;
   }
+
+  public final static int printFormatShort = 1;
+
+  public final static int printFormatLong = 2;
 
   private static List<String> latestQDate = null;
 
@@ -681,22 +695,6 @@ public class TotalData {
    */
   public static void setLatestQDate(List<String> lqd) {
     TotalData.latestQDate = lqd;
-  }
-
-  public String getOutdir() {
-    return outdir;
-  }
-
-  public void setOutdir(String outdir) {
-    this.outdir = outdir;
-  }
-
-  public int getPrintFormat() {
-    return printFormat;
-  }
-
-  public void setPrintFormat(int printFormat) {
-    this.printFormat = printFormat;
   }
 
 }

@@ -19,7 +19,7 @@ package net.ajaskey.market.tools.quandl;
  *         The above copyright notice and this permission notice shall be
  *         included in all copies or substantial portions of the Software.
  *         </p>
- * 
+ *
  *         <p>
  *         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  *         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
@@ -46,11 +46,11 @@ public class ShillerData {
    */
   public ShillerData() {
 
-    ShillerEarnings = 70.0;
-    ShillerPE = 27.43;
-    Sp500Dividends = 59.58;
-    Sp500BVPS = 902.94;
-    Sp500Sales = 1392.48;
+    this.ShillerEarnings = 70.0;
+    this.ShillerPE = 27.43;
+    this.Sp500Dividends = 59.58;
+    this.Sp500BVPS = 902.94;
+    this.Sp500Sales = 1392.48;
   }
 
 }

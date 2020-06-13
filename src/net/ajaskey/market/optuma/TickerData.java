@@ -41,22 +41,17 @@ import net.ajaskey.common.DateTime;
  */
 public class TickerData {
 
-  private final static String DELIMITER = ",";
-
-  private final static int FIELDS = 7;
-
-  private final static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
   public String ticker;
+
   public int days;
+
   public DateTime[] date;
-  public double[] open;
-  public double[] high;
-  public double[] low;
-
-  public double[] close;
-  public double[] volume;
-
-  public double[] oi;
+  public double[]   open;
+  public double[]   high;
+  public double[]   low;
+  public double[]   close;
+  public double[]   volume;
+  public double[]   oi;
 
   /**
    * This method serves as a constructor for the class.
@@ -92,10 +87,15 @@ public class TickerData {
 
           knt++;
         }
-      } catch (final Exception e) {
+      }
+      catch (final Exception e) {
         System.out.println("Failed : " + s);
       }
     }
+  }
+
+  public String getTicker() {
+    return this.ticker;
   }
 
   /**
@@ -111,18 +111,21 @@ public class TickerData {
 
     if (line == null) {
       ret = false;
-    } else {
+    }
+    else {
       final String fld[] = line.trim().split(TickerData.DELIMITER);
       if (fld.length != TickerData.FIELDS) {
         ret = false;
-      } else {
+      }
+      else {
         Date d;
         try {
           d = TickerData.sdf.parse(fld[1].trim());
           new DateTime(d);
           Double.parseDouble(fld[2].trim());
 
-        } catch (final ParseException e) {
+        }
+        catch (final ParseException e) {
           ret = false;
         }
       }
@@ -131,8 +134,10 @@ public class TickerData {
     return ret;
   }
 
-  public String getTicker() {
-    return this.ticker;
-  }
+  private final static String DELIMITER = ",";
+
+  private final static int FIELDS = 7;
+
+  private final static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 }

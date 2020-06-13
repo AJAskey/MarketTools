@@ -49,7 +49,7 @@ import net.ajaskey.market.misc.Debug;
  */
 public class FredBookkeeping {
 
-  private static final String fsiFilename = "fred-series-info.txt";
+  private static final String fsiFilename      = "fred-series-info.txt";
   private static final String tryAgainFilename = "fred-try-again.txt";
 
   // private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd
@@ -66,18 +66,18 @@ public class FredBookkeeping {
   public static void main(final String[] args) throws IOException {
 
     Debug.init("fred-bookkeeping.dbg");
-    FredDataDownloader.tryAgainFile = new PrintWriter(tryAgainFilename);
+    FredDataDownloader.tryAgainFile = new PrintWriter(FredBookkeeping.tryAgainFilename);
 
     final String folder = FredCommon.fredPath;
 
     final Set<String> uniqCodes = new HashSet<>();
 
-    String[] ext = { "csv" };
+    final String[] ext = { "csv" };
     final List<File> files = Utils.getDirTree(folder, ext);
     for (final File file : files) {
       final String name = file.getName();
       // Ignore derived TREAST files
-      if (validFileName(name)) {
+      if (FredBookkeeping.validFileName(name)) {
         final String f1 = name.replace(".csv", "");
         final String f2 = f1.replace("[", "").trim();
         final int idx = f2.indexOf("]");
@@ -102,41 +102,18 @@ public class FredBookkeeping {
     Utils.sleep(2500);
     Debug.log("Processing retry attempts...");
 
-    final List<String> retry = FredCommon.readSeriesList(tryAgainFilename);
+    final List<String> retry = FredCommon.readSeriesList(FredBookkeeping.tryAgainFilename);
     FredBookkeeping.process(retry, "RetryCodesToAdd.txt");
 
-    FredDataDownloader.tryAgainFile = new PrintWriter(tryAgainFilename);
+    FredDataDownloader.tryAgainFile = new PrintWriter(FredBookkeeping.tryAgainFilename);
 
     System.out.println(codes.size());
 
-    Collections.sort(dsiList, new DsiSorter());
-    FredCommon.writeSeriesInfo(dsiList, fsiFilename);
+    Collections.sort(FredBookkeeping.dsiList, new DsiSorter());
+    FredCommon.writeSeriesInfo(FredBookkeeping.dsiList, FredBookkeeping.fsiFilename);
 
     FredDataDownloader.tryAgainFile.close();
 
-  }
-
-  /**
-   * net.ajaskey.market.tools.fred.validFileName
-   *
-   * @param name
-   * @return
-   */
-  private static boolean validFileName(String name) {
-
-    boolean ret = true;
-
-    if (name.contains("TREAST-")) {
-      ret = false;
-    } else if (name.contains("Export minus Import")) {
-      ret = false;
-    } else if (name.contains("SPX Growth vs ")) {
-      ret = false;
-    } else if (name.contains("Value Inventory to Shipments for ")) {
-      ret = false;
-    }
-
-    return ret;
   }
 
   /**
@@ -163,11 +140,11 @@ public class FredBookkeeping {
 
           // System.out.printf("%-20s --> %-20s\t\t%15s%n", code,
           // dsi.getFileDt().toFullString(), dsi.getLastUpdate().toFullString());
-          dsiList.add(dsi);
+          FredBookkeeping.dsiList.add(dsi);
 
           Debug.log(dsi.toString());
 
-          boolean needsUpdate = dsi.getLastUpdate().isGreaterThan(dsi.getFileDt());
+          final boolean needsUpdate = dsi.getLastUpdate().isGreaterThan(dsi.getFileDt());
           if (needsUpdate) {
             pwUpdate.printf("%s\t%s%n", dsi.getName(), dsi.getTitle());
             System.out.printf("%s\t%s%n", dsi.getName(), dsi.getTitle());
@@ -179,6 +156,32 @@ public class FredBookkeeping {
         // }
       }
     }
+  }
+
+  /**
+   * net.ajaskey.market.tools.fred.validFileName
+   *
+   * @param name
+   * @return
+   */
+  private static boolean validFileName(String name) {
+
+    boolean ret = true;
+
+    if (name.contains("TREAST-")) {
+      ret = false;
+    }
+    else if (name.contains("Export minus Import")) {
+      ret = false;
+    }
+    else if (name.contains("SPX Growth vs ")) {
+      ret = false;
+    }
+    else if (name.contains("Value Inventory to Shipments for ")) {
+      ret = false;
+    }
+
+    return ret;
   }
 
 }
