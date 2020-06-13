@@ -331,8 +331,4 @@ public class Utils {
 			zipStream.closeEntry();
 		}
 	}
-
-	public static void foo(String txt) {
-		
-	}
 }
