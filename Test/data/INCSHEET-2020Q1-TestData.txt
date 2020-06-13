@@ -1,0 +1,369 @@
+Sales Q1	36906
+Sales Q2	33055
+Sales Q3	33717
+Sales Q4	30571
+Sales Q5	32471
+Sales Q6	29084
+Sales Q7	30085
+Sales Q8	26819
+Cost of goods sold Q1	12358
+Cost of goods sold Q2	10406
+Cost of goods sold Q3	10412
+Cost of goods sold Q4	10170
+Cost of goods sold Q5	12423
+Cost of goods sold Q6	9905
+Cost of goods sold Q7	9742
+Cost of goods sold Q8	9269
+Gross income Q1	24548
+Gross income Q2	22649
+Gross income Q3	23305
+Gross income Q4	20401
+Gross income Q5	20048
+Gross income Q6	19179
+Gross income Q7	20343
+Gross income Q8	17550
+Research and development Q1	4603
+Research and development Q2	4565
+Research and development Q3	4513
+Research and development Q4	4316
+Research and development Q5	4070
+Research and development Q6	3977
+Research and development Q7	3933
+Research and development Q8	3715
+Depreciation Q1	0
+Depreciation Q2	0
+Depreciation Q3	0
+Depreciation Q4	0
+Depreciation Q5	0
+Depreciation Q6	0
+Depreciation Q7	0
+Depreciation Q8	0
+Interest expense Q1	0
+Interest expense Q2	0
+Interest expense Q3	0
+Interest expense Q4	0
+Interest expense Q5	0
+Interest expense Q6	0
+Interest expense Q7	0
+Interest expense Q8	0
+Unusual income Q1	10
+Unusual income Q2	26
+Unusual income Q3	9
+Unusual income Q4	7
+Unusual income Q5	10
+Unusual income Q6	0
+Unusual income Q7	0
+Unusual income Q8	17
+Total operating expenses Q1	23025
+Total operating expenses Q2	20395
+Total operating expenses Q3	21321
+Total operating expenses Q4	20237
+Total operating expenses Q5	22223
+Total operating expenses Q6	19129
+Total operating expenses Q7	19706
+Total operating expenses Q8	18544
+Gross operating income Q1	13881
+Gross operating income Q2	12660
+Gross operating income Q3	12396
+Gross operating income Q4	10334
+Gross operating income Q5	10248
+Gross operating income Q6	9955
+Gross operating income Q7	10379
+Gross operating income Q8	8275
+Interest expense-non-op. Q1	654
+Interest expense-non-op. Q2	637
+Interest expense-non-op. Q3	669
+Interest expense-non-op. Q4	671
+Interest expense-non-op. Q5	672
+Interest expense-non-op. Q6	674
+Interest expense-non-op. Q7	672
+Interest expense-non-op. Q8	691
+Other income Q1	-858
+Other income Q2	-663
+Other income Q3	-869
+Other income Q4	-823
+Other income Q5	-809
+Other income Q6	-940
+Other income Q7	-973
+Other income Q8	-1057
+Pre-tax income Q1	14085
+Pre-tax income Q2	12686
+Pre-tax income Q3	12596
+Pre-tax income Q4	10486
+Pre-tax income Q5	10385
+Pre-tax income Q6	10221
+Pre-tax income Q7	10680
+Pre-tax income Q8	8641
+Income tax Q1	2436
+Income tax Q2	2008
+Income tax Q3	2009
+Income tax Q4	1677
+Income tax Q5	1808
+Income tax Q6	1397
+Income tax Q7	1911
+Income tax Q8	1217
+Income after taxes Q1	11649
+Income after taxes Q2	10678
+Income after taxes Q3	10587
+Income after taxes Q4	8809
+Income after taxes Q5	8577
+Income after taxes Q6	8824
+Income after taxes Q7	8769
+Income after taxes Q8	7424
+Adjustments to income Q1	0
+Adjustments to income Q2	0
+Adjustments to income Q3	0
+Adjustments to income Q4	0
+Adjustments to income Q5	0
+Adjustments to income Q6	0
+Adjustments to income Q7	0
+Adjustments to income Q8	0
+Income for primary EPS Q1	11649
+Income for primary EPS Q2	10678
+Income for primary EPS Q3	10587
+Income for primary EPS Q4	8809
+Income for primary EPS Q5	8577
+Income for primary EPS Q6	8824
+Income for primary EPS Q7	8769
+Income for primary EPS Q8	7424
+Nonrecurring items Q1	-10000000000
+Nonrecurring items Q2	-10000000000
+Nonrecurring items Q3	2600
+Nonrecurring items Q4	0
+Nonrecurring items Q5	-157
+Nonrecurring items Q6	-10000000000
+Nonrecurring items Q7	104
+Nonrecurring items Q8	0
+Net income Q1	11649
+Net income Q2	10678
+Net income Q3	13187
+Net income Q4	8809
+Net income Q5	8420
+Net income Q6	8824
+Net income Q7	8873
+Net income Q8	7424
+EPS Q1	1.529
+EPS Q2	1.399
+EPS Q3	1.723
+EPS Q4	1.148
+EPS Q5	1.095
+EPS Q6	1.15
+EPS Q7	1.155
+EPS Q8	0.964
+EPS-Continuing Q1	1.529
+EPS-Continuing Q2	1.399
+EPS-Continuing Q3	1.383
+EPS-Continuing Q4	1.148
+EPS-Continuing Q5	1.115
+EPS-Continuing Q6	1.15
+EPS-Continuing Q7	1.142
+EPS-Continuing Q8	0.964
+EPS-Diluted Q1	1.515
+EPS-Diluted Q2	1.385
+EPS-Diluted Q3	1.705
+EPS-Diluted Q4	1.138
+EPS-Diluted Q5	1.084
+EPS-Diluted Q6	1.136
+EPS-Diluted Q7	1.14
+EPS-Diluted Q8	0.953
+EPS-Diluted Continuing Q1	1.515
+EPS-Diluted Continuing Q2	1.385
+EPS-Diluted Continuing Q3	1.369
+EPS-Diluted Continuing Q4	1.138
+EPS-Diluted Continuing Q5	1.104
+EPS-Diluted Continuing Q6	1.136
+EPS-Diluted Continuing Q7	1.127
+EPS-Diluted Continuing Q8	0.953
+Dividend Q1	0.51
+Dividend Q2	0.46
+Dividend Q3	0.46
+Dividend Q4	0.46
+Dividend Q5	0.46
+Dividend Q6	0.42
+Dividend Q7	0.42
+Dividend Q8	0.42
+-------	
+Sales 12m	134249
+Sales Y1	125843
+Sales Y2	110360
+Sales Y3	96571
+Sales Y4	91154
+Sales Y5	93580
+Sales Y6	86833
+Sales Y7	77849
+Cost of goods sold 12m	43346
+Cost of goods sold Y1	42910
+Cost of goods sold Y2	38353
+Cost of goods sold Y3	34261
+Cost of goods sold Y4	32780
+Cost of goods sold Y5	33038
+Cost of goods sold Y6	27078
+Cost of goods sold Y7	20385
+Gross income 12M	90903
+Gross income Y1	82933
+Gross income Y2	72007
+Gross income Y3	62310
+Gross income Y4	58374
+Gross income Y5	60542
+Gross income Y6	59755
+Gross income Y7	57464
+Research and development 12m	17997
+Research and development Y1	16876
+Research and development Y2	14726
+Research and development Y3	12292
+Research and development Y4	11988
+Research and development Y5	12046
+Research and development Y6	11381
+Research and development Y7	10411
+Depreciation 12M	0
+Depreciation Y1	0
+Depreciation Y2	0
+Depreciation Y3	0
+Depreciation Y4	0
+Depreciation Y5	0
+Depreciation Y6	0
+Depreciation Y7	0
+Interest expense 12m	0
+Interest expense Y1	0
+Interest expense Y2	0
+Interest expense Y3	0
+Interest expense Y4	0
+Interest expense Y5	0
+Interest expense Y6	0
+Interest expense Y7	0
+Unusual income 12m	52
+Unusual income Y1	26
+Unusual income Y2	47
+Unusual income Y3	2400
+Unusual income Y4	1432
+Unusual income Y5	10194
+Unusual income Y6	233
+Unusual income Y7	208
+Total operating expenses 12m	84978
+Total operating expenses Y1	82910
+Total operating expenses Y2	75349
+Total operating expenses Y3	67601
+Total operating expenses Y4	65398
+Total operating expenses Y5	75602
+Total operating expenses Y6	59180
+Total operating expenses Y7	51293
+Gross operating income 12m	49271
+Gross operating income Y1	42933
+Gross operating income Y2	35011
+Gross operating income Y3	28970
+Gross operating income Y4	25756
+Gross operating income Y5	17978
+Gross operating income Y6	27653
+Gross operating income Y7	26556
+Interest expense-non-op. 12m	2631
+Interest expense-non-op. Y1	2686
+Interest expense-non-op. Y2	2733
+Interest expense-non-op. Y3	4444
+Interest expense-non-op. Y4	2486
+Interest expense-non-op. Y5	781
+Interest expense-non-op. Y6	597
+Interest expense-non-op. Y7	429
+Other income 12m	-3213
+Other income Y1	-3441
+Other income Y2	-4196
+Other income Y3	-5375
+Other income Y4	-2369
+Other income Y5	-1310
+Other income Y6	-764
+Other income Y7	-925
+Pre-tax income 12m	49853
+Pre-tax income Y1	43688
+Pre-tax income Y2	36474
+Pre-tax income Y3	29901
+Pre-tax income Y4	25639
+Pre-tax income Y5	18507
+Pre-tax income Y6	27820
+Pre-tax income Y7	27052
+Income tax 12m	8130
+Income tax Y1	6891
+Income tax Y2	6203
+Income tax Y3	4412
+Income tax Y4	5100
+Income tax Y5	6314
+Income tax Y6	5746
+Income tax Y7	5189
+Income after taxes 12m	41723
+Income after taxes Y1	36797
+Income after taxes Y2	30271
+Income after taxes Y3	25489
+Income after taxes Y4	20539
+Income after taxes Y5	12193
+Income after taxes Y6	22074
+Income after taxes Y7	21863
+Adjustments to income 12m	0
+Adjustments to income Y1	0
+Adjustments to income Y2	0
+Adjustments to income Y3	0
+Adjustments to income Y4	0
+Adjustments to income Y5	0
+Adjustments to income Y6	0
+Adjustments to income Y7	0
+Income for primary EPS 12m	41723
+Income for primary EPS Y1	36797
+Income for primary EPS Y2	30271
+Income for primary EPS Y3	25489
+Income for primary EPS Y4	20539
+Income for primary EPS Y5	12193
+Income for primary EPS Y6	22074
+Income for primary EPS Y7	21863
+Nonrecurring items 12m	-10000000000
+Nonrecurring items Y1	2443
+Nonrecurring items Y2	-13700
+Nonrecurring items Y3	-10000000000
+Nonrecurring items Y4	-10000000000
+Nonrecurring items Y5	-10000000000
+Nonrecurring items Y6	-10000000000
+Nonrecurring items Y7	-10000000000
+Net income 12m	44323
+Net income Y1	39240
+Net income Y2	16571
+Net income Y3	25489
+Net income Y4	20539
+Net income Y5	12193
+Net income Y6	22074
+Net income Y7	21863
+EPS 12m	5.798
+EPS Y1	5.114
+EPS Y2	2.152
+EPS Y3	3.291
+EPS Y4	2.592
+EPS Y5	1.491
+EPS Y6	2.66
+EPS Y7	2.611
+EPS-Continuing 12m	5.459
+EPS-Continuing Y1	4.796
+EPS-Continuing Y2	3.931
+EPS-Continuing Y3	3.291
+EPS-Continuing Y4	2.592
+EPS-Continuing Y5	1.491
+EPS-Continuing Y6	2.66
+EPS-Continuing Y7	2.611
+EPS-Diluted 12m	5.742
+EPS-Diluted Y1	5.061
+EPS-Diluted Y2	2.126
+EPS-Diluted Y3	3.254
+EPS-Diluted Y4	2.563
+EPS-Diluted Y5	1.477
+EPS-Diluted Y6	2.628
+EPS-Diluted Y7	2.581
+EPS-Diluted Continuing 12m	5.406
+EPS-Diluted Continuing Y1	4.746
+EPS-Diluted Continuing Y2	3.884
+EPS-Diluted Continuing Y3	3.254
+EPS-Diluted Continuing Y4	2.563
+EPS-Diluted Continuing Y5	1.477
+EPS-Diluted Continuing Y6	2.628
+EPS-Diluted Continuing Y7	2.581
+Dividend 12m	1.89
+Dividend Y1	1.8
+Dividend Y2	1.65
+Dividend Y3	1.53
+Dividend Y4	1.39
+Dividend Y5	1.21
+Dividend Y6	1.07
+Dividend Y7	0.89

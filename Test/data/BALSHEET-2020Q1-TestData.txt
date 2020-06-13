@@ -1,0 +1,333 @@
+Ticker	MSFT
+Cash Y1	11356
+Cash Y2	11946
+Cash Y3	7663
+Cash Y4	6510
+Cash Y5	5595
+Cash Y6	8669
+Cash Y7	3804
+ST investments Y1	122463
+ST investments Y2	121704
+ST investments Y3	125218
+ST investments Y4	106657
+ST investments Y5	90687
+ST investments Y6	76796
+ST investments Y7	72971
+Accounts receivable Y1	29524
+Accounts receivable Y2	26481
+Accounts receivable Y3	22431
+Accounts receivable Y4	18277
+Accounts receivable Y5	17908
+Accounts receivable Y6	19544
+Accounts receivable Y7	17486
+Inventory Y1	2063
+Inventory Y2	2662
+Inventory Y3	2181
+Inventory Y4	2251
+Inventory Y5	2902
+Inventory Y6	2660
+Inventory Y7	1938
+Other current assets Y1	10146
+Other current assets Y2	6869
+Other current assets Y3	5203
+Other current assets Y4	5965
+Other current assets Y5	7620
+Other current assets Y6	6577
+Other current assets Y7	5267
+Current assets Y1	175552
+Current assets Y2	169662
+Current assets Y3	162696
+Current assets Y4	139660
+Current assets Y5	122797
+Current assets Y6	114246
+Current assets Y7	101466
+Net fixed assets Y1	43856
+Net fixed assets Y2	36146
+Net fixed assets Y3	84757
+Net fixed assets Y4	18356
+Net fixed assets Y5	14731
+Net fixed assets Y6	13011
+Net fixed assets Y7	9991
+LT investments Y1	4849
+LT investments Y2	3662
+LT investments Y3	7656
+LT investments Y4	10413
+LT investments Y5	12028
+LT investments Y6	14590
+LT investments Y7	10844
+Goodwill and intangibles Y1	49776
+Goodwill and intangibles Y2	43736
+Goodwill and intangibles Y3	45228
+Goodwill and intangibles Y4	21605
+Goodwill and intangibles Y5	21774
+Goodwill and intangibles Y6	27108
+Goodwill and intangibles Y7	17738
+Other LT assets Y1	12523
+Other LT assets Y2	5642
+Other LT assets Y3	4443
+Other LT assets Y4	3434
+Other LT assets Y5	3142
+Other LT assets Y6	3429
+Other LT assets Y7	2392
+Total assets Y1	286556
+Total assets Y2	258848
+Total assets Y3	250312
+Total assets Y4	193468
+Total assets Y5	174472
+Total assets Y6	172384
+Total assets Y7	142431
+Accounts payable Y1	9382
+Accounts payable Y2	8617
+Accounts payable Y3	7390
+Accounts payable Y4	6898
+Accounts payable Y5	6591
+Accounts payable Y6	7432
+Accounts payable Y7	4828
+ST debt Y1	5833
+ST debt Y2	4174
+ST debt Y3	10234
+ST debt Y4	12929
+ST debt Y5	7484
+ST debt Y6	2000
+ST debt Y7	2999
+Other current liabilities Y1	54205
+Other current liabilities Y2	45697
+Other current liabilities Y3	38218
+Other current liabilities Y4	39530
+Other current liabilities Y5	35783
+Other current liabilities Y6	36193
+Other current liabilities Y7	29590
+Current liabilities Y1	69420
+Current liabilities Y2	58488
+Current liabilities Y3	55745
+Current liabilities Y4	59357
+Current liabilities Y5	49647
+Current liabilities Y6	45625
+Current liabilities Y7	37417
+LT debt Y1	72919
+LT debt Y2	76367
+LT debt Y3	78498
+LT debt Y4	41318
+LT debt Y5	27808
+LT debt Y6	20645
+LT debt Y7	12601
+Other LT liabilities Y1	41887
+Other LT liabilities Y2	41275
+Other LT liabilities Y3	28358
+Other LT liabilities Y4	34436
+Other LT liabilities Y5	16934
+Other LT liabilities Y6	16330
+Other LT liabilities Y7	13469
+Total liabilities Y1	184226
+Total liabilities Y2	176130
+Total liabilities Y3	162601
+Total liabilities Y4	121471
+Total liabilities Y5	94389
+Total liabilities Y6	82600
+Total liabilities Y7	63487
+Preferred stock Y1	0
+Preferred stock Y2	0
+Preferred stock Y3	0
+Preferred stock Y4	0
+Preferred stock Y5	0
+Preferred stock Y6	0
+Preferred stock Y7	0
+equity Y1	102330
+equity Y2	82718
+equity Y3	87711
+equity Y4	71997
+equity Y5	80083
+equity Y6	89784
+equity Y7	78944
+Liabilities and equity Y1	286556
+Liabilities and equity Y2	258848
+Liabilities and equity Y3	250312
+Liabilities and equity Y4	193468
+Liabilities and equity Y5	174472
+Liabilities and equity Y6	172384
+Liabilities and equity Y7	142431
+bvps Y1	13.34
+bvps Y2	10.74
+bvps Y3	11.32
+bvps Y4	9.08
+bvps Y5	9.79
+bvps Y6	10.82
+bvps Y7	9.43
+--------
+Cash Q1	8864
+Cash Q2	13117
+Cash Q3	11356
+Cash Q4	11212
+Cash Q5	6638
+Cash Q6	15137
+Cash Q7	11946
+Cash Q8	9221
+ST investments Q1	125367
+ST investments Q2	123492
+ST investments Q3	122463
+ST investments Q4	120324
+ST investments Q5	121013
+ST investments Q6	120634
+ST investments Q7	121704
+ST investments Q8	123013
+Accounts receivable Q1	23525
+Accounts receivable Q2	19087
+Accounts receivable Q3	29524
+Accounts receivable Q4	19269
+Accounts receivable Q5	19680
+Accounts receivable Q6	17390
+Accounts receivable Q7	26481
+Accounts receivable Q8	17208
+Inventory Q1	1823
+Inventory Q2	2622
+Inventory Q3	2063
+Inventory Q4	1951
+Inventory Q5	1961
+Inventory Q6	3614
+Inventory Q7	2662
+Inventory Q8	2084
+Other current assets Q1	7495
+Other current assets Q2	7578
+Other current assets Q3	10146
+Other current assets Q4	7131
+Other current assets Q5	7582
+Other current assets Q6	7420
+Other current assets Q7	6869
+Other current assets Q8	5133
+Current assets Q1	167074
+Current assets Q2	165896
+Current assets Q3	175552
+Current assets Q4	159887
+Current assets Q5	156874
+Current assets Q6	164195
+Current assets Q7	169662
+Current assets Q8	156659
+Net fixed assets Q1	48961
+Net fixed assets Q2	46299
+Net fixed assets Q3	43856
+Net fixed assets Q4	40769
+Net fixed assets Q5	39523
+Net fixed assets Q6	38164
+Net fixed assets Q7	36146
+Net fixed assets Q8	34788
+LT investments Q1	2755
+LT investments Q2	2684
+LT investments Q3	2649
+LT investments Q4	2403
+LT investments Q5	2274
+LT investments Q6	2034
+LT investments Q7	1862
+LT investments Q8	2818
+Goodwill and intangibles Q1	49374
+Goodwill and intangibles Q2	49621
+Goodwill and intangibles Q3	49776
+Goodwill and intangibles Q4	49964
+Goodwill and intangibles Q5	50059
+Goodwill and intangibles Q6	43434
+Goodwill and intangibles Q7	43736
+Goodwill and intangibles Q8	44126
+Other LT assets Q1	14630
+Other LT assets Q2	14455
+Other LT assets Q3	14723
+Other LT assets Q4	10258
+Other LT assets Q5	10129
+Other LT assets Q6	9792
+Other LT assets Q7	7442
+Other LT assets Q8	7106
+Total assets Q1	282794
+Total assets Q2	278955
+Total assets Q3	286556
+Total assets Q4	263281
+Total assets Q5	258859
+Total assets Q6	257619
+Total assets Q7	258848
+Total assets Q8	245497
+Accounts payable Q1	8811
+Accounts payable Q2	8574
+Accounts payable Q3	9382
+Accounts payable Q4	7544
+Accounts payable Q5	7563
+Accounts payable Q6	8511
+Accounts payable Q7	8617
+Accounts payable Q8	7623
+ST debt Q1	6711
+ST debt Q2	3421
+ST debt Q3	5833
+ST debt Q4	6797
+ST debt Q5	3761
+ST debt Q6	6700
+ST debt Q7	4174
+ST debt Q8	3858
+Other current liabilities Q1	44118
+Other current liabilities Q2	46123
+Other current liabilities Q3	54205
+Other current liabilities Q4	39520
+Other current liabilities Q5	38994
+Other current liabilities Q6	41066
+Other current liabilities Q7	45697
+Other current liabilities Q8	34652
+Current liabilities Q1	59640
+Current liabilities Q2	58118
+Current liabilities Q3	69420
+Current liabilities Q4	53861
+Current liabilities Q5	50318
+Current liabilities Q6	56277
+Current liabilities Q7	58488
+Current liabilities Q8	46133
+LT debt Q1	71648
+LT debt Q2	73939
+LT debt Q3	72919
+LT debt Q4	72113
+LT debt Q5	74618
+LT debt Q6	74204
+LT debt Q7	76367
+LT debt Q8	77630
+Other LT liabilities Q1	41397
+Other LT liabilities Q2	40837
+Other LT liabilities Q3	41887
+Other LT liabilities Q4	42443
+Other LT liabilities Q5	41795
+Other LT liabilities Q6	41171
+Other LT liabilities Q7	41275
+Other LT liabilities Q8	42495
+Total liabilities Q1	172685
+Total liabilities Q2	172894
+Total liabilities Q3	184226
+Total liabilities Q4	168417
+Total liabilities Q5	166731
+Total liabilities Q6	171652
+Total liabilities Q7	176130
+Total liabilities Q8	166258
+Preferred stock Q1	0
+Preferred stock Q2	0
+Preferred stock Q3	0
+Preferred stock Q4	0
+Preferred stock Q5	0
+Preferred stock Q6	0
+Preferred stock Q7	0
+Preferred stock Q8	0
+equity Q1	110109
+equity Q2	106061
+equity Q3	102330
+equity Q4	94864
+equity Q5	92128
+equity Q6	85967
+equity Q7	82718
+equity Q8	79239
+Liabilities and equity Q1	282794
+Liabilities and equity Q2	278955
+Liabilities and equity Q3	286556
+Liabilities and equity Q4	263281
+Liabilities and equity Q5	258859
+Liabilities and equity Q6	257619
+Liabilities and equity Q7	258848
+Liabilities and equity Q8	245497
+bvps Q1	14.45
+bvps Q2	13.89
+bvps Q3	13.37
+bvps Q4	12.36
+bvps Q5	11.98
+bvps Q6	11.2
+bvps Q7	10.77
+bvps Q8	10.29
+
