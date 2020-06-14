@@ -63,6 +63,17 @@ public class FieldData {
   private YearQuarterData epsDilCont;
   private YearQuarterData dividend;
 
+  final static String inbasedir  = String.format("D:/dev/eclipse-workspace/MarketTools/data/BigDB/");
+  final static String outbasedir = String.format("D:/dev/eclipse-workspace/MarketTools/out/BigDB/");
+
+  public FieldData() {
+
+    this.companyInfo = new CompanyFileData();
+    this.estimateData = new EstimateFileData();
+    this.shareData = new SharesFileData();
+
+  }
+
   /**
    *
    * @param cfd
@@ -71,58 +82,57 @@ public class FieldData {
    * @param ifd
    * @param bfd
    */
-  public FieldData() {
+  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, BalSheetFileData bfd, IncSheetFileData ifd) {
+    this.companyInfo = cfd;
+    this.estimateData = efd;
+    this.shareData = sfd;
 
-    this.companyInfo = new CompanyFileData();
-    this.estimateData = new EstimateFileData();
-    this.shareData = new SharesFileData();
+    this.shares = new YearQuarterData(sfd.getSharesY(), sfd.getSharesQ());
 
-//    this.shares = new YearQuarterData(sfd.getSharesY(), sfd.getSharesQ());
-//
-//    this.cash = new YearQuarterData(bfd.getCashYr(), bfd.getCashQtr());
-//    this.stInvestments = new YearQuarterData(bfd.getStInvestYr(), bfd.getStInvestQtr());
-//    this.acctRx = new YearQuarterData(bfd.getAcctRxYr(), bfd.getAcctRxQtr());
-//    this.inventory = new YearQuarterData(bfd.getInventoryYr(), bfd.getInventoryQtr());
-//    this.otherCurrAssets = new YearQuarterData(bfd.getOtherCurrAssetsYr(), bfd.getOtherCurrAssetsQtr());
-//    this.currAssets = new YearQuarterData(bfd.getCurrAssetsYr(), bfd.getCurrAssetsQtr());
-//    this.netFixedAssets = new YearQuarterData(bfd.getNetFixedAssetsYr(), bfd.getNetFixedAssetsQtr());
-//    this.ltInvestments = new YearQuarterData(bfd.getLtInvestYr(), bfd.getLtInvestQtr());
-//    this.goodwill = new YearQuarterData(bfd.getGoodwillYr(), bfd.getGoodwillQtr());
-//    this.otherLtAssets = new YearQuarterData(bfd.getOtherLtAssetsYr(), bfd.getOtherLtAssetsQtr());
-//    this.totalAssets = new YearQuarterData(bfd.getTotalAssetsYr(), bfd.getTotalAssetsQtr());
-//    this.acctPayable = new YearQuarterData(bfd.getAcctPayableYr(), bfd.getAcctPayableQtr());
-//    this.stDebt = new YearQuarterData(bfd.getStDebtYr(), bfd.getStDebtQtr());
-//    this.otherCurrLiab = new YearQuarterData(bfd.getOtherCurrLiabYr(), bfd.getOtherCurrLiabQtr());
-//    this.currLiab = new YearQuarterData(bfd.getCurrLiabYr(), bfd.getCurrLiabQtr());
-//    this.ltDebt = new YearQuarterData(bfd.getLtDebtYr(), bfd.getLtDebtQtr());
-//    this.otherLtLiab = new YearQuarterData(bfd.getOtherLtLiabYr(), bfd.getOtherLtLiabQtr());
-//    this.totalLiab = new YearQuarterData(bfd.getTotalLiabYr(), bfd.getTotalLiabQtr());
-//    this.prefStock = new YearQuarterData(bfd.getPrefStockYr(), bfd.getPrefStockQtr());
-//    this.equity = new YearQuarterData(bfd.getEquityYr(), bfd.getEquityQtr());
-//    this.liabEquity = new YearQuarterData(bfd.getLiabEquityYr(), bfd.getLiabEquityQtr());
-//    this.bvps = new YearQuarterData(bfd.getBvpsYr(), bfd.getBvpsQtr());
-//
-//    this.sales = new YearQuarterData(ifd.getSalesYr(), ifd.getSalesQtr());
-//    this.cogs = new YearQuarterData(ifd.getCogsYr(), ifd.getCogsQtr());
-//    this.grossInc = new YearQuarterData(ifd.getGrossIncYr(), ifd.getGrossIncQtr());
-//    this.rd = new YearQuarterData(ifd.getRdYr(), ifd.getRdQtr());
-//    this.depreciation = new YearQuarterData(ifd.getDepreciationYr(), ifd.getDepreciationQtr());
-//    this.intExp = new YearQuarterData(ifd.getIntExpYr(), ifd.getIntExpQtr());
-//    this.unusualInc = new YearQuarterData(ifd.getUnusualIncYr(), ifd.getUnusualIncQtr());
-//    this.totOpExp = new YearQuarterData(ifd.getTotalOpExpYr(), ifd.getTotalOpExpQtr());
-//    this.grossOpInc = new YearQuarterData(ifd.getGrossOpExpYr(), ifd.getGrossOpExpQtr());
-//    // this.otherIntExp = new YearQuarterData(ifd.geto, ifd.getSalesQtr());
-//    this.otherInc = new YearQuarterData(ifd.getOtherIncYr(), ifd.getOtherIncQtr());
-//    this.incAfterTax = new YearQuarterData(ifd.getIncAfterTaxYr(), ifd.getIncAfterTaxQtr());
-//    this.adjToInc = new YearQuarterData(ifd.getAdjToIncYr(), ifd.getAdjToIncQtr());
-//    this.incPrimaryEps = new YearQuarterData(ifd.getIncPrimaryEpsYr(), ifd.getIncPrimaryEpsQtr());
-//    this.nonrecurringItem = new YearQuarterData(ifd.getNonrecurringItemsYr(), ifd.getNonrecurringItemsQtr());
-//    this.netInc = new YearQuarterData(ifd.getNetIncYr(), ifd.getNetIncQtr());
-//    this.eps = new YearQuarterData(ifd.getEpsYr(), ifd.getEpsQtr());
-//    this.epsCont = new YearQuarterData(ifd.getEpsContYr(), ifd.getEpsContQtr());
-//    this.epsDil = new YearQuarterData(ifd.getEpsDilYr(), ifd.getEpsDilQtr());
-//    this.epsDilCont = new YearQuarterData(ifd.getEpsDilContYr(), ifd.getEpsDilContQtr());
-//    this.dividend = new YearQuarterData(ifd.getDividendYr(), ifd.getDividendQtr());
+    this.cash = new YearQuarterData(bfd.getCashYr(), bfd.getCashQtr());
+    this.stInvestments = new YearQuarterData(bfd.getStInvestYr(), bfd.getStInvestQtr());
+    this.acctRx = new YearQuarterData(bfd.getAcctRxYr(), bfd.getAcctRxQtr());
+    this.inventory = new YearQuarterData(bfd.getInventoryYr(), bfd.getInventoryQtr());
+    this.otherCurrAssets = new YearQuarterData(bfd.getOtherCurrAssetsYr(), bfd.getOtherCurrAssetsQtr());
+    this.currAssets = new YearQuarterData(bfd.getCurrAssetsYr(), bfd.getCurrAssetsQtr());
+    this.netFixedAssets = new YearQuarterData(bfd.getNetFixedAssetsYr(), bfd.getNetFixedAssetsQtr());
+    this.ltInvestments = new YearQuarterData(bfd.getLtInvestYr(), bfd.getLtInvestQtr());
+    this.goodwill = new YearQuarterData(bfd.getGoodwillYr(), bfd.getGoodwillQtr());
+    this.otherLtAssets = new YearQuarterData(bfd.getOtherLtAssetsYr(), bfd.getOtherLtAssetsQtr());
+    this.totalAssets = new YearQuarterData(bfd.getTotalAssetsYr(), bfd.getTotalAssetsQtr());
+    this.acctPayable = new YearQuarterData(bfd.getAcctPayableYr(), bfd.getAcctPayableQtr());
+    this.stDebt = new YearQuarterData(bfd.getStDebtYr(), bfd.getStDebtQtr());
+    this.otherCurrLiab = new YearQuarterData(bfd.getOtherCurrLiabYr(), bfd.getOtherCurrLiabQtr());
+    this.currLiab = new YearQuarterData(bfd.getCurrLiabYr(), bfd.getCurrLiabQtr());
+    this.ltDebt = new YearQuarterData(bfd.getLtDebtYr(), bfd.getLtDebtQtr());
+    this.otherLtLiab = new YearQuarterData(bfd.getOtherLtLiabYr(), bfd.getOtherLtLiabQtr());
+    this.totalLiab = new YearQuarterData(bfd.getTotalLiabYr(), bfd.getTotalLiabQtr());
+    this.prefStock = new YearQuarterData(bfd.getPrefStockYr(), bfd.getPrefStockQtr());
+    this.equity = new YearQuarterData(bfd.getEquityYr(), bfd.getEquityQtr());
+    this.liabEquity = new YearQuarterData(bfd.getLiabEquityYr(), bfd.getLiabEquityQtr());
+    this.bvps = new YearQuarterData(bfd.getBvpsYr(), bfd.getBvpsQtr());
+
+    this.sales = new YearQuarterData(ifd.getSalesYr(), ifd.getSalesQtr());
+    this.cogs = new YearQuarterData(ifd.getCogsYr(), ifd.getCogsQtr());
+    this.grossInc = new YearQuarterData(ifd.getGrossIncYr(), ifd.getGrossIncQtr());
+    this.rd = new YearQuarterData(ifd.getRdYr(), ifd.getRdQtr());
+    this.depreciation = new YearQuarterData(ifd.getDepreciationYr(), ifd.getDepreciationQtr());
+    this.intExp = new YearQuarterData(ifd.getIntExpYr(), ifd.getIntExpQtr());
+    this.unusualInc = new YearQuarterData(ifd.getUnusualIncYr(), ifd.getUnusualIncQtr());
+    this.totOpExp = new YearQuarterData(ifd.getTotalOpExpYr(), ifd.getTotalOpExpQtr());
+    this.grossOpInc = new YearQuarterData(ifd.getGrossOpExpYr(), ifd.getGrossOpExpQtr());
+    // this.otherIntExp = new YearQuarterData(ifd.geto, ifd.getSalesQtr());
+    this.otherInc = new YearQuarterData(ifd.getOtherIncYr(), ifd.getOtherIncQtr());
+    this.incAfterTax = new YearQuarterData(ifd.getIncAfterTaxYr(), ifd.getIncAfterTaxQtr());
+    this.adjToInc = new YearQuarterData(ifd.getAdjToIncYr(), ifd.getAdjToIncQtr());
+    this.incPrimaryEps = new YearQuarterData(ifd.getIncPrimaryEpsYr(), ifd.getIncPrimaryEpsQtr());
+    this.nonrecurringItem = new YearQuarterData(ifd.getNonrecurringItemsYr(), ifd.getNonrecurringItemsQtr());
+    this.netInc = new YearQuarterData(ifd.getNetIncYr(), ifd.getNetIncQtr());
+    this.eps = new YearQuarterData(ifd.getEpsYr(), ifd.getEpsQtr());
+    this.epsCont = new YearQuarterData(ifd.getEpsContYr(), ifd.getEpsContQtr());
+    this.epsDil = new YearQuarterData(ifd.getEpsDilYr(), ifd.getEpsDilQtr());
+    this.epsDilCont = new YearQuarterData(ifd.getEpsDilContYr(), ifd.getEpsDilContQtr());
+    this.dividend = new YearQuarterData(ifd.getDividendYr(), ifd.getDividendQtr());
   }
 
   public String genOutput(int year, int quarter) {
@@ -532,14 +542,25 @@ public class FieldData {
 
   @Override
   public String toString() {
-    final String ret = this.companyInfo.report();
+    String ret = "";
+    try {
+      if (this.companyInfo.getTicker() == null) {
+        ret = "";
+      }
+      else {
+        ret = this.companyInfo.report();
+        ret += this.shareData.report();
+      }
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
   }
 
   public static List<FieldData> readData(int year, int quarter) {
 
-    final String inbasedir = String.format("D:/dev/eclipse-workspace/Market/out/BigDB/");
-    final String indir = String.format("%s%s/Q%d/", inbasedir, year, quarter);
+    final String indir = String.format("%s%s/Q%d/", outbasedir, year, quarter);
 
     final List<FieldData> fdList = new ArrayList<>();
 
@@ -561,9 +582,10 @@ public class FieldData {
         final String fld = tfld[0].trim();
 
         String val = "";
+        String val2 = "";
         if (tfld.length > 2) {
           val = "http:";
-          tfld[2].trim();
+          val2 = tfld[2].trim();
         }
         else if (tfld.length > 1) {
           val = tfld[1].trim();
@@ -621,15 +643,86 @@ public class FieldData {
           fd.companyInfo.setPhone(val);
         }
         else if (fld.equals("web")) {
-          fd.companyInfo.setWeb(val);
+          fd.companyInfo.setWeb(val + val2);
         }
+        //
+//        price               : 152.110000
+//        float               : 7497.858000
+//        market cap          : 1199550.000000
+//        volume 3m avg       : 1039221
+//        dollars 3m avg      : 7903795.320000
+//        beta                : 0.960000
+//        insider ownership   : 0.100000
+//        insider buys        : 8
+//        insider sells       : 10
+//        insider buy shares  : 904
+//        insider sell shares : 824
+//        insider net shares  : 79
+//        inst buy shares     : 164740
+//        inst sell shares    : 207008
+//        inst shareholders   : 4572
+//        inst sell shares    : 74.500000
+//        shares quarterly    :  7,621.0000 7,634.0000 7,655.0000 7,672.0000 7,692.0000 7,673.0000 7,682.0000 7,698.0000
+//        shares yearly       :  7,673.0000 7,700.0000 7,746.0000 7,925.0000 8,177.0000 8,299.0000 8,375.0000
+
+        // Share Data
+        else if (fld.equals("price")) {
+          fd.shareData.setPrice(val);
+        }
+        else if (fld.equals("float")) {
+          fd.shareData.setFloatshr(val);
+        }
+        else if (fld.equals("market cap")) {
+          fd.shareData.setMktCap(val);
+        }
+        else if (fld.equals("volume 3m avg")) {
+          fd.shareData.setVolume3m(val);
+        }
+        else if (fld.equals("dollars 3m avg")) {
+          fd.shareData.setDollar3m(val);
+        }
+        else if (fld.equals("beta")) {
+          fd.shareData.setBeta(val);
+        }
+        else if (fld.equals("insider ownership")) {
+          fd.shareData.setInsiderOwnership(val);
+        }
+        else if (fld.equals("insider buys")) {
+          fd.shareData.setInsiderBuys(val);
+        }
+        else if (fld.equals("insider buy shares")) {
+          fd.shareData.setInsiderBuyShrs(val);
+        }
+        else if (fld.equals("insider sells")) {
+          fd.shareData.setInsiderSells(val);
+        }
+        else if (fld.equals("insider sell shares")) {
+          fd.shareData.setInsiderSellShrs(val);
+        }
+        else if (fld.equals("insider net shares")) {
+          fd.shareData.setInsiderNetTrades(val);
+        }
+        else if (fld.equals("inst buy shares")) {
+          fd.shareData.setInstBuyShrs(val);
+        }
+        else if (fld.equals("inst sell shares")) {
+          fd.shareData.setInstSellShrs(val);
+        }
+        else if (fld.equals("inst shareholders")) {
+          fd.shareData.setInstShareholders(val);
+        } //
+        else if (fld.equals("inst ownership")) {
+          fd.shareData.setInstOwnership(val);
+        } //
         else if (fld.contains("Data for ")) {
         }
         else {
           // System.out.printf("Unknown tag '%s' in Company File Data%n", fld);
         }
       }
-      fdList.add(fd);
+      if (fd.companyInfo.getTicker() != null) {
+        fdList.add(fd);
+      }
     }
     return fdList;
   }

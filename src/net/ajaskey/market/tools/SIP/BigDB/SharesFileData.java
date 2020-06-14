@@ -10,15 +10,96 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 public class SharesFileData {
 
-  private String   name;
-  private String   ticker;
-  private String   exchange;
-  private String   sector;
-  private String   industry;
-  private double   beta;
-  private double   floatshr;
-  private double   insiderOwnership;
-  private int      insiderBuys;
+  private String name;
+  private String ticker;
+  private String exchange;
+  private String sector;
+  private String industry;
+  private double beta;
+  private double floatshr;
+  private double insiderOwnership;
+  private int    insiderBuys;
+
+  public void setBeta(String fld) {
+    this.beta = SipUtils.parseDouble(fld);
+  }
+
+  public void setFloatshr(String fld) {
+    this.floatshr = SipUtils.parseDouble(fld);
+  }
+
+  public void setInsiderOwnership(String fld) {
+    this.insiderOwnership = SipUtils.parseDouble(fld);
+  }
+
+  public void setInsiderBuys(String fld) {
+    this.insiderBuys = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderNetTrades(String fld) {
+    this.insiderNetTrades = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderSells(String fld) {
+    this.insiderSells = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderBuyShrs(String fld) {
+    this.insiderBuyShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderSellShrs(String fld) {
+    this.insiderSellShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInstOwnership(String fld) {
+    this.instOwnership = SipUtils.parseDouble(fld);
+  }
+
+  public void setInstShareholders(String fld) {
+    this.instShareholders = SipUtils.parseInt(fld);
+  }
+
+  public void setInstBuyShrs(String fld) {
+    this.instBuyShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInstSellShrs(String fld) {
+    this.instSellShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setMktCap(String fld) {
+    this.mktCap = SipUtils.parseDouble(fld);
+  }
+
+  public void setInsiderNetPercentOutstanding(String fld) {
+    this.insiderNetPercentOutstanding = SipUtils.parseDouble(fld);
+  }
+
+  public void setPrice(String price) {
+    this.price = SipUtils.parseDouble(price);
+  }
+
+  public void setSharesQ(double[] sharesQ) {
+    this.sharesQ = sharesQ;
+  }
+
+  public void setSharesY(double[] sharesY) {
+    this.sharesY = sharesY;
+  }
+
+  public void setDollar3m(String fld) {
+    this.dollar3m = SipUtils.parseLong(fld);
+  }
+
+  public void setVolume3m(String fld) {
+    this.volume3m = SipUtils.parseLong(fld);
+  }
+
+  public static void setSfdList(List<SharesFileData> sfdList) {
+    SharesFileData.sfdList = sfdList;
+  }
+
   private int      insiderNetTrades;
   private int      insiderSells;
   private int      insiderBuyShrs;
@@ -36,7 +117,10 @@ public class SharesFileData {
   private double   dollar3m;
 
   public SharesFileData() {
-    // TODO Auto-generated constructor stub
+    sharesQ = new double[1];
+    sharesQ[0] = 0.0;
+    sharesY = new double[1];
+    sharesY[0] = 0.0;
   }
 
   public SharesFileData(String[] fld) {
@@ -179,7 +263,7 @@ public class SharesFileData {
     ret += String.format("  inst buy shares     : %d%n", this.instBuyShrs);
     ret += String.format("  inst sell shares    : %d%n", this.instSellShrs);
     ret += String.format("  inst shareholders   : %d%n", this.instShareholders);
-    ret += String.format("  inst sell shares    : %f%n", this.instOwnership);
+    ret += String.format("  inst ownership      : %f%n", this.instOwnership);
     ret += String.format("  shares quarterly    : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4, 1));
     ret += String.format("  shares yearly       : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4, 1));
     return ret;
