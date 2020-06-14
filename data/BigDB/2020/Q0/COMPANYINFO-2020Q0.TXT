@@ -1,0 +1,1 @@
+"Microsoft Corporation"	"MSFT"	"M - Nasdaq"	"57  - Technology"	"57201020 - Software"	"7372"	F	"Industrial"	"500"	F	"1 Microsoft Way"	"REDMOND"	"WA"	"United States"	"98052-6399"	"1-425-882-8080"	"https://www.microsoft.com/"	144000.000
