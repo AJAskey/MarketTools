@@ -63,8 +63,8 @@ public class FieldData {
   private YearQuarterData epsDilCont;
   private YearQuarterData dividend;
 
-  final static String inbasedir  = String.format("D:/dev/eclipse-workspace/MarketTools/data/BigDB/");
-  final static String outbasedir = String.format("D:/dev/eclipse-workspace/MarketTools/out/BigDB/");
+  final static String inbasedir  = String.format("D:/dev/eclipse-markettools/MarketTools/data/BigDB/");
+  final static String outbasedir = String.format("D:/dev/eclipse-markettools/MarketTools/out/BigDB/");
 
   public FieldData() {
 
