@@ -12,7 +12,23 @@ public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-    SipDbData.readData(2020, 1);
+    // SipDbData.parseSipData(2019, 4);
+    // SipDbData.parseSipData(2020, 1);
+    // SipDbData.parseSipData(2020, 2);
+
+    parseDbData(2019, 4);
+    parseDbData(2020, 1);
+    parseDbData(2020, 2);
+
+    System.out.println(BigLists.getReport());
+
+  }
+
+  private static void parseDbData(int year, int quarter) {
+
+    List<FieldData> fdList = FieldData.readData(year, quarter);
+    BigLists.setLists(year, quarter, fdList);
+
   }
 
   /**
@@ -21,7 +37,7 @@ public class SipDbData {
    * @param quarter
    * @throws FileNotFoundException
    */
-  protected static void readData(int year, int quarter) throws FileNotFoundException {
+  protected static void parseSipData(int year, int quarter) throws FileNotFoundException {
 
     Utils.makeDir("out");
     Utils.makeDir("out/BigDB");
@@ -76,8 +92,8 @@ public class SipDbData {
 
       String fname = String.format("%s/%s-fundamental-data-%dQ%d.txt", outdir, ticker, year, quarter);
 
-      FieldData fd = new FieldData(cfd, efd, sfd, bfd, ifd);
-      String rpt = fd.genOutput(year, quarter);
+      FieldData fd = new FieldData(cfd, efd, sfd, bfd, ifd, year, quarter);
+      String rpt = fd.genOutput();
       if (rpt != null && rpt.length() > 0) {
         try (PrintWriter pw = new PrintWriter(fname)) {
           pw.println(rpt);
@@ -87,17 +103,12 @@ public class SipDbData {
       // }
     }
 
-    final List<FieldData> fdList = FieldData.readData(2020, 1);
-
-    try (PrintWriter pw = new PrintWriter(outdir + "/tickers.txt")) {
-      for (final FieldData fd : fdList) {
-        pw.printf("%-10s : %s%n", fd.getCompanyInfo().getTicker(), fd.getCompanyInfo().getName());
-      }
-    }
-
-    for (final FieldData fd : fdList) {
-      System.out.println(fd);
-    }
+//    try (PrintWriter pw = new PrintWriter(outdir + "/tickers.txt")) {
+//      for (String s : BigLists.companySummaryList) {
+//        String fld[] = s.split(Utils.TAB);
+//        pw.printf("%-10s : %-50s : %s%n", fld[0].trim(), fld[1].trim(), fld[2].trim());
+//      }
+//    }
 
   }
 

@@ -9,35 +9,199 @@ import net.ajaskey.common.Utils;
 
 public class FieldData {
 
-  private CompanyFileData  companyInfo;
+  final static String inbasedir  = String.format("D:/dev/MarketTools/markettools.git/data/BigDB/");
+  final static String outbasedir = String.format("out/BigDB/");
+
+  public static List<FieldData> readData(int year, int quarter) {
+
+    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    final String[] ext = { "txt" };
+    final List<File> fList = Utils.getDirTree(indir, ext);
+    for (final File f : fList) {
+
+      final List<String> data = TextUtils.readTextFile(f, true);
+
+      final FieldData fd = new FieldData(year, quarter);
+
+      for (final String s : data) {
+
+        final String[] tfld = s.split(":");
+
+        // System.out.println(s);
+        // System.out.println(tfld.length);
+
+        final String fld = tfld[0].trim();
+
+        String val = "";
+        String val2 = "";
+        if (tfld.length > 2) {
+          val = "http:";
+          val2 = tfld[2].trim();
+        }
+        else if (tfld.length > 1) {
+          val = tfld[1].trim();
+        }
+
+        if (fld.equals("ticker")) {
+          fd.companyInfo.setTicker(val);
+          fd.ticker = fd.companyInfo.getTicker();
+        }
+        else if (fld.equals("name")) {
+          fd.companyInfo.setName(val);
+        }
+        else if (fld.equals("exchange")) {
+          fd.companyInfo.setExchange(val);
+        }
+        else if (fld.equals("sector")) {
+          fd.companyInfo.setSector(val);
+        }
+        else if (fld.equals("industry")) {
+          fd.companyInfo.setIndustry(val);
+        }
+        else if (fld.equals("sic")) {
+          fd.companyInfo.setSic(val);
+        }
+        else if (fld.equals("employees")) {
+          fd.companyInfo.setNumEmployees(val);
+        }
+        else if (fld.equals("snp index")) {
+          fd.companyInfo.setSnpIndex(val);
+        }
+        else if (fld.equals("dow index")) {
+          fd.companyInfo.setDowIndex(val);
+        }
+        else if (fld.equals("adr")) {
+          fd.companyInfo.setAdr(val);
+        }
+        else if (fld.equals("drp")) {
+          fd.companyInfo.setDrp(val);
+        }
+        else if (fld.equals("street")) {
+          fd.companyInfo.setStreet(val);
+        }
+        else if (fld.equals("city")) {
+          fd.companyInfo.setCity(val);
+        }
+        else if (fld.equals("state")) {
+          fd.companyInfo.setState(val);
+        }
+        else if (fld.equals("country")) {
+          fd.companyInfo.setCountry(val);
+        }
+        else if (fld.equals("zip")) {
+          fd.companyInfo.setZip(val);
+        }
+        else if (fld.equals("phone")) {
+          fd.companyInfo.setPhone(val);
+        }
+        else if (fld.equals("web")) {
+          fd.companyInfo.setWeb(val + val2);
+        }
+        //
+        // Share Data
+        else if (fld.equals("price")) {
+          fd.shareData.setPrice(val);
+        }
+        else if (fld.equals("float")) {
+          fd.shareData.setFloatshr(val);
+        }
+        else if (fld.equals("market cap")) {
+          fd.shareData.setMktCap(val);
+        }
+        else if (fld.equals("volume 3m avg")) {
+          fd.shareData.setVolume3m(val);
+        }
+        else if (fld.equals("dollars 3m avg")) {
+          fd.shareData.setDollar3m(val);
+        }
+        else if (fld.equals("beta")) {
+          fd.shareData.setBeta(val);
+        }
+        else if (fld.equals("insider ownership")) {
+          fd.shareData.setInsiderOwnership(val);
+        }
+        else if (fld.equals("insider buys")) {
+          fd.shareData.setInsiderBuys(val);
+        }
+        else if (fld.equals("insider buy shares")) {
+          fd.shareData.setInsiderBuyShrs(val);
+        }
+        else if (fld.equals("insider sells")) {
+          fd.shareData.setInsiderSells(val);
+        }
+        else if (fld.equals("insider sell shares")) {
+          fd.shareData.setInsiderSellShrs(val);
+        }
+        else if (fld.equals("insider net shares")) {
+          fd.shareData.setInsiderNetTrades(val);
+        }
+        else if (fld.equals("inst buy shares")) {
+          fd.shareData.setInstBuyShrs(val);
+        }
+        else if (fld.equals("inst sell shares")) {
+          fd.shareData.setInstSellShrs(val);
+        }
+        else if (fld.equals("inst shareholders")) {
+          fd.shareData.setInstShareholders(val);
+        } //
+        else if (fld.equals("inst ownership")) {
+          fd.shareData.setInstOwnership(val);
+        } //
+        else if (fld.contains("Data for ")) {
+        }
+        else {
+          // System.out.printf("Unknown tag '%s' in Company File Data%n", fld);
+        }
+      }
+      if (fd.companyInfo.getTicker() != null) {
+        fdList.add(fd);
+      }
+    }
+    return fdList;
+  }
+
+  private final int year;
+  private final int quarter;
+  private String    ticker;
+
+  private CompanyFileData companyInfo;
+
+  public int getYear() {
+    return year;
+  }
+
+  public int getQuarter() {
+    return quarter;
+  }
+
   private EstimateFileData estimateData;
   private SharesFileData   shareData;
-
-  private YearQuarterData shares;
-
-  private YearQuarterData cash;
-  private YearQuarterData stInvestments;
-  private YearQuarterData acctRx;
-  private YearQuarterData inventory;
-  private YearQuarterData otherCurrAssets;
-  private YearQuarterData currAssets;
-  private YearQuarterData netFixedAssets;
-  private YearQuarterData ltInvestments;
-  private YearQuarterData goodwill;
-  private YearQuarterData otherLtAssets;
-  private YearQuarterData totalAssets;
-  private YearQuarterData acctPayable;
-  private YearQuarterData stDebt;
-  private YearQuarterData otherCurrLiab;
-  private YearQuarterData currLiab;
-  private YearQuarterData ltDebt;
-  private YearQuarterData otherLtLiab;
-  private YearQuarterData totalLiab;
-  private YearQuarterData prefStock;
-  private YearQuarterData equity;
-  private YearQuarterData liabEquity;
-  private YearQuarterData bvps;
-
+  private YearQuarterData  shares;
+  private YearQuarterData  cash;
+  private YearQuarterData  stInvestments;
+  private YearQuarterData  acctRx;
+  private YearQuarterData  inventory;
+  private YearQuarterData  otherCurrAssets;
+  private YearQuarterData  currAssets;
+  private YearQuarterData  netFixedAssets;
+  private YearQuarterData  ltInvestments;
+  private YearQuarterData  goodwill;
+  private YearQuarterData  otherLtAssets;
+  private YearQuarterData  totalAssets;
+  private YearQuarterData  acctPayable;
+  private YearQuarterData  stDebt;
+  private YearQuarterData  otherCurrLiab;
+  private YearQuarterData  currLiab;
+  private YearQuarterData  ltDebt;
+  private YearQuarterData  otherLtLiab;
+  private YearQuarterData  totalLiab;
+  private YearQuarterData  prefStock;
+  private YearQuarterData  equity;
+  private YearQuarterData  liabEquity;
+  private YearQuarterData  bvps;
   //
   private YearQuarterData sales;
   private YearQuarterData cogs;
@@ -63,17 +227,6 @@ public class FieldData {
   private YearQuarterData epsDilCont;
   private YearQuarterData dividend;
 
-  final static String inbasedir  = String.format("D:/dev/eclipse-markettools/MarketTools/data/BigDB/");
-  final static String outbasedir = String.format("D:/dev/eclipse-markettools/MarketTools/out/BigDB/");
-
-  public FieldData() {
-
-    this.companyInfo = new CompanyFileData();
-    this.estimateData = new EstimateFileData();
-    this.shareData = new SharesFileData();
-
-  }
-
   /**
    *
    * @param cfd
@@ -82,7 +235,12 @@ public class FieldData {
    * @param ifd
    * @param bfd
    */
-  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, BalSheetFileData bfd, IncSheetFileData ifd) {
+  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, BalSheetFileData bfd, IncSheetFileData ifd, int yr, int qtr) {
+
+    this.year = yr;
+    this.quarter = qtr;
+    this.ticker = cfd.getTicker();
+
     this.companyInfo = cfd;
     this.estimateData = efd;
     this.shareData = sfd;
@@ -135,8 +293,28 @@ public class FieldData {
     this.dividend = new YearQuarterData(ifd.getDividendYr(), ifd.getDividendQtr());
   }
 
-  public String genOutput(int year, int quarter) {
-    String ret = String.format("Data for %s from %d Q%d%n", this.companyInfo.getTicker(), year, quarter);
+  /**
+   *
+   * @param yr
+   * @param qtr
+   */
+  public FieldData(int yr, int qtr) {
+
+    this.year = yr;
+    this.quarter = qtr;
+    this.ticker = "";
+    this.companyInfo = new CompanyFileData();
+    this.estimateData = new EstimateFileData();
+    this.shareData = new SharesFileData();
+
+  }
+
+  /**
+   *
+   * @return
+   */
+  public String genOutput() {
+    String ret = String.format("Data for %s from %d Q%d%n", this.companyInfo.getTicker(), this.year, this.quarter);
     ret += this.companyInfo.report();
     ret += this.shareData.report();
     // ret += this.estimateData;
@@ -326,6 +504,10 @@ public class FieldData {
 
   public YearQuarterData getStInvestments() {
     return this.stInvestments;
+  }
+
+  public String getTicker() {
+    return this.ticker;
   }
 
   public YearQuarterData getTotalAssets() {
@@ -552,179 +734,10 @@ public class FieldData {
         ret += this.shareData.report();
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
-  }
-
-  public static List<FieldData> readData(int year, int quarter) {
-
-    final String indir = String.format("%s%s/Q%d/", outbasedir, year, quarter);
-
-    final List<FieldData> fdList = new ArrayList<>();
-
-    final String[] ext = { "txt" };
-    final List<File> fList = Utils.getDirTree(indir, ext);
-    for (final File f : fList) {
-
-      final List<String> data = TextUtils.readTextFile(f, true);
-
-      final FieldData fd = new FieldData();
-
-      for (final String s : data) {
-
-        final String[] tfld = s.split(":");
-
-        // System.out.println(s);
-        // System.out.println(tfld.length);
-
-        final String fld = tfld[0].trim();
-
-        String val = "";
-        String val2 = "";
-        if (tfld.length > 2) {
-          val = "http:";
-          val2 = tfld[2].trim();
-        }
-        else if (tfld.length > 1) {
-          val = tfld[1].trim();
-        }
-
-        if (fld.equals("ticker")) {
-          fd.companyInfo.setTicker(val);
-        }
-        else if (fld.equals("name")) {
-          fd.companyInfo.setName(val);
-        }
-        else if (fld.equals("exchange")) {
-          fd.companyInfo.setExchange(val);
-        }
-        else if (fld.equals("sector")) {
-          fd.companyInfo.setSector(val);
-        }
-        else if (fld.equals("industry")) {
-          fd.companyInfo.setIndustry(val);
-        }
-        else if (fld.equals("sic")) {
-          fd.companyInfo.setSic(val);
-        }
-        else if (fld.equals("employees")) {
-          fd.companyInfo.setNumEmployees(val);
-        }
-        else if (fld.equals("snp index")) {
-          fd.companyInfo.setSnpIndex(val);
-        }
-        else if (fld.equals("dow index")) {
-          fd.companyInfo.setDowIndex(val);
-        }
-        else if (fld.equals("adr")) {
-          fd.companyInfo.setAdr(val);
-        }
-        else if (fld.equals("drp")) {
-          fd.companyInfo.setDrp(val);
-        }
-        else if (fld.equals("street")) {
-          fd.companyInfo.setStreet(val);
-        }
-        else if (fld.equals("city")) {
-          fd.companyInfo.setCity(val);
-        }
-        else if (fld.equals("state")) {
-          fd.companyInfo.setState(val);
-        }
-        else if (fld.equals("country")) {
-          fd.companyInfo.setCountry(val);
-        }
-        else if (fld.equals("zip")) {
-          fd.companyInfo.setZip(val);
-        }
-        else if (fld.equals("phone")) {
-          fd.companyInfo.setPhone(val);
-        }
-        else if (fld.equals("web")) {
-          fd.companyInfo.setWeb(val + val2);
-        }
-        //
-//        price               : 152.110000
-//        float               : 7497.858000
-//        market cap          : 1199550.000000
-//        volume 3m avg       : 1039221
-//        dollars 3m avg      : 7903795.320000
-//        beta                : 0.960000
-//        insider ownership   : 0.100000
-//        insider buys        : 8
-//        insider sells       : 10
-//        insider buy shares  : 904
-//        insider sell shares : 824
-//        insider net shares  : 79
-//        inst buy shares     : 164740
-//        inst sell shares    : 207008
-//        inst shareholders   : 4572
-//        inst sell shares    : 74.500000
-//        shares quarterly    :  7,621.0000 7,634.0000 7,655.0000 7,672.0000 7,692.0000 7,673.0000 7,682.0000 7,698.0000
-//        shares yearly       :  7,673.0000 7,700.0000 7,746.0000 7,925.0000 8,177.0000 8,299.0000 8,375.0000
-
-        // Share Data
-        else if (fld.equals("price")) {
-          fd.shareData.setPrice(val);
-        }
-        else if (fld.equals("float")) {
-          fd.shareData.setFloatshr(val);
-        }
-        else if (fld.equals("market cap")) {
-          fd.shareData.setMktCap(val);
-        }
-        else if (fld.equals("volume 3m avg")) {
-          fd.shareData.setVolume3m(val);
-        }
-        else if (fld.equals("dollars 3m avg")) {
-          fd.shareData.setDollar3m(val);
-        }
-        else if (fld.equals("beta")) {
-          fd.shareData.setBeta(val);
-        }
-        else if (fld.equals("insider ownership")) {
-          fd.shareData.setInsiderOwnership(val);
-        }
-        else if (fld.equals("insider buys")) {
-          fd.shareData.setInsiderBuys(val);
-        }
-        else if (fld.equals("insider buy shares")) {
-          fd.shareData.setInsiderBuyShrs(val);
-        }
-        else if (fld.equals("insider sells")) {
-          fd.shareData.setInsiderSells(val);
-        }
-        else if (fld.equals("insider sell shares")) {
-          fd.shareData.setInsiderSellShrs(val);
-        }
-        else if (fld.equals("insider net shares")) {
-          fd.shareData.setInsiderNetTrades(val);
-        }
-        else if (fld.equals("inst buy shares")) {
-          fd.shareData.setInstBuyShrs(val);
-        }
-        else if (fld.equals("inst sell shares")) {
-          fd.shareData.setInstSellShrs(val);
-        }
-        else if (fld.equals("inst shareholders")) {
-          fd.shareData.setInstShareholders(val);
-        } //
-        else if (fld.equals("inst ownership")) {
-          fd.shareData.setInstOwnership(val);
-        } //
-        else if (fld.contains("Data for ")) {
-        }
-        else {
-          // System.out.printf("Unknown tag '%s' in Company File Data%n", fld);
-        }
-      }
-      if (fd.companyInfo.getTicker() != null) {
-        fdList.add(fd);
-      }
-    }
-    return fdList;
   }
 
 }
