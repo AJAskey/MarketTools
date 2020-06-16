@@ -279,7 +279,7 @@ public class OptionCboe {
     OptionCboe.icodes.add("DIA");
 
     final String ext[] = { "dat" };
-    final List<File> files = Utils.getDirTree("D:\\dev\\Eclipse-03-2002\\workspace\\OptionsWorkbench\\data\\options", ext);
+    final List<File> files = Utils.getDirTree("data/options", ext);
 
     for (final File f : files) {
 

@@ -51,7 +51,7 @@ public class OptionUtils {
         }
 
         final String newFilename = String.format("%s-options.dat", code);
-        final String ffname = String.format("D:\\dev\\Eclipse-03-2002\\workspace\\OptionsWorkbench\\data\\options\\%s", newFilename);
+        final String ffname = String.format("data/options/%s", newFilename);
         try (PrintWriter pw = new PrintWriter(ffname)) {
           pw.println(modFirstLine);
           for (int i = 1; i < data.size(); i++) {

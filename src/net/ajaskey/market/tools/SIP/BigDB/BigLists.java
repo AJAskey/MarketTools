@@ -30,7 +30,7 @@ public class BigLists {
   public static void setLists(int yr, int qtr, List<FieldData> fdList) {
 
     if (allDataList.size() == 0) {
-      init(2000, 2030);
+      init(2019, 2020);
     }
     FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
     for (FieldDataYear fdy : allDataList) {

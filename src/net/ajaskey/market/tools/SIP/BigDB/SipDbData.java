@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
 
 public class SipDbData {
 
@@ -20,7 +21,14 @@ public class SipDbData {
     parseDbData(2020, 1);
     parseDbData(2020, 2);
 
-    System.out.println(BigLists.getReport());
+    // System.out.println(BigLists.getReport());
+
+//    int[] yrs = { 2019, 2020 };
+//    String rpt = Reports.companySummary(yrs);
+//    System.out.println(rpt);
+
+    // System.out.println(Reports.getSnpIndex(2020, 2, SnpEnum.SP400));
+    System.out.println(Reports.getDowIndex(2020, 2, DowEnum.UTILITY));
 
   }
 
