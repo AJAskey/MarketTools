@@ -11,18 +11,118 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 public class EstimateFileData {
 
+  private static List<EstimateFileData> efdList = new ArrayList<>();
+
+  /**
+   *
+   * @param ticker
+   * @return
+   */
+  public static EstimateFileData find(String ticker) {
+    for (final EstimateFileData e : EstimateFileData.efdList) {
+      if (e.getTicker().equalsIgnoreCase(ticker)) {
+        return e;
+      }
+    }
+    return null;
+  }
+
+  public static int getListCount() {
+    return EstimateFileData.efdList.size();
+  }
+
+  /**
+   *
+   * @return
+   */
+  public static String listToString() {
+    String ret = "";
+    for (final EstimateFileData e : EstimateFileData.efdList) {
+      ret += e.toString();
+    }
+    return ret;
+  }
+
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static void readSipData(String filename) {
+
+    final List<String> estData = TextUtils.readTextFile(filename, true);
+    for (final String s : estData) {
+      final String[] fld = s.replace("\"", "").split(Utils.TAB);
+      final EstimateFileData efd = new EstimateFileData(fld);
+      EstimateFileData.efdList.add(efd);
+    }
+
+  }
+
+  /**
+   *
+   * @param data
+   * @return
+   */
+  public static EstimateFileData readFromDb(List<String> data) {
+
+    final EstimateFileData efd = new EstimateFileData();
+
+    for (final String s : data) {
+
+      final String[] tfld = s.split(":");
+
+      final String fld = tfld[0].trim();
+
+      String val = "";
+      if (tfld.length > 1) {
+        val = tfld[1].trim();
+      }
+
+      if (fld.equals("eps Q0")) {
+        efd.epsQ0 = SipUtils.parseDouble(val);
+      }
+      else if (fld.equals("eqp Q1")) {
+        efd.epsQ1 = SipUtils.parseDouble(val);
+      }
+      else if (fld.equals("eps Y0")) {
+        efd.epsY0 = SipUtils.parseDouble(val);
+      }
+      else if (fld.equals("eps Y1")) {
+        efd.epsY1 = SipUtils.parseDouble(val);
+      }
+      else if (fld.equals("eps Y2")) {
+        efd.epsY2 = SipUtils.parseDouble(val);
+      }
+      else if (fld.equals("current fiscal year")) {
+        efd.currFiscalYear = new DateTime(val, "yyyy-MM-dd");
+      }
+      else if (fld.equals("latest quarter eps")) {
+        efd.latestQtrEps = new DateTime(val, "yyyy-MM-dd");
+      }
+    }
+    return efd;
+
+  }
+
   private String   name;
   private String   ticker;
   private String   exchange;
   private String   sector;
   private String   industry;
   private DateTime currFiscalYear;
+
   private DateTime latestQtrEps;
-  private double   epsQ0;
-  private double   epsQ1;
-  private double   epsY0;
-  private double   epsY1;
-  private double   epsY2;
+
+  private double epsQ0;
+
+  private double epsQ1;
+
+  private double epsY0;
+
+  private double epsY1;
+
+  private double epsY2;
 
   public EstimateFileData() {
     // TODO Auto-generated constructor stub
@@ -92,6 +192,39 @@ public class EstimateFileData {
     return this.ticker;
   }
 
+  public void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
+  }
+
+  public String toDbOutput() {
+    String ret = "";
+
+    String tmp = "";
+    if (!this.currFiscalYear.isNull()) {
+      tmp = this.currFiscalYear.format("yyyy-MM-dd");
+    }
+    ret += String.format("  current fiscal year : %s%n", tmp);
+
+    tmp = "";
+    if (!this.latestQtrEps.isNull()) {
+      tmp = this.latestQtrEps.format("yyyy-MM-dd");
+    }
+    ret += String.format("  latest quarter eps  : %s%n", tmp);
+
+    ret += String.format("  eps Q0  : %f%n", this.epsQ0);
+    ret += String.format("  eps Q1  : %f%n", this.epsQ1);
+    ret += String.format("  eps Y0  : %f%n", this.epsY0);
+    ret += String.format("  eps Y1  : %f%n", this.epsY1);
+    ret += String.format("  eps Y2  : %f%n", this.epsY2);
+
+    return ret;
+  }
+
   @Override
   public String toString() {
     String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
@@ -99,53 +232,5 @@ public class EstimateFileData {
     ret += String.format("  Est Q0 Q1    : %10.3f %10.3f%n", this.epsQ0, this.epsQ1);
     ret += String.format("  Est Y0 Y1 Y2 : %10.3f %10.2f %10.3f", this.epsY0, this.epsY1, this.epsY2);
     return ret;
-  }
-
-  private static List<EstimateFileData> efdList = new ArrayList<>();
-
-  /**
-   *
-   * @param ticker
-   * @return
-   */
-  public static EstimateFileData find(String ticker) {
-    for (final EstimateFileData e : EstimateFileData.efdList) {
-      if (e.getTicker().equalsIgnoreCase(ticker)) {
-        return e;
-      }
-    }
-    return null;
-  }
-
-  public static int getListCount() {
-    return EstimateFileData.efdList.size();
-  }
-
-  /**
-   *
-   * @return
-   */
-  public static String listToString() {
-    String ret = "";
-    for (final EstimateFileData e : EstimateFileData.efdList) {
-      ret += e.toString();
-    }
-    return ret;
-  }
-
-  /**
-   *
-   * @param filename
-   * @return
-   */
-  public static void readData(String filename) {
-
-    final List<String> estData = TextUtils.readTextFile(filename, true);
-    for (final String s : estData) {
-      final String[] fld = s.replace("\"", "").split(Utils.TAB);
-      final EstimateFileData efd = new EstimateFileData(fld);
-      EstimateFileData.efdList.add(efd);
-    }
-
   }
 }

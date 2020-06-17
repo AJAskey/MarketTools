@@ -14,8 +14,8 @@ public class Reports {
   }
 
   private static String companyLine(FieldData fd) {
-    return String.format("%-10s\t%-50s\t%-8s\t%-1s%n", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getSnpIndex(),
-        fd.getCompanyInfo().getDowIndex(), fd.getCompanyInfo().getExchange());
+    return String.format("%-10s\t%-50s\t%-15s\t%-8s\t%-1s%n", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange(),
+        fd.getCompanyInfo().getSnpIndex(), fd.getCompanyInfo().getDowIndex(), fd.getCompanyInfo().getExchange());
   }
 
   public static String companySummary(int yr, int qtr) {
@@ -59,7 +59,7 @@ public class Reports {
             FieldDataQuarter fdq = fdy.getQuarterData(qtr);
 
             for (FieldData fd : fdq.fieldDataList) {
-              if (fd.getCompanyInfo().getSnpIndex().equals(index.toString())) {
+              if (fd.getCompanyInfo().getSnpIndex().equals(index)) {
                 String s = companyLine(fd);
                 ret += s;
               }
@@ -87,7 +87,7 @@ public class Reports {
             FieldDataQuarter fdq = fdy.getQuarterData(qtr);
 
             for (FieldData fd : fdq.fieldDataList) {
-              if (fd.getCompanyInfo().getDowIndex().toUpperCase().equals(index.toString())) {
+              if (fd.getCompanyInfo().getDowIndex().equals(index)) {
                 String s = companyLine(fd);
                 ret += s;
               }

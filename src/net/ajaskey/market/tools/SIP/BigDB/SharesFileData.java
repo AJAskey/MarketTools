@@ -10,117 +10,176 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 public class SharesFileData {
 
-  private String name;
-  private String ticker;
-  private String exchange;
-  private String sector;
-  private String industry;
-  private double beta;
-  private double floatshr;
-  private double insiderOwnership;
-  private int    insiderBuys;
+  private static List<SharesFileData> sfdList = new ArrayList<>();
 
-  public void setBeta(String fld) {
-    this.beta = SipUtils.parseDouble(fld);
+  public static SharesFileData find(String ticker) {
+    for (final SharesFileData s : SharesFileData.sfdList) {
+      if (s.getTicker().equalsIgnoreCase(ticker)) {
+        return s;
+      }
+    }
+    return null;
   }
 
-  public void setFloatshr(String fld) {
-    this.floatshr = SipUtils.parseDouble(fld);
+  public static int getListCount() {
+    return SharesFileData.sfdList.size();
   }
 
-  public void setInsiderOwnership(String fld) {
-    this.insiderOwnership = SipUtils.parseDouble(fld);
+  public static String listToString() {
+    String ret = "";
+    for (final SharesFileData s : SharesFileData.sfdList) {
+      ret += s.toString();
+    }
+    return ret;
   }
 
-  public void setInsiderBuys(String fld) {
-    this.insiderBuys = SipUtils.parseInt(fld);
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static void readSipData(String filename) {
+
+    final List<String> shrData = TextUtils.readTextFile(filename, true);
+    for (final String s : shrData) {
+      final String[] fld = s.replace("\"", "").split(Utils.TAB);
+      final SharesFileData sfd = new SharesFileData(fld);
+      SharesFileData.sfdList.add(sfd);
+    }
   }
 
-  public void setInsiderNetTrades(String fld) {
-    this.insiderNetTrades = SipUtils.parseInt(fld);
-  }
+  public static SharesFileData readFromDb(List<String> data) {
 
-  public void setInsiderSells(String fld) {
-    this.insiderSells = SipUtils.parseInt(fld);
-  }
+    final SharesFileData sfd = new SharesFileData();
 
-  public void setInsiderBuyShrs(String fld) {
-    this.insiderBuyShrs = SipUtils.parseInt(fld);
-  }
+    for (final String s : data) {
 
-  public void setInsiderSellShrs(String fld) {
-    this.insiderSellShrs = SipUtils.parseInt(fld);
-  }
+      final String[] tfld = s.split(":");
 
-  public void setInstOwnership(String fld) {
-    this.instOwnership = SipUtils.parseDouble(fld);
-  }
+      final String fld = tfld[0].trim();
 
-  public void setInstShareholders(String fld) {
-    this.instShareholders = SipUtils.parseInt(fld);
-  }
+      String val = "";
+      if (tfld.length > 1) {
+        val = tfld[1].trim();
+      }
 
-  public void setInstBuyShrs(String fld) {
-    this.instBuyShrs = SipUtils.parseInt(fld);
-  }
+      if (fld.equals("price")) {
+        sfd.setPrice(val);
+      }
+      else if (fld.equals("float")) {
+        sfd.setFloatshr(val);
+      }
+      else if (fld.equals("market cap")) {
+        sfd.setMktCap(val);
+      }
+      else if (fld.equals("volume 3m avg")) {
+        sfd.setVolume3m(val);
+      }
+      else if (fld.equals("dollars 3m avg")) {
+        sfd.setDollar3m(val);
+      }
+      else if (fld.equals("beta")) {
+        sfd.setBeta(val);
+      }
+      else if (fld.equals("insider ownership")) {
+        sfd.setInsiderOwnership(val);
+      }
+      else if (fld.equals("insider buys")) {
+        sfd.setInsiderBuys(val);
+      }
+      else if (fld.equals("insider buy shares")) {
+        sfd.setInsiderBuyShrs(val);
+      }
+      else if (fld.equals("insider sells")) {
+        sfd.setInsiderSells(val);
+      }
+      else if (fld.equals("insider sell shares")) {
+        sfd.setInsiderSellShrs(val);
+      }
+      else if (fld.equals("insider net shares")) {
+        sfd.setInsiderNetTrades(val);
+      }
+      else if (fld.equals("inst buy shares")) {
+        sfd.setInstBuyShrs(val);
+      }
+      else if (fld.equals("inst sell shares")) {
+        sfd.setInstSellShrs(val);
+      }
+      else if (fld.equals("inst shareholders")) {
+        sfd.setInstShareholders(val);
+      } //
+      else if (fld.equals("inst ownership")) {
+        sfd.setInstOwnership(val);
+      }
+      else if (fld.equals("shares quarterly")) {
+        final double[] sharesQ = SipUtils.parseArrayDoubles(tfld[1], 1);
+        sfd.setSharesQ(sharesQ);
+      }
+      else if (fld.equals("shares yearly")) {
+        final double[] sharesY = SipUtils.parseArrayDoubles(tfld[1], 1);
+        sfd.setSharesY(sharesY);
+      }
 
-  public void setInstSellShrs(String fld) {
-    this.instSellShrs = SipUtils.parseInt(fld);
-  }
+    }
+    return sfd;
 
-  public void setMktCap(String fld) {
-    this.mktCap = SipUtils.parseDouble(fld);
-  }
-
-  public void setInsiderNetPercentOutstanding(String fld) {
-    this.insiderNetPercentOutstanding = SipUtils.parseDouble(fld);
-  }
-
-  public void setPrice(String price) {
-    this.price = SipUtils.parseDouble(price);
-  }
-
-  public void setSharesQ(double[] sharesQ) {
-    this.sharesQ = sharesQ;
-  }
-
-  public void setSharesY(double[] sharesY) {
-    this.sharesY = sharesY;
-  }
-
-  public void setDollar3m(String fld) {
-    this.dollar3m = SipUtils.parseLong(fld);
-  }
-
-  public void setVolume3m(String fld) {
-    this.volume3m = SipUtils.parseLong(fld);
   }
 
   public static void setSfdList(List<SharesFileData> sfdList) {
     SharesFileData.sfdList = sfdList;
   }
 
-  private int      insiderNetTrades;
-  private int      insiderSells;
-  private int      insiderBuyShrs;
-  private int      insiderSellShrs;
-  private double   instOwnership;
-  private int      instShareholders;
-  private int      instBuyShrs;
-  private int      instSellShrs;
-  private double   mktCap;
-  private double   insiderNetPercentOutstanding;
-  private double   price;
+  private String name;
+  private String ticker;
+
+  private String exchange;
+
+  private String sector;
+
+  private String industry;
+
+  private double beta;
+
+  private double floatshr;
+
+  private double insiderOwnership;
+
+  private int insiderBuys;
+
+  private int insiderNetTrades;
+
+  private int insiderSells;
+
+  private int insiderBuyShrs;
+
+  private int insiderSellShrs;
+
+  private double instOwnership;
+
+  private int instShareholders;
+
+  private int instBuyShrs;
+
+  private int instSellShrs;
+
+  private double mktCap;
+
+  private double insiderNetPercentOutstanding;
+
+  private double price;
+
   private double[] sharesQ;
+
   private double[] sharesY;
-  private long     volume3m;
-  private double   dollar3m;
+
+  private long   volume3m;
+  private double dollar3m;
 
   public SharesFileData() {
-    sharesQ = new double[1];
-    sharesQ[0] = 0.0;
-    sharesY = new double[1];
-    sharesY[0] = 0.0;
+    this.sharesQ = new double[1];
+    this.sharesQ[0] = 0.0;
+    this.sharesY = new double[1];
+    this.sharesY[0] = 0.0;
   }
 
   public SharesFileData(String[] fld) {
@@ -246,7 +305,95 @@ public class SharesFileData {
     return this.volume3m;
   }
 
-  public String report() {
+  public void setBeta(String fld) {
+    this.beta = SipUtils.parseDouble(fld);
+  }
+
+  public void setDollar3m(String fld) {
+    this.dollar3m = SipUtils.parseLong(fld);
+  }
+
+  public void setFloatshr(String fld) {
+    this.floatshr = SipUtils.parseDouble(fld);
+  }
+
+  public void setFromReport(int year, int quarter) {
+
+  }
+
+  public void setInsiderBuys(String fld) {
+    this.insiderBuys = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderBuyShrs(String fld) {
+    this.insiderBuyShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderNetPercentOutstanding(String fld) {
+    this.insiderNetPercentOutstanding = SipUtils.parseDouble(fld);
+  }
+
+  public void setInsiderNetTrades(String fld) {
+    this.insiderNetTrades = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderOwnership(String fld) {
+    this.insiderOwnership = SipUtils.parseDouble(fld);
+  }
+
+  public void setInsiderSells(String fld) {
+    this.insiderSells = SipUtils.parseInt(fld);
+  }
+
+  public void setInsiderSellShrs(String fld) {
+    this.insiderSellShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInstBuyShrs(String fld) {
+    this.instBuyShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInstOwnership(String fld) {
+    this.instOwnership = SipUtils.parseDouble(fld);
+  }
+
+  public void setInstSellShrs(String fld) {
+    this.instSellShrs = SipUtils.parseInt(fld);
+  }
+
+  public void setInstShareholders(String fld) {
+    this.instShareholders = SipUtils.parseInt(fld);
+  }
+
+  public void setMktCap(String fld) {
+    this.mktCap = SipUtils.parseDouble(fld);
+  }
+
+  public void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+  }
+
+  public void setPrice(String fld) {
+    this.price = SipUtils.parseDouble(fld);
+  }
+
+  public void setSharesQ(double[] flds) {
+    this.sharesQ = flds;
+  }
+
+  public void setSharesY(double[] flds) {
+    this.sharesY = flds;
+  }
+
+  public void setVolume3m(String fld) {
+    this.volume3m = SipUtils.parseLong(fld);
+  }
+
+  public String toDbOutput() {
     String ret = "";
     ret += String.format("  price               : %f%n", this.price);
     ret += String.format("  float               : %f%n", this.floatshr);
@@ -269,10 +416,6 @@ public class SharesFileData {
     return ret;
   }
 
-  public void setFromReport(int year, int quarter) {
-
-  }
-
   @Override
   public String toString() {
     String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
@@ -287,44 +430,6 @@ public class SharesFileData {
     ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
     ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
     return ret;
-  }
-
-  private static List<SharesFileData> sfdList = new ArrayList<>();
-
-  public static SharesFileData find(String ticker) {
-    for (final SharesFileData s : SharesFileData.sfdList) {
-      if (s.getTicker().equalsIgnoreCase(ticker)) {
-        return s;
-      }
-    }
-    return null;
-  }
-
-  public static int getListCount() {
-    return SharesFileData.sfdList.size();
-  }
-
-  public static String listToString() {
-    String ret = "";
-    for (final SharesFileData s : SharesFileData.sfdList) {
-      ret += s.toString();
-    }
-    return ret;
-  }
-
-  /**
-   *
-   * @param filename
-   * @return
-   */
-  public static void readData(String filename) {
-
-    final List<String> shrData = TextUtils.readTextFile(filename, true);
-    for (final String s : shrData) {
-      final String[] fld = s.replace("\"", "").split(Utils.TAB);
-      final SharesFileData sfd = new SharesFileData(fld);
-      SharesFileData.sfdList.add(sfd);
-    }
   }
 
 }

@@ -60,7 +60,7 @@ public class SipUtils {
   public static double parseDouble(final String fld) {
 
     try {
-      double d = Double.parseDouble(fld.trim());
+      double d = Double.parseDouble(fld.trim().replace(",", ""));
       if (d > 0.0 && d < 0.0001) {
         d = 0.0;
       }
@@ -87,6 +87,22 @@ public class SipUtils {
     int knt = 1;
     for (int i = start; i < start + len; i++) {
       ret[knt++] = SipUtils.parseDouble(fld[i]);
+    }
+
+    return ret;
+  }
+
+  public static double[] parseArrayDoubles(String flds, int slide) {
+
+    String fld[] = flds.trim().split("\\s+");
+
+    int len = fld.length + slide;
+
+    double[] ret = new double[len];
+
+    int iret = slide;
+    for (int i = 0; i < fld.length; i++) {
+      ret[iret++] = SipUtils.parseDouble(fld[i]);
     }
 
     return ret;

@@ -10,55 +10,132 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 public class BalSheetFileData {
 
-  private final String   name;
-  private final String   ticker;
-  private final String   exchange;
-  private final String   sector;
-  private final String   industry;
-  private final double[] cashQtr;
-  private final double[] cashYr;
-  private final double[] stInvestQtr;
-  private final double[] stInvestYr;
-  private final double[] acctRxQtr;
-  private final double[] acctRxYr;
-  private final double[] inventoryQtr;
-  private final double[] inventoryYr;
-  private final double[] otherCurrAssetsQtr;
-  private final double[] otherCurrAssetsYr;
-  private final double[] currAssetsQtr;
-  private final double[] currAssetsYr;
-  private final double[] netFixedAssetsQtr;
-  private final double[] netFixedAssetsYr;
-  private final double[] ltInvestQtr;
-  private final double[] ltInvestYr;
-  private final double[] goodwillQtr;
-  private final double[] goodwillYr;
-  private final double[] otherLtAssetsQtr;
-  private final double[] otherLtAssetsYr;
-  private final double[] totalAssetsQtr;
-  private final double[] totalAssetsYr;
-  private final double[] acctPayableQtr;
-  private final double[] acctPayableYr;
-  private final double[] stDebtQtr;
-  private final double[] stDebtYr;
-  private final double[] otherCurrLiabQtr;
-  private final double[] otherCurrLiabYr;
-  private final double[] currLiabQtr;
-  private final double[] currLiabYr;
-  private final double[] ltDebtQtr;
-  private final double[] ltDebtYr;
-  private final double[] otherLtLiabQtr;
-  private final double[] otherLtLiabYr;
-  private final double[] totalLiabQtr;
-  private final double[] totalLiabYr;
-  private final double[] prefStockQtr;
-  private final double[] prefStockYr;
-  private final double[] equityQtr;
-  private final double[] equityYr;
-  private final double[] liabEquityQtr;
-  private final double[] liabEquityYr;
-  private final double[] bvpsQtr;
-  private final double[] bvpsYr;
+  private static List<BalSheetFileData> bfdList = new ArrayList<>();
+
+  /**
+   *
+   * @param ticker
+   * @return
+   */
+  public static BalSheetFileData find(String ticker) {
+    for (final BalSheetFileData bs : BalSheetFileData.bfdList) {
+      if (bs.getTicker().equalsIgnoreCase(ticker)) {
+        return bs;
+      }
+    }
+    return null;
+  }
+
+  public static int getListCount() {
+    return BalSheetFileData.bfdList.size();
+  }
+
+  /**
+   *
+   * @return
+   */
+  public static String listToString() {
+    String ret = "";
+    for (final BalSheetFileData bs : BalSheetFileData.bfdList) {
+      ret += bs.toString();
+    }
+    return ret;
+  }
+
+  /**
+   *
+   * @param filenameQtr
+   * @param filenameYr
+   * @return
+   */
+  public static void readSipData(String filenameQtr, String filenameYr) {
+
+    final List<String> bsdDataQtr = TextUtils.readTextFile(filenameQtr, true);
+    final List<String> bsdDataYr = TextUtils.readTextFile(filenameYr, true);
+
+    for (int i = 0; i < bsdDataQtr.size(); i++) {
+
+      final String[] fldQtr = bsdDataQtr.get(i).replace("\"", "").split(Utils.TAB);
+      final String[] fldYr = bsdDataYr.get(i).replace("\"", "").split(Utils.TAB);
+
+      if (!fldQtr[1].equals(fldYr[1])) {
+
+        System.out.printf("BSD Not equal : %s : %s%n", fldQtr[1], fldYr[1]);
+
+      }
+      else {
+
+        final BalSheetFileData bsd = new BalSheetFileData(fldQtr, fldYr);
+        BalSheetFileData.bfdList.add(bsd);
+
+      }
+    }
+  }
+
+  public static BalSheetFileData readFromDb(List<String> data) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  private String   name;
+  private String   ticker;
+  private String   exchange;
+  private String   sector;
+  private String   industry;
+  private double[] cashQtr;
+  private double[] cashYr;
+  private double[] stInvestQtr;
+  private double[] stInvestYr;
+  private double[] acctRxQtr;
+  private double[] acctRxYr;
+  private double[] inventoryQtr;
+  private double[] inventoryYr;
+  private double[] otherCurrAssetsQtr;
+  private double[] otherCurrAssetsYr;
+  private double[] currAssetsQtr;
+  private double[] currAssetsYr;
+  private double[] netFixedAssetsQtr;
+  private double[] netFixedAssetsYr;
+  private double[] ltInvestQtr;
+  private double[] ltInvestYr;
+  private double[] goodwillQtr;
+  private double[] goodwillYr;
+  private double[] otherLtAssetsQtr;
+  private double[] otherLtAssetsYr;
+  private double[] totalAssetsQtr;
+  private double[] totalAssetsYr;
+  private double[] acctPayableQtr;
+  private double[] acctPayableYr;
+  private double[] stDebtQtr;
+  private double[] stDebtYr;
+  private double[] otherCurrLiabQtr;
+  private double[] otherCurrLiabYr;
+  private double[] currLiabQtr;
+  private double[] currLiabYr;
+  private double[] ltDebtQtr;
+  private double[] ltDebtYr;
+  private double[] otherLtLiabQtr;
+  private double[] otherLtLiabYr;
+  private double[] totalLiabQtr;
+  private double[] totalLiabYr;
+  private double[] prefStockQtr;
+  private double[] prefStockYr;
+
+  private double[] equityQtr;
+
+  private double[] equityYr;
+
+  private double[] liabEquityQtr;
+
+  private double[] liabEquityYr;
+
+  private double[] bvpsQtr;
+
+  private double[] bvpsYr;
+
+  public BalSheetFileData() {
+    // TODO Auto-generated constructor stub
+  }
 
   /**
    *
@@ -382,6 +459,15 @@ public class BalSheetFileData {
     return this.totalLiabYr;
   }
 
+  public void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
+  }
+
   @Override
   public String toString() {
     String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
@@ -432,74 +518,5 @@ public class BalSheetFileData {
     ret += SipOutput.buildArray("  bvpsYr         : ", this.bvpsYr, 1, 2) + Utils.NL;
 
     return ret;
-  }
-
-  private void debug(String code, String ticker, String desc, double[] yr, double[] qtr) {
-    if (code.equals(ticker)) {
-      System.out.println(SipOutput.buildArray(desc, yr, yr.length - 1, 3));
-      System.out.println(SipOutput.buildArray(desc, qtr, qtr.length - 1, 3));
-    }
-  }
-
-  private static List<BalSheetFileData> bfdList = new ArrayList<>();
-
-  /**
-   *
-   * @param ticker
-   * @return
-   */
-  public static BalSheetFileData find(String ticker) {
-    for (final BalSheetFileData bs : BalSheetFileData.bfdList) {
-      if (bs.getTicker().equalsIgnoreCase(ticker)) {
-        return bs;
-      }
-    }
-    return null;
-  }
-
-  public static int getListCount() {
-    return BalSheetFileData.bfdList.size();
-  }
-
-  /**
-   *
-   * @return
-   */
-  public static String listToString() {
-    String ret = "";
-    for (final BalSheetFileData bs : BalSheetFileData.bfdList) {
-      ret += bs.toString();
-    }
-    return ret;
-  }
-
-  /**
-   *
-   * @param filenameQtr
-   * @param filenameYr
-   * @return
-   */
-  public static void readData(String filenameQtr, String filenameYr) {
-
-    final List<String> bsdDataQtr = TextUtils.readTextFile(filenameQtr, true);
-    final List<String> bsdDataYr = TextUtils.readTextFile(filenameYr, true);
-
-    for (int i = 0; i < bsdDataQtr.size(); i++) {
-
-      final String[] fldQtr = bsdDataQtr.get(i).replace("\"", "").split(Utils.TAB);
-      final String[] fldYr = bsdDataYr.get(i).replace("\"", "").split(Utils.TAB);
-
-      if (!fldQtr[1].equals(fldYr[1])) {
-
-        System.out.printf("BSD Not equal : %s : %s%n", fldQtr[1], fldYr[1]);
-
-      }
-      else {
-
-        final BalSheetFileData bsd = new BalSheetFileData(fldQtr, fldYr);
-        BalSheetFileData.bfdList.add(bsd);
-
-      }
-    }
   }
 }

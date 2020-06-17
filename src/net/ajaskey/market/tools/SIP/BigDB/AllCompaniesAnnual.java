@@ -12,19 +12,19 @@ public class AllCompaniesAnnual {
   public List<FieldData> q4 = new ArrayList<>();
 
   public void setQuarter(List<FieldData> fdList) {
-    int qtr = fdList.get(0).getQuarter();
+    final int qtr = fdList.get(0).getQuarter();
 
     if (qtr == 1) {
-      q1 = fdList;
+      this.q1 = fdList;
     }
     else if (qtr == 2) {
-      q2 = fdList;
+      this.q2 = fdList;
     }
     else if (qtr == 3) {
-      q3 = fdList;
+      this.q3 = fdList;
     }
     else if (qtr == 4) {
-      q4 = fdList;
+      this.q4 = fdList;
     }
   }
 

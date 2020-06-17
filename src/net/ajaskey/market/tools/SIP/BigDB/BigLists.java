@@ -9,42 +9,22 @@ public class BigLists {
   private static List<String>   companySummaryList = new ArrayList<>();
   public static List<FieldData> quarterlyList      = new ArrayList<>();
 
-  public static void setCompanySummaries() {
-    for (FieldData fd : quarterlyList) {
-      String s = String.format("%s\t%s\t%s", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange());
-      companySummaryList.add(s);
-    }
-
-    Collections.sort(companySummaryList);
-
-  }
-
   public static List<FieldDataYear> allDataList = new ArrayList<>();
 
-  private static void init(int first, int last) {
-    for (int i = first; i <= last; i++) {
-      allDataList.add(new FieldDataYear(i));
-    }
-  }
-
-  public static void setLists(int yr, int qtr, List<FieldData> fdList) {
-
-    if (allDataList.size() == 0) {
-      init(2019, 2020);
-    }
-    FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
-    for (FieldDataYear fdy : allDataList) {
-      if (fdy.getYear() == yr) {
-        fdy.set(qtr, fdq);
-        return;
+  public static List<IndividualCompanyData> getCompany(String ticker) {
+    final List<IndividualCompanyData> ret = new ArrayList<>();
+    for (final FieldDataYear fdy : BigLists.allDataList) {
+      if (fdy.isInUse()) {
+        final IndividualCompanyData icd = new IndividualCompanyData(ticker, fdy);
+        ret.add(icd);
       }
     }
-    System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
+    return ret;
   }
 
   public static String getReport() {
     String ret = "";
-    for (FieldDataYear fdy : allDataList) {
+    for (final FieldDataYear fdy : BigLists.allDataList) {
       if (fdy.isInUse()) {
         ret += String.format("%d%n", fdy.getYear());
         if (fdy.getQ1() != null) {
@@ -62,5 +42,36 @@ public class BigLists {
       }
     }
     return ret;
+  }
+
+  private static void init(int first, int last) {
+    for (int i = first; i <= last; i++) {
+      BigLists.allDataList.add(new FieldDataYear(i));
+    }
+  }
+
+  public static void setCompanySummaries() {
+    for (final FieldData fd : BigLists.quarterlyList) {
+      final String s = String.format("%s\t%s\t%s", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange());
+      BigLists.companySummaryList.add(s);
+    }
+
+    Collections.sort(BigLists.companySummaryList);
+
+  }
+
+  public static void setLists(int yr, int qtr, List<FieldData> fdList) {
+
+    if (BigLists.allDataList.size() == 0) {
+      BigLists.init(2019, 2020);
+    }
+    final FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
+    for (final FieldDataYear fdy : BigLists.allDataList) {
+      if (fdy.getYear() == yr) {
+        fdy.set(qtr, fdq);
+        return;
+      }
+    }
+    System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
   }
 }
