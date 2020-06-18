@@ -1,8 +1,6 @@
-package net.ajaskey.market.tools.SIP.BigDB;
+package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
 import java.util.List;
-
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 
 public class FieldDataQuarter {
 

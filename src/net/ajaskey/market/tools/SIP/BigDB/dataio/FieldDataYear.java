@@ -1,4 +1,4 @@
-package net.ajaskey.market.tools.SIP.BigDB;
+package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
 public class FieldDataYear {
 

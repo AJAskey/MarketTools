@@ -1,6 +1,7 @@
 package net.ajaskey.market.tools.SIP.BigDB;
 
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataYear;
 
 public class IndividualCompanyData {
 
