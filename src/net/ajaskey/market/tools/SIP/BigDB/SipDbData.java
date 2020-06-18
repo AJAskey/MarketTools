@@ -7,12 +7,12 @@ public class SipDbData {
   public static void main(final String[] args) throws FileNotFoundException {
 
     // FieldData.parseSipData(2019, 4);
-    FieldData.parseSipData(2020, 1);
-    FieldData.parseSipData(2020, 2);
+    // FieldData.parseSipData(2020, 1);
+    // FieldData.parseSipData(2020, 2);
 
     // parseDbData(2019, 4);
 //    parseDbData(2020, 1);
-    // FieldData.parseDbData(2020, 2);
+    FieldData.parseDbData(2020, 2);
 //
 //    List<IndividualCompanyData> msft = BigLists.getCompany("MSFT");
 //    System.out.println(msft);
@@ -23,7 +23,7 @@ public class SipDbData {
 //    String rpt = Reports.companySummary(yrs);
 //    System.out.println(rpt);
 
-    // System.out.println(Reports.getSnpIndex(2020, 2, SnpEnum.SP400));
+    // System.out.println(Reports.getSnpIndex(2020, 2, SnpEnum.SP600));
     // System.out.println(Reports.getDowIndex(2020, 2, DowEnum.UTILITY));
 
   }

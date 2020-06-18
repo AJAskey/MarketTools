@@ -883,7 +883,7 @@ public class IncSheetFileData {
     ret += String.format("  total op exp Qtr    : %s%n", SipOutput.buildArray("", this.totalOpExpQtr, 10, 2, 1));
     ret += String.format("  total op exp Yr     : %s%n", SipOutput.buildArray("", this.totalOpExpYr, 10, 2, 0));
     ret += String.format("  gross op inc Qtr    : %s%n", SipOutput.buildArray("", this.grossOpIncQtr, 10, 2, 1));
-    ret += String.format("  gross op inc Yr    : %s%n", SipOutput.buildArray("", this.grossOpIncYr, 10, 2, 1));
+    ret += String.format("  gross op inc Yr     : %s%n", SipOutput.buildArray("", this.grossOpIncYr, 10, 2, 1));
     ret += String.format("  int exp noop Qtr    : %s%n", SipOutput.buildArray("", this.intExpNonOpQtr, 10, 2, 1));
     ret += String.format("  int exp noop Yr     : %s%n", SipOutput.buildArray("", this.intExpNonOpYr, 10, 2, 0));
     ret += String.format("  other inc Qtr       : %s%n", SipOutput.buildArray("", this.otherIncQtr, 10, 2, 1));

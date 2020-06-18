@@ -216,11 +216,11 @@ public class EstimateFileData {
     }
     ret += String.format("  latest quarter eps  : %s%n", tmp);
 
-    ret += String.format("  eps Q0  : %f%n", this.epsQ0);
-    ret += String.format("  eps Q1  : %f%n", this.epsQ1);
-    ret += String.format("  eps Y0  : %f%n", this.epsY0);
-    ret += String.format("  eps Y1  : %f%n", this.epsY1);
-    ret += String.format("  eps Y2  : %f%n", this.epsY2);
+    ret += String.format("  eps Q0              : %f%n", this.epsQ0);
+    ret += String.format("  eps Q1              : %f%n", this.epsQ1);
+    ret += String.format("  eps Y0              : %f%n", this.epsY0);
+    ret += String.format("  eps Y1              : %f%n", this.epsY1);
+    ret += String.format("  eps Y2              : %f%n", this.epsY2);
 
     return ret;
   }

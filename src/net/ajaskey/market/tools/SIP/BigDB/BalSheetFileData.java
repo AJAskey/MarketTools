@@ -42,6 +42,219 @@ public class BalSheetFileData {
     return ret;
   }
 
+  public static BalSheetFileData readFromDb(List<String> data) {
+
+    final BalSheetFileData bfd = new BalSheetFileData();
+
+    for (final String s : data) {
+
+      final String[] tfld = s.split(":");
+
+      final String fld = tfld[0].trim();
+
+      // System.out.println(fld);
+
+      if (tfld.length > 1) {
+        tfld[1].trim();
+      }
+
+      if (fld.equals("acct payable Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.acctPayableQtr = dArr;
+      }
+      else if (fld.equals("acct payable Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.acctPayableYr = dArr;
+      }
+      else if (fld.equals("acct rx Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.acctRxQtr = dArr;
+      }
+      else if (fld.equals("acct rx Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.acctRxYr = dArr;
+      }
+      else if (fld.equals("bvps Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.bvpsQtr = dArr;
+      }
+      else if (fld.equals("bvps Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.bvpsYr = dArr;
+      }
+      else if (fld.equals("cash Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.cashQtr = dArr;
+      }
+      else if (fld.equals("cash Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.cashYr = dArr;
+      }
+      else if (fld.equals("curr assets Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currAssetsQtr = dArr;
+      }
+      else if (fld.equals("curr assets Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currAssetsYr = dArr;
+      }
+      else if (fld.equals("curr liab Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currLiabQtr = dArr;
+      }
+      else if (fld.equals("curr liab Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currLiabYr = dArr;
+      }
+      else if (fld.equals("equity Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.equityQtr = dArr;
+      }
+      else if (fld.equals("equity Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.equityYr = dArr;
+      }
+      else if (fld.equals("goodwill Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.goodwillQtr = dArr;
+      }
+      else if (fld.equals("goodwill Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.goodwillYr = dArr;
+      }
+      else if (fld.equals("inventory Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.inventoryQtr = dArr;
+      }
+      else if (fld.equals("inventory Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.inventoryYr = dArr;
+      }
+      else if (fld.equals("liab equity Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.liabEquityQtr = dArr;
+      }
+      else if (fld.equals("liab equity Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.liabEquityYr = dArr;
+      }
+      else if (fld.equals("lt debt Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.ltDebtQtr = dArr;
+      }
+      else if (fld.equals("lt debt Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.ltDebtYr = dArr;
+      }
+      else if (fld.equals("lt invest Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.ltInvestQtr = dArr;
+      }
+      else if (fld.equals("lt invest Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.ltInvestYr = dArr;
+      }
+      else if (fld.equals("net fixed assets Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.netFixedAssetsQtr = dArr;
+      }
+      else if (fld.equals("net fixed assets Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.netFixedAssetsYr = dArr;
+      }
+      else if (fld.equals("curr assets Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currAssetsQtr = dArr;
+      }
+      else if (fld.equals("curr assets Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currAssetsYr = dArr;
+      }
+      else if (fld.equals("curr liab Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currLiabQtr = dArr;
+      }
+      else if (fld.equals("curr liab Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.currLiabYr = dArr;
+      }
+      else if (fld.equals("other curr assets Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherCurrAssetsQtr = dArr;
+      }
+      else if (fld.equals("other curr assets Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherCurrAssetsYr = dArr;
+      }
+      else if (fld.equals("other lt assets Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherLtAssetsQtr = dArr;
+      }
+      else if (fld.equals("other lt assets Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherLtAssetsYr = dArr;
+      }
+      else if (fld.equals("other curr liab Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherCurrLiabQtr = dArr;
+      }
+      else if (fld.equals("other curr liab Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherCurrLiabYr = dArr;
+      }
+      else if (fld.equals("other lt liab Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherLtLiabQtr = dArr;
+      }
+      else if (fld.equals("other lt liab Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.otherLtLiabYr = dArr;
+      }
+      else if (fld.equals("pref stock Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.prefStockQtr = dArr;
+      }
+      else if (fld.equals("pref stock Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.prefStockYr = dArr;
+      }
+      else if (fld.equals("st debt Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.stDebtQtr = dArr;
+      }
+      else if (fld.equals("st debt Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.stDebtYr = dArr;
+      }
+      else if (fld.equals("st invest Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.stInvestQtr = dArr;
+      }
+      else if (fld.equals("st invest Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.stInvestYr = dArr;
+      }
+      else if (fld.equals("total assets Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.totalAssetsQtr = dArr;
+      }
+      else if (fld.equals("total assets Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.totalAssetsYr = dArr;
+      }
+      else if (fld.equals("total liab Qtr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.totalLiabQtr = dArr;
+      }
+      else if (fld.equals("total liab Yr")) {
+        final double[] dArr = SipUtils.parseArrayDoubles(tfld[1], 1);
+        bfd.totalLiabYr = dArr;
+      }
+
+    }
+    return bfd;
+  }
+
   /**
    *
    * @param filenameQtr
@@ -70,11 +283,6 @@ public class BalSheetFileData {
 
       }
     }
-  }
-
-  public static BalSheetFileData readFromDb(List<String> data) {
-    // TODO Auto-generated method stub
-    return null;
   }
 
   private String   name;
@@ -466,6 +674,60 @@ public class BalSheetFileData {
     this.industry = cfd.getIndustry();
     this.exchange = cfd.getExchange();
 
+  }
+
+  public String toDbOutput() {
+    String ret = "";
+    ret += String.format("  acct payable Qtr      : %s%n", SipOutput.buildArray("", this.acctPayableQtr, 12, 3, 1));
+    ret += String.format("  acct payable Yr       : %s%n", SipOutput.buildArray("", this.acctPayableYr, 12, 3, 1));
+    ret += String.format("  acct rx Qtr           : %s%n", SipOutput.buildArray("", this.acctRxQtr, 12, 3, 1));
+    ret += String.format("  acct rx Yr            : %s%n", SipOutput.buildArray("", this.acctRxYr, 12, 3, 1));
+    ret += String.format("  bvps Qtr              : %s%n", SipOutput.buildArray("", this.bvpsQtr, 12, 4, 1));
+    ret += String.format("  bvps Yr               : %s%n", SipOutput.buildArray("", this.bvpsYr, 12, 4, 1));
+    ret += String.format("  cash Qtr              : %s%n", SipOutput.buildArray("", this.cashQtr, 12, 3, 1));
+    ret += String.format("  cash Yr               : %s%n", SipOutput.buildArray("", this.cashYr, 12, 3, 1));
+    ret += String.format("  curr assets Qtr       : %s%n", SipOutput.buildArray("", this.currAssetsQtr, 12, 3, 1));
+    ret += String.format("  curr assets Yr        : %s%n", SipOutput.buildArray("", this.currAssetsYr, 12, 3, 1));
+    ret += String.format("  curr liab Qtr         : %s%n", SipOutput.buildArray("", this.currLiabQtr, 12, 3, 1));
+    ret += String.format("  curr liab Yr          : %s%n", SipOutput.buildArray("", this.currLiabYr, 12, 3, 1));
+    ret += String.format("  equity Qtr            : %s%n", SipOutput.buildArray("", this.equityQtr, 12, 3, 1));
+    ret += String.format("  equity Yr             : %s%n", SipOutput.buildArray("", this.equityYr, 12, 3, 1));
+    ret += String.format("  goodwill Qtr          : %s%n", SipOutput.buildArray("", this.goodwillQtr, 12, 3, 1));
+    ret += String.format("  goodwill Yr           : %s%n", SipOutput.buildArray("", this.goodwillYr, 12, 3, 1));
+    ret += String.format("  inventory Qtr         : %s%n", SipOutput.buildArray("", this.inventoryQtr, 12, 3, 1));
+    ret += String.format("  inventory Yr          : %s%n", SipOutput.buildArray("", this.inventoryYr, 12, 3, 1));
+    ret += String.format("  liab equity Qtr       : %s%n", SipOutput.buildArray("", this.liabEquityQtr, 12, 3, 1));
+    ret += String.format("  liab equity Yr        : %s%n", SipOutput.buildArray("", this.liabEquityYr, 12, 3, 1));
+    ret += String.format("  lt debt Qtr           : %s%n", SipOutput.buildArray("", this.ltDebtQtr, 12, 3, 1));
+    ret += String.format("  lt debt Yr            : %s%n", SipOutput.buildArray("", this.ltDebtYr, 12, 3, 1));
+    ret += String.format("  lt invest Qtr         : %s%n", SipOutput.buildArray("", this.ltInvestQtr, 12, 3, 1));
+    ret += String.format("  lt invest Yr          : %s%n", SipOutput.buildArray("", this.ltInvestYr, 12, 3, 1));
+    ret += String.format("  net fixed assets Qtr  : %s%n", SipOutput.buildArray("", this.netFixedAssetsQtr, 12, 3, 1));
+    ret += String.format("  net fixed assets Yr   : %s%n", SipOutput.buildArray("", this.netFixedAssetsYr, 12, 3, 1));
+    ret += String.format("  curr assets Qtr       : %s%n", SipOutput.buildArray("", this.otherCurrAssetsQtr, 12, 3, 1));
+    ret += String.format("  curr assest Yr        : %s%n", SipOutput.buildArray("", this.otherCurrAssetsYr, 12, 3, 1));
+    ret += String.format("  curr liab Qtr         : %s%n", SipOutput.buildArray("", this.otherCurrLiabQtr, 12, 3, 1));
+    ret += String.format("  curr liab Yr          : %s%n", SipOutput.buildArray("", this.otherCurrLiabYr, 12, 3, 1));
+    ret += String.format("  other curr assets Qtr : %s%n", SipOutput.buildArray("", this.otherCurrAssetsQtr, 12, 3, 1));
+    ret += String.format("  other curr assets Yr  : %s%n", SipOutput.buildArray("", this.otherCurrAssetsYr, 12, 3, 1));
+    ret += String.format("  other lt assets Qtr   : %s%n", SipOutput.buildArray("", this.otherLtAssetsQtr, 12, 3, 1));
+    ret += String.format("  other lt assets Yr    : %s%n", SipOutput.buildArray("", this.otherLtAssetsYr, 12, 3, 1));
+    ret += String.format("  other curr liab Qtr   : %s%n", SipOutput.buildArray("", this.otherCurrLiabQtr, 12, 3, 1));
+    ret += String.format("  other curr liab Yr    : %s%n", SipOutput.buildArray("", this.otherCurrLiabYr, 12, 3, 1));
+    ret += String.format("  other lt liab Qtr     : %s%n", SipOutput.buildArray("", this.otherLtLiabQtr, 12, 3, 1));
+    ret += String.format("  other lt liab Yr      : %s%n", SipOutput.buildArray("", this.otherLtLiabYr, 12, 3, 1));
+    ret += String.format("  pref stock Qtr        : %s%n", SipOutput.buildArray("", this.prefStockQtr, 12, 3, 1));
+    ret += String.format("  pref stock Yr         : %s%n", SipOutput.buildArray("", this.prefStockYr, 12, 3, 1));
+    ret += String.format("  st debt Qtr           : %s%n", SipOutput.buildArray("", this.stDebtQtr, 12, 3, 1));
+    ret += String.format("  st debt Yr            : %s%n", SipOutput.buildArray("", this.stDebtYr, 12, 3, 1));
+    ret += String.format("  st invest Qtr         : %s%n", SipOutput.buildArray("", this.stInvestQtr, 12, 3, 1));
+    ret += String.format("  st invest Yr          : %s%n", SipOutput.buildArray("", this.stInvestYr, 12, 3, 1));
+    ret += String.format("  total assets Qtr      : %s%n", SipOutput.buildArray("", this.totalAssetsQtr, 12, 3, 1));
+    ret += String.format("  total assets Yr       : %s%n", SipOutput.buildArray("", this.totalAssetsYr, 12, 3, 1));
+    ret += String.format("  total liab Qtr        : %s%n", SipOutput.buildArray("", this.totalLiabQtr, 12, 3, 1));
+    ret += String.format("  total liab Yr         : %s%n", SipOutput.buildArray("", this.totalLiabYr, 12, 3, 1));
+
+    return ret;
   }
 
   @Override

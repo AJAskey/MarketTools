@@ -164,11 +164,14 @@ public class CompanyFileData {
 
       cfd.ticker = CompanyFileData.fld[CompanyFileData.TICKER].trim();
       cfd.name = CompanyFileData.fld[CompanyFileData.NAME].trim();
-      cfd.exchange = CompanyFileData.fld[CompanyFileData.EXCHANGE].trim();
+
+      String tmp = CompanyFileData.fld[CompanyFileData.EXCHANGE].trim();
+      cfd.exchange = tmp.replace("Over the counter", "OTC");
+
       cfd.sector = CompanyFileData.fld[CompanyFileData.SECTOR].trim();
       cfd.industry = CompanyFileData.fld[CompanyFileData.INDUSTRY].trim();
       cfd.sic = CompanyFileData.fld[CompanyFileData.SIC].trim();
-      final String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
+      tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
       if (tmp.equals("500")) {
         cfd.snpIndex = SnpEnum.SP500;
       }
@@ -639,7 +642,7 @@ public class CompanyFileData {
   }
 
   public String toDbOuput() {
-    String ret = String.format("ticker     : %s%n", this.ticker);
+    String ret = String.format("ticker      : %s%n", this.ticker);
     ret += String.format("  name      : %s%n", this.name);
     ret += String.format("  exchange  : %s%n", this.exchange);
     ret += String.format("  sector    : %s%n", this.sector);

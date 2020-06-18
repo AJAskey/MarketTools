@@ -15,9 +15,15 @@ public class Reports {
 
   private static String companyLine(FieldData fd) {
     return String.format("%-10s\t%-50s\t%-15s\t%-8s\t%-1s%n", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange(),
-        fd.getCompanyInfo().getSnpIndex(), fd.getCompanyInfo().getDowIndex(), fd.getCompanyInfo().getExchange());
+        fd.getCompanyInfo().getSnpIndexStr(), fd.getCompanyInfo().getDowIndexStr(), fd.getCompanyInfo().getExchange());
   }
 
+  /**
+   * 
+   * @param yr
+   * @param qtr
+   * @return
+   */
   public static String companySummary(int yr, int qtr) {
 
     String ret = header(yr, qtr);
@@ -44,6 +50,13 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * 
+   * @param yr
+   * @param qtr
+   * @param index
+   * @return
+   */
   public static String getSnpIndex(int yr, int qtr, SnpEnum index) {
 
     String ret = header(yr, qtr);
@@ -72,6 +85,13 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * 
+   * @param yr
+   * @param qtr
+   * @param index
+   * @return
+   */
   public static String getDowIndex(int yr, int qtr, DowEnum index) {
 
     String ret = header(yr, qtr);

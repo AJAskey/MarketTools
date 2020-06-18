@@ -90,7 +90,9 @@ public class FieldData {
     final String fname = String.format("%s/%s-fundamental-data-%dQ%d.txt", outdir, cfd.getTicker(), year, quarter);
 
     final FieldData fd = new FieldData(cfd, efd, sfd, bfd, ifd, year, quarter);
+
     final String rpt = fd.genOutput();
+
     if (rpt != null && rpt.length() > 0) {
       try (PrintWriter pw = new PrintWriter(fname)) {
         pw.println(rpt);
@@ -127,7 +129,7 @@ public class FieldData {
       fd.shareData.setNameFields(fd.companyInfo);
       fd.estimateData.setNameFields(fd.companyInfo);
       fd.incSheetData.setNameFields(fd.companyInfo);
-      // fd.balSheetData.setNameFields(fd.companyInfo);
+      fd.balSheetData.setNameFields(fd.companyInfo);
 
       if (fd.companyInfo.getTicker() != null) {
         fdList.add(fd);
@@ -214,6 +216,7 @@ public class FieldData {
     ret += this.shareData.toDbOutput();
     ret += this.estimateData.toDbOutput();
     ret += this.incSheetData.toDbOutput();
+    ret += this.balSheetData.toDbOutput();
     return ret;
 
   }
