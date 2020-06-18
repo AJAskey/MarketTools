@@ -1,7 +1,12 @@
 package net.ajaskey.market.tools.SIP.BigDB.reports;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.BigDB.BigLists;
 import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.FieldDataQuarter;
 import net.ajaskey.market.tools.SIP.BigDB.FieldDataYear;
@@ -10,7 +15,7 @@ import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 public class Reports {
 
   private static String header(int yr, int qtr) {
-    return String.format("Summary of requested Company Ticker, Name, SnP, Dow, Exchange for year %d quarter %d%n", yr, qtr);
+    return String.format("Summary of requested Company Ticker, Name, Exchange SnP, Dow for year %d quarter %d%n", yr, qtr);
   }
 
   private static String companyLine(FieldData fd) {
@@ -57,10 +62,12 @@ public class Reports {
    * @param index
    * @return
    */
-  public static String getSnpIndex(int yr, int qtr, SnpEnum index) {
+  public static String getSnpIndex(int yr, int qtr, SnpEnum index, boolean tickersOnly) {
 
-    String ret = header(yr, qtr);
-
+    String ret = "";
+    if (!tickersOnly) {
+      ret += header(yr, qtr);
+    }
     for (FieldDataYear fdy : BigLists.allDataList) {
 
       if (yr == fdy.getYear()) {
@@ -73,7 +80,13 @@ public class Reports {
 
             for (FieldData fd : fdq.fieldDataList) {
               if (fd.getCompanyInfo().getSnpIndex().equals(index)) {
-                String s = companyLine(fd);
+                String s = "";
+                if (tickersOnly) {
+                  s = String.format("%s%n", fd.getTicker());
+                }
+                else {
+                  s = companyLine(fd);
+                }
                 ret += s;
               }
             }
@@ -92,9 +105,12 @@ public class Reports {
    * @param index
    * @return
    */
-  public static String getDowIndex(int yr, int qtr, DowEnum index) {
+  public static String getDowIndex(int yr, int qtr, DowEnum index, boolean tickersOnly) {
 
-    String ret = header(yr, qtr);
+    String ret = "";
+    if (!tickersOnly) {
+      ret += header(yr, qtr);
+    }
 
     for (FieldDataYear fdy : BigLists.allDataList) {
 
@@ -108,7 +124,57 @@ public class Reports {
 
             for (FieldData fd : fdq.fieldDataList) {
               if (fd.getCompanyInfo().getDowIndex().equals(index)) {
-                String s = companyLine(fd);
+                String s = "";
+                if (tickersOnly) {
+                  s = String.format("%s%n", fd.getTicker());
+                }
+                else {
+                  s = companyLine(fd);
+                }
+                ret += s;
+              }
+            }
+          }
+        }
+        break;
+      }
+    }
+    return ret;
+  }
+
+  /**
+   * 
+   * @param yr
+   * @param qtr
+   * @param exch
+   * @return
+   */
+  public static String getExchange(int yr, int qtr, ExchEnum exch, boolean tickersOnly) {
+
+    String ret = "";
+    if (!tickersOnly) {
+      ret += header(yr, qtr);
+    }
+
+    for (FieldDataYear fdy : BigLists.allDataList) {
+
+      if (yr == fdy.getYear()) {
+
+        if (fdy.isInUse()) {
+
+          if (fdy.quarterDataAvailable(qtr)) {
+
+            FieldDataQuarter fdq = fdy.getQuarterData(qtr);
+
+            for (FieldData fd : fdq.fieldDataList) {
+              if (fd.getCompanyInfo().getExchange().equals(exch)) {
+                String s = "";
+                if (tickersOnly) {
+                  s = String.format("%s%n", fd.getTicker());
+                }
+                else {
+                  s = companyLine(fd);
+                }
                 ret += s;
               }
             }
@@ -140,6 +206,17 @@ public class Reports {
     }
 
     // System.out.println(ret);
+    return ret;
+  }
+
+  public static List<String> outputToList(String str) {
+    List<String> ret = new ArrayList<>();
+    String[] fld = str.split(Utils.NL);
+
+    for (String s : fld) {
+      ret.add(s);
+    }
+
     return ret;
   }
 

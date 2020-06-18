@@ -145,6 +145,44 @@ public class FieldData {
 
   }
 
+  /**
+   * Used for writing enum in CAPS.
+   * 
+   * @param enm
+   * @return
+   */
+  public static String getExchangeStr(ExchEnum enm) {
+    return enm.toString().toUpperCase();
+  }
+
+  /**
+   * Used when reading SIP exchange field data
+   * 
+   * @param enumStr
+   * @return
+   */
+  public static ExchEnum convertExchange(String enumStr) {
+    ExchEnum ret = ExchEnum.NONE;
+    try {
+      if (enumStr.contains("M - Nasdaq")) {
+        ret = ExchEnum.NASDAQ;
+      }
+      else if (enumStr.contains("N - New York")) {
+        ret = ExchEnum.NYSE;
+      }
+      else if (enumStr.contains("A - American")) {
+        ret = ExchEnum.AMEX;
+      }
+      else if (enumStr.contains("O - Over the counter")) {
+        ret = ExchEnum.OTC;
+      }
+    }
+    catch (Exception e) {
+      ret = ExchEnum.NONE;
+    }
+    return ret;
+  }
+
   private final int year;
   private final int quarter;
   private String    ticker;
@@ -152,7 +190,7 @@ public class FieldData {
   private String    sector;
   private String    industry;
 
-  private String           exchange;
+  private ExchEnum         exchange;
   private CompanyFileData  companyInfo;
   private EstimateFileData estimateData;
   private SharesFileData   shareData;
@@ -233,7 +271,7 @@ public class FieldData {
     return this.estimateData;
   }
 
-  public String getExchange() {
+  public ExchEnum getExchange() {
     return this.exchange;
   }
 

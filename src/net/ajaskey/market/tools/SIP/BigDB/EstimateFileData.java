@@ -107,7 +107,7 @@ public class EstimateFileData {
 
   private String   name;
   private String   ticker;
-  private String   exchange;
+  private ExchEnum exchange;
   private String   sector;
   private String   industry;
   private DateTime currFiscalYear;
@@ -132,7 +132,7 @@ public class EstimateFileData {
 
     this.name = fld[0].trim();
     this.ticker = fld[1].trim();
-    this.exchange = fld[2].trim();
+    this.exchange = FieldData.convertExchange(fld[2].trim());
     this.sector = fld[3].trim();
     this.industry = fld[4].trim();
     this.currFiscalYear = new DateTime(fld[5].trim(), "MM/dd/yyyy");
@@ -168,7 +168,7 @@ public class EstimateFileData {
     return this.epsY2;
   }
 
-  public String getExchange() {
+  public ExchEnum getExchange() {
     return this.exchange;
   }
 
@@ -227,7 +227,7 @@ public class EstimateFileData {
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
+    String ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
     ret += String.format("  %s  %s%n", this.currFiscalYear, this.latestQtrEps);
     ret += String.format("  Est Q0 Q1    : %10.3f %10.3f%n", this.epsQ0, this.epsQ1);
     ret += String.format("  Est Y0 Y1 Y2 : %10.3f %10.2f %10.3f", this.epsY0, this.epsY1, this.epsY2);

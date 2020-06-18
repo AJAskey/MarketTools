@@ -287,7 +287,7 @@ public class BalSheetFileData {
 
   private String   name;
   private String   ticker;
-  private String   exchange;
+  private ExchEnum exchange;
   private String   sector;
   private String   industry;
   private double[] cashQtr;
@@ -354,7 +354,7 @@ public class BalSheetFileData {
 
     this.name = fldQtr[0].trim();
     this.ticker = fldQtr[1].trim();
-    this.exchange = fldQtr[2].trim();
+    this.exchange = FieldData.convertExchange(fldQtr[2].trim());
     this.sector = fldQtr[3].trim();
     this.industry = fldQtr[4].trim();
 
@@ -528,7 +528,7 @@ public class BalSheetFileData {
   }
 
   public String getExchange() {
-    return this.exchange;
+    return this.exchange.toString().toUpperCase();
   }
 
   public double[] getGoodwillQtr() {
@@ -732,7 +732,7 @@ public class BalSheetFileData {
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
+    String ret = SipOutput.SipHeader(this.ticker, this.name, this.getExchange(), this.sector, this.industry);
     ret += SipOutput.buildArray("  CashQtr        : ", this.cashQtr, 1, 0) + Utils.NL;
     ret += SipOutput.buildArray("  CashYr         : ", this.cashYr, 1, 0) + Utils.NL;
     ret += SipOutput.buildArray("  stInvestQtr    : ", this.stInvestQtr, 1, 0) + Utils.NL;

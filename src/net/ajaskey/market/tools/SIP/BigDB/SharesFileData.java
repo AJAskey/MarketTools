@@ -129,51 +129,30 @@ public class SharesFileData {
     SharesFileData.sfdList = sfdList;
   }
 
-  private String name;
-  private String ticker;
-
-  private String exchange;
-
-  private String sector;
-
-  private String industry;
-
-  private double beta;
-
-  private double floatshr;
-
-  private double insiderOwnership;
-
-  private int insiderBuys;
-
-  private int insiderNetTrades;
-
-  private int insiderSells;
-
-  private int insiderBuyShrs;
-
-  private int insiderSellShrs;
-
-  private double instOwnership;
-
-  private int instShareholders;
-
-  private int instBuyShrs;
-
-  private int instSellShrs;
-
-  private double mktCap;
-
-  private double insiderNetPercentOutstanding;
-
-  private double price;
-
+  private String   name;
+  private String   ticker;
+  private ExchEnum exchange;
+  private String   sector;
+  private String   industry;
+  private double   beta;
+  private double   floatshr;
+  private double   insiderOwnership;
+  private int      insiderBuys;
+  private int      insiderNetTrades;
+  private int      insiderSells;
+  private int      insiderBuyShrs;
+  private int      insiderSellShrs;
+  private double   instOwnership;
+  private int      instShareholders;
+  private int      instBuyShrs;
+  private int      instSellShrs;
+  private double   mktCap;
+  private double   insiderNetPercentOutstanding;
+  private double   price;
   private double[] sharesQ;
-
   private double[] sharesY;
-
-  private long   volume3m;
-  private double dollar3m;
+  private long     volume3m;
+  private double   dollar3m;
 
   public SharesFileData() {
     this.sharesQ = new double[1];
@@ -185,7 +164,7 @@ public class SharesFileData {
   public SharesFileData(String[] fld) {
     this.name = fld[0].trim();
     this.ticker = fld[1].trim();
-    this.exchange = fld[2].trim();
+    this.exchange = FieldData.convertExchange(fld[2].trim());
     this.sector = fld[3].trim();
     this.industry = fld[4].trim();
     this.beta = SipUtils.parseDouble(fld[5]);
@@ -217,7 +196,7 @@ public class SharesFileData {
     return this.dollar3m;
   }
 
-  public String getExchange() {
+  public ExchEnum getExchange() {
     return this.exchange;
   }
 
@@ -418,7 +397,7 @@ public class SharesFileData {
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
+    String ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
     ret += String.format("  Price / Beta                 : %s  %s%n", SipOutput.fmt(this.price, 1, 2), SipOutput.fmt(this.beta, 1, 3));
     ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volume3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
     ret += String.format("  Float / MCap / Insiders      : %s %s  %s%%  %s%% %n", SipOutput.fmt(this.floatshr, 1, 3),

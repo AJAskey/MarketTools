@@ -281,7 +281,7 @@ public class IncSheetFileData {
 
   private String   name;
   private String   ticker;
-  private String   exchange;
+  private ExchEnum exchange;
   private String   sector;
   private String   industry;
   private double[] salesQtr;
@@ -351,7 +351,7 @@ public class IncSheetFileData {
 
     this.name = strFldQtr[0].trim();
     this.ticker = strFldQtr[1].trim();
-    this.exchange = strFldQtr[2].trim();
+    this.exchange = FieldData.convertExchange(strFldQtr[2].trim());
     this.sector = strFldQtr[3].trim();
     this.industry = strFldQtr[4].trim();
 
@@ -516,7 +516,7 @@ public class IncSheetFileData {
     return this.epsYr;
   }
 
-  public String getExchange() {
+  public ExchEnum getExchange() {
     return this.exchange;
   }
 
@@ -918,7 +918,7 @@ public class IncSheetFileData {
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.exchange, this.sector, this.industry);
+    String ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
     ret += SipOutput.buildArray("  salesQtr             : ", this.salesQtr, 1, 3) + Utils.NL;
     ret += SipOutput.buildArray("  salesYr              : ", this.salesYr, 1, 3) + Utils.NL;
     ret += SipOutput.buildArray("  cogsQtr              : ", this.cogsQtr, 1, 3) + Utils.NL;
