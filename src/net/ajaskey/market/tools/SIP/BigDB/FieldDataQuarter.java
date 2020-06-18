@@ -2,6 +2,8 @@ package net.ajaskey.market.tools.SIP.BigDB;
 
 import java.util.List;
 
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+
 public class FieldDataQuarter {
 
   private final int year;

@@ -3,20 +3,22 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
 
 public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-    // FieldData.parseSipData(2019, 4);
-    // FieldData.parseSipData(2020, 1);
-    // FieldData.parseSipData(2020, 2);
+//    FieldData.parseSipData(2019, 4);
+//    FieldData.parseSipData(2020, 1);
+//    FieldData.parseSipData(2020, 2);
 
     // FieldData.parseDbData(2019, 4);
     // FieldData.parseDbData(2020, 1);
     FieldData.parseDbData(2020, 2);
-//
+
 //    List<IndividualCompanyData> msft = BigLists.getCompany("MSFT");
 //    System.out.println(msft);
 

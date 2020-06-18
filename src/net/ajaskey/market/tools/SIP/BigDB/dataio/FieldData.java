@@ -1,4 +1,4 @@
-package net.ajaskey.market.tools.SIP.BigDB;
+package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.BigLists;
 
 public class FieldData {
 
@@ -20,7 +21,7 @@ public class FieldData {
    * @param quarter
    * @throws FileNotFoundException
    */
-  protected static void parseSipData(int year, int quarter) throws FileNotFoundException {
+  public static void parseSipData(int year, int quarter) throws FileNotFoundException {
 
     Utils.makeDir("out");
     Utils.makeDir("out/BigDB");
@@ -138,7 +139,7 @@ public class FieldData {
     return fdList;
   }
 
-  protected static void parseDbData(int year, int quarter) {
+  public static void parseDbData(int year, int quarter) {
 
     final List<FieldData> fdList = FieldData.readFromDbData(year, quarter);
     BigLists.setLists(year, quarter, fdList);

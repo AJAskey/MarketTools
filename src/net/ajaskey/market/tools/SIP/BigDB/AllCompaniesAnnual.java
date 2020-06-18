@@ -3,6 +3,8 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+
 public class AllCompaniesAnnual {
 
   public int             year;
