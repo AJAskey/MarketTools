@@ -14,16 +14,16 @@ public class BigLists {
 
   public static List<FieldDataYear> allDataList = new ArrayList<>();
 
-  public static List<IndividualCompanyData> getCompany(String ticker) {
-    final List<IndividualCompanyData> ret = new ArrayList<>();
-    for (final FieldDataYear fdy : BigLists.allDataList) {
-      if (fdy.isInUse()) {
-        final IndividualCompanyData icd = new IndividualCompanyData(ticker, fdy);
-        ret.add(icd);
-      }
-    }
-    return ret;
-  }
+//  public static List<OneCompanyData> getCompany(String ticker) {
+//    final List<OneCompanyData> ret = new ArrayList<>();
+//    for (final FieldDataYear fdy : BigLists.allDataList) {
+//      if (fdy.isInUse()) {
+//        final OneCompanyData icd = new OneCompanyData(ticker, fdy);
+//        ret.add(icd);
+//      }
+//    }
+//    return ret;
+//  }
 
   private static void init(int first, int last) {
     for (int i = first; i <= last; i++) {

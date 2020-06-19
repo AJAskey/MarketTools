@@ -15,7 +15,7 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
  * writing common format file data.
  *
  * @author Andy Askey
- * 
+ *
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.
  *         </p>
@@ -50,6 +50,111 @@ public class FieldData {
   final static String outbasedir = String.format("out/BigDB/");
 
   /**
+   * Used when reading SIP exchange SIP data.
+   *
+   * @param enumStr
+   * @return
+   */
+  public static ExchEnum convertExchange(String enumStr) {
+    ExchEnum ret = ExchEnum.NONE;
+    try {
+      if (enumStr.contains("M - Nasdaq")) {
+        ret = ExchEnum.NASDAQ;
+      }
+      else if (enumStr.contains("N - New York")) {
+        ret = ExchEnum.NYSE;
+      }
+      else if (enumStr.contains("A - American")) {
+        ret = ExchEnum.AMEX;
+      }
+      else if (enumStr.contains("O - Over the counter")) {
+        ret = ExchEnum.OTC;
+      }
+    }
+    catch (final Exception e) {
+      ret = ExchEnum.NONE;
+    }
+    return ret;
+  }
+
+  /**
+   * Used for writing enum in CAPS.
+   *
+   * @param enm
+   * @return
+   */
+  public static String getExchangeStr(ExchEnum enm) {
+    return enm.toString().toUpperCase();
+  }
+
+  /**
+   * Reads data from DB.
+   *
+   * @param year
+   * @param quarter
+   * @return List of FieldData for year and quarter
+   */
+  private static List<FieldData> parseFromDbData(int year, int quarter) {
+
+    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    final String[] ext = { "txt" };
+    final List<File> fList = Utils.getDirTree(indir, ext);
+    for (final File f : fList) {
+
+      final List<String> data = TextUtils.readTextFile(f, true);
+
+      final FieldData fd = new FieldData(year, quarter);
+
+      fd.companyInfo = CompanyFileData.readFromDb(data);
+      fd.shareData = SharesFileData.readFromDb(data);
+      fd.estimateData = EstimateFileData.readFromDb(data);
+      fd.incSheetData = IncSheetFileData.readFromDb(data);
+      fd.balSheetData = BalSheetFileData.readFromDb(data);
+      fd.setNameFields(fd.companyInfo);
+      fd.shareData.setNameFields(fd.companyInfo);
+      fd.estimateData.setNameFields(fd.companyInfo);
+      fd.incSheetData.setNameFields(fd.companyInfo);
+      fd.balSheetData.setNameFields(fd.companyInfo);
+
+      if (fd.companyInfo.getTicker() != null) {
+        fdList.add(fd);
+      }
+    }
+    return fdList;
+  }
+
+  /**
+   * Reads one file from DB based on year, quarter, and ticker.
+   *
+   * @param year
+   * @param quarter
+   * @param ticker
+   * @return FieldData for year, quarter, and ticker.
+   */
+  private static FieldData parseFromDbData(int year, int quarter, String ticker) {
+
+    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
+
+    final String fname = String.format("%s%s-fundamental-data-%dQ%d.txt", indir, ticker, year, quarter);
+    final List<String> data = TextUtils.readTextFile(fname, true);
+
+    final FieldData fd = new FieldData(year, quarter);
+
+    fd.companyInfo = CompanyFileData.readFromDb(data);
+    fd.shareData = SharesFileData.readFromDb(data);
+    fd.estimateData = EstimateFileData.readFromDb(data);
+    fd.incSheetData = IncSheetFileData.readFromDb(data);
+    fd.balSheetData = BalSheetFileData.readFromDb(data);
+    fd.setNameFields(fd.companyInfo);
+
+    return fd;
+  }
+
+  /**
+   * Reads SIP tab separated data files. Stores the data in array for later use.
    *
    * @param year
    * @param quarter
@@ -100,7 +205,46 @@ public class FieldData {
   }
 
   /**
-   * 
+   * Reads the DB for specific year and quarter. All tickers are returned and also
+   * added to a combined list for future use.
+   *
+   * @param year
+   * @param quarter 1-4
+   * @return A list of FieldData for each ticket in the DB for year and quarter.
+   *
+   * @exception FileNotFoundException when year, quarter, ticker does not match
+   *                                  any data in DB
+   *
+   */
+  public static List<FieldData> readDbData(int year, int quarter) {
+
+    final List<FieldData> fdList = FieldData.parseFromDbData(year, quarter);
+    BigLists.setLists(year, quarter, fdList);
+
+    return fdList;
+  }
+
+  /**
+   * Reads the DB for specific year, quarter and ticker inputs.
+   *
+   * @param year
+   * @param quarter 1-4
+   * @param ticker
+   * @return FieldData
+   *
+   * @exception FileNotFoundException when year, quarter, ticker does not match
+   *                                  any data in DB
+   */
+  public static FieldData readDbData(int year, int quarter, String ticker) {
+
+    final FieldData fd = FieldData.parseFromDbData(year, quarter, ticker);
+    return fd;
+  }
+
+  /**
+   * Sets up file names and writes data to DB files. Calls genOutput to create
+   * data to be written.
+   *
    * @param cfd
    * @param efd
    * @param sfd
@@ -110,7 +254,7 @@ public class FieldData {
    * @param quarter
    * @throws FileNotFoundException
    */
-  protected static void writeDbOutput(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
+  private static void writeDbOutput(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
       int year, int quarter) throws FileNotFoundException {
 
     final String yearDir = String.format("%s%s", FieldData.outbasedir, year);
@@ -135,106 +279,22 @@ public class FieldData {
     }
   }
 
-  /**
-   *
-   * @param year
-   * @param quarter
-   * @return
-   */
-  public static List<FieldData> readFromDbData(int year, int quarter) {
-
-    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
-
-    final List<FieldData> fdList = new ArrayList<>();
-
-    final String[] ext = { "txt" };
-    final List<File> fList = Utils.getDirTree(indir, ext);
-    for (final File f : fList) {
-
-      final List<String> data = TextUtils.readTextFile(f, true);
-
-      final FieldData fd = new FieldData(year, quarter);
-
-      fd.companyInfo = CompanyFileData.readFromDb(data);
-      fd.shareData = SharesFileData.readFromDb(data);
-      fd.estimateData = EstimateFileData.readFromDb(data);
-      fd.incSheetData = IncSheetFileData.readFromDb(data);
-      fd.balSheetData = BalSheetFileData.readFromDb(data);
-      fd.setNameFields(fd.companyInfo);
-      fd.shareData.setNameFields(fd.companyInfo);
-      fd.estimateData.setNameFields(fd.companyInfo);
-      fd.incSheetData.setNameFields(fd.companyInfo);
-      fd.balSheetData.setNameFields(fd.companyInfo);
-
-      if (fd.companyInfo.getTicker() != null) {
-        fdList.add(fd);
-      }
-    }
-    return fdList;
-  }
-
-  public static void parseDbData(int year, int quarter) {
-
-    final List<FieldData> fdList = FieldData.readFromDbData(year, quarter);
-    BigLists.setLists(year, quarter, fdList);
-
-  }
-
-  /**
-   * Used for writing enum in CAPS.
-   * 
-   * @param enm
-   * @return
-   */
-  public static String getExchangeStr(ExchEnum enm) {
-    return enm.toString().toUpperCase();
-  }
-
-  /**
-   * Used when reading SIP exchange field data
-   * 
-   * @param enumStr
-   * @return
-   */
-  public static ExchEnum convertExchange(String enumStr) {
-    ExchEnum ret = ExchEnum.NONE;
-    try {
-      if (enumStr.contains("M - Nasdaq")) {
-        ret = ExchEnum.NASDAQ;
-      }
-      else if (enumStr.contains("N - New York")) {
-        ret = ExchEnum.NYSE;
-      }
-      else if (enumStr.contains("A - American")) {
-        ret = ExchEnum.AMEX;
-      }
-      else if (enumStr.contains("O - Over the counter")) {
-        ret = ExchEnum.OTC;
-      }
-    }
-    catch (Exception e) {
-      ret = ExchEnum.NONE;
-    }
-    return ret;
-  }
-
   private final int year;
   private final int quarter;
   private String    ticker;
   private String    name;
   private String    sector;
   private String    industry;
+  private ExchEnum  exchange;
 
-  private ExchEnum         exchange;
   private CompanyFileData  companyInfo;
   private EstimateFileData estimateData;
   private SharesFileData   shareData;
-
   private IncSheetFileData incSheetData;
-
   private BalSheetFileData balSheetData;
 
   /**
+   * Constructor
    *
    * @param cfd
    * @param efd
@@ -259,6 +319,7 @@ public class FieldData {
   }
 
   /**
+   * Constructor
    *
    * @param yr
    * @param qtr
@@ -280,8 +341,9 @@ public class FieldData {
   }
 
   /**
+   * Creates String containing data to write to DB files.
    *
-   * @return
+   * @return String
    */
   public String genOutput() {
     String ret = String.format("Data for %s from %d Q%d%n", this.companyInfo.getTicker(), this.year, this.quarter);
@@ -323,8 +385,7 @@ public class FieldData {
   }
 
   public int getQuarter() {
-    // TODO Auto-generated method stub
-    return 1;
+    return this.quarter;
   }
 
   public String getSector() {
@@ -339,14 +400,11 @@ public class FieldData {
     return this.year;
   }
 
-  public void setCompanyInfo(CompanyFileData companyInfo) {
-    this.companyInfo = companyInfo;
-  }
-
-  public void setEstimateData(EstimateFileData estimateData) {
-    this.estimateData = estimateData;
-  }
-
+  /**
+   * Sets local "name" fields from CompanyFileData
+   *
+   * @param cfd
+   */
   private void setNameFields(CompanyFileData cfd) {
     this.ticker = cfd.getTicker();
     this.name = cfd.getName();
@@ -354,10 +412,6 @@ public class FieldData {
     this.industry = cfd.getIndustry();
     this.exchange = cfd.getExchange();
 
-  }
-
-  public void setShareData(SharesFileData shareData) {
-    this.shareData = shareData;
   }
 
   @Override
@@ -369,7 +423,10 @@ public class FieldData {
       }
       else {
         ret = this.companyInfo.toDbOuput();
+        ret += this.estimateData.toDbOutput();
         ret += this.shareData.toDbOutput();
+        ret += this.incSheetData.toDbOutput();
+        ret += this.balSheetData.toDbOutput();
       }
     }
     catch (final Exception e) {
