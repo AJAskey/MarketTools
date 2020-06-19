@@ -44,9 +44,13 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  */
 public class EstimateFileData {
 
+  /**
+   * Stores all EstimateFileDate read in from DB.
+   */
   private static List<EstimateFileData> efdList = new ArrayList<>();
 
   /**
+   * Returns the EstimateFileData instance for requested ticker.
    *
    * @param ticker
    * @return
@@ -60,11 +64,17 @@ public class EstimateFileData {
     return null;
   }
 
+  /**
+   * Returns the number of instances in the list read from the DB.
+   *
+   * @return
+   */
   public static int getListCount() {
     return EstimateFileData.efdList.size();
   }
 
   /**
+   * Returns a string containing text for all data in the list read from the DB.
    *
    * @return
    */
@@ -77,6 +87,7 @@ public class EstimateFileData {
   }
 
   /**
+   * Parses data and fills data structures from DB files.
    *
    * @param data
    * @return
@@ -123,6 +134,7 @@ public class EstimateFileData {
   }
 
   /**
+   * Reads the data from SIP tab delimited files and fills data structures.
    *
    * @param filename
    * @return
@@ -144,24 +156,26 @@ public class EstimateFileData {
   private double   epsY0;
   private double   epsY1;
   private double   epsY2;
-
   private ExchEnum exchange;
-
-  private String industry;
-
+  private String   industry;
   private DateTime latestQtrEps;
+  private String   name;
+  private String   sector;
+  private String   ticker;
 
-  private String name;
-
-  private String sector;
-
-  private String ticker;
-
-  public EstimateFileData() {
-    // TODO Auto-generated constructor stub
+  /**
+   * Constructor - package level.
+   */
+  EstimateFileData() {
   }
 
-  public EstimateFileData(String[] fld) {
+  /**
+   * Constructor fills data structures.
+   *
+   * @param filename
+   * @return
+   */
+  EstimateFileData(String[] fld) {
 
     this.name = fld[0].trim();
     this.ticker = fld[1].trim();
@@ -225,15 +239,11 @@ public class EstimateFileData {
     return this.ticker;
   }
 
-  public void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
-  }
-
+  /**
+   * Creates string of formatted data structures.
+   *
+   * @return String
+   */
   public String toDbOutput() {
     String ret = "";
 
@@ -265,5 +275,19 @@ public class EstimateFileData {
     ret += String.format("  Est Q0 Q1    : %10.3f %10.3f%n", this.epsQ0, this.epsQ1);
     ret += String.format("  Est Y0 Y1 Y2 : %10.3f %10.2f %10.3f", this.epsY0, this.epsY1, this.epsY2);
     return ret;
+  }
+
+  /**
+   * Sets name fields
+   *
+   * @param cfd CompanyFileData instance
+   */
+  void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
   }
 }

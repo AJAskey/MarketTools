@@ -43,9 +43,13 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  */
 public class IncSheetFileData {
 
+  /**
+   * Stores all IncSheetFileDate read in from DB.
+   */
   private static List<IncSheetFileData> ifdList = new ArrayList<>();
 
   /**
+   * Returns the IncSheetFileData instance for requested ticker.
    *
    * @param ticker
    * @return
@@ -59,11 +63,17 @@ public class IncSheetFileData {
     return null;
   }
 
+  /**
+   * Returns the number of instances in the list read from the DB.
+   *
+   * @return
+   */
   public static int getListCount() {
     return IncSheetFileData.ifdList.size();
   }
 
   /**
+   * Returns a string containing text for all data in the list read from the DB.
    *
    * @return
    */
@@ -75,6 +85,12 @@ public class IncSheetFileData {
     return ret;
   }
 
+  /**
+   * Parses data and fills data structures from DB files.
+   *
+   * @param data
+   * @return
+   */
   public static IncSheetFileData readFromDb(List<String> data) {
 
     final IncSheetFileData ifd = new IncSheetFileData();
@@ -283,10 +299,10 @@ public class IncSheetFileData {
   }
 
   /**
+   * Reads the data from SIP tab delimited files and fills data structures.
    *
    * @param filenameQtr
    * @param filenameYr
-   * @return
    */
   public static void readSipData(String filenameQtr, String filenameYr) {
 
@@ -357,30 +373,27 @@ public class IncSheetFileData {
   private double[] rdYr;
   private double[] salesQtr;
   private double[] salesYr;
-
-  private String sector;
-
-  private String ticker;
-
+  private String   sector;
+  private String   ticker;
   private double[] totalOpExpQtr;
-
   private double[] totalOpExpYr;
-
   private double[] unusualIncQtr;
-
   private double[] unusualIncYr;
 
-  public IncSheetFileData() {
+  /**
+   * Constructor - package level.
+   */
+  IncSheetFileData() {
     // TODO Auto-generated constructor stub
   }
 
   /**
-   * Constructor
+   * Constructor fills data structures.
    *
    * @param strFldQtr
    * @param strFldYr
    */
-  public IncSheetFileData(String[] strFldQtr, String[] strFldYr) {
+  IncSheetFileData(String[] strFldQtr, String[] strFldYr) {
 
     this.name = strFldQtr[0].trim();
     this.ticker = strFldQtr[1].trim();
@@ -689,15 +702,11 @@ public class IncSheetFileData {
     return this.unusualIncYr;
   }
 
-  public void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
-  }
-
+  /**
+   * Creates string of formatted data structures.
+   *
+   * @return String
+   */
   public String toDbOutput() {
     String ret = "";
     ret += String.format("  sales Qtr           : %s%n", SipOutput.buildArray("", this.salesQtr, 10, 2, 1));
@@ -801,6 +810,20 @@ public class IncSheetFileData {
     ret += SipOutput.buildArray("  dividendYr           : ", this.dividendYr, 1, 3) + Utils.NL;
 
     return ret;
+  }
+
+  /**
+   * Sets name fields
+   *
+   * @param cfd CompanyFileData instance
+   */
+  void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
   }
 
   private void setAdjToIncQ(double[] dArr) {

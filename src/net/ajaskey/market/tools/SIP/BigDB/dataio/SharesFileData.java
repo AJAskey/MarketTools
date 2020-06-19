@@ -43,8 +43,17 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  */
 public class SharesFileData {
 
+  /**
+   * Stores all SharesFileDate read in from DB.
+   */
   private static List<SharesFileData> sfdList = new ArrayList<>();
 
+  /**
+   * Returns the ShareFileData instance for requested ticker.
+   *
+   * @param ticker
+   * @return
+   */
   public static SharesFileData find(String ticker) {
     for (final SharesFileData s : SharesFileData.sfdList) {
       if (s.getTicker().equalsIgnoreCase(ticker)) {
@@ -54,10 +63,20 @@ public class SharesFileData {
     return null;
   }
 
+  /**
+   * Returns the number of instances in the list read from the DB.
+   *
+   * @return
+   */
   public static int getListCount() {
     return SharesFileData.sfdList.size();
   }
 
+  /**
+   * Returns a string containing text for all data in the list read from the DB.
+   *
+   * @return
+   */
   public static String listToString() {
     String ret = "";
     for (final SharesFileData s : SharesFileData.sfdList) {
@@ -66,6 +85,12 @@ public class SharesFileData {
     return ret;
   }
 
+  /**
+   * Parses data and fills data structures from DB files.
+   *
+   * @param data
+   * @return
+   */
   public static SharesFileData readFromDb(List<String> data) {
 
     final SharesFileData sfd = new SharesFileData();
@@ -144,6 +169,7 @@ public class SharesFileData {
   }
 
   /**
+   * Reads the data from SIP tab delimited files and fills data structures.
    *
    * @param filename
    * @return
@@ -187,14 +213,20 @@ public class SharesFileData {
   private String   ticker;
   private long     volume3m;
 
-  public SharesFileData() {
+  SharesFileData() {
     this.sharesQ = new double[1];
     this.sharesQ[0] = 0.0;
     this.sharesY = new double[1];
     this.sharesY[0] = 0.0;
   }
 
-  public SharesFileData(String[] fld) {
+  /**
+   * Constructor fills data structures.
+   *
+   * @param filename
+   * @return
+   */
+  SharesFileData(String[] fld) {
     this.name = fld[0].trim();
     this.ticker = fld[1].trim();
     this.exchange = FieldData.convertExchange(fld[2].trim());
@@ -381,14 +413,6 @@ public class SharesFileData {
     this.mktCap = SipUtils.parseDouble(fld);
   }
 
-  public void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-  }
-
   public void setPrice(String fld) {
     this.price = SipUtils.parseDouble(fld);
   }
@@ -405,6 +429,11 @@ public class SharesFileData {
     this.volume3m = SipUtils.parseLong(fld);
   }
 
+  /**
+   * Creates string of formatted data structures.
+   *
+   * @return String
+   */
   public String toDbOutput() {
     String ret = "";
     ret += String.format("  price               : %f%n", this.price);
@@ -442,6 +471,19 @@ public class SharesFileData {
     ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
     ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
     return ret;
+  }
+
+  /**
+   * Sets name fields
+   *
+   * @param cfd CompanyFileData instance
+   */
+  void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
   }
 
 }

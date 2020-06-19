@@ -2,7 +2,7 @@ package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
 /**
  * This enumerations class contains entries various exchanges available.
- * 
+ *
  * @author Andy Askey
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.

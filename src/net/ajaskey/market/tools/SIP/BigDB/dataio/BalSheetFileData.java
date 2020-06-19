@@ -43,9 +43,13 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  */
 public class BalSheetFileData {
 
+  /**
+   * Stores all BalSheetFileDate read in from DB.
+   */
   private static List<BalSheetFileData> bfdList = new ArrayList<>();
 
   /**
+   * Returns the IncSheetFileData instance for requested ticker.
    *
    * @param ticker
    * @return
@@ -59,11 +63,18 @@ public class BalSheetFileData {
     return null;
   }
 
+  /**
+   * Returns the IncSheetFileData instance for requested ticker.
+   *
+   * @param ticker
+   * @return
+   */
   public static int getListCount() {
     return BalSheetFileData.bfdList.size();
   }
 
   /**
+   * Returns a string containing text for all data in the list read from the DB.
    *
    * @return
    */
@@ -75,6 +86,12 @@ public class BalSheetFileData {
     return ret;
   }
 
+  /**
+   * Parses data and fills data structures from DB files.
+   *
+   * @param data
+   * @return
+   */
   public static BalSheetFileData readFromDb(List<String> data) {
 
     final BalSheetFileData bfd = new BalSheetFileData();
@@ -289,10 +306,10 @@ public class BalSheetFileData {
   }
 
   /**
+   * Reads the data from SIP tab delimited files and fills data structures.
    *
    * @param filenameQtr
    * @param filenameYr
-   * @return
    */
   public static void readSipData(String filenameQtr, String filenameYr) {
 
@@ -361,29 +378,26 @@ public class BalSheetFileData {
   private double[] stDebtQtr;
   private double[] stDebtYr;
   private double[] stInvestQtr;
-
   private double[] stInvestYr;
-
-  private String ticker;
-
+  private String   ticker;
   private double[] totalAssetsQtr;
-
   private double[] totalAssetsYr;
-
   private double[] totalLiabQtr;
-
   private double[] totalLiabYr;
 
-  public BalSheetFileData() {
-    // TODO Auto-generated constructor stub
+  /**
+   * Constructor - package level.
+   */
+  BalSheetFileData() {
   }
 
   /**
+   * Constructor fills data structures.
    *
-   * @param fldQtr
-   * @param fldYr
+   * @param strFldQtr
+   * @param strFldYr
    */
-  public BalSheetFileData(String[] fldQtr, String[] fldYr) {
+  BalSheetFileData(String[] fldQtr, String[] fldYr) {
 
     this.name = fldQtr[0].trim();
     this.ticker = fldQtr[1].trim();
@@ -700,15 +714,6 @@ public class BalSheetFileData {
     return this.totalLiabYr;
   }
 
-  public void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
-  }
-
   public String toDbOutput() {
     String ret = "";
     ret += String.format("  acct payable Qtr      : %s%n", SipOutput.buildArray("", this.acctPayableQtr, 12, 3, 1));
@@ -813,5 +818,19 @@ public class BalSheetFileData {
     ret += SipOutput.buildArray("  bvpsYr         : ", this.bvpsYr, 1, 2) + Utils.NL;
 
     return ret;
+  }
+
+  /**
+   * Sets name fields
+   *
+   * @param cfd CompanyFileData instance
+   */
+  void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
   }
 }

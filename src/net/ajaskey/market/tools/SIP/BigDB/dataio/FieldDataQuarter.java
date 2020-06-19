@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * This enumerations class contains data structures and methods for one quarter
  * of data.
- * 
+ *
  * @author Andy Askey
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.

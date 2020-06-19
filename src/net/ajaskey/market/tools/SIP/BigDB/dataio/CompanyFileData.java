@@ -11,7 +11,7 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 /**
  * This class contains procedures for reading SIP company data and writing to
  * the DB.
- * 
+ *
  * @author Andy Askey
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.
@@ -45,28 +45,31 @@ public class CompanyFileData {
 
   private static int ADR = 6;
 
-  private static List<CompanyFileData> cfdList = new ArrayList<>();
-
-  private static int    CITY     = 11;
-  private static int    COUNTRY  = 13;
-  private static int    DOW      = 7;
-  private static int    DRP      = 9;
-  private static int    EMP      = 17;
-  private static int    EXCHANGE = 2;
-  private static String fld[]    = null;
-  private static int    INDUSTRY = 4;
-  private static int    NAME     = 0;
-  private static int    PHONE    = 15;
-  private static int    SECTOR   = 3;
-  private static int    SIC      = 5;
-  private static int    SNP      = 8;
-  private static int    STATE    = 12;
-  private static int    STREET   = 10;
-  private static int    TICKER   = 1;
-  private static int    WEB      = 16;
-  private static int    ZIP      = 14;
+  /**
+   * Stores all CompanyFileDate read in from DB.
+   */
+  private static List<CompanyFileData> cfdList  = new ArrayList<>();
+  private static int                   CITY     = 11;
+  private static int                   COUNTRY  = 13;
+  private static int                   DOW      = 7;
+  private static int                   DRP      = 9;
+  private static int                   EMP      = 17;
+  private static int                   EXCHANGE = 2;
+  private static String                fld[]    = null;
+  private static int                   INDUSTRY = 4;
+  private static int                   NAME     = 0;
+  private static int                   PHONE    = 15;
+  private static int                   SECTOR   = 3;
+  private static int                   SIC      = 5;
+  private static int                   SNP      = 8;
+  private static int                   STATE    = 12;
+  private static int                   STREET   = 10;
+  private static int                   TICKER   = 1;
+  private static int                   WEB      = 16;
+  private static int                   ZIP      = 14;
 
   /**
+   * Returns the CompanyFileData instance for requested ticker.
    *
    * @param ticker
    * @return
@@ -92,11 +95,17 @@ public class CompanyFileData {
     return CompanyFileData.cfdList;
   }
 
+  /**
+   * Returns the number of instances in the list read from the DB.
+   *
+   * @return
+   */
   public static int getListCount() {
     return CompanyFileData.cfdList.size();
   }
 
   /**
+   * Returns a string containing text for all data in the list read from the DB.
    *
    * @return
    */
@@ -109,8 +118,9 @@ public class CompanyFileData {
   }
 
   /**
-   * 
-   * @param input
+   * Parses data and fills data structures from DB files.
+   *
+   * @param data
    * @return
    */
   public static CompanyFileData readFromDb(List<String> input) {
@@ -193,6 +203,7 @@ public class CompanyFileData {
   }
 
   /**
+   * Reads the data from SIP tab delimited files and fills data structures.
    *
    * @param filename
    * @return
@@ -214,7 +225,7 @@ public class CompanyFileData {
       cfd.industry = CompanyFileData.fld[CompanyFileData.INDUSTRY].trim();
       cfd.sic = CompanyFileData.fld[CompanyFileData.SIC].trim();
 
-      String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
+      final String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
       if (tmp.equals("500")) {
         cfd.snpIndex = SnpEnum.SP500;
       }
@@ -231,7 +242,7 @@ public class CompanyFileData {
       try {
         cfd.dowIndex = DowEnum.valueOf(CompanyFileData.fld[CompanyFileData.DOW].trim().toUpperCase());
       }
-      catch (Exception e) {
+      catch (final Exception e) {
         cfd.dowIndex = DowEnum.NONE;
       }
 
@@ -350,8 +361,9 @@ public class CompanyFileData {
   }
 
   /**
+   * Parses data and fills data structures from DB files.
    *
-   * @param i
+   * @param data
    * @return
    */
   public List<String> set(List<String> data) {
@@ -454,7 +466,7 @@ public class CompanyFileData {
     try {
       this.dowIndex = DowEnum.valueOf(dowIdx.toUpperCase());
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       this.dowIndex = DowEnum.NONE;
     }
   }
@@ -496,7 +508,7 @@ public class CompanyFileData {
     try {
       this.snpIndex = SnpEnum.valueOf(strIdx.toUpperCase());
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       this.snpIndex = SnpEnum.NONE;
     }
   }
@@ -521,6 +533,11 @@ public class CompanyFileData {
     this.zip = zip;
   }
 
+  /**
+   * Creates string of formatted data structures.
+   *
+   * @return String
+   */
   public String toDbOuput() {
     String ret = String.format("ticker      : %s%n", this.ticker);
     ret += String.format("  name      : %s%n", this.name);

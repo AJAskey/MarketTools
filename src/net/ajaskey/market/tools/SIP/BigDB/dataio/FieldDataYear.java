@@ -3,7 +3,7 @@ package net.ajaskey.market.tools.SIP.BigDB.dataio;
 /**
  * This enumerations class contains data structures and methods for a year of
  * company data.
- * 
+ *
  * @author Andy Askey
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.
