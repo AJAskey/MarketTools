@@ -10,7 +10,7 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 /**
  * This class contains procedures for reading SIP balance sheet data and writing
- * common format file data.
+ * to the DB.
  *
  * @author Andy Askey
  *         <p>
@@ -364,7 +364,7 @@ public class BalSheetFileData {
 
   private double[] stInvestYr;
 
-  private String   ticker;
+  private String ticker;
 
   private double[] totalAssetsQtr;
 

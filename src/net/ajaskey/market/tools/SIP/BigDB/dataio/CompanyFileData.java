@@ -8,30 +8,63 @@ import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.SipUtils;
 
+/**
+ * This class contains procedures for reading SIP company data and writing to
+ * the DB.
+ * 
+ * @author Andy Askey
+ *         <p>
+ *         Copyright (c) 2020, Andy Askey. All rights reserved.
+ *         </p>
+ *         <p>
+ *         Permission is hereby granted, free of charge, to any person obtaining
+ *         a copy of this software and associated documentation files (the
+ *         "Software"), to deal in the Software without restriction, including
+ *         without limitation the rights to use, copy, modify, merge, publish,
+ *         distribute, sublicense, and/or sell copies of the Software, and to
+ *         permit persons to whom the Software is furnished to do so, subject to
+ *         the following conditions:
+ *
+ *         The above copyright notice and this permission notice shall be
+ *         included in all copies or substantial portions of the Software.
+ *         </p>
+ *
+ *         <p>
+ *         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ *         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ *         BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ *         ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *         CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *         SOFTWARE.
+ *         </p>
+ *
+ */
 public class CompanyFileData {
 
-  private static int ADR      = 6;
+  private static int ADR = 6;
 
   private static List<CompanyFileData> cfdList = new ArrayList<>();
 
-  private static int CITY     = 11;
-  private static int COUNTRY  = 13;
-  private static int DOW      = 7;
-  private static int DRP      = 9;
-  private static int EMP      = 17;
-  private static int EXCHANGE = 2;
-  private static String fld[] = null;
-  private static int INDUSTRY = 4;
-  private static int NAME     = 0;
-  private static int PHONE    = 15;
-  private static int SECTOR   = 3;
-  private static int SIC      = 5;
-  private static int SNP      = 8;
-  private static int STATE    = 12;
-  private static int STREET   = 10;
-  private static int TICKER   = 1;
-  private static int WEB      = 16;
-  private static int ZIP      = 14;
+  private static int    CITY     = 11;
+  private static int    COUNTRY  = 13;
+  private static int    DOW      = 7;
+  private static int    DRP      = 9;
+  private static int    EMP      = 17;
+  private static int    EXCHANGE = 2;
+  private static String fld[]    = null;
+  private static int    INDUSTRY = 4;
+  private static int    NAME     = 0;
+  private static int    PHONE    = 15;
+  private static int    SECTOR   = 3;
+  private static int    SIC      = 5;
+  private static int    SNP      = 8;
+  private static int    STATE    = 12;
+  private static int    STREET   = 10;
+  private static int    TICKER   = 1;
+  private static int    WEB      = 16;
+  private static int    ZIP      = 14;
 
   /**
    *

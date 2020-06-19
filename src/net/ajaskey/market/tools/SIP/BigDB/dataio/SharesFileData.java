@@ -9,8 +9,8 @@ import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.SipUtils;
 
 /**
- * This class contains procedures for reading SIP Shares data and writing common
- * format file data.
+ * This class contains procedures for reading SIP Shares data and writing to the
+ * DB.
  *
  * @author Andy Askey
  *         <p>

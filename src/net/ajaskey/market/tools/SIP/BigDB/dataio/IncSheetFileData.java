@@ -10,7 +10,7 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 /**
  * This class contains procedures for reading SIP income statement data and
- * writing common format file data.
+ * writing to the DB.
  *
  * @author Andy Askey
  *         <p>
@@ -358,9 +358,9 @@ public class IncSheetFileData {
   private double[] salesQtr;
   private double[] salesYr;
 
-  private String   sector;
+  private String sector;
 
-  private String   ticker;
+  private String ticker;
 
   private double[] totalOpExpQtr;
 

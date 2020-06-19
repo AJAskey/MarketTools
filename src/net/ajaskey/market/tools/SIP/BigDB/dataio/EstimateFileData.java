@@ -10,8 +10,8 @@ import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.SipUtils;
 
 /**
- * This class contains procedures for reading Estimate SIP data and writing
- * common format file data.
+ * This class contains procedures for reading Estimate SIP data and writing to
+ * the DB.
  *
  * @author Andy Askey
  *         <p>
@@ -139,23 +139,23 @@ public class EstimateFileData {
   }
 
   private DateTime currFiscalYear;
-  private double epsQ0;
-  private double epsQ1;
-  private double epsY0;
-  private double epsY1;
-  private double epsY2;
+  private double   epsQ0;
+  private double   epsQ1;
+  private double   epsY0;
+  private double   epsY1;
+  private double   epsY2;
 
   private ExchEnum exchange;
 
-  private String   industry;
+  private String industry;
 
   private DateTime latestQtrEps;
 
-  private String   name;
+  private String name;
 
-  private String   sector;
+  private String sector;
 
-  private String   ticker;
+  private String ticker;
 
   public EstimateFileData() {
     // TODO Auto-generated constructor stub

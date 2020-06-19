@@ -12,7 +12,7 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
 
 /**
  * This class contains data structures and procedures for reading SIP data and
- * writing common format file data.
+ * writing to the DB.
  *
  * @author Andy Askey
  *
@@ -282,16 +282,16 @@ public class FieldData {
   private BalSheetFileData balSheetData;
   private CompanyFileData  companyInfo;
   private EstimateFileData estimateData;
-  private ExchEnum  exchange;
+  private ExchEnum         exchange;
   private IncSheetFileData incSheetData;
-  private String    industry;
-  private String    name;
+  private String           industry;
+  private String           name;
 
-  private final int quarter;
-  private String    sector;
-  private SharesFileData   shareData;
-  private String    ticker;
-  private final int year;
+  private final int      quarter;
+  private String         sector;
+  private SharesFileData shareData;
+  private String         ticker;
+  private final int      year;
 
   /**
    * Constructor
