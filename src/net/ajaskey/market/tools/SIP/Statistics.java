@@ -5,7 +5,37 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class Statistics {
 
-  public String                       name;
+  final private static String NL  = "\n";
+  final private static String TAB = "\t";
+
+  /**
+   * net.ajaskey.market.tools.SIP.main
+   *
+   * @param args
+   */
+  public static void main(final String[] args) {
+
+    final Statistics stats = new Statistics("atest");
+    for (double i = -200.0; i < 100.0; i += 1.5) {
+      stats.addValue(i);
+    }
+    for (double i = 1000.0; i < 2000.0; i += .255) {
+      stats.addValue(i);
+    }
+    stats.addValue(5000.0);
+    stats.addValue(0.0);
+
+    System.out.println(stats.ds.getMin());
+    System.out.println(stats.ds.getMax());
+    System.out.println(stats.ds.getStandardDeviation());
+    System.out.println(stats.getN());
+    System.out.println(stats.getMean());
+    System.out.println(stats.getMedian());
+
+  }
+
+  public String name;
+
   private final DescriptiveStatistics ds;
 
   /**
@@ -144,7 +174,7 @@ public class Statistics {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.lang.Object#toString()
    */
   @Override
@@ -171,35 +201,5 @@ public class Statistics {
   private double getPercentile(final int percentile) {
 
     return this.ds.getPercentile(percentile);
-  }
-
-  final private static String NL = "\n";
-
-  final private static String TAB = "\t";
-
-  /**
-   * net.ajaskey.market.tools.SIP.main
-   *
-   * @param args
-   */
-  public static void main(final String[] args) {
-
-    final Statistics stats = new Statistics("atest");
-    for (double i = -200.0; i < 100.0; i += 1.5) {
-      stats.addValue(i);
-    }
-    for (double i = 1000.0; i < 2000.0; i += .255) {
-      stats.addValue(i);
-    }
-    stats.addValue(5000.0);
-    stats.addValue(0.0);
-
-    System.out.println(stats.ds.getMin());
-    System.out.println(stats.ds.getMax());
-    System.out.println(stats.ds.getStandardDeviation());
-    System.out.println(stats.getN());
-    System.out.println(stats.getMean());
-    System.out.println(stats.getMedian());
-
   }
 }

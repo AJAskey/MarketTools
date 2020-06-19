@@ -40,6 +40,22 @@ public class SipUtils {
     return ret;
   }
 
+  public static double[] parseArrayDoubles(String flds, int slide) {
+
+    final String fld[] = flds.trim().split("\\s+");
+
+    final int len = fld.length + slide;
+
+    final double[] ret = new double[len];
+
+    int iret = slide;
+    for (final String element : fld) {
+      ret[iret++] = SipUtils.parseDouble(element);
+    }
+
+    return ret;
+  }
+
   public static boolean parseBoolean(String fld) {
     boolean ret = false;
     try {
@@ -87,22 +103,6 @@ public class SipUtils {
     int knt = 1;
     for (int i = start; i < start + len; i++) {
       ret[knt++] = SipUtils.parseDouble(fld[i]);
-    }
-
-    return ret;
-  }
-
-  public static double[] parseArrayDoubles(String flds, int slide) {
-
-    String fld[] = flds.trim().split("\\s+");
-
-    int len = fld.length + slide;
-
-    double[] ret = new double[len];
-
-    int iret = slide;
-    for (int i = 0; i < fld.length; i++) {
-      ret[iret++] = SipUtils.parseDouble(fld[i]);
     }
 
     return ret;

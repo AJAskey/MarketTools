@@ -39,42 +39,6 @@ import java.io.IOException;
  */
 public class CashData {
 
-  public QuarterlyData capEx;
-
-  public QuarterlyData cashFromOps;
-
-  public QuarterlyData cashFromFin;
-
-  public QuarterlyData cashFromInv;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public CashData() {
-
-    this.capEx = new QuarterlyData("capEx");
-    this.cashFromOps = new QuarterlyData("cashFromOps");
-    this.cashFromFin = new QuarterlyData("cashFromFin");
-    this.cashFromInv = new QuarterlyData("cashFromInv");
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-
-    String ret = "";
-    ret += CashData.TAB + this.capEx;
-    ret += CashData.TAB + this.cashFromOps;
-    ret += CashData.TAB + this.cashFromFin;
-    ret += CashData.TAB + this.cashFromInv;
-    return ret;
-  }
-
   final private static String TAB = "\t";
 
   /**
@@ -123,6 +87,42 @@ public class CashData {
 
     return cashData;
 
+  }
+
+  public QuarterlyData capEx;
+
+  public QuarterlyData cashFromFin;
+
+  public QuarterlyData cashFromInv;
+
+  public QuarterlyData cashFromOps;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public CashData() {
+
+    this.capEx = new QuarterlyData("capEx");
+    this.cashFromOps = new QuarterlyData("cashFromOps");
+    this.cashFromFin = new QuarterlyData("cashFromFin");
+    this.cashFromInv = new QuarterlyData("cashFromInv");
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    String ret = "";
+    ret += CashData.TAB + this.capEx;
+    ret += CashData.TAB + this.cashFromOps;
+    ret += CashData.TAB + this.cashFromFin;
+    ret += CashData.TAB + this.cashFromInv;
+    return ret;
   }
 
 }

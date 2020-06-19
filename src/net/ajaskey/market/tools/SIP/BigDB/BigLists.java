@@ -25,22 +25,6 @@ public class BigLists {
 //    return ret;
 //  }
 
-  private static void init(int first, int last) {
-    for (int i = first; i <= last; i++) {
-      BigLists.allDataList.add(new FieldDataYear(i));
-    }
-  }
-
-//  public static void setCompanySummaries() {
-//    for (final FieldData fd : BigLists.quarterlyList) {
-//      final String s = String.format("%s\t%s\t%s", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange());
-//      BigLists.companySummaryList.add(s);
-//    }
-//
-//    Collections.sort(BigLists.companySummaryList);
-//
-//  }
-
   public static void setLists(int yr, int qtr, List<FieldData> fdList) {
 
     if (BigLists.allDataList.size() == 0) {
@@ -54,5 +38,21 @@ public class BigLists {
       }
     }
     System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
+  }
+
+//  public static void setCompanySummaries() {
+//    for (final FieldData fd : BigLists.quarterlyList) {
+//      final String s = String.format("%s\t%s\t%s", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange());
+//      BigLists.companySummaryList.add(s);
+//    }
+//
+//    Collections.sort(BigLists.companySummaryList);
+//
+//  }
+
+  private static void init(int first, int last) {
+    for (int i = first; i <= last; i++) {
+      BigLists.allDataList.add(new FieldDataYear(i));
+    }
   }
 }

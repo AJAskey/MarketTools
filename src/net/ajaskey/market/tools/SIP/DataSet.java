@@ -37,244 +37,8 @@ import java.util.List;
  */
 public class DataSet {
 
-  public String ticker;
-
-  public String index;
-
-  public String sector;
-
-  public double y7;
-
-  public double y6;
-
-  public double y5;
-
-  public double y4;
-
-  public double y3;
-
-  public double y2;
-
-  public double y1;
-
-  public double y0;
-
-  public double q8;
-  public double q7;
-  public double q6;
-  public double q5;
-  public double q4;
-  public double q3;
-  public double q2;
-  public double q1;
-  public String name;
-  public dMode  mode;
-
   public enum dMode {
-    NONE, ACCUMULATION, SEQUENTIAL
-  }
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   * @param totEps
-   */
-  public DataSet(final DataSet ds) {
-
-    this.y7 = ds.y7;
-    this.y6 = ds.y6;
-    this.y5 = ds.y5;
-    this.y4 = ds.y4;
-    this.y3 = ds.y3;
-    this.y2 = ds.y2;
-    this.y1 = ds.y1;
-    this.y0 = ds.y0;
-    this.q8 = ds.q8;
-    this.q7 = ds.q7;
-    this.q6 = ds.q6;
-    this.q5 = ds.q5;
-    this.q4 = ds.q4;
-    this.q3 = ds.q3;
-    this.q2 = ds.q2;
-    this.q1 = ds.q1;
-    this.index = ds.index;
-    this.mode = ds.mode;
-    this.name = ds.name;
-    this.ticker = ds.ticker;
-  }
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   * @param dates
-   */
-  public DataSet(final DateSet dates, final String idx) {
-
-    this.y7 = dates.y7.q4.value;
-    this.y6 = dates.y6.q4.value;
-    this.y5 = dates.y5.q4.value;
-    this.y4 = dates.y4.q4.value;
-    this.y3 = dates.y3.q4.value;
-    this.y2 = dates.y2.q4.value;
-    this.y1 = dates.y0.q4.value;
-    this.y0 = dates.y0.q4.value;
-    this.q8 = dates.y1.q1.value;
-    this.q7 = dates.y1.q2.value;
-    this.q6 = dates.y1.q3.value;
-    this.q5 = dates.y1.q4.value;
-    this.q4 = dates.y0.q1.value;
-    this.q3 = dates.y0.q2.value;
-    this.q2 = dates.y0.q3.value;
-    this.q1 = dates.y0.q4.value;
-    this.index = idx;
-    this.mode = DataSet.dMode.NONE;
-    this.name = "Date Set Prices";
-    this.ticker = "None";
-  }
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public DataSet(final String n, final double val) {
-
-    this.init(n, val);
-  }
-
-  public DataSet(final String index, final String name, final String code, final String sector, final String[] s, final int ptr, final dMode mode) {
-
-    this.init(name, 0);
-    this.index = index.trim();
-    this.ticker = code.trim();
-    this.sector = sector.trim();
-    this.y7 = this.getDouble(s[ptr + 1].trim());
-    this.y6 = this.getDouble(s[ptr + 2].trim());
-    this.y5 = this.getDouble(s[ptr + 3].trim());
-    this.y4 = this.getDouble(s[ptr + 4].trim());
-    this.y3 = this.getDouble(s[ptr + 5].trim());
-    this.y2 = this.getDouble(s[ptr + 6].trim());
-    this.q8 = this.getDouble(s[ptr + 7].trim());
-    this.q7 = this.getDouble(s[ptr + 8].trim());
-    this.q6 = this.getDouble(s[ptr + 9].trim());
-    this.q5 = this.getDouble(s[ptr + 10].trim());
-    this.q4 = this.getDouble(s[ptr + 11].trim());
-    this.q3 = this.getDouble(s[ptr + 12].trim());
-    this.q2 = this.getDouble(s[ptr + 13].trim());
-    this.q1 = this.getDouble(s[ptr + 14].trim());
-    this.mode = mode;
-
-    // System.out.print(name + " - " + ptr + " :");
-    // for (int i = ptr + 1; i < ptr + 15; i++) {
-    // System.out.print(" " + s[i]);
-    // }
-    // System.out.println("\n" + this);
-
-    // Handle no value for most recent quarter
-    if (mode == dMode.ACCUMULATION) {
-      if (this.q1 == 0.0) {
-        if (this.q5 != 0.0) {
-          this.q1 = this.q5;
-        }
-        else if (this.q2 != 0.0) {
-          this.q1 = this.q2;
-        }
-        else if (this.q3 != 0.0) {
-          this.q1 = this.q3;
-        }
-        else {
-          this.q1 = this.q2;
-        }
-        if (this.q2 == 0.0) {
-          this.q2 = this.q1;
-        }
-        if (this.q3 == 0.0) {
-          this.q3 = this.q1;
-        }
-
-      }
-      this.y1 = this.q8 + this.q7 + this.q6 + this.q5;
-      this.y0 = this.q4 + this.q3 + this.q2 + this.q1;
-    }
-    else if (mode == dMode.SEQUENTIAL) {
-      if (this.q1 == 0.0) {
-        if (this.q2 != 0.0) {
-          this.q1 = this.q2;
-        }
-        else if (this.q3 != 0.0) {
-          this.q1 = this.q3;
-        }
-        else if (this.q4 != 0.0) {
-          this.q1 = this.q4;
-        }
-      }
-      this.y1 = this.q5;
-      this.y0 = this.q1;
-    }
-
-    // System.out.println(this);
-  }
-
-  @Override
-  public String toString() {
-
-    final String ret = this.y7 + " " + this.y6 + " " + this.y5 + " " + this.y4 + " " + this.y3 + " " + this.q8 + " " + this.q7 + " " + this.q6 + " "
-        + this.q5 + " " + this.q4 + " " + this.q3 + " " + this.q2 + " " + this.q1;
-    return ret;
-  }
-
-  /**
-   *
-   * net.ajaskey.market.tools.sipro.getDouble
-   *
-   * @param s
-   * @return
-   */
-  private double getDouble(final String s) {
-
-    double d = 0.0;
-    try {
-      d = Double.parseDouble(s.trim());
-      if (d < -999999.990) {
-        // System.out.println(d);
-        d = 0.0;
-      }
-    }
-    catch (final Exception e) {
-      d = 0.0;
-    }
-    return d;
-  }
-
-  /**
-   *
-   * net.ajaskey.market.tools.sipro.v4.init
-   *
-   * @param n
-   * @param val
-   */
-  private void init(final String n, final double val) {
-
-    this.ticker = "";
-    this.sector = "";
-    this.index = "";
-    this.y7 = val;
-    this.y6 = val;
-    this.y5 = val;
-    this.y4 = val;
-    this.y3 = val;
-    this.y2 = val;
-    this.y1 = val;
-    this.y0 = val;
-    this.q8 = val;
-    this.q7 = val;
-    this.q6 = val;
-    this.q5 = val;
-    this.q4 = val;
-    this.q3 = val;
-    this.q2 = val;
-    this.q1 = val;
-    this.name = n;
-    this.mode = dMode.NONE;
+    ACCUMULATION, NONE, SEQUENTIAL
   }
 
   /**
@@ -564,6 +328,242 @@ public class DataSet {
       ret = 0.0;
     }
     return ret;
+  }
+
+  public String index;
+  public dMode  mode;
+  public String name;
+  public double q1;
+  public double q2;
+  public double q3;
+  public double q4;
+  public double q5;
+  public double q6;
+  public double q7;
+
+  public double q8;
+
+  public String sector;
+
+  public String ticker;
+
+  public double y0;
+
+  public double y1;
+
+  public double y2;
+
+  public double y3;
+
+  public double y4;
+
+  public double y5;
+
+  public double y6;
+
+  public double y7;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   * @param totEps
+   */
+  public DataSet(final DataSet ds) {
+
+    this.y7 = ds.y7;
+    this.y6 = ds.y6;
+    this.y5 = ds.y5;
+    this.y4 = ds.y4;
+    this.y3 = ds.y3;
+    this.y2 = ds.y2;
+    this.y1 = ds.y1;
+    this.y0 = ds.y0;
+    this.q8 = ds.q8;
+    this.q7 = ds.q7;
+    this.q6 = ds.q6;
+    this.q5 = ds.q5;
+    this.q4 = ds.q4;
+    this.q3 = ds.q3;
+    this.q2 = ds.q2;
+    this.q1 = ds.q1;
+    this.index = ds.index;
+    this.mode = ds.mode;
+    this.name = ds.name;
+    this.ticker = ds.ticker;
+  }
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   * @param dates
+   */
+  public DataSet(final DateSet dates, final String idx) {
+
+    this.y7 = dates.y7.q4.value;
+    this.y6 = dates.y6.q4.value;
+    this.y5 = dates.y5.q4.value;
+    this.y4 = dates.y4.q4.value;
+    this.y3 = dates.y3.q4.value;
+    this.y2 = dates.y2.q4.value;
+    this.y1 = dates.y0.q4.value;
+    this.y0 = dates.y0.q4.value;
+    this.q8 = dates.y1.q1.value;
+    this.q7 = dates.y1.q2.value;
+    this.q6 = dates.y1.q3.value;
+    this.q5 = dates.y1.q4.value;
+    this.q4 = dates.y0.q1.value;
+    this.q3 = dates.y0.q2.value;
+    this.q2 = dates.y0.q3.value;
+    this.q1 = dates.y0.q4.value;
+    this.index = idx;
+    this.mode = DataSet.dMode.NONE;
+    this.name = "Date Set Prices";
+    this.ticker = "None";
+  }
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public DataSet(final String n, final double val) {
+
+    this.init(n, val);
+  }
+
+  public DataSet(final String index, final String name, final String code, final String sector, final String[] s, final int ptr, final dMode mode) {
+
+    this.init(name, 0);
+    this.index = index.trim();
+    this.ticker = code.trim();
+    this.sector = sector.trim();
+    this.y7 = this.getDouble(s[ptr + 1].trim());
+    this.y6 = this.getDouble(s[ptr + 2].trim());
+    this.y5 = this.getDouble(s[ptr + 3].trim());
+    this.y4 = this.getDouble(s[ptr + 4].trim());
+    this.y3 = this.getDouble(s[ptr + 5].trim());
+    this.y2 = this.getDouble(s[ptr + 6].trim());
+    this.q8 = this.getDouble(s[ptr + 7].trim());
+    this.q7 = this.getDouble(s[ptr + 8].trim());
+    this.q6 = this.getDouble(s[ptr + 9].trim());
+    this.q5 = this.getDouble(s[ptr + 10].trim());
+    this.q4 = this.getDouble(s[ptr + 11].trim());
+    this.q3 = this.getDouble(s[ptr + 12].trim());
+    this.q2 = this.getDouble(s[ptr + 13].trim());
+    this.q1 = this.getDouble(s[ptr + 14].trim());
+    this.mode = mode;
+
+    // System.out.print(name + " - " + ptr + " :");
+    // for (int i = ptr + 1; i < ptr + 15; i++) {
+    // System.out.print(" " + s[i]);
+    // }
+    // System.out.println("\n" + this);
+
+    // Handle no value for most recent quarter
+    if (mode == dMode.ACCUMULATION) {
+      if (this.q1 == 0.0) {
+        if (this.q5 != 0.0) {
+          this.q1 = this.q5;
+        }
+        else if (this.q2 != 0.0) {
+          this.q1 = this.q2;
+        }
+        else if (this.q3 != 0.0) {
+          this.q1 = this.q3;
+        }
+        else {
+          this.q1 = this.q2;
+        }
+        if (this.q2 == 0.0) {
+          this.q2 = this.q1;
+        }
+        if (this.q3 == 0.0) {
+          this.q3 = this.q1;
+        }
+
+      }
+      this.y1 = this.q8 + this.q7 + this.q6 + this.q5;
+      this.y0 = this.q4 + this.q3 + this.q2 + this.q1;
+    }
+    else if (mode == dMode.SEQUENTIAL) {
+      if (this.q1 == 0.0) {
+        if (this.q2 != 0.0) {
+          this.q1 = this.q2;
+        }
+        else if (this.q3 != 0.0) {
+          this.q1 = this.q3;
+        }
+        else if (this.q4 != 0.0) {
+          this.q1 = this.q4;
+        }
+      }
+      this.y1 = this.q5;
+      this.y0 = this.q1;
+    }
+
+    // System.out.println(this);
+  }
+
+  @Override
+  public String toString() {
+
+    final String ret = this.y7 + " " + this.y6 + " " + this.y5 + " " + this.y4 + " " + this.y3 + " " + this.q8 + " " + this.q7 + " " + this.q6 + " "
+        + this.q5 + " " + this.q4 + " " + this.q3 + " " + this.q2 + " " + this.q1;
+    return ret;
+  }
+
+  /**
+   *
+   * net.ajaskey.market.tools.sipro.getDouble
+   *
+   * @param s
+   * @return
+   */
+  private double getDouble(final String s) {
+
+    double d = 0.0;
+    try {
+      d = Double.parseDouble(s.trim());
+      if (d < -999999.990) {
+        // System.out.println(d);
+        d = 0.0;
+      }
+    }
+    catch (final Exception e) {
+      d = 0.0;
+    }
+    return d;
+  }
+
+  /**
+   *
+   * net.ajaskey.market.tools.sipro.v4.init
+   *
+   * @param n
+   * @param val
+   */
+  private void init(final String n, final double val) {
+
+    this.ticker = "";
+    this.sector = "";
+    this.index = "";
+    this.y7 = val;
+    this.y6 = val;
+    this.y5 = val;
+    this.y4 = val;
+    this.y3 = val;
+    this.y2 = val;
+    this.y1 = val;
+    this.y0 = val;
+    this.q8 = val;
+    this.q7 = val;
+    this.q6 = val;
+    this.q5 = val;
+    this.q4 = val;
+    this.q3 = val;
+    this.q2 = val;
+    this.q1 = val;
+    this.name = n;
+    this.mode = dMode.NONE;
   }
 
 }

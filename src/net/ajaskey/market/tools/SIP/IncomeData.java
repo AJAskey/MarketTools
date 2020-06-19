@@ -37,33 +37,110 @@ import net.ajaskey.common.Utils;
  */
 public class IncomeData {
 
-  public QuarterlyData sales;
-  public QuarterlyData cogs;
+  final private static String NL  = Utils.NL;
+  final private static String TAB = "\t";
 
-  public QuarterlyData grossIncome;
+  public static IncomeData setBalanceSheetInfo(final String[] fld) {
 
-  public QuarterlyData rd;
+    final IncomeData id = new IncomeData();
 
-  public QuarterlyData depreciation;
-  public QuarterlyData interestExp;
-  public QuarterlyData unusualIncome;
-  public QuarterlyData totalOpExp;
-  public QuarterlyData grossOpIncome;
-  public QuarterlyData interestExpNonOp;
-  public QuarterlyData otherIncome;
-  public QuarterlyData pretaxIncome;
-  public QuarterlyData incomeTax;
-  public QuarterlyData incomeAfterTaxes;
+    id.sales.parse(fld);
+    id.cogs.parse(fld);
+    id.grossIncome.parse(fld);
+    id.rd.parse(fld);
+    id.depreciation.parse(fld);
+    id.interestExp.parse(fld);
+    id.unusualIncome.parse(fld);
+    id.totalOpExp.parse(fld);
+    id.grossOpIncome.parse(fld);
+    id.interestExpNonOp.parse(fld);
+    id.otherIncome.parse(fld);
+    id.pretaxIncome.parse(fld);
+    id.incomeTax.parse(fld);
+    id.incomeAfterTaxes.parse(fld);
+    id.adjustments.parse(fld);
+    id.incomeEps.parse(fld);
+    id.nonrecurring.parse(fld);
+    id.netIncome.parse(fld);
+    id.eps.parse(fld);
+    id.epsContinuing.parse(fld);
+    id.epsDiluted.parse(fld);
+    id.epsDilCont.parse(fld);
+    id.dividend.parse(fld);
+
+    return id;
+
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.setIncomeData
+   *
+   * @param fld
+   * @return
+   */
+  public static IncomeData setIncomeData(final String[] fld) {
+
+    final IncomeData id = new IncomeData();
+
+    id.sales.parse(fld);
+    id.cogs.parse(fld);
+    id.grossIncome.parse(fld);
+    id.rd.parse(fld);
+    id.depreciation.parse(fld);
+    id.interestExp.parse(fld);
+    id.unusualIncome.parse(fld);
+    id.totalOpExp.parse(fld);
+    id.grossOpIncome.parse(fld);
+    id.interestExpNonOp.parse(fld);
+    id.otherIncome.parse(fld);
+    id.pretaxIncome.parse(fld);
+    id.incomeTax.parse(fld);
+    id.incomeAfterTaxes.parse(fld);
+    id.adjustments.parse(fld);
+    id.incomeEps.parse(fld);
+    id.nonrecurring.parse(fld);
+    id.netIncome.parse(fld);
+    id.eps.parse(fld);
+    id.epsContinuing.parse(fld);
+    id.epsDiluted.parse(fld);
+    id.epsDilCont.parse(fld);
+    id.dividend.parse(fld);
+
+    id.totalInterest.sum(id.interestExp);
+    id.totalInterest.sum(id.interestExpNonOp);
+    id.totalInterest.dd.calculate(id.totalInterest);
+
+    return id;
+  }
+
   public QuarterlyData adjustments;
-  public QuarterlyData incomeEps;
-  public QuarterlyData nonrecurring;
-  public QuarterlyData netIncome;
+  public QuarterlyData cogs;
+  public QuarterlyData depreciation;
+  public QuarterlyData dividend;
   public QuarterlyData eps;
   public QuarterlyData epsContinuing;
-  public QuarterlyData epsDiluted;
   public QuarterlyData epsDilCont;
-  public QuarterlyData dividend;
+  public QuarterlyData epsDiluted;
+  public QuarterlyData grossIncome;
+  public QuarterlyData grossOpIncome;
+  public QuarterlyData incomeAfterTaxes;
+  public QuarterlyData incomeEps;
+  public QuarterlyData incomeTax;
+  public QuarterlyData interestExp;
+  public QuarterlyData interestExpNonOp;
+  public QuarterlyData netIncome;
+  public QuarterlyData nonrecurring;
+  public QuarterlyData otherIncome;
+  public QuarterlyData pretaxIncome;
+  public QuarterlyData rd;
+
+  public QuarterlyData sales;
+
   public QuarterlyData totalInterest;
+
+  public QuarterlyData totalOpExp;
+
+  public QuarterlyData unusualIncome;
 
   /**
    * This method serves as a constructor for the class.
@@ -149,82 +226,5 @@ public class IncomeData {
     ret += IncomeData.TAB + this.epsDilCont;
     ret += IncomeData.TAB + this.dividend;
     return ret;
-  }
-
-  final private static String TAB = "\t";
-
-  final private static String NL = Utils.NL;
-
-  public static IncomeData setBalanceSheetInfo(final String[] fld) {
-
-    final IncomeData id = new IncomeData();
-
-    id.sales.parse(fld);
-    id.cogs.parse(fld);
-    id.grossIncome.parse(fld);
-    id.rd.parse(fld);
-    id.depreciation.parse(fld);
-    id.interestExp.parse(fld);
-    id.unusualIncome.parse(fld);
-    id.totalOpExp.parse(fld);
-    id.grossOpIncome.parse(fld);
-    id.interestExpNonOp.parse(fld);
-    id.otherIncome.parse(fld);
-    id.pretaxIncome.parse(fld);
-    id.incomeTax.parse(fld);
-    id.incomeAfterTaxes.parse(fld);
-    id.adjustments.parse(fld);
-    id.incomeEps.parse(fld);
-    id.nonrecurring.parse(fld);
-    id.netIncome.parse(fld);
-    id.eps.parse(fld);
-    id.epsContinuing.parse(fld);
-    id.epsDiluted.parse(fld);
-    id.epsDilCont.parse(fld);
-    id.dividend.parse(fld);
-
-    return id;
-
-  }
-
-  /**
-   * net.ajaskey.market.tools.SIP.setIncomeData
-   *
-   * @param fld
-   * @return
-   */
-  public static IncomeData setIncomeData(final String[] fld) {
-
-    final IncomeData id = new IncomeData();
-
-    id.sales.parse(fld);
-    id.cogs.parse(fld);
-    id.grossIncome.parse(fld);
-    id.rd.parse(fld);
-    id.depreciation.parse(fld);
-    id.interestExp.parse(fld);
-    id.unusualIncome.parse(fld);
-    id.totalOpExp.parse(fld);
-    id.grossOpIncome.parse(fld);
-    id.interestExpNonOp.parse(fld);
-    id.otherIncome.parse(fld);
-    id.pretaxIncome.parse(fld);
-    id.incomeTax.parse(fld);
-    id.incomeAfterTaxes.parse(fld);
-    id.adjustments.parse(fld);
-    id.incomeEps.parse(fld);
-    id.nonrecurring.parse(fld);
-    id.netIncome.parse(fld);
-    id.eps.parse(fld);
-    id.epsContinuing.parse(fld);
-    id.epsDiluted.parse(fld);
-    id.epsDilCont.parse(fld);
-    id.dividend.parse(fld);
-
-    id.totalInterest.sum(id.interestExp);
-    id.totalInterest.sum(id.interestExpNonOp);
-    id.totalInterest.dd.calculate(id.totalInterest);
-
-    return id;
   }
 }

@@ -46,6 +46,64 @@ import net.ajaskey.market.optuma.TickerPriceData;
  */
 public class Reports {
 
+  private static final double cratioLWM = 0.75;
+
+  private static final double intToSalesHWM = 15.0;
+
+  private static final double lteHWM = 5.0;
+
+  private static final double MILLION = 1000000.0;
+
+  private static final String NL = "\n";
+
+  private static final double supplyDemandLWM = 350.0;
+
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.checkMaxValue
+   *
+   * @param ticker
+   * @param desc
+   * @param val
+   * @param max
+   * @return
+   */
+  private static boolean checkMaxValue(final String ticker, final String desc, final double val, final double max) {
+
+    boolean ret = true;
+
+    if (val > max) {
+      final String s = ticker + desc;
+      Debug.log(String.format("  %-15s Value : %.2f is greater than Max : %.2f%n", s, val, max));
+      ret = false;
+    }
+
+    return ret;
+  }
+
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.checkMinValue
+   *
+   * @param ticker
+   * @param desc
+   * @param val
+   * @param min
+   * @return
+   */
+  private static boolean checkMinValue(final String ticker, final String desc, final double val, final double min) {
+
+    boolean ret = true;
+
+    if (val < min) {
+      final String s = ticker + desc;
+      Debug.log(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
+      ret = false;
+    }
+
+    return ret;
+  }
+
   private List<CompanyData> companyList = null;
 
   /**
@@ -876,64 +934,6 @@ public class Reports {
     pw.printf("\tAvg Daily Vol     : %s%n", QuarterlyData.ifmt(cd.adv, 13));
     pw.printf("\tTurnover Float    : %s days%n", QuarterlyData.fmt(cd.turnover, 13));
 
-  }
-
-  private static final double MILLION = 1000000.0;
-
-  private static final String NL = "\n";
-
-  private static final double intToSalesHWM = 15.0;
-
-  private static final double cratioLWM = 0.75;
-
-  private static final double lteHWM = 5.0;
-
-  private static final double supplyDemandLWM = 350.0;
-
-  /**
-   *
-   * net.ajaskey.market.tools.SIP.checkMaxValue
-   *
-   * @param ticker
-   * @param desc
-   * @param val
-   * @param max
-   * @return
-   */
-  private static boolean checkMaxValue(final String ticker, final String desc, final double val, final double max) {
-
-    boolean ret = true;
-
-    if (val > max) {
-      final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is greater than Max : %.2f%n", s, val, max));
-      ret = false;
-    }
-
-    return ret;
-  }
-
-  /**
-   *
-   * net.ajaskey.market.tools.SIP.checkMinValue
-   *
-   * @param ticker
-   * @param desc
-   * @param val
-   * @param min
-   * @return
-   */
-  private static boolean checkMinValue(final String ticker, final String desc, final double val, final double min) {
-
-    boolean ret = true;
-
-    if (val < min) {
-      final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
-      ret = false;
-    }
-
-    return ret;
   }
 
 }

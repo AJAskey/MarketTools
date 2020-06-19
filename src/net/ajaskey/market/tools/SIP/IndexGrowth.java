@@ -47,30 +47,20 @@ import net.ajaskey.market.optuma.TickerPriceData;
  */
 public class IndexGrowth extends CompanyData {
 
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public IndexGrowth() {
+  public final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
-    super();
+  static double day0   = 0.0;
+  static double day365 = 0.0;
 
-  }
-
-  static TickerPriceData spxData   = null;
+  static double          day65     = 0.0;
+  static double          day730    = 0.0;
+  static DateTime        qDate     = null;
   static final DateTime  recentQtr = new DateTime(2020, DateTime.JANUARY, 31);
+  static TickerPriceData spxData   = null;
 
   static DateTime yesterday = new DateTime();
-  static DateTime qDate     = null;
-  static double   day0      = 0.0;
-  static double   day65     = 0.0;
-  static double   day365    = 0.0;
-
-  static double day730 = 0.0;
 
   // public static List<String> sectorList;
-
-  public final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
   /**
    * net.ajaskey.market.tools.SIP.main
@@ -560,6 +550,16 @@ public class IndexGrowth extends CompanyData {
         }
       }
     }
+  }
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public IndexGrowth() {
+
+    super();
+
   }
 
 }

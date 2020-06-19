@@ -78,22 +78,6 @@ public class EstimateFileData {
 
   /**
    *
-   * @param filename
-   * @return
-   */
-  public static void readSipData(String filename) {
-
-    final List<String> estData = TextUtils.readTextFile(filename, true);
-    for (final String s : estData) {
-      final String[] fld = s.replace("\"", "").split(Utils.TAB);
-      final EstimateFileData efd = new EstimateFileData(fld);
-      EstimateFileData.efdList.add(efd);
-    }
-
-  }
-
-  /**
-   *
    * @param data
    * @return
    */
@@ -138,24 +122,40 @@ public class EstimateFileData {
 
   }
 
-  private String   name;
-  private String   ticker;
-  private ExchEnum exchange;
-  private String   sector;
-  private String   industry;
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static void readSipData(String filename) {
+
+    final List<String> estData = TextUtils.readTextFile(filename, true);
+    for (final String s : estData) {
+      final String[] fld = s.replace("\"", "").split(Utils.TAB);
+      final EstimateFileData efd = new EstimateFileData(fld);
+      EstimateFileData.efdList.add(efd);
+    }
+
+  }
+
   private DateTime currFiscalYear;
+  private double epsQ0;
+  private double epsQ1;
+  private double epsY0;
+  private double epsY1;
+  private double epsY2;
+
+  private ExchEnum exchange;
+
+  private String   industry;
 
   private DateTime latestQtrEps;
 
-  private double epsQ0;
+  private String   name;
 
-  private double epsQ1;
+  private String   sector;
 
-  private double epsY0;
-
-  private double epsY1;
-
-  private double epsY2;
+  private String   ticker;
 
   public EstimateFileData() {
     // TODO Auto-generated constructor stub

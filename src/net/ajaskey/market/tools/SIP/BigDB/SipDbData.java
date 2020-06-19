@@ -3,8 +3,11 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import net.ajaskey.market.tools.SIP.BigDB.collation.ManyCompanyData;
 import net.ajaskey.market.tools.SIP.BigDB.collation.OneCompanyData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
 
 public class SipDbData {
 
@@ -19,6 +22,14 @@ public class SipDbData {
     FieldData.readDbData(2020, 2);
 //    FieldData fd = FieldData.readDbData(2020, 1, "MSFT");
 //    System.out.println(fd);
+
+    String s = Reports.getDowIndex(2020, 2, DowEnum.TRANSPORTATION, true);
+    List<String> sList = Reports.outputToList(s);
+//    List<String> tickers = new ArrayList<>();
+//    tickers.add("MSFT");
+//    tickers.add("AA");
+
+    List<ManyCompanyData> mcdList = ManyCompanyData.createList(sList);
 
     List<OneCompanyData> msft = OneCompanyData.getCompany("MSFT");
     for (OneCompanyData ocd : msft) {
@@ -37,8 +48,6 @@ public class SipDbData {
     // false));
     // System.out.println(Reports.getExchange(2020, 2, ExchEnum.NYSE, true));
 
-//    String s = Reports.getDowIndex(2020, 2, DowEnum.TRANSPORTATION, true);
-//    List<String> sList = Reports.outputToList(s);
 //    for (String ss : sList) {
 //      System.out.println(ss);
 //    }

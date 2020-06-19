@@ -4,11 +4,11 @@ import java.util.List;
 
 public class FieldDataQuarter {
 
-  private final int year;
-  private final int quarter;
-
   // private List<String> companySummaryList = null;
   public List<FieldData> fieldDataList = null;
+  private final int quarter;
+
+  private final int year;
 
   public FieldDataQuarter(int yr, int qtr, List<FieldData> fdl) {
     this.year = yr;

@@ -43,20 +43,6 @@ import net.ajaskey.market.optuma.PriceData;
  */
 public class DateSet {
 
-  public Quarters y7;
-
-  public Quarters y6;
-
-  public Quarters y5;
-
-  public Quarters y4;
-  public Quarters y3;
-  public Quarters y2;
-  public Quarters y1;
-  public Quarters y0;
-  public QData    ttm = new QData();
-  public double   latestPrice;
-
   public class QData {
 
     public DateTime date;
@@ -75,10 +61,10 @@ public class DateSet {
 
   public class Quarters {
 
-    public QData q4  = new QData();
-    public QData q3  = new QData();
-    public QData q2  = new QData();
     public QData q1  = new QData();
+    public QData q2  = new QData();
+    public QData q3  = new QData();
+    public QData q4  = new QData();
     public QData ttm = new QData();
 
     /**
@@ -131,6 +117,35 @@ public class DateSet {
   }
 
   /**
+   * net.ajaskey.market.tools.sipro.main
+   *
+   * @param args
+   * @throws ParseException
+   * @throws IOException
+   */
+  public static void main(final String[] args) throws IOException, ParseException {
+
+    final List<PriceData> prices = PriceData.getData("SP500");
+    final DateSet ds = new DateSet(prices);
+    System.out.println(ds);
+
+  }
+
+  public double   latestPrice;
+  public QData    ttm = new QData();
+  public Quarters y0;
+  public Quarters y1;
+  public Quarters y2;
+  public Quarters y3;
+  public Quarters y4;
+
+  public Quarters y5;
+
+  public Quarters y6;
+
+  public Quarters y7;
+
+  /**
    *
    * This method serves as a constructor for the class.
    *
@@ -181,21 +196,6 @@ public class DateSet {
     ret += "\nY0\n" + this.y0;
     ret += "\nTTM  : " + this.ttm.date + "\t" + this.latestPrice;
     return ret;
-  }
-
-  /**
-   * net.ajaskey.market.tools.sipro.main
-   *
-   * @param args
-   * @throws ParseException
-   * @throws IOException
-   */
-  public static void main(final String[] args) throws IOException, ParseException {
-
-    final List<PriceData> prices = PriceData.getData("SP500");
-    final DateSet ds = new DateSet(prices);
-    System.out.println(ds);
-
   }
 
 }

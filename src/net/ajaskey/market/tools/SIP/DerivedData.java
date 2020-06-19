@@ -35,130 +35,10 @@ package net.ajaskey.market.tools.SIP;
  */
 public class DerivedData {
 
-  public double qoqGrowth;
-  public double seqGrowth;
-
-  public double yoyGrowth;
-
-  public double ttm;
-
-  private QuarterlyData qd;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public DerivedData() {
-
-    this.qoqGrowth = 0.0;
-    this.seqGrowth = 0.0;
-    this.yoyGrowth = 0.0;
-    this.ttm = 0.0;
-  }
-
-  /**
-   * net.ajaskey.market.tools.SIP.calculate
-   *
-   */
-  public void calculate(final QuarterlyData qdata) {
-
-    this.qd = qdata;
-    this.setQoQGrowth();
-    this.setSeqGrowth();
-    this.setYoyGrowth();
-    this.setTtmEps();
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-
-    String ret = DerivedData.TAB + DerivedData.TAB + "Derived ==>" + DerivedData.NL;
-    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + String.format("Seq Growth : %5.2f%%", this.seqGrowth) + DerivedData.NL;
-    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + String.format("Q/Q Growth : %15.2f%%", this.qoqGrowth) + DerivedData.NL;
-    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + String.format("Y/Y Growth : %15.2f%%", this.yoyGrowth) + DerivedData.NL;
-    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + "12m Total  : " + QuarterlyData.fmt(this.ttm) + " (avg= "
-        + QuarterlyData.fmt(this.ttm / 4.0, 1) + ")" + DerivedData.NL;
-    return ret;
-  }
-
-  /**
-   * net.ajaskey.market.tools.SIP.setYoYGrowth
-   *
-   */
-  private void setQoQGrowth() {
-
-    double qtr1;
-    double qtr5;
-    if (this.qd.q1 != 0.0) {
-      qtr1 = this.qd.q1;
-      qtr5 = this.qd.q5;
-    }
-    else {
-      qtr1 = this.qd.q2;
-      qtr5 = this.qd.q6;
-    }
-    if (qtr5 != 0.0) {
-      this.qoqGrowth = (qtr1 - qtr5) / Math.abs(qtr5) * 100.0;
-    }
-  }
-
-  /**
-   *
-   * net.ajaskey.market.tools.SIP.setSeqGrowth
-   *
-   */
-  private void setSeqGrowth() {
-
-    double qtr1;
-    double qtr2;
-    if (this.qd.q1 != 0.0) {
-      qtr1 = this.qd.q1;
-      qtr2 = this.qd.q2;
-    }
-    else {
-      qtr1 = this.qd.q2;
-      qtr2 = this.qd.q3;
-    }
-    if (qtr2 != 0.0) {
-      this.seqGrowth = (qtr1 - qtr2) / Math.abs(qtr2) * 100.0;
-    }
-  }
-
-  /**
-   * net.ajaskey.market.tools.SIP.setTtmEps
-   *
-   */
-  private void setTtmEps() {
-
-    final double e1 = this.qd.getTtm();
-    this.ttm = e1;
-  }
-
-  /**
-   *
-   * net.ajaskey.market.tools.SIP.setYoyGrowth
-   *
-   */
-  private void setYoyGrowth() {
-
-    final double yr1 = this.qd.q1 + this.qd.q2 + this.qd.q3 + this.qd.q4;
-    final double yr2 = this.qd.q5 + this.qd.q6 + this.qd.q7 + this.qd.q8;
-
-    if (yr2 != 0.0) {
-      this.yoyGrowth = (yr1 - yr2) / Math.abs(yr2) * 100.0;
-    }
-  }
-
-  final private static String NL = "\n";
+  final private static double MAX_PE = 275.0;
+  final private static String NL     = "\n";
 
   final private static String TAB = "\t";
-
-  final private static double MAX_PE = 275.0;
 
   /**
    * net.ajaskey.market.tools.SIP.calc52weekHigh
@@ -533,6 +413,126 @@ public class DerivedData {
 
     final double ret = cd.id.pretaxIncome.getTtm() - cd.cashData.capEx.getTtm() - cd.id.dividend.getTtm() * cd.shares.getTtmAvg();
     return ret;
+  }
+
+  public double qoqGrowth;
+
+  public double seqGrowth;
+
+  public double ttm;
+
+  public double yoyGrowth;
+
+  private QuarterlyData qd;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public DerivedData() {
+
+    this.qoqGrowth = 0.0;
+    this.seqGrowth = 0.0;
+    this.yoyGrowth = 0.0;
+    this.ttm = 0.0;
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.calculate
+   *
+   */
+  public void calculate(final QuarterlyData qdata) {
+
+    this.qd = qdata;
+    this.setQoQGrowth();
+    this.setSeqGrowth();
+    this.setYoyGrowth();
+    this.setTtmEps();
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    String ret = DerivedData.TAB + DerivedData.TAB + "Derived ==>" + DerivedData.NL;
+    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + String.format("Seq Growth : %5.2f%%", this.seqGrowth) + DerivedData.NL;
+    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + String.format("Q/Q Growth : %15.2f%%", this.qoqGrowth) + DerivedData.NL;
+    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + String.format("Y/Y Growth : %15.2f%%", this.yoyGrowth) + DerivedData.NL;
+    ret += DerivedData.TAB + DerivedData.TAB + DerivedData.TAB + "12m Total  : " + QuarterlyData.fmt(this.ttm) + " (avg= "
+        + QuarterlyData.fmt(this.ttm / 4.0, 1) + ")" + DerivedData.NL;
+    return ret;
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.setYoYGrowth
+   *
+   */
+  private void setQoQGrowth() {
+
+    double qtr1;
+    double qtr5;
+    if (this.qd.q1 != 0.0) {
+      qtr1 = this.qd.q1;
+      qtr5 = this.qd.q5;
+    }
+    else {
+      qtr1 = this.qd.q2;
+      qtr5 = this.qd.q6;
+    }
+    if (qtr5 != 0.0) {
+      this.qoqGrowth = (qtr1 - qtr5) / Math.abs(qtr5) * 100.0;
+    }
+  }
+
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.setSeqGrowth
+   *
+   */
+  private void setSeqGrowth() {
+
+    double qtr1;
+    double qtr2;
+    if (this.qd.q1 != 0.0) {
+      qtr1 = this.qd.q1;
+      qtr2 = this.qd.q2;
+    }
+    else {
+      qtr1 = this.qd.q2;
+      qtr2 = this.qd.q3;
+    }
+    if (qtr2 != 0.0) {
+      this.seqGrowth = (qtr1 - qtr2) / Math.abs(qtr2) * 100.0;
+    }
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.setTtmEps
+   *
+   */
+  private void setTtmEps() {
+
+    final double e1 = this.qd.getTtm();
+    this.ttm = e1;
+  }
+
+  /**
+   *
+   * net.ajaskey.market.tools.SIP.setYoyGrowth
+   *
+   */
+  private void setYoyGrowth() {
+
+    final double yr1 = this.qd.q1 + this.qd.q2 + this.qd.q3 + this.qd.q4;
+    final double yr2 = this.qd.q5 + this.qd.q6 + this.qd.q7 + this.qd.q8;
+
+    if (yr2 != 0.0) {
+      this.yoyGrowth = (yr1 - yr2) / Math.abs(yr2) * 100.0;
+    }
   }
 
 }

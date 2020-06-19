@@ -318,61 +318,61 @@ public class BalSheetFileData {
     }
   }
 
-  private String   name;
-  private String   ticker;
-  private ExchEnum exchange;
-  private String   sector;
-  private String   industry;
-  private double[] cashQtr;
-  private double[] cashYr;
-  private double[] stInvestQtr;
-  private double[] stInvestYr;
-  private double[] acctRxQtr;
-  private double[] acctRxYr;
-  private double[] inventoryQtr;
-  private double[] inventoryYr;
-  private double[] otherCurrAssetsQtr;
-  private double[] otherCurrAssetsYr;
-  private double[] currAssetsQtr;
-  private double[] currAssetsYr;
-  private double[] netFixedAssetsQtr;
-  private double[] netFixedAssetsYr;
-  private double[] ltInvestQtr;
-  private double[] ltInvestYr;
-  private double[] goodwillQtr;
-  private double[] goodwillYr;
-  private double[] otherLtAssetsQtr;
-  private double[] otherLtAssetsYr;
-  private double[] totalAssetsQtr;
-  private double[] totalAssetsYr;
   private double[] acctPayableQtr;
   private double[] acctPayableYr;
-  private double[] stDebtQtr;
-  private double[] stDebtYr;
-  private double[] otherCurrLiabQtr;
-  private double[] otherCurrLiabYr;
+  private double[] acctRxQtr;
+  private double[] acctRxYr;
+  private double[] bvpsQtr;
+  private double[] bvpsYr;
+  private double[] cashQtr;
+  private double[] cashYr;
+  private double[] currAssetsQtr;
+  private double[] currAssetsYr;
   private double[] currLiabQtr;
   private double[] currLiabYr;
+  private double[] equityQtr;
+  private double[] equityYr;
+  private ExchEnum exchange;
+  private double[] goodwillQtr;
+  private double[] goodwillYr;
+  private String   industry;
+  private double[] inventoryQtr;
+  private double[] inventoryYr;
+  private double[] liabEquityQtr;
+  private double[] liabEquityYr;
   private double[] ltDebtQtr;
   private double[] ltDebtYr;
+  private double[] ltInvestQtr;
+  private double[] ltInvestYr;
+  private String   name;
+  private double[] netFixedAssetsQtr;
+  private double[] netFixedAssetsYr;
+  private double[] otherCurrAssetsQtr;
+  private double[] otherCurrAssetsYr;
+  private double[] otherCurrLiabQtr;
+  private double[] otherCurrLiabYr;
+  private double[] otherLtAssetsQtr;
+  private double[] otherLtAssetsYr;
   private double[] otherLtLiabQtr;
   private double[] otherLtLiabYr;
-  private double[] totalLiabQtr;
-  private double[] totalLiabYr;
   private double[] prefStockQtr;
   private double[] prefStockYr;
+  private String   sector;
+  private double[] stDebtQtr;
+  private double[] stDebtYr;
+  private double[] stInvestQtr;
 
-  private double[] equityQtr;
+  private double[] stInvestYr;
 
-  private double[] equityYr;
+  private String   ticker;
 
-  private double[] liabEquityQtr;
+  private double[] totalAssetsQtr;
 
-  private double[] liabEquityYr;
+  private double[] totalAssetsYr;
 
-  private double[] bvpsQtr;
+  private double[] totalLiabQtr;
 
-  private double[] bvpsYr;
+  private double[] totalLiabYr;
 
   public BalSheetFileData() {
     // TODO Auto-generated constructor stub

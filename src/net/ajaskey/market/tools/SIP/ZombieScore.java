@@ -35,87 +35,6 @@ package net.ajaskey.market.tools.SIP;
  */
 public class ZombieScore {
 
-  public double cashOpstoMC;
-
-  public double margin;
-  public double interest;
-  public double equitytoMC;
-  public double ltDebt;
-  public double sales;
-  public double availCash;
-  public double wcfcf;
-  public double shares;
-  public double growth;
-  // public double price;
-  public double  priceVsSpx;
-  public double  earnings;
-  public double  score;
-  private double growth3y;
-  // new
-  public double assetLiabChg;
-
-  public double debtChg;
-  public double eqtyChg;
-  public double incChg;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public ZombieScore() {
-
-    this.cashOpstoMC = 0.0;
-    this.margin = 0.0;
-    this.interest = 0.0;
-    this.equitytoMC = 0.0;
-    this.ltDebt = 0.0;
-    this.availCash = 0.0;
-    this.wcfcf = 0.0;
-    this.sales = 0.0;
-    this.shares = 0.0;
-    this.growth = 0.0;
-    // this.price = 0.0;
-    this.priceVsSpx = 0.0;
-    this.earnings = 0.0;
-    this.score = 0.0;
-    this.growth3y = 0.0;
-    this.assetLiabChg = 0.0;
-    this.debtChg = 0.0;
-    this.eqtyChg = 0.0;
-    this.incChg = 0.0;
-  }
-
-  /*
-   * (non-Javadoc)
-   *
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-
-    String ret = String.format("%n\tZombie Score : %.2f", this.score);
-    ret += String.format("%n\t\tNegative Sales        : %7.2f", this.sales);
-    ret += String.format("%n\t\tMargins               : %7.2f", this.margin);
-    ret += String.format("%n\t\tAvailable Cash to MC  : %7.2f", this.availCash);
-    ret += String.format("%n\t\tWC plus FCF to MC     : %7.2f", this.wcfcf);
-    ret += String.format("%n\t\tInterest Paid         : %7.2f", this.interest);
-    ret += String.format("%n\t\tLT Debt to Equity     : %7.2f", this.ltDebt);
-    ret += String.format("%n\t\tEquity to MC          : %7.2f", this.equitytoMC);
-    ret += String.format("%n\t\tOpsInc Growth 3Yr     : %7.2f : (%.2f%%)", this.growth, this.growth3y);
-    ret += String.format("%n\t\tShare Decline         : %7.2f", this.shares);
-    // ret += String.format("%n\t\tPrice : %7.2f", this.price);
-    ret += String.format("%n\t\tPrice vs SPX          : %7.2f", this.priceVsSpx);
-    ret += String.format("%n\t\tAsset-Liab Change     : %7.2f", this.assetLiabChg);
-    ret += String.format("%n\t\tLT Debt Change        : %7.2f", this.debtChg);
-    ret += String.format("%n\t\tShrHldr Equity Change : %7.2f", this.eqtyChg);
-    ret += String.format("%n\t\tGross Income Change   : %7.2f", this.incChg);
-    if (this.earnings > 0.0) {
-      ret += String.format("%n\t\tEarnings weakness     : %7.2f", this.earnings);
-    }
-
-    return ret;
-  }
-
   /**
    *
    * net.ajaskey.market.tools.SIP.calculate
@@ -290,6 +209,87 @@ public class ZombieScore {
 
     }
     return zc;
+  }
+
+  // new
+  public double assetLiabChg;
+  public double availCash;
+  public double cashOpstoMC;
+  public double debtChg;
+  public double earnings;
+  public double eqtyChg;
+  public double equitytoMC;
+  public double growth;
+  public double incChg;
+  public double interest;
+  public double ltDebt;
+  public double margin;
+  // public double price;
+  public double priceVsSpx;
+  public double sales;
+
+  public double score;
+  public double shares;
+  public double wcfcf;
+
+  private double growth3y;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public ZombieScore() {
+
+    this.cashOpstoMC = 0.0;
+    this.margin = 0.0;
+    this.interest = 0.0;
+    this.equitytoMC = 0.0;
+    this.ltDebt = 0.0;
+    this.availCash = 0.0;
+    this.wcfcf = 0.0;
+    this.sales = 0.0;
+    this.shares = 0.0;
+    this.growth = 0.0;
+    // this.price = 0.0;
+    this.priceVsSpx = 0.0;
+    this.earnings = 0.0;
+    this.score = 0.0;
+    this.growth3y = 0.0;
+    this.assetLiabChg = 0.0;
+    this.debtChg = 0.0;
+    this.eqtyChg = 0.0;
+    this.incChg = 0.0;
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    String ret = String.format("%n\tZombie Score : %.2f", this.score);
+    ret += String.format("%n\t\tNegative Sales        : %7.2f", this.sales);
+    ret += String.format("%n\t\tMargins               : %7.2f", this.margin);
+    ret += String.format("%n\t\tAvailable Cash to MC  : %7.2f", this.availCash);
+    ret += String.format("%n\t\tWC plus FCF to MC     : %7.2f", this.wcfcf);
+    ret += String.format("%n\t\tInterest Paid         : %7.2f", this.interest);
+    ret += String.format("%n\t\tLT Debt to Equity     : %7.2f", this.ltDebt);
+    ret += String.format("%n\t\tEquity to MC          : %7.2f", this.equitytoMC);
+    ret += String.format("%n\t\tOpsInc Growth 3Yr     : %7.2f : (%.2f%%)", this.growth, this.growth3y);
+    ret += String.format("%n\t\tShare Decline         : %7.2f", this.shares);
+    // ret += String.format("%n\t\tPrice : %7.2f", this.price);
+    ret += String.format("%n\t\tPrice vs SPX          : %7.2f", this.priceVsSpx);
+    ret += String.format("%n\t\tAsset-Liab Change     : %7.2f", this.assetLiabChg);
+    ret += String.format("%n\t\tLT Debt Change        : %7.2f", this.debtChg);
+    ret += String.format("%n\t\tShrHldr Equity Change : %7.2f", this.eqtyChg);
+    ret += String.format("%n\t\tGross Income Change   : %7.2f", this.incChg);
+    if (this.earnings > 0.0) {
+      ret += String.format("%n\t\tEarnings weakness     : %7.2f", this.earnings);
+    }
+
+    return ret;
   }
 
 }

@@ -39,7 +39,7 @@ public class SortScore implements Comparator<CompanyData> {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
    */
   @Override

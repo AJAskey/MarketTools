@@ -42,77 +42,96 @@ import net.ajaskey.common.Utils;
  */
 public class TotalData {
 
-  // Balance Sheet
-  public QuarterlyData cash;
-  public QuarterlyData stInvestments;
+  public final static int printFormatLong  = 2;
+  public final static int printFormatShort = 1;
 
-  public QuarterlyData acctReceiveable;
-  public QuarterlyData inventory;
+  private static List<String> latestQDate = null;
+  final private static String NL          = "\n";
 
-  public QuarterlyData otherAssets;
+  final private static String TAB = "\t";
 
   // public String name;
   // public String sector;
   // public String industry;
 
-  public QuarterlyData currentAssets;
-  public QuarterlyData fixedAssets;
-  public QuarterlyData ltInvestments;
-  public QuarterlyData goodwill;
-  public QuarterlyData otherLtAssets;
-  public QuarterlyData totalAssets;
-  public QuarterlyData acctPayable;
-  public QuarterlyData stDebt;
-  public QuarterlyData otherCurrLiab;
-  public QuarterlyData currLiab;
-  public QuarterlyData ltDebt;
-  public QuarterlyData otherLtLiab;
-  public QuarterlyData totalLiab;
-  public QuarterlyData prefStock;
-  public QuarterlyData equity;
-  public QuarterlyData liabEquity;
-  public QuarterlyData bvps;
-  // Income Statement
-  public QuarterlyData sales;
-  public QuarterlyData cogs;
-  public QuarterlyData grossIncome;
-  public QuarterlyData rd;
-  public QuarterlyData capex;
+  /**
+   *
+   * @param lqd
+   */
+  public static void setLatestQDate(List<String> lqd) {
+    TotalData.latestQDate = lqd;
+  }
 
-  public QuarterlyData depreciation;
-  public QuarterlyData interestExp;
-  public QuarterlyData unusualIncome;
-  public QuarterlyData totalOpExp;
-  public QuarterlyData grossOpIncome;
-  public QuarterlyData interestExpNonOp;
-  public QuarterlyData otherIncome;
-  public QuarterlyData pretaxIncome;
-  public QuarterlyData incomeTax;
-  public QuarterlyData incomeAfterTaxes;
+  public QuarterlyData acctPayable;
+  public QuarterlyData acctReceiveable;
   public QuarterlyData adjustments;
-  public QuarterlyData incomeEps;
-  public QuarterlyData nonrecurring;
-  public QuarterlyData netIncome;
-  public QuarterlyData eps;
-  public QuarterlyData epsContinuing;
-  public QuarterlyData epsDiluted;
-  public QuarterlyData epsDilCont;
-  public QuarterlyData dividend;
-  public QuarterlyData shares;
-  public QuarterlyData cashFromOps;
+  public QuarterlyData bvps;
+  public QuarterlyData capex;
+  // Balance Sheet
+  public QuarterlyData cash;
   public QuarterlyData cashFromFin;
   public QuarterlyData cashFromInv;
+  public QuarterlyData cashFromOps;
   public QuarterlyData cashNet;
+  public QuarterlyData cogs;
+  public QuarterlyData currentAssets;
+  public QuarterlyData currLiab;
+  public QuarterlyData depreciation;
+  public QuarterlyData dividend;
+  public QuarterlyData eps;
+  public QuarterlyData epsContinuing;
+  public QuarterlyData epsDilCont;
+  public QuarterlyData epsDiluted;
+  public QuarterlyData equity;
+  public QuarterlyData fixedAssets;
+
+  public QuarterlyData goodwill;
+  public QuarterlyData grossIncome;
+  public QuarterlyData grossOpIncome;
+  public QuarterlyData incomeAfterTaxes;
+  public QuarterlyData incomeEps;
+  public QuarterlyData incomeTax;
+  public QuarterlyData interestExp;
+  public QuarterlyData interestExpNonOp;
+  public QuarterlyData inventory;
+  public QuarterlyData liabEquity;
+  public QuarterlyData ltDebt;
+  public QuarterlyData ltInvestments;
+  public QuarterlyData netIncome;
+  public QuarterlyData nonrecurring;
+  public QuarterlyData otherAssets;
+  public QuarterlyData otherCurrLiab;
+  public QuarterlyData otherIncome;
+  public QuarterlyData otherLtAssets;
+  public QuarterlyData otherLtLiab;
   public double        p0;
   public double        p365;
+  public double        p730;
+  public QuarterlyData prefStock;
+  public QuarterlyData pretaxIncome;
+  public QuarterlyData rd;
+  // Income Statement
+  public QuarterlyData sales;
 
-  public double  p730;
-  private String outdir;
-  private int    knt;
+  public QuarterlyData shares;
+  public QuarterlyData stDebt;
+  public QuarterlyData stInvestments;
 
-  private int printFormat;
+  public QuarterlyData totalAssets;
+
+  public QuarterlyData totalLiab;
+
+  public QuarterlyData totalOpExp;
+
+  public QuarterlyData unusualIncome;
 
   DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+
+  private int knt;
+
+  private String outdir;
+
+  private int printFormat;
 
   /**
    * This method serves as a constructor for the class.
@@ -677,24 +696,6 @@ public class TotalData {
     final String sRet = String.format("%s %s   --> %12.2f%%", q1s, q5s, chg);
 
     return sRet;
-  }
-
-  public final static int printFormatShort = 1;
-
-  public final static int printFormatLong = 2;
-
-  private static List<String> latestQDate = null;
-
-  final private static String NL = "\n";
-
-  final private static String TAB = "\t";
-
-  /**
-   *
-   * @param lqd
-   */
-  public static void setLatestQDate(List<String> lqd) {
-    TotalData.latestQDate = lqd;
   }
 
 }

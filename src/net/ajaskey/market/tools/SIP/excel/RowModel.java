@@ -2,10 +2,12 @@ package net.ajaskey.market.tools.SIP.excel;
 
 public class RowModel {
 
+  private static final int MAXCOL = 1000;
+
   private SheetModel parent;
+  private final CellModel[] rowCells = new CellModel[100];
 
   private int               rowNumber;
-  private final CellModel[] rowCells = new CellModel[100];
 
   public CellModel get(int col) {
     if (col > 0 && col < RowModel.MAXCOL) {
@@ -35,7 +37,5 @@ public class RowModel {
   protected void setParent(SheetModel parent) {
     this.parent = parent;
   }
-
-  private static final int MAXCOL = 1000;
 
 }

@@ -38,9 +38,13 @@ import java.util.List;
  */
 public class Filter {
 
-  private List<CompanyData> cList = null;
+  public static void main(final String[] args) {
+
+  }
 
   public FilterData epsQoQ = null;
+
+  private List<CompanyData> cList = null;
 
   /**
    * This method serves as a constructor for the class.
@@ -67,10 +71,6 @@ public class Filter {
     }
 
     return retList;
-
-  }
-
-  public static void main(final String[] args) {
 
   }
 

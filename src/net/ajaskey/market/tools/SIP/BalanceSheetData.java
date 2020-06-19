@@ -35,104 +35,6 @@ package net.ajaskey.market.tools.SIP;
  */
 public class BalanceSheetData {
 
-  public QuarterlyData cash;
-
-  public QuarterlyData stInvestments;
-
-  public QuarterlyData acctReceiveable;
-
-  public QuarterlyData inventory;
-  public QuarterlyData otherAssets;
-  public QuarterlyData currentAssets;
-  public QuarterlyData fixedAssets;
-  public QuarterlyData ltInvestments;
-  public QuarterlyData goodwill;
-  public QuarterlyData otherLtAssets;
-  public QuarterlyData totalAssets;
-  public QuarterlyData acctPayable;
-  public QuarterlyData stDebt;
-  public QuarterlyData otherCurrLiab;
-  public QuarterlyData currLiab;
-  public QuarterlyData ltDebt;
-  public QuarterlyData otherLtLiab;
-  public QuarterlyData totalLiab;
-  public QuarterlyData prefStock;
-  public QuarterlyData equity;
-  public QuarterlyData liabEquity;
-  public QuarterlyData bvps;
-  // Derived
-  public QuarterlyData assetsMinusGW;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public BalanceSheetData() {
-
-    this.cash = new QuarterlyData("cash");
-    this.stInvestments = new QuarterlyData("stInvestments");
-    this.acctReceiveable = new QuarterlyData("acctReceiveable");
-    this.inventory = new QuarterlyData("inventory");
-    this.otherAssets = new QuarterlyData("otherAssets");
-    this.currentAssets = new QuarterlyData("currentAssets");
-    this.fixedAssets = new QuarterlyData("fixedAssets");
-    this.ltInvestments = new QuarterlyData("ltInvestments");
-    this.goodwill = new QuarterlyData("goodwill");
-    this.otherLtAssets = new QuarterlyData("otherLtAssets");
-    this.totalAssets = new QuarterlyData("totalAssets");
-    this.acctPayable = new QuarterlyData("acctPayable");
-    this.stDebt = new QuarterlyData("stDebt");
-    this.otherCurrLiab = new QuarterlyData("otherCurrLiab");
-    this.currLiab = new QuarterlyData("currLiab");
-    this.ltDebt = new QuarterlyData("ltDebt");
-    this.otherLtLiab = new QuarterlyData("otherLtLiab");
-    this.totalLiab = new QuarterlyData("totalLiab");
-    this.prefStock = new QuarterlyData("prefStock");
-    this.equity = new QuarterlyData("equity");
-    this.liabEquity = new QuarterlyData("liabEquity");
-    this.bvps = new QuarterlyData("bvps");
-
-    this.assetsMinusGW = new QuarterlyData("assetsMinusGW");
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-
-    String ret = "";
-    ret += BalanceSheetData.TAB + this.acctPayable;
-    ret += BalanceSheetData.TAB + this.acctReceiveable;
-    ret += BalanceSheetData.TAB + this.bvps;
-    ret += BalanceSheetData.TAB + this.cash;
-    ret += BalanceSheetData.TAB + this.equity;
-    ret += BalanceSheetData.TAB + this.inventory;
-    ret += BalanceSheetData.TAB + this.prefStock;
-
-    ret += BalanceSheetData.TAB + this.currentAssets;
-    ret += BalanceSheetData.TAB + this.fixedAssets;
-    ret += BalanceSheetData.TAB + this.otherLtAssets;
-    ret += BalanceSheetData.TAB + this.otherAssets;
-    ret += BalanceSheetData.TAB + this.goodwill;
-    ret += BalanceSheetData.TAB + this.totalAssets;
-
-    ret += BalanceSheetData.TAB + this.stInvestments;
-    ret += BalanceSheetData.TAB + this.ltInvestments;
-
-    ret += BalanceSheetData.TAB + this.stDebt;
-    ret += BalanceSheetData.TAB + this.ltDebt;
-
-    ret += BalanceSheetData.TAB + this.currLiab;
-    ret += BalanceSheetData.TAB + this.liabEquity;
-    ret += BalanceSheetData.TAB + this.otherCurrLiab;
-    ret += BalanceSheetData.TAB + this.otherLtLiab;
-    ret += BalanceSheetData.TAB + this.totalLiab;
-    return ret;
-  }
-
   final private static String TAB = "\t";
 
   public static BalanceSheetData setBalanceSheetInfo(final String[] fld) {
@@ -188,5 +90,103 @@ public class BalanceSheetData {
 
     bsd.assetsMinusGW.dd.calculate(bsd.assetsMinusGW);
 
+  }
+
+  public QuarterlyData acctPayable;
+  public QuarterlyData acctReceiveable;
+  // Derived
+  public QuarterlyData assetsMinusGW;
+  public QuarterlyData bvps;
+  public QuarterlyData cash;
+  public QuarterlyData currentAssets;
+  public QuarterlyData currLiab;
+  public QuarterlyData equity;
+  public QuarterlyData fixedAssets;
+  public QuarterlyData goodwill;
+  public QuarterlyData inventory;
+  public QuarterlyData liabEquity;
+  public QuarterlyData ltDebt;
+  public QuarterlyData ltInvestments;
+  public QuarterlyData otherAssets;
+  public QuarterlyData otherCurrLiab;
+  public QuarterlyData otherLtAssets;
+  public QuarterlyData otherLtLiab;
+  public QuarterlyData prefStock;
+  public QuarterlyData stDebt;
+
+  public QuarterlyData stInvestments;
+
+  public QuarterlyData totalAssets;
+
+  public QuarterlyData totalLiab;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public BalanceSheetData() {
+
+    this.cash = new QuarterlyData("cash");
+    this.stInvestments = new QuarterlyData("stInvestments");
+    this.acctReceiveable = new QuarterlyData("acctReceiveable");
+    this.inventory = new QuarterlyData("inventory");
+    this.otherAssets = new QuarterlyData("otherAssets");
+    this.currentAssets = new QuarterlyData("currentAssets");
+    this.fixedAssets = new QuarterlyData("fixedAssets");
+    this.ltInvestments = new QuarterlyData("ltInvestments");
+    this.goodwill = new QuarterlyData("goodwill");
+    this.otherLtAssets = new QuarterlyData("otherLtAssets");
+    this.totalAssets = new QuarterlyData("totalAssets");
+    this.acctPayable = new QuarterlyData("acctPayable");
+    this.stDebt = new QuarterlyData("stDebt");
+    this.otherCurrLiab = new QuarterlyData("otherCurrLiab");
+    this.currLiab = new QuarterlyData("currLiab");
+    this.ltDebt = new QuarterlyData("ltDebt");
+    this.otherLtLiab = new QuarterlyData("otherLtLiab");
+    this.totalLiab = new QuarterlyData("totalLiab");
+    this.prefStock = new QuarterlyData("prefStock");
+    this.equity = new QuarterlyData("equity");
+    this.liabEquity = new QuarterlyData("liabEquity");
+    this.bvps = new QuarterlyData("bvps");
+
+    this.assetsMinusGW = new QuarterlyData("assetsMinusGW");
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+
+    String ret = "";
+    ret += BalanceSheetData.TAB + this.acctPayable;
+    ret += BalanceSheetData.TAB + this.acctReceiveable;
+    ret += BalanceSheetData.TAB + this.bvps;
+    ret += BalanceSheetData.TAB + this.cash;
+    ret += BalanceSheetData.TAB + this.equity;
+    ret += BalanceSheetData.TAB + this.inventory;
+    ret += BalanceSheetData.TAB + this.prefStock;
+
+    ret += BalanceSheetData.TAB + this.currentAssets;
+    ret += BalanceSheetData.TAB + this.fixedAssets;
+    ret += BalanceSheetData.TAB + this.otherLtAssets;
+    ret += BalanceSheetData.TAB + this.otherAssets;
+    ret += BalanceSheetData.TAB + this.goodwill;
+    ret += BalanceSheetData.TAB + this.totalAssets;
+
+    ret += BalanceSheetData.TAB + this.stInvestments;
+    ret += BalanceSheetData.TAB + this.ltInvestments;
+
+    ret += BalanceSheetData.TAB + this.stDebt;
+    ret += BalanceSheetData.TAB + this.ltDebt;
+
+    ret += BalanceSheetData.TAB + this.currLiab;
+    ret += BalanceSheetData.TAB + this.liabEquity;
+    ret += BalanceSheetData.TAB + this.otherCurrLiab;
+    ret += BalanceSheetData.TAB + this.otherLtLiab;
+    ret += BalanceSheetData.TAB + this.totalLiab;
+    return ret;
   }
 }

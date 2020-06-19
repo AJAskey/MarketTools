@@ -16,7 +16,7 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
  * This class contains procedures for generating text reports.
  *
  * @author Andy Askey
- * 
+ *
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.
  *         </p>
@@ -46,11 +46,6 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
  *
  */
 public class Reports {
-
-  private static String companyLine(FieldData fd) {
-    return String.format("%-10s\t%-50s\t%-15s\t%-8s\t%-1s%n", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange(),
-        fd.getCompanyInfo().getSnpIndexStr(), fd.getCompanyInfo().getDowIndexStr(), fd.getCompanyInfo().getExchange());
-  }
 
   /**
    *
@@ -98,21 +93,20 @@ public class Reports {
       ret += Reports.companySummary(year, 3);
       ret += String.format("%n----------%d Q4----------------%n%n", year);
       ret += Reports.companySummary(year, 4);
-
-      // System.out.println(ret);
-
     }
-
-    // System.out.println(ret);
     return ret;
   }
 
   /**
+   * Returns a list of String for all tickers found matching the input index
+   * value.
    *
    * @param yr
    * @param qtr
-   * @param index
-   * @return
+   * @param index       - INDUSTRIAL, TRANPORTATION, UTILITY
+   * @param tickersOnly True output is only tickers. False if a summary of company
+   *                    is returned.
+   * @return A NL delimited string of data
    */
   public static String getDowIndex(int yr, int qtr, DowEnum index, boolean tickersOnly) {
 
@@ -152,11 +146,14 @@ public class Reports {
   }
 
   /**
+   * Returns a list of String for all tickers found matching the input exch value.
    *
    * @param yr
    * @param qtr
-   * @param exch
-   * @return
+   * @param exch        - NYSE, NASDAQ, AMEX, OTC
+   * @param tickersOnly True output is only tickers. False if a summary of company
+   *                    is returned.
+   * @return A NL delimited string of data
    */
   public static String getExchange(int yr, int qtr, ExchEnum exch, boolean tickersOnly) {
 
@@ -195,34 +192,16 @@ public class Reports {
     return ret;
   }
 
-  public static String getReport() {
-    String ret = "";
-    for (final FieldDataYear fdy : BigLists.allDataList) {
-      if (fdy.isInUse()) {
-        ret += String.format("%d%n", fdy.getYear());
-        if (fdy.getQ1() != null) {
-          ret += String.format("  Q1 : %d%n", fdy.getQ1().fieldDataList.size());
-        }
-        if (fdy.getQ2() != null) {
-          ret += String.format("  Q2 : %d%n", fdy.getQ2().fieldDataList.size());
-        }
-        if (fdy.getQ3() != null) {
-          ret += String.format("  Q3 : %d%n", fdy.getQ3().fieldDataList.size());
-        }
-        if (fdy.getQ4() != null) {
-          ret += String.format("  Q4 : %d%n", fdy.getQ4().fieldDataList.size());
-        }
-      }
-    }
-    return ret;
-  }
-
   /**
+   * Returns a list of String for all tickers found matching the input index
+   * value.
    *
    * @param yr
    * @param qtr
-   * @param index
-   * @return
+   * @param index       - SP500, SP400, SP600
+   * @param tickersOnly True output is only tickers. False if a summary of company
+   *                    is returned.
+   * @return A NL delimited string of data
    */
   public static String getSnpIndex(int yr, int qtr, SnpEnum index, boolean tickersOnly) {
 
@@ -260,10 +239,12 @@ public class Reports {
     return ret;
   }
 
-  private static String header(int yr, int qtr) {
-    return String.format("Summary of requested Company Ticker, Name, Exchange SnP, Dow for year %d quarter %d%n", yr, qtr);
-  }
-
+  /**
+   * Procedure takes a NL delimited string and returns a list of strings.
+   *
+   * @param str NL delimited string from previous report
+   * @return List of String
+   */
   public static List<String> outputToList(String str) {
     final List<String> ret = new ArrayList<>();
     final String[] fld = str.split(Utils.NL);
@@ -273,5 +254,14 @@ public class Reports {
     }
 
     return ret;
+  }
+
+  private static String companyLine(FieldData fd) {
+    return String.format("%-10s\t%-50s\t%-15s\t%-8s\t%-1s%n", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange(),
+        fd.getCompanyInfo().getSnpIndexStr(), fd.getCompanyInfo().getDowIndexStr(), fd.getCompanyInfo().getExchange());
+  }
+
+  private static String header(int yr, int qtr) {
+    return String.format("Summary of requested Company Ticker, Name, Exchange SnP, Dow for year %d quarter %d%n", yr, qtr);
   }
 }

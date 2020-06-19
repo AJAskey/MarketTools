@@ -54,41 +54,41 @@ import net.ajaskey.market.optuma.PriceData;
  */
 public class SipData {
 
-  public static List<DataSet> sales           = new ArrayList<>();
-  public static List<DataSet> ebit            = new ArrayList<>();
-  public static List<DataSet> taxes           = new ArrayList<>();
-  public static List<DataSet> incomeEps       = new ArrayList<>();
-  public static List<DataSet> cashOps         = new ArrayList<>();
-  public static List<DataSet> cashFin         = new ArrayList<>();
-  public static List<DataSet> cashInv         = new ArrayList<>();
-  public static List<DataSet> dividend        = new ArrayList<>();
-  public static List<DataSet> shares          = new ArrayList<>();
-  public static List<DataSet> cash            = new ArrayList<>();
-  public static List<DataSet> assets          = new ArrayList<>();
-  public static List<DataSet> liabilities     = new ArrayList<>();
-  public static List<DataSet> accTx           = new ArrayList<>();
-  public static List<DataSet> accRx           = new ArrayList<>();
-  public static List<DataSet> goodwill        = new ArrayList<>();
-  public static List<DataSet> ltDebt          = new ArrayList<>();
-  public static List<DataSet> capEx           = new ArrayList<>();
-  public static List<DataSet> equity          = new ArrayList<>();
-  public static List<DataSet> interest        = new ArrayList<>();
-  public static List<DataSet> resDev          = new ArrayList<>();
-  public static List<DataSet> bookValue       = new ArrayList<>();
-  public static List<DataSet> inventoryValue  = new ArrayList<>();
-  public static List<DataSet> enterpriseValue = new ArrayList<>();
-  public static List<DataSet> prices          = new ArrayList<>();
-  public static List<DataSet> fcf             = new ArrayList<>();
+  public static List<DataSet>   accRx           = new ArrayList<>();
+  public static List<DataSet>   accTx           = new ArrayList<>();
+  public static List<DataSet>   assets          = new ArrayList<>();
+  public static List<DataSet>   bookValue       = new ArrayList<>();
+  public static List<DataSet>   capEx           = new ArrayList<>();
+  public static List<DataSet>   cash            = new ArrayList<>();
+  public static List<DataSet>   cashFin         = new ArrayList<>();
+  public static List<DataSet>   cashInv         = new ArrayList<>();
+  public static List<DataSet>   cashOps         = new ArrayList<>();
+  public static List<DataSet>   dividend        = new ArrayList<>();
+  public static List<DataSet>   ebit            = new ArrayList<>();
+  public static List<DataSet>   enterpriseValue = new ArrayList<>();
+  public static List<DataSet>   eps             = new ArrayList<>();
+  public static List<DataSet>   equity          = new ArrayList<>();
+  public static List<DataSet>   fcf             = new ArrayList<>();
+  public static List<DataSet>   goodwill        = new ArrayList<>();
+  public static List<DataSet>   incomeEps       = new ArrayList<>();
+  public static List<PriceData> indexPrices     = null;
+  public static List<DataSet>   interest        = new ArrayList<>();
+  public static List<DataSet>   inventoryValue  = new ArrayList<>();
+  public static List<DataSet>   liabilities     = new ArrayList<>();
+  public static List<DataSet>   ltDebt          = new ArrayList<>();
+  public static List<DataSet>   prices          = new ArrayList<>();
+  public static List<DataSet>   resDev          = new ArrayList<>();
+  public static List<DataSet>   sales           = new ArrayList<>();
 
-  public static List<DataSet> eps = new ArrayList<>();
+  public static List<DataSet> shares = new ArrayList<>();
 
-  private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
+  public static List<DataSet> taxes = new ArrayList<>();
 
-  public static List<PriceData> indexPrices = null;
+  static String path = OptumaCommon.optumaPath + "SIP\\";
 
   private static int companyKnt = 0;
 
-  static String path = OptumaCommon.optumaPath + "SIP\\";
+  private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
 
   /**
    *

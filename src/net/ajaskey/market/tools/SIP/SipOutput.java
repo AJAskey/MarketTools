@@ -5,11 +5,11 @@ import java.text.DecimalFormatSymbols;
 
 public class SipOutput {
 
-  private final static String digitfmt = String.format("#,###,##0.");
+  private final static DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
 
   private final static DecimalFormat dfmt = new DecimalFormat("#,###");
 
-  private final static DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+  private final static String digitfmt = String.format("#,###,##0.");
 
   public static String buildArray(String desc, double[] values, int len, int digits) {
     String ret = desc;

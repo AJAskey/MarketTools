@@ -88,72 +88,6 @@ public class FieldData {
   }
 
   /**
-   * Reads data from DB.
-   *
-   * @param year
-   * @param quarter
-   * @return List of FieldData for year and quarter
-   */
-  private static List<FieldData> parseFromDbData(int year, int quarter) {
-
-    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
-
-    final List<FieldData> fdList = new ArrayList<>();
-
-    final String[] ext = { "txt" };
-    final List<File> fList = Utils.getDirTree(indir, ext);
-    for (final File f : fList) {
-
-      final List<String> data = TextUtils.readTextFile(f, true);
-
-      final FieldData fd = new FieldData(year, quarter);
-
-      fd.companyInfo = CompanyFileData.readFromDb(data);
-      fd.shareData = SharesFileData.readFromDb(data);
-      fd.estimateData = EstimateFileData.readFromDb(data);
-      fd.incSheetData = IncSheetFileData.readFromDb(data);
-      fd.balSheetData = BalSheetFileData.readFromDb(data);
-      fd.setNameFields(fd.companyInfo);
-      fd.shareData.setNameFields(fd.companyInfo);
-      fd.estimateData.setNameFields(fd.companyInfo);
-      fd.incSheetData.setNameFields(fd.companyInfo);
-      fd.balSheetData.setNameFields(fd.companyInfo);
-
-      if (fd.companyInfo.getTicker() != null) {
-        fdList.add(fd);
-      }
-    }
-    return fdList;
-  }
-
-  /**
-   * Reads one file from DB based on year, quarter, and ticker.
-   *
-   * @param year
-   * @param quarter
-   * @param ticker
-   * @return FieldData for year, quarter, and ticker.
-   */
-  private static FieldData parseFromDbData(int year, int quarter, String ticker) {
-
-    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
-
-    final String fname = String.format("%s%s-fundamental-data-%dQ%d.txt", indir, ticker, year, quarter);
-    final List<String> data = TextUtils.readTextFile(fname, true);
-
-    final FieldData fd = new FieldData(year, quarter);
-
-    fd.companyInfo = CompanyFileData.readFromDb(data);
-    fd.shareData = SharesFileData.readFromDb(data);
-    fd.estimateData = EstimateFileData.readFromDb(data);
-    fd.incSheetData = IncSheetFileData.readFromDb(data);
-    fd.balSheetData = BalSheetFileData.readFromDb(data);
-    fd.setNameFields(fd.companyInfo);
-
-    return fd;
-  }
-
-  /**
    * Reads SIP tab separated data files. Stores the data in array for later use.
    *
    * @param year
@@ -242,6 +176,72 @@ public class FieldData {
   }
 
   /**
+   * Reads data from DB.
+   *
+   * @param year
+   * @param quarter
+   * @return List of FieldData for year and quarter
+   */
+  private static List<FieldData> parseFromDbData(int year, int quarter) {
+
+    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    final String[] ext = { "txt" };
+    final List<File> fList = Utils.getDirTree(indir, ext);
+    for (final File f : fList) {
+
+      final List<String> data = TextUtils.readTextFile(f, true);
+
+      final FieldData fd = new FieldData(year, quarter);
+
+      fd.companyInfo = CompanyFileData.readFromDb(data);
+      fd.shareData = SharesFileData.readFromDb(data);
+      fd.estimateData = EstimateFileData.readFromDb(data);
+      fd.incSheetData = IncSheetFileData.readFromDb(data);
+      fd.balSheetData = BalSheetFileData.readFromDb(data);
+      fd.setNameFields(fd.companyInfo);
+      fd.shareData.setNameFields(fd.companyInfo);
+      fd.estimateData.setNameFields(fd.companyInfo);
+      fd.incSheetData.setNameFields(fd.companyInfo);
+      fd.balSheetData.setNameFields(fd.companyInfo);
+
+      if (fd.companyInfo.getTicker() != null) {
+        fdList.add(fd);
+      }
+    }
+    return fdList;
+  }
+
+  /**
+   * Reads one file from DB based on year, quarter, and ticker.
+   *
+   * @param year
+   * @param quarter
+   * @param ticker
+   * @return FieldData for year, quarter, and ticker.
+   */
+  private static FieldData parseFromDbData(int year, int quarter, String ticker) {
+
+    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
+
+    final String fname = String.format("%s%s-fundamental-data-%dQ%d.txt", indir, ticker, year, quarter);
+    final List<String> data = TextUtils.readTextFile(fname, true);
+
+    final FieldData fd = new FieldData(year, quarter);
+
+    fd.companyInfo = CompanyFileData.readFromDb(data);
+    fd.shareData = SharesFileData.readFromDb(data);
+    fd.estimateData = EstimateFileData.readFromDb(data);
+    fd.incSheetData = IncSheetFileData.readFromDb(data);
+    fd.balSheetData = BalSheetFileData.readFromDb(data);
+    fd.setNameFields(fd.companyInfo);
+
+    return fd;
+  }
+
+  /**
    * Sets up file names and writes data to DB files. Calls genOutput to create
    * data to be written.
    *
@@ -279,19 +279,19 @@ public class FieldData {
     }
   }
 
-  private final int year;
-  private final int quarter;
-  private String    ticker;
-  private String    name;
-  private String    sector;
-  private String    industry;
-  private ExchEnum  exchange;
-
+  private BalSheetFileData balSheetData;
   private CompanyFileData  companyInfo;
   private EstimateFileData estimateData;
-  private SharesFileData   shareData;
+  private ExchEnum  exchange;
   private IncSheetFileData incSheetData;
-  private BalSheetFileData balSheetData;
+  private String    industry;
+  private String    name;
+
+  private final int quarter;
+  private String    sector;
+  private SharesFileData   shareData;
+  private String    ticker;
+  private final int year;
 
   /**
    * Constructor
@@ -400,20 +400,6 @@ public class FieldData {
     return this.year;
   }
 
-  /**
-   * Sets local "name" fields from CompanyFileData
-   *
-   * @param cfd
-   */
-  private void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
-  }
-
   @Override
   public String toString() {
     String ret = "";
@@ -433,6 +419,20 @@ public class FieldData {
       ret = "";
     }
     return ret;
+  }
+
+  /**
+   * Sets local "name" fields from CompanyFileData
+   *
+   * @param cfd
+   */
+  private void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
   }
 
 }

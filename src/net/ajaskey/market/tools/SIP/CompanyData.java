@@ -60,231 +60,26 @@ import net.ajaskey.market.optuma.TickerPriceData;
  */
 public class CompanyData {
 
-  // from data
-  public String name;
+  public static List<CompanyData> buybackList = new ArrayList<>();
 
-  public String city;
-  public String state;
-  public String ticker;
-  public String exchange;
-  public double rs;
+  public static List<CompanyData>      companyList  = new ArrayList<>();
+  public final static SimpleDateFormat sdf          = new SimpleDateFormat("MM/dd/yyyy");
+  public static List<String>           sectorList;
+  protected final static String        balsheetFile = "data/US-STOCKS-BALANCESHEETQTR.TXT";
+  protected final static String        cashFile     = "data/US-STOCKS-CASH.TXT";
 
-  public String sector;
-  public String industry;
-
-  public String   spIndex;
-  public int      numEmp;
-  public DateTime eoq;
-  public double   insiders;
-
-  public double inst;
-  public int    adv;
-  public double turnover;
-  public double floatShares;
-
-  public double opInc3yrGrowth;
-
-  // public double capEx;
-  public double cashFlow;
-
-  public double q0EstGrowth;
-
-  public double y1EstGrowth;
-
-  public QuarterlyData shares;
-
-  // aggregate data
-  public BalanceSheetData bsd;
-
-  public IncomeData id;
-
-  public CashData cashData;
-
-  public double lastPrice;
-
-  public double avgPrice;
-
-  public double pricePercOff52High;
-
-  // derived data
-  public double pe;
-  public double psales;
-  public double opMargin;
-  public double netMargin;
-  public double roe;
-  public double taxRate;
-  public double interestRate;
-  public double divYld;
-  public double epsYld;
-  public double freeCashFlow;
-  public double workingCashFlow;
-  public double ltDebtEquity;
-  public double stDebtOpIncome;
-  public double debtCash;
-  public double marketCap;
-  public double partOfTotalCap;
-  public double sumCurrAssets;
-  public double sumCurrLiab;
-  public double currentRatio;
-  public double workingCapital;
-
-  public double netCashFlow;
-  public double totalCashFlow;
-  public double high52wk;
-
-  public ZombieScore zscore;
-  public double      gscore;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public CompanyData() {
-
-    this.name = "";
-    this.city = "";
-    this.state = "";
-    this.ticker = "";
-    this.exchange = "";
-    this.rs = 0.0;
-    this.sector = "";
-    this.industry = "";
-    this.spIndex = "";
-    this.numEmp = 0;
-    this.insiders = 0.0;
-    this.inst = 0.0;
-    this.turnover = 0.0;
-    this.adv = 0;
-    this.eoq = null;
-    this.floatShares = 0.0;
-    this.opInc3yrGrowth = 0.0;
-    this.cashFlow = 0.0;
-    // this.capEx = 0.0;
-    this.q0EstGrowth = 0.0;
-    this.y1EstGrowth = 0.0;
-    // this.cashFromInv = 0.0;
-    this.shares = new QuarterlyData("shares");
-
-    this.gscore = 0.0;
-
-    this.lastPrice = 0.0;
-    this.avgPrice = 0.0;
-    this.pricePercOff52High = 0.0;
-    this.pe = 0.0;
-    this.psales = 0.0;
-    this.opMargin = 0.0;
-    this.netMargin = 0.0;
-    this.roe = 0.0;
-    this.taxRate = 0.0;
-    this.interestRate = 0.0;
-    this.divYld = 0.0;
-    this.epsYld = 0.0;
-    this.freeCashFlow = 0.0;
-    this.workingCashFlow = 0.0;
-    this.ltDebtEquity = 0.0;
-    this.stDebtOpIncome = 0.0;
-    this.debtCash = 0.0;
-    this.marketCap = 0.0;
-    this.partOfTotalCap = 0.0;
-
-    this.sumCurrAssets = 0.0;
-    this.sumCurrLiab = 0.0;
-    this.currentRatio = 0.0;
-    this.workingCapital = 0.0;
-    this.netCashFlow = 0.0;
-    this.totalCashFlow = 0.0;
-
-    this.high52wk = 0.0;
-  }
-
-  /**
-   * This method serves as a constructor for the class. Used for test setup.
-   *
-   * @param string
-   */
-  public CompanyData(final String code) {
-
-    this.ticker = code;
-    this.shares = new QuarterlyData("shares");
-  }
-
-  public String printMisc(String ret) {
-
-    ret += CompanyData.TAB + this.name + CompanyData.NL;
-    ret += CompanyData.TAB + this.exchange + CompanyData.NL;
-    ret += CompanyData.TAB + this.sector + CompanyData.NL;
-    ret += CompanyData.TAB + this.industry + CompanyData.NL;
-    ret += CompanyData.TAB + "Number Employees  : " + String.format("%15d", this.numEmp) + CompanyData.NL;
-    try {
-      ret += CompanyData.TAB + "End of Quarter    : " + String.format("%15s", CompanyData.sdf.format(this.eoq)) + CompanyData.NL;
-    }
-    catch (final Exception e) {
-      ret += CompanyData.TAB + "End of Quarter    : ERROR" + CompanyData.NL;
-    }
-    ret += CompanyData.TAB + "Insiders Own      : " + QuarterlyData.fmt(this.insiders) + CompanyData.NL;
-    ret += CompanyData.TAB + "Float             : " + QuarterlyData.fmt(this.floatShares) + CompanyData.NL;
-    ret += CompanyData.TAB + "Outstanding       : " + QuarterlyData.fmt(this.shares.getMostRecent()) + CompanyData.NL;
-    ret += CompanyData.TAB + "Market Cap        : " + QuarterlyData.fmt(this.marketCap)
-        + String.format("  %s", String.format("(%3.5f%%)", this.partOfTotalCap * 100.0)) + CompanyData.NL;
-
-    ret += CompanyData.TAB + "Last Price        : " + QuarterlyData.fmt(this.lastPrice) + CompanyData.NL;
-    ret += CompanyData.TAB + "Average Price     : " + QuarterlyData.fmt(this.avgPrice) + CompanyData.NL;
-    ret += CompanyData.TAB + "RS vs SPX         : " + this.rs + CompanyData.NL;
-    ret += CompanyData.TAB + "PE                : " + QuarterlyData.fmt(this.pe) + CompanyData.NL;
-    ret += CompanyData.TAB + "Price/Sales       : " + QuarterlyData.fmt(this.psales) + CompanyData.NL;
-    ret += CompanyData.TAB + "Op Margin         : " + QuarterlyData.fmt(this.opMargin) + CompanyData.NL;
-    ret += CompanyData.TAB + "Net Margin        : " + QuarterlyData.fmt(this.netMargin) + CompanyData.NL;
-    ret += CompanyData.TAB + "ROE               : " + QuarterlyData.fmt(this.roe) + CompanyData.NL;
-    ret += CompanyData.TAB + "Tax Rate          : " + QuarterlyData.fmt(this.taxRate) + CompanyData.NL;
-    ret += CompanyData.TAB + "Interest Rate     : " + QuarterlyData.fmt(this.interestRate) + CompanyData.NL;
-    ret += CompanyData.TAB + "Dividend Yield    : " + QuarterlyData.fmt(this.divYld) + CompanyData.NL;
-    ret += CompanyData.TAB + "Earnings Yield    : " + QuarterlyData.fmt(this.epsYld) + CompanyData.NL;
-    ret += CompanyData.TAB + "LT Debt to Equity : " + QuarterlyData.fmt(this.ltDebtEquity) + CompanyData.NL;
-    ret += CompanyData.TAB + "ST Debt to OpInc  : " + QuarterlyData.fmt(this.stDebtOpIncome) + CompanyData.NL;
-    ret += CompanyData.TAB + "Debt to Cash      : " + QuarterlyData.fmt(this.debtCash) + CompanyData.NL;
-    ret += CompanyData.TAB + "Q0 Est Growth     : " + QuarterlyData.fmt(this.q0EstGrowth, 15) + CompanyData.NL;
-    ret += CompanyData.TAB + "Y1 Est Growth     : " + QuarterlyData.fmt(this.y1EstGrowth, 15) + CompanyData.NL;
-    return ret;
-  }
-
-  /*
-   * (non-Javadoc)
-   *
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString() {
-
-    String ret = this.ticker + CompanyData.NL;
-    ret += this.printMisc(ret);
-    ret += this.bsd;
-    ret += this.id;
-
-    return ret;
-  }
-
-  private static Set<String> theGoodList = new HashSet<>();
-
-  final private static String NL  = Utils.NL;
-  final private static String TAB = Utils.TAB;
-
-  public static List<String> sectorList;
-
-  public final static SimpleDateFormat sdf         = new SimpleDateFormat("MM/dd/yyyy");
-  public static List<CompanyData>      companyList = new ArrayList<>();
-  public static List<CompanyData>      buybackList = new ArrayList<>();
-
-  private static double totalMarketCap = 0.0;
-  private static double totalBuyBacks  = 0.0;
-  private static double totalNewShares = 0.0;
-  private static double totalEps       = 0.0;
-
-  protected final static String balsheetFile     = "data/US-STOCKS-BALANCESHEETQTR.TXT";
   protected final static String incstatementFile = "data/US-STOCKS-INCOMESTMTQTR.TXT";
-  protected final static String cashFile         = "data/US-STOCKS-CASH.TXT";
   protected final static String miscFile         = "data/US-STOCKS-MISC.TXT";
 
-  static PrintWriter pwnktr = null;
+  static PrintWriter          pwnktr      = null;
+  final private static String NL          = Utils.NL;
+  final private static String TAB         = Utils.TAB;
+  private static Set<String>  theGoodList = new HashSet<>();
+
+  private static double totalBuyBacks  = 0.0;
+  private static double totalEps       = 0.0;
+  private static double totalMarketCap = 0.0;
+  private static double totalNewShares = 0.0;
 
   /**
    *
@@ -715,6 +510,179 @@ public class CompanyData {
 
   }
 
+  /**
+   *
+   * @return
+   */
+  protected static boolean validateInputFiles() {
+    boolean ret = true;
+    if (!CompanyData.validateInputFile(CompanyData.balsheetFile)) {
+      System.out.println("Invalid input file : " + CompanyData.balsheetFile);
+      ret = false;
+    }
+    final List<String> baseTickers = CompanyData.getTickers(CompanyData.balsheetFile);
+    final int btCount = baseTickers.size();
+
+    if (!CompanyData.validateInputFile(CompanyData.incstatementFile)) {
+      System.out.println("Invalid input file : " + CompanyData.incstatementFile);
+      ret = false;
+    }
+    List<String> tickers = CompanyData.getTickers(CompanyData.incstatementFile);
+    int tCount = tickers.size();
+    if (btCount != tCount) {
+      System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
+      ret = false;
+    }
+    else {
+      for (int i = 0; i < btCount; i++) {
+        if (!baseTickers.get(i).equals(tickers.get(i))) {
+          ret = false;
+          System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
+          break;
+        }
+      }
+    }
+
+    if (!CompanyData.validateInputFile(CompanyData.cashFile)) {
+      System.out.println("Invalid input file : " + CompanyData.cashFile);
+      ret = false;
+    }
+    tickers.clear();
+    tickers = CompanyData.getTickers(CompanyData.cashFile);
+    tCount = tickers.size();
+    if (btCount != tCount) {
+      System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.cashFile);
+      ret = false;
+    }
+//    } else {
+//      for (int i = 0; i < btCount; i++) {
+//        System.out.println(baseTickers.get(i) + "\t" + tickers.get(i));
+//        if (!baseTickers.get(i).equals(tickers.get(i))) {
+//          ret = false;
+//          System.out.println("Ticker mismatch between " + balsheetFile + " and " + cashFile);
+//          break;
+//        }
+//      }
+//    }
+
+    if (!CompanyData.validateInputFile(CompanyData.miscFile)) {
+      System.out.println("Invalid input file : " + CompanyData.miscFile);
+      ret = false;
+    }
+    return ret;
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.getCompany
+   *
+   * @param ticker
+   * @return
+   */
+  static CompanyData getCompany(final String ticker) {
+
+    for (final CompanyData cd : CompanyData.companyList) {
+      if (cd.ticker.equalsIgnoreCase(ticker)) {
+        return cd;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.readBsdData
+   *
+   * @param string
+   * @throws IOException
+   * @throws FileNotFoundException
+   */
+  static void readBsdData(final String fname) throws FileNotFoundException, IOException {
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
+
+      String line = "";
+      while ((line = reader.readLine()) != null) {
+        final String str = line.trim().replaceAll("\"", "").replaceAll("[MN] - ", "");
+        if (str.length() > 1) {
+          // System.out.println(str);
+          final String fld[] = str.split(CompanyData.TAB);
+          final CompanyData cd = CompanyData.setCompanyInfo(fld);
+          cd.bsd = BalanceSheetData.setBalanceSheetInfo(fld);
+          // System.out.println(cd.bsd);
+          CompanyData.companyList.add(cd);
+        }
+      }
+    }
+
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.readCashData
+   *
+   * @param string
+   * @throws IOException
+   * @throws FileNotFoundException
+   */
+  static void readCashData(final String fname) throws FileNotFoundException, IOException {
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
+
+      String line = "";
+      while ((line = reader.readLine()) != null) {
+        final String str = line.replaceAll("\"", "").trim();
+        if (str.length() > 1) {
+
+          // System.out.println(str);
+          final String fld[] = str.split(CompanyData.TAB);
+          final String ticker = fld[0].trim();
+          final CompanyData cd = CompanyData.getCompany(ticker);
+          if (cd != null) {
+            cd.cashData = CashData.setCashDataInfo(fld);
+            // System.out.println(ticker);
+            // System.out.println(cd.cashData);
+          }
+        }
+      }
+    }
+
+  }
+
+  /**
+   * net.ajaskey.market.tools.SIP.readIdData
+   *
+   * @param string
+   * @throws IOException
+   */
+  static void readIdData(final String fname) throws IOException {
+
+    final Set<String> sectors = new HashSet<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
+
+      String line = "";
+      while ((line = reader.readLine()) != null) {
+        final String str = line.trim().replaceAll("\"", "").replaceAll("[MN] - ", "");
+        if (str.length() > 1) {
+
+          final String fld[] = str.split(CompanyData.TAB);
+          final String ticker = fld[1].trim();
+          final CompanyData cd = CompanyData.getCompany(ticker);
+          if (cd != null) {
+            sectors.add(cd.sector);
+            cd.id = IncomeData.setIncomeData(fld);
+//            String fn = String.format("out/CompanyReports/%s_IdData.txt", ticker);
+//            try (PrintWriter pw = new PrintWriter(fn)) {
+//              pw.println(cd.id.getQoQ());
+//            }
+          }
+        }
+      }
+    }
+
+    CompanyData.sectorList = new ArrayList<>(sectors);
+    Collections.sort(CompanyData.sectorList);
+
+  }
+
   private static String calcTotalBvps(TotalData td) {
 
     final String fldEquity[] = td.equity.getQoQ(100.0).replace(",", "").split("\\s+");
@@ -972,179 +940,219 @@ public class CompanyData {
     return ret;
   }
 
+  public int    adv;
+  public double avgPrice;
+  // aggregate data
+  public BalanceSheetData bsd;
+  public CashData         cashData;
+  // public double capEx;
+  public double   cashFlow;
+  public String   city;
+  public double   currentRatio;
+  public double   debtCash;
+  public double   divYld;
+  public DateTime eoq;
+  public double   epsYld;
+  public String   exchange;
+
+  public double floatShares;
+  public double freeCashFlow;
+  public double gscore;
+
+  public double     high52wk;
+  public IncomeData id;
+
+  public String industry;
+
+  public double insiders;
+
+  public double inst;
+
+  public double interestRate;
+
+  public double lastPrice;
+
+  public double ltDebtEquity;
+  public double marketCap;
+
+  // from data
+  public String name;
+
+  public double netCashFlow;
+  public double netMargin;
+  public int    numEmp;
+
+  public double opInc3yrGrowth;
+  public double opMargin;
+  public double partOfTotalCap;
+  // derived data
+  public double pe;
+
+  public double pricePercOff52High;
+  public double psales;
+  public double q0EstGrowth;
+  public double roe;
+
+  public double rs;
+
+  public String sector;
+
+  public QuarterlyData shares;
+
+  public String spIndex;
+
+  public String state;
+
+  public double stDebtOpIncome;
+
+  public double sumCurrAssets;
+
+  public double sumCurrLiab;
+
+  public double taxRate;
+
+  public String ticker;
+
+  public double totalCashFlow;
+
+  public double turnover;
+
+  public double workingCapital;
+
+  public double workingCashFlow;
+
+  public double y1EstGrowth;
+
   // public ZombieData zd;
 
+  public ZombieScore zscore;
+
   /**
+   * This method serves as a constructor for the class.
    *
-   * @return
    */
-  protected static boolean validateInputFiles() {
-    boolean ret = true;
-    if (!CompanyData.validateInputFile(CompanyData.balsheetFile)) {
-      System.out.println("Invalid input file : " + CompanyData.balsheetFile);
-      ret = false;
-    }
-    final List<String> baseTickers = CompanyData.getTickers(CompanyData.balsheetFile);
-    final int btCount = baseTickers.size();
+  public CompanyData() {
 
-    if (!CompanyData.validateInputFile(CompanyData.incstatementFile)) {
-      System.out.println("Invalid input file : " + CompanyData.incstatementFile);
-      ret = false;
-    }
-    List<String> tickers = CompanyData.getTickers(CompanyData.incstatementFile);
-    int tCount = tickers.size();
-    if (btCount != tCount) {
-      System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
-      ret = false;
-    }
-    else {
-      for (int i = 0; i < btCount; i++) {
-        if (!baseTickers.get(i).equals(tickers.get(i))) {
-          ret = false;
-          System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.incstatementFile);
-          break;
-        }
-      }
-    }
+    this.name = "";
+    this.city = "";
+    this.state = "";
+    this.ticker = "";
+    this.exchange = "";
+    this.rs = 0.0;
+    this.sector = "";
+    this.industry = "";
+    this.spIndex = "";
+    this.numEmp = 0;
+    this.insiders = 0.0;
+    this.inst = 0.0;
+    this.turnover = 0.0;
+    this.adv = 0;
+    this.eoq = null;
+    this.floatShares = 0.0;
+    this.opInc3yrGrowth = 0.0;
+    this.cashFlow = 0.0;
+    // this.capEx = 0.0;
+    this.q0EstGrowth = 0.0;
+    this.y1EstGrowth = 0.0;
+    // this.cashFromInv = 0.0;
+    this.shares = new QuarterlyData("shares");
 
-    if (!CompanyData.validateInputFile(CompanyData.cashFile)) {
-      System.out.println("Invalid input file : " + CompanyData.cashFile);
-      ret = false;
-    }
-    tickers.clear();
-    tickers = CompanyData.getTickers(CompanyData.cashFile);
-    tCount = tickers.size();
-    if (btCount != tCount) {
-      System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.cashFile);
-      ret = false;
-    }
-//    } else {
-//      for (int i = 0; i < btCount; i++) {
-//        System.out.println(baseTickers.get(i) + "\t" + tickers.get(i));
-//        if (!baseTickers.get(i).equals(tickers.get(i))) {
-//          ret = false;
-//          System.out.println("Ticker mismatch between " + balsheetFile + " and " + cashFile);
-//          break;
-//        }
-//      }
-//    }
+    this.gscore = 0.0;
 
-    if (!CompanyData.validateInputFile(CompanyData.miscFile)) {
-      System.out.println("Invalid input file : " + CompanyData.miscFile);
-      ret = false;
+    this.lastPrice = 0.0;
+    this.avgPrice = 0.0;
+    this.pricePercOff52High = 0.0;
+    this.pe = 0.0;
+    this.psales = 0.0;
+    this.opMargin = 0.0;
+    this.netMargin = 0.0;
+    this.roe = 0.0;
+    this.taxRate = 0.0;
+    this.interestRate = 0.0;
+    this.divYld = 0.0;
+    this.epsYld = 0.0;
+    this.freeCashFlow = 0.0;
+    this.workingCashFlow = 0.0;
+    this.ltDebtEquity = 0.0;
+    this.stDebtOpIncome = 0.0;
+    this.debtCash = 0.0;
+    this.marketCap = 0.0;
+    this.partOfTotalCap = 0.0;
+
+    this.sumCurrAssets = 0.0;
+    this.sumCurrLiab = 0.0;
+    this.currentRatio = 0.0;
+    this.workingCapital = 0.0;
+    this.netCashFlow = 0.0;
+    this.totalCashFlow = 0.0;
+
+    this.high52wk = 0.0;
+  }
+
+  /**
+   * This method serves as a constructor for the class. Used for test setup.
+   *
+   * @param string
+   */
+  public CompanyData(final String code) {
+
+    this.ticker = code;
+    this.shares = new QuarterlyData("shares");
+  }
+
+  public String printMisc(String ret) {
+
+    ret += CompanyData.TAB + this.name + CompanyData.NL;
+    ret += CompanyData.TAB + this.exchange + CompanyData.NL;
+    ret += CompanyData.TAB + this.sector + CompanyData.NL;
+    ret += CompanyData.TAB + this.industry + CompanyData.NL;
+    ret += CompanyData.TAB + "Number Employees  : " + String.format("%15d", this.numEmp) + CompanyData.NL;
+    try {
+      ret += CompanyData.TAB + "End of Quarter    : " + String.format("%15s", CompanyData.sdf.format(this.eoq)) + CompanyData.NL;
     }
+    catch (final Exception e) {
+      ret += CompanyData.TAB + "End of Quarter    : ERROR" + CompanyData.NL;
+    }
+    ret += CompanyData.TAB + "Insiders Own      : " + QuarterlyData.fmt(this.insiders) + CompanyData.NL;
+    ret += CompanyData.TAB + "Float             : " + QuarterlyData.fmt(this.floatShares) + CompanyData.NL;
+    ret += CompanyData.TAB + "Outstanding       : " + QuarterlyData.fmt(this.shares.getMostRecent()) + CompanyData.NL;
+    ret += CompanyData.TAB + "Market Cap        : " + QuarterlyData.fmt(this.marketCap)
+        + String.format("  %s", String.format("(%3.5f%%)", this.partOfTotalCap * 100.0)) + CompanyData.NL;
+
+    ret += CompanyData.TAB + "Last Price        : " + QuarterlyData.fmt(this.lastPrice) + CompanyData.NL;
+    ret += CompanyData.TAB + "Average Price     : " + QuarterlyData.fmt(this.avgPrice) + CompanyData.NL;
+    ret += CompanyData.TAB + "RS vs SPX         : " + this.rs + CompanyData.NL;
+    ret += CompanyData.TAB + "PE                : " + QuarterlyData.fmt(this.pe) + CompanyData.NL;
+    ret += CompanyData.TAB + "Price/Sales       : " + QuarterlyData.fmt(this.psales) + CompanyData.NL;
+    ret += CompanyData.TAB + "Op Margin         : " + QuarterlyData.fmt(this.opMargin) + CompanyData.NL;
+    ret += CompanyData.TAB + "Net Margin        : " + QuarterlyData.fmt(this.netMargin) + CompanyData.NL;
+    ret += CompanyData.TAB + "ROE               : " + QuarterlyData.fmt(this.roe) + CompanyData.NL;
+    ret += CompanyData.TAB + "Tax Rate          : " + QuarterlyData.fmt(this.taxRate) + CompanyData.NL;
+    ret += CompanyData.TAB + "Interest Rate     : " + QuarterlyData.fmt(this.interestRate) + CompanyData.NL;
+    ret += CompanyData.TAB + "Dividend Yield    : " + QuarterlyData.fmt(this.divYld) + CompanyData.NL;
+    ret += CompanyData.TAB + "Earnings Yield    : " + QuarterlyData.fmt(this.epsYld) + CompanyData.NL;
+    ret += CompanyData.TAB + "LT Debt to Equity : " + QuarterlyData.fmt(this.ltDebtEquity) + CompanyData.NL;
+    ret += CompanyData.TAB + "ST Debt to OpInc  : " + QuarterlyData.fmt(this.stDebtOpIncome) + CompanyData.NL;
+    ret += CompanyData.TAB + "Debt to Cash      : " + QuarterlyData.fmt(this.debtCash) + CompanyData.NL;
+    ret += CompanyData.TAB + "Q0 Est Growth     : " + QuarterlyData.fmt(this.q0EstGrowth, 15) + CompanyData.NL;
+    ret += CompanyData.TAB + "Y1 Est Growth     : " + QuarterlyData.fmt(this.y1EstGrowth, 15) + CompanyData.NL;
     return ret;
   }
 
-  /**
-   * net.ajaskey.market.tools.SIP.getCompany
+  /*
+   * (non-Javadoc)
    *
-   * @param ticker
-   * @return
+   * @see java.lang.Object#toString()
    */
-  static CompanyData getCompany(final String ticker) {
+  @Override
+  public String toString() {
 
-    for (final CompanyData cd : CompanyData.companyList) {
-      if (cd.ticker.equalsIgnoreCase(ticker)) {
-        return cd;
-      }
-    }
-    return null;
-  }
+    String ret = this.ticker + CompanyData.NL;
+    ret += this.printMisc(ret);
+    ret += this.bsd;
+    ret += this.id;
 
-  /**
-   * net.ajaskey.market.tools.SIP.readBsdData
-   *
-   * @param string
-   * @throws IOException
-   * @throws FileNotFoundException
-   */
-  static void readBsdData(final String fname) throws FileNotFoundException, IOException {
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
-
-      String line = "";
-      while ((line = reader.readLine()) != null) {
-        final String str = line.trim().replaceAll("\"", "").replaceAll("[MN] - ", "");
-        if (str.length() > 1) {
-          // System.out.println(str);
-          final String fld[] = str.split(CompanyData.TAB);
-          final CompanyData cd = CompanyData.setCompanyInfo(fld);
-          cd.bsd = BalanceSheetData.setBalanceSheetInfo(fld);
-          // System.out.println(cd.bsd);
-          CompanyData.companyList.add(cd);
-        }
-      }
-    }
-
-  }
-
-  /**
-   * net.ajaskey.market.tools.SIP.readCashData
-   *
-   * @param string
-   * @throws IOException
-   * @throws FileNotFoundException
-   */
-  static void readCashData(final String fname) throws FileNotFoundException, IOException {
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
-
-      String line = "";
-      while ((line = reader.readLine()) != null) {
-        final String str = line.replaceAll("\"", "").trim();
-        if (str.length() > 1) {
-
-          // System.out.println(str);
-          final String fld[] = str.split(CompanyData.TAB);
-          final String ticker = fld[0].trim();
-          final CompanyData cd = CompanyData.getCompany(ticker);
-          if (cd != null) {
-            cd.cashData = CashData.setCashDataInfo(fld);
-            // System.out.println(ticker);
-            // System.out.println(cd.cashData);
-          }
-        }
-      }
-    }
-
-  }
-
-  /**
-   * net.ajaskey.market.tools.SIP.readIdData
-   *
-   * @param string
-   * @throws IOException
-   */
-  static void readIdData(final String fname) throws IOException {
-
-    final Set<String> sectors = new HashSet<>();
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
-
-      String line = "";
-      while ((line = reader.readLine()) != null) {
-        final String str = line.trim().replaceAll("\"", "").replaceAll("[MN] - ", "");
-        if (str.length() > 1) {
-
-          final String fld[] = str.split(CompanyData.TAB);
-          final String ticker = fld[1].trim();
-          final CompanyData cd = CompanyData.getCompany(ticker);
-          if (cd != null) {
-            sectors.add(cd.sector);
-            cd.id = IncomeData.setIncomeData(fld);
-//            String fn = String.format("out/CompanyReports/%s_IdData.txt", ticker);
-//            try (PrintWriter pw = new PrintWriter(fn)) {
-//              pw.println(cd.id.getQoQ());
-//            }
-          }
-        }
-      }
-    }
-
-    CompanyData.sectorList = new ArrayList<>(sectors);
-    Collections.sort(CompanyData.sectorList);
-
+    return ret;
   }
 
 }

@@ -10,28 +10,28 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 
 public class CompanyFileData {
 
+  private static int ADR      = 6;
+
   private static List<CompanyFileData> cfdList = new ArrayList<>();
 
-  private static String fld[] = null;
-
-  private static int NAME     = 0;
-  private static int TICKER   = 1;
-  private static int EXCHANGE = 2;
-  private static int SECTOR   = 3;
-  private static int INDUSTRY = 4;
-  private static int SIC      = 5;
-  private static int ADR      = 6;
-  private static int DOW      = 7;
-  private static int SNP      = 8;
-  private static int DRP      = 9;
-  private static int STREET   = 10;
   private static int CITY     = 11;
-  private static int STATE    = 12;
   private static int COUNTRY  = 13;
-  private static int ZIP      = 14;
-  private static int PHONE    = 15;
-  private static int WEB      = 16;
+  private static int DOW      = 7;
+  private static int DRP      = 9;
   private static int EMP      = 17;
+  private static int EXCHANGE = 2;
+  private static String fld[] = null;
+  private static int INDUSTRY = 4;
+  private static int NAME     = 0;
+  private static int PHONE    = 15;
+  private static int SECTOR   = 3;
+  private static int SIC      = 5;
+  private static int SNP      = 8;
+  private static int STATE    = 12;
+  private static int STREET   = 10;
+  private static int TICKER   = 1;
+  private static int WEB      = 16;
+  private static int ZIP      = 14;
 
   /**
    *
@@ -73,64 +73,6 @@ public class CompanyFileData {
       ret += c.toString();
     }
     return ret;
-  }
-
-  /**
-   *
-   * @param filename
-   * @return
-   */
-  public static void readSipData(String filename) {
-
-    final List<String> data = TextUtils.readTextFile(filename, true);
-
-    for (final String c : data) {
-
-      CompanyFileData.fld = c.replace("\"", "").split(Utils.TAB);
-
-      final CompanyFileData cfd = new CompanyFileData();
-
-      cfd.ticker = CompanyFileData.fld[CompanyFileData.TICKER].trim();
-      cfd.name = CompanyFileData.fld[CompanyFileData.NAME].trim();
-      cfd.exchange = FieldData.convertExchange(CompanyFileData.fld[CompanyFileData.EXCHANGE].trim());
-      cfd.sector = CompanyFileData.fld[CompanyFileData.SECTOR].trim();
-      cfd.industry = CompanyFileData.fld[CompanyFileData.INDUSTRY].trim();
-      cfd.sic = CompanyFileData.fld[CompanyFileData.SIC].trim();
-
-      String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
-      if (tmp.equals("500")) {
-        cfd.snpIndex = SnpEnum.SP500;
-      }
-      else if (tmp.equals("SmallCap 600")) {
-        cfd.snpIndex = SnpEnum.SP600;
-      }
-      else if (tmp.equals("MidCap 400")) {
-        cfd.snpIndex = SnpEnum.SP400;
-      }
-      else {
-        cfd.snpIndex = SnpEnum.NONE;
-      }
-
-      try {
-        cfd.dowIndex = DowEnum.valueOf(CompanyFileData.fld[CompanyFileData.DOW].trim().toUpperCase());
-      }
-      catch (Exception e) {
-        cfd.dowIndex = DowEnum.NONE;
-      }
-
-      cfd.adr = Boolean.parseBoolean(CompanyFileData.fld[CompanyFileData.ADR].trim());
-      cfd.drp = SipUtils.parseBoolean(CompanyFileData.fld[CompanyFileData.DRP].trim());
-      cfd.street = CompanyFileData.fld[CompanyFileData.STREET].trim();
-      cfd.city = CompanyFileData.fld[CompanyFileData.CITY].trim();
-      cfd.state = CompanyFileData.fld[CompanyFileData.STATE].trim();
-      cfd.country = CompanyFileData.fld[CompanyFileData.COUNTRY].trim();
-      cfd.zip = CompanyFileData.fld[CompanyFileData.ZIP].trim();
-      cfd.phone = CompanyFileData.fld[CompanyFileData.PHONE].trim();
-      cfd.web = CompanyFileData.fld[CompanyFileData.WEB].trim();
-      cfd.numEmployees = SipUtils.parseInt(CompanyFileData.fld[CompanyFileData.EMP].trim());
-
-      CompanyFileData.cfdList.add(cfd);
-    }
   }
 
   /**
@@ -217,24 +159,82 @@ public class CompanyFileData {
     return cfd;
   }
 
-  private String   name;
-  private String   ticker;
-  private ExchEnum exchange;
-  private String   sector;
-  private String   industry;
-  private String   sic;
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static void readSipData(String filename) {
+
+    final List<String> data = TextUtils.readTextFile(filename, true);
+
+    for (final String c : data) {
+
+      CompanyFileData.fld = c.replace("\"", "").split(Utils.TAB);
+
+      final CompanyFileData cfd = new CompanyFileData();
+
+      cfd.ticker = CompanyFileData.fld[CompanyFileData.TICKER].trim();
+      cfd.name = CompanyFileData.fld[CompanyFileData.NAME].trim();
+      cfd.exchange = FieldData.convertExchange(CompanyFileData.fld[CompanyFileData.EXCHANGE].trim());
+      cfd.sector = CompanyFileData.fld[CompanyFileData.SECTOR].trim();
+      cfd.industry = CompanyFileData.fld[CompanyFileData.INDUSTRY].trim();
+      cfd.sic = CompanyFileData.fld[CompanyFileData.SIC].trim();
+
+      String tmp = CompanyFileData.fld[CompanyFileData.SNP].trim();
+      if (tmp.equals("500")) {
+        cfd.snpIndex = SnpEnum.SP500;
+      }
+      else if (tmp.equals("SmallCap 600")) {
+        cfd.snpIndex = SnpEnum.SP600;
+      }
+      else if (tmp.equals("MidCap 400")) {
+        cfd.snpIndex = SnpEnum.SP400;
+      }
+      else {
+        cfd.snpIndex = SnpEnum.NONE;
+      }
+
+      try {
+        cfd.dowIndex = DowEnum.valueOf(CompanyFileData.fld[CompanyFileData.DOW].trim().toUpperCase());
+      }
+      catch (Exception e) {
+        cfd.dowIndex = DowEnum.NONE;
+      }
+
+      cfd.adr = Boolean.parseBoolean(CompanyFileData.fld[CompanyFileData.ADR].trim());
+      cfd.drp = SipUtils.parseBoolean(CompanyFileData.fld[CompanyFileData.DRP].trim());
+      cfd.street = CompanyFileData.fld[CompanyFileData.STREET].trim();
+      cfd.city = CompanyFileData.fld[CompanyFileData.CITY].trim();
+      cfd.state = CompanyFileData.fld[CompanyFileData.STATE].trim();
+      cfd.country = CompanyFileData.fld[CompanyFileData.COUNTRY].trim();
+      cfd.zip = CompanyFileData.fld[CompanyFileData.ZIP].trim();
+      cfd.phone = CompanyFileData.fld[CompanyFileData.PHONE].trim();
+      cfd.web = CompanyFileData.fld[CompanyFileData.WEB].trim();
+      cfd.numEmployees = SipUtils.parseInt(CompanyFileData.fld[CompanyFileData.EMP].trim());
+
+      CompanyFileData.cfdList.add(cfd);
+    }
+  }
+
   private boolean  adr;
-  private DowEnum  dowIndex;
-  private SnpEnum  snpIndex;
-  private boolean  drp;
-  private String   street;
   private String   city;
-  private String   state;
   private String   country;
-  private String   zip;
-  private String   phone;
-  private String   web;
+  private DowEnum  dowIndex;
+  private boolean  drp;
+  private ExchEnum exchange;
+  private String   industry;
+  private String   name;
   private int      numEmployees;
+  private String   phone;
+  private String   sector;
+  private String   sic;
+  private SnpEnum  snpIndex;
+  private String   state;
+  private String   street;
+  private String   ticker;
+  private String   web;
+  private String   zip;
 
   public String getCity() {
     return this.city;

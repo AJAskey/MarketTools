@@ -10,8 +10,6 @@ import net.ajaskey.market.optuma.TickerPriceData;
 
 public class CompanyBuyBacks {
 
-  int years[] = { 2015, 2016, 2017, 2018, 2019 };
-
   public static void main(String[] args) throws FileNotFoundException {
 
     final List<String> data = TextUtils.readTextFile("data/SP500 SHARES VS PRICE.TXT", true);
@@ -93,5 +91,7 @@ public class CompanyBuyBacks {
     }
     return ret;
   }
+
+  int years[] = { 2015, 2016, 2017, 2018, 2019 };
 
 }

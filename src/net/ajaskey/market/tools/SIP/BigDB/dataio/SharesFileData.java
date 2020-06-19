@@ -66,21 +66,6 @@ public class SharesFileData {
     return ret;
   }
 
-  /**
-   *
-   * @param filename
-   * @return
-   */
-  public static void readSipData(String filename) {
-
-    final List<String> shrData = TextUtils.readTextFile(filename, true);
-    for (final String s : shrData) {
-      final String[] fld = s.replace("\"", "").split(Utils.TAB);
-      final SharesFileData sfd = new SharesFileData(fld);
-      SharesFileData.sfdList.add(sfd);
-    }
-  }
-
   public static SharesFileData readFromDb(List<String> data) {
 
     final SharesFileData sfd = new SharesFileData();
@@ -158,34 +143,49 @@ public class SharesFileData {
 
   }
 
+  /**
+   *
+   * @param filename
+   * @return
+   */
+  public static void readSipData(String filename) {
+
+    final List<String> shrData = TextUtils.readTextFile(filename, true);
+    for (final String s : shrData) {
+      final String[] fld = s.replace("\"", "").split(Utils.TAB);
+      final SharesFileData sfd = new SharesFileData(fld);
+      SharesFileData.sfdList.add(sfd);
+    }
+  }
+
   public static void setSfdList(List<SharesFileData> sfdList) {
     SharesFileData.sfdList = sfdList;
   }
 
-  private String   name;
-  private String   ticker;
-  private ExchEnum exchange;
-  private String   sector;
-  private String   industry;
   private double   beta;
+  private double   dollar3m;
+  private ExchEnum exchange;
   private double   floatshr;
-  private double   insiderOwnership;
+  private String   industry;
   private int      insiderBuys;
-  private int      insiderNetTrades;
-  private int      insiderSells;
   private int      insiderBuyShrs;
-  private int      insiderSellShrs;
-  private double   instOwnership;
-  private int      instShareholders;
-  private int      instBuyShrs;
-  private int      instSellShrs;
-  private double   mktCap;
   private double   insiderNetPercentOutstanding;
+  private int      insiderNetTrades;
+  private double   insiderOwnership;
+  private int      insiderSells;
+  private int      insiderSellShrs;
+  private int      instBuyShrs;
+  private double   instOwnership;
+  private int      instSellShrs;
+  private int      instShareholders;
+  private double   mktCap;
+  private String   name;
   private double   price;
+  private String   sector;
   private double[] sharesQ;
   private double[] sharesY;
+  private String   ticker;
   private long     volume3m;
-  private double   dollar3m;
 
   public SharesFileData() {
     this.sharesQ = new double[1];

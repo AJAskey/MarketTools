@@ -28,12 +28,12 @@ public class OneCompanyData {
     return ret;
   }
 
-  private final int    year;
-  private final String ticker;
   private FieldData    q1;
   private FieldData    q2;
   private FieldData    q3;
   private FieldData    q4;
+  private final String ticker;
+  private final int    year;
 
   /**
    *

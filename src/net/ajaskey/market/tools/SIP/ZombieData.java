@@ -35,24 +35,45 @@ package net.ajaskey.market.tools.SIP;
  */
 public class ZombieData {
 
-  public double zIncome;
-  public double unusualExpenses;
+  public static double arKnob = 0.95;
+  public static double gwKnob = 0.10;
 
-  public double zAdjInc;
-  public double zDividend;
+  public static double inventoryKnob = 0.95;
+  public static double ltAssetsKnob  = 0.15;
 
-  public double  zCash;
-  public double  zDebt;
-  public double  zNet;
-  public double  zScore;
-  public double  zAdjScr;
-  public double  zKeepItRunning;
-  public boolean zIsZombie;
+  public static double        ltInvestmentsKnob = 0.85;
+  public static double        stAssetsKnob      = 0.98;
+  public static double        stInvestmentsKnob = 0.99;
+  public static int           zKnt              = 0;
+  public static String        zStr              = "";
+  final private static String NL                = "\n";
+  final private static String TAB               = "\t";
 
   // private static void print(String desc, double val) {
   // System.out.printf("%-10s : %f%n", desc, val);
   // }
 
+  public double unusualExpenses;
+
+  public double zAdjInc;
+
+  public double zAdjScr;
+
+  public double zCash;
+
+  public double zDebt;
+
+  public double zDividend;
+
+  public double zIncome;
+
+  public boolean zIsZombie;
+
+  public double zKeepItRunning;
+
+  public double zNet;
+
+  public double       zScore;
   public ZombieStates zState;
 
   /**
@@ -331,7 +352,7 @@ public class ZombieData {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.lang.Object#toString()
    */
   @Override
@@ -406,25 +427,4 @@ public class ZombieData {
     }
     return ret;
   }
-
-  final private static String NL  = "\n";
-  final private static String TAB = "\t";
-
-  public static int zKnt = 0;
-
-  public static String zStr = "";
-
-  public static double arKnob = 0.95;
-
-  public static double inventoryKnob = 0.95;
-
-  public static double stAssetsKnob = 0.98;
-
-  public static double ltAssetsKnob = 0.15;
-
-  public static double stInvestmentsKnob = 0.99;
-
-  public static double ltInvestmentsKnob = 0.85;
-
-  public static double gwKnob = 0.10;
 }
