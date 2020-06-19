@@ -16,6 +16,95 @@ import net.ajaskey.common.Utils;
 
 public class OptionCboe {
 
+  static List<String> icodes = new ArrayList<>();
+
+  // private static final double CboeSkewIv = 1.029;
+  private static final double CboeSkewIv = 1.0;
+
+  private static final SimpleDateFormat sdfin = new SimpleDateFormat("MM/dd/yyyy");
+
+  private static final DateTime today = new DateTime();
+
+  private static DateTime tomorrow = null;
+
+  /**
+   *
+   * @param args
+   * @throws IOException
+   */
+  public static void main(String[] args) throws IOException {
+
+    OptionUtils.getDownloads();
+
+    final List<String> codes = new ArrayList<>();
+    OptionCboe.icodes.add("SPY");
+    OptionCboe.icodes.add("SPX");
+    OptionCboe.icodes.add("QQQ");
+    OptionCboe.icodes.add("NDX");
+    OptionCboe.icodes.add("IWO");
+    OptionCboe.icodes.add("RUT");
+    OptionCboe.icodes.add("DIA");
+
+    final String ext[] = { "dat" };
+    final List<File> files = Utils.getDirTree("data/options", ext);
+
+    for (final File f : files) {
+
+      if (f.getName().contains("-options.dat")) {
+        final String c = f.getName().replace("-options.dat", "");
+        codes.add(c);
+      }
+    }
+
+    final OptionStatistics osIndex = new OptionStatistics();
+
+    try (PrintWriter pw = new PrintWriter("out/cboe.txt")) {
+
+      for (final String s : OptionCboe.icodes) {
+        pw.printf("%s ", s.toUpperCase());
+      }
+      pw.printf("%n%n");
+
+      for (final String code : codes) {
+
+        final Option opt = new Option();
+
+        new OptionCboe(code, opt);
+
+        if (OptionCboe.isIcode(code)) {
+          System.out.println("Found icode : " + code);
+          osIndex.addToStats(opt);
+        }
+
+        pw.printf("%n%s\t%s%n", code.toUpperCase(), opt.lastTrade);
+
+        // System.out.println(opt);
+
+        final OptionStatistics os = new OptionStatistics(opt);
+        pw.println(os);
+
+        opt.writeBasefile();
+      }
+    }
+
+    System.out.println(osIndex.toSumString());
+
+  }
+
+  /**
+   *
+   * @param code
+   * @return
+   */
+  private static boolean isIcode(String code) {
+    for (final String ic : OptionCboe.icodes) {
+      if (ic.equalsIgnoreCase(code)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private Option opt = null;
 
   /**
@@ -247,94 +336,5 @@ public class OptionCboe {
     catch (final Exception e) {
       od.valid = false;
     }
-  }
-
-  private static final SimpleDateFormat sdfin = new SimpleDateFormat("MM/dd/yyyy");
-
-  private static final DateTime today = new DateTime();
-
-  private static DateTime tomorrow = null;
-
-  // private static final double CboeSkewIv = 1.029;
-  private static final double CboeSkewIv = 1.0;
-
-  static List<String> icodes = new ArrayList<>();
-
-  /**
-   *
-   * @param args
-   * @throws IOException
-   */
-  public static void main(String[] args) throws IOException {
-
-    OptionUtils.getDownloads();
-
-    final List<String> codes = new ArrayList<>();
-    OptionCboe.icodes.add("SPY");
-    OptionCboe.icodes.add("SPX");
-    OptionCboe.icodes.add("QQQ");
-    OptionCboe.icodes.add("NDX");
-    OptionCboe.icodes.add("IWO");
-    OptionCboe.icodes.add("RUT");
-    OptionCboe.icodes.add("DIA");
-
-    final String ext[] = { "dat" };
-    final List<File> files = Utils.getDirTree("data/options", ext);
-
-    for (final File f : files) {
-
-      if (f.getName().contains("-options.dat")) {
-        final String c = f.getName().replace("-options.dat", "");
-        codes.add(c);
-      }
-    }
-
-    final OptionStatistics osIndex = new OptionStatistics();
-
-    try (PrintWriter pw = new PrintWriter("out/cboe.txt")) {
-
-      for (final String s : OptionCboe.icodes) {
-        pw.printf("%s ", s.toUpperCase());
-      }
-      pw.printf("%n%n");
-
-      for (final String code : codes) {
-
-        final Option opt = new Option();
-
-        new OptionCboe(code, opt);
-
-        if (OptionCboe.isIcode(code)) {
-          System.out.println("Found icode : " + code);
-          osIndex.addToStats(opt);
-        }
-
-        pw.printf("%n%s\t%s%n", code.toUpperCase(), opt.lastTrade);
-
-        // System.out.println(opt);
-
-        final OptionStatistics os = new OptionStatistics(opt);
-        pw.println(os);
-
-        opt.writeBasefile();
-      }
-    }
-
-    System.out.println(osIndex.toSumString());
-
-  }
-
-  /**
-   *
-   * @param code
-   * @return
-   */
-  private static boolean isIcode(String code) {
-    for (final String ic : OptionCboe.icodes) {
-      if (ic.equalsIgnoreCase(code)) {
-        return true;
-      }
-    }
-    return false;
   }
 }

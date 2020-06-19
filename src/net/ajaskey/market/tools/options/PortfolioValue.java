@@ -18,66 +18,7 @@ import net.ajaskey.common.Utils;
 
 public class PortfolioValue {
 
-  String optName;
-  double lPrice;
-  double iv;
-  int    quantity;
-  double tPrice;
-  double bsPrice;
-
-  public PortfolioValue() {
-    this.optName = "";
-    this.lPrice = 0.0;
-    this.tPrice = 0.0;
-    this.bsPrice = 0.0;
-    this.quantity = 0;
-    this.iv = 0.0;
-  }
-
-  @Override
-  public String toString() {
-    String ret = this.optName + Utils.NL;
-    final double cost = this.tPrice * this.quantity;
-    final double iv = this.iv / 100.0;
-    ret += String.format("\t%.2f\t%d\t$%.2f%n\t%.4f\t$%.2f%n\t%.2f%n", this.tPrice, this.quantity, cost, iv, this.lPrice, this.bsPrice);
-    return ret;
-  }
-
-  private void calcBs() {
-
-    final String back = this.optName.substring(5).toUpperCase();
-    if (back.contains("P")) {
-    }
-    this.getDt(this.optName);
-    this.getStrike(this.optName);
-
-    // OptionsProcessor op = new OptionsProcessor(type, this.optName, strike, ul,
-    // dt, this.iv);
-    // this.bsPrice = op.getPrice();
-  }
-
-  /**
-   *
-   * @param optN
-   * @return
-   */
-  private DateTime getDt(String optN) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  /**
-   *
-   * @param optN
-   * @return
-   */
-  private double getStrike(String optN) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
   final static List<PortfolioValue> pvData = new ArrayList<>();
-
   public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 
     final Object obj = new JSONParser().parse(new FileReader("data/AAPL.json"));
@@ -148,6 +89,65 @@ public class PortfolioValue {
 //      System.out.println(pv);
 //    }
 
+  }
+  double bsPrice;
+  double iv;
+  double lPrice;
+  String optName;
+
+  int    quantity;
+
+  double tPrice;
+
+  public PortfolioValue() {
+    this.optName = "";
+    this.lPrice = 0.0;
+    this.tPrice = 0.0;
+    this.bsPrice = 0.0;
+    this.quantity = 0;
+    this.iv = 0.0;
+  }
+
+  @Override
+  public String toString() {
+    String ret = this.optName + Utils.NL;
+    final double cost = this.tPrice * this.quantity;
+    final double iv = this.iv / 100.0;
+    ret += String.format("\t%.2f\t%d\t$%.2f%n\t%.4f\t$%.2f%n\t%.2f%n", this.tPrice, this.quantity, cost, iv, this.lPrice, this.bsPrice);
+    return ret;
+  }
+
+  private void calcBs() {
+
+    final String back = this.optName.substring(5).toUpperCase();
+    if (back.contains("P")) {
+    }
+    this.getDt(this.optName);
+    this.getStrike(this.optName);
+
+    // OptionsProcessor op = new OptionsProcessor(type, this.optName, strike, ul,
+    // dt, this.iv);
+    // this.bsPrice = op.getPrice();
+  }
+
+  /**
+   *
+   * @param optN
+   * @return
+   */
+  private DateTime getDt(String optN) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  /**
+   *
+   * @param optN
+   * @return
+   */
+  private double getStrike(String optN) {
+    // TODO Auto-generated method stub
+    return 0;
   }
 
 }

@@ -41,17 +41,23 @@ import net.ajaskey.common.DateTime;
  */
 public class TickerData {
 
-  public String ticker;
+  private final static String DELIMITER = ",";
 
-  public int days;
+  private final static int FIELDS = 7;
 
+  private final static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+  public double[]   close;
   public DateTime[] date;
-  public double[]   open;
+  public int days;
   public double[]   high;
   public double[]   low;
-  public double[]   close;
-  public double[]   volume;
   public double[]   oi;
+
+  public double[]   open;
+
+  public String ticker;
+
+  public double[]   volume;
 
   /**
    * This method serves as a constructor for the class.
@@ -133,11 +139,5 @@ public class TickerData {
 
     return ret;
   }
-
-  private final static String DELIMITER = ",";
-
-  private final static int FIELDS = 7;
-
-  private final static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 }

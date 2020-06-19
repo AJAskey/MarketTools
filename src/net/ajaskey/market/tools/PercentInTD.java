@@ -15,9 +15,9 @@ import net.ajaskey.market.optuma.TickerPriceData;
 
 public class PercentInTD {
 
+  static DateTime         endDay   = null;
   static SimpleDateFormat sdftime  = new SimpleDateFormat("dd-MMM-yyyy:HHmmss");
   static DateTime         startDay = null;
-  static DateTime         endDay   = null;
   static final long       vol      = 105600000;
 
   public static void main(String[] args) throws IOException {

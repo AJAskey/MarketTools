@@ -7,9 +7,9 @@ import net.ajaskey.common.DateTime;
 
 public class ExpiryDataList {
 
+  public List<ExpiryData> exList;
   public DateTime         expiry;
   public double           ul;
-  public List<ExpiryData> exList;
 
   public ExpiryDataList(DateTime ex, double ul) {
     this.expiry = new DateTime(ex);

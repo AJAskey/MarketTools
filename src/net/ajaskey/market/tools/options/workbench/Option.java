@@ -12,15 +12,15 @@ import net.ajaskey.common.Utils;
 
 public class Option {
 
+  public DateTime lastTrade = null;
+  public List<OptionData> optList = new ArrayList<>();
+  public String response;
   public String sCode;
   public String sExch;
+
   public String sLastTradeDate;
+
   public Double sUlLastTradePrice;
-  public String response;
-
-  public DateTime lastTrade = null;
-
-  public List<OptionData> optList = new ArrayList<>();
 
   /**
    *

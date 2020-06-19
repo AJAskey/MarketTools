@@ -45,13 +45,13 @@ public class Debug {
   // private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd
   // HH:mm:ss.SSS");
 
-  private static final Logger LOGGER = Logger.getLogger("FredDataDownloader");
-
   public static final Level INFO    = Level.INFO;
-  public static final Level WARNING = Level.WARNING;
-  public static final Level SEVERE  = Level.SEVERE;
 
+  public static final Level SEVERE  = Level.SEVERE;
+  public static final Level WARNING = Level.WARNING;
   private static boolean isInit = false;
+
+  private static final Logger LOGGER = Logger.getLogger("FredDataDownloader");
 
   /**
    *

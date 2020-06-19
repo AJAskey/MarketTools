@@ -39,7 +39,9 @@ import java.util.Calendar;
  */
 public class PEAnalysisData {
 
+  final private static SimpleDateFormat sdf = new SimpleDateFormat("d-MMM-yyyy");
   public Calendar date;
+
   public double   price;
 
   /**
@@ -71,7 +73,5 @@ public class PEAnalysisData {
       this.price = -1.0;
     }
   }
-
-  final private static SimpleDateFormat sdf = new SimpleDateFormat("d-MMM-yyyy");
 
 }

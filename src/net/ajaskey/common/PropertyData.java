@@ -7,6 +7,40 @@ import java.util.Properties;
 
 public class PropertyData {
 
+  private final static double errVal = -123454321.0;
+
+  public static boolean isErr(double val) {
+    return val == PropertyData.errVal;
+  }
+
+  public static boolean isErr(int val) {
+    return val == (int) PropertyData.errVal;
+  }
+
+  public static boolean isErr(long val) {
+    return val == (long) PropertyData.errVal;
+  }
+
+  /**
+   *
+   * @param args
+   */
+  public static void main(String[] args) {
+
+    final PropertyData oprop = new PropertyData("D:\\dev\\eclipse-workspace\\Market\\option.properties");
+
+    final String code = oprop.getPropertyS("price.code");
+    final Double ulBuy = oprop.getPropertyD("price.ulBuy");
+    final Double ulSell = oprop.getPropertyD("price.ulSell");
+    final Integer holdDays = oprop.getPropertyI("price.hold");
+
+    System.out.println(code);
+    System.out.println(ulBuy);
+    System.out.println(ulSell);
+    System.out.println(holdDays);
+
+  }
+
   private final Properties prop = new Properties();
 
   private String propFile = "";
@@ -119,40 +153,6 @@ public class PropertyData {
     catch (final IOException ex) {
       ex.printStackTrace();
     }
-  }
-
-  private final static double errVal = -123454321.0;
-
-  public static boolean isErr(double val) {
-    return val == PropertyData.errVal;
-  }
-
-  public static boolean isErr(int val) {
-    return val == (int) PropertyData.errVal;
-  }
-
-  public static boolean isErr(long val) {
-    return val == (long) PropertyData.errVal;
-  }
-
-  /**
-   *
-   * @param args
-   */
-  public static void main(String[] args) {
-
-    final PropertyData oprop = new PropertyData("D:\\dev\\eclipse-workspace\\Market\\option.properties");
-
-    final String code = oprop.getPropertyS("price.code");
-    final Double ulBuy = oprop.getPropertyD("price.ulBuy");
-    final Double ulSell = oprop.getPropertyD("price.ulSell");
-    final Integer holdDays = oprop.getPropertyI("price.hold");
-
-    System.out.println(code);
-    System.out.println(ulBuy);
-    System.out.println(ulSell);
-    System.out.println(holdDays);
-
   }
 
 }

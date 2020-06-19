@@ -7,19 +7,38 @@ import net.ajaskey.common.Utils;
 
 public class OptionStatistics {
 
-  private long   putVol;
-  private long   putOi;
-  private long   callVol;
-  private long   callOi;
-  private double vdollarsPut;
-  private double vdollarsCall;
-  private double dollarsPut;
-  private double dollarsCall;
-  private double rdollarsPut;  // retail OI:Vol less than 200
-  private double rdollarsCall; // retail OI:Vol less than 200
-  private String header;
+  private static int retailOiLevel = 60;
+  private static int retailVolLevel = 35;
+  /**
+   *
+   * @param args
+   * @throws FileNotFoundException
+   */
+  public static void main(String[] args) throws FileNotFoundException {
 
+//    final Option opt = new Option();
+//
+//    opt.processJson("SPY");
+//
+//    final OptionStats os = new OptionStats(opt);
+//    System.out.println(os);
+  }
+  private long   callOi;
+  private long   callVol;
+  private double dollarsCall;
+  private double dollarsPut;
+  private String header;
   private Option opt;
+  private long   putOi;
+  private long   putVol;
+
+  private double rdollarsCall; // retail OI:Vol less than 200
+
+  private double rdollarsPut;  // retail OI:Vol less than 200
+
+  private double vdollarsCall;
+
+  private double vdollarsPut;
 
   /**
    *
@@ -232,24 +251,5 @@ public class OptionStatistics {
 
       }
     }
-  }
-
-  private static int retailVolLevel = 35;
-
-  private static int retailOiLevel = 60;
-
-  /**
-   *
-   * @param args
-   * @throws FileNotFoundException
-   */
-  public static void main(String[] args) throws FileNotFoundException {
-
-//    final Option opt = new Option();
-//
-//    opt.processJson("SPY");
-//
-//    final OptionStats os = new OptionStats(opt);
-//    System.out.println(os);
   }
 }

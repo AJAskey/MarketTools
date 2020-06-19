@@ -78,27 +78,228 @@ import net.ajaskey.common.DateTime;
  */
 public class OptionsProcessor {
 
-  String  id;
+  public final static int     ACALL = 2;
+  public final static int     APUT  = 1;
+  private static final double B1 = 0.319381530;
+
+  private static final double B2 = -0.356563782;
+  private static final double B3    = 1.781477937;
+  private static final double B4    = -1.821255978;
+  private static final double B5    = 1.330274429;
+  private static final boolean DEBUG = true;
+  private static boolean isPwDbgOpen = false;
+
+  private static final double opRate = 0.000001;
+
+  /**
+   * @author M. Bret Blackford
+   *
+   *         For Black-Scholes calculations.
+   */
+  private static final double P = 0.2316419;
+  private final static double p2    = Math.sqrt(2.0 * Math.PI);
+  /**
+   * Within one cent.
+   */
+  private static final double precision = 0.0149;
+  private static PrintWriter pwDbg = null;
+  /**
+   * Must be called by main program
+   *
+   * @throws FileNotFoundException
+   */
+  public static void CloseDebug() {
+    if (OptionsProcessor.isPwDbgOpen) {
+      OptionsProcessor.pwDbg.close();
+    }
+  }
+  /**
+   *
+   * Used as a simple example
+   *
+   * @param args
+   * @throws ParseException
+   * @throws FileNotFoundException
+   */
+  public static void main(final String[] args) throws ParseException, FileNotFoundException {
+
+    OptionsProcessor.OpenDebug();
+
+    final DateTime expiry = new DateTime(2020, DateTime.JUNE, 21);
+
+    final OptionsProcessor op = new OptionsProcessor(OptionsProcessor.ACALL, "SPY CALL", 300.0, 314.31, expiry, 0.1045);
+
+    OptionsProcessor.printDbg("\nmain() :: getting price");
+    final double price = op.getPrice();
+
+    System.out.println(price);
+    System.out.println(op.iv);
+
+    final double iv = op.findIv(350.0, 1.0);
+    System.out.println(iv);
+
+    // printDbg("\nmain() :: finding IV");
+    // final double impVol = op.findIv(price, op.iv);
+    // System.out.println(impVol);
+//
+//    System.out.println(op);
+
+    OptionsProcessor.CloseDebug();
+
+  }
+
+  /**
+   * Must be called by main program
+   *
+   * @throws FileNotFoundException
+   */
+  public static void OpenDebug() throws FileNotFoundException {
+    if (!OptionsProcessor.isPwDbgOpen) {
+      OptionsProcessor.pwDbg = new PrintWriter("OptionsProcess.dbg");
+      OptionsProcessor.isPwDbgOpen = true;
+    }
+  }
+
+  /**
+   *
+   * @param s
+   */
+  public static void printDbg(String s) {
+    if (OptionsProcessor.isPwDbgOpen) {
+      OptionsProcessor.pwDbg.println(s);
+    }
+  }
+
+  /**
+   *
+   * @param op
+   * @param type
+   * @param id
+   * @param strike
+   * @param ulPrice
+   * @param expiry
+   * @param bDate
+   * @param iv
+   * @return
+   */
+  private static OptionsProcessor build(OptionsProcessor op, int type, String id, double strike, double ulPrice, DateTime expiry, DateTime bDate,
+      double iv) {
+
+    try {
+
+      op.id = id;
+      op.dataType = type;
+      op.strike = strike;
+      op.ulPrice = ulPrice;
+      op.expiry = new DateTime(expiry);
+      op.iv = iv;
+
+      op.delta = 0.0;
+      op.gamma = 0.0;
+      op.theta = 0.0;
+      op.rho = 0.0;
+      op.vega = 0.0;
+      op.price = 0.0;
+
+      op.rate = OptionsProcessor.opRate;
+      op.setSellDate(bDate);
+      op.years = op.expiry.getDeltaYears(op.getSellDate());
+      op.days = op.expiry.getDeltaDays(op.getSellDate()) + 1;
+
+      op.setGreeks();
+
+      if (type == OptionsProcessor.APUT || type == OptionsProcessor.ACALL) {
+        op.valid = true;
+        if (OptionsProcessor.isPwDbgOpen) {
+          OptionsProcessor.pwDbg.printf("%nNew instance created%n%s%n", op);
+        }
+      }
+      else {
+        op.valid = false;
+      }
+    }
+    catch (final Exception e) {
+      op.valid = false;
+    }
+
+    return op;
+  }
+
+  /**
+   * @author M. Bret Blackford
+   *
+   * @param x
+   * @return
+   */
+  private static double cumulativeDistribution(double x) {
+    return OptionsProcessor.cumulativeDistribution(x, OptionsProcessor.standardNormalDistribution(x));
+  }
+
+  /**
+   * @author M. Bret Blackford
+   *
+   * @param num
+   * @return
+   */
+  private static double cumulativeDistribution(final double num, double sdx) {
+
+    final double t = 1 / (1 + OptionsProcessor.P * Math.abs(num));
+    final double t1 = OptionsProcessor.B1 * Math.pow(t, 1);
+    final double t2 = OptionsProcessor.B2 * Math.pow(t, 2);
+    final double t3 = OptionsProcessor.B3 * Math.pow(t, 3);
+    final double t4 = OptionsProcessor.B4 * Math.pow(t, 4);
+    final double t5 = OptionsProcessor.B5 * Math.pow(t, 5);
+    final double b = t1 + t2 + t3 + t4 + t5;
+    final double cd = 1 - sdx * b;
+
+    return num < 0 ? 1 - cd : cd;
+  }
+
+  /**
+   * @author M. Bret Blackford
+   *
+   * @param num
+   * @return
+   */
+  private static double standardNormalDistribution(final double num) {
+
+    final double p1 = Math.exp(-0.5 * Math.pow(num, 2.0));
+    return p1 / OptionsProcessor.p2;
+  }
+
   int     dataType;
+
+  String  id;
+
   boolean valid;
 
+  private long     days;
+
   private double delta;
+
+  private DateTime expiry;
+
   private double gamma;
-  private double theta;
-  private double rho;
-  private double vega;
+
   private double iv;
 
   private double price;
 
-  private double   strike;
-  private double   ulPrice;
-  private DateTime expiry;
   private double   rate;
-  private double   years;
-  private long     days;
+
+  private double rho;
 
   private DateTime sellDate;
+
+  private double   strike;
+
+  private double theta;
+
+  private double   ulPrice;
+
+  private double vega;
+
+  private double   years;
 
   /**
    *
@@ -327,23 +528,18 @@ public class OptionsProcessor {
   public double getStrike() {
     return this.strike;
   }
-
   public double getTheta() {
     return this.theta;
   }
-
   public double getUlPrice() {
     return this.ulPrice;
   }
-
   public double getVega() {
     return this.vega;
   }
-
   public double getYears() {
     return this.years;
   }
-
   /**
    * @author M. Bret Blackford
    *
@@ -526,201 +722,5 @@ public class OptionsProcessor {
   private void setId(String inId) {
     this.id = inId;
 
-  }
-
-  private static PrintWriter pwDbg = null;
-
-  private static boolean isPwDbgOpen = false;
-
-  /**
-   * Within one cent.
-   */
-  private static final double precision = 0.0149;
-
-  private static final boolean DEBUG = true;
-
-  private static final double opRate = 0.000001;
-
-  /**
-   * @author M. Bret Blackford
-   *
-   *         For Black-Scholes calculations.
-   */
-  private static final double P = 0.2316419;
-
-  private static final double B1 = 0.319381530;
-
-  private static final double B2 = -0.356563782;
-
-  private static final double B3    = 1.781477937;
-  private static final double B4    = -1.821255978;
-  private static final double B5    = 1.330274429;
-  private final static double p2    = Math.sqrt(2.0 * Math.PI);
-  public final static int     APUT  = 1;
-  public final static int     ACALL = 2;
-
-  /**
-   * Must be called by main program
-   *
-   * @throws FileNotFoundException
-   */
-  public static void CloseDebug() {
-    if (OptionsProcessor.isPwDbgOpen) {
-      OptionsProcessor.pwDbg.close();
-    }
-  }
-
-  /**
-   *
-   * Used as a simple example
-   *
-   * @param args
-   * @throws ParseException
-   * @throws FileNotFoundException
-   */
-  public static void main(final String[] args) throws ParseException, FileNotFoundException {
-
-    OptionsProcessor.OpenDebug();
-
-    final DateTime expiry = new DateTime(2020, DateTime.JUNE, 21);
-
-    final OptionsProcessor op = new OptionsProcessor(OptionsProcessor.ACALL, "SPY CALL", 300.0, 314.31, expiry, 0.1045);
-
-    OptionsProcessor.printDbg("\nmain() :: getting price");
-    final double price = op.getPrice();
-
-    System.out.println(price);
-    System.out.println(op.iv);
-
-    final double iv = op.findIv(350.0, 1.0);
-    System.out.println(iv);
-
-    // printDbg("\nmain() :: finding IV");
-    // final double impVol = op.findIv(price, op.iv);
-    // System.out.println(impVol);
-//
-//    System.out.println(op);
-
-    OptionsProcessor.CloseDebug();
-
-  }
-
-  /**
-   * Must be called by main program
-   *
-   * @throws FileNotFoundException
-   */
-  public static void OpenDebug() throws FileNotFoundException {
-    if (!OptionsProcessor.isPwDbgOpen) {
-      OptionsProcessor.pwDbg = new PrintWriter("OptionsProcess.dbg");
-      OptionsProcessor.isPwDbgOpen = true;
-    }
-  }
-
-  /**
-   *
-   * @param s
-   */
-  public static void printDbg(String s) {
-    if (OptionsProcessor.isPwDbgOpen) {
-      OptionsProcessor.pwDbg.println(s);
-    }
-  }
-
-  /**
-   *
-   * @param op
-   * @param type
-   * @param id
-   * @param strike
-   * @param ulPrice
-   * @param expiry
-   * @param bDate
-   * @param iv
-   * @return
-   */
-  private static OptionsProcessor build(OptionsProcessor op, int type, String id, double strike, double ulPrice, DateTime expiry, DateTime bDate,
-      double iv) {
-
-    try {
-
-      op.id = id;
-      op.dataType = type;
-      op.strike = strike;
-      op.ulPrice = ulPrice;
-      op.expiry = new DateTime(expiry);
-      op.iv = iv;
-
-      op.delta = 0.0;
-      op.gamma = 0.0;
-      op.theta = 0.0;
-      op.rho = 0.0;
-      op.vega = 0.0;
-      op.price = 0.0;
-
-      op.rate = OptionsProcessor.opRate;
-      op.setSellDate(bDate);
-      op.years = op.expiry.getDeltaYears(op.getSellDate());
-      op.days = op.expiry.getDeltaDays(op.getSellDate()) + 1;
-
-      op.setGreeks();
-
-      if (type == OptionsProcessor.APUT || type == OptionsProcessor.ACALL) {
-        op.valid = true;
-        if (OptionsProcessor.isPwDbgOpen) {
-          OptionsProcessor.pwDbg.printf("%nNew instance created%n%s%n", op);
-        }
-      }
-      else {
-        op.valid = false;
-      }
-    }
-    catch (final Exception e) {
-      op.valid = false;
-    }
-
-    return op;
-  }
-
-  /**
-   * @author M. Bret Blackford
-   *
-   * @param x
-   * @return
-   */
-  private static double cumulativeDistribution(double x) {
-    return OptionsProcessor.cumulativeDistribution(x, OptionsProcessor.standardNormalDistribution(x));
-  }
-
-  /**
-   * @author M. Bret Blackford
-   *
-   * @param num
-   * @return
-   */
-  private static double cumulativeDistribution(final double num, double sdx) {
-
-    final double t = 1 / (1 + OptionsProcessor.P * Math.abs(num));
-    final double t1 = OptionsProcessor.B1 * Math.pow(t, 1);
-    final double t2 = OptionsProcessor.B2 * Math.pow(t, 2);
-    final double t3 = OptionsProcessor.B3 * Math.pow(t, 3);
-    final double t4 = OptionsProcessor.B4 * Math.pow(t, 4);
-    final double t5 = OptionsProcessor.B5 * Math.pow(t, 5);
-    final double b = t1 + t2 + t3 + t4 + t5;
-    final double cd = 1 - sdx * b;
-
-    return num < 0 ? 1 - cd : cd;
-  }
-
-  /**
-   * @author M. Bret Blackford
-   *
-   * @param num
-   * @return
-   */
-  private static double standardNormalDistribution(final double num) {
-
-    final double p1 = Math.exp(-0.5 * Math.pow(num, 2.0));
-    return p1 / OptionsProcessor.p2;
   }
 }

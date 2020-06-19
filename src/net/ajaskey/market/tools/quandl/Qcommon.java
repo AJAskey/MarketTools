@@ -59,9 +59,9 @@ import net.ajaskey.market.optuma.OptumaCommon;
  */
 public class Qcommon {
 
-  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
   public final static String outpath = OptumaCommon.optumaPath + "/quandl";
+
+  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
   private static DocumentBuilderFactory dbFactory = null;
 

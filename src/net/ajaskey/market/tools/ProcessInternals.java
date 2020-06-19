@@ -27,12 +27,32 @@ public class ProcessInternals {
   /** The addspx. */
   static TickerPriceData addspx = null;
 
+  /** The adrn. */
+  // a/d ratio
+  static TickerPriceData adrn = null;
+
+  /** The adrq. */
+  static TickerPriceData adrq = null;
+
+  /** The adrspx. */
+  static TickerPriceData adrspx = null;
+
   /** The advn. */
   // advancing
   static TickerPriceData advn = null;
 
   /** The advq. */
   static TickerPriceData advq = null;
+
+  /** The advrn. */
+  // av/dv vol ratio
+  static TickerPriceData advrn = null;
+
+  /** The advrq. */
+  static TickerPriceData advrq = null;
+
+  /** The advrspx. */
+  static TickerPriceData advrspx = null;
 
   /** The advspx. */
   static TickerPriceData advspx = null;
@@ -73,34 +93,26 @@ public class ProcessInternals {
   /** The dvcspx bm. */
   static TickerPriceData dvcspxBm = null;
 
-  /** The adrn. */
-  // a/d ratio
-  static TickerPriceData adrn = null;
+  /** The mcc oscn. */
+  static TickerPriceData mccOscn = null;
 
-  /** The adrq. */
-  static TickerPriceData adrq = null;
+  /** The mcc oscq. */
+  static TickerPriceData mccOscq = null;
 
-  /** The adrspx. */
-  static TickerPriceData adrspx = null;
+  /** The mcc oscspx. */
+  static TickerPriceData mccOscspx = null;
 
-  /** The advrn. */
-  // av/dv vol ratio
-  static TickerPriceData advrn = null;
+  /** The mcc sumn. */
+  static TickerPriceData mccSumn = null;
 
-  /** The advrq. */
-  static TickerPriceData advrq = null;
+  /** The mcc sumq. */
+  static TickerPriceData mccSumq = null;
 
-  /** The advrspx. */
-  static TickerPriceData advrspx = null;
+  /** The mcc sumspx. */
+  static TickerPriceData mccSumspx = null;
 
   /** The spy data. */
   static TickerPriceData spyData = null;
-
-  /** The vix. */
-  static TickerPriceData vix = null;
-
-  /** The vxo. */
-  static TickerPriceData vxo = null;
 
   /** The trinn. */
   static TickerPriceData trinn = null;
@@ -111,23 +123,11 @@ public class ProcessInternals {
   /** The trinspx. */
   static TickerPriceData trinspx = null;
 
-  /** The mcc oscn. */
-  static TickerPriceData mccOscn = null;
+  /** The vix. */
+  static TickerPriceData vix = null;
 
-  /** The mcc sumn. */
-  static TickerPriceData mccSumn = null;
-
-  /** The mcc oscq. */
-  static TickerPriceData mccOscq = null;
-
-  /** The mcc sumq. */
-  static TickerPriceData mccSumq = null;
-
-  /** The mcc oscspx. */
-  static TickerPriceData mccOscspx = null;
-
-  /** The mcc sumspx. */
-  static TickerPriceData mccSumspx = null;
+  /** The vxo. */
+  static TickerPriceData vxo = null;
 
   /**
    * Inits the.

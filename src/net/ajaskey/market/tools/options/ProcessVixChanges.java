@@ -38,10 +38,10 @@ import java.text.ParseException;
  */
 public class ProcessVixChanges {
 
-  static double minLast    = 0.0499;
-  static double minIv      = 0.0;
-  static int    minOi      = 0;
   static double maxPremium = 10000.0;
+  static double minIv      = 0.0;
+  static double minLast    = 0.0499;
+  static int    minOi      = 0;
 
   /**
    * net.ajaskey.market.tools.options.main

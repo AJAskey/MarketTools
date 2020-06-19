@@ -44,40 +44,6 @@ import java.util.List;
  */
 public class SpxEarningsData {
 
-  public String ticker;
-
-  public double mktcap;
-
-  public double shares;
-  public double netIncAfterTax;
-  public double eps;
-  public double eps1y;
-  public double div;
-
-  /**
-   * This method serves as a constructor for the class.
-   *
-   */
-  public SpxEarningsData() {
-
-    this.ticker = null;
-    this.mktcap = 0;
-    this.shares = 0;
-    this.netIncAfterTax = 0;
-    this.eps = 0;
-    this.eps1y = 0;
-    this.div = 0;
-  }
-
-  @Override
-  public String toString() {
-
-    final String str = String.format("%-9s %10.1f %11.3f %10.1f %10.3f %10.3f %n", this.ticker, this.mktcap, this.shares, this.netIncAfterTax,
-        this.eps, this.eps1y);
-    return str;
-
-  }
-
   private static final double NA_VALUE = -99999999.99;
 
   public static List<SpxEarningsData> readData(final String fname) throws IOException {
@@ -156,6 +122,40 @@ public class SpxEarningsData {
     }
 
     return data;
+  }
+
+  public double div;
+  public double eps;
+  public double eps1y;
+  public double mktcap;
+  public double netIncAfterTax;
+
+  public double shares;
+
+  public String ticker;
+
+  /**
+   * This method serves as a constructor for the class.
+   *
+   */
+  public SpxEarningsData() {
+
+    this.ticker = null;
+    this.mktcap = 0;
+    this.shares = 0;
+    this.netIncAfterTax = 0;
+    this.eps = 0;
+    this.eps1y = 0;
+    this.div = 0;
+  }
+
+  @Override
+  public String toString() {
+
+    final String str = String.format("%-9s %10.1f %11.3f %10.1f %10.3f %10.3f %n", this.ticker, this.mktcap, this.shares, this.netIncAfterTax,
+        this.eps, this.eps1y);
+    return str;
+
   }
 
 }

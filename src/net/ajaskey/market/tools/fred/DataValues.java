@@ -41,6 +41,8 @@ import net.ajaskey.common.DateTime;
  */
 public class DataValues {
 
+  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
   private final DateTime date;
 
   private double value;
@@ -117,6 +119,4 @@ public class DataValues {
 
     return String.format("%s\t%f", this.date, this.value);
   }
-
-  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 }

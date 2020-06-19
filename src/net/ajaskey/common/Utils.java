@@ -55,14 +55,14 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class Utils {
 
-  public final static SimpleDateFormat sdf     = new SimpleDateFormat("dd-MMM-yyyy");
-  public final static SimpleDateFormat sdfFull = new SimpleDateFormat("E dd-MMM-yyyy HH:mm:ss");
-  public static String                 NL      = System.lineSeparator();
-  public static String                 TAB     = "\t";
-
   public static DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
-
   public static DecimalFormat df;
+  public static String                 NL      = System.lineSeparator();
+  public final static SimpleDateFormat sdf     = new SimpleDateFormat("dd-MMM-yyyy");
+
+  public final static SimpleDateFormat sdfFull = new SimpleDateFormat("E dd-MMM-yyyy HH:mm:ss");
+
+  public static String                 TAB     = "\t";
 
   private static DecimalFormat dfmt = new DecimalFormat("#,###");
 

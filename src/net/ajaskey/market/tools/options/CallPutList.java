@@ -11,11 +11,11 @@ public class CallPutList {
 
   // private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
-  private static List<CboeOptionData> odList = new ArrayList<>();
   private static String               code   = "";
-
   private static double cPrice = 0.0;
+
   private static String info;
+  private static List<CboeOptionData> odList = new ArrayList<>();
 
   /**
    *

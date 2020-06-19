@@ -13,64 +13,14 @@ import net.ajaskey.common.Utils;
 
 public class OptionFindCombos {
 
-  public DateTime expiry;
-
-  public double strike;
-  public double ulSellPrice;
-  public double premium;
-  public double change;
-
-  public DateTime buyDate;
-  public double   ulBuyPrice;
-
-  public double          bsBuyPrice;
-  public double          optBuyPrice;
-  public double          optSellPrice;
-  public double          profit;
-  public CboeCallPutData data;
-
-  public OptionFindCombos(double sk, double ul, double ulSell, double prem, double c, double prof, CboeCallPutData d, DateTime bdate) {
-
-    this.strike = sk;
-    this.bsBuyPrice = d.getPrice();
-    this.optBuyPrice = d.mark;
-    this.ulBuyPrice = ul;
-    this.ulSellPrice = ulSell;
-    this.premium = prem;
-    this.change = c;
-    this.profit = prof;
-    this.data = d;
-    this.buyDate = new DateTime(bdate);
-    this.expiry = new DateTime(d.optionData.getExpiry());
-    final double p = d.getPrice();
-    this.optSellPrice = p; // * (1.0 + prem);
-  }
-
-  @Override
-  public String toString() {
-    String ret = String.format("Change          : %.2f%n", this.change);
-    ret += String.format("Expiry          : %s%n", this.expiry);
-    ret += String.format("Strike          : %.2f%n", this.strike);
-    ret += String.format("Buy Date        : %s%n", this.buyDate);
-    ret += String.format("Buy UL Price    : %.2f%n", this.ulBuyPrice);
-    ret += String.format("Sell UL Price   : %.2f%n", this.ulSellPrice);
-    ret += String.format("BS Buy Opt Price : %.2f%n", this.optBuyPrice);
-    ret += String.format("Buy Opt Price   : %.2f%n", this.optBuyPrice);
-    ret += String.format("Sell Opt Price  : %.2f%n", this.optSellPrice);
-    ret += String.format("Premium         : %.2f%%%n", this.premium);
-    ret += String.format("Profit          : %.2f%%%n", this.profit);
-    ret += String.format("Option Data     : %s%n", this.data);
-    return ret;
-  }
-
-  static double                 chg[]  = { 0.05, 0.10, 0.15, 0.20 };
   static List<OptionFindCombos> c1List = new ArrayList<>();
+
   static List<OptionFindCombos> c2List = new ArrayList<>();
   static List<OptionFindCombos> c3List = new ArrayList<>();
   static List<OptionFindCombos> c4List = new ArrayList<>();
+  static double                 chg[]  = { 0.05, 0.10, 0.15, 0.20 };
 
   final private static double MinOptionPrice = 0.10;
-
   private static double ulPrice = 0.0;
 
   /**
@@ -109,7 +59,6 @@ public class OptionFindCombos {
 
     OptionFindCombos.process(args[0].trim(), args[1].trim(), tf);
   }
-
   /**
    *
    * @param code
@@ -301,7 +250,6 @@ public class OptionFindCombos {
     // OptionsProcessor.CloseDebug();
 
   }
-
   /**
    *
    * @param d
@@ -326,7 +274,6 @@ public class OptionFindCombos {
     }
     return null;
   }
-
   /**
    *
    * @param ofc
@@ -343,7 +290,6 @@ public class OptionFindCombos {
     }
     return null;
   }
-
   /**
    *
    * @param propFile
@@ -351,6 +297,60 @@ public class OptionFindCombos {
   private static void processProperties(String propFile) {
     // TODO Auto-generated method stub
 
+  }
+
+  public double          bsBuyPrice;
+
+  public DateTime buyDate;
+
+  public double change;
+  public CboeCallPutData data;
+  public DateTime expiry;
+  public double          optBuyPrice;
+  public double          optSellPrice;
+
+  public double premium;
+
+  public double          profit;
+
+  public double strike;
+
+  public double   ulBuyPrice;
+
+  public double ulSellPrice;
+
+  public OptionFindCombos(double sk, double ul, double ulSell, double prem, double c, double prof, CboeCallPutData d, DateTime bdate) {
+
+    this.strike = sk;
+    this.bsBuyPrice = d.getPrice();
+    this.optBuyPrice = d.mark;
+    this.ulBuyPrice = ul;
+    this.ulSellPrice = ulSell;
+    this.premium = prem;
+    this.change = c;
+    this.profit = prof;
+    this.data = d;
+    this.buyDate = new DateTime(bdate);
+    this.expiry = new DateTime(d.optionData.getExpiry());
+    final double p = d.getPrice();
+    this.optSellPrice = p; // * (1.0 + prem);
+  }
+
+  @Override
+  public String toString() {
+    String ret = String.format("Change          : %.2f%n", this.change);
+    ret += String.format("Expiry          : %s%n", this.expiry);
+    ret += String.format("Strike          : %.2f%n", this.strike);
+    ret += String.format("Buy Date        : %s%n", this.buyDate);
+    ret += String.format("Buy UL Price    : %.2f%n", this.ulBuyPrice);
+    ret += String.format("Sell UL Price   : %.2f%n", this.ulSellPrice);
+    ret += String.format("BS Buy Opt Price : %.2f%n", this.optBuyPrice);
+    ret += String.format("Buy Opt Price   : %.2f%n", this.optBuyPrice);
+    ret += String.format("Sell Opt Price  : %.2f%n", this.optSellPrice);
+    ret += String.format("Premium         : %.2f%%%n", this.premium);
+    ret += String.format("Profit          : %.2f%%%n", this.profit);
+    ret += String.format("Option Data     : %s%n", this.data);
+    return ret;
   }
 
 }

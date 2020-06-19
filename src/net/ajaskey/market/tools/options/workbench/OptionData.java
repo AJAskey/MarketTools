@@ -6,35 +6,45 @@ import net.ajaskey.common.DateTime;
 
 public class OptionData {
 
+  final protected static String header = "Name,Type,LastTrade,Expiry,Strike,Last,Bid,Ask,Vol,OI,IV,Theta,Delta,Gamma,Vega,Rho,Theory,Intrins,TimeValue";
+  protected final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  protected final static SimpleDateFormat sdfOut = new SimpleDateFormat("dd-MMM-yyyy");
+  protected final static SimpleDateFormat sdfOutTime = new SimpleDateFormat("yyyyMMdd_HHmmss");
+
+  protected final static SimpleDateFormat sdftime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+  public Double   ask;
+  public Double   bid;
+  public Double   change;
+  public Double   changePercent;
   public String contractName;
   public String contractSize;
   public String currency;
+  public Long     daysBeforeExpiration;
+  public Double   delta;
+  public DateTime expirationDate;
+  public Double   gamma;
+  public Double   impliedVolatility;
+  public Double   intrinsicValue;
+  public Boolean itm;
+  public Double   lastPrice;
+  public DateTime lastTradeDateTime;
+  public Long     openInterest;
+  public Double   rho;
+  public Double   strike;
+  public Double   theoretical;
+  public Double   theta;
+  public Double   timeValue;
+
   public String type;
 
-  public Boolean itm;
-
-  public DateTime lastTradeDateTime;
-  public DateTime expirationDate;
-  public Double   strike;
-  public Double   lastPrice;
-  public Double   bid;
-  public Double   ask;
-  public Double   change;
-  public Double   changePercent;
-  public Long     volume;
-  public Long     openInterest;
-  public Double   impliedVolatility;
-  public Double   delta;
-  public Double   gamma;
-  public Double   theta;
-  public Double   vega;
-  public Double   rho;
-  public Double   theoretical;
-  public Double   intrinsicValue;
-  public Double   timeValue;
   public DateTime updatedAt;
-  public Long     daysBeforeExpiration;
+
   public boolean  valid;
+
+  public Double   vega;
+
+  public Long     volume;
 
   public OptionData() {
     this.strike = 0.0;
@@ -114,15 +124,5 @@ public class OptionData {
   protected void scaleData(double scaler) {
     this.strike *= scaler;
   }
-
-  protected final static SimpleDateFormat sdftime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-  protected final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-  protected final static SimpleDateFormat sdfOut = new SimpleDateFormat("dd-MMM-yyyy");
-
-  protected final static SimpleDateFormat sdfOutTime = new SimpleDateFormat("yyyyMMdd_HHmmss");
-
-  final protected static String header = "Name,Type,LastTrade,Expiry,Strike,Last,Bid,Ask,Vol,OI,IV,Theta,Delta,Gamma,Vega,Rho,Theory,Intrins,TimeValue";
 
 }

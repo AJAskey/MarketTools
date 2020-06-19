@@ -45,9 +45,9 @@ import net.ajaskey.market.optuma.TickerPriceData;
  */
 public class ProcessQuandl {
 
-  public final static SimpleDateFormat sdfFile = new SimpleDateFormat("yyyy-MM-dd");
-
   public static List<LastDataPoint> lastDataPoint = new ArrayList<>();
+
+  public final static SimpleDateFormat sdfFile = new SimpleDateFormat("yyyy-MM-dd");
 
   /**
    * net.ajaskey.market.tools.quandl.main

@@ -41,13 +41,17 @@ import net.ajaskey.common.Utils;
  */
 public class IciMoneyFlowData {
 
+  private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+  private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
   public Calendar date;
-  public long     total;
-  public long     equity;
   public long     domestic;
+  public long     equity;
   public long     lcap;
   public long     mcap;
   public long     scap;
+
+  public long     total;
+
   public boolean  valid;
 
   /**
@@ -98,9 +102,5 @@ public class IciMoneyFlowData {
     ret += Utils.TAB + this.scap;
     return ret;
   }
-
-  private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-
-  private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
 
 }

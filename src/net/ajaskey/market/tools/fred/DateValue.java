@@ -40,10 +40,12 @@ import net.ajaskey.common.DateTime;
  */
 public class DateValue {
 
+  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
   public DateTime date;
+  public boolean valid;
 
   public double  value;
-  public boolean valid;
 
   /**
    * This method serves as a constructor for the class.
@@ -89,6 +91,4 @@ public class DateValue {
     final String ret = String.format("%s\t%.2f", this.date, this.value);
     return ret;
   }
-
-  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 }

@@ -45,6 +45,27 @@ import net.ajaskey.common.Utils;
  */
 public class InputData {
 
+  /**
+   * net.ajaskey.market.optuma.main
+   *
+   * @param args
+   */
+  public static void main(final String[] args) {
+
+    final List<String> dNames = new ArrayList<>();
+    final List<String> ext = new ArrayList<>();
+    dNames.add("C:\\temp\\redline-master");
+    ext.add(".txt");
+    ext.add(".xml");
+    ext.add(".sh");
+    final InputData id = new InputData(dNames, ext);
+
+    for (final File f : id.files) {
+      System.out.println(f.getAbsolutePath() + "   " + Utils.getFileBaseName(f));
+    }
+
+  }
+
   private final List<File> files;
 
   /**
@@ -100,27 +121,6 @@ public class InputData {
       }
     }
     return null;
-  }
-
-  /**
-   * net.ajaskey.market.optuma.main
-   *
-   * @param args
-   */
-  public static void main(final String[] args) {
-
-    final List<String> dNames = new ArrayList<>();
-    final List<String> ext = new ArrayList<>();
-    dNames.add("C:\\temp\\redline-master");
-    ext.add(".txt");
-    ext.add(".xml");
-    ext.add(".sh");
-    final InputData id = new InputData(dNames, ext);
-
-    for (final File f : id.files) {
-      System.out.println(f.getAbsolutePath() + "   " + Utils.getFileBaseName(f));
-    }
-
   }
 
 }

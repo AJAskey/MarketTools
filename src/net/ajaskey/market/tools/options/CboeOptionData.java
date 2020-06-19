@@ -7,14 +7,27 @@ import net.ajaskey.common.DateTime;
 
 public class CboeOptionData {
 
-  public boolean  valid;
+  private static final SimpleDateFormat inSdf  = new SimpleDateFormat("MM/dd/yyyy");
+  private static final SimpleDateFormat outSdf = new SimpleDateFormat("dd-MMM-yyyy");
+  public static CboeOptionData findStrike(List<CboeOptionData> list, int s, DateTime expiry) {
+    for (final CboeOptionData cod : list) {
+      if ((int) cod.strike == s && cod.expiry.isLessThanOrEqual(expiry)) {
+        return cod;
+      }
+    }
+    return null;
+  }
+  public CboeCallPutData call;
   public String   code;
+
   public DateTime expiry;
-  public double   strike;
   public String   inputData;
 
-  public CboeCallPutData call;
   public CboeCallPutData put;
+
+  public double   strike;
+
+  public boolean  valid;
 
   public CboeOptionData(String data, double ulPrice, String c, DateTime theExpiry) {
 
@@ -97,7 +110,6 @@ public class CboeOptionData {
     }
 
   }
-
   public CboeOptionData(String data, double ulPrice, String c, DateTime firstExpiry, DateTime bDate) {
 
     try {
@@ -203,18 +215,6 @@ public class CboeOptionData {
       ret += String.format("Put%n%s%n", this.put);
     }
     return ret;
-  }
-
-  private static final SimpleDateFormat inSdf  = new SimpleDateFormat("MM/dd/yyyy");
-  private static final SimpleDateFormat outSdf = new SimpleDateFormat("dd-MMM-yyyy");
-
-  public static CboeOptionData findStrike(List<CboeOptionData> list, int s, DateTime expiry) {
-    for (final CboeOptionData cod : list) {
-      if ((int) cod.strike == s && cod.expiry.isLessThanOrEqual(expiry)) {
-        return cod;
-      }
-    }
-    return null;
   }
 
 }

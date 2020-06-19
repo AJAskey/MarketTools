@@ -48,18 +48,18 @@ public class NaaimData {
    * <column-name>NAAIM Number</column-name> <column-name>S&P 500</column-name>
    */
 
+  public double bbDiff;
   public DateTime date;
   public double   mean;
-  public double   mostBearish;
-  public double   q1;
   public double   median;
-  public double   q3;
+  public double   mostBearish;
   public double   mostBullish;
-  public double   stdDev;
   public double   number;
+  public double   q1;
+  public double   q3;
   public double   sp500;
 
-  public double bbDiff;
+  public double   stdDev;
 
   /**
    * This method serves as a constructor for the class.

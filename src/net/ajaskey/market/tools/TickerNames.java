@@ -40,8 +40,29 @@ import java.io.IOException;
  */
 public class TickerNames {
 
-  private final String listName;
+  final static String p1 = "openinsider.com/screener?s=";
+  // final static String p2 =
+  // "&o=&pl=&ph=&ll=&lh=&fd=7&fdr=&td=0&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&xs=1&excludeDerivRelated=1&vl=&vh=&ocl=&och=&sic1=-1&sicl=100&sich=9999&isofficer=1&iscob=1&isceo=1&ispres=1&iscoo=1&iscfo=1&isgc=1&isvp=1&isdirector=1&grp=0&nfl=&nfh=&nil=&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=8&cnt=100&page=1";
+  final static String p2a = "&o=&pl=&ph=&ll=&lh=&fd=7&fdr=&td=0&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&xs=1&excludeDerivRelated=1&vl=&vh=&ocl=&och=&sic1=-1&sicl=100&sich=9999&isofficer=1&iscob=1&isceo=1&ispres=1&iscoo=1&iscfo=1&isgc=1&isvp=1&grp=0&nfl=&nfh=&nil=&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=8&cnt=100&page=1";
+
+  /**
+   * net.ajaskey.market.tools.main
+   *
+   * @param args
+   * @throws IOException
+   * @throws FileNotFoundException
+   */
+  public static void main(final String[] args) throws FileNotFoundException, IOException {
+
+    final TickerNames tn = new TickerNames("data/SP-Stocks.txt", "500");
+    final String s = tn.get();
+    System.out.println(TickerNames.p1 + s + TickerNames.p2a);
+
+  }
+
   private final String index;
+
+  private final String listName;
 
   /**
    * This method serves as a constructor for the class.
@@ -91,27 +112,6 @@ public class TickerNames {
     }
     System.out.println(knt);
     return ret.trim();
-  }
-
-  final static String p1 = "openinsider.com/screener?s=";
-
-  // final static String p2 =
-  // "&o=&pl=&ph=&ll=&lh=&fd=7&fdr=&td=0&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&xs=1&excludeDerivRelated=1&vl=&vh=&ocl=&och=&sic1=-1&sicl=100&sich=9999&isofficer=1&iscob=1&isceo=1&ispres=1&iscoo=1&iscfo=1&isgc=1&isvp=1&isdirector=1&grp=0&nfl=&nfh=&nil=&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=8&cnt=100&page=1";
-  final static String p2a = "&o=&pl=&ph=&ll=&lh=&fd=7&fdr=&td=0&tdr=&fdlyl=&fdlyh=&daysago=&xp=1&xs=1&excludeDerivRelated=1&vl=&vh=&ocl=&och=&sic1=-1&sicl=100&sich=9999&isofficer=1&iscob=1&isceo=1&ispres=1&iscoo=1&iscfo=1&isgc=1&isvp=1&grp=0&nfl=&nfh=&nil=&nih=&nol=&noh=&v2l=&v2h=&oc2l=&oc2h=&sortcol=8&cnt=100&page=1";
-
-  /**
-   * net.ajaskey.market.tools.main
-   *
-   * @param args
-   * @throws IOException
-   * @throws FileNotFoundException
-   */
-  public static void main(final String[] args) throws FileNotFoundException, IOException {
-
-    final TickerNames tn = new TickerNames("data/SP-Stocks.txt", "500");
-    final String s = tn.get();
-    System.out.println(TickerNames.p1 + s + TickerNames.p2a);
-
   }
 
 }

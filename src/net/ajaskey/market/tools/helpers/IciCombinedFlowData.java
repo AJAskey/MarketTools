@@ -41,12 +41,16 @@ import net.ajaskey.common.Utils;
  */
 public class IciCombinedFlowData {
 
+  private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+  private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
+  public long     bondMuni;
+  public long     bondTaxable;
+  public long     commodity;
   public Calendar date;
   public long     equityDomestic;
+
   public long     equityWorld;
-  public long     bondTaxable;
-  public long     bondMuni;
-  public long     commodity;
+
   public boolean  valid;
 
   /**
@@ -99,9 +103,5 @@ public class IciCombinedFlowData {
     ret += Utils.TAB + this.commodity;
     return ret;
   }
-
-  private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-
-  private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
 
 }

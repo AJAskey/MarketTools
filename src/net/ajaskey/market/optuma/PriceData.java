@@ -43,19 +43,90 @@ import net.ajaskey.common.DateTime;
  */
 public class PriceData {
 
+  public enum FormType {
+    FULL, SHORT
+  }
+
+  /**
+   *
+   * @param index
+   * @return
+   * @throws IOException
+   */
+  public static List<PriceData> getData(String index) throws IOException {
+    final List<PriceData> ret = new ArrayList<>();
+
+    final String fname = PriceData.getFilename(index);
+
+    try (BufferedReader br = new BufferedReader(new FileReader(new File(fname)))) {
+      String line = "";
+
+      line = br.readLine(); // read header
+
+      while (line != null) {
+        line = br.readLine();
+        if (line != null && line.length() > 0) {
+          final String fld[] = line.split(",");
+          // final PriceData dd = new PriceData();
+          DateTime dt = new DateTime();
+          dt = dt.parse(fld[0].trim(), "yyyy-MM-dd");
+          final double open = Double.parseDouble(fld[1].trim());
+          final double high = Double.parseDouble(fld[2].trim());
+          final double low = Double.parseDouble(fld[3].trim());
+          final double close = Double.parseDouble(fld[5].trim());
+          final long volume = Long.parseLong(fld[6].trim());
+
+          final PriceData dd = new PriceData(dt, open, high, low, close, volume);
+
+          ret.add(dd);
+        }
+      }
+    }
+
+    return ret;
+  }
+  /**
+   *
+   * @param prices
+   * @return
+   */
+  public static double getLatestPrice(List<PriceData> prices) {
+    try {
+      return prices.get(prices.size() - 1).close;
+    }
+    catch (final Exception e) {
+      return 0.0;
+    }
+  }
+  public static PriceData queryDate(DateTime dt, List<PriceData> prices) {
+    for (final PriceData d : prices) {
+      if (d.date.isEqual(dt)) {
+        return d;
+      }
+      else if (d.date.isGreaterThan(dt)) {
+        return d;
+      }
+    }
+    // Return last data point
+    return prices.get(prices.size() - 1);
+  }
+  private static String getFilename(String index) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  public double    close;
   public DateTime date;
+  public double    high;
+
+  public double    low;
 
   public double    open;
-  public double    high;
-  public double    low;
-  public double    close;
-  public long      volume;
-  private FormType form;
-  private boolean  valid;
 
-  public enum FormType {
-    SHORT, FULL
-  }
+  public long      volume;
+
+  private FormType form;
+
+  private boolean  valid;
 
   /**
    * This method serves as a constructor for the class.
@@ -151,77 +222,6 @@ public class PriceData {
   private void setForm(final FormType form) {
 
     this.form = form;
-  }
-
-  /**
-   *
-   * @param index
-   * @return
-   * @throws IOException
-   */
-  public static List<PriceData> getData(String index) throws IOException {
-    final List<PriceData> ret = new ArrayList<>();
-
-    final String fname = PriceData.getFilename(index);
-
-    try (BufferedReader br = new BufferedReader(new FileReader(new File(fname)))) {
-      String line = "";
-
-      line = br.readLine(); // read header
-
-      while (line != null) {
-        line = br.readLine();
-        if (line != null && line.length() > 0) {
-          final String fld[] = line.split(",");
-          // final PriceData dd = new PriceData();
-          DateTime dt = new DateTime();
-          dt = dt.parse(fld[0].trim(), "yyyy-MM-dd");
-          final double open = Double.parseDouble(fld[1].trim());
-          final double high = Double.parseDouble(fld[2].trim());
-          final double low = Double.parseDouble(fld[3].trim());
-          final double close = Double.parseDouble(fld[5].trim());
-          final long volume = Long.parseLong(fld[6].trim());
-
-          final PriceData dd = new PriceData(dt, open, high, low, close, volume);
-
-          ret.add(dd);
-        }
-      }
-    }
-
-    return ret;
-  }
-
-  /**
-   *
-   * @param prices
-   * @return
-   */
-  public static double getLatestPrice(List<PriceData> prices) {
-    try {
-      return prices.get(prices.size() - 1).close;
-    }
-    catch (final Exception e) {
-      return 0.0;
-    }
-  }
-
-  public static PriceData queryDate(DateTime dt, List<PriceData> prices) {
-    for (final PriceData d : prices) {
-      if (d.date.isEqual(dt)) {
-        return d;
-      }
-      else if (d.date.isGreaterThan(dt)) {
-        return d;
-      }
-    }
-    // Return last data point
-    return prices.get(prices.size() - 1);
-  }
-
-  private static String getFilename(String index) {
-    // TODO Auto-generated method stub
-    return null;
   }
 
 }

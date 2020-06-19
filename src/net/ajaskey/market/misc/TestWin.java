@@ -6,24 +6,6 @@ import javax.swing.JFrame;
 
 public class TestWin {
 
-  private JFrame frame;
-
-  /**
-   * Create the application.
-   */
-  public TestWin() {
-    this.initialize();
-  }
-
-  /**
-   * Initialize the contents of the frame.
-   */
-  private void initialize() {
-    this.frame = new JFrame();
-    this.frame.setBounds(100, 100, 450, 300);
-    this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  }
-
   /**
    * Launch the application.
    */
@@ -40,6 +22,24 @@ public class TestWin {
         }
       }
     });
+  }
+
+  private JFrame frame;
+
+  /**
+   * Create the application.
+   */
+  public TestWin() {
+    this.initialize();
+  }
+
+  /**
+   * Initialize the contents of the frame.
+   */
+  private void initialize() {
+    this.frame = new JFrame();
+    this.frame.setBounds(100, 100, 450, 300);
+    this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
 }

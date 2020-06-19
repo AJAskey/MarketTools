@@ -15,23 +15,23 @@ import net.ajaskey.common.DateTime;
  */
 public class FindBestReturns {
 
-  final static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-
-  static List<String> expiryDates = new ArrayList<>();
-  static List<String> codeList    = new ArrayList<>();
-
-  static int    otypes[]  = { OptionsProcessor.ACALL, OptionsProcessor.APUT };
   static double changes[] = { 5.0, 10.0, 15.0, 20.0 };
   // static double changes[] = { 25.0 };
 
-  final static int    minOi          = 500;   // 250;
-  final static int    holdDays5      = 4;
+  static List<String> codeList    = new ArrayList<>();
+  static List<String> expiryDates = new ArrayList<>();
+
   final static int    holdDays10     = 9;
   final static int    holdDays15     = 14;
+
   final static int    holdDays20     = 90;
-  static boolean      useMarkBuy     = false;
-  final static double minOptionPrice = 0.0499;
+  final static int    holdDays5      = 4;
   final static double maxOptionPrice = 10.01;
+  final static int    minOi          = 500;   // 250;
+  final static double minOptionPrice = 0.0499;
+  static int    otypes[]  = { OptionsProcessor.ACALL, OptionsProcessor.APUT };
+  final static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+  static boolean      useMarkBuy     = false;
 
   /**
    *

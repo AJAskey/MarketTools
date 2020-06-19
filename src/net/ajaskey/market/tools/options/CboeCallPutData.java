@@ -4,20 +4,20 @@ import net.ajaskey.common.DateTime;
 
 public class CboeCallPutData {
 
-  public String           id;
-  public double           strike;
-  public double           last;
-  public double           net;
-  public double           bid;
   public double           ask;
-  public double           mark;
-  public int              vol;
-  public double           iv;
-  public int              oi;
+  public double           bid;
   public double           delta;
   public double           gamma;
-  public double           premium;
+  public String           id;
+  public double           iv;
+  public double           last;
+  public double           mark;
+  public double           net;
+  public int              oi;
   public OptionsProcessor optionData;
+  public double           premium;
+  public double           strike;
+  public int              vol;
 
   /**
    *

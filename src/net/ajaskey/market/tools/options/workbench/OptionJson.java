@@ -15,6 +15,81 @@ import net.ajaskey.common.Utils;
 
 public class OptionJson {
 
+  private final static String apitoken = "5e6d19e325dbf1.63911667";
+
+  private static String response = "";
+
+  private final static String url1 = "https://eodhistoricaldata.com/api/options/";
+
+  private final static String url2 = "?api_token=" + OptionJson.apitoken;
+
+  /**
+   *
+   * @param filename
+   * @return
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @throws ParseException
+   */
+  public static Object getFromFile(String filename) throws FileNotFoundException, IOException, ParseException {
+    final Object obj = new JSONParser().parse(new FileReader(filename));
+    return obj;
+  }
+
+  /**
+   *
+   * @param code
+   * @return
+   * @throws ParseException
+   */
+  public static Object getFromWeb(String code) throws ParseException {
+    final String url = String.format("%s%s%s", OptionJson.url1, code, OptionJson.url2);
+    System.out.println(url);
+    OptionJson.response = Utils.getFromUrl(url);
+//    try {
+//      System.out.println(OptionJson.response.substring(0, 100));
+//    } catch (final Exception e) {
+//      e.printStackTrace();
+//    }
+    // System.out.println(resp);
+    final Object obj = new JSONParser().parse(OptionJson.response);
+    return obj;
+  }
+
+  /**
+   *
+   * @param jo
+   * @param key
+   * @return
+   */
+  private static Double getDouble(JSONObject jo, String key) {
+    Double ret = 0.0;
+    try {
+      return ((Number) jo.get(key)).doubleValue();
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+    }
+    return ret;
+  }
+
+  /**
+   *
+   * @param jo
+   * @param key
+   * @return
+   */
+  private static Long getLong(JSONObject jo, String key) {
+    Long ret = 0L;
+    try {
+      return ((Number) jo.get(key)).longValue();
+    }
+    catch (final Exception e) {
+      ret = 0L;
+    }
+    return ret;
+  }
+
   private Option opt = null;
 
   public OptionJson(String code, Option option) {
@@ -157,81 +232,6 @@ public class OptionJson {
     catch (final Exception e) {
       e.printStackTrace();
     }
-  }
-
-  private final static String apitoken = "5e6d19e325dbf1.63911667";
-
-  private final static String url1 = "https://eodhistoricaldata.com/api/options/";
-
-  private final static String url2 = "?api_token=" + OptionJson.apitoken;
-
-  private static String response = "";
-
-  /**
-   *
-   * @param filename
-   * @return
-   * @throws FileNotFoundException
-   * @throws IOException
-   * @throws ParseException
-   */
-  public static Object getFromFile(String filename) throws FileNotFoundException, IOException, ParseException {
-    final Object obj = new JSONParser().parse(new FileReader(filename));
-    return obj;
-  }
-
-  /**
-   *
-   * @param code
-   * @return
-   * @throws ParseException
-   */
-  public static Object getFromWeb(String code) throws ParseException {
-    final String url = String.format("%s%s%s", OptionJson.url1, code, OptionJson.url2);
-    System.out.println(url);
-    OptionJson.response = Utils.getFromUrl(url);
-//    try {
-//      System.out.println(OptionJson.response.substring(0, 100));
-//    } catch (final Exception e) {
-//      e.printStackTrace();
-//    }
-    // System.out.println(resp);
-    final Object obj = new JSONParser().parse(OptionJson.response);
-    return obj;
-  }
-
-  /**
-   *
-   * @param jo
-   * @param key
-   * @return
-   */
-  private static Double getDouble(JSONObject jo, String key) {
-    Double ret = 0.0;
-    try {
-      return ((Number) jo.get(key)).doubleValue();
-    }
-    catch (final Exception e) {
-      ret = 0.0;
-    }
-    return ret;
-  }
-
-  /**
-   *
-   * @param jo
-   * @param key
-   * @return
-   */
-  private static Long getLong(JSONObject jo, String key) {
-    Long ret = 0L;
-    try {
-      return ((Number) jo.get(key)).longValue();
-    }
-    catch (final Exception e) {
-      ret = 0L;
-    }
-    return ret;
   }
 
 }

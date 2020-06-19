@@ -36,8 +36,8 @@ public class ShillerData {
 
   public double ShillerEarnings;
   public double ShillerPE;
-  public double Sp500Dividends;
   public double Sp500BVPS;
+  public double Sp500Dividends;
   public double Sp500Sales;
 
   /**

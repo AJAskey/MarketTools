@@ -11,12 +11,35 @@ import net.ajaskey.common.Utils;
 
 public class TickerPriceData {
 
-  final private String    NL           = Utils.NL;
-  private int             numPrices    = 0;
-  private String          ticker;
-  private List<PriceData> tickerPrices = null;
-
+  static private List<DateTime> holidays = new ArrayList<>();
+  public static void main(final String[] args) {
+    final TickerPriceData code = new TickerPriceData("NASDAQ", "aapl");
+    System.out.println(code);
+    System.out.println("Latest      : " + code.getLatest());
+    System.out.println("Latest Date : " + code.getLatestDate());
+    final DateTime dt = new DateTime(2019, DateTime.MARCH, 15);
+    final double pd = code.getClose(dt);
+    System.out.println(dt + "\t" + pd);
+    PriceData tpd = code.getOffset(125);
+    System.out.println(tpd);
+    tpd = code.getOffset(125000);
+    System.out.println(tpd);
+  }
+  /**
+   *
+   */
+  private static void addHolidays() {
+    TickerPriceData.holidays.add(new DateTime(2020, DateTime.APRIL, 10));
+  }
   private String id;
+
+  final private String    NL           = Utils.NL;
+
+  private int             numPrices    = 0;
+
+  private String          ticker;
+
+  private List<PriceData> tickerPrices = null;
 
   public TickerPriceData(String code) {
     final String tkr[] = code.split(" ");
@@ -311,28 +334,5 @@ public class TickerPriceData {
       ret += String.format("%s\t%.2f, %.2f, %.2f, %.2f%n", pd.date, pd.open, pd.high, pd.low, pd.close);
     }
     return ret;
-  }
-
-  static private List<DateTime> holidays = new ArrayList<>();
-
-  public static void main(final String[] args) {
-    final TickerPriceData code = new TickerPriceData("NASDAQ", "aapl");
-    System.out.println(code);
-    System.out.println("Latest      : " + code.getLatest());
-    System.out.println("Latest Date : " + code.getLatestDate());
-    final DateTime dt = new DateTime(2019, DateTime.MARCH, 15);
-    final double pd = code.getClose(dt);
-    System.out.println(dt + "\t" + pd);
-    PriceData tpd = code.getOffset(125);
-    System.out.println(tpd);
-    tpd = code.getOffset(125000);
-    System.out.println(tpd);
-  }
-
-  /**
-   *
-   */
-  private static void addHolidays() {
-    TickerPriceData.holidays.add(new DateTime(2020, DateTime.APRIL, 10));
   }
 }

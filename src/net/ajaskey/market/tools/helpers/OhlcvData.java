@@ -37,20 +37,20 @@ import net.ajaskey.common.DateTime;
  */
 public class OhlcvData {
 
+  public enum FormType {
+    FULL, SHORT
+  }
+
+  public double    close;
+
   public DateTime date;
-
-  public double open;
-
   public double    high;
   public double    low;
-  public double    close;
+  public double open;
   public long      volume;
   private FormType form;
-  private boolean  valid;
 
-  public enum FormType {
-    SHORT, FULL
-  }
+  private boolean  valid;
 
   /**
    * This method serves as a constructor for the class.

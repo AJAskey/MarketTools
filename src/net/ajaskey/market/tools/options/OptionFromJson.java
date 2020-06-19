@@ -9,39 +9,59 @@ import net.ajaskey.common.DateTime;
 
 public class OptionFromJson {
 
-  private final Iterator<?> itr;
+  private static Double getDouble(JSONObject jo, String key) {
+    final Double ret = 0.0;
+    try {
+      return ((Number) jo.get(key)).doubleValue();
+    }
+    catch (final Exception e) {
+    }
+    return ret;
+  }
 
+  private static Long getLong(JSONObject jo, String key) {
+    final Long ret = 0L;
+    try {
+      return ((Number) jo.get(key)).longValue();
+    }
+    catch (final Exception e) {
+    }
+    return ret;
+  }
+  public Double   ask;
+  public Double   bid;
+  public Double   change;
+  public Double   changePercent;
   public String   contractName;
   public String   contractSize;
   public String   currency;
-  public String   type;
-  public Boolean  itm;
-  public DateTime lastTradeDateTime;
-  public DateTime expirationDate;
-  public Double   strike;
-  public Double   lastPrice;
-  public Double   bid;
-  public Double   ask;
-  public Double   change;
-  public Double   changePercent;
-  public Long     volume;
-  public Long     openInterest;
-  public Double   impliedVolatility;
-  public Double   delta;
-  public Double   gamma;
-  public Double   theta;
-  public Double   vega;
-  public Double   rho;
-  public Double   theoretical;
-  public Double   intrinsicValue;
-  public Double   timeValue;
-  public DateTime updatedAt;
   public Long     daysBeforeExpiration;
+  public Double   delta;
+  public DateTime expirationDate;
+  public Double   gamma;
+  public Double   impliedVolatility;
+  public Double   intrinsicValue;
+  public Boolean  itm;
+  public Double   lastPrice;
+  public DateTime lastTradeDateTime;
+  public Long     openInterest;
+  public Double   rho;
+  public Double   strike;
+  public Double   theoretical;
+  public Double   theta;
+  public Double   timeValue;
+  public String   type;
+  public DateTime updatedAt;
+  public Double   vega;
 
-  SimpleDateFormat sdftime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+  public Long     volume;
 
   SimpleDateFormat sdf    = new SimpleDateFormat("yyyy-MM-dd");
   SimpleDateFormat sdfOut = new SimpleDateFormat("dd-MMM-yyyy");
+
+  SimpleDateFormat sdftime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+  private final Iterator<?> itr;
 
   public OptionFromJson(Iterator<?> inItr) {
     this.itr = inItr;
@@ -86,24 +106,6 @@ public class OptionFromJson {
     }
   }
 
-  @Override
-  public String toString() {
-    String ret = this.contractName;
-    ret += String.format("  %s  %s  %s  %s%n  %s  %.2f  %.2f  %.2f  %d  %d%n", this.contractSize, this.currency, this.itm, this.lastTradeDateTime,
-        this.expirationDate, this.strike, this.bid, this.ask, this.volume, this.openInterest);
-    return ret;
-  }
-
-  private static Double getDouble(JSONObject jo, String key) {
-    final Double ret = 0.0;
-    try {
-      return ((Number) jo.get(key)).doubleValue();
-    }
-    catch (final Exception e) {
-    }
-    return ret;
-  }
-
 //  "contractName": "AAPL220121C00110000",
 //  "contractSize": "REGULAR",
 //  "currency": "USD",
@@ -131,13 +133,11 @@ public class OptionFromJson {
 //  "updatedAt": "2020-03-13 23:45:39",
 //  "daysBeforeExpiration": 678
 
-  private static Long getLong(JSONObject jo, String key) {
-    final Long ret = 0L;
-    try {
-      return ((Number) jo.get(key)).longValue();
-    }
-    catch (final Exception e) {
-    }
+  @Override
+  public String toString() {
+    String ret = this.contractName;
+    ret += String.format("  %s  %s  %s  %s%n  %s  %.2f  %.2f  %.2f  %d  %d%n", this.contractSize, this.currency, this.itm, this.lastTradeDateTime,
+        this.expirationDate, this.strike, this.bid, this.ask, this.volume, this.openInterest);
     return ret;
   }
 

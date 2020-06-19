@@ -5,25 +5,37 @@ import java.util.Calendar;
 
 public class OptionsData {
 
-  private final double currentPriceOfUnderlying;
+  /**
+   *
+   * @param args
+   */
+  public static void main(final String[] args) {
 
-  private final double   strikePrice;
-  private final double   interestRate;
-  private final double   volatility;
+    final Calendar ed = Calendar.getInstance();
+    ed.set(2019, Calendar.DECEMBER, 15);
+    final OptionsData od = new OptionsData(10.0, 12.0, 0.01, 0.15, ed);
+    System.out.println(od);
+  }
+
+  private final double currentPriceOfUnderlying;
+  private final long   daysToExpiry;
+  private double delta;
   private final Calendar expiry;
 
-  private final double yearsToExpiry;
-  private final long   daysToExpiry;
-
-  private double delta;
-
-  private double theta;
+  private double gamma;
+  private final double   interestRate;
 
   private double rho;
 
-  private double gamma;
+  private final double   strikePrice;
+
+  private double theta;
 
   private double vega;
+
+  private final double   volatility;
+
+  private final double yearsToExpiry;
 
   /**
    *
@@ -122,18 +134,6 @@ public class OptionsData {
   private double getDeltaYears(final Calendar c1, final Calendar c2) {
 
     return this.getDeltaDays(c1, c2) / 365.0;
-  }
-
-  /**
-   *
-   * @param args
-   */
-  public static void main(final String[] args) {
-
-    final Calendar ed = Calendar.getInstance();
-    ed.set(2019, Calendar.DECEMBER, 15);
-    final OptionsData od = new OptionsData(10.0, 12.0, 0.01, 0.15, ed);
-    System.out.println(od);
   }
 
 }

@@ -58,19 +58,19 @@ import net.ajaskey.market.misc.Debug;
  */
 public class FredCommon {
 
+  final public static double BILLION = 1E9;
+
   public final static String fredPath = net.ajaskey.market.optuma.OptumaCommon.optumaPath + "FRED-Download\\";
 
-  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd");
-
-  final static String infoHeader = "Name\tTitle\tMethod\tFrequency\tUnits\tType\tLast Download\tLast Data Update";
-
-  final public static double BILLION = 1E9;
+  public static List<DataSeriesInfo> legacyDsi = null;
 
   final public static double MILLION = 1E6;
 
+  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd");
+
   final public static double THOUSAND = 1E3;
 
-  public static List<DataSeriesInfo> legacyDsi = null;
+  final static String infoHeader = "Name\tTitle\tMethod\tFrequency\tUnits\tType\tLast Download\tLast Data Update";
 
   /**
    * 

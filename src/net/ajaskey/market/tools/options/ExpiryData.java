@@ -11,22 +11,189 @@ import net.ajaskey.common.DateTime;
 
 public class ExpiryData {
 
-  private DateTime expiry;
-  private int      type;
-  private String   id;
-  private double   strike;
-  private double   last;
-  private double   net;
-  private double   bid;
+  /**
+   *
+   * @param args
+   * @throws FileNotFoundException
+   */
+  public static void main(String[] args) throws FileNotFoundException {
+
+    try {
+      AddCboeDataFiles.main(null);
+    }
+    catch (final IOException e) {
+    }
+
+    final List<ExpiryDataList> l = new ArrayList<>();
+
+    final String code = "spy";
+    final int activeType = OptionsProcessor.APUT;
+    double ulMove = 0.15;
+
+    if (activeType == OptionsProcessor.ACALL) {
+      ulMove *= -1.0;
+    }
+
+    final DateTime buyDate = new DateTime();
+    buyDate.add(DateTime.DATE, 1);
+
+    final DateTime firstExpiry = new DateTime(buyDate);
+    firstExpiry.add(DateTime.DATE, 10);
+
+    final String fname = String.format("data/options/%s-options.dat", code);
+    final List<CboeOptionData> dil = CallPutList.readCboeData(fname, firstExpiry, buyDate, 50);
+
+    for (final CboeOptionData cod : dil) {
+      boolean found = false;
+      for (final ExpiryDataList ex : l) {
+        if (cod.expiry.isEqual(ex.expiry)) {
+          ExpiryData e = null;
+          if (activeType == OptionsProcessor.APUT) {
+            e = new ExpiryData(cod.put, ex.expiry, OptionsProcessor.APUT);
+          }
+          else {
+            e = new ExpiryData(cod.call, ex.expiry, OptionsProcessor.ACALL);
+          }
+          ex.exList.add(e);
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        final ExpiryDataList etmp = new ExpiryDataList(cod.expiry, CallPutList.getcPrice());
+        ExpiryData e = null;
+        if (activeType == OptionsProcessor.APUT) {
+          e = new ExpiryData(cod.put, etmp.expiry, OptionsProcessor.APUT);
+        }
+        else {
+          e = new ExpiryData(cod.call, etmp.expiry, OptionsProcessor.ACALL);
+        }
+        etmp.exList.add(e);
+        l.add(etmp);
+      }
+    }
+
+    final double tmpUl = CallPutList.getcPrice() * (1.0 + Math.abs(ulMove));
+    try (PrintWriter pw = new PrintWriter("out/options/ExpiryData.out")) {
+
+      for (final ExpiryDataList ex : l) {
+
+        Collections.sort(ex.exList, new SortByStrike());
+
+        final int ulPos = ExpiryData.getCallPos(ex.ul, ex.exList);
+        double newUl = 0.0;
+        if (activeType == OptionsProcessor.APUT) {
+          newUl = ex.ul * (1.0 - ulMove);
+        }
+        else {
+          newUl = ex.ul * (1.0 + ulMove);
+        }
+
+        pw.printf("%n%s\t%.2f\t%.2f\t%d\t%.2f\t\t%.2f%%%n", ex.expiry, ex.ul, tmpUl, ulPos, newUl, Math.abs(ulMove * 100.0));
+
+        double lastPrice = 0.0;
+        double buy = 0.0;
+        double sell = 0.0;
+        for (int i = 0; i < ex.exList.size(); i++) {
+
+          final ExpiryData ed = ex.exList.get(i);
+          if (lastPrice > 0.0) {
+          }
+
+          double posUl = 0.0;
+          int pos = -1;
+          if (activeType == OptionsProcessor.ACALL) {
+            posUl = ed.strike * (1.0 + ulMove);
+            pos = ExpiryData.getCallPos(posUl, ex.exList);
+          }
+          else {
+            posUl = ed.strike * (1.0 - ulMove);
+            pos = ExpiryData.getPutPos(posUl, ex.exList);
+          }
+
+          double profit = 0.0;
+          if (pos >= 0) {
+
+            if (ed.mark > 0.0499 && ex.exList.get(pos).mark > 0.0499) {
+              if (activeType == OptionsProcessor.ACALL) {
+                buy = ed.mark;
+                sell = ex.exList.get(pos).mark;
+              }
+              else {
+                buy = ex.exList.get(pos).mark;
+                sell = ed.mark;
+              }
+              profit = (sell - buy) / buy * 100.0;
+            }
+          }
+
+          pw.printf("\t%3d %15s %6.1f %7.2f %7.2f %5d %7.2f %7.2f %10.1f%% %10d%n", i, ed.id, ed.strike, posUl, ed.mark, pos, buy, sell, profit,
+              ed.vol);
+
+          lastPrice = ed.mark;
+
+        }
+        // break;
+      }
+    }
+  }
+  private static int getCallPos(double ul, List<ExpiryData> ex) {
+    int ret = -1;
+
+    for (int i = 0; i < ex.size(); i++) {
+      if (ex.get(i).strike >= ul) {
+        ret = i;
+        break;
+      }
+    }
+
+    return ret;
+  }
+  private static int getPosOffset(double price, double offset, List<ExpiryData> ex) {
+    int ret = -1;
+    final double prOff = price + offset;
+
+    for (int i = 0; i < ex.size(); i++) {
+      if (ex.get(i).strike >= prOff) {
+        ret = i;
+        break;
+      }
+    }
+
+    return ret;
+  }
+  private static int getPutPos(double ul, List<ExpiryData> ex) {
+    int ret = -1;
+
+    for (int i = ex.size() - 1; i >= 0; i--) {
+      if (ex.get(i).strike <= ul) {
+        ret = i;
+        break;
+      }
+    }
+
+    return ret;
+  }
   private double   ask;
-  private double   mark;
-  private int      vol;
-  private double   iv;
-  private int      oi;
+  private double   bid;
   private double   delta;
+  private DateTime expiry;
   private double   gamma;
+  private String   id;
+  private double   iv;
+  private double   last;
+  private double   mark;
+  private double   net;
 
   // private List<ExpiryData> list = null;
+
+  private int      oi;
+
+  private double   strike;
+
+  private int      type;
+
+  private int      vol;
 
   public ExpiryData() {
     // TODO Auto-generated constructor stub
@@ -184,173 +351,6 @@ public class ExpiryData {
     ret += String.format(" IV      : %.4f%n", this.iv);
     ret += String.format(" Delta   : %.4f%n", this.delta);
     ret += String.format(" Gamma   : %.4f%n", this.gamma);
-
-    return ret;
-  }
-
-  /**
-   *
-   * @param args
-   * @throws FileNotFoundException
-   */
-  public static void main(String[] args) throws FileNotFoundException {
-
-    try {
-      AddCboeDataFiles.main(null);
-    }
-    catch (final IOException e) {
-    }
-
-    final List<ExpiryDataList> l = new ArrayList<>();
-
-    final String code = "spy";
-    final int activeType = OptionsProcessor.APUT;
-    double ulMove = 0.15;
-
-    if (activeType == OptionsProcessor.ACALL) {
-      ulMove *= -1.0;
-    }
-
-    final DateTime buyDate = new DateTime();
-    buyDate.add(DateTime.DATE, 1);
-
-    final DateTime firstExpiry = new DateTime(buyDate);
-    firstExpiry.add(DateTime.DATE, 10);
-
-    final String fname = String.format("data/options/%s-options.dat", code);
-    final List<CboeOptionData> dil = CallPutList.readCboeData(fname, firstExpiry, buyDate, 50);
-
-    for (final CboeOptionData cod : dil) {
-      boolean found = false;
-      for (final ExpiryDataList ex : l) {
-        if (cod.expiry.isEqual(ex.expiry)) {
-          ExpiryData e = null;
-          if (activeType == OptionsProcessor.APUT) {
-            e = new ExpiryData(cod.put, ex.expiry, OptionsProcessor.APUT);
-          }
-          else {
-            e = new ExpiryData(cod.call, ex.expiry, OptionsProcessor.ACALL);
-          }
-          ex.exList.add(e);
-          found = true;
-          break;
-        }
-      }
-      if (!found) {
-        final ExpiryDataList etmp = new ExpiryDataList(cod.expiry, CallPutList.getcPrice());
-        ExpiryData e = null;
-        if (activeType == OptionsProcessor.APUT) {
-          e = new ExpiryData(cod.put, etmp.expiry, OptionsProcessor.APUT);
-        }
-        else {
-          e = new ExpiryData(cod.call, etmp.expiry, OptionsProcessor.ACALL);
-        }
-        etmp.exList.add(e);
-        l.add(etmp);
-      }
-    }
-
-    final double tmpUl = CallPutList.getcPrice() * (1.0 + Math.abs(ulMove));
-    try (PrintWriter pw = new PrintWriter("out/options/ExpiryData.out")) {
-
-      for (final ExpiryDataList ex : l) {
-
-        Collections.sort(ex.exList, new SortByStrike());
-
-        final int ulPos = ExpiryData.getCallPos(ex.ul, ex.exList);
-        double newUl = 0.0;
-        if (activeType == OptionsProcessor.APUT) {
-          newUl = ex.ul * (1.0 - ulMove);
-        }
-        else {
-          newUl = ex.ul * (1.0 + ulMove);
-        }
-
-        pw.printf("%n%s\t%.2f\t%.2f\t%d\t%.2f\t\t%.2f%%%n", ex.expiry, ex.ul, tmpUl, ulPos, newUl, Math.abs(ulMove * 100.0));
-
-        double lastPrice = 0.0;
-        double buy = 0.0;
-        double sell = 0.0;
-        for (int i = 0; i < ex.exList.size(); i++) {
-
-          final ExpiryData ed = ex.exList.get(i);
-          if (lastPrice > 0.0) {
-          }
-
-          double posUl = 0.0;
-          int pos = -1;
-          if (activeType == OptionsProcessor.ACALL) {
-            posUl = ed.strike * (1.0 + ulMove);
-            pos = ExpiryData.getCallPos(posUl, ex.exList);
-          }
-          else {
-            posUl = ed.strike * (1.0 - ulMove);
-            pos = ExpiryData.getPutPos(posUl, ex.exList);
-          }
-
-          double profit = 0.0;
-          if (pos >= 0) {
-
-            if (ed.mark > 0.0499 && ex.exList.get(pos).mark > 0.0499) {
-              if (activeType == OptionsProcessor.ACALL) {
-                buy = ed.mark;
-                sell = ex.exList.get(pos).mark;
-              }
-              else {
-                buy = ex.exList.get(pos).mark;
-                sell = ed.mark;
-              }
-              profit = (sell - buy) / buy * 100.0;
-            }
-          }
-
-          pw.printf("\t%3d %15s %6.1f %7.2f %7.2f %5d %7.2f %7.2f %10.1f%% %10d%n", i, ed.id, ed.strike, posUl, ed.mark, pos, buy, sell, profit,
-              ed.vol);
-
-          lastPrice = ed.mark;
-
-        }
-        // break;
-      }
-    }
-  }
-
-  private static int getCallPos(double ul, List<ExpiryData> ex) {
-    int ret = -1;
-
-    for (int i = 0; i < ex.size(); i++) {
-      if (ex.get(i).strike >= ul) {
-        ret = i;
-        break;
-      }
-    }
-
-    return ret;
-  }
-
-  private static int getPosOffset(double price, double offset, List<ExpiryData> ex) {
-    int ret = -1;
-    final double prOff = price + offset;
-
-    for (int i = 0; i < ex.size(); i++) {
-      if (ex.get(i).strike >= prOff) {
-        ret = i;
-        break;
-      }
-    }
-
-    return ret;
-  }
-
-  private static int getPutPos(double ul, List<ExpiryData> ex) {
-    int ret = -1;
-
-    for (int i = ex.size() - 1; i >= 0; i--) {
-      if (ex.get(i).strike <= ul) {
-        ret = i;
-        break;
-      }
-    }
 
     return ret;
   }

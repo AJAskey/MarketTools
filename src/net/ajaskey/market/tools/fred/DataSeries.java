@@ -55,32 +55,12 @@ import net.ajaskey.market.misc.Debug;
  */
 public class DataSeries {
 
-  private String name;
-
-  private AggregationMethodType aggType;
-
-  private FileType fileType;
-
-  private OrderType order;
-
-  private ResponseType respType;
-
-  private int                          limit;
-  private int                          offset;
-  private int                          respKnt;
-  private String                       period;
-  private final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-  private DocumentBuilder              dBuilder  = null;
-
-  private DateTime             dtOne;
-  private final DataSeriesInfo info;
-
   public enum AggregationMethodType {
-    AVG, SUM, EOP
+    AVG, EOP, SUM
   }
 
   public enum FileType {
-    XML, JSON, TXT, XLS
+    JSON, TXT, XLS, XML
   }
 
   public enum OrderType {
@@ -94,8 +74,53 @@ public class DataSeries {
    * Continuously Compounded Annual Rate of Change log = Natural Log
    */
   public enum ResponseType {
-    LIN, CHG, CH1, PCH, PC1, PCA, CCH, CCA, LOG
+    CCA, CCH, CH1, CHG, LIN, LOG, PC1, PCA, PCH
   }
+
+  /**
+   * net.ajaskey.market.tools.fred.main
+   *
+   * @param args
+   */
+  public static void main(final String[] args) {
+
+    final DataSeries ds = new DataSeries("AMTMUO");
+
+    if (ds.isValid()) {
+
+      ds.setAggType(AggregationMethodType.EOP);
+      // ds.setOrder(OrderType.DESC);
+      ds.setRespType(ResponseType.LIN);
+      final List<DataValues> dvList = ds.getValues(1.0, true, false);
+
+      for (final DataValues d : dvList) {
+        System.out.println(d.getDate() + "  " + d.getValue());
+      }
+
+      System.out.println(ds);
+
+    }
+  }
+
+  private AggregationMethodType aggType;
+  private final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+  private DocumentBuilder              dBuilder  = null;
+  private DateTime             dtOne;
+  private FileType fileType;
+  private final DataSeriesInfo info;
+
+  private int                          limit;
+  private String name;
+
+  private int                          offset;
+
+  private OrderType order;
+
+  private String                       period;
+
+  private int                          respKnt;
+
+  private ResponseType respType;
 
   /**
    * This method serves as a constructor for the class.
@@ -454,31 +479,6 @@ public class DataSeries {
   private void setName(final String name) {
 
     this.name = name;
-  }
-
-  /**
-   * net.ajaskey.market.tools.fred.main
-   *
-   * @param args
-   */
-  public static void main(final String[] args) {
-
-    final DataSeries ds = new DataSeries("AMTMUO");
-
-    if (ds.isValid()) {
-
-      ds.setAggType(AggregationMethodType.EOP);
-      // ds.setOrder(OrderType.DESC);
-      ds.setRespType(ResponseType.LIN);
-      final List<DataValues> dvList = ds.getValues(1.0, true, false);
-
-      for (final DataValues d : dvList) {
-        System.out.println(d.getDate() + "  " + d.getValue());
-      }
-
-      System.out.println(ds);
-
-    }
   }
 
 }

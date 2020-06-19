@@ -50,16 +50,123 @@ import net.ajaskey.market.optuma.TickerPriceData;
  */
 public class IngestOptumaFile {
 
+  public static final int ADD = 1;
+
+  public static final double BAD_OFD_DATA = -666.600;
+  public static final int DIVIDE = 4;
+  public static final int MULTIPLY = 3;
+  public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+  public static final int SUBTRACT = 2;
+
+  static TickerPriceData spxData = null;
+
+  /**
+   * Testout only
+   *
+   * net.ajaskey.market.tools.fred.processing.main
+   *
+   * @param args
+   * @throws FileNotFoundException
+   * @throws IOException
+   */
+  public static void main(final String[] args) throws FileNotFoundException, IOException {
+
+    IngestOptumaFile.spxData = new TickerPriceData("WI", "SPX");
+
+    final File f1 = new File("d:\\Data2\\MA\\CSV Data\\Fred-Download\\GDP.csv");
+    final File f2 = new File("d:\\Data2\\MA\\CSV Data\\Fred-Download\\TTLCON.csv");
+
+    final IngestOptumaFile iof = new IngestOptumaFile(f2, f1);
+    final List<OptumaFileData> mergedData = iof.processFiles(IngestOptumaFile.DIVIDE, 1.0);
+
+    final String fname = "d:\\Data2\\MA\\CSV Data\\Fred-Download\\GDP vs TTLCON.csv";
+
+    try (PrintWriter pw = new PrintWriter(fname)) {
+      for (final OptumaFileData d : mergedData) {
+        pw.println(d);
+      }
+    }
+
+  }
+
+  /**
+   *
+   * Interface to world. net.ajaskey.market.tools.fred.processing.process
+   *
+   * @param f1name
+   * @param f2name
+   * @param title
+   * @param operation
+   * @throws FileNotFoundException
+   * @throws IOException
+   */
+  public static void process(final String f1name, final String f2name, final String title, final int operation, double scaler)
+      throws FileNotFoundException, IOException {
+
+    System.out.printf("%s\t%s%n", f1name, f2name);
+    final IngestOptumaFile iof = new IngestOptumaFile(f1name, f2name);
+    final List<OptumaFileData> resultsList = iof.processFiles(operation, scaler);
+
+    final String fname = String.format("%s%s", FredCommon.fredPath, title);
+    try (PrintWriter pw = new PrintWriter(fname)) {
+      for (final OptumaFileData ofd : resultsList) {
+        pw.println(ofd);
+      }
+    }
+  }
+
+  /**
+   *
+   * net.ajaskey.market.tools.fred.processing.readDataFile
+   *
+   * @param fname
+   * @return
+   * @throws FileNotFoundException
+   * @throws IOException
+   */
+  public static List<OptumaFileData> readDataFile(final String fname) throws FileNotFoundException, IOException {
+
+    final List<OptumaFileData> ret = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
+
+      boolean firstOne = true;
+      String line;
+      while ((line = reader.readLine()) != null) {
+        final String str = line.trim();
+        final String fld[] = str.split(",");
+        try {
+          final Date d = IngestOptumaFile.sdf.parse(fld[0].trim());
+          final DateTime dt = new DateTime(d);
+          final double val = Double.parseDouble(fld[1]);
+          if (firstOne && Math.abs(val) == 0.0) {
+            // noop
+          }
+          else {
+            firstOne = false;
+            ret.add(new OptumaFileData(dt, val));
+          }
+        }
+        catch (final ParseException e) {
+        }
+      }
+    }
+    return ret;
+  }
+
   public List<OptumaFileData> mergedPercents = new ArrayList<>();
 
-  String               title;
-  List<OptumaFileData> f1List   = new ArrayList<>();
-  List<OptumaFileData> f2List   = new ArrayList<>();
   List<OptumaFileData> diffList = new ArrayList<>();
+
+  List<OptumaFileData> f1List   = new ArrayList<>();
+
+  List<OptumaFileData> f2List   = new ArrayList<>();
 
   File file1 = null;
 
   File file2 = null;
+  String               title;
 
   /**
    *
@@ -239,113 +346,6 @@ public class IngestOptumaFile {
   private List<OptumaFileData> readFile(final File f) throws FileNotFoundException, IOException {
 
     return IngestOptumaFile.readDataFile(f.getAbsolutePath());
-  }
-
-  public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-  public static final int ADD = 1;
-
-  public static final int SUBTRACT = 2;
-  public static final int MULTIPLY = 3;
-
-  public static final int DIVIDE = 4;
-
-  public static final double BAD_OFD_DATA = -666.600;
-
-  static TickerPriceData spxData = null;
-
-  /**
-   * Testout only
-   *
-   * net.ajaskey.market.tools.fred.processing.main
-   *
-   * @param args
-   * @throws FileNotFoundException
-   * @throws IOException
-   */
-  public static void main(final String[] args) throws FileNotFoundException, IOException {
-
-    IngestOptumaFile.spxData = new TickerPriceData("WI", "SPX");
-
-    final File f1 = new File("d:\\Data2\\MA\\CSV Data\\Fred-Download\\GDP.csv");
-    final File f2 = new File("d:\\Data2\\MA\\CSV Data\\Fred-Download\\TTLCON.csv");
-
-    final IngestOptumaFile iof = new IngestOptumaFile(f2, f1);
-    final List<OptumaFileData> mergedData = iof.processFiles(IngestOptumaFile.DIVIDE, 1.0);
-
-    final String fname = "d:\\Data2\\MA\\CSV Data\\Fred-Download\\GDP vs TTLCON.csv";
-
-    try (PrintWriter pw = new PrintWriter(fname)) {
-      for (final OptumaFileData d : mergedData) {
-        pw.println(d);
-      }
-    }
-
-  }
-
-  /**
-   *
-   * Interface to world. net.ajaskey.market.tools.fred.processing.process
-   *
-   * @param f1name
-   * @param f2name
-   * @param title
-   * @param operation
-   * @throws FileNotFoundException
-   * @throws IOException
-   */
-  public static void process(final String f1name, final String f2name, final String title, final int operation, double scaler)
-      throws FileNotFoundException, IOException {
-
-    System.out.printf("%s\t%s%n", f1name, f2name);
-    final IngestOptumaFile iof = new IngestOptumaFile(f1name, f2name);
-    final List<OptumaFileData> resultsList = iof.processFiles(operation, scaler);
-
-    final String fname = String.format("%s%s", FredCommon.fredPath, title);
-    try (PrintWriter pw = new PrintWriter(fname)) {
-      for (final OptumaFileData ofd : resultsList) {
-        pw.println(ofd);
-      }
-    }
-  }
-
-  /**
-   *
-   * net.ajaskey.market.tools.fred.processing.readDataFile
-   *
-   * @param fname
-   * @return
-   * @throws FileNotFoundException
-   * @throws IOException
-   */
-  public static List<OptumaFileData> readDataFile(final String fname) throws FileNotFoundException, IOException {
-
-    final List<OptumaFileData> ret = new ArrayList<>();
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
-
-      boolean firstOne = true;
-      String line;
-      while ((line = reader.readLine()) != null) {
-        final String str = line.trim();
-        final String fld[] = str.split(",");
-        try {
-          final Date d = IngestOptumaFile.sdf.parse(fld[0].trim());
-          final DateTime dt = new DateTime(d);
-          final double val = Double.parseDouble(fld[1]);
-          if (firstOne && Math.abs(val) == 0.0) {
-            // noop
-          }
-          else {
-            firstOne = false;
-            ret.add(new OptumaFileData(dt, val));
-          }
-        }
-        catch (final ParseException e) {
-        }
-      }
-    }
-    return ret;
   }
 
 }

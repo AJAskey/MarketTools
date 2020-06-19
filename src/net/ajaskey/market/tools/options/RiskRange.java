@@ -7,15 +7,32 @@ import net.ajaskey.common.Utils;
 
 public class RiskRange {
 
+  /**
+   * For testing
+   *
+   * @param args
+   */
+  public static void main(String[] args) {
+    final List<String> data = TextUtils.readTextFile("data/options/DMPData.csv", true);
+
+    for (final String s : data) {
+      final RiskRange rr = new RiskRange(s);
+      if (rr.isValid()) {
+        System.out.println(rr);
+      }
+    }
+
+  }
   public String   code;
-  public double   dmp3u;
-  public double   dmp2u;
+  public double   dmp1l;
   public double   dmp1u;
+  public double   dmp2l;
+  public double   dmp2u;
+  public double   dmp3l;
+  public double   dmp3u;
   public double   dmpPoc;
   public double   last;
-  public double   dmp3l;
-  public double   dmp2l;
-  public double   dmp1l;
+
   private boolean valid;
 
   public RiskRange(String s) {
@@ -65,23 +82,6 @@ public class RiskRange {
    */
   private void setValid(boolean valid) {
     this.valid = valid;
-  }
-
-  /**
-   * For testing
-   *
-   * @param args
-   */
-  public static void main(String[] args) {
-    final List<String> data = TextUtils.readTextFile("data/options/DMPData.csv", true);
-
-    for (final String s : data) {
-      final RiskRange rr = new RiskRange(s);
-      if (rr.isValid()) {
-        System.out.println(rr);
-      }
-    }
-
   }
 
 }

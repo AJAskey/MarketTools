@@ -58,10 +58,10 @@ import net.ajaskey.market.optuma.PriceData;
  */
 public class ProcessEIA {
 
-  private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-
   private static DocumentBuilderFactory dbFactory = null;
+
   private static DocumentBuilder        dBuilder  = null;
+  private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
   /**
    * net.ajaskey.market.tools.main

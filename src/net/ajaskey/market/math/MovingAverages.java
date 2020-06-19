@@ -35,12 +35,12 @@ package net.ajaskey.market.math;
  */
 public class MovingAverages {
 
+  private double       ema;
+  private final double emaMultipler;
+  private final int    emaWindow;
   private int          knt;
   private double       sma;
-  private double       ema;
   private double       smaTot;
-  private final int    emaWindow;
-  private final double emaMultipler;
 
   // private List<Double> values = new ArrayList<>();;
 
