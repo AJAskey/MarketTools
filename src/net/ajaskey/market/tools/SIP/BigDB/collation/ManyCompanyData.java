@@ -73,7 +73,7 @@ public class ManyCompanyData {
 
   @Override
   public String toString() {
-    String ret = String.format("%s : %d%n", this.ticker, this.ocdList.size());
+    String ret = String.format("%s : %d", this.ticker, this.ocdList.size());
     return ret;
   }
 }

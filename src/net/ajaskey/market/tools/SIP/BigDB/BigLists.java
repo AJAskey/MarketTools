@@ -60,7 +60,7 @@ public class BigLists {
   public static void setLists(int yr, int qtr, List<FieldData> fdList) {
 
     if (BigLists.allDataList.size() == 0) {
-      BigLists.init(2019, 2020);
+      BigLists.init(2015, 2020);
     }
     final FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
     for (final FieldDataYear fdy : BigLists.allDataList) {

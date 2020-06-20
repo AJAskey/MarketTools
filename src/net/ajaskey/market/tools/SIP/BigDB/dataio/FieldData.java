@@ -102,26 +102,73 @@ public class FieldData {
     final String dir = String.format("%s%s/Q%d/", FieldData.inbasedir, year, quarter);
     final String tail = String.format("%dQ%d.txt", year, quarter);
 
+    File dirCk = new File(dir);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested SIP Data Directory does not exist! %s%n", dir);
+      return;
+    }
+
+    System.out.printf("Processing SIP Year %d Quarter %d data.%n", year, quarter);
+
     String head = String.format("CompanyInfo-");
     String ffname = String.format("%s%s%s", dir, head, tail);
+    dirCk = new File(ffname);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+      return;
+    }
     CompanyFileData.readSipData(ffname);
 
     head = "Shares-";
     ffname = String.format("%s%s%s", dir, head, tail);
+    dirCk = new File(ffname);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+      return;
+    }
     SharesFileData.readSipData(ffname);
     // System.out.println(SharesFileData.listToString());
 
     head = "Estimates-";
     ffname = String.format("%s%s%s", dir, head, tail);
+    dirCk = new File(ffname);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+      return;
+    }
     EstimateFileData.readSipData(ffname);
     // System.out.println(EstimateFileData.listToString());
 
     head = "Balsheet-";
-    BalSheetFileData.readSipData(dir + head + "QTR-" + tail, dir + head + "ANN-" + tail);
+    String ffname1 = dir + head + "QTR-" + tail;
+    String ffname2 = dir + head + "ANN-" + tail;
+    dirCk = new File(ffname1);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname1);
+      return;
+    }
+    dirCk = new File(ffname2);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname2);
+      return;
+    }
+    BalSheetFileData.readSipData(ffname1, ffname2);
     // System.out.println(BalSheetFileData.listToString());
 
     head = "Income-";
-    IncSheetFileData.readSipData(dir + head + "QTR-" + tail, dir + head + "ANN-" + tail);
+    ffname1 = dir + head + "QTR-" + tail;
+    ffname2 = dir + head + "ANN-" + tail;
+    dirCk = new File(ffname1);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname1);
+      return;
+    }
+    dirCk = new File(ffname2);
+    if (!dirCk.exists()) {
+      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname2);
+      return;
+    }
+    IncSheetFileData.readSipData(ffname1, ffname2);
     // System.out.println(IncSheetFileData.listToString());
 
     for (final CompanyFileData cfd : CompanyFileData.getList()) {
@@ -188,11 +235,17 @@ public class FieldData {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    final String[] ext = { "txt" };
+    final String[] ext = { "txt", "gz" };
     final List<File> fList = Utils.getDirTree(indir, ext);
     for (final File f : fList) {
 
-      final List<String> data = TextUtils.readTextFile(f, true);
+      List<String> data = null;
+      if (f.getName().endsWith(".gz")) {
+        data = TextUtils.readGzipFile(f.getAbsolutePath());
+      }
+      else {
+        data = TextUtils.readTextFile(f, true);
+      }
 
       final FieldData fd = new FieldData(year, quarter);
 
@@ -226,8 +279,18 @@ public class FieldData {
 
     final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
 
-    final String fname = String.format("%s%s-fundamental-data-%dQ%d.txt", indir, ticker, year, quarter);
-    final List<String> data = TextUtils.readTextFile(fname, true);
+    String fname = String.format("%s%s-fundamental-data-%dQ%d.txt", indir, ticker, year, quarter);
+
+    List<String> data = null;
+
+    data = TextUtils.readTextFile(fname, true);
+    if (data == null) {
+      data = TextUtils.readGzipFile(fname + ".gz");
+    }
+    if (data == null) {
+      System.out.printf("Warning... File not found %s", fname);
+      return null;
+    }
 
     final FieldData fd = new FieldData(year, quarter);
 
@@ -366,6 +429,10 @@ public class FieldData {
 
   public EstimateFileData getEstimateData() {
     return this.estimateData;
+  }
+
+  public SharesFileData getShares() {
+    return this.shareData;
   }
 
   public ExchEnum getExchange() {

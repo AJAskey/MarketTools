@@ -313,8 +313,25 @@ public class BalSheetFileData {
    */
   public static void readSipData(String filenameQtr, String filenameYr) {
 
-    final List<String> bsdDataQtr = TextUtils.readTextFile(filenameQtr, true);
-    final List<String> bsdDataYr = TextUtils.readTextFile(filenameYr, true);
+    List<String> bsdDataQtr = null;
+    List<String> bsdDataYr = null;
+    try {
+      bsdDataQtr = TextUtils.readTextFile(filenameQtr, true);
+      bsdDataYr = TextUtils.readTextFile(filenameYr, true);
+
+      if (bsdDataQtr.size() < 100) {
+        System.out.printf("Warning ... Invalid File %s%n", filenameQtr);
+        return;
+      }
+      if (bsdDataYr.size() < 100) {
+        System.out.printf("Warning ... Invalid File %s%n", filenameYr);
+        return;
+      }
+    }
+    catch (Exception e) {
+      System.out.printf("Warning ... File not found %s or %s%n", filenameQtr, filenameYr);
+      return;
+    }
 
     for (int i = 0; i < bsdDataQtr.size(); i++) {
 

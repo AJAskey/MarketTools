@@ -306,8 +306,25 @@ public class IncSheetFileData {
    */
   public static void readSipData(String filenameQtr, String filenameYr) {
 
-    final List<String> isdDataQtr = TextUtils.readTextFile(filenameQtr, true);
-    final List<String> isdDataYr = TextUtils.readTextFile(filenameYr, true);
+    List<String> isdDataQtr = null;
+    List<String> isdDataYr = null;
+    try {
+      isdDataQtr = TextUtils.readTextFile(filenameQtr, true);
+      isdDataYr = TextUtils.readTextFile(filenameYr, true);
+
+      if (isdDataQtr.size() < 100) {
+        System.out.printf("Warning ... Invalid File %s%n", filenameQtr);
+        return;
+      }
+      if (isdDataYr.size() < 100) {
+        System.out.printf("Warning ... Invalid File %s%n", filenameYr);
+        return;
+      }
+    }
+    catch (Exception e) {
+      System.out.printf("Warning ... File not found %s or %s%n", filenameQtr, filenameYr);
+      return;
+    }
 
     for (int i = 0; i < isdDataQtr.size(); i++) {
 

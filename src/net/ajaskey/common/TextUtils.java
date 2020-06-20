@@ -1,9 +1,13 @@
 package net.ajaskey.common;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.io.FileUtils;
 
@@ -45,8 +49,7 @@ public class TextUtils {
       lines = FileUtils.readLines(file, "UTF-8");
     }
     catch (final IOException e) {
-      e.printStackTrace();
-      return ret;
+      return null;
     }
 
     if (ignoreBlanks) {
@@ -79,5 +82,29 @@ public class TextUtils {
       ret += s + Utils.NL;
     }
     return ret;
+  }
+
+  /**
+   * 
+   * @param fname
+   * @return
+   */
+  public static List<String> readGzipFile(String fname) {
+
+    List<String> retList = new ArrayList<>();
+    File file = new File(fname);
+
+    try (GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(file));
+        BufferedReader br = new BufferedReader(new InputStreamReader(gzip));) {
+
+      String line = null;
+      while ((line = br.readLine()) != null) {
+        retList.add(line);
+      }
+    }
+    catch (Exception e) {
+      retList = null;
+    }
+    return retList;
   }
 }
