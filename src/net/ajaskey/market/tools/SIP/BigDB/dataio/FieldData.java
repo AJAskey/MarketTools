@@ -189,18 +189,6 @@ public class FieldData {
 
       FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, year, quarter);
 
-      String fname = String.format("%d-Q%d.dbg", year, quarter);
-      try (PrintWriter pw = new PrintWriter(fname)) {
-        if (cfd.getTicker().equalsIgnoreCase("AA")) {
-          System.out.printf("Processing %s for %d Q%d%n", cfd.getTicker(), year, quarter);
-          pw.println(cfd.toString());
-          pw.println(sfd.toString());
-          pw.println(efd.toString());
-          pw.println(ifd.toString());
-          pw.println(bfd.toString());
-        }
-      }
-
     }
   }
 
