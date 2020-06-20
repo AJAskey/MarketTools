@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.BigDB.BigLists;
+import net.ajaskey.market.tools.SIP.BigDB.collation.OneCompanyData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
@@ -256,12 +257,43 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * 
+   * @param fd
+   * @return
+   */
   private static String companyLine(FieldData fd) {
     return String.format("%-10s\t%-50s\t%-15s\t%-8s\t%-1s%n", fd.getTicker(), fd.getCompanyInfo().getName(), fd.getCompanyInfo().getExchange(),
         fd.getCompanyInfo().getSnpIndexStr(), fd.getCompanyInfo().getDowIndexStr(), fd.getCompanyInfo().getExchange());
   }
 
+  /**
+   * 
+   * @param yr
+   * @param qtr
+   * @return
+   */
   private static String header(int yr, int qtr) {
     return String.format("Summary of requested Company Ticker, Name, Exchange SnP, Dow for year %d quarter %d%n", yr, qtr);
+  }
+
+  /**
+   * 
+   * @param ticker
+   * @return
+   */
+  public static List<String> getCompanyNetIncome(String ticker) {
+
+    List<String> ret = new ArrayList<>();
+
+    List<OneCompanyData> ocdList = OneCompanyData.getCompany(ticker);
+
+    for (OneCompanyData ocd : ocdList) {
+      double net = ocd.getQ1().getIncSheetData().getNetIncYr()[0];
+      String s = String.format("%d : %f", ocd.getYear(), net);
+      ret.add(s);
+    }
+
+    return ret;
   }
 }

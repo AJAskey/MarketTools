@@ -1,8 +1,10 @@
 package net.ajaskey.market.tools.SIP.BigDB;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
 
 /**
  * This class contains test drivers for various BigDB methods.
@@ -45,21 +47,25 @@ public class SipDbData {
 //      System.out.println(s);
 //    }
 
-    int year = 2020;
-    int qtr = 1;
+    int year = 2019;
+    int qtr = 3;
 
 //    for (int i = 2018; i < 2021; i++) {
 //      for (int j = 1; j < 5; j++) {
 //        FieldData.parseSipData(i, j);
 //      }
 //    }
-//    for (int i = 2018; i < 2021; i++) {
-//      for (int j = 1; j < 5; j++) {
-//        FieldData.readDbData(i, j);
-//      }
-//    }
 
-    FieldData.readDbData(year, qtr);
+    for (int i = 2018; i < 2021; i++) {
+      for (int j = 1; j < 5; j++) {
+        FieldData.readDbData(i, j);
+      }
+    }
+
+    List<String> net = Reports.getCompanyNetIncome("MSFT");
+    for (String s : net) {
+      System.out.println(s);
+    }
 
     // System.out.println(Reports.getSnpIndex(2018, 2, SnpEnum.SP600, true));
     // System.out.println(Reports.getDowIndex(2019, 1, DowEnum.TRANSPORTATION,
@@ -77,13 +83,13 @@ public class SipDbData {
 //    FieldData.parseSipData(2020, 1);
 //    FieldData.parseSipData(2020, 2);
 
-    FieldData.readDbData(year, qtr);
+    // FieldData.readDbData(year, qtr);
     // FieldData.readDbData(2019, 3);
 //    FieldData.readDbData(2019, 4);
 //    FieldData.readDbData(2020, 1);
 //    FieldData.readDbData(2020, 2);
-    FieldData fd = FieldData.readDbData(2020, 3, "MSFT");
-    if (fd != null) System.out.println(fd);
+    // FieldData fd = FieldData.readDbData(2020, 1, "MSFT");
+    // if (fd != null) System.out.println(fd);
 
     // List<String> sList = Reports.outputToList(s);
     // System.out.println(Reports.getDowIndex(year, qtr, DowEnum.TRANSPORTATION,

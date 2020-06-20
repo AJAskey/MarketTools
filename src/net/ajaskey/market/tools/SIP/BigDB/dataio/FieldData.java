@@ -236,7 +236,7 @@ public class FieldData {
 
     File indirCk = new File(indir);
     if (!indirCk.exists()) {
-      System.out.printf("Warning... DB directory does not exists. %s", indir);
+      System.out.printf("Warning... DB directory does not exists. %s%n", indir);
       return null;
     }
 
