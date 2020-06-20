@@ -59,6 +59,8 @@ public class SipDbData {
 //      }
 //    }
 
+    FieldData.readDbData(year, qtr);
+
     // System.out.println(Reports.getSnpIndex(2018, 2, SnpEnum.SP600, true));
     // System.out.println(Reports.getDowIndex(2019, 1, DowEnum.TRANSPORTATION,
     // false));
@@ -80,7 +82,7 @@ public class SipDbData {
 //    FieldData.readDbData(2019, 4);
 //    FieldData.readDbData(2020, 1);
 //    FieldData.readDbData(2020, 2);
-    FieldData fd = FieldData.readDbData(2020, 1, "MSFT");
+    FieldData fd = FieldData.readDbData(2020, 3, "MSFT");
     if (fd != null) System.out.println(fd);
 
     // List<String> sList = Reports.outputToList(s);

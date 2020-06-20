@@ -84,22 +84,30 @@ public class TextUtils {
     return ret;
   }
 
+  public static List<String> readGzipFile(String fname, boolean ignoreBlanks) {
+
+    File file = new File(fname);
+
+    return readGzipFile(file, ignoreBlanks);
+  }
+
   /**
    * 
    * @param fname
    * @return
    */
-  public static List<String> readGzipFile(String fname) {
+  public static List<String> readGzipFile(File file, boolean ignoreBlanks) {
 
     List<String> retList = new ArrayList<>();
-    File file = new File(fname);
 
     try (GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(file));
         BufferedReader br = new BufferedReader(new InputStreamReader(gzip));) {
 
       String line = null;
       while ((line = br.readLine()) != null) {
-        retList.add(line);
+        if (line.trim().length() > 0) {
+          retList.add(line);
+        }
       }
     }
     catch (Exception e) {
