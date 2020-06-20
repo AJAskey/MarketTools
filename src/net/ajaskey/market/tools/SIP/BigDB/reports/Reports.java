@@ -289,11 +289,26 @@ public class Reports {
     List<OneCompanyData> ocdList = OneCompanyData.getCompany(ticker);
 
     for (OneCompanyData ocd : ocdList) {
-      double net = ocd.getQ1().getIncSheetData().getNetIncYr()[0];
+      double net = ocd.getQ2().getIncSheetData().getNetIncYr()[0];
       String s = String.format("%d : %f", ocd.getYear(), net);
       ret.add(s);
     }
 
     return ret;
   }
+
+  public static List<String> getCompanyNetIncome(String ticker, int startYr, int endYr, int quarter) {
+
+    List<String> ret = new ArrayList<>();
+
+    for (int yr = startYr; yr <= endYr; yr++) {
+      FieldData fd = FieldData.readDbData(yr, quarter, ticker);
+      String s = String.format("%d : %f", yr, fd.getIncSheetData().getNetIncYr()[0]);
+      ret.add(s);
+    }
+
+    return ret;
+
+  }
+
 }

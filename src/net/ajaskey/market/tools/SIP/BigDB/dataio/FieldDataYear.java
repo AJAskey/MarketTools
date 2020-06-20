@@ -103,16 +103,40 @@ public class FieldDataYear {
 
     if (this.inUse) {
       if (qtr == 1) {
-        return this.q1 != null;
+        if (this.q1 == null) {
+          return false;
+        }
+        else if (this.q1.fieldDataList == null) {
+          return false;
+        }
+        return true;
       }
       else if (qtr == 2) {
-        return this.q2 != null;
+        if (this.q2 == null) {
+          return false;
+        }
+        else if (this.q2.fieldDataList == null) {
+          return false;
+        }
+        return true;
       }
       else if (qtr == 3) {
-        return this.q3 != null;
+        if (this.q3 == null) {
+          return false;
+        }
+        else if (this.q3.fieldDataList == null) {
+          return false;
+        }
+        return true;
       }
       else if (qtr == 4) {
-        return this.q4 != null;
+        if (this.q4 == null) {
+          return false;
+        }
+        else if (this.q4.fieldDataList == null) {
+          return false;
+        }
+        return true;
       }
     }
     return false;

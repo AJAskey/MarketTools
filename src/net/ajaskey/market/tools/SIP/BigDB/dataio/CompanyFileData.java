@@ -576,4 +576,9 @@ public class CompanyFileData {
     return this.exchange.toString().toUpperCase();
   }
 
+  public static void clearList() {
+    cfdList.clear();
+
+  }
+
 }

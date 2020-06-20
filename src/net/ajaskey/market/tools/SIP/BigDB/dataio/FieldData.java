@@ -46,7 +46,7 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
  */
 public class FieldData {
 
-  final static String inbasedir  = String.format("D:/dev/MarketTools/markettools.git/data/BigDB/");
+  final static String inbasedir  = String.format("data/BigDB/");
   final static String outbasedir = String.format("out/BigDB/");
 
   /**
@@ -96,6 +96,12 @@ public class FieldData {
    */
   public static void parseSipData(int year, int quarter) throws FileNotFoundException {
 
+    CompanyFileData.clearList();
+    EstimateFileData.clearList();
+    SharesFileData.clearList();
+    IncSheetFileData.clearList();
+    BalSheetFileData.clearList();
+
     Utils.makeDir("out");
     Utils.makeDir("out/BigDB");
 
@@ -127,6 +133,7 @@ public class FieldData {
       return;
     }
     SharesFileData.readSipData(ffname);
+
     // System.out.println(SharesFileData.listToString());
 
     head = "Estimates-";
@@ -181,6 +188,18 @@ public class FieldData {
       final BalSheetFileData bfd = BalSheetFileData.find(ticker);
 
       FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, year, quarter);
+
+      String fname = String.format("%d-Q%d.dbg", year, quarter);
+      try (PrintWriter pw = new PrintWriter(fname)) {
+        if (cfd.getTicker().equalsIgnoreCase("AA")) {
+          System.out.printf("Processing %s for %d Q%d%n", cfd.getTicker(), year, quarter);
+          pw.println(cfd.toString());
+          pw.println(sfd.toString());
+          pw.println(efd.toString());
+          pw.println(ifd.toString());
+          pw.println(bfd.toString());
+        }
+      }
 
     }
   }

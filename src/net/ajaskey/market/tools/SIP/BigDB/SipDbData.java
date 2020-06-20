@@ -3,7 +3,6 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
 
 /**
@@ -42,11 +41,6 @@ public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-//    List<String> alist = TextUtils.readGzipFile("D:\\dev\\eclipse-markettools\\MarketTools\\out\\BigDB\\2020\\Q2\\AA-fundamental-data-2020Q2.txt.gz");
-//    for (String s : alist) {
-//      System.out.println(s);
-//    }
-
     int year = 2019;
     int qtr = 3;
 
@@ -56,13 +50,17 @@ public class SipDbData {
 //      }
 //    }
 
-    for (int i = 2018; i < 2021; i++) {
-      for (int j = 1; j < 5; j++) {
-        FieldData.readDbData(i, j);
-      }
-    }
+//    FieldData.parseSipData(2018, 1);
+//    FieldData.parseSipData(2019, 1);
+//    FieldData.parseSipData(2020, 1);
 
-    List<String> net = Reports.getCompanyNetIncome("MSFT");
+//    for (int i = 2018; i < 2021; i++) {
+//      for (int j = 1; j < 5; j++) {
+//        FieldData.readDbData(i, j);
+//      }
+//    }
+
+    List<String> net = Reports.getCompanyNetIncome("PFE", 2018, 2020, 2);
     for (String s : net) {
       System.out.println(s);
     }
