@@ -290,4 +290,8 @@ public class EstimateFileData {
     this.exchange = cfd.getExchange();
 
   }
+
+  public static void clearList() {
+    efdList.clear();
+  }
 }

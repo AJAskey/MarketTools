@@ -1041,4 +1041,8 @@ public class IncSheetFileData {
     }
     return ret;
   }
+
+  public static void clearList() {
+    ifdList.clear();
+  }
 }

@@ -486,4 +486,8 @@ public class SharesFileData {
     this.exchange = cfd.getExchange();
   }
 
+  public static void clearList() {
+    sfdList.clear();
+  }
+
 }

@@ -46,7 +46,7 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
  */
 public class FieldData {
 
-  final static String inbasedir  = String.format("D:/dev/MarketTools/markettools.git/data/BigDB/");
+  final static String inbasedir  = String.format("data/BigDB/");
   final static String outbasedir = String.format("out/BigDB/");
 
   /**
@@ -96,6 +96,12 @@ public class FieldData {
    */
   public static void parseSipData(int year, int quarter) throws FileNotFoundException {
 
+    CompanyFileData.clearList();
+    EstimateFileData.clearList();
+    SharesFileData.clearList();
+    IncSheetFileData.clearList();
+    BalSheetFileData.clearList();
+
     Utils.makeDir("out");
     Utils.makeDir("out/BigDB");
 
@@ -127,6 +133,7 @@ public class FieldData {
       return;
     }
     SharesFileData.readSipData(ffname);
+
     // System.out.println(SharesFileData.listToString());
 
     head = "Estimates-";
@@ -199,6 +206,7 @@ public class FieldData {
    */
   public static List<FieldData> readDbData(int year, int quarter) {
 
+    System.out.printf("Processing DB %d %d%n", year, quarter);
     final List<FieldData> fdList = FieldData.parseFromDbData(year, quarter);
     BigLists.setLists(year, quarter, fdList);
 
@@ -233,6 +241,12 @@ public class FieldData {
 
     final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
 
+    File indirCk = new File(indir);
+    if (!indirCk.exists()) {
+      System.out.printf("Warning... DB directory does not exists. %s%n", indir);
+      return null;
+    }
+
     final List<FieldData> fdList = new ArrayList<>();
 
     final String[] ext = { "txt", "gz" };
@@ -241,7 +255,7 @@ public class FieldData {
 
       List<String> data = null;
       if (f.getName().endsWith(".gz")) {
-        data = TextUtils.readGzipFile(f.getAbsolutePath());
+        data = TextUtils.readGzipFile(f, true);
       }
       else {
         data = TextUtils.readTextFile(f, true);
@@ -285,7 +299,7 @@ public class FieldData {
 
     data = TextUtils.readTextFile(fname, true);
     if (data == null) {
-      data = TextUtils.readGzipFile(fname + ".gz");
+      data = TextUtils.readGzipFile(fname + ".gz", true);
     }
     if (data == null) {
       System.out.printf("Warning... File not found %s", fname);

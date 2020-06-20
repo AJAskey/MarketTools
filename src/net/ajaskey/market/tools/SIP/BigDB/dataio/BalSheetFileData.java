@@ -850,4 +850,8 @@ public class BalSheetFileData {
     this.exchange = cfd.getExchange();
 
   }
+
+  public static void clearList() {
+    bfdList.clear();
+  }
 }

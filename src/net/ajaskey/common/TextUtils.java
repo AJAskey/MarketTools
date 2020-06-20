@@ -36,11 +36,51 @@ public class TextUtils {
 
   /**
    *
+   * @param fname
+   * @return
+   */
+  public static List<String> readGzipFile(File file, boolean ignoreBlanks) {
+
+    if (!file.exists()) {
+      return null;
+    }
+
+    List<String> retList = new ArrayList<>();
+
+    try (GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(file));
+        BufferedReader br = new BufferedReader(new InputStreamReader(gzip));) {
+
+      String line = null;
+      while ((line = br.readLine()) != null) {
+        if (line.trim().length() > 0) {
+          retList.add(line);
+        }
+      }
+    }
+    catch (final Exception e) {
+      retList = null;
+    }
+    return retList;
+  }
+
+  public static List<String> readGzipFile(String fname, boolean ignoreBlanks) {
+
+    final File file = new File(fname);
+
+    return TextUtils.readGzipFile(file, ignoreBlanks);
+  }
+
+  /**
+   *
    * @param file
    * @param ignoreBlanks
    * @return
    */
   public static List<String> readTextFile(File file, boolean ignoreBlanks) {
+
+    if (!file.exists()) {
+      return null;
+    }
 
     List<String> lines = null;
     final List<String> ret = new ArrayList<>();
@@ -72,7 +112,9 @@ public class TextUtils {
    * @return
    */
   public static List<String> readTextFile(String fname, boolean ignoreBlanks) {
+
     final File f = new File(fname);
+
     return TextUtils.readTextFile(f, ignoreBlanks);
   }
 
@@ -82,29 +124,5 @@ public class TextUtils {
       ret += s + Utils.NL;
     }
     return ret;
-  }
-
-  /**
-   * 
-   * @param fname
-   * @return
-   */
-  public static List<String> readGzipFile(String fname) {
-
-    List<String> retList = new ArrayList<>();
-    File file = new File(fname);
-
-    try (GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(file));
-        BufferedReader br = new BufferedReader(new InputStreamReader(gzip));) {
-
-      String line = null;
-      while ((line = br.readLine()) != null) {
-        retList.add(line);
-      }
-    }
-    catch (Exception e) {
-      retList = null;
-    }
-    return retList;
   }
 }
