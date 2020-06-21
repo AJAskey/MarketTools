@@ -46,6 +46,13 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
  */
 public class FieldData {
 
+  /**
+   * Set this to the directories you store you SIP data (inbasedir) and where you
+   * want your DB output to be stored (outbasedir).
+   * 
+   * You do not need the SIP data as I have uploaded the database data to the DB
+   * folder.
+   */
   final public static String inbasedir  = String.format("data/BigDB/");
   final public static String outbasedir = String.format("out/BigDB/");
 
