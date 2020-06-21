@@ -387,7 +387,7 @@ public class CompanyFileData {
       }
 
       if (fld.equals("ticker")) {
-        this.ticker = val;
+        this.ticker = val.toUpperCase();
       }
       else if (fld.equals("name")) {
         this.name = val;

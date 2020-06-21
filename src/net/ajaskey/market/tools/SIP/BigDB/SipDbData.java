@@ -3,7 +3,8 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
+import net.ajaskey.market.tools.SIP.BigDB.collation.CompanyData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 
 /**
  * This class contains test drivers for various BigDB methods.
@@ -60,10 +61,22 @@ public class SipDbData {
 //      }
 //    }
 
-    List<String> net = Reports.getCompanyNetIncome("PFE", 2018, 2020, 2);
-    for (String s : net) {
+    List<String> tickers = CompanyData.getTickers(ExchEnum.AMEX, 2020, 1);
+    for (String s : tickers) {
       System.out.println(s);
     }
+
+//    CompanyData cd = CompanyData.getCompany("tgt");
+//    System.out.println(cd.fdList.get(0));
+//    for (FieldData fd : cd.fdList) {
+//      double eps = fd.getIncSheetData().getEpsYr()[0];
+//      System.out.printf("%d Q%d -- %.3f%n", fd.getYear(), fd.getQuarter(), eps);
+//    }
+
+//    List<String> net = Reports.getCompanyNetIncome("CAT", 2018, 2020, 2);
+//    for (String s : net) {
+//      System.out.println(s);
+//    }
 
     // System.out.println(Reports.getSnpIndex(2018, 2, SnpEnum.SP600, true));
     // System.out.println(Reports.getDowIndex(2019, 1, DowEnum.TRANSPORTATION,

@@ -60,6 +60,54 @@ public class OneCompanyData {
     return ret;
   }
 
+  /**
+   * 
+   * @param ticker
+   * @return
+   */
+
+  /**
+   * 
+   * @param fdList
+   * @param yr
+   * @param qtr
+   * @return
+   */
+  public static FieldData getFieldData(List<FieldData> fdList, int yr, int qtr) {
+    for (FieldData fd : fdList) {
+      if (fd.getYear() == yr && fd.getQuarter() == qtr) {
+        return fd;
+      }
+    }
+    return null;
+  }
+
+  private static int parseQuarter(String name) {
+    int ret = 0;
+    try {
+      int idx = name.indexOf("-data-");
+      String sQtr = name.substring(idx + 11, idx + 12);
+      ret = Integer.parseInt(sQtr);
+    }
+    catch (Exception e) {
+      ret = 0;
+    }
+    return ret;
+  }
+
+  private static int parseYear(String name) {
+    int ret = 0;
+    try {
+      int idx = name.indexOf("-data-");
+      String sYr = name.substring(idx + 6, idx + 10);
+      ret = Integer.parseInt(sYr);
+    }
+    catch (Exception e) {
+      ret = 0;
+    }
+    return ret;
+  }
+
   private FieldData    q1;
   private FieldData    q2;
   private FieldData    q3;

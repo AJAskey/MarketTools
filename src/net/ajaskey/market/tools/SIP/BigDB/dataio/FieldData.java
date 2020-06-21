@@ -46,8 +46,8 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
  */
 public class FieldData {
 
-  final static String inbasedir  = String.format("data/BigDB/");
-  final static String outbasedir = String.format("out/BigDB/");
+  final public static String inbasedir  = String.format("data/BigDB/");
+  final public static String outbasedir = String.format("out/BigDB/");
 
   /**
    * Used when reading SIP exchange SIP data.
@@ -363,12 +363,12 @@ public class FieldData {
   private IncSheetFileData incSheetData;
   private String           industry;
   private String           name;
+  private String           sector;
+  private SharesFileData   shareData;
+  private String           ticker;
 
-  private final int      quarter;
-  private String         sector;
-  private SharesFileData shareData;
-  private String         ticker;
-  private final int      year;
+  private int year;
+  private int quarter;
 
   /**
    * Constructor
@@ -393,6 +393,14 @@ public class FieldData {
     this.shareData = sfd;
     this.incSheetData = ifd;
     this.balSheetData = bfd;
+  }
+
+  public void setYear(int year) {
+    this.year = year;
+  }
+
+  public void setQuarter(int quarter) {
+    this.quarter = quarter;
   }
 
   /**
@@ -489,7 +497,8 @@ public class FieldData {
         ret = "";
       }
       else {
-        ret = this.companyInfo.toDbOuput();
+        ret = String.format("%d Q%d%n", this.year, this.quarter);
+        ret += this.companyInfo.toDbOuput();
         ret += this.estimateData.toDbOutput();
         ret += this.shareData.toDbOutput();
         ret += this.incSheetData.toDbOutput();
