@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ajaskey.common.DateTime;
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.BigDB.BigLists;
@@ -238,7 +239,8 @@ public class FieldData {
   }
 
   /**
-   * Reads data from DB.
+   * Reads data from DB into global memory. Calls to this for various years and
+   * quarters "may" make processing faster for large comprehensive reports.
    *
    * @param year
    * @param quarter
@@ -530,6 +532,524 @@ public class FieldData {
     this.industry = cfd.getIndustry();
     this.exchange = cfd.getExchange();
 
+  }
+
+  /**
+   * 
+   */
+
+  public String getCity() {
+    return this.getCompanyInfo().getCity();
+  }
+
+  public String getCountry() {
+    return this.getCompanyInfo().getCountry();
+  }
+
+  public DowEnum getDowIndex() {
+    return this.getCompanyInfo().getDowIndex();
+  }
+
+  public String getDowIndexStr() {
+    return this.getCompanyInfo().getDowIndexStr();
+  }
+
+  public int getNumEmployees() {
+    return this.getCompanyInfo().getNumEmployees();
+  }
+
+  public String getPhone() {
+    return this.getCompanyInfo().getPhone();
+  }
+
+  public String getSic() {
+    return this.getCompanyInfo().getSic();
+  }
+
+  public SnpEnum getSnpIndex() {
+    return this.getCompanyInfo().getSnpIndex();
+  }
+
+  public String getSnpIndexStr() {
+    return this.getCompanyInfo().getSnpIndexStr();
+  }
+
+  public String getState() {
+    return this.getCompanyInfo().getState();
+  }
+
+  public String getStreet() {
+    return this.getCompanyInfo().getStreet();
+  }
+
+  public String getWeb() {
+    return this.getCompanyInfo().getWeb();
+  }
+
+  public String getZip() {
+    return this.getCompanyInfo().getZip();
+  }
+
+  public boolean isAdr() {
+    return this.getCompanyInfo().isAdr();
+  }
+
+  public boolean isDrp() {
+    return this.getCompanyInfo().isDrp();
+  }
+
+  public DateTime getCurrFiscalYear() {
+    return this.getEstimateData().getCurrFiscalYear();
+  }
+
+  public double getEpsQ0() {
+    return this.getEstimateData().getEpsQ0();
+  }
+
+  public double getEpsQ1() {
+    return this.getEstimateData().getEpsQ1();
+  }
+
+  public double getEpsY0() {
+    return this.getEstimateData().getEpsY0();
+  }
+
+  public double getEpsY1() {
+    return this.getEstimateData().getEpsY1();
+  }
+
+  public double getEpsY2() {
+    return this.getEstimateData().getEpsY2();
+  }
+
+  public DateTime getLatestQtrEps() {
+    return this.getEstimateData().getLatestQtrEps();
+  }
+
+  // ******************
+
+  public double getBeta() {
+    return this.shareData.getBeta();
+  }
+
+  public double getDollar3m() {
+    return this.shareData.getDollar3m();
+  }
+
+  public double getFloatshr() {
+    return this.shareData.getFloatshr();
+  }
+
+  public int getInsiderBuys() {
+    return this.shareData.getInsiderBuys();
+  }
+
+  public int getInsiderBuyShrs() {
+    return this.shareData.getInsiderBuyShrs();
+  }
+
+  public double getInsiderNetPercentOutstanding() {
+    return this.shareData.getInsiderNetPercentOutstanding();
+  }
+
+  public int getInsiderNetTrades() {
+    return this.shareData.getInsiderNetTrades();
+  }
+
+  public double getInsiderOwnership() {
+    return this.shareData.getInsiderOwnership();
+  }
+
+  public int getInsiderSells() {
+    return this.shareData.getInsiderSells();
+  }
+
+  public int getInsiderSellShrs() {
+    return this.shareData.getInsiderSellShrs();
+  }
+
+  public int getInstBuyShrs() {
+    return this.shareData.getInstBuyShrs();
+  }
+
+  public double getInstOwnership() {
+    return this.shareData.getInstOwnership();
+  }
+
+  public int getInstSellShrs() {
+    return this.shareData.getInstSellShrs();
+  }
+
+  public int getInstShareholders() {
+    return this.shareData.getInstShareholders();
+  }
+
+  public double getMktCap() {
+    return this.shareData.getMktCap();
+  }
+
+  public double getPrice() {
+    return this.shareData.getPrice();
+  }
+
+  public double[] getSharesQ() {
+    return this.shareData.getSharesQ();
+  }
+
+  public double[] getSharesY() {
+    return this.shareData.getSharesY();
+  }
+
+  public long getVolume3m() {
+    return this.shareData.getVolume3m();
+  }
+
+  // ******************
+
+  public double[] getAdjToIncQtr() {
+    return this.getIncSheetData().getAdjToIncQtr();
+  }
+
+  public double[] getAdjToIncYr() {
+    return this.getIncSheetData().getAdjToIncYr();
+  }
+
+  public double[] getCogsQtr() {
+    return this.getIncSheetData().getCogsQtr();
+  }
+
+  public double[] getCogsYr() {
+    return this.getIncSheetData().getCogsYr();
+  }
+
+  public double[] getDepreciationQtr() {
+    return this.getIncSheetData().getDepreciationQtr();
+  }
+
+  public double[] getDepreciationYr() {
+    return this.getIncSheetData().getDepreciationYr();
+  }
+
+  public double[] getDividendQtr() {
+    return this.getIncSheetData().getDividendQtr();
+  }
+
+  public double[] getDividendYr() {
+    return this.getIncSheetData().getDividendYr();
+  }
+
+  public double[] getEpsContQtr() {
+    return this.getIncSheetData().getEpsContQtr();
+  }
+
+  public double[] getEpsContYr() {
+    return this.getIncSheetData().getEpsContYr();
+  }
+
+  public double[] getEpsDilContQtr() {
+    return this.getIncSheetData().getEpsDilContQtr();
+  }
+
+  public double[] getEpsDilContYr() {
+    return this.getIncSheetData().getEpsDilContYr();
+  }
+
+  public double[] getEpsDilQtr() {
+    return this.getIncSheetData().getEpsDilQtr();
+  }
+
+  public double[] getEpsDilYr() {
+    return this.getIncSheetData().getEpsDilYr();
+  }
+
+  public double[] getEpsQtr() {
+    return this.getIncSheetData().getEpsQtr();
+  }
+
+  public double[] getEpsYr() {
+    return this.getIncSheetData().getEpsYr();
+  }
+
+  public double[] getGrossIncQtr() {
+    return this.getIncSheetData().getGrossIncQtr();
+  }
+
+  public double[] getGrossIncYr() {
+    return this.getIncSheetData().getGrossIncYr();
+  }
+
+  public double[] getGrossOpExpQtr() {
+    return this.getIncSheetData().getGrossOpExpQtr();
+  }
+
+  public double[] getGrossOpExpYr() {
+    return this.getIncSheetData().getGrossOpExpYr();
+  }
+
+  public double[] getIncAfterTaxQtr() {
+    return this.getIncSheetData().getIncAfterTaxQtr();
+  }
+
+  public double[] getIncAfterTaxYr() {
+    return this.getIncSheetData().getIncAfterTaxYr();
+  }
+
+  public double[] getIncPrimaryEpsQtr() {
+    return this.getIncSheetData().getIncPrimaryEpsQtr();
+  }
+
+  public double[] getIncPrimaryEpsYr() {
+    return this.getIncSheetData().getIncPrimaryEpsYr();
+  }
+
+  public double[] getIncTaxQtr() {
+    return this.getIncSheetData().getIncTaxQtr();
+  }
+
+  public double[] getIncTaxYr() {
+    return this.getIncSheetData().getIncTaxYr();
+  }
+
+  public double[] getIntExpNonOpQtr() {
+    return this.getIncSheetData().getIntExpNonOpQtr();
+  }
+
+  public double[] getIntExpNonOpYr() {
+    return this.getIncSheetData().getIntExpNonOpYr();
+  }
+
+  public double[] getIntExpQtr() {
+    return this.getIncSheetData().getIntExpQtr();
+  }
+
+  public double[] getIntExpYr() {
+    return this.getIncSheetData().getIntExpYr();
+  }
+
+  public double[] getNetIncQtr() {
+    return this.getIncSheetData().getNetIncQtr();
+  }
+
+  public double[] getNetIncYr() {
+    return this.getIncSheetData().getNetIncYr();
+  }
+
+  public double[] getNonrecurringItemsQtr() {
+    return this.getIncSheetData().getNonrecurringItemsQtr();
+  }
+
+  public double[] getNonrecurringItemsYr() {
+    return this.getIncSheetData().getNonrecurringItemsYr();
+  }
+
+  public double[] getOtherIncQtr() {
+    return this.getIncSheetData().getOtherIncQtr();
+  }
+
+  public double[] getOtherIncYr() {
+    return this.getIncSheetData().getOtherIncYr();
+  }
+
+  public double[] getPreTaxIncQtr() {
+    return this.getIncSheetData().getPreTaxIncQtr();
+  }
+
+  public double[] getPreTaxIncYr() {
+    return this.getIncSheetData().getPreTaxIncYr();
+  }
+
+  public double[] getRdQtr() {
+    return this.getIncSheetData().getRdQtr();
+  }
+
+  public double[] getRdYr() {
+    return this.getIncSheetData().getRdYr();
+  }
+
+  public double[] getSalesQtr() {
+    return this.getIncSheetData().getSalesQtr();
+  }
+
+  public double[] getSalesYr() {
+    return this.getIncSheetData().getSalesYr();
+  }
+
+  public double[] getTotalOpExpQtr() {
+    return this.getIncSheetData().getTotalOpExpQtr();
+  }
+
+  public double[] getTotalOpExpYr() {
+    return this.getIncSheetData().getTotalOpExpYr();
+  }
+
+  public double[] getUnusualIncQtr() {
+    return this.getIncSheetData().getUnusualIncQtr();
+  }
+
+  public double[] getUnusualIncYr() {
+    return this.getIncSheetData().getUnusualIncYr();
+  }
+
+  // *************************
+
+  public double[] getAcctPayableQtr() {
+    return this.getBalSheetData().getAcctPayableQtr();
+  }
+
+  public double[] getAcctPayableYr() {
+    return this.getBalSheetData().getAcctPayableYr();
+  }
+
+  public double[] getAcctRxQtr() {
+    return this.getBalSheetData().getAcctRxQtr();
+  }
+
+  public double[] getAcctRxYr() {
+    return this.getBalSheetData().getAcctRxYr();
+  }
+
+  public double[] getBvpsQtr() {
+    return this.getBalSheetData().getBvpsQtr();
+  }
+
+  public double[] getBvpsYr() {
+    return this.getBalSheetData().getBvpsYr();
+  }
+
+  public double[] getCashQtr() {
+    return this.getBalSheetData().getCashQtr();
+  }
+
+  public double[] getCashYr() {
+    return this.getBalSheetData().getCashYr();
+  }
+
+  public double[] getCurrAssetsQtr() {
+    return this.getBalSheetData().getCurrAssetsQtr();
+  }
+
+  public double[] getCurrAssetsYr() {
+    return this.getBalSheetData().getCurrAssetsYr();
+  }
+
+  public double[] getCurrLiabQtr() {
+    return this.getBalSheetData().getCurrLiabQtr();
+  }
+
+  public double[] getCurrLiabYr() {
+    return this.getBalSheetData().getCurrLiabYr();
+  }
+
+  public double[] getEquityQtr() {
+    return this.getBalSheetData().getEquityQtr();
+  }
+
+  public double[] getEquityYr() {
+    return this.getBalSheetData().getEquityYr();
+  }
+
+  public double[] getGoodwillQtr() {
+    return this.getBalSheetData().getGoodwillQtr();
+  }
+
+  public double[] getGoodwillYr() {
+    return this.getBalSheetData().getGoodwillYr();
+  }
+
+  public double[] getInventoryQtr() {
+    return this.getBalSheetData().getInventoryQtr();
+  }
+
+  public double[] getInventoryYr() {
+    return this.getBalSheetData().getInventoryYr();
+  }
+
+  public double[] getLiabEquityQtr() {
+    return this.getBalSheetData().getLiabEquityQtr();
+  }
+
+  public double[] getLiabEquityYr() {
+    return this.getBalSheetData().getLiabEquityYr();
+  }
+
+  public double[] getLtDebtQtr() {
+    return this.getBalSheetData().getLtDebtQtr();
+  }
+
+  public double[] getLtDebtYr() {
+    return this.getBalSheetData().getLtDebtYr();
+  }
+
+  public double[] getLtInvestQtr() {
+    return this.getBalSheetData().getLtInvestQtr();
+  }
+
+  public double[] getLtInvestYr() {
+    return this.getBalSheetData().getLtInvestYr();
+  }
+
+  public double[] getNetFixedAssetsQtr() {
+    return this.getBalSheetData().getNetFixedAssetsQtr();
+  }
+
+  public double[] getNetFixedAssetsYr() {
+    return this.getBalSheetData().getNetFixedAssetsYr();
+  }
+
+  public double[] getOtherCurrAssetsQtr() {
+    return this.getBalSheetData().getOtherCurrAssetsQtr();
+  }
+
+  public double[] getOtherCurrAssetsYr() {
+    return this.getBalSheetData().getOtherCurrAssetsYr();
+  }
+
+  public double[] getOtherCurrLiabQtr() {
+    return this.getBalSheetData().getOtherCurrLiabQtr();
+  }
+
+  public double[] getOtherCurrLiabYr() {
+    return this.getBalSheetData().getOtherCurrLiabYr();
+  }
+
+  public double[] getOtherLtAssetsQtr() {
+    return this.getBalSheetData().getOtherLtAssetsQtr();
+  }
+
+  public double[] getOtherLtAssetsYr() {
+    return this.getBalSheetData().getOtherLtAssetsYr();
+  }
+
+  public double[] getOtherLtLiabQtr() {
+    return this.getBalSheetData().getOtherLtLiabQtr();
+  }
+
+  public double[] getOtherLtLiabYr() {
+    return this.getBalSheetData().getOtherLtLiabYr();
+  }
+
+  public double[] getPrefStockQtr() {
+    return this.getBalSheetData().getPrefStockQtr();
+  }
+
+  public double[] getPrefStockYr() {
+    return this.getBalSheetData().getPrefStockYr();
+  }
+
+  public double[] getStDebtQtr() {
+    return this.getBalSheetData().getStDebtQtr();
+  }
+
+  public double[] getStDebtYr() {
+    return this.getBalSheetData().getStDebtYr();
+  }
+
+  public double[] getStInvestQtr() {
+    return this.getBalSheetData().getStInvestQtr();
+  }
+
+  public double[] getStInvestYr() {
+    return this.getBalSheetData().getStInvestYr();
   }
 
 }
