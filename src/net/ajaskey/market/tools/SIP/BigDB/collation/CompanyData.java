@@ -12,6 +12,41 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
 
+/**
+ * This class contains procedures for collecting data directly from the DB
+ * files. It is much faster than ingesting the entire DB into memories using
+ * FieldData.parseSipData(year, quarter).
+ *
+ * @author Andy Askey
+ *
+ *         <p>
+ *         Copyright (c) 2020, Andy Askey. All rights reserved.
+ *         </p>
+ *         <p>
+ *         Permission is hereby granted, free of charge, to any person obtaining
+ *         a copy of this software and associated documentation files (the
+ *         "Software"), to deal in the Software without restriction, including
+ *         without limitation the rights to use, copy, modify, merge, publish,
+ *         distribute, sublicense, and/or sell copies of the Software, and to
+ *         permit persons to whom the Software is furnished to do so, subject to
+ *         the following conditions:
+ *
+ *         The above copyright notice and this permission notice shall be
+ *         included in all copies or substantial portions of the Software.
+ *         </p>
+ *
+ *         <p>
+ *         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ *         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ *         BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ *         ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *         CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *         SOFTWARE.
+ *         </p>
+ *
+ */
 public class CompanyData {
 
   /**
@@ -31,7 +66,28 @@ public class CompanyData {
   }
 
   /**
-   * Returns a list of FieldData for each quarter of requested ticker
+   * Returns a list of CompanyData for tickers, the year, and quarter requested.
+   *
+   * @param tickers List of string ticker values,
+   * @param year
+   * @param quarter
+   * @return
+   */
+  public static List<CompanyData> getCompanies(List<String> tickers, int year, int quarter) {
+    final List<CompanyData> ret = new ArrayList<>();
+
+    for (final String ticker : tickers) {
+
+      final CompanyData cd = new CompanyData(ticker);
+      final FieldData fd = CompanyData.getCompany(ticker, year, quarter);
+      cd.fdList.add(fd);
+      ret.add(cd);
+    }
+    return ret;
+  }
+
+  /**
+   * Returns a CompanyData for each quarter of requested ticker
    *
    * @param ticker
    * @return CompanyData
@@ -44,7 +100,7 @@ public class CompanyData {
     final List<File> fList = Utils.getDirTree(FieldData.outbasedir, ext);
     for (final File f : fList) {
       if (f.getName().startsWith(ticker.toUpperCase() + "-")) {
-        System.out.println(f.getAbsolutePath());
+        // System.out.println(f.getAbsolutePath());
         final int yr = CompanyData.parseYear(f.getName());
         final int qtr = CompanyData.parseQuarter(f.getName());
         final FieldData fd = FieldData.readDbData(yr, qtr, ticker.toUpperCase());
@@ -55,6 +111,19 @@ public class CompanyData {
 
     }
     return cd;
+  }
+
+  /**
+   * Returns FieldData for ticker, year, and quarter of requested
+   *
+   * @param ticker
+   * @return CompanyData
+   */
+  public static FieldData getCompany(String ticker, int year, int quarter) {
+
+    final FieldData ret = FieldData.readDbData(year, quarter, ticker);
+
+    return ret;
   }
 
   /**
@@ -147,6 +216,7 @@ public class CompanyData {
    * @return List of String
    */
   public static List<String> getTickers(SnpEnum index, int year, int quarter) {
+
     final List<String> ret = new ArrayList<>();
 
     final List<File> files = CompanyData.getFiles(year, quarter);
@@ -182,6 +252,39 @@ public class CompanyData {
     final List<File> fList = Utils.getDirTree(dir, ext);
     for (final File f : fList) {
       ret.add(f);
+    }
+    return ret;
+  }
+
+  /**
+   *
+   * @param ticker
+   * @param tickers
+   * @return
+   */
+  private static boolean isTickerInList(String ticker, List<String> tickers) {
+    for (final String s : tickers) {
+      if (s.equalsIgnoreCase(ticker)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Private procedure to parse the ticker out of the file name.
+   *
+   * @param name
+   * @return
+   */
+  private static String parseName(String name) {
+    String ret = "";
+    try {
+      final int idx = name.indexOf("-fundamental-data-");
+      ret = name.substring(0, idx);
+    }
+    catch (final Exception e) {
+      ret = "";
     }
     return ret;
   }
@@ -224,12 +327,20 @@ public class CompanyData {
     return ret;
   }
 
-  public List<FieldData> fdList = new ArrayList<>();
-  public String          ticker;
+  private List<FieldData> fdList = new ArrayList<>();
+  private String          ticker;
+
+  public List<FieldData> getFdList() {
+    return fdList;
+  }
+
+  public String getTicker() {
+    return ticker;
+  }
 
   /**
    * Constructor
-   * 
+   *
    * @param tick
    */
   public CompanyData(String tick) {

@@ -53,7 +53,7 @@ public class IndexEarnings {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    FieldData.readDbData(this.year, this.quarter);
+    FieldData.readDbData(this.year, this.quarter, false);
     final String s = Reports.getSnpIndex(this.year, this.quarter, index, true);
     final List<String> sList = Reports.outputToList(s);
     for (final String ticker : sList) {

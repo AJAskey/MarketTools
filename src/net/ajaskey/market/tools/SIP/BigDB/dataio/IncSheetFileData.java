@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  *         </p>
  *
  */
-public class IncSheetFileData {
+public class IncSheetFileData implements Serializable {
 
   /**
    * Stores all IncSheetFileDate read in from DB.

@@ -1,8 +1,14 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,12 +51,12 @@ import net.ajaskey.market.tools.SIP.BigDB.BigLists;
  *         </p>
  *
  */
-public class FieldData {
+public class FieldData implements Serializable {
 
   /**
    * Set this to the directories you store you SIP data (inbasedir) and where you
    * want your DB output to be stored (outbasedir).
-   * 
+   *
    * You do not need the SIP data as I have uploaded the database data to the DB
    * folder.
    */
@@ -95,6 +101,48 @@ public class FieldData {
     return enm.toString().toUpperCase();
   }
 
+  public static FieldData getFromMemory(String tkr, int yr, int qtr) {
+
+    final String ticker = tkr.trim().toUpperCase();
+
+    for (final FieldDataYear fdy : BigLists.allDataList) {
+
+      if (yr == fdy.getYear()) {
+
+        if (fdy.isInUse()) {
+
+          if (fdy.quarterDataAvailable(qtr)) {
+
+            final FieldDataQuarter fdq = fdy.getQuarterData(qtr);
+
+            for (final FieldData fd : fdq.fieldDataList) {
+              if (fd.getTicker().equals(ticker)) {
+                return fd;
+              }
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  public static String getOutfileName(int yr, int qtr, String ticker, String ext) {
+
+    final String yearDir = String.format("%s%s", FieldData.outbasedir, yr);
+    final String qtrDir = String.format("%s/Q%s", yearDir, qtr);
+
+    final String outdir = qtrDir;
+
+    Utils.makeDir(String.format("%s", FieldData.outbasedir));
+    Utils.makeDir(yearDir);
+    Utils.makeDir(qtrDir);
+
+    final String fname = String.format("%s/%s-fundamental-data-%dQ%d.%s", outdir, ticker, yr, qtr, ext);
+
+    return fname;
+  }
+
   /**
    * Reads SIP tab separated data files. Stores the data in array for later use.
    *
@@ -103,6 +151,8 @@ public class FieldData {
    * @throws FileNotFoundException
    */
   public static void parseSipData(int year, int quarter) throws FileNotFoundException {
+
+    final FieldDataBinary allCompanyList = new FieldDataBinary(year, quarter);
 
     CompanyFileData.clearList();
     EstimateFileData.clearList();
@@ -197,25 +247,51 @@ public class FieldData {
 
       FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, year, quarter);
 
+      final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, year, quarter);
+      final String fname = FieldData.getOutfileName(year, quarter, ticker, "bin");
+      FieldData.writeDbBinary(fname, fd);
+
+      allCompanyList.fdList.add(fd);
+
+    }
+
+    /**
+     * Write big binary file for year and quarter data
+     */
+    try {
+      final String fname = String.format("%s%s/all-companies-%dQ%d.bin", FieldData.outbasedir, year, year, quarter);
+      final ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(fname));
+      o.writeObject(allCompanyList);
+      o.close();
+    }
+    catch (final IOException e) {
+      e.printStackTrace();
     }
   }
 
   /**
-   * Reads the DB for specific year and quarter. All tickers are returned and also
-   * added to a combined list for future use.
+   * Reads the DB for specific year and quarter into memory for future use. All
+   * tickers are returned.
    *
    * @param year
    * @param quarter 1-4
+   * @param binary  False for text output and TRUE for binary output
    * @return A list of FieldData for each ticket in the DB for year and quarter.
    *
    * @exception FileNotFoundException when year, quarter, ticker does not match
    *                                  any data in DB
    *
    */
-  public static List<FieldData> readDbData(int year, int quarter) {
+  public static List<FieldData> readDbData(int year, int quarter, boolean binary) {
 
     System.out.printf("Processing DB %d %d%n", year, quarter);
-    final List<FieldData> fdList = FieldData.parseFromDbData(year, quarter);
+    List<FieldData> fdList = null;
+    if (binary) {
+      fdList = FieldData.parseFromDbBinData(year, quarter);
+    }
+    else {
+      fdList = FieldData.parseFromDbData(year, quarter);
+    }
     BigLists.setLists(year, quarter, fdList);
 
     return fdList;
@@ -235,7 +311,34 @@ public class FieldData {
   public static FieldData readDbData(int year, int quarter, String ticker) {
 
     final FieldData fd = FieldData.parseFromDbData(year, quarter, ticker);
+
     return fd;
+  }
+
+  /**
+   * Reads binary DB file.
+   *
+   * @param yr
+   * @param qtr
+   * @return List of FieldData
+   */
+  private static List<FieldData> parseFromDbBinData(int yr, int qtr) {
+
+    final String fname = String.format("%s%d/all-companies-%dQ%d.bin", FieldData.outbasedir, yr, yr, qtr);
+
+    FieldDataBinary cd;
+    try {
+      final ObjectInputStream objBinFile = new ObjectInputStream(new FileInputStream(fname));
+
+      cd = (FieldDataBinary) objBinFile.readObject();
+      objBinFile.close();
+
+      return cd.fdList;
+    }
+    catch (final Exception e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   /**
@@ -250,7 +353,7 @@ public class FieldData {
 
     final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
 
-    File indirCk = new File(indir);
+    final File indirCk = new File(indir);
     if (!indirCk.exists()) {
       System.out.printf("Warning... DB directory does not exists. %s%n", indir);
       return null;
@@ -300,9 +403,7 @@ public class FieldData {
    */
   private static FieldData parseFromDbData(int year, int quarter, String ticker) {
 
-    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, year, quarter);
-
-    String fname = String.format("%s%s-fundamental-data-%dQ%d.txt", indir, ticker, year, quarter);
+    final String fname = FieldData.getOutfileName(year, quarter, ticker, "txt");
 
     List<String> data = null;
 
@@ -328,6 +429,26 @@ public class FieldData {
   }
 
   /**
+   * Writes each set of ticker data in binary format so the reading is much
+   * faster.
+   *
+   * @param fname
+   * @param fd
+   */
+  private static void writeDbBinary(String fname, FieldData fd) {
+    try {
+      final ObjectOutputStream binObjFile = new ObjectOutputStream(new FileOutputStream(fname));
+
+      binObjFile.writeObject(fd);
+      binObjFile.close();
+    }
+    catch (final IOException e) {
+      System.out.printf("Warning. Problems writing binary file %s", fname);
+    }
+
+  }
+
+  /**
    * Sets up file names and writes data to DB files. Calls genOutput to create
    * data to be written.
    *
@@ -343,18 +464,9 @@ public class FieldData {
   private static void writeDbOutput(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
       int year, int quarter) throws FileNotFoundException {
 
-    final String yearDir = String.format("%s%s", FieldData.outbasedir, year);
-    final String qtrDir = String.format("%s/Q%s", yearDir, quarter);
+    final String fname = FieldData.getOutfileName(year, quarter, cfd.getTicker(), "txt");
 
-    final String outdir = qtrDir;
-
-    Utils.makeDir(String.format("%s", FieldData.outbasedir));
-    Utils.makeDir(yearDir);
-    Utils.makeDir(qtrDir);
-
-    final String fname = String.format("%s/%s-fundamental-data-%dQ%d.txt", outdir, cfd.getTicker(), year, quarter);
-
-    final FieldData fd = new FieldData(cfd, efd, sfd, bfd, ifd, year, quarter);
+    final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, year, quarter);
 
     final String rpt = fd.genOutput();
 
@@ -372,44 +484,47 @@ public class FieldData {
   private IncSheetFileData incSheetData;
   private String           industry;
   private String           name;
+  private int              quarter;
   private String           sector;
-  private SharesFileData   shareData;
-  private String           ticker;
+
+  private SharesFileData shareData;
+  private String         ticker;
 
   private int year;
-  private int quarter;
 
   /**
    * Constructor
    *
-   * @param cfd
-   * @param efd
-   * @param sfd
-   * @param ifd
-   * @param bfd
+   * @param cfd CompanyFileData
+   * @param efd EstimateFileData
+   * @param sfd SharesFileData
+   * @param ifd IncSheetFileData
+   * @param bfd BalSheetFileData
+   * @param yr
+   * @param qtr
    */
-  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, BalSheetFileData bfd, IncSheetFileData ifd, int yr, int qtr) {
-
-    this.year = yr;
-    this.quarter = qtr;
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.industry = cfd.getIndustry();
-    this.sector = cfd.getSector();
-
+  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd, int yr, int qtr) {
     this.companyInfo = cfd;
     this.estimateData = efd;
     this.shareData = sfd;
     this.incSheetData = ifd;
     this.balSheetData = bfd;
-  }
-
-  public void setYear(int year) {
-    this.year = year;
-  }
-
-  public void setQuarter(int quarter) {
-    this.quarter = quarter;
+    if (cfd != null) {
+      this.ticker = cfd.getTicker();
+      this.name = cfd.getName();
+      this.exchange = cfd.getExchange();
+      this.sector = cfd.getSector();
+      this.industry = cfd.getIndustry();
+    }
+    else {
+      this.ticker = "";
+      this.name = "";
+      this.exchange = ExchEnum.NONE;
+      this.sector = "";
+      this.industry = "";
+    }
+    this.year = yr;
+    this.quarter = qtr;
   }
 
   /**
@@ -450,100 +565,116 @@ public class FieldData {
 
   }
 
+  public double[] getAcctPayableQtr() {
+    return this.getBalSheetData().getAcctPayableQtr();
+  }
+
+  public double[] getAcctPayableYr() {
+    return this.getBalSheetData().getAcctPayableYr();
+  }
+
+  public double[] getAcctRxQtr() {
+    return this.getBalSheetData().getAcctRxQtr();
+  }
+
+  public double[] getAcctRxYr() {
+    return this.getBalSheetData().getAcctRxYr();
+  }
+
+  public double[] getAdjToIncQtr() {
+    return this.getIncSheetData().getAdjToIncQtr();
+  }
+
+  public double[] getAdjToIncYr() {
+    return this.getIncSheetData().getAdjToIncYr();
+  }
+
   public BalSheetFileData getBalSheetData() {
     return this.balSheetData;
   }
 
-  public CompanyFileData getCompanyInfo() {
-    return this.companyInfo;
+  public double getBeta() {
+    return this.shareData.getBeta();
   }
 
-  public EstimateFileData getEstimateData() {
-    return this.estimateData;
+  public double[] getBvpsQtr() {
+    return this.getBalSheetData().getBvpsQtr();
   }
 
-  public SharesFileData getShares() {
-    return this.shareData;
+  public double[] getBvpsYr() {
+    return this.getBalSheetData().getBvpsYr();
   }
 
-  public ExchEnum getExchange() {
-    return this.exchange;
+  public double[] getCashQtr() {
+    return this.getBalSheetData().getCashQtr();
   }
 
-  public IncSheetFileData getIncSheetData() {
-    return this.incSheetData;
-  }
-
-  public String getIndustry() {
-    return this.industry;
-  }
-
-  public String getName() {
-    return this.name;
-  }
-
-  public int getQuarter() {
-    return this.quarter;
-  }
-
-  public String getSector() {
-    return this.sector;
-  }
-
-  public String getTicker() {
-    return this.ticker;
-  }
-
-  public int getYear() {
-    return this.year;
-  }
-
-  @Override
-  public String toString() {
-    String ret = "";
-    try {
-      if (this.companyInfo.getTicker() == null) {
-        ret = "";
-      }
-      else {
-        ret = String.format("%d Q%d%n", this.year, this.quarter);
-        ret += this.companyInfo.toDbOuput();
-        ret += this.estimateData.toDbOutput();
-        ret += this.shareData.toDbOutput();
-        ret += this.incSheetData.toDbOutput();
-        ret += this.balSheetData.toDbOutput();
-      }
-    }
-    catch (final Exception e) {
-      ret = "";
-    }
-    return ret;
+  public double[] getCashYr() {
+    return this.getBalSheetData().getCashYr();
   }
 
   /**
-   * Sets local "name" fields from CompanyFileData
    *
-   * @param cfd
-   */
-  private void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
-  }
-
-  /**
-   * 
    */
 
   public String getCity() {
     return this.getCompanyInfo().getCity();
   }
 
+  public double[] getCogsQtr() {
+    return this.getIncSheetData().getCogsQtr();
+  }
+
+  public double[] getCogsYr() {
+    return this.getIncSheetData().getCogsYr();
+  }
+
+  public CompanyFileData getCompanyInfo() {
+    return this.companyInfo;
+  }
+
   public String getCountry() {
     return this.getCompanyInfo().getCountry();
+  }
+
+  public double[] getCurrAssetsQtr() {
+    return this.getBalSheetData().getCurrAssetsQtr();
+  }
+
+  public double[] getCurrAssetsYr() {
+    return this.getBalSheetData().getCurrAssetsYr();
+  }
+
+  public DateTime getCurrFiscalYear() {
+    return this.getEstimateData().getCurrFiscalYear();
+  }
+
+  public double[] getCurrLiabQtr() {
+    return this.getBalSheetData().getCurrLiabQtr();
+  }
+
+  public double[] getCurrLiabYr() {
+    return this.getBalSheetData().getCurrLiabYr();
+  }
+
+  public double[] getDepreciationQtr() {
+    return this.getIncSheetData().getDepreciationQtr();
+  }
+
+  public double[] getDepreciationYr() {
+    return this.getIncSheetData().getDepreciationYr();
+  }
+
+  public double[] getDividendQtr() {
+    return this.getIncSheetData().getDividendQtr();
+  }
+
+  public double[] getDividendYr() {
+    return this.getIncSheetData().getDividendYr();
+  }
+
+  public double getDollar3m() {
+    return this.shareData.getDollar3m();
   }
 
   public DowEnum getDowIndex() {
@@ -554,52 +685,28 @@ public class FieldData {
     return this.getCompanyInfo().getDowIndexStr();
   }
 
-  public int getNumEmployees() {
-    return this.getCompanyInfo().getNumEmployees();
+  public double[] getEpsContQtr() {
+    return this.getIncSheetData().getEpsContQtr();
   }
 
-  public String getPhone() {
-    return this.getCompanyInfo().getPhone();
+  public double[] getEpsContYr() {
+    return this.getIncSheetData().getEpsContYr();
   }
 
-  public String getSic() {
-    return this.getCompanyInfo().getSic();
+  public double[] getEpsDilContQtr() {
+    return this.getIncSheetData().getEpsDilContQtr();
   }
 
-  public SnpEnum getSnpIndex() {
-    return this.getCompanyInfo().getSnpIndex();
+  public double[] getEpsDilContYr() {
+    return this.getIncSheetData().getEpsDilContYr();
   }
 
-  public String getSnpIndexStr() {
-    return this.getCompanyInfo().getSnpIndexStr();
+  public double[] getEpsDilQtr() {
+    return this.getIncSheetData().getEpsDilQtr();
   }
 
-  public String getState() {
-    return this.getCompanyInfo().getState();
-  }
-
-  public String getStreet() {
-    return this.getCompanyInfo().getStreet();
-  }
-
-  public String getWeb() {
-    return this.getCompanyInfo().getWeb();
-  }
-
-  public String getZip() {
-    return this.getCompanyInfo().getZip();
-  }
-
-  public boolean isAdr() {
-    return this.getCompanyInfo().isAdr();
-  }
-
-  public boolean isDrp() {
-    return this.getCompanyInfo().isDrp();
-  }
-
-  public DateTime getCurrFiscalYear() {
-    return this.getEstimateData().getCurrFiscalYear();
+  public double[] getEpsDilYr() {
+    return this.getIncSheetData().getEpsDilYr();
   }
 
   public double getEpsQ0() {
@@ -608,6 +715,12 @@ public class FieldData {
 
   public double getEpsQ1() {
     return this.getEstimateData().getEpsQ1();
+  }
+
+  // ******************
+
+  public double[] getEpsQtr() {
+    return this.getIncSheetData().getEpsQtr();
   }
 
   public double getEpsY0() {
@@ -622,22 +735,86 @@ public class FieldData {
     return this.getEstimateData().getEpsY2();
   }
 
-  public DateTime getLatestQtrEps() {
-    return this.getEstimateData().getLatestQtrEps();
+  public double[] getEpsYr() {
+    return this.getIncSheetData().getEpsYr();
   }
 
-  // ******************
-
-  public double getBeta() {
-    return this.shareData.getBeta();
+  public double[] getEquityQtr() {
+    return this.getBalSheetData().getEquityQtr();
   }
 
-  public double getDollar3m() {
-    return this.shareData.getDollar3m();
+  public double[] getEquityYr() {
+    return this.getBalSheetData().getEquityYr();
+  }
+
+  public EstimateFileData getEstimateData() {
+    return this.estimateData;
+  }
+
+  public ExchEnum getExchange() {
+    return this.exchange;
   }
 
   public double getFloatshr() {
     return this.shareData.getFloatshr();
+  }
+
+  public double[] getGoodwillQtr() {
+    return this.getBalSheetData().getGoodwillQtr();
+  }
+
+  public double[] getGoodwillYr() {
+    return this.getBalSheetData().getGoodwillYr();
+  }
+
+  public double[] getGrossIncQtr() {
+    return this.getIncSheetData().getGrossIncQtr();
+  }
+
+  public double[] getGrossIncYr() {
+    return this.getIncSheetData().getGrossIncYr();
+  }
+
+  public double[] getGrossOpExpQtr() {
+    return this.getIncSheetData().getGrossOpExpQtr();
+  }
+
+  public double[] getGrossOpExpYr() {
+    return this.getIncSheetData().getGrossOpExpYr();
+  }
+
+  public double[] getIncAfterTaxQtr() {
+    return this.getIncSheetData().getIncAfterTaxQtr();
+  }
+
+  public double[] getIncAfterTaxYr() {
+    return this.getIncSheetData().getIncAfterTaxYr();
+  }
+
+  public double[] getIncPrimaryEpsQtr() {
+    return this.getIncSheetData().getIncPrimaryEpsQtr();
+  }
+
+  // ******************
+
+  public double[] getIncPrimaryEpsYr() {
+    return this.getIncSheetData().getIncPrimaryEpsYr();
+  }
+
+  public IncSheetFileData getIncSheetData() {
+    return this.incSheetData;
+  }
+
+  public double[] getIncTaxQtr() {
+    return this.getIncSheetData().getIncTaxQtr();
+  }
+
+  public double[] getIncTaxYr() {
+    return this.getIncSheetData().getIncTaxYr();
+  }
+
+  public String getIndustry() {
+    return this.industry;
   }
 
   public int getInsiderBuys() {
@@ -684,132 +861,6 @@ public class FieldData {
     return this.shareData.getInstShareholders();
   }
 
-  public double getMktCap() {
-    return this.shareData.getMktCap();
-  }
-
-  public double getPrice() {
-    return this.shareData.getPrice();
-  }
-
-  public double[] getSharesQ() {
-    return this.shareData.getSharesQ();
-  }
-
-  public double[] getSharesY() {
-    return this.shareData.getSharesY();
-  }
-
-  public long getVolume3m() {
-    return this.shareData.getVolume3m();
-  }
-
-  // ******************
-
-  public double[] getAdjToIncQtr() {
-    return this.getIncSheetData().getAdjToIncQtr();
-  }
-
-  public double[] getAdjToIncYr() {
-    return this.getIncSheetData().getAdjToIncYr();
-  }
-
-  public double[] getCogsQtr() {
-    return this.getIncSheetData().getCogsQtr();
-  }
-
-  public double[] getCogsYr() {
-    return this.getIncSheetData().getCogsYr();
-  }
-
-  public double[] getDepreciationQtr() {
-    return this.getIncSheetData().getDepreciationQtr();
-  }
-
-  public double[] getDepreciationYr() {
-    return this.getIncSheetData().getDepreciationYr();
-  }
-
-  public double[] getDividendQtr() {
-    return this.getIncSheetData().getDividendQtr();
-  }
-
-  public double[] getDividendYr() {
-    return this.getIncSheetData().getDividendYr();
-  }
-
-  public double[] getEpsContQtr() {
-    return this.getIncSheetData().getEpsContQtr();
-  }
-
-  public double[] getEpsContYr() {
-    return this.getIncSheetData().getEpsContYr();
-  }
-
-  public double[] getEpsDilContQtr() {
-    return this.getIncSheetData().getEpsDilContQtr();
-  }
-
-  public double[] getEpsDilContYr() {
-    return this.getIncSheetData().getEpsDilContYr();
-  }
-
-  public double[] getEpsDilQtr() {
-    return this.getIncSheetData().getEpsDilQtr();
-  }
-
-  public double[] getEpsDilYr() {
-    return this.getIncSheetData().getEpsDilYr();
-  }
-
-  public double[] getEpsQtr() {
-    return this.getIncSheetData().getEpsQtr();
-  }
-
-  public double[] getEpsYr() {
-    return this.getIncSheetData().getEpsYr();
-  }
-
-  public double[] getGrossIncQtr() {
-    return this.getIncSheetData().getGrossIncQtr();
-  }
-
-  public double[] getGrossIncYr() {
-    return this.getIncSheetData().getGrossIncYr();
-  }
-
-  public double[] getGrossOpExpQtr() {
-    return this.getIncSheetData().getGrossOpExpQtr();
-  }
-
-  public double[] getGrossOpExpYr() {
-    return this.getIncSheetData().getGrossOpExpYr();
-  }
-
-  public double[] getIncAfterTaxQtr() {
-    return this.getIncSheetData().getIncAfterTaxQtr();
-  }
-
-  public double[] getIncAfterTaxYr() {
-    return this.getIncSheetData().getIncAfterTaxYr();
-  }
-
-  public double[] getIncPrimaryEpsQtr() {
-    return this.getIncSheetData().getIncPrimaryEpsQtr();
-  }
-
-  public double[] getIncPrimaryEpsYr() {
-    return this.getIncSheetData().getIncPrimaryEpsYr();
-  }
-
-  public double[] getIncTaxQtr() {
-    return this.getIncSheetData().getIncTaxQtr();
-  }
-
-  public double[] getIncTaxYr() {
-    return this.getIncSheetData().getIncTaxYr();
-  }
-
   public double[] getIntExpNonOpQtr() {
     return this.getIncSheetData().getIntExpNonOpQtr();
   }
@@ -826,142 +877,16 @@ public class FieldData {
     return this.getIncSheetData().getIntExpYr();
   }
 
-  public double[] getNetIncQtr() {
-    return this.getIncSheetData().getNetIncQtr();
-  }
-
-  public double[] getNetIncYr() {
-    return this.getIncSheetData().getNetIncYr();
-  }
-
-  public double[] getNonrecurringItemsQtr() {
-    return this.getIncSheetData().getNonrecurringItemsQtr();
-  }
-
-  public double[] getNonrecurringItemsYr() {
-    return this.getIncSheetData().getNonrecurringItemsYr();
-  }
-
-  public double[] getOtherIncQtr() {
-    return this.getIncSheetData().getOtherIncQtr();
-  }
-
-  public double[] getOtherIncYr() {
-    return this.getIncSheetData().getOtherIncYr();
-  }
-
-  public double[] getPreTaxIncQtr() {
-    return this.getIncSheetData().getPreTaxIncQtr();
-  }
-
-  public double[] getPreTaxIncYr() {
-    return this.getIncSheetData().getPreTaxIncYr();
-  }
-
-  public double[] getRdQtr() {
-    return this.getIncSheetData().getRdQtr();
-  }
-
-  public double[] getRdYr() {
-    return this.getIncSheetData().getRdYr();
-  }
-
-  public double[] getSalesQtr() {
-    return this.getIncSheetData().getSalesQtr();
-  }
-
-  public double[] getSalesYr() {
-    return this.getIncSheetData().getSalesYr();
-  }
-
-  public double[] getTotalOpExpQtr() {
-    return this.getIncSheetData().getTotalOpExpQtr();
-  }
-
-  public double[] getTotalOpExpYr() {
-    return this.getIncSheetData().getTotalOpExpYr();
-  }
-
-  public double[] getUnusualIncQtr() {
-    return this.getIncSheetData().getUnusualIncQtr();
-  }
-
-  public double[] getUnusualIncYr() {
-    return this.getIncSheetData().getUnusualIncYr();
-  }
-
-  // *************************
-
-  public double[] getAcctPayableQtr() {
-    return this.getBalSheetData().getAcctPayableQtr();
-  }
-
-  public double[] getAcctPayableYr() {
-    return this.getBalSheetData().getAcctPayableYr();
-  }
-
-  public double[] getAcctRxQtr() {
-    return this.getBalSheetData().getAcctRxQtr();
-  }
-
-  public double[] getAcctRxYr() {
-    return this.getBalSheetData().getAcctRxYr();
-  }
-
-  public double[] getBvpsQtr() {
-    return this.getBalSheetData().getBvpsQtr();
-  }
-
-  public double[] getBvpsYr() {
-    return this.getBalSheetData().getBvpsYr();
-  }
-
-  public double[] getCashQtr() {
-    return this.getBalSheetData().getCashQtr();
-  }
-
-  public double[] getCashYr() {
-    return this.getBalSheetData().getCashYr();
-  }
-
-  public double[] getCurrAssetsQtr() {
-    return this.getBalSheetData().getCurrAssetsQtr();
-  }
-
-  public double[] getCurrAssetsYr() {
-    return this.getBalSheetData().getCurrAssetsYr();
-  }
-
-  public double[] getCurrLiabQtr() {
-    return this.getBalSheetData().getCurrLiabQtr();
-  }
-
-  public double[] getCurrLiabYr() {
-    return this.getBalSheetData().getCurrLiabYr();
-  }
-
-  public double[] getEquityQtr() {
-    return this.getBalSheetData().getEquityQtr();
-  }
-
-  public double[] getEquityYr() {
-    return this.getBalSheetData().getEquityYr();
-  }
-
-  public double[] getGoodwillQtr() {
-    return this.getBalSheetData().getGoodwillQtr();
-  }
-
-  public double[] getGoodwillYr() {
-    return this.getBalSheetData().getGoodwillYr();
-  }
-
   public double[] getInventoryQtr() {
     return this.getBalSheetData().getInventoryQtr();
   }
 
   public double[] getInventoryYr() {
     return this.getBalSheetData().getInventoryYr();
+  }
+
+  public DateTime getLatestQtrEps() {
+    return this.getEstimateData().getLatestQtrEps();
   }
 
   public double[] getLiabEquityQtr() {
@@ -988,12 +913,40 @@ public class FieldData {
     return this.getBalSheetData().getLtInvestYr();
   }
 
+  public double getMktCap() {
+    return this.shareData.getMktCap();
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
   public double[] getNetFixedAssetsQtr() {
     return this.getBalSheetData().getNetFixedAssetsQtr();
   }
 
   public double[] getNetFixedAssetsYr() {
     return this.getBalSheetData().getNetFixedAssetsYr();
+  }
+
+  public double[] getNetIncQtr() {
+    return this.getIncSheetData().getNetIncQtr();
+  }
+
+  public double[] getNetIncYr() {
+    return this.getIncSheetData().getNetIncYr();
+  }
+
+  public double[] getNonrecurringItemsQtr() {
+    return this.getIncSheetData().getNonrecurringItemsQtr();
+  }
+
+  public double[] getNonrecurringItemsYr() {
+    return this.getIncSheetData().getNonrecurringItemsYr();
+  }
+
+  public int getNumEmployees() {
+    return this.getCompanyInfo().getNumEmployees();
   }
 
   public double[] getOtherCurrAssetsQtr() {
@@ -1012,6 +965,14 @@ public class FieldData {
     return this.getBalSheetData().getOtherCurrLiabYr();
   }
 
+  public double[] getOtherIncQtr() {
+    return this.getIncSheetData().getOtherIncQtr();
+  }
+
+  public double[] getOtherIncYr() {
+    return this.getIncSheetData().getOtherIncYr();
+  }
+
   public double[] getOtherLtAssetsQtr() {
     return this.getBalSheetData().getOtherLtAssetsQtr();
   }
@@ -1019,6 +980,8 @@ public class FieldData {
   public double[] getOtherLtAssetsYr() {
     return this.getBalSheetData().getOtherLtAssetsYr();
   }
+
+  // *************************
 
   public double[] getOtherLtLiabQtr() {
     return this.getBalSheetData().getOtherLtLiabQtr();
@@ -1028,12 +991,80 @@ public class FieldData {
     return this.getBalSheetData().getOtherLtLiabYr();
   }
 
+  public String getPhone() {
+    return this.getCompanyInfo().getPhone();
+  }
+
   public double[] getPrefStockQtr() {
     return this.getBalSheetData().getPrefStockQtr();
   }
 
   public double[] getPrefStockYr() {
     return this.getBalSheetData().getPrefStockYr();
+  }
+
+  public double[] getPreTaxIncQtr() {
+    return this.getIncSheetData().getPreTaxIncQtr();
+  }
+
+  public double[] getPreTaxIncYr() {
+    return this.getIncSheetData().getPreTaxIncYr();
+  }
+
+  public double getPrice() {
+    return this.shareData.getPrice();
+  }
+
+  public int getQuarter() {
+    return this.quarter;
+  }
+
+  public double[] getRdQtr() {
+    return this.getIncSheetData().getRdQtr();
+  }
+
+  public double[] getRdYr() {
+    return this.getIncSheetData().getRdYr();
+  }
+
+  public double[] getSalesQtr() {
+    return this.getIncSheetData().getSalesQtr();
+  }
+
+  public double[] getSalesYr() {
+    return this.getIncSheetData().getSalesYr();
+  }
+
+  public String getSector() {
+    return this.sector;
+  }
+
+  public SharesFileData getShares() {
+    return this.shareData;
+  }
+
+  public double[] getSharesQ() {
+    return this.shareData.getSharesQ();
+  }
+
+  public double[] getSharesY() {
+    return this.shareData.getSharesY();
+  }
+
+  public String getSic() {
+    return this.getCompanyInfo().getSic();
+  }
+
+  public SnpEnum getSnpIndex() {
+    return this.getCompanyInfo().getSnpIndex();
+  }
+
+  public String getSnpIndexStr() {
+    return this.getCompanyInfo().getSnpIndexStr();
+  }
+
+  public String getState() {
+    return this.getCompanyInfo().getState();
   }
 
   public double[] getStDebtQtr() {
@@ -1050,6 +1081,103 @@ public class FieldData {
 
   public double[] getStInvestYr() {
     return this.getBalSheetData().getStInvestYr();
+  }
+
+  public String getStreet() {
+    return this.getCompanyInfo().getStreet();
+  }
+
+  public String getTicker() {
+    return this.ticker;
+  }
+
+  public double[] getTotalOpExpQtr() {
+    return this.getIncSheetData().getTotalOpExpQtr();
+  }
+
+  public double[] getTotalOpExpYr() {
+    return this.getIncSheetData().getTotalOpExpYr();
+  }
+
+  public double getTtm(double[] dArr) {
+    final double ret = dArr[1] + dArr[2] + dArr[3] + dArr[4];
+    return ret;
+  }
+
+  public double[] getUnusualIncQtr() {
+    return this.getIncSheetData().getUnusualIncQtr();
+  }
+
+  public double[] getUnusualIncYr() {
+    return this.getIncSheetData().getUnusualIncYr();
+  }
+
+  public long getVolume3m() {
+    return this.shareData.getVolume3m();
+  }
+
+  public String getWeb() {
+    return this.getCompanyInfo().getWeb();
+  }
+
+  public int getYear() {
+    return this.year;
+  }
+
+  public String getZip() {
+    return this.getCompanyInfo().getZip();
+  }
+
+  public boolean isAdr() {
+    return this.getCompanyInfo().isAdr();
+  }
+
+  public boolean isDrp() {
+    return this.getCompanyInfo().isDrp();
+  }
+
+  public void setQuarter(int quarter) {
+    this.quarter = quarter;
+  }
+
+  public void setYear(int year) {
+    this.year = year;
+  }
+
+  @Override
+  public String toString() {
+    String ret = "";
+    try {
+      if (this.companyInfo.getTicker() == null) {
+        ret = "";
+      }
+      else {
+        ret = String.format("%d Q%d%n", this.year, this.quarter);
+        ret += this.companyInfo.toDbOuput();
+        ret += this.estimateData.toDbOutput();
+        ret += this.shareData.toDbOutput();
+        ret += this.incSheetData.toDbOutput();
+        ret += this.balSheetData.toDbOutput();
+      }
+    }
+    catch (final Exception e) {
+      ret = "";
+    }
+    return ret;
+  }
+
+  /**
+   * Sets local "name" fields from CompanyFileData
+   *
+   * @param cfd
+   */
+  private void setNameFields(CompanyFileData cfd) {
+    this.ticker = cfd.getTicker();
+    this.name = cfd.getName();
+    this.sector = cfd.getSector();
+    this.industry = cfd.getIndustry();
+    this.exchange = cfd.getExchange();
+
   }
 
 }

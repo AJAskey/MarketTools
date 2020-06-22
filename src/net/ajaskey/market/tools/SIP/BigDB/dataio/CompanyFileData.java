@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,32 +42,32 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  *         </p>
  *
  */
-public class CompanyFileData {
-
-  private static int ADR = 6;
+public class CompanyFileData implements Serializable {
 
   /**
    * Stores all CompanyFileDate read in from DB.
    */
-  private static List<CompanyFileData> cfdList  = new ArrayList<>();
-  private static int                   CITY     = 11;
-  private static int                   COUNTRY  = 13;
-  private static int                   DOW      = 7;
-  private static int                   DRP      = 9;
-  private static int                   EMP      = 17;
-  private static int                   EXCHANGE = 2;
-  private static String                fld[]    = null;
-  private static int                   INDUSTRY = 4;
-  private static int                   NAME     = 0;
-  private static int                   PHONE    = 15;
-  private static int                   SECTOR   = 3;
-  private static int                   SIC      = 5;
-  private static int                   SNP      = 8;
-  private static int                   STATE    = 12;
-  private static int                   STREET   = 10;
-  private static int                   TICKER   = 1;
-  private static int                   WEB      = 16;
-  private static int                   ZIP      = 14;
+  private static List<CompanyFileData> cfdList = new ArrayList<>();
+
+  private static int    CITY     = 11;
+  private static int    COUNTRY  = 13;
+  private static int    DOW      = 7;
+  private static int    DRP      = 9;
+  private static int    EMP      = 17;
+  private static int    EXCHANGE = 2;
+  private static String fld[]    = null;
+  private static int    INDUSTRY = 4;
+  private static int    NAME     = 0;
+  private static int    PHONE    = 15;
+  private static int    SECTOR   = 3;
+  private static int    SIC      = 5;
+  private static int    SNP      = 8;
+  private static int    STATE    = 12;
+  private static int    STREET   = 10;
+  private static int    TICKER   = 1;
+  private static int    WEB      = 16;
+  private static int    ZIP      = 14;
+  private static int    ADR      = 6;
 
   /**
    * Returns the CompanyFileData instance for requested ticker.

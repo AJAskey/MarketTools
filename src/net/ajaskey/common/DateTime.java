@@ -1,6 +1,7 @@
 
 package net.ajaskey.common;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,58 +42,58 @@ import java.util.Locale;
  *         </p>
  *
  */
-public class DateTime {
+public class DateTime implements Serializable {
 
-  public static final int APRIL      = Calendar.APRIL;
-  public static final int AUGUST     = Calendar.AUGUST;
+  public static final int APRIL  = Calendar.APRIL;
+  public static final int AUGUST = Calendar.AUGUST;
 
-  public static final int DATE       = Calendar.DATE;
+  public static final int DATE = Calendar.DATE;
 
-  public static final int DECEMBER   = Calendar.DECEMBER;
+  public static final int DECEMBER = Calendar.DECEMBER;
 
-  public static final int FEBRUARY   = Calendar.FEBRUARY;
+  public static final int FEBRUARY = Calendar.FEBRUARY;
 
-  public static final int FRIDAY     = Calendar.FRIDAY;
+  public static final int FRIDAY = Calendar.FRIDAY;
 
-  public static final int HOUR       = Calendar.HOUR;
+  public static final int HOUR = Calendar.HOUR;
 
-  public static final int JANUARY    = Calendar.JANUARY;
+  public static final int JANUARY = Calendar.JANUARY;
 
-  public static final int JULY       = Calendar.JULY;
+  public static final int JULY = Calendar.JULY;
 
-  public static final int JUNE       = Calendar.JUNE;
+  public static final int JUNE = Calendar.JUNE;
 
-  public static final int MARCH      = Calendar.MARCH;
+  public static final int MARCH = Calendar.MARCH;
 
-  public static final int MAY        = Calendar.MAY;
+  public static final int MAY = Calendar.MAY;
 
   public static final int MILLSECOND = Calendar.MILLISECOND;
 
-  public static final int MINUTE     = Calendar.MINUTE;
+  public static final int MINUTE = Calendar.MINUTE;
 
-  public static final int MONDAY     = Calendar.MONDAY;
+  public static final int MONDAY = Calendar.MONDAY;
 
-  public static final int MONTH      = Calendar.MONTH;
+  public static final int MONTH = Calendar.MONTH;
 
-  public static final int NOVEMBER   = Calendar.NOVEMBER;
+  public static final int NOVEMBER = Calendar.NOVEMBER;
 
-  public static final int OCTOBER    = Calendar.OCTOBER;
+  public static final int OCTOBER = Calendar.OCTOBER;
 
-  public static final int SATURDAY   = Calendar.SATURDAY;
+  public static final int SATURDAY = Calendar.SATURDAY;
 
-  public static final int SECOND     = Calendar.SECOND;
+  public static final int SECOND = Calendar.SECOND;
 
-  public static final int SEPTEMBER  = Calendar.SEPTEMBER;
+  public static final int SEPTEMBER = Calendar.SEPTEMBER;
 
-  public static final int SUNDAY     = Calendar.SUNDAY;
+  public static final int SUNDAY = Calendar.SUNDAY;
 
-  public static final int THURSDAY   = Calendar.THURSDAY;
+  public static final int THURSDAY = Calendar.THURSDAY;
 
-  public static final int TUESDAY    = Calendar.TUESDAY;
+  public static final int TUESDAY = Calendar.TUESDAY;
 
-  public static final int WEDNESDAY  = Calendar.WEDNESDAY;
+  public static final int WEDNESDAY = Calendar.WEDNESDAY;
 
-  public static final int YEAR       = Calendar.YEAR;
+  public static final int YEAR = Calendar.YEAR;
 
   /**
    *
@@ -156,7 +157,7 @@ public class DateTime {
     return false;
   }
 
-  private Calendar         cal = null;
+  private Calendar cal = null;
 
   private SimpleDateFormat sdf = null;
 
@@ -447,6 +448,7 @@ public class DateTime {
     }
     return ret;
   }
+
   public int getMinute() {
     int ret = -1;
     if (this.cal != null) {
@@ -454,6 +456,7 @@ public class DateTime {
     }
     return ret;
   }
+
   /**
    *
    * net.ajaskey.market.misc.getMonth
@@ -467,6 +470,7 @@ public class DateTime {
     }
     return ret;
   }
+
   public int getMs() {
     int ret = -1;
     if (this.cal != null) {
@@ -474,6 +478,7 @@ public class DateTime {
     }
     return ret;
   }
+
   /**
    *
    * net.ajaskey.market.misc.getSdf
@@ -483,6 +488,7 @@ public class DateTime {
   public SimpleDateFormat getSdf() {
     return this.sdf;
   }
+
   public int getSecond() {
     int ret = -1;
     if (this.cal != null) {
@@ -490,9 +496,11 @@ public class DateTime {
     }
     return ret;
   }
+
   public Date getTime() {
     return this.cal.getTime();
   }
+
   /**
    *
    * net.ajaskey.market.misc.getYear
@@ -506,6 +514,7 @@ public class DateTime {
     }
     return ret;
   }
+
   public int getYears(DateTime date2) {
     final int y1 = this.cal.get(DateTime.YEAR);
     final int y2 = date2.cal.get(DateTime.YEAR);
@@ -524,6 +533,7 @@ public class DateTime {
     }
     return delta;
   }
+
   /**
    *
    * net.ajaskey.market.misc.isEqual
@@ -540,6 +550,7 @@ public class DateTime {
       return false;
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.isGreaterThan
@@ -556,6 +567,7 @@ public class DateTime {
       return false;
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.isGreaterThanOrEqual
@@ -572,6 +584,7 @@ public class DateTime {
       return false;
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.isLessThan
@@ -590,6 +603,7 @@ public class DateTime {
     }
     return ret;
   }
+
   /**
    *
    * net.ajaskey.market.misc.isLessThanOrEqual
@@ -606,6 +620,7 @@ public class DateTime {
       return false;
     }
   }
+
   public boolean isNull() {
     boolean ret = false;
     if (this.cal == null) {
@@ -613,6 +628,7 @@ public class DateTime {
     }
     return ret;
   }
+
   /**
    *
    * net.ajaskey.market.misc.isWeekday
@@ -623,6 +639,7 @@ public class DateTime {
     final int d = this.cal.get(Calendar.DAY_OF_WEEK);
     return d > DateTime.SUNDAY && d < DateTime.SATURDAY;
   }
+
   /**
    *
    * net.ajaskey.market.misc.parse
@@ -642,6 +659,7 @@ public class DateTime {
     }
     return ret;
   }
+
   /**
    *
    * net.ajaskey.market.misc.parse
@@ -663,6 +681,7 @@ public class DateTime {
     }
     return ret;
   }
+
   /**
    *
    * @param dt2
@@ -681,6 +700,7 @@ public class DateTime {
     }
     return false;
   }
+
   /**
    *
    * net.ajaskey.market.misc.set
@@ -695,6 +715,7 @@ public class DateTime {
       this.cal.setTime(c.getTime());
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.set
@@ -709,6 +730,7 @@ public class DateTime {
       this.cal.setTime(d);
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.set
@@ -723,6 +745,7 @@ public class DateTime {
       this.cal.setTime(dt.cal.getTime());
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.set
@@ -737,6 +760,7 @@ public class DateTime {
     }
     this.cal.set(year, month, day);
   }
+
   /**
    *
    */
@@ -749,6 +773,7 @@ public class DateTime {
       this.add(DateTime.DATE, 1);
     }
   }
+
   /**
    *
    * net.ajaskey.market.misc.setSdf
@@ -758,6 +783,7 @@ public class DateTime {
   public void setSdf(final SimpleDateFormat simpledateformat) {
     this.sdf = simpledateformat;
   }
+
   /**
    *
    * net.ajaskey.market.misc.toFullString

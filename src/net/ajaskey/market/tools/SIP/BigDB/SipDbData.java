@@ -1,10 +1,8 @@
 package net.ajaskey.market.tools.SIP.BigDB;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
-import net.ajaskey.market.tools.SIP.BigDB.collation.CompanyData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 
 /**
  * This class contains test drivers for various BigDB methods.
@@ -42,14 +40,19 @@ public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-    int year = 2019;
-    int qtr = 3;
+    int year = 2020;
+    int qtr = 2;
 
 //    for (int i = 2018; i < 2021; i++) {
 //      for (int j = 1; j < 5; j++) {
 //        FieldData.parseSipData(i, j);
 //      }
 //    }
+
+    // FieldData.parseSipData(year, qtr);
+    FieldData.readDbData(year, qtr, true);
+    FieldData fd = FieldData.getFromMemory("AAPL", year, qtr);
+    System.out.println(fd);
 
 //    FieldData.parseSipData(2018, 1);
 //    FieldData.parseSipData(2019, 1);
@@ -61,18 +64,48 @@ public class SipDbData {
 //      }
 //    }
 
-    List<String> tickers = CompanyData.getTickers(ExchEnum.AMEX, 2020, 1);
-    for (String s : tickers) {
-      System.out.println(s);
-    }
+//    FieldData fd = CompanyData.getCompany("MSFT", 2020, 2);
+//
+//    List<String> tickers = CompanyData.getTickers(SnpEnum.SP500, 2020, 1);
 
-//    CompanyData cd = CompanyData.getCompany("tgt");
-//    System.out.println(cd.fdList.get(0));
-//    for (FieldData fd : cd.fdList) {
-//      double eps = fd.getIncSheetData().getEpsYr()[0];
-//      System.out.printf("%d Q%d -- %.3f%n", fd.getYear(), fd.getQuarter(), eps);
+//    for (String s : tickers) {
+//      System.out.println(s);
 //    }
-
+//    try (PrintWriter pw = new PrintWriter("out/snp-earning.txt")) {
+//      for (String ticker : tickers) {
+//        CompanyData cd = CompanyData.getCompany(ticker);
+//        double lastEps = 0.0;
+//        pw.println(Utils.NL + cd.ticker);
+//        for (FieldData fd : cd.fdList) {
+//          double eps = fd.getEpsYr()[0];
+//          double chg = 0.0;
+//          if (lastEps != 0.0) {
+//            chg = (eps - lastEps) / lastEps * 100.0;
+//          }
+//          lastEps = eps;
+//
+//          pw.printf(" %d Q%d -- %.3f\t%.1f%%%n", fd.getYear(), fd.getQuarter(), eps, chg);
+//        }
+//      }
+//    }
+//    try (PrintWriter pw = new PrintWriter("out/snp-earning2.txt")) {
+//      List<CompanyData> cdList = CompanyData.getCompanies(tickers);
+//      for (CompanyData cd : cdList) {
+//        System.out.printf("Processing : %s%n", cd.getTicker());
+//        double lastNet = 0.0;
+//        pw.println(Utils.NL + cd.getTicker());
+//        for (FieldData fd : cd.getFdList()) {
+//          double net = fd.getTtm(fd.getNetIncQtr());
+//          double chg = 0.0;
+//          if (lastNet != 0.0) {
+//            chg = (net - lastNet) / Math.abs(lastNet) * 100.0;
+//          }
+//          lastNet = net;
+//
+//          pw.printf(" %d Q%d -- %.3f\t%.1f%%%n", fd.getYear(), fd.getQuarter(), net, chg);
+//        }
+//      }
+//    }
 //    List<String> net = Reports.getCompanyNetIncome("CAT", 2018, 2020, 2);
 //    for (String s : net) {
 //      System.out.println(s);
