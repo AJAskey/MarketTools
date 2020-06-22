@@ -41,18 +41,42 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataYear;
  */
 public class BigLists {
 
-//  private static List<String>   companySummaryList = new ArrayList<>();
-//  public static List<FieldData> quarterlyList      = new ArrayList<>();
-
   public static List<FieldDataYear> allDataList = new ArrayList<>();
 
-  final static int startYear = 2015;
-  final static int endYear   = 2020;
+  final public static int startYear = 2015;
+  final public static int endYear   = 2020;
 
+  /**
+   * Returns the request yr from global memory.
+   * 
+   * @param yr
+   * @return FieldDataYear if available.
+   */
+  public static FieldDataYear getYear(int yr) {
+
+    for (FieldDataYear fdy : allDataList) {
+      if (fdy.isInUse()) {
+        if (fdy.getYear() == yr) {
+          return fdy;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Sets internal memory (allDataList) to request year and quarter.
+   * 
+   * @param yr
+   * @param qtr
+   * @param fdList The FieldData list for all companies in the requested year and
+   *               quarter.
+   */
   public static void setLists(int yr, int qtr, List<FieldData> fdList) {
 
     if (fdList == null) {
-      System.out.printf("Warning. SetLists(): NULL fdList%n");
+      System.out.printf("Warning. SetLists(): NULL fdList for %dQ%d%n", yr, qtr);
       return;
     }
     if (yr < startYear || yr > endYear) {
@@ -60,6 +84,9 @@ public class BigLists {
       return;
     }
 
+    /**
+     * Perform the first time through.
+     */
     if (BigLists.allDataList.size() == 0) {
       BigLists.init(startYear, endYear);
     }

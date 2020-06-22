@@ -131,7 +131,7 @@ public class OneCompanyData {
     this.year = fdy.getYear();
     this.ticker = t;
     if (fdy.quarterDataAvailable(1)) {
-      for (final FieldData fd : fdy.getQuarterData(1).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(1).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q1 = fd;
           break;
@@ -139,7 +139,7 @@ public class OneCompanyData {
       }
     }
     if (fdy.quarterDataAvailable(2)) {
-      for (final FieldData fd : fdy.getQuarterData(2).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(2).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q2 = fd;
           break;
@@ -147,7 +147,7 @@ public class OneCompanyData {
       }
     }
     if (fdy.quarterDataAvailable(3)) {
-      for (final FieldData fd : fdy.getQuarterData(3).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(3).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q3 = fd;
           break;
@@ -155,7 +155,7 @@ public class OneCompanyData {
       }
     }
     if (fdy.quarterDataAvailable(4)) {
-      for (final FieldData fd : fdy.getQuarterData(4).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(4).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q4 = fd;
           break;

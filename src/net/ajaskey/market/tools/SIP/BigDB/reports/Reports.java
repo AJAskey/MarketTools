@@ -11,6 +11,7 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataQuarter;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataYear;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
 
 /**
@@ -66,7 +67,7 @@ public class Reports {
 
           if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQuarterData(qtr);
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
 
             for (final FieldData fd : fdq.fieldDataList) {
               final String s = Reports.companyLine(fd);
@@ -98,6 +99,51 @@ public class Reports {
     return ret;
   }
 
+  public static String memoryOverview() {
+
+    String ret = "";
+
+    for (int year = BigLists.startYear; year <= BigLists.endYear; year++) {
+
+      FieldDataYear fdy = BigLists.getYear(year);
+      if (fdy != null) {
+
+        ret += String.format("%n----------%d Q1----------------%n", year);
+        int qtr = 1;
+        int knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+
+        ret += String.format("%n----------%d Q2----------------%n", year);
+        qtr = 2;
+        knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+
+        ret += String.format("%n----------%d Q3----------------%n", year);
+        qtr = 3;
+        knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+
+        ret += String.format("%n----------%d Q4----------------%n", year);
+        qtr = 4;
+        knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+      }
+    }
+    return ret;
+  }
+
   /**
    * Returns a list of String for all tickers found matching the input index
    * value.
@@ -124,7 +170,7 @@ public class Reports {
 
           if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQuarterData(qtr);
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
 
             for (final FieldData fd : fdq.fieldDataList) {
               if (fd.getCompanyInfo().getDowIndex().equals(index)) {
@@ -171,7 +217,7 @@ public class Reports {
 
           if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQuarterData(qtr);
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
 
             for (final FieldData fd : fdq.fieldDataList) {
               if (fd.getCompanyInfo().getExchange().equals(exch)) {
@@ -218,7 +264,7 @@ public class Reports {
 
           if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQuarterData(qtr);
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
 
             for (final FieldData fd : fdq.fieldDataList) {
               if (fd.getCompanyInfo().getSnpIndex().equals(index)) {
@@ -302,7 +348,7 @@ public class Reports {
     List<String> ret = new ArrayList<>();
 
     for (int yr = startYr; yr <= endYr; yr++) {
-      FieldData fd = FieldData.readDbData(yr, quarter, ticker);
+      FieldData fd = FieldData.getFromDb(ticker, yr, quarter, FiletypeEnum.BINARY);
       String s = String.format("%d : %f", yr, fd.getIncSheetData().getNetIncYr()[0]);
       ret.add(s);
     }

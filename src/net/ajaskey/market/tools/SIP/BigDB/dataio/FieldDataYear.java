@@ -35,8 +35,7 @@ package net.ajaskey.market.tools.SIP.BigDB.dataio;
  */
 public class FieldDataYear {
 
-  private boolean inUse;
-
+  private boolean          inUse;
   private FieldDataQuarter q1;
   private FieldDataQuarter q2;
   private FieldDataQuarter q3;
@@ -69,7 +68,7 @@ public class FieldDataYear {
     return this.q4;
   }
 
-  public FieldDataQuarter getQuarterData(int qtr) {
+  public FieldDataQuarter getQ(int qtr) {
 
     FieldDataQuarter ret = null;
 

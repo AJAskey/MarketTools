@@ -10,6 +10,7 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
 
 /**
@@ -103,7 +104,7 @@ public class CompanyData {
         // System.out.println(f.getAbsolutePath());
         final int yr = CompanyData.parseYear(f.getName());
         final int qtr = CompanyData.parseQuarter(f.getName());
-        final FieldData fd = FieldData.readDbData(yr, qtr, ticker.toUpperCase());
+        final FieldData fd = FieldData.getFromDb(ticker, yr, qtr, FiletypeEnum.BINARY);
         fd.setYear(yr);
         fd.setQuarter(qtr);
         cd.fdList.add(fd);
@@ -119,9 +120,9 @@ public class CompanyData {
    * @param ticker
    * @return CompanyData
    */
-  public static FieldData getCompany(String ticker, int year, int quarter) {
+  public static FieldData getCompany(String ticker, int yr, int qtr) {
 
-    final FieldData ret = FieldData.readDbData(year, quarter, ticker);
+    final FieldData ret = FieldData.getFromDb(ticker, yr, qtr, FiletypeEnum.BINARY);
 
     return ret;
   }
