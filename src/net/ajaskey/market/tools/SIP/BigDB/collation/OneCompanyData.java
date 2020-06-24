@@ -3,7 +3,7 @@ package net.ajaskey.market.tools.SIP.BigDB.collation;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.ajaskey.market.tools.SIP.BigDB.BigLists;
+import net.ajaskey.market.tools.SIP.BigDB.Globals;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataYear;
 
@@ -51,11 +51,59 @@ public class OneCompanyData {
 
     final List<OneCompanyData> ret = new ArrayList<>();
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
       if (fdy.isInUse()) {
         final OneCompanyData icd = new OneCompanyData(ticker, fdy);
         ret.add(icd);
       }
+    }
+    return ret;
+  }
+
+  /**
+   * 
+   * @param ticker
+   * @return
+   */
+
+  /**
+   * 
+   * @param fdList
+   * @param yr
+   * @param qtr
+   * @return
+   */
+  public static FieldData getFieldData(List<FieldData> fdList, int yr, int qtr) {
+    for (FieldData fd : fdList) {
+      if (fd.getYear() == yr && fd.getQuarter() == qtr) {
+        return fd;
+      }
+    }
+    return null;
+  }
+
+  private static int parseQuarter(String name) {
+    int ret = 0;
+    try {
+      int idx = name.indexOf("-data-");
+      String sQtr = name.substring(idx + 11, idx + 12);
+      ret = Integer.parseInt(sQtr);
+    }
+    catch (Exception e) {
+      ret = 0;
+    }
+    return ret;
+  }
+
+  private static int parseYear(String name) {
+    int ret = 0;
+    try {
+      int idx = name.indexOf("-data-");
+      String sYr = name.substring(idx + 6, idx + 10);
+      ret = Integer.parseInt(sYr);
+    }
+    catch (Exception e) {
+      ret = 0;
     }
     return ret;
   }
@@ -83,7 +131,7 @@ public class OneCompanyData {
     this.year = fdy.getYear();
     this.ticker = t;
     if (fdy.quarterDataAvailable(1)) {
-      for (final FieldData fd : fdy.getQuarterData(1).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(1).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q1 = fd;
           break;
@@ -91,7 +139,7 @@ public class OneCompanyData {
       }
     }
     if (fdy.quarterDataAvailable(2)) {
-      for (final FieldData fd : fdy.getQuarterData(2).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(2).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q2 = fd;
           break;
@@ -99,7 +147,7 @@ public class OneCompanyData {
       }
     }
     if (fdy.quarterDataAvailable(3)) {
-      for (final FieldData fd : fdy.getQuarterData(3).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(3).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q3 = fd;
           break;
@@ -107,7 +155,7 @@ public class OneCompanyData {
       }
     }
     if (fdy.quarterDataAvailable(4)) {
-      for (final FieldData fd : fdy.getQuarterData(4).fieldDataList) {
+      for (final FieldData fd : fdy.getQ(4).fieldDataList) {
         if (fd.getTicker().equalsIgnoreCase(t)) {
           this.q4 = fd;
           break;

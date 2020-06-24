@@ -55,14 +55,14 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class Utils {
 
-  public static DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
-  public static DecimalFormat df;
-  public static String                 NL      = System.lineSeparator();
-  public final static SimpleDateFormat sdf     = new SimpleDateFormat("dd-MMM-yyyy");
+  public static DecimalFormatSymbols   decimalFormatSymbols = new DecimalFormatSymbols();
+  public static DecimalFormat          df;
+  public static String                 NL                   = System.lineSeparator();
+  public final static SimpleDateFormat sdf                  = new SimpleDateFormat("dd-MMM-yyyy");
 
   public final static SimpleDateFormat sdfFull = new SimpleDateFormat("E dd-MMM-yyyy HH:mm:ss");
 
-  public static String                 TAB     = "\t";
+  public static String TAB = "\t";
 
   private static DecimalFormat dfmt = new DecimalFormat("#,###");
 
@@ -90,6 +90,9 @@ public class Utils {
    */
   public static String fmt(final double d, final int len) {
 
+    if (Utils.df == null) {
+      Utils.df = new DecimalFormat("#,###,##0.00", Utils.decimalFormatSymbols);
+    }
     final String sfmt = String.format("%%%ds", len);
     return String.format(sfmt, Utils.df.format(d));
   }

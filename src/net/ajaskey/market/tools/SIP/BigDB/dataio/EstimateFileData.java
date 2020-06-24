@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  *         </p>
  *
  */
-public class EstimateFileData {
+public class EstimateFileData implements Serializable {
 
   /**
    * Stores all EstimateFileDate read in from DB.
@@ -189,6 +190,23 @@ public class EstimateFileData {
     this.epsY0 = SipUtils.parseDouble(fld[9]);
     this.epsY1 = SipUtils.parseDouble(fld[10]);
     this.epsY2 = SipUtils.parseDouble(fld[11]);
+  }
+
+  public EstimateFileData(EstimateFileData efd) {
+    if (efd != null) {
+      this.currFiscalYear = efd.currFiscalYear;
+      this.epsQ0 = efd.epsQ0;
+      this.epsQ1 = efd.epsQ1;
+      this.epsY0 = efd.epsY0;
+      this.epsY1 = efd.epsY1;
+      this.epsY2 = efd.epsY2;
+      this.exchange = efd.exchange;
+      this.industry = efd.industry;
+      this.latestQtrEps = efd.latestQtrEps;
+      this.name = efd.name;
+      this.sector = efd.sector;
+      this.ticker = efd.ticker;
+    }
   }
 
   public DateTime getCurrFiscalYear() {

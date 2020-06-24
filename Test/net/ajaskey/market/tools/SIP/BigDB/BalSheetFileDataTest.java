@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import net.ajaskey.common.TextUtils;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.BalSheetFileData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
 
 class BalSheetFileDataTest {
 
@@ -17,11 +19,11 @@ class BalSheetFileDataTest {
 
     String head = String.format("CompanyInfo-");
     final String ffname = String.format("%s%s%s", dir, head, tail);
-    CompanyFileData.readData(ffname);
+    CompanyFileData.readSipData(ffname);
 
     head = String.format("BalSheet-");
     head = "BalSheet-";
-    BalSheetFileData.readData(dir + head + "QTR-" + tail, dir + head + "ANN-" + tail);
+    BalSheetFileData.readSipData(dir + head + "QTR-" + tail, dir + head + "ANN-" + tail);
 
     final BalSheetFileData bfd = BalSheetFileData.find(TestData.ticker);
 

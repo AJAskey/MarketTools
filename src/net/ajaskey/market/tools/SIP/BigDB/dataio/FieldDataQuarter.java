@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,10 +42,22 @@ public class FieldDataQuarter {
   private final int      quarter;
   private final int      year;
 
+  /**
+   * Constructor
+   * 
+   * @param yr
+   * @param qtr
+   * @param fdl
+   */
   public FieldDataQuarter(int yr, int qtr, List<FieldData> fdl) {
     this.year = yr;
     this.quarter = qtr;
-    this.fieldDataList = fdl;
+    if (fdl == null) {
+      this.fieldDataList = new ArrayList<>();
+    }
+    else {
+      this.fieldDataList = fdl;
+    }
   }
 
   public int getQuarter() {

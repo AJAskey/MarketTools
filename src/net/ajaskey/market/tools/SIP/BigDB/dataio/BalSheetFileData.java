@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  *         </p>
  *
  */
-public class BalSheetFileData {
+public class BalSheetFileData implements Serializable {
 
   /**
    * Stores all BalSheetFileDate read in from DB.
@@ -533,6 +534,68 @@ public class BalSheetFileData {
     ptrYr += 7;
     this.bvpsQtr = SipUtils.parseDoubles(fldQtr, ptrQtr, 8);
     this.bvpsYr = SipUtils.parseDoubles(fldYr, ptrYr, 7);
+  }
+
+  /**
+   * Copy Constructor
+   * 
+   * @param bfd
+   */
+  public BalSheetFileData(BalSheetFileData bfd) {
+    if (bfd != null) {
+      this.acctPayableQtr = bfd.acctPayableQtr;
+      this.acctPayableYr = bfd.acctPayableYr;
+      this.acctRxQtr = bfd.acctRxQtr;
+      this.acctRxYr = bfd.acctRxYr;
+      this.bvpsQtr = bfd.bvpsQtr;
+      this.bvpsYr = bfd.bvpsYr;
+      this.cashQtr = bfd.cashQtr;
+      this.cashYr = bfd.cashYr;
+      this.currAssetsQtr = bfd.currAssetsQtr;
+      this.currAssetsYr = bfd.currAssetsYr;
+      this.currLiabQtr = bfd.currLiabQtr;
+      this.currLiabYr = bfd.currLiabYr;
+      this.equityQtr = bfd.equityQtr;
+      this.equityYr = bfd.equityYr;
+      this.exchange = bfd.exchange;
+      this.goodwillQtr = bfd.goodwillQtr;
+      this.goodwillYr = bfd.goodwillYr;
+      this.industry = bfd.industry;
+      this.inventoryQtr = bfd.inventoryQtr;
+      this.inventoryYr = bfd.inventoryYr;
+      this.liabEquityQtr = bfd.liabEquityQtr;
+      this.liabEquityYr = bfd.liabEquityYr;
+      this.ltDebtQtr = bfd.ltDebtQtr;
+      this.ltDebtYr = bfd.ltDebtYr;
+      this.ltInvestQtr = bfd.ltInvestQtr;
+      this.ltInvestYr = bfd.ltInvestYr;
+      this.name = bfd.name;
+      this.netFixedAssetsQtr = bfd.netFixedAssetsQtr;
+      this.netFixedAssetsYr = bfd.netFixedAssetsYr;
+      this.otherCurrAssetsQtr = bfd.otherCurrAssetsQtr;
+      this.otherCurrAssetsYr = bfd.otherCurrAssetsYr;
+      this.otherCurrLiabQtr = bfd.otherCurrLiabQtr;
+      this.otherCurrLiabYr = bfd.otherCurrLiabYr;
+      this.otherLtAssetsQtr = bfd.otherLtAssetsQtr;
+      this.otherLtAssetsYr = bfd.otherLtAssetsYr;
+      this.otherLtLiabQtr = bfd.otherLtLiabQtr;
+      this.otherLtLiabYr = bfd.otherLtLiabYr;
+      this.prefStockQtr = bfd.prefStockQtr;
+      this.prefStockYr = bfd.prefStockYr;
+      this.sector = bfd.sector;
+      this.stDebtQtr = bfd.stDebtQtr;
+      this.stDebtYr = bfd.stDebtYr;
+      this.stInvestQtr = bfd.stInvestQtr;
+      this.stInvestYr = bfd.stInvestYr;
+      this.ticker = bfd.ticker;
+      this.totalAssetsQtr = bfd.totalAssetsQtr;
+      this.totalAssetsYr = bfd.totalAssetsYr;
+      this.totalLiabQtr = bfd.totalLiabQtr;
+      this.totalLiabYr = bfd.totalLiabYr;
+    }
+    else {
+      this.ticker = "";
+    }
   }
 
   public double[] getAcctPayableQtr() {

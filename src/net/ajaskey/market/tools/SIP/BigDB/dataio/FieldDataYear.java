@@ -35,15 +35,18 @@ package net.ajaskey.market.tools.SIP.BigDB.dataio;
  */
 public class FieldDataYear {
 
-  private boolean inUse;
-
+  private boolean          inUse;
   private FieldDataQuarter q1;
   private FieldDataQuarter q2;
   private FieldDataQuarter q3;
   private FieldDataQuarter q4;
+  private final int        year;
 
-  private final int year;
-
+  /**
+   * Constructor
+   * 
+   * @param yr
+   */
   public FieldDataYear(int yr) {
     this.inUse = false;
     this.year = yr;
@@ -69,7 +72,13 @@ public class FieldDataYear {
     return this.q4;
   }
 
-  public FieldDataQuarter getQuarterData(int qtr) {
+  /**
+   * Returns the requested quarter of data.
+   * 
+   * @param qtr quarter
+   * @return FieldDataQuarter
+   */
+  public FieldDataQuarter getQ(int qtr) {
 
     FieldDataQuarter ret = null;
 
@@ -99,6 +108,12 @@ public class FieldDataYear {
     return this.inUse;
   }
 
+  /**
+   * Checks if requested data has been set.
+   * 
+   * @param qtr quarter
+   * @return TRUE if data is available. FALSE otherwise.
+   */
   public boolean quarterDataAvailable(int qtr) {
 
     if (this.inUse) {
@@ -142,6 +157,12 @@ public class FieldDataYear {
     return false;
   }
 
+  /**
+   * Sets the requested quarter with FieldDataQuarter passed in.
+   * 
+   * @param qtr quarter
+   * @param fdq FieldDataQuarter
+   */
   public void set(int qtr, FieldDataQuarter fdq) {
     this.inUse = true;
     if (qtr == 1) {

@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,32 +42,39 @@ import net.ajaskey.market.tools.SIP.SipUtils;
  *         </p>
  *
  */
-public class CompanyFileData {
+public class CompanyFileData implements Serializable {
 
   private static int ADR = 6;
 
   /**
    * Stores all CompanyFileDate read in from DB.
    */
-  private static List<CompanyFileData> cfdList  = new ArrayList<>();
-  private static int                   CITY     = 11;
-  private static int                   COUNTRY  = 13;
-  private static int                   DOW      = 7;
-  private static int                   DRP      = 9;
-  private static int                   EMP      = 17;
-  private static int                   EXCHANGE = 2;
-  private static String                fld[]    = null;
-  private static int                   INDUSTRY = 4;
-  private static int                   NAME     = 0;
-  private static int                   PHONE    = 15;
-  private static int                   SECTOR   = 3;
-  private static int                   SIC      = 5;
-  private static int                   SNP      = 8;
-  private static int                   STATE    = 12;
-  private static int                   STREET   = 10;
-  private static int                   TICKER   = 1;
-  private static int                   WEB      = 16;
-  private static int                   ZIP      = 14;
+  private static List<CompanyFileData> cfdList = new ArrayList<>();
+
+  private static int CITY = 11;
+
+  private static int    COUNTRY  = 13;
+  private static int    DOW      = 7;
+  private static int    DRP      = 9;
+  private static int    EMP      = 17;
+  private static int    EXCHANGE = 2;
+  private static String fld[]    = null;
+  private static int    INDUSTRY = 4;
+  private static int    NAME     = 0;
+  private static int    PHONE    = 15;
+  private static int    SECTOR   = 3;
+  private static int    SIC      = 5;
+  private static int    SNP      = 8;
+  private static int    STATE    = 12;
+  private static int    STREET   = 10;
+  private static int    TICKER   = 1;
+  private static int    WEB      = 16;
+  private static int    ZIP      = 14;
+
+  public static void clearList() {
+    CompanyFileData.cfdList.clear();
+
+  }
 
   /**
    * Returns the CompanyFileData instance for requested ticker.
@@ -261,7 +269,8 @@ public class CompanyFileData {
     }
   }
 
-  private boolean  adr;
+  private boolean adr;
+
   private String   city;
   private String   country;
   private DowEnum  dowIndex;
@@ -279,6 +288,44 @@ public class CompanyFileData {
   private String   ticker;
   private String   web;
   private String   zip;
+
+  /**
+   * Constructor
+   */
+  public CompanyFileData() {
+    this.ticker = "";
+  }
+
+  /**
+   * Copy Constructor
+   * 
+   * @param cfd
+   */
+  public CompanyFileData(CompanyFileData cfd) {
+    if (cfd != null) {
+      this.adr = cfd.adr;
+      this.city = cfd.city;
+      this.country = cfd.country;
+      this.dowIndex = cfd.dowIndex;
+      this.drp = cfd.drp;
+      this.exchange = cfd.exchange;
+      this.industry = cfd.industry;
+      this.name = cfd.name;
+      this.numEmployees = cfd.numEmployees;
+      this.phone = cfd.phone;
+      this.sector = cfd.sector;
+      this.sic = cfd.sic;
+      this.snpIndex = cfd.snpIndex;
+      this.state = cfd.state;
+      this.street = cfd.street;
+      this.ticker = cfd.ticker;
+      this.web = cfd.web;
+      this.zip = cfd.zip;
+    }
+    else {
+      this.ticker = "";
+    }
+  }
 
   public String getCity() {
     return this.city;
@@ -387,7 +434,7 @@ public class CompanyFileData {
       }
 
       if (fld.equals("ticker")) {
-        this.ticker = val;
+        this.ticker = val.toUpperCase();
       }
       else if (fld.equals("name")) {
         this.name = val;
@@ -574,11 +621,6 @@ public class CompanyFileData {
 
   private String getExchangeStr() {
     return this.exchange.toString().toUpperCase();
-  }
-
-  public static void clearList() {
-    cfdList.clear();
-
   }
 
 }
