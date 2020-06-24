@@ -15,7 +15,8 @@ import java.util.List;
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
-import net.ajaskey.market.tools.SIP.BigDB.BigLists;
+import net.ajaskey.market.tools.SIP.BigDB.Globals;
+import net.ajaskey.market.tools.SIP.BigDB.collation.FieldDataBinary;
 
 /**
  * This class contains data structures and procedures for reading SIP data and
@@ -159,7 +160,7 @@ public class FieldData implements Serializable {
 
     final String ticker = tkr.trim().toUpperCase();
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
 
       if (yr == fdy.getYear()) {
 
@@ -193,7 +194,9 @@ public class FieldData implements Serializable {
 
     List<FieldData> fdList = new ArrayList<>();
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
+
+    for (final FieldDataYear fdy : Globals.allDataList) {
 
       if (yr == fdy.getYear()) {
 
@@ -246,6 +249,19 @@ public class FieldData implements Serializable {
           readDbBigBinData(yr, qtr);
         }
       }
+    }
+  }
+
+  public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
+
+    System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
+
+    if (ft == FiletypeEnum.BINARY) {
+
+      readDbBigBinData(yr, qtr);
+    }
+    else if (ft == FiletypeEnum.TEXT) {
+      readDbData(yr, qtr, ft);
     }
   }
 
@@ -342,6 +358,13 @@ public class FieldData implements Serializable {
     IncSheetFileData.readSipData(ffname1, ffname2);
     // System.out.println(IncSheetFileData.listToString());
 
+    head = "Cash-";
+    ffname = String.format("%s%s%s", dir, head, tail);
+    dirCk = new File(ffname);
+    if (dirCk.exists()) {
+      CashFileData.readSipData(ffname);
+    }
+
     for (final CompanyFileData cfd : CompanyFileData.getList()) {
 
       final String ticker = cfd.getTicker();
@@ -350,8 +373,9 @@ public class FieldData implements Serializable {
       final EstimateFileData efd = EstimateFileData.find(ticker);
       final IncSheetFileData ifd = IncSheetFileData.find(ticker);
       final BalSheetFileData bfd = BalSheetFileData.find(ticker);
+      final CashFileData cashfd = CashFileData.find(ticker);
 
-      FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, year, quarter);
+      FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
       allCompanyList.fdList.add(fd);
 
       if (ft == FiletypeEnum.BINARY) {
@@ -359,7 +383,7 @@ public class FieldData implements Serializable {
         FieldData.writeDbBinary(fname, fd);
       }
       else if (ft == FiletypeEnum.TEXT) {
-        FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, year, quarter);
+        FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
       }
     }
 
@@ -400,7 +424,7 @@ public class FieldData implements Serializable {
 
     fdList = FieldData.parseFromDbBigBinData(year, quarter);
 
-    BigLists.setLists(year, quarter, fdList);
+    Globals.setLists(year, quarter, fdList);
 
     return fdList;
   }
@@ -421,14 +445,15 @@ public class FieldData implements Serializable {
   private static List<FieldData> readDbData(int year, int quarter, FiletypeEnum ft) {
 
     System.out.printf("Processing DB %d %d%n", year, quarter);
+
     List<FieldData> fdList = null;
     if (ft == FiletypeEnum.BINARY) {
       fdList = FieldData.parseFromDbBinData(year, quarter);
     }
-    else {
+    else if (ft == FiletypeEnum.TEXT) {
       fdList = FieldData.parseFromDbData(year, quarter);
     }
-    BigLists.setLists(year, quarter, fdList);
+    Globals.setLists(year, quarter, fdList);
 
     return fdList;
   }
@@ -564,6 +589,7 @@ public class FieldData implements Serializable {
       fd.estimateData = EstimateFileData.readFromDb(data);
       fd.incSheetData = IncSheetFileData.readFromDb(data);
       fd.balSheetData = BalSheetFileData.readFromDb(data);
+      fd.cashData = CashFileData.readFromDb(data);
       fd.setNameFields(fd.companyInfo);
       fd.shareData.setNameFields(fd.companyInfo);
       fd.estimateData.setNameFields(fd.companyInfo);
@@ -669,11 +695,11 @@ public class FieldData implements Serializable {
    * @throws FileNotFoundException
    */
   private static void writeDbOutput(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
-      int year, int quarter) throws FileNotFoundException {
+      CashFileData cash, int year, int quarter) throws FileNotFoundException {
 
     final String fname = FieldData.getOutfileName(year, quarter, cfd.getTicker(), "txt");
 
-    final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, year, quarter);
+    final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cash, year, quarter);
 
     final String rpt = fd.genOutput();
 
@@ -685,6 +711,7 @@ public class FieldData implements Serializable {
   }
 
   private BalSheetFileData balSheetData;
+  private CashFileData     cashData;
   private CompanyFileData  companyInfo;
   private EstimateFileData estimateData;
   private ExchEnum         exchange;
@@ -692,13 +719,10 @@ public class FieldData implements Serializable {
   private String           industry;
   private String           name;
   private int              quarter;
-
-  private String         sector;
-  private SharesFileData shareData;
-
-  private String ticker;
-
-  private int year;
+  private String           sector;
+  private SharesFileData   shareData;
+  private String           ticker;
+  private int              year;
 
   /**
    * Constructor
@@ -711,8 +735,10 @@ public class FieldData implements Serializable {
    * @param yr
    * @param qtr
    */
-  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd, int yr, int qtr) {
+  public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd, CashFileData cash,
+      int yr, int qtr) {
     this.companyInfo = cfd;
+    this.cashData = cash;
     this.estimateData = efd;
     this.shareData = sfd;
     this.incSheetData = ifd;
@@ -749,6 +775,7 @@ public class FieldData implements Serializable {
     this.name = "";
     this.sector = "";
     this.industry = "";
+    this.cashData = new CashFileData();
     this.companyInfo = new CompanyFileData();
     this.estimateData = new EstimateFileData();
     this.shareData = new SharesFileData();
@@ -769,6 +796,7 @@ public class FieldData implements Serializable {
     ret += this.estimateData.toDbOutput();
     ret += this.incSheetData.toDbOutput();
     ret += this.balSheetData.toDbOutput();
+    ret += this.cashData.toDbOutput();
     return ret;
 
   }
@@ -799,6 +827,10 @@ public class FieldData implements Serializable {
 
   public BalSheetFileData getBalSheetData() {
     return this.balSheetData;
+  }
+
+  public CashFileData getCashData() {
+    return this.cashData;
   }
 
   public double getBeta() {
@@ -1223,6 +1255,14 @@ public class FieldData implements Serializable {
     return this.shareData.getPrice();
   }
 
+  public double getPrice52hi() {
+    return this.shareData.getPrice52hi();
+  }
+
+  public double getPrice52lo() {
+    return this.shareData.getPrice52lo();
+  }
+
   public int getQuarter() {
     return this.quarter;
   }
@@ -1307,7 +1347,7 @@ public class FieldData implements Serializable {
     return this.getIncSheetData().getTotalOpExpYr();
   }
 
-  public double getTtm(double[] dArr) {
+  public static double getTtm(double[] dArr) {
     final double ret = dArr[1] + dArr[2] + dArr[3] + dArr[4];
     return ret;
   }
@@ -1320,8 +1360,12 @@ public class FieldData implements Serializable {
     return this.getIncSheetData().getUnusualIncYr();
   }
 
-  public long getVolume3m() {
-    return this.shareData.getVolume3m();
+  public long getVolume10d() {
+    return this.shareData.getVolume10d();
+  }
+
+  public long getVolumeMonth3m() {
+    return this.shareData.getVolumeMonth3m();
   }
 
   public String getWeb() {
@@ -1350,6 +1394,22 @@ public class FieldData implements Serializable {
 
   public void setYear(int year) {
     this.year = year;
+  }
+
+  public double[] getCapEx() {
+    return this.cashData.getCapExQtr();
+  }
+
+  public double[] getCashFromFin() {
+    return this.cashData.getCashFromFinQtr();
+  }
+
+  public double[] getCashFromInv() {
+    return this.cashData.getCashFromInvQtr();
+  }
+
+  public double[] getCashFromOps() {
+    return this.cashData.getCashFromOpsQtr();
   }
 
   @Override

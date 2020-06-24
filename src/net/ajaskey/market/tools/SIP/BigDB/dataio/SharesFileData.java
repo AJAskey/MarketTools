@@ -49,6 +49,10 @@ public class SharesFileData implements Serializable {
    */
   private static List<SharesFileData> sfdList = new ArrayList<>();
 
+  public static void clearList() {
+    SharesFileData.sfdList.clear();
+  }
+
   /**
    * Returns the ShareFileData instance for requested ticker.
    *
@@ -110,11 +114,20 @@ public class SharesFileData implements Serializable {
       if (fld.equals("price")) {
         sfd.setPrice(val);
       }
+      else if (fld.equals("price 52w high")) {
+        sfd.setPrice52hi(val);
+      }
+      else if (fld.equals("price 52w low")) {
+        sfd.setPrice52lo(val);
+      }
       else if (fld.equals("float")) {
         sfd.setFloatshr(val);
       }
       else if (fld.equals("market cap")) {
         sfd.setMktCap(val);
+      }
+      else if (fld.equals("volume 10d avg")) {
+        sfd.setVolume10d(val);
       }
       else if (fld.equals("volume 3m avg")) {
         sfd.setVolume3m(val);
@@ -208,11 +221,14 @@ public class SharesFileData implements Serializable {
   private double   mktCap;
   private String   name;
   private double   price;
+  private double   price52hi;
+  private double   price52lo;
   private String   sector;
   private double[] sharesQ;
   private double[] sharesY;
   private String   ticker;
-  private long     volume3m;
+  private long     volume10d;
+  private long     volumeMonth3m;
 
   SharesFileData() {
     this.sharesQ = new double[1];
@@ -248,9 +264,12 @@ public class SharesFileData implements Serializable {
     this.mktCap = SipUtils.parseDouble(fld[17]);
     this.insiderNetPercentOutstanding = SipUtils.parseDouble(fld[18]);
     this.price = SipUtils.parseDouble(fld[19]);
+    this.price52hi = SipUtils.parseDouble(fld[20]);
+    this.price52lo = SipUtils.parseDouble(fld[21]);
     this.sharesQ = SipUtils.parseDoubles(fld, 38, 8);
     this.sharesY = SipUtils.parseDoubles(fld, 46, 7);
-    this.volume3m = SipUtils.parseLong(fld[57]);
+    this.volume10d = SipUtils.parseLong(fld[56]);
+    this.volumeMonth3m = SipUtils.parseLong(fld[57]);
     this.dollar3m = SipUtils.parseDouble(fld[58]);
   }
 
@@ -330,6 +349,14 @@ public class SharesFileData implements Serializable {
     return this.price;
   }
 
+  public double getPrice52hi() {
+    return this.price52hi;
+  }
+
+  public double getPrice52lo() {
+    return this.price52lo;
+  }
+
   public String getSector() {
     return this.sector;
   }
@@ -346,8 +373,12 @@ public class SharesFileData implements Serializable {
     return this.ticker;
   }
 
-  public long getVolume3m() {
-    return this.volume3m;
+  public long getVolume10d() {
+    return this.volume10d;
+  }
+
+  public long getVolumeMonth3m() {
+    return this.volumeMonth3m;
   }
 
   public void setBeta(String fld) {
@@ -426,8 +457,12 @@ public class SharesFileData implements Serializable {
     this.sharesY = flds;
   }
 
+  public void setVolume10d(String fld) {
+    this.volume10d = SipUtils.parseLong(fld);
+  }
+
   public void setVolume3m(String fld) {
-    this.volume3m = SipUtils.parseLong(fld);
+    this.volumeMonth3m = SipUtils.parseLong(fld);
   }
 
   /**
@@ -438,9 +473,12 @@ public class SharesFileData implements Serializable {
   public String toDbOutput() {
     String ret = "";
     ret += String.format("  price               : %f%n", this.price);
+    ret += String.format("  price 52w high      : %f%n", this.price52hi);
+    ret += String.format("  price 52w low       : %f%n", this.price52lo);
     ret += String.format("  float               : %f%n", this.floatshr);
     ret += String.format("  market cap          : %f%n", this.mktCap);
-    ret += String.format("  volume 3m avg       : %d%n", this.volume3m);
+    ret += String.format("  volume 10d avg      : %d%n", this.volume10d);
+    ret += String.format("  volume 3m avg       : %d%n", this.volumeMonth3m);
     ret += String.format("  dollars 3m avg      : %f%n", this.dollar3m);
     ret += String.format("  beta                : %f%n", this.beta);
     ret += String.format("  insider ownership   : %f%n", this.insiderOwnership);
@@ -462,7 +500,7 @@ public class SharesFileData implements Serializable {
   public String toString() {
     String ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
     ret += String.format("  Price / Beta                 : %s  %s%n", SipOutput.fmt(this.price, 1, 2), SipOutput.fmt(this.beta, 1, 3));
-    ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volume3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
+    ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volumeMonth3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
     ret += String.format("  Float / MCap / Insiders      : %s %s  %s%%  %s%% %n", SipOutput.fmt(this.floatshr, 1, 3),
         SipOutput.ifmt((long) this.mktCap, 1), SipOutput.fmt(this.insiderOwnership, 1, 3), SipOutput.fmt(this.insiderNetPercentOutstanding, 1, 2));
     ret += String.format("  Institutions B/S Num Percent : %s  %s  %s  %s%% %n", SipOutput.ifmt(this.instBuyShrs, 1),
@@ -487,8 +525,12 @@ public class SharesFileData implements Serializable {
     this.exchange = cfd.getExchange();
   }
 
-  public static void clearList() {
-    sfdList.clear();
+  private void setPrice52hi(String fld) {
+    this.price52hi = SipUtils.parseDouble(fld);
+  }
+
+  private void setPrice52lo(String fld) {
+    this.price52lo = SipUtils.parseDouble(fld);
   }
 
 }

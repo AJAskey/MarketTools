@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
-import net.ajaskey.market.tools.SIP.BigDB.reports.Reports;
 
 /**
  * This class contains test drivers for various BigDB methods.
@@ -47,14 +46,16 @@ public class SipDbData {
 
 //    for (int i = 2018; i < 2021; i++) {
 //      for (int j = 1; j < 5; j++) {
-//        FieldData.parseSipData(i, j, FiletypeEnum.NONE);
+//        
 //      }
 //    }
 
-    FieldData.setMemory(2018, 2020, FiletypeEnum.BINARY);
+    // FieldData.parseSipData(2020, 1, FiletypeEnum.NONE);
+    FieldData.parseSipData(2020, 2, FiletypeEnum.TEXT);
 
-    // int yrs[] = { 2019 };
-    System.out.println(Reports.memoryOverview());
+    // FieldData.setMemory(2018, 2020, FiletypeEnum.BINARY);
+
+    // System.out.println(Reports.memoryOverview());
 
     // FieldData.parseSipData(year, qtr, FiletypeEnum.BINARY);
     // List<FieldData> fdList = FieldData.readDbData(year, qtr, FiletypeEnum.TEXT);

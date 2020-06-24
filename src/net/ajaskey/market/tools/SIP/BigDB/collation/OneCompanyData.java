@@ -3,7 +3,7 @@ package net.ajaskey.market.tools.SIP.BigDB.collation;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.ajaskey.market.tools.SIP.BigDB.BigLists;
+import net.ajaskey.market.tools.SIP.BigDB.Globals;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataYear;
 
@@ -51,7 +51,7 @@ public class OneCompanyData {
 
     final List<OneCompanyData> ret = new ArrayList<>();
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
       if (fdy.isInUse()) {
         final OneCompanyData icd = new OneCompanyData(ticker, fdy);
         ret.add(icd);

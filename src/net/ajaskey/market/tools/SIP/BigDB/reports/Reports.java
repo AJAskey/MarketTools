@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ajaskey.common.Utils;
-import net.ajaskey.market.tools.SIP.BigDB.BigLists;
+import net.ajaskey.market.tools.SIP.BigDB.Globals;
 import net.ajaskey.market.tools.SIP.BigDB.collation.OneCompanyData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
@@ -59,7 +59,7 @@ public class Reports {
 
     String ret = Reports.header(yr, qtr);
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
 
       if (yr == fdy.getYear()) {
 
@@ -103,9 +103,9 @@ public class Reports {
 
     String ret = "";
 
-    for (int year = BigLists.startYear; year <= BigLists.endYear; year++) {
+    for (int year = Globals.startYear; year <= Globals.endYear; year++) {
 
-      FieldDataYear fdy = BigLists.getYear(year);
+      FieldDataYear fdy = Globals.getYear(year);
       if (fdy != null) {
 
         ret += String.format("%n----------%d Q1----------------%n", year);
@@ -162,7 +162,7 @@ public class Reports {
       ret += Reports.header(yr, qtr);
     }
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
 
       if (yr == fdy.getYear()) {
 
@@ -209,7 +209,7 @@ public class Reports {
       ret += Reports.header(yr, qtr);
     }
 
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
 
       if (yr == fdy.getYear()) {
 
@@ -256,7 +256,7 @@ public class Reports {
     if (!tickersOnly) {
       ret += Reports.header(yr, qtr);
     }
-    for (final FieldDataYear fdy : BigLists.allDataList) {
+    for (final FieldDataYear fdy : Globals.allDataList) {
 
       if (yr == fdy.getYear()) {
 

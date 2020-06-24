@@ -536,6 +536,19 @@ public class BalSheetFileData implements Serializable {
     this.bvpsYr = SipUtils.parseDoubles(fldYr, ptrYr, 7);
   }
 
+  public BalSheetFileData(BalSheetFileData bfd) {
+    if (bfd != null) {
+      this.acctPayableQtr = bfd.acctPayableQtr;
+      this.acctPayableYr = bfd.acctPayableYr;
+      this.acctRxQtr = bfd.acctRxQtr;
+      this.acctRxYr = bfd.acctRxYr;
+      this.bvpsQtr = bfd.bvpsQtr;
+      this.bvpsYr = bfd.bvpsYr;
+      this.cashQtr = bfd.cashQtr;
+      this.cashYr = bfd.cashYr;
+    }
+  }
+
   public double[] getAcctPayableQtr() {
     return this.acctPayableQtr;
   }
