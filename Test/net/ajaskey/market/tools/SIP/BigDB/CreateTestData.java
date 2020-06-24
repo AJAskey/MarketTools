@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
 
 public class CreateTestData {
 
@@ -22,7 +23,7 @@ public class CreateTestData {
 
     String head = String.format("CompanyInfo-");
     String ffname = String.format("%s%s%s", dir, head, tail);
-    CompanyFileData.readData(ffname);
+    CompanyFileData.readSipData(ffname);
     System.out.println("CompanyFileData count : " + CompanyFileData.getListCount());
 
     writeCompanyFileKeyData(ticker);

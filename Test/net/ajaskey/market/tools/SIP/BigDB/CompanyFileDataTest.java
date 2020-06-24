@@ -3,19 +3,19 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
+
 class CompanyFileDataTest {
 
   @Test
   void testReadData() {
 
-    final String dir = String.format("D:/dev/eclipse-workspace/Market/data/BigDB/%d/Q%d/",
-        TestData.year,
-        TestData.quarter);
+    final String dir = String.format("D:/dev/eclipse-workspace/Market/data/BigDB/%d/Q%d/", TestData.year, TestData.quarter);
     final String tail = String.format("%dQ%d.txt", TestData.year, TestData.quarter);
     final String head = String.format("CompanyInfo-");
 
     final String ffname = String.format("%s%s%s", dir, head, tail);
-    CompanyFileData.readData(ffname);
+    CompanyFileData.readSipData(ffname);
 
     CompanyFileData cfd = CompanyFileData.find(TestData.ticker);
 

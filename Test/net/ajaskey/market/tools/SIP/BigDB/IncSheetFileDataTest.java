@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.market.tools.SIP.SipOutput;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.IncSheetFileData;
 
 class IncSheetFileDataTest {
 
@@ -24,11 +26,11 @@ class IncSheetFileDataTest {
 
     String head = String.format("CompanyInfo-");
     final String ffname = String.format("%s%s%s", dir, head, tail);
-    CompanyFileData.readData(ffname);
+    CompanyFileData.readSipData(ffname);
 
     head = String.format("IncSheet-");
     head = "Income-";
-    IncSheetFileData.readData(dir + head + "QTR-" + tail, dir + head + "ANN-" + tail);
+    IncSheetFileData.readSipData(dir + head + "QTR-" + tail, dir + head + "ANN-" + tail);
 
     final IncSheetFileData ifd = IncSheetFileData.find(TestData.ticker);
 
