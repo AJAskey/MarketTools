@@ -121,6 +121,9 @@ public class FieldData implements Serializable {
     else if (ft == FiletypeEnum.BINARY) {
       fd = FieldData.parseFromDbBinData(year, quarter, ticker);
     }
+    else {
+      System.out.printf("Waring. Invalid Filetype in getFromDb : %s%n", ft.toString());
+    }
 
     return fd;
   }
@@ -142,6 +145,9 @@ public class FieldData implements Serializable {
     }
     else if (ft == FiletypeEnum.BINARY) {
       fdList = FieldData.parseFromDbBinData(year, quarter);
+    }
+    else {
+      System.out.printf("Waring. Invalid Filetype in getAllFromDb : %s%n", ft.toString());
     }
 
     return fdList;
@@ -241,9 +247,16 @@ public class FieldData implements Serializable {
     return fname;
   }
 
+  /**
+   * Set internal memory to data from firstYear to endYear.
+   * 
+   * @param firstYear
+   * @param endYear
+   * @param ft        FiletypeEnum BIG_BINARY valid
+   */
   public static void setMemory(int firstYear, int endYear, FiletypeEnum ft) {
 
-    if (ft == FiletypeEnum.BINARY) {
+    if (ft == FiletypeEnum.BIG_BINARY) {
       for (int yr = firstYear; yr <= endYear; yr++) {
         for (int qtr = 1; qtr <= 4; qtr++) {
           readDbBigBinData(yr, qtr);
@@ -252,6 +265,13 @@ public class FieldData implements Serializable {
     }
   }
 
+  /**
+   * Sets internal memory to request year and quarter.
+   * 
+   * @param yr  year
+   * @param qtr quarter
+   * @param ft  FiletypeEnum BINARY or TEXT valid
+   */
   public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
 
     System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
@@ -261,7 +281,16 @@ public class FieldData implements Serializable {
       readDbBigBinData(yr, qtr);
     }
     else if (ft == FiletypeEnum.TEXT) {
+
       readDbData(yr, qtr, ft);
+    }
+    else if (ft == FiletypeEnum.BIG_BINARY) {
+
+      readDbBigBinData(yr, qtr);
+    }
+
+    else {
+      System.out.printf("Waring. Invalid Filetype in setQMemory : %s%n", ft.toString());
     }
   }
 
@@ -273,8 +302,6 @@ public class FieldData implements Serializable {
    * @throws FileNotFoundException
    */
   public static void parseSipData(int year, int quarter, FiletypeEnum ft) throws FileNotFoundException {
-
-    final FieldDataBinary allCompanyList = new FieldDataBinary(year, quarter);
 
     CompanyFileData.clearList();
     EstimateFileData.clearList();
@@ -376,7 +403,6 @@ public class FieldData implements Serializable {
       final CashFileData cashfd = CashFileData.find(ticker);
 
       FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
-      allCompanyList.fdList.add(fd);
 
       if (ft == FiletypeEnum.BINARY) {
         final String fname = FieldData.getOutfileName(year, quarter, ticker, "bin");
@@ -385,21 +411,16 @@ public class FieldData implements Serializable {
       else if (ft == FiletypeEnum.TEXT) {
         FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
       }
+      else if (ft == FiletypeEnum.BIG_BINARY) {
+        FieldDataBinary.add(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
+      }
     }
 
     /**
      * Write big binary file for year and quarter data
      */
-    if (ft == FiletypeEnum.NONE) {
-      try {
-        final String fname = String.format("%s%s/all-companies-%dQ%d.bin", FieldData.outbasedir, year, year, quarter);
-        final ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(fname));
-        o.writeObject(allCompanyList);
-        o.close();
-      }
-      catch (final IOException e) {
-        e.printStackTrace();
-      }
+    if (ft == FiletypeEnum.BIG_BINARY) {
+      FieldDataBinary.writeBinaryFile(year, quarter);
     }
   }
 
@@ -453,6 +474,11 @@ public class FieldData implements Serializable {
     else if (ft == FiletypeEnum.TEXT) {
       fdList = FieldData.parseFromDbData(year, quarter);
     }
+    else {
+      System.out.printf("Waring. Invalid Filetype in readDbData : %s%n", ft.toString());
+      return null;
+    }
+
     Globals.setLists(year, quarter, fdList);
 
     return fdList;
@@ -487,23 +513,15 @@ public class FieldData implements Serializable {
 
     final String fname = String.format("%s%d/all-companies-%dQ%d.bin", FieldData.outbasedir, yr, yr, qtr);
 
+    List<FieldData> fdList = null;
+
     File f = new File(fname);
     if (f.exists()) {
 
-      FieldDataBinary cd;
-      try {
-        final ObjectInputStream objBinFile = new ObjectInputStream(new FileInputStream(fname));
+      fdList = FieldDataBinary.readBinaryFile(fname);
 
-        cd = (FieldDataBinary) objBinFile.readObject();
-        objBinFile.close();
-
-        return cd.fdList;
-      }
-      catch (final Exception e) {
-        e.printStackTrace();
-      }
     }
-    return null;
+    return fdList;
   }
 
   /**

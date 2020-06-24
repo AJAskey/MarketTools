@@ -273,6 +273,42 @@ public class SharesFileData implements Serializable {
     this.dollar3m = SipUtils.parseDouble(fld[58]);
   }
 
+  public SharesFileData(SharesFileData sfd) {
+    if (sfd != null) {
+      this.beta = sfd.beta;
+      this.dollar3m = sfd.dollar3m;
+      this.exchange = sfd.exchange;
+      this.floatshr = sfd.floatshr;
+      this.industry = sfd.industry;
+      this.insiderBuys = sfd.insiderBuys;
+      this.insiderBuyShrs = sfd.insiderBuyShrs;
+      this.insiderNetPercentOutstanding = sfd.insiderNetPercentOutstanding;
+      this.insiderNetTrades = sfd.insiderNetTrades;
+      this.insiderOwnership = sfd.insiderOwnership;
+      this.insiderSells = sfd.insiderSells;
+      this.insiderSellShrs = sfd.insiderSellShrs;
+      this.instBuyShrs = sfd.instBuyShrs;
+      this.instOwnership = sfd.instOwnership;
+      this.instSellShrs = sfd.instSellShrs;
+      this.instShareholders = sfd.instShareholders;
+      this.mktCap = sfd.mktCap;
+      this.name = sfd.name;
+      this.price = sfd.price;
+      this.price52hi = sfd.price52hi;
+      this.price52lo = sfd.price52lo;
+      this.sector = sfd.sector;
+      this.sharesQ = sfd.sharesQ;
+      this.sharesY = sfd.sharesY;
+      this.ticker = sfd.ticker;
+      this.volume10d = sfd.volume10d;
+      this.volumeMonth3m = sfd.volumeMonth3m;
+    }
+    else {
+      this.ticker = "";
+    }
+
+  }
+
   public double getBeta() {
     return this.beta;
   }

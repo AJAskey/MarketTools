@@ -516,6 +516,65 @@ public class IncSheetFileData implements Serializable {
 
   }
 
+  public IncSheetFileData(IncSheetFileData ifd) {
+    if (ifd != null) {
+      this.adjToIncQtr = ifd.adjToIncQtr;
+      this.adjToIncYr = ifd.adjToIncYr;
+      this.cogsQtr = ifd.cogsQtr;
+      this.cogsYr = ifd.cogsYr;
+      this.depreciationQtr = ifd.depreciationQtr;
+      this.depreciationYr = ifd.depreciationYr;
+      this.dividendQtr = ifd.dividendQtr;
+      this.dividendYr = ifd.dividendYr;
+      this.epsContQtr = ifd.epsContQtr;
+      this.epsContYr = ifd.epsContYr;
+      this.epsDilContQtr = ifd.epsDilContQtr;
+      this.epsDilContYr = ifd.epsDilContYr;
+      this.epsDilQtr = ifd.epsDilQtr;
+      this.epsDilYr = ifd.epsDilYr;
+      this.epsQtr = ifd.epsQtr;
+      this.epsYr = ifd.epsYr;
+      this.exchange = ifd.exchange;
+      this.grossIncQtr = ifd.grossIncQtr;
+      this.grossIncYr = ifd.grossIncYr;
+      this.grossOpIncQtr = ifd.grossOpIncQtr;
+      this.grossOpIncYr = ifd.grossOpIncYr;
+      this.incAfterTaxQtr = ifd.incAfterTaxQtr;
+      this.incAfterTaxYr = ifd.incAfterTaxYr;
+      this.incPrimaryEpsQtr = ifd.incPrimaryEpsQtr;
+      this.incPrimaryEpsYr = ifd.incPrimaryEpsYr;
+      this.incTaxQtr = ifd.incTaxQtr;
+      this.incTaxYr = ifd.incTaxYr;
+      this.industry = ifd.industry;
+      this.intExpNonOpQtr = ifd.intExpNonOpQtr;
+      this.intExpNonOpYr = ifd.intExpNonOpYr;
+      this.intExpQtr = ifd.intExpQtr;
+      this.intExpYr = ifd.intExpYr;
+      this.name = ifd.name;
+      this.netIncQtr = ifd.netIncQtr;
+      this.netIncYr = ifd.netIncYr;
+      this.nonrecurringItemsQtr = ifd.nonrecurringItemsQtr;
+      this.nonrecurringItemsYr = ifd.nonrecurringItemsYr;
+      this.otherIncQtr = ifd.otherIncQtr;
+      this.otherIncYr = ifd.otherIncYr;
+      this.preTaxIncQtr = ifd.preTaxIncQtr;
+      this.preTaxIncYr = ifd.preTaxIncYr;
+      this.rdQtr = ifd.rdQtr;
+      this.rdYr = ifd.rdYr;
+      this.salesQtr = ifd.salesQtr;
+      this.salesYr = ifd.salesYr;
+      this.sector = ifd.sector;
+      this.ticker = ifd.ticker;
+      this.totalOpExpQtr = ifd.totalOpExpQtr;
+      this.totalOpExpYr = ifd.totalOpExpYr;
+      this.unusualIncQtr = ifd.unusualIncQtr;
+      this.unusualIncYr = ifd.unusualIncYr;
+    }
+    else {
+      this.ticker = "";
+    }
+  }
+
   public double[] getAdjToIncQtr() {
     return this.adjToIncQtr;
   }

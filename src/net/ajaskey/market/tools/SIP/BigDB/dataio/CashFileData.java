@@ -69,6 +69,19 @@ public class CashFileData implements Serializable {
     return null;
   }
 
+  public CashFileData(CashFileData cfd) {
+    if (cfd != null) {
+      this.capExQtr = cfd.capExQtr;
+      this.cashFromOpsQtr = cfd.cashFromOpsQtr;
+      this.cashFromInvQtr = cfd.cashFromInvQtr;
+      this.cashFromFinQtr = cfd.cashFromFinQtr;
+      this.ticker = cfd.ticker;
+    }
+    else {
+      this.ticker = "";
+    }
+  }
+
   /**
    * Returns the number of instances in the list read from the DB.
    *

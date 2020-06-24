@@ -536,6 +536,11 @@ public class BalSheetFileData implements Serializable {
     this.bvpsYr = SipUtils.parseDoubles(fldYr, ptrYr, 7);
   }
 
+  /**
+   * Copy Constructor
+   * 
+   * @param bfd
+   */
   public BalSheetFileData(BalSheetFileData bfd) {
     if (bfd != null) {
       this.acctPayableQtr = bfd.acctPayableQtr;
@@ -546,6 +551,50 @@ public class BalSheetFileData implements Serializable {
       this.bvpsYr = bfd.bvpsYr;
       this.cashQtr = bfd.cashQtr;
       this.cashYr = bfd.cashYr;
+      this.currAssetsQtr = bfd.currAssetsQtr;
+      this.currAssetsYr = bfd.currAssetsYr;
+      this.currLiabQtr = bfd.currLiabQtr;
+      this.currLiabYr = bfd.currLiabYr;
+      this.equityQtr = bfd.equityQtr;
+      this.equityYr = bfd.equityYr;
+      this.exchange = bfd.exchange;
+      this.goodwillQtr = bfd.goodwillQtr;
+      this.goodwillYr = bfd.goodwillYr;
+      this.industry = bfd.industry;
+      this.inventoryQtr = bfd.inventoryQtr;
+      this.inventoryYr = bfd.inventoryYr;
+      this.liabEquityQtr = bfd.liabEquityQtr;
+      this.liabEquityYr = bfd.liabEquityYr;
+      this.ltDebtQtr = bfd.ltDebtQtr;
+      this.ltDebtYr = bfd.ltDebtYr;
+      this.ltInvestQtr = bfd.ltInvestQtr;
+      this.ltInvestYr = bfd.ltInvestYr;
+      this.name = bfd.name;
+      this.netFixedAssetsQtr = bfd.netFixedAssetsQtr;
+      this.netFixedAssetsYr = bfd.netFixedAssetsYr;
+      this.otherCurrAssetsQtr = bfd.otherCurrAssetsQtr;
+      this.otherCurrAssetsYr = bfd.otherCurrAssetsYr;
+      this.otherCurrLiabQtr = bfd.otherCurrLiabQtr;
+      this.otherCurrLiabYr = bfd.otherCurrLiabYr;
+      this.otherLtAssetsQtr = bfd.otherLtAssetsQtr;
+      this.otherLtAssetsYr = bfd.otherLtAssetsYr;
+      this.otherLtLiabQtr = bfd.otherLtLiabQtr;
+      this.otherLtLiabYr = bfd.otherLtLiabYr;
+      this.prefStockQtr = bfd.prefStockQtr;
+      this.prefStockYr = bfd.prefStockYr;
+      this.sector = bfd.sector;
+      this.stDebtQtr = bfd.stDebtQtr;
+      this.stDebtYr = bfd.stDebtYr;
+      this.stInvestQtr = bfd.stInvestQtr;
+      this.stInvestYr = bfd.stInvestYr;
+      this.ticker = bfd.ticker;
+      this.totalAssetsQtr = bfd.totalAssetsQtr;
+      this.totalAssetsYr = bfd.totalAssetsYr;
+      this.totalLiabQtr = bfd.totalLiabQtr;
+      this.totalLiabYr = bfd.totalLiabYr;
+    }
+    else {
+      this.ticker = "";
     }
   }
 

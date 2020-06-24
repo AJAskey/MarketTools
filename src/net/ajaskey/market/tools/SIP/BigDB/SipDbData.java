@@ -51,7 +51,12 @@ public class SipDbData {
 //    }
 
     // FieldData.parseSipData(2020, 1, FiletypeEnum.NONE);
-    FieldData.parseSipData(2020, 2, FiletypeEnum.TEXT);
+
+    FieldData.parseSipData(2020, 2, FiletypeEnum.BIG_BINARY);
+
+    FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
+    FieldData fd = FieldData.getFromMemory("NVAX", year, qtr);
+    System.out.println(fd);
 
     // FieldData.setMemory(2018, 2020, FiletypeEnum.BINARY);
 
