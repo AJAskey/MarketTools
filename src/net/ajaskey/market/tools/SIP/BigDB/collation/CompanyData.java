@@ -166,22 +166,30 @@ public class CompanyData {
    * @return
    */
   public static List<String> getTickers(ExchEnum index, int year, int quarter) {
+
     final List<String> ret = new ArrayList<>();
+
+    if (index == null) {
+      return ret;
+    }
 
     final List<File> files = CompanyData.getFiles(year, quarter);
 
     List<String> input = null;
-    for (final File f : files) {
-      if (f.getName().endsWith(".gz")) {
-        input = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        input = TextUtils.readTextFile(f, true);
-      }
 
-      final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-      if (cfd.getExchange() == index) {
-        ret.add(cfd.getTicker());
+    if (files != null) {
+      for (final File f : files) {
+        if (f.getName().endsWith(".gz")) {
+          input = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          input = TextUtils.readTextFile(f, true);
+        }
+
+        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+        if (cfd.getExchange() == index) {
+          ret.add(cfd.getTicker());
+        }
       }
     }
     return ret;

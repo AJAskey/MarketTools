@@ -74,16 +74,23 @@ public class QuarterlyDouble {
 
     double ret = 0.0;
     try {
-      ret = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
+      if (this.dArr.length > 3) {
+        ret = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
+      }
     }
     catch (Exception e) {
-      e.printStackTrace();
+      ret = 0.0;
     }
     return ret;
   }
 
   public double getTtmAvg() {
-    double d = getTtm();
+    double d = 0.0;
+    try {
+      d = getTtm();
+    }
+    catch (Exception e) {
+    }
     return d / 4.0;
   }
 
