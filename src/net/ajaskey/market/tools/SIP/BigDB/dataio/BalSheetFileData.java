@@ -655,7 +655,14 @@ public class BalSheetFileData implements Serializable {
   }
 
   public String getExchange() {
-    return this.exchange.toString().toUpperCase();
+    String ret = "";
+    try {
+      ret = this.exchange.toString().toUpperCase();
+    }
+    catch (Exception e) {
+      ret = "";
+    }
+    return ret;
   }
 
   public double[] getGoodwillQtr() {
@@ -796,106 +803,116 @@ public class BalSheetFileData implements Serializable {
 
   public String toDbOutput() {
     String ret = "";
-    ret += String.format("  acct payable Qtr      : %s%n", SipOutput.buildArray("", this.acctPayableQtr, 12, 3, 1));
-    ret += String.format("  acct payable Yr       : %s%n", SipOutput.buildArray("", this.acctPayableYr, 12, 3, 1));
-    ret += String.format("  acct rx Qtr           : %s%n", SipOutput.buildArray("", this.acctRxQtr, 12, 3, 1));
-    ret += String.format("  acct rx Yr            : %s%n", SipOutput.buildArray("", this.acctRxYr, 12, 3, 1));
-    ret += String.format("  bvps Qtr              : %s%n", SipOutput.buildArray("", this.bvpsQtr, 12, 4, 1));
-    ret += String.format("  bvps Yr               : %s%n", SipOutput.buildArray("", this.bvpsYr, 12, 4, 1));
-    ret += String.format("  cash Qtr              : %s%n", SipOutput.buildArray("", this.cashQtr, 12, 3, 1));
-    ret += String.format("  cash Yr               : %s%n", SipOutput.buildArray("", this.cashYr, 12, 3, 1));
-    ret += String.format("  curr assets Qtr       : %s%n", SipOutput.buildArray("", this.currAssetsQtr, 12, 3, 1));
-    ret += String.format("  curr assets Yr        : %s%n", SipOutput.buildArray("", this.currAssetsYr, 12, 3, 1));
-    ret += String.format("  curr liab Qtr         : %s%n", SipOutput.buildArray("", this.currLiabQtr, 12, 3, 1));
-    ret += String.format("  curr liab Yr          : %s%n", SipOutput.buildArray("", this.currLiabYr, 12, 3, 1));
-    ret += String.format("  equity Qtr            : %s%n", SipOutput.buildArray("", this.equityQtr, 12, 3, 1));
-    ret += String.format("  equity Yr             : %s%n", SipOutput.buildArray("", this.equityYr, 12, 3, 1));
-    ret += String.format("  goodwill Qtr          : %s%n", SipOutput.buildArray("", this.goodwillQtr, 12, 3, 1));
-    ret += String.format("  goodwill Yr           : %s%n", SipOutput.buildArray("", this.goodwillYr, 12, 3, 1));
-    ret += String.format("  inventory Qtr         : %s%n", SipOutput.buildArray("", this.inventoryQtr, 12, 3, 1));
-    ret += String.format("  inventory Yr          : %s%n", SipOutput.buildArray("", this.inventoryYr, 12, 3, 1));
-    ret += String.format("  liab equity Qtr       : %s%n", SipOutput.buildArray("", this.liabEquityQtr, 12, 3, 1));
-    ret += String.format("  liab equity Yr        : %s%n", SipOutput.buildArray("", this.liabEquityYr, 12, 3, 1));
-    ret += String.format("  lt debt Qtr           : %s%n", SipOutput.buildArray("", this.ltDebtQtr, 12, 3, 1));
-    ret += String.format("  lt debt Yr            : %s%n", SipOutput.buildArray("", this.ltDebtYr, 12, 3, 1));
-    ret += String.format("  lt invest Qtr         : %s%n", SipOutput.buildArray("", this.ltInvestQtr, 12, 3, 1));
-    ret += String.format("  lt invest Yr          : %s%n", SipOutput.buildArray("", this.ltInvestYr, 12, 3, 1));
-    ret += String.format("  net fixed assets Qtr  : %s%n", SipOutput.buildArray("", this.netFixedAssetsQtr, 12, 3, 1));
-    ret += String.format("  net fixed assets Yr   : %s%n", SipOutput.buildArray("", this.netFixedAssetsYr, 12, 3, 1));
-    ret += String.format("  curr assets Qtr       : %s%n", SipOutput.buildArray("", this.otherCurrAssetsQtr, 12, 3, 1));
-    ret += String.format("  curr assest Yr        : %s%n", SipOutput.buildArray("", this.otherCurrAssetsYr, 12, 3, 1));
-    ret += String.format("  curr liab Qtr         : %s%n", SipOutput.buildArray("", this.otherCurrLiabQtr, 12, 3, 1));
-    ret += String.format("  curr liab Yr          : %s%n", SipOutput.buildArray("", this.otherCurrLiabYr, 12, 3, 1));
-    ret += String.format("  other curr assets Qtr : %s%n", SipOutput.buildArray("", this.otherCurrAssetsQtr, 12, 3, 1));
-    ret += String.format("  other curr assets Yr  : %s%n", SipOutput.buildArray("", this.otherCurrAssetsYr, 12, 3, 1));
-    ret += String.format("  other lt assets Qtr   : %s%n", SipOutput.buildArray("", this.otherLtAssetsQtr, 12, 3, 1));
-    ret += String.format("  other lt assets Yr    : %s%n", SipOutput.buildArray("", this.otherLtAssetsYr, 12, 3, 1));
-    ret += String.format("  other curr liab Qtr   : %s%n", SipOutput.buildArray("", this.otherCurrLiabQtr, 12, 3, 1));
-    ret += String.format("  other curr liab Yr    : %s%n", SipOutput.buildArray("", this.otherCurrLiabYr, 12, 3, 1));
-    ret += String.format("  other lt liab Qtr     : %s%n", SipOutput.buildArray("", this.otherLtLiabQtr, 12, 3, 1));
-    ret += String.format("  other lt liab Yr      : %s%n", SipOutput.buildArray("", this.otherLtLiabYr, 12, 3, 1));
-    ret += String.format("  pref stock Qtr        : %s%n", SipOutput.buildArray("", this.prefStockQtr, 12, 3, 1));
-    ret += String.format("  pref stock Yr         : %s%n", SipOutput.buildArray("", this.prefStockYr, 12, 3, 1));
-    ret += String.format("  st debt Qtr           : %s%n", SipOutput.buildArray("", this.stDebtQtr, 12, 3, 1));
-    ret += String.format("  st debt Yr            : %s%n", SipOutput.buildArray("", this.stDebtYr, 12, 3, 1));
-    ret += String.format("  st invest Qtr         : %s%n", SipOutput.buildArray("", this.stInvestQtr, 12, 3, 1));
-    ret += String.format("  st invest Yr          : %s%n", SipOutput.buildArray("", this.stInvestYr, 12, 3, 1));
-    ret += String.format("  total assets Qtr      : %s%n", SipOutput.buildArray("", this.totalAssetsQtr, 12, 3, 1));
-    ret += String.format("  total assets Yr       : %s%n", SipOutput.buildArray("", this.totalAssetsYr, 12, 3, 1));
-    ret += String.format("  total liab Qtr        : %s%n", SipOutput.buildArray("", this.totalLiabQtr, 12, 3, 1));
-    ret += String.format("  total liab Yr         : %s%n", SipOutput.buildArray("", this.totalLiabYr, 12, 3, 1));
-
+    try {
+      ret += String.format("  acct payable Qtr      : %s%n", SipOutput.buildArray("", this.acctPayableQtr, 12, 3, 1));
+      ret += String.format("  acct payable Yr       : %s%n", SipOutput.buildArray("", this.acctPayableYr, 12, 3, 1));
+      ret += String.format("  acct rx Qtr           : %s%n", SipOutput.buildArray("", this.acctRxQtr, 12, 3, 1));
+      ret += String.format("  acct rx Yr            : %s%n", SipOutput.buildArray("", this.acctRxYr, 12, 3, 1));
+      ret += String.format("  bvps Qtr              : %s%n", SipOutput.buildArray("", this.bvpsQtr, 12, 4, 1));
+      ret += String.format("  bvps Yr               : %s%n", SipOutput.buildArray("", this.bvpsYr, 12, 4, 1));
+      ret += String.format("  cash Qtr              : %s%n", SipOutput.buildArray("", this.cashQtr, 12, 3, 1));
+      ret += String.format("  cash Yr               : %s%n", SipOutput.buildArray("", this.cashYr, 12, 3, 1));
+      ret += String.format("  curr assets Qtr       : %s%n", SipOutput.buildArray("", this.currAssetsQtr, 12, 3, 1));
+      ret += String.format("  curr assets Yr        : %s%n", SipOutput.buildArray("", this.currAssetsYr, 12, 3, 1));
+      ret += String.format("  curr liab Qtr         : %s%n", SipOutput.buildArray("", this.currLiabQtr, 12, 3, 1));
+      ret += String.format("  curr liab Yr          : %s%n", SipOutput.buildArray("", this.currLiabYr, 12, 3, 1));
+      ret += String.format("  equity Qtr            : %s%n", SipOutput.buildArray("", this.equityQtr, 12, 3, 1));
+      ret += String.format("  equity Yr             : %s%n", SipOutput.buildArray("", this.equityYr, 12, 3, 1));
+      ret += String.format("  goodwill Qtr          : %s%n", SipOutput.buildArray("", this.goodwillQtr, 12, 3, 1));
+      ret += String.format("  goodwill Yr           : %s%n", SipOutput.buildArray("", this.goodwillYr, 12, 3, 1));
+      ret += String.format("  inventory Qtr         : %s%n", SipOutput.buildArray("", this.inventoryQtr, 12, 3, 1));
+      ret += String.format("  inventory Yr          : %s%n", SipOutput.buildArray("", this.inventoryYr, 12, 3, 1));
+      ret += String.format("  liab equity Qtr       : %s%n", SipOutput.buildArray("", this.liabEquityQtr, 12, 3, 1));
+      ret += String.format("  liab equity Yr        : %s%n", SipOutput.buildArray("", this.liabEquityYr, 12, 3, 1));
+      ret += String.format("  lt debt Qtr           : %s%n", SipOutput.buildArray("", this.ltDebtQtr, 12, 3, 1));
+      ret += String.format("  lt debt Yr            : %s%n", SipOutput.buildArray("", this.ltDebtYr, 12, 3, 1));
+      ret += String.format("  lt invest Qtr         : %s%n", SipOutput.buildArray("", this.ltInvestQtr, 12, 3, 1));
+      ret += String.format("  lt invest Yr          : %s%n", SipOutput.buildArray("", this.ltInvestYr, 12, 3, 1));
+      ret += String.format("  net fixed assets Qtr  : %s%n", SipOutput.buildArray("", this.netFixedAssetsQtr, 12, 3, 1));
+      ret += String.format("  net fixed assets Yr   : %s%n", SipOutput.buildArray("", this.netFixedAssetsYr, 12, 3, 1));
+      ret += String.format("  curr assets Qtr       : %s%n", SipOutput.buildArray("", this.otherCurrAssetsQtr, 12, 3, 1));
+      ret += String.format("  curr assest Yr        : %s%n", SipOutput.buildArray("", this.otherCurrAssetsYr, 12, 3, 1));
+      ret += String.format("  curr liab Qtr         : %s%n", SipOutput.buildArray("", this.otherCurrLiabQtr, 12, 3, 1));
+      ret += String.format("  curr liab Yr          : %s%n", SipOutput.buildArray("", this.otherCurrLiabYr, 12, 3, 1));
+      ret += String.format("  other curr assets Qtr : %s%n", SipOutput.buildArray("", this.otherCurrAssetsQtr, 12, 3, 1));
+      ret += String.format("  other curr assets Yr  : %s%n", SipOutput.buildArray("", this.otherCurrAssetsYr, 12, 3, 1));
+      ret += String.format("  other lt assets Qtr   : %s%n", SipOutput.buildArray("", this.otherLtAssetsQtr, 12, 3, 1));
+      ret += String.format("  other lt assets Yr    : %s%n", SipOutput.buildArray("", this.otherLtAssetsYr, 12, 3, 1));
+      ret += String.format("  other curr liab Qtr   : %s%n", SipOutput.buildArray("", this.otherCurrLiabQtr, 12, 3, 1));
+      ret += String.format("  other curr liab Yr    : %s%n", SipOutput.buildArray("", this.otherCurrLiabYr, 12, 3, 1));
+      ret += String.format("  other lt liab Qtr     : %s%n", SipOutput.buildArray("", this.otherLtLiabQtr, 12, 3, 1));
+      ret += String.format("  other lt liab Yr      : %s%n", SipOutput.buildArray("", this.otherLtLiabYr, 12, 3, 1));
+      ret += String.format("  pref stock Qtr        : %s%n", SipOutput.buildArray("", this.prefStockQtr, 12, 3, 1));
+      ret += String.format("  pref stock Yr         : %s%n", SipOutput.buildArray("", this.prefStockYr, 12, 3, 1));
+      ret += String.format("  st debt Qtr           : %s%n", SipOutput.buildArray("", this.stDebtQtr, 12, 3, 1));
+      ret += String.format("  st debt Yr            : %s%n", SipOutput.buildArray("", this.stDebtYr, 12, 3, 1));
+      ret += String.format("  st invest Qtr         : %s%n", SipOutput.buildArray("", this.stInvestQtr, 12, 3, 1));
+      ret += String.format("  st invest Yr          : %s%n", SipOutput.buildArray("", this.stInvestYr, 12, 3, 1));
+      ret += String.format("  total assets Qtr      : %s%n", SipOutput.buildArray("", this.totalAssetsQtr, 12, 3, 1));
+      ret += String.format("  total assets Yr       : %s%n", SipOutput.buildArray("", this.totalAssetsYr, 12, 3, 1));
+      ret += String.format("  total liab Qtr        : %s%n", SipOutput.buildArray("", this.totalLiabQtr, 12, 3, 1));
+      ret += String.format("  total liab Yr         : %s%n", SipOutput.buildArray("", this.totalLiabYr, 12, 3, 1));
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
   }
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.getExchange(), this.sector, this.industry);
-    ret += SipOutput.buildArray("  CashQtr        : ", this.cashQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  CashYr         : ", this.cashYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  stInvestQtr    : ", this.stInvestQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  stInvestYr     : ", this.stInvestYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  acctRxQtr          : ", this.acctRxQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  acctRxYr           : ", this.acctRxYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  inventoryQtr   : ", this.inventoryQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  inventoryYr    : ", this.inventoryYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oCurrAssetsQtr : ", this.otherCurrAssetsQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oCurrAssetsYr  : ", this.otherCurrAssetsYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  CurrAssetsQtr  : ", this.currAssetsQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  CurrAssetsYr   : ", this.currAssetsYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  NetFixedAssQtr : ", this.netFixedAssetsQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  NetFixedAssYr  : ", this.netFixedAssetsYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  ltInvestQtr    : ", this.ltInvestQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  ltInvestYr     : ", this.ltInvestYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  goodwillQtr    : ", this.goodwillQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  goodwillYr     : ", this.goodwillYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oLtAssetsQtr   : ", this.otherLtAssetsQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oLtAssetsYr    : ", this.otherLtAssetsYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  totalAssetsQtr : ", this.totalAssetsQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  totalAssetsYr  : ", this.totalAssetsYr, 1, 0) + Utils.NL;
+    String ret = "";
+    try {
+      ret = SipOutput.SipHeader(this.ticker, this.name, this.getExchange(), this.sector, this.industry);
+      ret += SipOutput.buildArray("  CashQtr        : ", this.cashQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  CashYr         : ", this.cashYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  stInvestQtr    : ", this.stInvestQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  stInvestYr     : ", this.stInvestYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  acctRxQtr          : ", this.acctRxQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  acctRxYr           : ", this.acctRxYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  inventoryQtr   : ", this.inventoryQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  inventoryYr    : ", this.inventoryYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oCurrAssetsQtr : ", this.otherCurrAssetsQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oCurrAssetsYr  : ", this.otherCurrAssetsYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  CurrAssetsQtr  : ", this.currAssetsQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  CurrAssetsYr   : ", this.currAssetsYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  NetFixedAssQtr : ", this.netFixedAssetsQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  NetFixedAssYr  : ", this.netFixedAssetsYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  ltInvestQtr    : ", this.ltInvestQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  ltInvestYr     : ", this.ltInvestYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  goodwillQtr    : ", this.goodwillQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  goodwillYr     : ", this.goodwillYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oLtAssetsQtr   : ", this.otherLtAssetsQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oLtAssetsYr    : ", this.otherLtAssetsYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  totalAssetsQtr : ", this.totalAssetsQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  totalAssetsYr  : ", this.totalAssetsYr, 1, 0) + Utils.NL;
 
-    ret += SipOutput.buildArray("  acctPayableQtr : ", this.acctPayableQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  acctPayableYr  : ", this.acctPayableYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  stDebtQtr      : ", this.stDebtQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  stDebtYr       : ", this.stDebtYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oCurrLiabQtr   : ", this.otherCurrLiabQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oCurrLiabYr    : ", this.otherCurrLiabYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  currLiabQtr    : ", this.currLiabQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  currLiabYr     : ", this.currLiabYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  ltDebtQtr      : ", this.ltDebtQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  ltDebtYr       : ", this.ltDebtYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oLtLiabQtr     : ", this.otherLtLiabQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  oLtLiabYr      : ", this.otherLtLiabYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  totalLiabQtr   : ", this.totalLiabQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  totalLiabYr    : ", this.totalLiabYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  prefStockQtr   : ", this.prefStockQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  prefStockYr    : ", this.prefStockYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  equityQtr      : ", this.equityQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  equityYr       : ", this.equityYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  liabEquityQtr  : ", this.liabEquityQtr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  liabEquityYr   : ", this.liabEquityYr, 1, 0) + Utils.NL;
-    ret += SipOutput.buildArray("  bvpsQtr        : ", this.bvpsQtr, 1, 4) + Utils.NL;
-    ret += SipOutput.buildArray("  bvpsYr         : ", this.bvpsYr, 1, 2) + Utils.NL;
+      ret += SipOutput.buildArray("  acctPayableQtr : ", this.acctPayableQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  acctPayableYr  : ", this.acctPayableYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  stDebtQtr      : ", this.stDebtQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  stDebtYr       : ", this.stDebtYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oCurrLiabQtr   : ", this.otherCurrLiabQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oCurrLiabYr    : ", this.otherCurrLiabYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  currLiabQtr    : ", this.currLiabQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  currLiabYr     : ", this.currLiabYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  ltDebtQtr      : ", this.ltDebtQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  ltDebtYr       : ", this.ltDebtYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oLtLiabQtr     : ", this.otherLtLiabQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  oLtLiabYr      : ", this.otherLtLiabYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  totalLiabQtr   : ", this.totalLiabQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  totalLiabYr    : ", this.totalLiabYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  prefStockQtr   : ", this.prefStockQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  prefStockYr    : ", this.prefStockYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  equityQtr      : ", this.equityQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  equityYr       : ", this.equityYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  liabEquityQtr  : ", this.liabEquityQtr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  liabEquityYr   : ", this.liabEquityYr, 1, 0) + Utils.NL;
+      ret += SipOutput.buildArray("  bvpsQtr        : ", this.bvpsQtr, 1, 4) + Utils.NL;
+      ret += SipOutput.buildArray("  bvpsYr         : ", this.bvpsYr, 1, 2) + Utils.NL;
+    }
+    catch (Exception e) {
+      ret = "";
+    }
 
     return ret;
   }
@@ -906,12 +923,13 @@ public class BalSheetFileData implements Serializable {
    * @param cfd CompanyFileData instance
    */
   void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
+    if (cfd != null) {
+      this.ticker = cfd.getTicker();
+      this.name = cfd.getName();
+      this.sector = cfd.getSector();
+      this.industry = cfd.getIndustry();
+      this.exchange = cfd.getExchange();
+    }
   }
 
   public static void clearList() {

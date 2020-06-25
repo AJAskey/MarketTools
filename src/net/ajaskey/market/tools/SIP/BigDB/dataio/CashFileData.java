@@ -230,18 +230,22 @@ public class CashFileData implements Serializable {
    */
   public String toDbOutput() {
     String ret = "";
-
-    ret += String.format("  capex                 : %s%n", SipOutput.buildArray("", this.capExQtr, 10, 3, 1));
-    ret += String.format("  cash from financing   : %s%n", SipOutput.buildArray("", this.cashFromFinQtr, 10, 3, 1));
-    ret += String.format("  cash from investing   : %s%n", SipOutput.buildArray("", this.cashFromInvQtr, 10, 3, 1));
-    ret += String.format("  cash from operations  : %s%n", SipOutput.buildArray("", this.cashFromOpsQtr, 10, 3, 1));
-
+    try {
+      ret += String.format("  capex                 : %s%n", SipOutput.buildArray("", this.capExQtr, 10, 3, 1));
+      ret += String.format("  cash from financing   : %s%n", SipOutput.buildArray("", this.cashFromFinQtr, 10, 3, 1));
+      ret += String.format("  cash from investing   : %s%n", SipOutput.buildArray("", this.cashFromInvQtr, 10, 3, 1));
+      ret += String.format("  cash from operations  : %s%n", SipOutput.buildArray("", this.cashFromOpsQtr, 10, 3, 1));
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
   }
 
   @Override
   public String toString() {
-    String ret = "";
+    String ret = "Cash File Data";
+    ret += this.toDbOutput();
     return ret;
   }
 

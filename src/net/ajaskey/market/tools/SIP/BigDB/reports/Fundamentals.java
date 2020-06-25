@@ -13,7 +13,8 @@ public class Fundamentals {
 
   public static void main(String[] args) throws FileNotFoundException {
 
-    FieldData.setQMemory(2020, 2, FiletypeEnum.TEXT);
+    // FieldData.setQMemory(2020, 2, FiletypeEnum.TEXT);
+    FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
 
     fdList = FieldData.getAllFromMemory(2020, 2);
     FundamentalReports.write();

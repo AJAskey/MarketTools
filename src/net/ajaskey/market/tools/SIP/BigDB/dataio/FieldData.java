@@ -808,13 +808,19 @@ public class FieldData implements Serializable {
    * @return String
    */
   public String genOutput() {
-    String ret = String.format("Data for %s from %d Q%d%n", this.companyInfo.getTicker(), this.year, this.quarter);
-    ret += this.companyInfo.toDbOuput();
-    ret += this.shareData.toDbOutput();
-    ret += this.estimateData.toDbOutput();
-    ret += this.incSheetData.toDbOutput();
-    ret += this.balSheetData.toDbOutput();
-    ret += this.cashData.toDbOutput();
+    String ret = "";
+    try {
+      ret = String.format("Data for %s from %d Q%d%n", this.companyInfo.getTicker(), this.year, this.quarter);
+      ret += this.companyInfo.toDbOuput();
+      ret += this.shareData.toDbOutput();
+      ret += this.estimateData.toDbOutput();
+      ret += this.incSheetData.toDbOutput();
+      ret += this.balSheetData.toDbOutput();
+      ret += this.cashData.toDbOutput();
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
 
   }
