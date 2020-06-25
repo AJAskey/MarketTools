@@ -66,6 +66,11 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * 
+   * @param yrs
+   * @return
+   */
   public static String companySummary(int[] yrs) {
 
     String ret = "";
@@ -104,6 +109,14 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * 
+   * @param ticker
+   * @param startYr
+   * @param endYr
+   * @param quarter
+   * @return
+   */
   public static List<String> getCompanyNetIncome(String ticker, int startYr, int endYr, int quarter) {
 
     final List<String> ret = new ArrayList<>();
@@ -260,6 +273,10 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * 
+   * @return
+   */
   public static String memoryOverview() {
 
     String ret = "";

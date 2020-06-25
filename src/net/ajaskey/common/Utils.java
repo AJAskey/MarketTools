@@ -104,6 +104,23 @@ public class Utils {
   }
 
   /**
+   * 
+   * @param dir
+   * @param ext
+   * @return
+   */
+  public static List<File> getDir(final String dir, final String[] ext) {
+
+    final File d = new File(dir);
+    if (d.exists()) {
+      final List<File> retFiles = (List<File>) FileUtils.listFiles(d, ext, false);
+      return retFiles;
+    }
+    return null;
+
+  }
+
+  /**
    *
    * @param f
    * @return File name without extension
