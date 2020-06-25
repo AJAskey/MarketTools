@@ -121,8 +121,13 @@ public class TextUtils {
 
   public static String toString(List<String> data) {
     String ret = "";
-    for (final String s : data) {
-      ret += s + Utils.NL;
+    try {
+      for (final String s : data) {
+        ret += s + Utils.NL;
+      }
+    }
+    catch (Exception e) {
+      ret = "";
     }
     return ret;
   }
