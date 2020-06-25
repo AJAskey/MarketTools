@@ -58,7 +58,7 @@ public class MathUtil {
   }
 
   /**
-   * 
+   *
    * @param val   Value to round
    * @param scale Value for rounding (0.05 == a nickel)
    * @return

@@ -44,7 +44,7 @@ public class FieldDataQuarter {
 
   /**
    * Constructor
-   * 
+   *
    * @param yr
    * @param qtr
    * @param fdl

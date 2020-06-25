@@ -12,8 +12,9 @@ import net.ajaskey.market.optuma.TickerPriceData;
 
 public class TrueBreadth {
 
-  static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  static SimpleDateFormat  sdf     = new SimpleDateFormat("yyyy-MM-dd");
   static List<TrueBreadth> spxList = new ArrayList<>();
+
   public static void main(String[] args) throws FileNotFoundException {
     final TickerPriceData advspx = new TickerPriceData("WI", "ADVSPX");
     final TickerPriceData decspx = new TickerPriceData("WI", "DECSPX");
@@ -63,9 +64,9 @@ public class TrueBreadth {
     }
   }
 
-  double   advV;
+  double advV;
 
-  double   decV;
+  double decV;
 
   DateTime today;
 

@@ -11,16 +11,16 @@ public class Fundamentals {
 
   public static final double MILLION = 1000000.0;
 
+  static List<FieldData> fdList;
+
   public static void main(String[] args) throws FileNotFoundException {
 
     // FieldData.setQMemory(2020, 2, FiletypeEnum.TEXT);
     FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
 
-    fdList = FieldData.getAllFromMemory(2020, 2);
+    Fundamentals.fdList = FieldData.getAllFromMemory(2020, 2);
     FundamentalReports.write();
   }
-
-  static List<FieldData> fdList;
 
   public QuarterlyData shares;
 

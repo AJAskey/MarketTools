@@ -40,9 +40,9 @@ import java.util.Calendar;
 public class PEAnalysisData {
 
   final private static SimpleDateFormat sdf = new SimpleDateFormat("d-MMM-yyyy");
-  public Calendar date;
+  public Calendar                       date;
 
-  public double   price;
+  public double price;
 
   /**
    * This method serves as a constructor for the class.

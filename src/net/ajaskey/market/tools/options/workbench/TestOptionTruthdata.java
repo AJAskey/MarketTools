@@ -4,7 +4,8 @@ package net.ajaskey.market.tools.options.workbench;
 public class TestOptionTruthdata {
 
   public final static int CALL = 10;
-  public final static int PUT = 20;
+  public final static int PUT  = 20;
+
   public static void main(String[] args) {
     final TestOptionTruthdata tset1 = new TestOptionTruthdata(TestOptionTruthdata.CALL, 100.0, 100.0, 0.1, 0.01, 1.0, 4.4852);
     final OptionsProcessor op = new OptionsProcessor("TSET1 CALL", tset1);
@@ -18,12 +19,13 @@ public class TestOptionTruthdata {
 //      System.out.println(op1.getPrice());
 //      System.out.println(op1);
   }
+
   public double expectedResult;
   public double intRate;
   public double iv;
   public double strike;
 
-  public int    type;
+  public int type;
 
   public double ul;
 

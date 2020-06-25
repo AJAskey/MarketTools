@@ -12,11 +12,11 @@ import net.ajaskey.common.Utils;
 
 public class Option {
 
-  public DateTime lastTrade = null;
-  public List<OptionData> optList = new ArrayList<>();
-  public String response;
-  public String sCode;
-  public String sExch;
+  public DateTime         lastTrade = null;
+  public List<OptionData> optList   = new ArrayList<>();
+  public String           response;
+  public String           sCode;
+  public String           sExch;
 
   public String sLastTradeDate;
 

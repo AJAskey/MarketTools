@@ -49,6 +49,10 @@ public class BalSheetFileData implements Serializable {
    */
   private static List<BalSheetFileData> bfdList = new ArrayList<>();
 
+  public static void clearList() {
+    BalSheetFileData.bfdList.clear();
+  }
+
   /**
    * Returns the IncSheetFileData instance for requested ticker.
    *
@@ -334,7 +338,7 @@ public class BalSheetFileData implements Serializable {
         return;
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       System.out.printf("Warning ... File not found %s or %s%n", filenameQtr, filenameYr);
       return;
     }
@@ -406,7 +410,70 @@ public class BalSheetFileData implements Serializable {
   private double[] totalAssetsQtr;
   private double[] totalAssetsYr;
   private double[] totalLiabQtr;
+
   private double[] totalLiabYr;
+
+  /**
+   * Copy Constructor
+   *
+   * @param bfd
+   */
+  public BalSheetFileData(BalSheetFileData bfd) {
+    if (bfd != null) {
+      this.acctPayableQtr = bfd.acctPayableQtr;
+      this.acctPayableYr = bfd.acctPayableYr;
+      this.acctRxQtr = bfd.acctRxQtr;
+      this.acctRxYr = bfd.acctRxYr;
+      this.bvpsQtr = bfd.bvpsQtr;
+      this.bvpsYr = bfd.bvpsYr;
+      this.cashQtr = bfd.cashQtr;
+      this.cashYr = bfd.cashYr;
+      this.currAssetsQtr = bfd.currAssetsQtr;
+      this.currAssetsYr = bfd.currAssetsYr;
+      this.currLiabQtr = bfd.currLiabQtr;
+      this.currLiabYr = bfd.currLiabYr;
+      this.equityQtr = bfd.equityQtr;
+      this.equityYr = bfd.equityYr;
+      this.exchange = bfd.exchange;
+      this.goodwillQtr = bfd.goodwillQtr;
+      this.goodwillYr = bfd.goodwillYr;
+      this.industry = bfd.industry;
+      this.inventoryQtr = bfd.inventoryQtr;
+      this.inventoryYr = bfd.inventoryYr;
+      this.liabEquityQtr = bfd.liabEquityQtr;
+      this.liabEquityYr = bfd.liabEquityYr;
+      this.ltDebtQtr = bfd.ltDebtQtr;
+      this.ltDebtYr = bfd.ltDebtYr;
+      this.ltInvestQtr = bfd.ltInvestQtr;
+      this.ltInvestYr = bfd.ltInvestYr;
+      this.name = bfd.name;
+      this.netFixedAssetsQtr = bfd.netFixedAssetsQtr;
+      this.netFixedAssetsYr = bfd.netFixedAssetsYr;
+      this.otherCurrAssetsQtr = bfd.otherCurrAssetsQtr;
+      this.otherCurrAssetsYr = bfd.otherCurrAssetsYr;
+      this.otherCurrLiabQtr = bfd.otherCurrLiabQtr;
+      this.otherCurrLiabYr = bfd.otherCurrLiabYr;
+      this.otherLtAssetsQtr = bfd.otherLtAssetsQtr;
+      this.otherLtAssetsYr = bfd.otherLtAssetsYr;
+      this.otherLtLiabQtr = bfd.otherLtLiabQtr;
+      this.otherLtLiabYr = bfd.otherLtLiabYr;
+      this.prefStockQtr = bfd.prefStockQtr;
+      this.prefStockYr = bfd.prefStockYr;
+      this.sector = bfd.sector;
+      this.stDebtQtr = bfd.stDebtQtr;
+      this.stDebtYr = bfd.stDebtYr;
+      this.stInvestQtr = bfd.stInvestQtr;
+      this.stInvestYr = bfd.stInvestYr;
+      this.ticker = bfd.ticker;
+      this.totalAssetsQtr = bfd.totalAssetsQtr;
+      this.totalAssetsYr = bfd.totalAssetsYr;
+      this.totalLiabQtr = bfd.totalLiabQtr;
+      this.totalLiabYr = bfd.totalLiabYr;
+    }
+    else {
+      this.ticker = "";
+    }
+  }
 
   /**
    * Constructor - package level.
@@ -541,68 +608,6 @@ public class BalSheetFileData implements Serializable {
     this.bvpsYr = SipUtils.parseDoubles(fldYr, ptrYr, 7);
   }
 
-  /**
-   * Copy Constructor
-   * 
-   * @param bfd
-   */
-  public BalSheetFileData(BalSheetFileData bfd) {
-    if (bfd != null) {
-      this.acctPayableQtr = bfd.acctPayableQtr;
-      this.acctPayableYr = bfd.acctPayableYr;
-      this.acctRxQtr = bfd.acctRxQtr;
-      this.acctRxYr = bfd.acctRxYr;
-      this.bvpsQtr = bfd.bvpsQtr;
-      this.bvpsYr = bfd.bvpsYr;
-      this.cashQtr = bfd.cashQtr;
-      this.cashYr = bfd.cashYr;
-      this.currAssetsQtr = bfd.currAssetsQtr;
-      this.currAssetsYr = bfd.currAssetsYr;
-      this.currLiabQtr = bfd.currLiabQtr;
-      this.currLiabYr = bfd.currLiabYr;
-      this.equityQtr = bfd.equityQtr;
-      this.equityYr = bfd.equityYr;
-      this.exchange = bfd.exchange;
-      this.goodwillQtr = bfd.goodwillQtr;
-      this.goodwillYr = bfd.goodwillYr;
-      this.industry = bfd.industry;
-      this.inventoryQtr = bfd.inventoryQtr;
-      this.inventoryYr = bfd.inventoryYr;
-      this.liabEquityQtr = bfd.liabEquityQtr;
-      this.liabEquityYr = bfd.liabEquityYr;
-      this.ltDebtQtr = bfd.ltDebtQtr;
-      this.ltDebtYr = bfd.ltDebtYr;
-      this.ltInvestQtr = bfd.ltInvestQtr;
-      this.ltInvestYr = bfd.ltInvestYr;
-      this.name = bfd.name;
-      this.netFixedAssetsQtr = bfd.netFixedAssetsQtr;
-      this.netFixedAssetsYr = bfd.netFixedAssetsYr;
-      this.otherCurrAssetsQtr = bfd.otherCurrAssetsQtr;
-      this.otherCurrAssetsYr = bfd.otherCurrAssetsYr;
-      this.otherCurrLiabQtr = bfd.otherCurrLiabQtr;
-      this.otherCurrLiabYr = bfd.otherCurrLiabYr;
-      this.otherLtAssetsQtr = bfd.otherLtAssetsQtr;
-      this.otherLtAssetsYr = bfd.otherLtAssetsYr;
-      this.otherLtLiabQtr = bfd.otherLtLiabQtr;
-      this.otherLtLiabYr = bfd.otherLtLiabYr;
-      this.prefStockQtr = bfd.prefStockQtr;
-      this.prefStockYr = bfd.prefStockYr;
-      this.sector = bfd.sector;
-      this.stDebtQtr = bfd.stDebtQtr;
-      this.stDebtYr = bfd.stDebtYr;
-      this.stInvestQtr = bfd.stInvestQtr;
-      this.stInvestYr = bfd.stInvestYr;
-      this.ticker = bfd.ticker;
-      this.totalAssetsQtr = bfd.totalAssetsQtr;
-      this.totalAssetsYr = bfd.totalAssetsYr;
-      this.totalLiabQtr = bfd.totalLiabQtr;
-      this.totalLiabYr = bfd.totalLiabYr;
-    }
-    else {
-      this.ticker = "";
-    }
-  }
-
   public double[] getAcctPayableQtr() {
     return this.acctPayableQtr;
   }
@@ -664,7 +669,7 @@ public class BalSheetFileData implements Serializable {
     try {
       ret = this.exchange.toString().toUpperCase();
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -858,7 +863,7 @@ public class BalSheetFileData implements Serializable {
       ret += String.format("  total liab Qtr        : %s%n", SipOutput.buildArray("", this.totalLiabQtr, 12, 3, 1));
       ret += String.format("  total liab Yr         : %s%n", SipOutput.buildArray("", this.totalLiabYr, 12, 3, 1));
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -915,7 +920,7 @@ public class BalSheetFileData implements Serializable {
       ret += SipOutput.buildArray("  bvpsQtr        : ", this.bvpsQtr, 1, 4) + Utils.NL;
       ret += SipOutput.buildArray("  bvpsYr         : ", this.bvpsYr, 1, 2) + Utils.NL;
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
 
@@ -935,9 +940,5 @@ public class BalSheetFileData implements Serializable {
       this.industry = cfd.getIndustry();
       this.exchange = cfd.getExchange();
     }
-  }
-
-  public static void clearList() {
-    bfdList.clear();
   }
 }

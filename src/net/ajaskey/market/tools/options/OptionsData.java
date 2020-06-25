@@ -17,23 +17,23 @@ public class OptionsData {
     System.out.println(od);
   }
 
-  private final double currentPriceOfUnderlying;
-  private final long   daysToExpiry;
-  private double delta;
+  private final double   currentPriceOfUnderlying;
+  private final long     daysToExpiry;
+  private double         delta;
   private final Calendar expiry;
 
-  private double gamma;
-  private final double   interestRate;
+  private double       gamma;
+  private final double interestRate;
 
   private double rho;
 
-  private final double   strikePrice;
+  private final double strikePrice;
 
   private double theta;
 
   private double vega;
 
-  private final double   volatility;
+  private final double volatility;
 
   private final double yearsToExpiry;
 

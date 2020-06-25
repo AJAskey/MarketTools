@@ -44,10 +44,10 @@ public class DateLabelFormatter extends AbstractFormatter {
   /**
    *
    */
-  private static final long serialVersionUID = 1L;
-  private final SimpleDateFormat dateFormatter = new SimpleDateFormat(this.datePattern);
+  private static final long      serialVersionUID = 1L;
+  private final SimpleDateFormat dateFormatter    = new SimpleDateFormat(this.datePattern);
 
-  private final String           datePattern   = "yyyy-MM-dd";
+  private final String datePattern = "yyyy-MM-dd";
 
   @Override
   public Object stringToValue(final String text) throws ParseException {

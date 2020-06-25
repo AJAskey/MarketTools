@@ -7,8 +7,9 @@ import net.ajaskey.common.Utils;
 
 public class OptionStatistics {
 
-  private static int retailOiLevel = 60;
+  private static int retailOiLevel  = 60;
   private static int retailVolLevel = 35;
+
   /**
    *
    * @param args
@@ -23,6 +24,7 @@ public class OptionStatistics {
 //    final OptionStats os = new OptionStats(opt);
 //    System.out.println(os);
   }
+
   private long   callOi;
   private long   callVol;
   private double dollarsCall;
@@ -34,7 +36,7 @@ public class OptionStatistics {
 
   private double rdollarsCall; // retail OI:Vol less than 200
 
-  private double rdollarsPut;  // retail OI:Vol less than 200
+  private double rdollarsPut; // retail OI:Vol less than 200
 
   private double vdollarsCall;
 

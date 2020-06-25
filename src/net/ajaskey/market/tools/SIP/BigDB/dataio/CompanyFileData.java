@@ -302,7 +302,7 @@ public class CompanyFileData implements Serializable {
 
   /**
    * Copy Constructor
-   * 
+   *
    * @param cfd
    */
   public CompanyFileData(CompanyFileData cfd) {
@@ -348,7 +348,7 @@ public class CompanyFileData implements Serializable {
     try {
       ret = this.dowIndex.toString().toUpperCase();
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -391,7 +391,7 @@ public class CompanyFileData implements Serializable {
     try {
       ret = this.snpIndex.toString().toUpperCase();
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -637,7 +637,7 @@ public class CompanyFileData implements Serializable {
           this.getZip(), this.getPhone());
       ret += String.format("  Web     : %s%n", this.getWeb());
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;

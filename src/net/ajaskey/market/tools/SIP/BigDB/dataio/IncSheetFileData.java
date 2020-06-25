@@ -49,6 +49,10 @@ public class IncSheetFileData implements Serializable {
    */
   private static List<IncSheetFileData> ifdList = new ArrayList<>();
 
+  public static void clearList() {
+    IncSheetFileData.ifdList.clear();
+  }
+
   /**
    * Returns the IncSheetFileData instance for requested ticker.
    *
@@ -326,7 +330,7 @@ public class IncSheetFileData implements Serializable {
         return;
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       System.out.printf("Warning ... File not found %s or %s%n", filenameQtr, filenameYr);
       return;
     }
@@ -400,7 +404,67 @@ public class IncSheetFileData implements Serializable {
   private double[] totalOpExpQtr;
   private double[] totalOpExpYr;
   private double[] unusualIncQtr;
+
   private double[] unusualIncYr;
+
+  public IncSheetFileData(IncSheetFileData ifd) {
+    if (ifd != null) {
+      this.adjToIncQtr = ifd.adjToIncQtr;
+      this.adjToIncYr = ifd.adjToIncYr;
+      this.cogsQtr = ifd.cogsQtr;
+      this.cogsYr = ifd.cogsYr;
+      this.depreciationQtr = ifd.depreciationQtr;
+      this.depreciationYr = ifd.depreciationYr;
+      this.dividendQtr = ifd.dividendQtr;
+      this.dividendYr = ifd.dividendYr;
+      this.epsContQtr = ifd.epsContQtr;
+      this.epsContYr = ifd.epsContYr;
+      this.epsDilContQtr = ifd.epsDilContQtr;
+      this.epsDilContYr = ifd.epsDilContYr;
+      this.epsDilQtr = ifd.epsDilQtr;
+      this.epsDilYr = ifd.epsDilYr;
+      this.epsQtr = ifd.epsQtr;
+      this.epsYr = ifd.epsYr;
+      this.exchange = ifd.exchange;
+      this.grossIncQtr = ifd.grossIncQtr;
+      this.grossIncYr = ifd.grossIncYr;
+      this.grossOpIncQtr = ifd.grossOpIncQtr;
+      this.grossOpIncYr = ifd.grossOpIncYr;
+      this.incAfterTaxQtr = ifd.incAfterTaxQtr;
+      this.incAfterTaxYr = ifd.incAfterTaxYr;
+      this.incPrimaryEpsQtr = ifd.incPrimaryEpsQtr;
+      this.incPrimaryEpsYr = ifd.incPrimaryEpsYr;
+      this.incTaxQtr = ifd.incTaxQtr;
+      this.incTaxYr = ifd.incTaxYr;
+      this.industry = ifd.industry;
+      this.intExpNonOpQtr = ifd.intExpNonOpQtr;
+      this.intExpNonOpYr = ifd.intExpNonOpYr;
+      this.intExpQtr = ifd.intExpQtr;
+      this.intExpYr = ifd.intExpYr;
+      this.name = ifd.name;
+      this.netIncQtr = ifd.netIncQtr;
+      this.netIncYr = ifd.netIncYr;
+      this.nonrecurringItemsQtr = ifd.nonrecurringItemsQtr;
+      this.nonrecurringItemsYr = ifd.nonrecurringItemsYr;
+      this.otherIncQtr = ifd.otherIncQtr;
+      this.otherIncYr = ifd.otherIncYr;
+      this.preTaxIncQtr = ifd.preTaxIncQtr;
+      this.preTaxIncYr = ifd.preTaxIncYr;
+      this.rdQtr = ifd.rdQtr;
+      this.rdYr = ifd.rdYr;
+      this.salesQtr = ifd.salesQtr;
+      this.salesYr = ifd.salesYr;
+      this.sector = ifd.sector;
+      this.ticker = ifd.ticker;
+      this.totalOpExpQtr = ifd.totalOpExpQtr;
+      this.totalOpExpYr = ifd.totalOpExpYr;
+      this.unusualIncQtr = ifd.unusualIncQtr;
+      this.unusualIncYr = ifd.unusualIncYr;
+    }
+    else {
+      this.ticker = "";
+    }
+  }
 
   /**
    * Constructor - package level.
@@ -518,65 +582,6 @@ public class IncSheetFileData implements Serializable {
     this.dividendYr = this.slideIncYearData(SipUtils.parseDoubles(strFldYr, ptr, flds));
     ptr += flds;
 
-  }
-
-  public IncSheetFileData(IncSheetFileData ifd) {
-    if (ifd != null) {
-      this.adjToIncQtr = ifd.adjToIncQtr;
-      this.adjToIncYr = ifd.adjToIncYr;
-      this.cogsQtr = ifd.cogsQtr;
-      this.cogsYr = ifd.cogsYr;
-      this.depreciationQtr = ifd.depreciationQtr;
-      this.depreciationYr = ifd.depreciationYr;
-      this.dividendQtr = ifd.dividendQtr;
-      this.dividendYr = ifd.dividendYr;
-      this.epsContQtr = ifd.epsContQtr;
-      this.epsContYr = ifd.epsContYr;
-      this.epsDilContQtr = ifd.epsDilContQtr;
-      this.epsDilContYr = ifd.epsDilContYr;
-      this.epsDilQtr = ifd.epsDilQtr;
-      this.epsDilYr = ifd.epsDilYr;
-      this.epsQtr = ifd.epsQtr;
-      this.epsYr = ifd.epsYr;
-      this.exchange = ifd.exchange;
-      this.grossIncQtr = ifd.grossIncQtr;
-      this.grossIncYr = ifd.grossIncYr;
-      this.grossOpIncQtr = ifd.grossOpIncQtr;
-      this.grossOpIncYr = ifd.grossOpIncYr;
-      this.incAfterTaxQtr = ifd.incAfterTaxQtr;
-      this.incAfterTaxYr = ifd.incAfterTaxYr;
-      this.incPrimaryEpsQtr = ifd.incPrimaryEpsQtr;
-      this.incPrimaryEpsYr = ifd.incPrimaryEpsYr;
-      this.incTaxQtr = ifd.incTaxQtr;
-      this.incTaxYr = ifd.incTaxYr;
-      this.industry = ifd.industry;
-      this.intExpNonOpQtr = ifd.intExpNonOpQtr;
-      this.intExpNonOpYr = ifd.intExpNonOpYr;
-      this.intExpQtr = ifd.intExpQtr;
-      this.intExpYr = ifd.intExpYr;
-      this.name = ifd.name;
-      this.netIncQtr = ifd.netIncQtr;
-      this.netIncYr = ifd.netIncYr;
-      this.nonrecurringItemsQtr = ifd.nonrecurringItemsQtr;
-      this.nonrecurringItemsYr = ifd.nonrecurringItemsYr;
-      this.otherIncQtr = ifd.otherIncQtr;
-      this.otherIncYr = ifd.otherIncYr;
-      this.preTaxIncQtr = ifd.preTaxIncQtr;
-      this.preTaxIncYr = ifd.preTaxIncYr;
-      this.rdQtr = ifd.rdQtr;
-      this.rdYr = ifd.rdYr;
-      this.salesQtr = ifd.salesQtr;
-      this.salesYr = ifd.salesYr;
-      this.sector = ifd.sector;
-      this.ticker = ifd.ticker;
-      this.totalOpExpQtr = ifd.totalOpExpQtr;
-      this.totalOpExpYr = ifd.totalOpExpYr;
-      this.unusualIncQtr = ifd.unusualIncQtr;
-      this.unusualIncYr = ifd.unusualIncYr;
-    }
-    else {
-      this.ticker = "";
-    }
   }
 
   public double[] getAdjToIncQtr() {
@@ -838,7 +843,7 @@ public class IncSheetFileData implements Serializable {
       ret += String.format("  dividend Qtr        : %s%n", SipOutput.buildArray("", this.dividendQtr, 10, 4, 1));
       ret += String.format("  dividend Yr         : %s%n", SipOutput.buildArray("", this.dividendYr, 10, 4, 0));
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
 
@@ -897,7 +902,7 @@ public class IncSheetFileData implements Serializable {
       ret += SipOutput.buildArray("  dividentQtr          : ", this.dividendQtr, 1, 3) + Utils.NL;
       ret += SipOutput.buildArray("  dividendYr           : ", this.dividendYr, 1, 3) + Utils.NL;
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -1114,9 +1119,5 @@ public class IncSheetFileData implements Serializable {
       ret[knt++] = in[i];
     }
     return ret;
-  }
-
-  public static void clearList() {
-    ifdList.clear();
   }
 }

@@ -4,10 +4,10 @@ public class RowModel {
 
   private static final int MAXCOL = 1000;
 
-  private SheetModel parent;
+  private SheetModel        parent;
   private final CellModel[] rowCells = new CellModel[100];
 
-  private int               rowNumber;
+  private int rowNumber;
 
   public CellModel get(int col) {
     if (col > 0 && col < RowModel.MAXCOL) {

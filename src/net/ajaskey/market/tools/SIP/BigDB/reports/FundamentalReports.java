@@ -3,12 +3,10 @@ package net.ajaskey.market.tools.SIP.BigDB.reports;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.misc.Debug;
-import net.ajaskey.market.tools.SIP.CompanyData;
 import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 
@@ -20,12 +18,8 @@ public class FundamentalReports extends Fundamentals {
 
     Utils.makeDir("out/CompanyReports");
 
-    final List<CompanyData> bestList = new ArrayList<>();
+    new ArrayList<>();
 
-    /**
-     *
-     */
-    int knt = 0;
     try (PrintWriter pw = new PrintWriter("out/Companies.txt")) {
 
       final DateTime now = new DateTime();
@@ -38,9 +32,9 @@ public class FundamentalReports extends Fundamentals {
       pw.println("QoQ : this quarter versus same quarter a year ago.");
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
 
-      for (final FieldData fd : fdList) {
+      for (final FieldData fd : Fundamentals.fdList) {
 
-        String lq = fd.getLatestQtrEps().toString().trim();
+        final String lq = fd.getLatestQtrEps().toString().trim();
         if (lq.length() < 8) {
           continue;
         }
@@ -52,7 +46,7 @@ public class FundamentalReports extends Fundamentals {
           continue;
         }
 
-        printHeaderData(pw, fd);
+        FundamentalReports.printHeaderData(pw, fd);
 
         pw.printf("%n\tFloat             : %s M%n", Utils.fmt(fd.getFloatshr(), 13));
         double d = fd.getInsiderOwnership();
@@ -61,7 +55,7 @@ public class FundamentalReports extends Fundamentals {
         pw.printf("\tInstitutions      : %s %% (Number %s)%n", Utils.fmt(d, 13), Utils.ifmt(fd.getInstShareholders(), 5));
 
         if (fd.getVolume10d() > 999) {
-          pw.printf("\tAvg Daily Vol     : %s M%n", Utils.fmt(((double) fd.getVolume10d() / 1000.0), 13));
+          pw.printf("\tAvg Daily Vol     : %s M%n", Utils.fmt(fd.getVolume10d() / 1000.0, 13));
         }
         else {
           pw.printf("\tAvg Daily Vol     : %s K%n", Utils.lfmt(fd.getVolume10d(), 13));
@@ -69,7 +63,7 @@ public class FundamentalReports extends Fundamentals {
 
         double turnover = 0.0;
         if (fd.getVolumeMonth3m() > 0.0) {
-          turnover = fd.getFloatshr() / ((double) fd.getVolume10d() / 1000.0);
+          turnover = fd.getFloatshr() / (fd.getVolume10d() / 1000.0);
         }
         pw.printf("\tTurnover Float    : %s days%n", Utils.fmt(turnover, 13));
 
@@ -82,8 +76,6 @@ public class FundamentalReports extends Fundamentals {
 //        pw.println();
 //
 //        bestList.add(cd);
-
-        knt++;
 
       }
     }
@@ -99,19 +91,6 @@ public class FundamentalReports extends Fundamentals {
 
   }
 
-  private static boolean checkMinValue(final String ticker, final String desc, final double val, final double min) {
-
-    boolean ret = true;
-
-    if (val < min) {
-      final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
-      ret = false;
-    }
-
-    return ret;
-  }
-
   private static boolean checkMaxValue(final String ticker, final String desc, final double val, final double max) {
 
     boolean ret = true;
@@ -125,13 +104,26 @@ public class FundamentalReports extends Fundamentals {
     return ret;
   }
 
+  private static boolean checkMinValue(final String ticker, final String desc, final double val, final double min) {
+
+    boolean ret = true;
+
+    if (val < min) {
+      final String s = ticker + desc;
+      Debug.log(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
+      ret = false;
+    }
+
+    return ret;
+  }
+
   private static void printHeaderData(final PrintWriter pw, final FieldData fd) {
 
     pw.println(" " + fd.getTicker());
     pw.printf("\t%s : %s, %s%n", fd.getName(), fd.getCity(), fd.getState());
 
-    String index = ", " + fd.getSnpIndexStr();
-    String exch = ", " + fd.getExchange().toString();
+    final String index = ", " + fd.getSnpIndexStr();
+    final String exch = ", " + fd.getExchange().toString();
 
     pw.printf("\t%s, %s%s%s%n", fd.getSector(), fd.getIndustry(), index, exch);
     // pw.printf("\t%s%n", fd.industry);
@@ -141,7 +133,7 @@ public class FundamentalReports extends Fundamentals {
     }
     pw.printf("\tEmployees     : %s%n", sNumEmp);
     if (fd.getNumEmployees() > 0) {
-      final double d = FieldData.getTtm(fd.getGrossIncQtr()) / fd.getNumEmployees() * MILLION;
+      final double d = FieldData.getTtm(fd.getGrossIncQtr()) / fd.getNumEmployees() * Fundamentals.MILLION;
       final int i = (int) d;
       pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
     }
@@ -152,7 +144,7 @@ public class FundamentalReports extends Fundamentals {
     pw.printf("\tPrice         :  %11.2f%n", fd.getPrice());
     pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(fd.getMktCap(), 13));
 
-    QuarterlyDouble shares = new QuarterlyDouble(fd.getSharesQ());
+    final QuarterlyDouble shares = new QuarterlyDouble(fd.getSharesQ());
     pw.println(shares.fmtGrowth1Q("Shares"));
     final double sc = shares.deltaQ(1, 2);
     if (sc < -0.250) {
@@ -160,16 +152,16 @@ public class FundamentalReports extends Fundamentals {
       pw.printf("\tShare Change 12m  : %s M (Buyback Est= $%sM)%n", Utils.fmt(sc, 13), Utils.fmt(bbest, 1));
     }
 
-    QuarterlyDouble sales = new QuarterlyDouble(fd.getSalesQtr());
-    QuarterlyDouble cogs = new QuarterlyDouble(fd.getCogsQtr());
-    QuarterlyDouble grossOpInc = new QuarterlyDouble(fd.getGrossIncQtr());
-    QuarterlyDouble net = new QuarterlyDouble(fd.getNetIncQtr());
+    final QuarterlyDouble sales = new QuarterlyDouble(fd.getSalesQtr());
+    final QuarterlyDouble cogs = new QuarterlyDouble(fd.getCogsQtr());
+    final QuarterlyDouble grossOpInc = new QuarterlyDouble(fd.getGrossIncQtr());
+    final QuarterlyDouble net = new QuarterlyDouble(fd.getNetIncQtr());
 
-    double tArr[] = new double[9];
+    final double tArr[] = new double[9];
     for (int i = 0; i < tArr.length; i++) {
       tArr[i] = fd.getIntExpQtr()[i] + fd.getIntExpNonOpQtr()[i];
     }
-    QuarterlyDouble intTot = new QuarterlyDouble(tArr);
+    final QuarterlyDouble intTot = new QuarterlyDouble(tArr);
 
     pw.println("\n" + sales.fmtGrowth4Q("Sales 12m"));
     pw.println(cogs.fmtGrowth4Q("COGS 12m"));
@@ -184,31 +176,31 @@ public class FundamentalReports extends Fundamentals {
     }
     pw.printf("\tInterest Rate     :%14.2f%%%n", intrate);
 //
-    QuarterlyDouble cash = new QuarterlyDouble(fd.getCashQtr());
-    QuarterlyDouble capex = new QuarterlyDouble(fd.getCashData().getCapExQtr());
-    QuarterlyDouble cashops = new QuarterlyDouble(fd.getCashData().getCashFromOpsQtr());
-    QuarterlyDouble dividend = new QuarterlyDouble(fd.getDividendQtr());
+    final QuarterlyDouble cash = new QuarterlyDouble(fd.getCashQtr());
+    final QuarterlyDouble capex = new QuarterlyDouble(fd.getCashData().getCapExQtr());
+    final QuarterlyDouble cashops = new QuarterlyDouble(fd.getCashData().getCashFromOpsQtr());
+    final QuarterlyDouble dividend = new QuarterlyDouble(fd.getDividendQtr());
 
     pw.println("\n" + cashops.fmtGrowth4Q("Cash <- Ops 12m"));
     pw.println(capex.fmtGrowth4Q("  CapEx 12m"));
     if (fd.getDividendQtr()[1] > 0.0) {
-      double div = dividend.getTtm() * shares.getTtmAvg();
-      double dyld = dividend.getTtm() / fd.getPrice() * 100.0;
+      final double div = dividend.getTtm() * shares.getTtmAvg();
+      final double dyld = dividend.getTtm() / fd.getPrice() * 100.0;
       pw.printf("\t  Dividends 12m   : %s M (Yield=%.2f%%)%n", Utils.fmt(div, 13), dyld);
 
     }
     else {
-      double d = dividend.getTtm() * shares.getTtmAvg();
+      final double d = dividend.getTtm() * shares.getTtmAvg();
       pw.printf("\t  Dividends 12m   : %s M%n", Utils.fmt(d, 13));
     }
 
-    double fcf = cashops.getTtm() - capex.getTtm() - (dividend.getTtm() * shares.getTtmAvg());
+    final double fcf = cashops.getTtm() - capex.getTtm() - dividend.getTtm() * shares.getTtmAvg();
 
-    QuarterlyDouble cashfin = new QuarterlyDouble(fd.getCashFromFin());
-    QuarterlyDouble cashinv = new QuarterlyDouble(fd.getCashFromInv());
+    final QuarterlyDouble cashfin = new QuarterlyDouble(fd.getCashFromFin());
+    final QuarterlyDouble cashinv = new QuarterlyDouble(fd.getCashFromInv());
 
-    double netcashflow = cashops.getTtm() + cashfin.getTtm();
-    double cashflow = netcashflow + cashinv.getTtm();
+    final double netcashflow = cashops.getTtm() + cashfin.getTtm();
+    final double cashflow = netcashflow + cashinv.getTtm();
 
     pw.printf("\t    FCF 12m       : %s M %s%n", Utils.fmt(fcf, 13), "[Cash from Operations - CapEx - Dividends]");
 
@@ -224,16 +216,16 @@ public class FundamentalReports extends Fundamentals {
 
     //
 
-    QuarterlyDouble acctRx = new QuarterlyDouble(fd.getAcctRxQtr());
-    QuarterlyDouble stInvest = new QuarterlyDouble(fd.getStInvestQtr());
-    QuarterlyDouble inventory = new QuarterlyDouble(fd.getInventoryQtr());
-    QuarterlyDouble otherAssets = new QuarterlyDouble(fd.getOtherCurrAssetsQtr());
+    final QuarterlyDouble acctRx = new QuarterlyDouble(fd.getAcctRxQtr());
+    final QuarterlyDouble stInvest = new QuarterlyDouble(fd.getStInvestQtr());
+    final QuarterlyDouble inventory = new QuarterlyDouble(fd.getInventoryQtr());
+    final QuarterlyDouble otherAssets = new QuarterlyDouble(fd.getOtherCurrAssetsQtr());
 
-    double aArr[] = new double[9];
+    final double aArr[] = new double[9];
     for (int i = 0; i < aArr.length; i++) {
       aArr[i] = acctRx.get(i) + stInvest.get(i) + inventory.get(i) + otherAssets.get(i) + cash.get(i);
     }
-    QuarterlyDouble currAssets = new QuarterlyDouble(aArr);
+    final QuarterlyDouble currAssets = new QuarterlyDouble(aArr);
 
     pw.println(Utils.NL + currAssets.fmtGrowth1Q("Current Assets"));
     pw.println(cash.fmtGrowth1Q("  Cash"));
@@ -242,39 +234,39 @@ public class FundamentalReports extends Fundamentals {
     pw.println(inventory.fmtGrowth1Q("  Inventory"));
     pw.println(otherAssets.fmtGrowth1Q("  Other"));
 
-    QuarterlyDouble acctPay = new QuarterlyDouble(fd.getAcctPayableQtr());
-    QuarterlyDouble stDebt = new QuarterlyDouble(fd.getStDebtQtr());
-    QuarterlyDouble otherLiab = new QuarterlyDouble(fd.getOtherCurrLiabQtr());
+    final QuarterlyDouble acctPay = new QuarterlyDouble(fd.getAcctPayableQtr());
+    final QuarterlyDouble stDebt = new QuarterlyDouble(fd.getStDebtQtr());
+    final QuarterlyDouble otherLiab = new QuarterlyDouble(fd.getOtherCurrLiabQtr());
 
-    double cArr[] = new double[9];
+    final double cArr[] = new double[9];
     for (int i = 0; i < cArr.length; i++) {
       cArr[i] = acctPay.get(i) + stDebt.get(i) + otherLiab.get(i);
     }
-    QuarterlyDouble currLiab = new QuarterlyDouble(cArr);
+    final QuarterlyDouble currLiab = new QuarterlyDouble(cArr);
 
     pw.println(currLiab.fmtGrowth1Q("Current Liabs"));
     pw.println(acctPay.fmtGrowth1Q("  Acct Pay"));
     pw.println(stDebt.fmtGrowth1Q("  ST Debt"));
     pw.println(otherLiab.fmtGrowth1Q("  Other"));
 
-    double wc = currAssets.getMostRecent() - currLiab.getMostRecent();
-    double cr = currAssets.getMostRecent() / currLiab.getMostRecent();
-    double wcfcf = wc + fcf;
+    final double wc = currAssets.getMostRecent() - currLiab.getMostRecent();
+    final double cr = currAssets.getMostRecent() / currLiab.getMostRecent();
+    final double wcfcf = wc + fcf;
 
     pw.printf("\tWorking Capital   : %s M (Ratio=%.2f)%n", Utils.fmt(wc, 13), cr);
     pw.printf("\tWC + FCF          : %s M%n", Utils.fmt(wcfcf, 13));
 
 //
 
-    QuarterlyDouble equity = new QuarterlyDouble(fd.getEquityQtr());
-    QuarterlyDouble ltDebt = new QuarterlyDouble(fd.getLtDebtQtr());
-    QuarterlyDouble goodwill = new QuarterlyDouble(fd.getGoodwillQtr());
+    final QuarterlyDouble equity = new QuarterlyDouble(fd.getEquityQtr());
+    final QuarterlyDouble ltDebt = new QuarterlyDouble(fd.getLtDebtQtr());
+    final QuarterlyDouble goodwill = new QuarterlyDouble(fd.getGoodwillQtr());
 
-    double gArr[] = new double[9];
+    final double gArr[] = new double[9];
     for (int i = 0; i < gArr.length; i++) {
       gArr[i] = currAssets.get(i) - goodwill.get(i);
     }
-    QuarterlyDouble tanAssets = new QuarterlyDouble(gArr);
+    final QuarterlyDouble tanAssets = new QuarterlyDouble(gArr);
 
     pw.println(Utils.NL + equity.fmtGrowth1Q("Sharehldr Equity"));
     pw.println(goodwill.fmtGrowth1Q("Goodwill"));

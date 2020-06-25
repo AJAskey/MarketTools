@@ -79,16 +79,16 @@ import net.ajaskey.common.DateTime;
 public class OptionsProcessor {
 
   public final static int ACALL = 2;
-  public final static int APUT = 1;
+  public final static int APUT  = 1;
   //
   static String gDbgStr;
   //
-  final static double ONEDAY = 1.0 / 365.0;
-  private static final double B1 = 0.319381530;
-  private static final double B2 = -0.356563782;
-  private static final double B3 = 1.781477937;
-  private static final double B4 = -1.821255978;
-  private static final double B5 = 1.330274429;
+  final static double         ONEDAY = 1.0 / 365.0;
+  private static final double B1     = 0.319381530;
+  private static final double B2     = -0.356563782;
+  private static final double B3     = 1.781477937;
+  private static final double B4     = -1.821255978;
+  private static final double B5     = 1.330274429;
   private static final double opRate = 0.000001;
   // private static final double skew = 0.0295;
   /**
@@ -96,12 +96,13 @@ public class OptionsProcessor {
    *
    *         For Black-Scholes calculations.
    */
-  private static final double P = 0.2316419;
-  private final static double p2 = Math.sqrt(2.0 * Math.PI);
+  private static final double P         = 0.2316419;
+  private final static double p2        = Math.sqrt(2.0 * Math.PI);
   /**
    * Within one cent.
    */
   private static final double precision = 0.0149;
+
   /**
    *
    * Used as a simple example
@@ -122,6 +123,7 @@ public class OptionsProcessor {
     final OptionsProcessor op2 = new OptionsProcessor(OptionsProcessor.APUT, "TestOpt", "Test PUT", 267.0, 297.12, expiry, iv, true);
     op2.CloseDebug();
   }
+
   /**
    *
    * @param op
@@ -188,6 +190,7 @@ public class OptionsProcessor {
 //      }
     return op;
   }
+
   /**
    * @author M. Bret Blackford
    *
@@ -197,6 +200,7 @@ public class OptionsProcessor {
   private static double cumulativeDistribution(double x) {
     return OptionsProcessor.cumulativeDistribution(x, OptionsProcessor.standardNormalDistribution(x));
   }
+
   /**
    * @author M. Bret Blackford
    *
@@ -214,6 +218,7 @@ public class OptionsProcessor {
     final double cd = 1 - sdx * b;
     return num < 0 ? 1 - cd : cd;
   }
+
   /**
    * @author M. Bret Blackford
    *
@@ -224,47 +229,48 @@ public class OptionsProcessor {
     final double p1 = Math.exp(-0.5 * Math.pow(num, 2.0));
     return p1 / OptionsProcessor.p2;
   }
-  String              code;
-  int                 dataType;
-  String              id;
-  boolean             valid;
-  private long        days;
 
-  private String      dbgFilename;
+  String       code;
+  int          dataType;
+  String       id;
+  boolean      valid;
+  private long days;
+
+  private String dbgFilename;
 
   private PrintWriter dbgPw;
 
-  private boolean     DEBUG;
+  private boolean DEBUG;
 
-  private double      delta;
+  private double delta;
 
-  private DateTime    expiry;
+  private DateTime expiry;
 
-  private double      gamma;
+  private double gamma;
 
-  private boolean     isPwDbgOpen = false;
+  private boolean isPwDbgOpen = false;
 
-  private double      iv;
+  private double iv;
 
-  private double      price;
+  private double price;
 
-  private PrintWriter pwDbg       = null;
+  private PrintWriter pwDbg = null;
 
-  private double      rate;
+  private double rate;
 
-  private double      rho;
+  private double rho;
 
-  private DateTime    sellDate;
+  private DateTime sellDate;
 
-  private double      strike;
+  private double strike;
 
-  private double      theta;
+  private double theta;
 
-  private double      ulPrice;
+  private double ulPrice;
 
-  private double      vega;
+  private double vega;
 
-  private double      years;
+  private double years;
 
   /**
    *

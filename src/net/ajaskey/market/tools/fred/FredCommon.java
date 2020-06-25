@@ -73,7 +73,7 @@ public class FredCommon {
   final static String infoHeader = "Name\tTitle\tMethod\tFrequency\tUnits\tType\tLast Download\tLast Data Update";
 
   /**
-   * 
+   *
    * net.ajaskey.market.tools.fred.addSeries
    *
    * @param allSeries
@@ -252,7 +252,7 @@ public class FredCommon {
   }
 
   /**
-   * 
+   *
    * net.ajaskey.market.tools.fred.findFullName
    *
    * @param title

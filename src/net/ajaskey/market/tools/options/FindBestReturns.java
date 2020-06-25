@@ -21,17 +21,17 @@ public class FindBestReturns {
   static List<String> codeList    = new ArrayList<>();
   static List<String> expiryDates = new ArrayList<>();
 
-  final static int    holdDays10     = 9;
-  final static int    holdDays15     = 14;
+  final static int holdDays10 = 9;
+  final static int holdDays15 = 14;
 
-  final static int    holdDays20     = 90;
-  final static int    holdDays5      = 4;
-  final static double maxOptionPrice = 10.01;
-  final static int    minOi          = 500;   // 250;
-  final static double minOptionPrice = 0.0499;
-  static int    otypes[]  = { OptionsProcessor.ACALL, OptionsProcessor.APUT };
-  final static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-  static boolean      useMarkBuy     = false;
+  final static int              holdDays20     = 90;
+  final static int              holdDays5      = 4;
+  final static double           maxOptionPrice = 10.01;
+  final static int              minOi          = 500;                                              // 250;
+  final static double           minOptionPrice = 0.0499;
+  static int                    otypes[]       = { OptionsProcessor.ACALL, OptionsProcessor.APUT };
+  final static SimpleDateFormat sdf            = new SimpleDateFormat("dd-MMM-yyyy");
+  static boolean                useMarkBuy     = false;
 
   /**
    *

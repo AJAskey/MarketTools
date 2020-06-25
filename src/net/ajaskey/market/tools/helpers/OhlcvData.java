@@ -41,16 +41,16 @@ public class OhlcvData {
     FULL, SHORT
   }
 
-  public double    close;
+  public double close;
 
-  public DateTime date;
+  public DateTime  date;
   public double    high;
   public double    low;
-  public double open;
+  public double    open;
   public long      volume;
   private FormType form;
 
-  private boolean  valid;
+  private boolean valid;
 
   /**
    * This method serves as a constructor for the class.

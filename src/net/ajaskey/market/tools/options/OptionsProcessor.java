@@ -80,14 +80,14 @@ public class OptionsProcessor {
 
   public final static int     ACALL = 2;
   public final static int     APUT  = 1;
-  private static final double B1 = 0.319381530;
+  private static final double B1    = 0.319381530;
 
-  private static final double B2 = -0.356563782;
-  private static final double B3    = 1.781477937;
-  private static final double B4    = -1.821255978;
-  private static final double B5    = 1.330274429;
-  private static final boolean DEBUG = true;
-  private static boolean isPwDbgOpen = false;
+  private static final double  B2          = -0.356563782;
+  private static final double  B3          = 1.781477937;
+  private static final double  B4          = -1.821255978;
+  private static final double  B5          = 1.330274429;
+  private static final boolean DEBUG       = true;
+  private static boolean       isPwDbgOpen = false;
 
   private static final double opRate = 0.000001;
 
@@ -96,13 +96,14 @@ public class OptionsProcessor {
    *
    *         For Black-Scholes calculations.
    */
-  private static final double P = 0.2316419;
-  private final static double p2    = Math.sqrt(2.0 * Math.PI);
+  private static final double P         = 0.2316419;
+  private final static double p2        = Math.sqrt(2.0 * Math.PI);
   /**
    * Within one cent.
    */
   private static final double precision = 0.0149;
-  private static PrintWriter pwDbg = null;
+  private static PrintWriter  pwDbg     = null;
+
   /**
    * Must be called by main program
    *
@@ -113,6 +114,7 @@ public class OptionsProcessor {
       OptionsProcessor.pwDbg.close();
     }
   }
+
   /**
    *
    * Used as a simple example
@@ -267,13 +269,13 @@ public class OptionsProcessor {
     return p1 / OptionsProcessor.p2;
   }
 
-  int     dataType;
+  int dataType;
 
-  String  id;
+  String id;
 
   boolean valid;
 
-  private long     days;
+  private long days;
 
   private double delta;
 
@@ -285,21 +287,21 @@ public class OptionsProcessor {
 
   private double price;
 
-  private double   rate;
+  private double rate;
 
   private double rho;
 
   private DateTime sellDate;
 
-  private double   strike;
+  private double strike;
 
   private double theta;
 
-  private double   ulPrice;
+  private double ulPrice;
 
   private double vega;
 
-  private double   years;
+  private double years;
 
   /**
    *
@@ -528,18 +530,23 @@ public class OptionsProcessor {
   public double getStrike() {
     return this.strike;
   }
+
   public double getTheta() {
     return this.theta;
   }
+
   public double getUlPrice() {
     return this.ulPrice;
   }
+
   public double getVega() {
     return this.vega;
   }
+
   public double getYears() {
     return this.years;
   }
+
   /**
    * @author M. Bret Blackford
    *

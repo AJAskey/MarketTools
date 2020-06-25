@@ -50,6 +50,10 @@ public class EstimateFileData implements Serializable {
    */
   private static List<EstimateFileData> efdList = new ArrayList<>();
 
+  public static void clearList() {
+    EstimateFileData.efdList.clear();
+  }
+
   /**
    * Returns the EstimateFileData instance for requested ticker.
    *
@@ -166,7 +170,25 @@ public class EstimateFileData implements Serializable {
   private DateTime latestQtrEps;
   private String   name;
   private String   sector;
-  private String   ticker;
+
+  private String ticker;
+
+  public EstimateFileData(EstimateFileData efd) {
+    if (efd != null) {
+      this.currFiscalYear = efd.currFiscalYear;
+      this.epsQ0 = efd.epsQ0;
+      this.epsQ1 = efd.epsQ1;
+      this.epsY0 = efd.epsY0;
+      this.epsY1 = efd.epsY1;
+      this.epsY2 = efd.epsY2;
+      this.exchange = efd.exchange;
+      this.industry = efd.industry;
+      this.latestQtrEps = efd.latestQtrEps;
+      this.name = efd.name;
+      this.sector = efd.sector;
+      this.ticker = efd.ticker;
+    }
+  }
 
   /**
    * Constructor - package level.
@@ -194,23 +216,6 @@ public class EstimateFileData implements Serializable {
     this.epsY0 = SipUtils.parseDouble(fld[9]);
     this.epsY1 = SipUtils.parseDouble(fld[10]);
     this.epsY2 = SipUtils.parseDouble(fld[11]);
-  }
-
-  public EstimateFileData(EstimateFileData efd) {
-    if (efd != null) {
-      this.currFiscalYear = efd.currFiscalYear;
-      this.epsQ0 = efd.epsQ0;
-      this.epsQ1 = efd.epsQ1;
-      this.epsY0 = efd.epsY0;
-      this.epsY1 = efd.epsY1;
-      this.epsY2 = efd.epsY2;
-      this.exchange = efd.exchange;
-      this.industry = efd.industry;
-      this.latestQtrEps = efd.latestQtrEps;
-      this.name = efd.name;
-      this.sector = efd.sector;
-      this.ticker = efd.ticker;
-    }
   }
 
   public DateTime getCurrFiscalYear() {
@@ -288,7 +293,7 @@ public class EstimateFileData implements Serializable {
       ret += String.format("  eps Y1              : %f%n", this.epsY1);
       ret += String.format("  eps Y2              : %f%n", this.epsY2);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -303,7 +308,7 @@ public class EstimateFileData implements Serializable {
       ret += String.format("  Est Q0 Q1    : %10.3f %10.3f%n", this.epsQ0, this.epsQ1);
       ret += String.format("  Est Y0 Y1 Y2 : %10.3f %10.2f %10.3f", this.epsY0, this.epsY1, this.epsY2);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -322,9 +327,5 @@ public class EstimateFileData implements Serializable {
       this.industry = cfd.getIndustry();
       this.exchange = cfd.getExchange();
     }
-  }
-
-  public static void clearList() {
-    efdList.clear();
   }
 }

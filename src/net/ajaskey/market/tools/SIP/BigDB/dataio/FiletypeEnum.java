@@ -34,6 +34,6 @@ package net.ajaskey.market.tools.SIP.BigDB.dataio;
  */
 public enum FiletypeEnum {
 
-  NONE, TEXT, BINARY, BIG_BINARY;
+  BIG_BINARY, BINARY, NONE, TEXT;
 
 }

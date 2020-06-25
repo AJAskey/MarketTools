@@ -43,7 +43,7 @@ public class OneCompanyData {
 
   /**
    * Returns all requested data for ticker supplied
-   * 
+   *
    * @param ticker
    * @return One instance in list for each year of data
    */
@@ -61,20 +61,20 @@ public class OneCompanyData {
   }
 
   /**
-   * 
+   *
    * @param ticker
    * @return
    */
 
   /**
-   * 
+   *
    * @param fdList
    * @param yr
    * @param qtr
    * @return
    */
   public static FieldData getFieldData(List<FieldData> fdList, int yr, int qtr) {
-    for (FieldData fd : fdList) {
+    for (final FieldData fd : fdList) {
       if (fd.getYear() == yr && fd.getQuarter() == qtr) {
         return fd;
       }
@@ -85,11 +85,11 @@ public class OneCompanyData {
   private static int parseQuarter(String name) {
     int ret = 0;
     try {
-      int idx = name.indexOf("-data-");
-      String sQtr = name.substring(idx + 11, idx + 12);
+      final int idx = name.indexOf("-data-");
+      final String sQtr = name.substring(idx + 11, idx + 12);
       ret = Integer.parseInt(sQtr);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = 0;
     }
     return ret;
@@ -98,11 +98,11 @@ public class OneCompanyData {
   private static int parseYear(String name) {
     int ret = 0;
     try {
-      int idx = name.indexOf("-data-");
-      String sYr = name.substring(idx + 6, idx + 10);
+      final int idx = name.indexOf("-data-");
+      final String sYr = name.substring(idx + 6, idx + 10);
       ret = Integer.parseInt(sYr);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = 0;
     }
     return ret;
@@ -117,7 +117,7 @@ public class OneCompanyData {
 
   /**
    * Constructor is private for use by internal procedures
-   * 
+   *
    * @param t
    * @param fdy
    */

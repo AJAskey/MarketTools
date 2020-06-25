@@ -52,10 +52,10 @@ public class IngestOptumaFile {
 
   public static final int ADD = 1;
 
-  public static final double BAD_OFD_DATA = -666.600;
-  public static final int DIVIDE = 4;
-  public static final int MULTIPLY = 3;
-  public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  public static final double     BAD_OFD_DATA = -666.600;
+  public static final int        DIVIDE       = 4;
+  public static final int        MULTIPLY     = 3;
+  public static SimpleDateFormat sdf          = new SimpleDateFormat("yyyy-MM-dd");
 
   public static final int SUBTRACT = 2;
 
@@ -159,14 +159,14 @@ public class IngestOptumaFile {
 
   List<OptumaFileData> diffList = new ArrayList<>();
 
-  List<OptumaFileData> f1List   = new ArrayList<>();
+  List<OptumaFileData> f1List = new ArrayList<>();
 
-  List<OptumaFileData> f2List   = new ArrayList<>();
+  List<OptumaFileData> f2List = new ArrayList<>();
 
   File file1 = null;
 
-  File file2 = null;
-  String               title;
+  File   file2 = null;
+  String title;
 
   /**
    *

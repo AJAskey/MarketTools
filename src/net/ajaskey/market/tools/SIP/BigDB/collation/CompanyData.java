@@ -217,7 +217,7 @@ public class CompanyData {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       e.printStackTrace();
       ret.clear();
     }
@@ -344,16 +344,8 @@ public class CompanyData {
     return ret;
   }
 
-  private List<FieldData> fdList = new ArrayList<>();
-  private String          ticker;
-
-  public List<FieldData> getFdList() {
-    return fdList;
-  }
-
-  public String getTicker() {
-    return ticker;
-  }
+  private final List<FieldData> fdList = new ArrayList<>();
+  private final String          ticker;
 
   /**
    * Constructor
@@ -362,6 +354,14 @@ public class CompanyData {
    */
   public CompanyData(String tick) {
     this.ticker = tick;
+  }
+
+  public List<FieldData> getFdList() {
+    return this.fdList;
+  }
+
+  public String getTicker() {
+    return this.ticker;
   }
 
 }

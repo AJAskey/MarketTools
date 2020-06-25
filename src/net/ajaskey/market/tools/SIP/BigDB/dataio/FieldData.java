@@ -93,43 +93,7 @@ public class FieldData implements Serializable {
   }
 
   /**
-   * Used for writing enum in CAPS.
    *
-   * @param enm
-   * @return
-   */
-  public static String getExchangeStr(ExchEnum enm) {
-    return enm.toString().toUpperCase();
-  }
-
-  /**
-   * Returns FieldData for requested ticker from year and quarter from DB file
-   * data.
-   * 
-   * @param ticker
-   * @param year
-   * @param quarter
-   * @param ft
-   * @return
-   */
-  public static FieldData getFromDb(String ticker, int year, int quarter, FiletypeEnum ft) {
-
-    FieldData fd = null;
-    if (ft == FiletypeEnum.TEXT) {
-      fd = FieldData.parseFromDbData(year, quarter, ticker);
-    }
-    else if (ft == FiletypeEnum.BINARY) {
-      fd = FieldData.parseFromDbBinData(year, quarter, ticker);
-    }
-    else {
-      System.out.printf("Waring. Invalid Filetype in getFromDb : %s%n", ft.toString());
-    }
-
-    return fd;
-  }
-
-  /**
-   * 
    * Returns a list of FieldData for the requested year and quarter from DB files.
    *
    * @param year
@@ -154,9 +118,79 @@ public class FieldData implements Serializable {
   }
 
   /**
+   * Returns a list of FieldData for all tickers from year and quarter from
+   * internal memory.
+   *
+   * @param yr
+   * @param qtr
+   * @return List of FieldData
+   */
+  public static List<FieldData> getAllFromMemory(int yr, int qtr) {
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
+
+    for (final FieldDataYear fdy : Globals.allDataList) {
+
+      if (yr == fdy.getYear()) {
+
+        if (fdy.isInUse()) {
+
+          if (fdy.quarterDataAvailable(qtr)) {
+
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
+
+            for (final FieldData fd : fdq.fieldDataList) {
+              fdList.add(fd);
+            }
+          }
+        }
+      }
+    }
+    return fdList;
+  }
+
+  /**
+   * Used for writing enum in CAPS.
+   *
+   * @param enm
+   * @return
+   */
+  public static String getExchangeStr(ExchEnum enm) {
+    return enm.toString().toUpperCase();
+  }
+
+  /**
+   * Returns FieldData for requested ticker from year and quarter from DB file
+   * data.
+   *
+   * @param ticker
+   * @param year
+   * @param quarter
+   * @param ft
+   * @return
+   */
+  public static FieldData getFromDb(String ticker, int year, int quarter, FiletypeEnum ft) {
+
+    FieldData fd = null;
+    if (ft == FiletypeEnum.TEXT) {
+      fd = FieldData.parseFromDbData(year, quarter, ticker);
+    }
+    else if (ft == FiletypeEnum.BINARY) {
+      fd = FieldData.parseFromDbBinData(year, quarter, ticker);
+    }
+    else {
+      System.out.printf("Waring. Invalid Filetype in getFromDb : %s%n", ft.toString());
+    }
+
+    return fd;
+  }
+
+  /**
    * Returns FieldData for requested ticker from year and quarter from internal
    * memory.
-   * 
+   *
    * @param tkr
    * @param yr
    * @param qtr
@@ -189,42 +223,8 @@ public class FieldData implements Serializable {
   }
 
   /**
-   * Returns a list of FieldData for all tickers from year and quarter from
-   * internal memory.
-   * 
-   * @param yr
-   * @param qtr
-   * @return List of FieldData
-   */
-  public static List<FieldData> getAllFromMemory(int yr, int qtr) {
-
-    List<FieldData> fdList = new ArrayList<>();
-
-    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
-
-    for (final FieldDataYear fdy : Globals.allDataList) {
-
-      if (yr == fdy.getYear()) {
-
-        if (fdy.isInUse()) {
-
-          if (fdy.quarterDataAvailable(qtr)) {
-
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
-
-            for (final FieldData fd : fdq.fieldDataList) {
-              fdList.add(fd);
-            }
-          }
-        }
-      }
-    }
-    return fdList;
-  }
-
-  /**
    * Creates a full filename based on the input parameters.
-   * 
+   *
    * @param yr
    * @param qtr
    * @param ticker
@@ -247,51 +247,9 @@ public class FieldData implements Serializable {
     return fname;
   }
 
-  /**
-   * Set internal memory to data from firstYear to endYear.
-   * 
-   * @param firstYear
-   * @param endYear
-   * @param ft        FiletypeEnum BIG_BINARY valid
-   */
-  public static void setMemory(int firstYear, int endYear, FiletypeEnum ft) {
-
-    if (ft == FiletypeEnum.BIG_BINARY) {
-      for (int yr = firstYear; yr <= endYear; yr++) {
-        for (int qtr = 1; qtr <= 4; qtr++) {
-          readDbBigBinData(yr, qtr);
-        }
-      }
-    }
-  }
-
-  /**
-   * Sets internal memory to request year and quarter.
-   * 
-   * @param yr  year
-   * @param qtr quarter
-   * @param ft  FiletypeEnum BINARY or TEXT valid
-   */
-  public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
-
-    System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
-
-    if (ft == FiletypeEnum.BINARY) {
-
-      readDbBigBinData(yr, qtr);
-    }
-    else if (ft == FiletypeEnum.TEXT) {
-
-      readDbData(yr, qtr, ft);
-    }
-    else if (ft == FiletypeEnum.BIG_BINARY) {
-
-      readDbBigBinData(yr, qtr);
-    }
-
-    else {
-      System.out.printf("Waring. Invalid Filetype in setQMemory : %s%n", ft.toString());
-    }
+  public static double getTtm(double[] dArr) {
+    final double ret = dArr[1] + dArr[2] + dArr[3] + dArr[4];
+    return ret;
   }
 
   /**
@@ -402,7 +360,7 @@ public class FieldData implements Serializable {
       final BalSheetFileData bfd = BalSheetFileData.find(ticker);
       final CashFileData cashfd = CashFileData.find(ticker);
 
-      FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
+      final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cashfd, year, quarter);
 
       if (ft == FiletypeEnum.BINARY) {
         final String fname = FieldData.getOutfileName(year, quarter, ticker, "bin");
@@ -425,81 +383,50 @@ public class FieldData implements Serializable {
   }
 
   /**
-   * Reads the DB for specific year and quarter into memory for future use. All
-   * tickers are returned.
+   * Set internal memory to data from firstYear to endYear.
    *
-   * @param year
-   * @param quarter 1-4
-   * @param binary  False for text output and TRUE for binary output
-   * @return A list of FieldData for each ticket in the DB for year and quarter.
-   *
-   * @exception FileNotFoundException when year, quarter, ticker does not match
-   *                                  any data in DB
-   *
+   * @param firstYear
+   * @param endYear
+   * @param ft        FiletypeEnum BIG_BINARY valid
    */
-  private static List<FieldData> readDbBigBinData(int year, int quarter) {
+  public static void setMemory(int firstYear, int endYear, FiletypeEnum ft) {
 
-    System.out.printf("Processing DB %d %d%n", year, quarter);
-
-    List<FieldData> fdList = null;
-
-    fdList = FieldData.parseFromDbBigBinData(year, quarter);
-
-    Globals.setLists(year, quarter, fdList);
-
-    return fdList;
+    if (ft == FiletypeEnum.BIG_BINARY) {
+      for (int yr = firstYear; yr <= endYear; yr++) {
+        for (int qtr = 1; qtr <= 4; qtr++) {
+          FieldData.readDbBigBinData(yr, qtr);
+        }
+      }
+    }
   }
 
   /**
-   * Reads the DB for specific year and quarter into memory for future use. All
-   * tickers are returned.
+   * Sets internal memory to request year and quarter.
    *
-   * @param year
-   * @param quarter 1-4
-   * @param binary  False for text output and TRUE for binary output
-   * @return A list of FieldData for each ticket in the DB for year and quarter.
-   *
-   * @exception FileNotFoundException when year, quarter, ticker does not match
-   *                                  any data in DB
-   *
+   * @param yr  year
+   * @param qtr quarter
+   * @param ft  FiletypeEnum BINARY or TEXT valid
    */
-  private static List<FieldData> readDbData(int year, int quarter, FiletypeEnum ft) {
+  public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
 
-    System.out.printf("Processing DB %d %d%n", year, quarter);
+    System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
 
-    List<FieldData> fdList = null;
     if (ft == FiletypeEnum.BINARY) {
-      fdList = FieldData.parseFromDbBinData(year, quarter);
+
+      FieldData.readDbBigBinData(yr, qtr);
     }
     else if (ft == FiletypeEnum.TEXT) {
-      fdList = FieldData.parseFromDbData(year, quarter);
+
+      FieldData.readDbData(yr, qtr, ft);
     }
+    else if (ft == FiletypeEnum.BIG_BINARY) {
+
+      FieldData.readDbBigBinData(yr, qtr);
+    }
+
     else {
-      System.out.printf("Waring. Invalid Filetype in readDbData : %s%n", ft.toString());
-      return null;
+      System.out.printf("Waring. Invalid Filetype in setQMemory : %s%n", ft.toString());
     }
-
-    Globals.setLists(year, quarter, fdList);
-
-    return fdList;
-  }
-
-  /**
-   * Reads the DB for specific year, quarter and ticker inputs.
-   *
-   * @param year
-   * @param quarter 1-4
-   * @param ticker
-   * @return FieldData
-   *
-   * @exception FileNotFoundException when year, quarter, ticker does not match
-   *                                  any data in DB
-   */
-  private static FieldData readDbData(int year, int quarter, String ticker) {
-
-    final FieldData fd = FieldData.parseFromDbData(year, quarter, ticker);
-
-    return fd;
   }
 
   /**
@@ -515,7 +442,7 @@ public class FieldData implements Serializable {
 
     List<FieldData> fdList = null;
 
-    File f = new File(fname);
+    final File f = new File(fname);
     if (f.exists()) {
 
       fdList = FieldDataBinary.readBinaryFile(fname);
@@ -680,6 +607,84 @@ public class FieldData implements Serializable {
   }
 
   /**
+   * Reads the DB for specific year and quarter into memory for future use. All
+   * tickers are returned.
+   *
+   * @param year
+   * @param quarter 1-4
+   * @param binary  False for text output and TRUE for binary output
+   * @return A list of FieldData for each ticket in the DB for year and quarter.
+   *
+   * @exception FileNotFoundException when year, quarter, ticker does not match
+   *                                  any data in DB
+   *
+   */
+  private static List<FieldData> readDbBigBinData(int year, int quarter) {
+
+    System.out.printf("Processing DB %d %d%n", year, quarter);
+
+    List<FieldData> fdList = null;
+
+    fdList = FieldData.parseFromDbBigBinData(year, quarter);
+
+    Globals.setLists(year, quarter, fdList);
+
+    return fdList;
+  }
+
+  /**
+   * Reads the DB for specific year and quarter into memory for future use. All
+   * tickers are returned.
+   *
+   * @param year
+   * @param quarter 1-4
+   * @param binary  False for text output and TRUE for binary output
+   * @return A list of FieldData for each ticket in the DB for year and quarter.
+   *
+   * @exception FileNotFoundException when year, quarter, ticker does not match
+   *                                  any data in DB
+   *
+   */
+  private static List<FieldData> readDbData(int year, int quarter, FiletypeEnum ft) {
+
+    System.out.printf("Processing DB %d %d%n", year, quarter);
+
+    List<FieldData> fdList = null;
+    if (ft == FiletypeEnum.BINARY) {
+      fdList = FieldData.parseFromDbBinData(year, quarter);
+    }
+    else if (ft == FiletypeEnum.TEXT) {
+      fdList = FieldData.parseFromDbData(year, quarter);
+    }
+    else {
+      System.out.printf("Waring. Invalid Filetype in readDbData : %s%n", ft.toString());
+      return null;
+    }
+
+    Globals.setLists(year, quarter, fdList);
+
+    return fdList;
+  }
+
+  /**
+   * Reads the DB for specific year, quarter and ticker inputs.
+   *
+   * @param year
+   * @param quarter 1-4
+   * @param ticker
+   * @return FieldData
+   *
+   * @exception FileNotFoundException when year, quarter, ticker does not match
+   *                                  any data in DB
+   */
+  private static FieldData readDbData(int year, int quarter, String ticker) {
+
+    final FieldData fd = FieldData.parseFromDbData(year, quarter, ticker);
+
+    return fd;
+  }
+
+  /**
    * Writes each set of ticker data in binary format so the reading is much
    * faster.
    *
@@ -740,7 +745,8 @@ public class FieldData implements Serializable {
   private String           sector;
   private SharesFileData   shareData;
   private String           ticker;
-  private int              year;
+
+  private int year;
 
   /**
    * Constructor
@@ -818,7 +824,7 @@ public class FieldData implements Serializable {
       ret += this.balSheetData.toDbOutput();
       ret += this.cashData.toDbOutput();
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -853,10 +859,6 @@ public class FieldData implements Serializable {
     return this.balSheetData;
   }
 
-  public CashFileData getCashData() {
-    return this.cashData;
-  }
-
   public double getBeta() {
     return this.shareData.getBeta();
   }
@@ -867,6 +869,26 @@ public class FieldData implements Serializable {
 
   public double[] getBvpsYr() {
     return this.getBalSheetData().getBvpsYr();
+  }
+
+  public double[] getCapEx() {
+    return this.cashData.getCapExQtr();
+  }
+
+  public CashFileData getCashData() {
+    return this.cashData;
+  }
+
+  public double[] getCashFromFin() {
+    return this.cashData.getCashFromFinQtr();
+  }
+
+  public double[] getCashFromInv() {
+    return this.cashData.getCashFromInvQtr();
+  }
+
+  public double[] getCashFromOps() {
+    return this.cashData.getCashFromOpsQtr();
   }
 
   public double[] getCashQtr() {
@@ -957,6 +979,8 @@ public class FieldData implements Serializable {
     return this.getIncSheetData().getEpsContYr();
   }
 
+  // ******************
+
   public double[] getEpsDilContQtr() {
     return this.getIncSheetData().getEpsDilContQtr();
   }
@@ -976,8 +1000,6 @@ public class FieldData implements Serializable {
   public double getEpsQ0() {
     return this.getEstimateData().getEpsQ0();
   }
-
-  // ******************
 
   public double getEpsQ1() {
     return this.getEstimateData().getEpsQ1();
@@ -1035,6 +1057,8 @@ public class FieldData implements Serializable {
     return this.getIncSheetData().getGrossIncQtr();
   }
 
+  // ******************
+
   public double[] getGrossIncYr() {
     return this.getIncSheetData().getGrossIncYr();
   }
@@ -1054,8 +1078,6 @@ public class FieldData implements Serializable {
   public double[] getIncAfterTaxYr() {
     return this.getIncSheetData().getIncAfterTaxYr();
   }
-
-  // ******************
 
   public double[] getIncPrimaryEpsQtr() {
     return this.getIncSheetData().getIncPrimaryEpsQtr();
@@ -1221,6 +1243,8 @@ public class FieldData implements Serializable {
     return this.getBalSheetData().getOtherCurrAssetsYr();
   }
 
+  // *************************
+
   public double[] getOtherCurrLiabQtr() {
     return this.getBalSheetData().getOtherCurrLiabQtr();
   }
@@ -1240,8 +1264,6 @@ public class FieldData implements Serializable {
   public double[] getOtherLtAssetsQtr() {
     return this.getBalSheetData().getOtherLtAssetsQtr();
   }
-
-  // *************************
 
   public double[] getOtherLtAssetsYr() {
     return this.getBalSheetData().getOtherLtAssetsYr();
@@ -1371,11 +1393,6 @@ public class FieldData implements Serializable {
     return this.getIncSheetData().getTotalOpExpYr();
   }
 
-  public static double getTtm(double[] dArr) {
-    final double ret = dArr[1] + dArr[2] + dArr[3] + dArr[4];
-    return ret;
-  }
-
   public double[] getUnusualIncQtr() {
     return this.getIncSheetData().getUnusualIncQtr();
   }
@@ -1418,22 +1435,6 @@ public class FieldData implements Serializable {
 
   public void setYear(int year) {
     this.year = year;
-  }
-
-  public double[] getCapEx() {
-    return this.cashData.getCapExQtr();
-  }
-
-  public double[] getCashFromFin() {
-    return this.cashData.getCashFromFinQtr();
-  }
-
-  public double[] getCashFromInv() {
-    return this.cashData.getCashFromInvQtr();
-  }
-
-  public double[] getCashFromOps() {
-    return this.cashData.getCashFromOpsQtr();
   }
 
   @Override

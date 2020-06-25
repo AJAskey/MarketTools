@@ -234,6 +234,42 @@ public class SharesFileData implements Serializable {
   private long     volume10d;
   private long     volumeMonth3m;
 
+  public SharesFileData(SharesFileData sfd) {
+    if (sfd != null) {
+      this.beta = sfd.beta;
+      this.dollar3m = sfd.dollar3m;
+      this.exchange = sfd.exchange;
+      this.floatshr = sfd.floatshr;
+      this.industry = sfd.industry;
+      this.insiderBuys = sfd.insiderBuys;
+      this.insiderBuyShrs = sfd.insiderBuyShrs;
+      this.insiderNetPercentOutstanding = sfd.insiderNetPercentOutstanding;
+      this.insiderNetTrades = sfd.insiderNetTrades;
+      this.insiderOwnership = sfd.insiderOwnership;
+      this.insiderSells = sfd.insiderSells;
+      this.insiderSellShrs = sfd.insiderSellShrs;
+      this.instBuyShrs = sfd.instBuyShrs;
+      this.instOwnership = sfd.instOwnership;
+      this.instSellShrs = sfd.instSellShrs;
+      this.instShareholders = sfd.instShareholders;
+      this.mktCap = sfd.mktCap;
+      this.name = sfd.name;
+      this.price = sfd.price;
+      this.price52hi = sfd.price52hi;
+      this.price52lo = sfd.price52lo;
+      this.sector = sfd.sector;
+      this.sharesQ = sfd.sharesQ;
+      this.sharesY = sfd.sharesY;
+      this.ticker = sfd.ticker;
+      this.volume10d = sfd.volume10d;
+      this.volumeMonth3m = sfd.volumeMonth3m;
+    }
+    else {
+      this.ticker = "";
+    }
+
+  }
+
   SharesFileData() {
     this.sharesQ = new double[1];
     this.sharesQ[0] = 0.0;
@@ -275,42 +311,6 @@ public class SharesFileData implements Serializable {
     this.volume10d = SipUtils.parseLong(fld[56]);
     this.volumeMonth3m = SipUtils.parseLong(fld[57]);
     this.dollar3m = SipUtils.parseDouble(fld[58]);
-  }
-
-  public SharesFileData(SharesFileData sfd) {
-    if (sfd != null) {
-      this.beta = sfd.beta;
-      this.dollar3m = sfd.dollar3m;
-      this.exchange = sfd.exchange;
-      this.floatshr = sfd.floatshr;
-      this.industry = sfd.industry;
-      this.insiderBuys = sfd.insiderBuys;
-      this.insiderBuyShrs = sfd.insiderBuyShrs;
-      this.insiderNetPercentOutstanding = sfd.insiderNetPercentOutstanding;
-      this.insiderNetTrades = sfd.insiderNetTrades;
-      this.insiderOwnership = sfd.insiderOwnership;
-      this.insiderSells = sfd.insiderSells;
-      this.insiderSellShrs = sfd.insiderSellShrs;
-      this.instBuyShrs = sfd.instBuyShrs;
-      this.instOwnership = sfd.instOwnership;
-      this.instSellShrs = sfd.instSellShrs;
-      this.instShareholders = sfd.instShareholders;
-      this.mktCap = sfd.mktCap;
-      this.name = sfd.name;
-      this.price = sfd.price;
-      this.price52hi = sfd.price52hi;
-      this.price52lo = sfd.price52lo;
-      this.sector = sfd.sector;
-      this.sharesQ = sfd.sharesQ;
-      this.sharesY = sfd.sharesY;
-      this.ticker = sfd.ticker;
-      this.volume10d = sfd.volume10d;
-      this.volumeMonth3m = sfd.volumeMonth3m;
-    }
-    else {
-      this.ticker = "";
-    }
-
   }
 
   public double getBeta() {
@@ -552,7 +552,7 @@ public class SharesFileData implements Serializable {
       ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
       ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
