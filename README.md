@@ -7,4 +7,4 @@ This DB can be read back into memory to be used generating reports on the fundam
 
 A work in progress. Constant updates...
 
-Master == Dev 25-Jun-2020 14:25MT
+Master <-- Dev on 25-Jun-2020 14:25MT
