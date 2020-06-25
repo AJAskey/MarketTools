@@ -54,14 +54,15 @@ public class Globals {
    */
   public static FieldDataYear getYear(int yr) {
 
-    for (final FieldDataYear fdy : Globals.allDataList) {
-      if (fdy.isInUse()) {
-        if (fdy.getYear() == yr) {
-          return fdy;
+    if (yr >= startYear && yr <= endYear) {
+      for (final FieldDataYear fdy : Globals.allDataList) {
+        if (fdy.isInUse()) {
+          if (fdy.getYear() == yr) {
+            return fdy;
+          }
         }
       }
     }
-
     return null;
   }
 

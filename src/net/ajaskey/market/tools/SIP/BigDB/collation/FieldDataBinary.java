@@ -1,5 +1,6 @@
 package net.ajaskey.market.tools.SIP.BigDB.collation;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -50,13 +51,17 @@ public class FieldDataBinary implements Serializable {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    FieldDataBinaryFile fdbf;
+    FieldDataBinaryFile fdbf = null;
     try {
-      final ObjectInputStream objBinFile = new ObjectInputStream(new FileInputStream(fname));
 
-      fdbf = (FieldDataBinaryFile) objBinFile.readObject();
-      objBinFile.close();
+      File f = new File(fname);
 
+      if (f.exists()) {
+        final ObjectInputStream objBinFile = new ObjectInputStream(new FileInputStream(fname));
+
+        fdbf = (FieldDataBinaryFile) objBinFile.readObject();
+        objBinFile.close();
+      }
     }
     catch (final Exception e) {
       fdbf = null;

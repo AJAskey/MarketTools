@@ -166,22 +166,30 @@ public class CompanyData {
    * @return
    */
   public static List<String> getTickers(ExchEnum index, int year, int quarter) {
+
     final List<String> ret = new ArrayList<>();
+
+    if (index == null) {
+      return ret;
+    }
 
     final List<File> files = CompanyData.getFiles(year, quarter);
 
     List<String> input = null;
-    for (final File f : files) {
-      if (f.getName().endsWith(".gz")) {
-        input = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        input = TextUtils.readTextFile(f, true);
-      }
 
-      final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-      if (cfd.getExchange() == index) {
-        ret.add(cfd.getTicker());
+    if (files != null) {
+      for (final File f : files) {
+        if (f.getName().endsWith(".gz")) {
+          input = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          input = TextUtils.readTextFile(f, true);
+        }
+
+        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+        if (cfd.getExchange() == index) {
+          ret.add(cfd.getTicker());
+        }
       }
     }
     return ret;
@@ -196,14 +204,22 @@ public class CompanyData {
    */
   public static List<String> getTickers(int year, int quarter) {
     final List<String> ret = new ArrayList<>();
-    final String[] ext = { "txt", "gz" };
-    final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, year, quarter);
-    final List<File> fList = Utils.getDirTree(dir, ext);
-    for (final File f : fList) {
-      final String name = f.getName();
-      final int idx = name.indexOf("-fundamental");
-      final String s = name.substring(0, idx);
-      ret.add(s);
+    try {
+      final String[] ext = { "txt", "gz" };
+      final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, year, quarter);
+      final List<File> fList = Utils.getDirTree(dir, ext);
+      if (fList != null) {
+        for (final File f : fList) {
+          final String name = f.getName();
+          final int idx = name.indexOf("-fundamental");
+          final String s = name.substring(0, idx);
+          ret.add(s);
+        }
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      ret.clear();
     }
     return ret;
   }

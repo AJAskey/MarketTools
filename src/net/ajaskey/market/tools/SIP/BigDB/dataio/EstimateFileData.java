@@ -57,9 +57,13 @@ public class EstimateFileData implements Serializable {
    * @return
    */
   public static EstimateFileData find(String ticker) {
-    for (final EstimateFileData e : EstimateFileData.efdList) {
-      if (e.getTicker().equalsIgnoreCase(ticker)) {
-        return e;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final EstimateFileData e : EstimateFileData.efdList) {
+          if (e.getTicker().equalsIgnoreCase(ticker)) {
+            return e;
+          }
+        }
       }
     }
     return null;
@@ -265,33 +269,43 @@ public class EstimateFileData implements Serializable {
   public String toDbOutput() {
     String ret = "";
 
-    String tmp = "";
-    if (!this.currFiscalYear.isNull()) {
-      tmp = this.currFiscalYear.format("yyyy-MM-dd");
+    try {
+      String tmp = "";
+      if (!this.currFiscalYear.isNull()) {
+        tmp = this.currFiscalYear.format("yyyy-MM-dd");
+      }
+      ret += String.format("  current fiscal year : %s%n", tmp);
+
+      tmp = "";
+      if (!this.latestQtrEps.isNull()) {
+        tmp = this.latestQtrEps.format("yyyy-MM-dd");
+      }
+      ret += String.format("  latest quarter eps  : %s%n", tmp);
+
+      ret += String.format("  eps Q0              : %f%n", this.epsQ0);
+      ret += String.format("  eps Q1              : %f%n", this.epsQ1);
+      ret += String.format("  eps Y0              : %f%n", this.epsY0);
+      ret += String.format("  eps Y1              : %f%n", this.epsY1);
+      ret += String.format("  eps Y2              : %f%n", this.epsY2);
     }
-    ret += String.format("  current fiscal year : %s%n", tmp);
-
-    tmp = "";
-    if (!this.latestQtrEps.isNull()) {
-      tmp = this.latestQtrEps.format("yyyy-MM-dd");
+    catch (Exception e) {
+      ret = "";
     }
-    ret += String.format("  latest quarter eps  : %s%n", tmp);
-
-    ret += String.format("  eps Q0              : %f%n", this.epsQ0);
-    ret += String.format("  eps Q1              : %f%n", this.epsQ1);
-    ret += String.format("  eps Y0              : %f%n", this.epsY0);
-    ret += String.format("  eps Y1              : %f%n", this.epsY1);
-    ret += String.format("  eps Y2              : %f%n", this.epsY2);
-
     return ret;
   }
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
-    ret += String.format("  %s  %s%n", this.currFiscalYear, this.latestQtrEps);
-    ret += String.format("  Est Q0 Q1    : %10.3f %10.3f%n", this.epsQ0, this.epsQ1);
-    ret += String.format("  Est Y0 Y1 Y2 : %10.3f %10.2f %10.3f", this.epsY0, this.epsY1, this.epsY2);
+    String ret = "";
+    try {
+      ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
+      ret += String.format("  %s  %s%n", this.currFiscalYear, this.latestQtrEps);
+      ret += String.format("  Est Q0 Q1    : %10.3f %10.3f%n", this.epsQ0, this.epsQ1);
+      ret += String.format("  Est Y0 Y1 Y2 : %10.3f %10.2f %10.3f", this.epsY0, this.epsY1, this.epsY2);
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
   }
 
@@ -301,12 +315,13 @@ public class EstimateFileData implements Serializable {
    * @param cfd CompanyFileData instance
    */
   void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
+    if (cfd != null) {
+      this.ticker = cfd.getTicker();
+      this.name = cfd.getName();
+      this.sector = cfd.getSector();
+      this.industry = cfd.getIndustry();
+      this.exchange = cfd.getExchange();
+    }
   }
 
   public static void clearList() {

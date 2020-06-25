@@ -60,9 +60,13 @@ public class SharesFileData implements Serializable {
    * @return
    */
   public static SharesFileData find(String ticker) {
-    for (final SharesFileData s : SharesFileData.sfdList) {
-      if (s.getTicker().equalsIgnoreCase(ticker)) {
-        return s;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final SharesFileData s : SharesFileData.sfdList) {
+          if (s.getTicker().equalsIgnoreCase(ticker)) {
+            return s;
+          }
+        }
       }
     }
     return null;
@@ -534,17 +538,23 @@ public class SharesFileData implements Serializable {
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
-    ret += String.format("  Price / Beta                 : %s  %s%n", SipOutput.fmt(this.price, 1, 2), SipOutput.fmt(this.beta, 1, 3));
-    ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volumeMonth3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
-    ret += String.format("  Float / MCap / Insiders      : %s %s  %s%%  %s%% %n", SipOutput.fmt(this.floatshr, 1, 3),
-        SipOutput.ifmt((long) this.mktCap, 1), SipOutput.fmt(this.insiderOwnership, 1, 3), SipOutput.fmt(this.insiderNetPercentOutstanding, 1, 2));
-    ret += String.format("  Institutions B/S Num Percent : %s  %s  %s  %s%% %n", SipOutput.ifmt(this.instBuyShrs, 1),
-        SipOutput.ifmt(this.instSellShrs, 1), SipOutput.ifmt(this.instShareholders, 1), SipOutput.fmt(this.instOwnership, 1, 1));
-    ret += String.format("  Insider B / S / Net          : %d-%d  %d-%d  %d%n", this.insiderBuys, this.insiderBuyShrs, this.insiderSells,
-        this.insiderSellShrs, this.insiderNetTrades);
-    ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
-    ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
+    String ret = "";
+    try {
+      ret = SipOutput.SipHeader(this.ticker, this.name, FieldData.getExchangeStr(this.exchange), this.sector, this.industry);
+      ret += String.format("  Price / Beta                 : %s  %s%n", SipOutput.fmt(this.price, 1, 2), SipOutput.fmt(this.beta, 1, 3));
+      ret += String.format("  Volume3m / Dollars3m         : %s  %s%n", SipOutput.ifmt(this.volumeMonth3m, 1), SipOutput.fmt(this.dollar3m, 15, 2));
+      ret += String.format("  Float / MCap / Insiders      : %s %s  %s%%  %s%% %n", SipOutput.fmt(this.floatshr, 1, 3),
+          SipOutput.ifmt((long) this.mktCap, 1), SipOutput.fmt(this.insiderOwnership, 1, 3), SipOutput.fmt(this.insiderNetPercentOutstanding, 1, 2));
+      ret += String.format("  Institutions B/S Num Percent : %s  %s  %s  %s%% %n", SipOutput.ifmt(this.instBuyShrs, 1),
+          SipOutput.ifmt(this.instSellShrs, 1), SipOutput.ifmt(this.instShareholders, 1), SipOutput.fmt(this.instOwnership, 1, 1));
+      ret += String.format("  Insider B / S / Net          : %d-%d  %d-%d  %d%n", this.insiderBuys, this.insiderBuyShrs, this.insiderSells,
+          this.insiderSellShrs, this.insiderNetTrades);
+      ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
+      ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
   }
 

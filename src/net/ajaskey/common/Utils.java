@@ -89,12 +89,18 @@ public class Utils {
    * @return
    */
   public static String fmt(final double d, final int len) {
-
-    if (Utils.df == null) {
-      Utils.df = new DecimalFormat("#,###,##0.00", Utils.decimalFormatSymbols);
+    String ret = "";
+    try {
+      if (Utils.df == null) {
+        Utils.df = new DecimalFormat("#,###,##0.00", Utils.decimalFormatSymbols);
+      }
+      final String sfmt = String.format("%%%ds", len);
+      ret = String.format(sfmt, Utils.df.format(d));
     }
-    final String sfmt = String.format("%%%ds", len);
-    return String.format(sfmt, Utils.df.format(d));
+    catch (Exception e) {
+      ret = "Invalid fmt";
+    }
+    return ret;
   }
 
   /**

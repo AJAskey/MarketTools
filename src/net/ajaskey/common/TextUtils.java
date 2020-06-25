@@ -78,12 +78,13 @@ public class TextUtils {
    */
   public static List<String> readTextFile(File file, boolean ignoreBlanks) {
 
+    final List<String> ret = new ArrayList<>();
+
     if (!file.exists()) {
-      return null;
+      return ret;
     }
 
     List<String> lines = null;
-    final List<String> ret = new ArrayList<>();
 
     try {
       lines = FileUtils.readLines(file, "UTF-8");

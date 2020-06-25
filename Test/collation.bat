@@ -1,0 +1,1 @@
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=collation.txt --time-limit=300 --regression-test-basename=CollationTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB.collation

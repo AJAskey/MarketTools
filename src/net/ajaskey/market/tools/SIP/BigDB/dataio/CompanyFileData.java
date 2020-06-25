@@ -83,9 +83,13 @@ public class CompanyFileData implements Serializable {
    * @return
    */
   public static CompanyFileData find(String ticker) {
-    for (final CompanyFileData c : CompanyFileData.cfdList) {
-      if (c.getTicker().equalsIgnoreCase(ticker)) {
-        return c;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final CompanyFileData c : CompanyFileData.cfdList) {
+          if (c.getTicker().equalsIgnoreCase(ticker)) {
+            return c;
+          }
+        }
       }
     }
     return null;
@@ -340,7 +344,14 @@ public class CompanyFileData implements Serializable {
   }
 
   public String getDowIndexStr() {
-    return this.dowIndex.toString().toUpperCase();
+    String ret = "";
+    try {
+      ret = this.dowIndex.toString().toUpperCase();
+    }
+    catch (Exception e) {
+      ret = "";
+    }
+    return ret;
   }
 
   public ExchEnum getExchange() {
@@ -376,7 +387,14 @@ public class CompanyFileData implements Serializable {
   }
 
   public String getSnpIndexStr() {
-    return this.snpIndex.toString().toUpperCase();
+    String ret = "";
+    try {
+      ret = this.snpIndex.toString().toUpperCase();
+    }
+    catch (Exception e) {
+      ret = "";
+    }
+    return ret;
   }
 
   public String getState() {
@@ -609,13 +627,19 @@ public class CompanyFileData implements Serializable {
 
   @Override
   public String toString() {
-    String ret = SipOutput.SipHeader(this.ticker, this.name, this.getExchangeStr(), this.sector, this.industry);
-    ret += String.format("  SIC     : %s%n", this.getSic());
-    ret += String.format("  Index   : %-10s\t%-12s\t%s\t%s%n", this.getSnpIndexStr(), this.getDowIndexStr(), this.isAdr(), this.isDrp());
-    ret += String.format("  Num Emp : %d%n", this.getNumEmployees());
-    ret += String.format("  Address : %s\t%s\t%s\t%s\t%s\t%s%n", this.getStreet(), this.getCity(), this.getState(), this.getCountry(), this.getZip(),
-        this.getPhone());
-    ret += String.format("  Web     : %s%n", this.getWeb());
+    String ret = "";
+    try {
+      ret = SipOutput.SipHeader(this.ticker, this.name, this.getExchangeStr(), this.sector, this.industry);
+      ret += String.format("  SIC     : %s%n", this.getSic());
+      ret += String.format("  Index   : %-10s\t%-12s\t%s\t%s%n", this.getSnpIndexStr(), this.getDowIndexStr(), this.isAdr(), this.isDrp());
+      ret += String.format("  Num Emp : %d%n", this.getNumEmployees());
+      ret += String.format("  Address : %s\t%s\t%s\t%s\t%s\t%s%n", this.getStreet(), this.getCity(), this.getState(), this.getCountry(),
+          this.getZip(), this.getPhone());
+      ret += String.format("  Web     : %s%n", this.getWeb());
+    }
+    catch (Exception e) {
+      ret = "";
+    }
     return ret;
   }
 
