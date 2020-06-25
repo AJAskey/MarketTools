@@ -1,2 +1,2 @@
 set FILE
-java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --testclass=net.ajaskey.market.tools.SIP.BigDB.Globals --time-limit=30 --regression-test-basename=GlobalsTest --junit-package-name=net.ajaskey.market.tools.SIP.BigDB
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --testclass=net.ajaskey.market.tools.SIP.BigDB.Globals --time-limit=100 --regression-test-basename=GlobalsTest --junit-package-name=net.ajaskey.market.tools.SIP.BigDB

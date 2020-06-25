@@ -1,0 +1,1 @@
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=common.txt --time-limit=300 --regression-test-basename=CommonTests --junit-package-name=net.ajaskey.common
