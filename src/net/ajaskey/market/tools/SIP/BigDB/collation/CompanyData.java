@@ -196,14 +196,22 @@ public class CompanyData {
    */
   public static List<String> getTickers(int year, int quarter) {
     final List<String> ret = new ArrayList<>();
-    final String[] ext = { "txt", "gz" };
-    final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, year, quarter);
-    final List<File> fList = Utils.getDirTree(dir, ext);
-    for (final File f : fList) {
-      final String name = f.getName();
-      final int idx = name.indexOf("-fundamental");
-      final String s = name.substring(0, idx);
-      ret.add(s);
+    try {
+      final String[] ext = { "txt", "gz" };
+      final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, year, quarter);
+      final List<File> fList = Utils.getDirTree(dir, ext);
+      if (fList != null) {
+        for (final File f : fList) {
+          final String name = f.getName();
+          final int idx = name.indexOf("-fundamental");
+          final String s = name.substring(0, idx);
+          ret.add(s);
+        }
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      ret.clear();
     }
     return ret;
   }
