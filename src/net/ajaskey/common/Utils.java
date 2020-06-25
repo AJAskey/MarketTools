@@ -5,15 +5,15 @@
  * licenses this file to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Original author : Andy Askey (ajaskey34@gmail.com)
  */
 
@@ -44,10 +44,8 @@ public class Utils {
   public static DecimalFormat          df;
   public static String                 NL                   = System.lineSeparator();
   public final static SimpleDateFormat sdf                  = new SimpleDateFormat("dd-MMM-yyyy");
-
-  public final static SimpleDateFormat sdfFull = new SimpleDateFormat("E dd-MMM-yyyy HH:mm:ss");
-
-  public static String TAB = "\t";
+  public final static SimpleDateFormat sdfFull              = new SimpleDateFormat("E dd-MMM-yyyy HH:mm:ss");
+  public static String                 TAB                  = "\t";
 
   private static DecimalFormat dfmt = new DecimalFormat("#,###");
 
@@ -198,6 +196,12 @@ public class Utils {
     }
   }
 
+  /**
+   *
+   * @param dt1
+   * @param dt2
+   * @return
+   */
   public static boolean sameDate(final DateTime dt1, final DateTime dt2) {
 
     if (dt1 == null || dt2 == null) {
@@ -213,6 +217,12 @@ public class Utils {
     return false;
   }
 
+  /**
+   *
+   * @param dt1
+   * @param dt2
+   * @return
+   */
   public static boolean sameMonth(final DateTime dt1, final DateTime dt2) {
 
     if (dt1 == null || dt2 == null) {
@@ -225,31 +235,6 @@ public class Utils {
     }
     return false;
   }
-//
-//	/**
-//	 *
-//	 * net.ajaskey.market.ta.sameYear
-//	 *
-//	 * @param cal1
-//	 * @param cal2
-//	 * @return
-//	 */
-//	public static boolean sameYear(final Calendar cal1, final Calendar cal2) {
-//
-//		if (cal1 == null || cal2 == null) {
-//			return false;
-//		}
-//		if (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)) {
-//			return true;
-//		}
-//		return false;
-//	}
-//
-//	/**
-//	 * net.ajaskey.market.misc.sleep
-//	 *
-//	 * @param i
-//	 */
 
   /**
    *
