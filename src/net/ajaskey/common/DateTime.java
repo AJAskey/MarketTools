@@ -144,15 +144,20 @@ public class DateTime implements Serializable {
    * @return
    */
   public static boolean sameDate(final DateTime dt1, final DateTime dt2) {
-    if (dt1 == null || dt2 == null) {
-      return false;
-    }
-    if (dt1.cal.get(Calendar.YEAR) == dt2.cal.get(Calendar.YEAR)) {
-      if (dt1.cal.get(Calendar.MONTH) == dt2.cal.get(Calendar.MONTH)) {
-        if (dt1.cal.get(Calendar.DATE) == dt2.cal.get(Calendar.DATE)) {
-          return true;
+    try {
+      if (dt1.isNull() || dt2.isNull()) {
+        return false;
+      }
+      if (dt1.cal.get(Calendar.YEAR) == dt2.cal.get(Calendar.YEAR)) {
+        if (dt1.cal.get(Calendar.MONTH) == dt2.cal.get(Calendar.MONTH)) {
+          if (dt1.cal.get(Calendar.DATE) == dt2.cal.get(Calendar.DATE)) {
+            return true;
+          }
         }
       }
+    }
+    catch (Exception e) {
+      return false;
     }
     return false;
   }
@@ -210,7 +215,9 @@ public class DateTime implements Serializable {
   public DateTime(final DateTime dt) {
     this.cal = Calendar.getInstance();
     try {
-      this.cal.setTime(dt.getCal().getTime());
+      if (!dt.isNull()) {
+        this.cal.setTime(dt.getCal().getTime());
+      }
     }
     catch (final Exception e) {
       e.printStackTrace();
@@ -289,7 +296,6 @@ public class DateTime implements Serializable {
       }
     }
     catch (final Exception e) {
-      e.printStackTrace();
     }
   }
 
@@ -323,7 +329,6 @@ public class DateTime implements Serializable {
       ret = this.sdf.format(this.cal.getTime());
     }
     catch (final Exception e) {
-      e.printStackTrace();
       ret = "BAD-DATE-FORMAT";
     }
     return ret;
@@ -343,7 +348,6 @@ public class DateTime implements Serializable {
       ret = sdf.format(this.cal.getTime());
     }
     catch (final Exception e) {
-      e.printStackTrace();
       ret = "BAD-DATE-FORMAT";
     }
     return ret;
@@ -418,17 +422,29 @@ public class DateTime implements Serializable {
    * @return
    */
   public long getDeltaDays(final DateTime dt2) {
-    final long s1 = dt2.getTime().getTime();
-    final long s2 = this.getTime().getTime();
-    // System.out.println(dt2);
-    final long dd = (s2 - s1) / 86400000;
+    long dd = 0L;
+    try {
+      final long s1 = dt2.getTime().getTime();
+      final long s2 = this.getTime().getTime();
+      dd = (s2 - s1) / 86400000;
+    }
+    catch (Exception e) {
+      dd = 0L;
+    }
     return dd;
   }
 
   public long getDeltaMilliSeconds(DateTime dt2) {
-    final long dt1Ms = this.cal.getTimeInMillis();
-    final long dt2Ms = dt2.cal.getTimeInMillis();
-    return dt2Ms - dt1Ms;
+    long ret = 0L;
+    try {
+      final long dt1Ms = this.cal.getTimeInMillis();
+      final long dt2Ms = dt2.cal.getTimeInMillis();
+      ret = dt2Ms - dt1Ms;
+    }
+    catch (Exception e) {
+      ret = 0L;
+    }
+    return ret;
   }
 
   /**
@@ -498,7 +514,11 @@ public class DateTime implements Serializable {
   }
 
   public Date getTime() {
-    return this.cal.getTime();
+    Date ret = null;
+    if (!this.isNull()) {
+      ret = this.cal.getTime();
+    }
+    return ret;
   }
 
   /**
@@ -516,20 +536,26 @@ public class DateTime implements Serializable {
   }
 
   public int getYears(DateTime date2) {
-    final int y1 = this.cal.get(DateTime.YEAR);
-    final int y2 = date2.cal.get(DateTime.YEAR);
-    int delta = y2 - y1;
-    final int m1 = this.cal.get(DateTime.MONTH);
-    final int m2 = date2.cal.get(DateTime.MONTH);
-    if (m2 < m1) {
-      delta--;
-    }
-    else if (m2 == m1) {
-      final int d1 = this.cal.get(DateTime.DATE);
-      final int d2 = date2.cal.get(DateTime.DATE);
-      if (d2 < d1) {
+    int delta = 0;
+    try {
+      final int y1 = this.cal.get(DateTime.YEAR);
+      final int y2 = date2.cal.get(DateTime.YEAR);
+      delta = y2 - y1;
+      final int m1 = this.cal.get(DateTime.MONTH);
+      final int m2 = date2.cal.get(DateTime.MONTH);
+      if (m2 < m1) {
         delta--;
       }
+      else if (m2 == m1) {
+        final int d1 = this.cal.get(DateTime.DATE);
+        final int d2 = date2.cal.get(DateTime.DATE);
+        if (d2 < d1) {
+          delta--;
+        }
+      }
+    }
+    catch (Exception e) {
+      delta = 0;
     }
     return delta;
   }
@@ -563,7 +589,6 @@ public class DateTime implements Serializable {
       return dt.cal.before(this.cal);
     }
     catch (final Exception e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -598,7 +623,6 @@ public class DateTime implements Serializable {
       ret = dt.cal.after(this.cal);
     }
     catch (final Exception e) {
-      e.printStackTrace();
       return false;
     }
     return ret;
@@ -623,7 +647,12 @@ public class DateTime implements Serializable {
 
   public boolean isNull() {
     boolean ret = false;
-    if (this.cal == null) {
+    try {
+      if (this.cal == null) {
+        ret = true;
+      }
+    }
+    catch (Exception e) {
       ret = true;
     }
     return ret;
@@ -636,8 +665,15 @@ public class DateTime implements Serializable {
    * @return
    */
   public boolean isWeekday() {
-    final int d = this.cal.get(Calendar.DAY_OF_WEEK);
-    return d > DateTime.SUNDAY && d < DateTime.SATURDAY;
+    boolean ret = false;
+    try {
+      final int d = this.cal.get(Calendar.DAY_OF_WEEK);
+      ret = d > DateTime.SUNDAY && d < DateTime.SATURDAY;
+    }
+    catch (Exception e) {
+      ret = false;
+    }
+    return ret;
   }
 
   /**
@@ -650,11 +686,12 @@ public class DateTime implements Serializable {
   public DateTime parse(final String src) {
     DateTime ret = null;
     try {
-      final Date d = this.sdf.parse(src);
-      ret = new DateTime(d);
+      if (src != null) {
+        final Date d = this.sdf.parse(src);
+        ret = new DateTime(d);
+      }
     }
     catch (final Exception e) {
-      e.printStackTrace();
       ret = null;
     }
     return ret;
@@ -688,15 +725,21 @@ public class DateTime implements Serializable {
    * @return
    */
   public boolean sameDate(final DateTime dt2) {
-    if (dt2 == null) {
+
+    if (dt2.isNull()) {
       return false;
     }
-    if (this.cal.get(Calendar.YEAR) == dt2.cal.get(Calendar.YEAR)) {
-      if (this.cal.get(Calendar.MONTH) == dt2.cal.get(Calendar.MONTH)) {
-        if (this.cal.get(Calendar.DATE) == dt2.cal.get(Calendar.DATE)) {
-          return true;
+    try {
+      if (this.cal.get(Calendar.YEAR) == dt2.cal.get(Calendar.YEAR)) {
+        if (this.cal.get(Calendar.MONTH) == dt2.cal.get(Calendar.MONTH)) {
+          if (this.cal.get(Calendar.DATE) == dt2.cal.get(Calendar.DATE)) {
+            return true;
+          }
         }
       }
+    }
+    catch (Exception e) {
+      return false;
     }
     return false;
   }
@@ -791,7 +834,14 @@ public class DateTime implements Serializable {
    * @return
    */
   public String toFullString() {
-    return Utils.sdfFull.format(this.cal.getTime());
+    String ret = "";
+    try {
+      ret = Utils.sdfFull.format(this.cal.getTime());
+    }
+    catch (Exception e) {
+      ret = "Invalid Time";
+    }
+    return ret;
   }
 
   /*

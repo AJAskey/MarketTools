@@ -56,9 +56,14 @@ public class BalSheetFileData implements Serializable {
    * @return
    */
   public static BalSheetFileData find(String ticker) {
-    for (final BalSheetFileData bs : BalSheetFileData.bfdList) {
-      if (bs.getTicker().equalsIgnoreCase(ticker)) {
-        return bs;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+
+        for (final BalSheetFileData bs : BalSheetFileData.bfdList) {
+          if (bs.getTicker().equalsIgnoreCase(ticker)) {
+            return bs;
+          }
+        }
       }
     }
     return null;

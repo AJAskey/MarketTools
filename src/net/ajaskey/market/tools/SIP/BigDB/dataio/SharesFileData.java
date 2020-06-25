@@ -60,9 +60,13 @@ public class SharesFileData implements Serializable {
    * @return
    */
   public static SharesFileData find(String ticker) {
-    for (final SharesFileData s : SharesFileData.sfdList) {
-      if (s.getTicker().equalsIgnoreCase(ticker)) {
-        return s;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final SharesFileData s : SharesFileData.sfdList) {
+          if (s.getTicker().equalsIgnoreCase(ticker)) {
+            return s;
+          }
+        }
       }
     }
     return null;

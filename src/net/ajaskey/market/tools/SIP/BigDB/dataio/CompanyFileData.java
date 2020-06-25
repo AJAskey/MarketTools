@@ -83,9 +83,13 @@ public class CompanyFileData implements Serializable {
    * @return
    */
   public static CompanyFileData find(String ticker) {
-    for (final CompanyFileData c : CompanyFileData.cfdList) {
-      if (c.getTicker().equalsIgnoreCase(ticker)) {
-        return c;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final CompanyFileData c : CompanyFileData.cfdList) {
+          if (c.getTicker().equalsIgnoreCase(ticker)) {
+            return c;
+          }
+        }
       }
     }
     return null;

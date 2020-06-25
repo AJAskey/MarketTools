@@ -61,9 +61,13 @@ public class CashFileData implements Serializable {
    * @return
    */
   public static CashFileData find(String ticker) {
-    for (final CashFileData c : CashFileData.cashfdList) {
-      if (c.getTicker().equalsIgnoreCase(ticker)) {
-        return c;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final CashFileData c : CashFileData.cashfdList) {
+          if (c.getTicker().equalsIgnoreCase(ticker)) {
+            return c;
+          }
+        }
       }
     }
     return null;

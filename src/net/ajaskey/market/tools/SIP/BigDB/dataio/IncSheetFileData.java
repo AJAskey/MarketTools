@@ -56,9 +56,13 @@ public class IncSheetFileData implements Serializable {
    * @return
    */
   public static IncSheetFileData find(String ticker) {
-    for (final IncSheetFileData is : IncSheetFileData.ifdList) {
-      if (is.getTicker().equalsIgnoreCase(ticker)) {
-        return is;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final IncSheetFileData is : IncSheetFileData.ifdList) {
+          if (is.getTicker().equalsIgnoreCase(ticker)) {
+            return is;
+          }
+        }
       }
     }
     return null;

@@ -57,9 +57,13 @@ public class EstimateFileData implements Serializable {
    * @return
    */
   public static EstimateFileData find(String ticker) {
-    for (final EstimateFileData e : EstimateFileData.efdList) {
-      if (e.getTicker().equalsIgnoreCase(ticker)) {
-        return e;
+    if (ticker != null) {
+      if (ticker.trim().length() > 0) {
+        for (final EstimateFileData e : EstimateFileData.efdList) {
+          if (e.getTicker().equalsIgnoreCase(ticker)) {
+            return e;
+          }
+        }
       }
     }
     return null;
