@@ -7,7 +7,7 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
 
 /**
  * This class contains test drivers for various BigDB methods.
- * 
+ *
  * @author Andy Askey
  *         <p>
  *         Copyright (c) 2020, Andy Askey. All rights reserved.
@@ -41,12 +41,12 @@ public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-    int year = 2020;
-    int qtr = 2;
+    final int year = 2020;
+    final int qtr = 2;
 
 //    for (int i = 2018; i < 2021; i++) {
 //      for (int j = 1; j < 5; j++) {
-//        
+//
 //      }
 //    }
 
@@ -55,7 +55,7 @@ public class SipDbData {
     // FieldData.parseSipData(2020, 2, FiletypeEnum.BIG_BINARY);
 
     FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
-    FieldData fd = FieldData.getFromMemory("NVAX", year, qtr);
+    final FieldData fd = FieldData.getFromMemory("NVAX", year, qtr);
     System.out.println(fd);
 
     // FieldData.setMemory(2018, 2020, FiletypeEnum.BINARY);

@@ -23,15 +23,16 @@ public class RiskRange {
     }
 
   }
-  public String   code;
-  public double   dmp1l;
-  public double   dmp1u;
-  public double   dmp2l;
-  public double   dmp2u;
-  public double   dmp3l;
-  public double   dmp3u;
-  public double   dmpPoc;
-  public double   last;
+
+  public String code;
+  public double dmp1l;
+  public double dmp1u;
+  public double dmp2l;
+  public double dmp2u;
+  public double dmp3l;
+  public double dmp3u;
+  public double dmpPoc;
+  public double last;
 
   private boolean valid;
 

@@ -43,9 +43,9 @@ public class DateValue {
   public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
   public DateTime date;
-  public boolean valid;
+  public boolean  valid;
 
-  public double  value;
+  public double value;
 
   /**
    * This method serves as a constructor for the class.

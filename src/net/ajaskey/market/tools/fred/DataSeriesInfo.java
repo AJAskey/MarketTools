@@ -60,11 +60,11 @@ import net.ajaskey.market.misc.Debug;
  */
 public class DataSeriesInfo {
 
-  public final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  public final static SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
   public final static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 
   private final static DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-  private static DocumentBuilder dBuilder = null;
+  private static DocumentBuilder              dBuilder  = null;
 
   public static List<DataSeriesInfo> getDataSeriesNames() {
 
@@ -180,7 +180,7 @@ public class DataSeriesInfo {
   }
 
   private DateTime fileDt;
-  private String frequency;
+  private String   frequency;
   private DateTime lastObservation;
 
   private DateTime lastUpdate;
@@ -191,7 +191,7 @@ public class DataSeriesInfo {
 
   private String seasonalAdjustment;
 
-  private int      timeOffset;
+  private int timeOffset;
 
   private String title;
 
@@ -252,7 +252,7 @@ public class DataSeriesInfo {
 
   /**
    * This method serves as a constructor for the class.
-   * 
+   *
    * @param lastUpdate
    *
    */

@@ -28,6 +28,7 @@ public class OptionFromJson {
     }
     return ret;
   }
+
   public Double   ask;
   public Double   bid;
   public Double   change;
@@ -54,7 +55,7 @@ public class OptionFromJson {
   public DateTime updatedAt;
   public Double   vega;
 
-  public Long     volume;
+  public Long volume;
 
   SimpleDateFormat sdf    = new SimpleDateFormat("yyyy-MM-dd");
   SimpleDateFormat sdfOut = new SimpleDateFormat("dd-MMM-yyyy");

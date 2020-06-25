@@ -102,23 +102,23 @@ public class DataSeries {
     }
   }
 
-  private AggregationMethodType aggType;
+  private AggregationMethodType        aggType;
   private final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
   private DocumentBuilder              dBuilder  = null;
-  private DateTime             dtOne;
-  private FileType fileType;
-  private final DataSeriesInfo info;
+  private DateTime                     dtOne;
+  private FileType                     fileType;
+  private final DataSeriesInfo         info;
 
-  private int                          limit;
+  private int    limit;
   private String name;
 
-  private int                          offset;
+  private int offset;
 
   private OrderType order;
 
-  private String                       period;
+  private String period;
 
-  private int                          respKnt;
+  private int respKnt;
 
   private ResponseType respType;
 

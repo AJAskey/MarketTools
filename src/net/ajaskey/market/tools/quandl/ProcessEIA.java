@@ -60,8 +60,8 @@ public class ProcessEIA {
 
   private static DocumentBuilderFactory dbFactory = null;
 
-  private static DocumentBuilder        dBuilder  = null;
-  private static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+  private static DocumentBuilder  dBuilder = null;
+  private static SimpleDateFormat sdf      = new SimpleDateFormat("yyyyMMdd");
 
   /**
    * net.ajaskey.market.tools.main

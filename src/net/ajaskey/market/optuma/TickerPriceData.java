@@ -12,6 +12,7 @@ import net.ajaskey.common.Utils;
 public class TickerPriceData {
 
   static private List<DateTime> holidays = new ArrayList<>();
+
   public static void main(final String[] args) {
     final TickerPriceData code = new TickerPriceData("NASDAQ", "aapl");
     System.out.println(code);
@@ -25,19 +26,21 @@ public class TickerPriceData {
     tpd = code.getOffset(125000);
     System.out.println(tpd);
   }
+
   /**
    *
    */
   private static void addHolidays() {
     TickerPriceData.holidays.add(new DateTime(2020, DateTime.APRIL, 10));
   }
+
   private String id;
 
-  final private String    NL           = Utils.NL;
+  final private String NL = Utils.NL;
 
-  private int             numPrices    = 0;
+  private int numPrices = 0;
 
-  private String          ticker;
+  private String ticker;
 
   private List<PriceData> tickerPrices = null;
 

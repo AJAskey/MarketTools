@@ -137,6 +137,7 @@ public class ExpiryData {
       }
     }
   }
+
   private static int getCallPos(double ul, List<ExpiryData> ex) {
     int ret = -1;
 
@@ -149,6 +150,7 @@ public class ExpiryData {
 
     return ret;
   }
+
   private static int getPosOffset(double price, double offset, List<ExpiryData> ex) {
     int ret = -1;
     final double prOff = price + offset;
@@ -162,6 +164,7 @@ public class ExpiryData {
 
     return ret;
   }
+
   private static int getPutPos(double ul, List<ExpiryData> ex) {
     int ret = -1;
 
@@ -174,6 +177,7 @@ public class ExpiryData {
 
     return ret;
   }
+
   private double   ask;
   private double   bid;
   private double   delta;
@@ -187,13 +191,13 @@ public class ExpiryData {
 
   // private List<ExpiryData> list = null;
 
-  private int      oi;
+  private int oi;
 
-  private double   strike;
+  private double strike;
 
-  private int      type;
+  private int type;
 
-  private int      vol;
+  private int vol;
 
   public ExpiryData() {
     // TODO Auto-generated constructor stub

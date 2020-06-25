@@ -83,7 +83,7 @@ public class Utils {
   }
 
   /**
-   * 
+   *
    * @param d
    * @param len
    * @return
@@ -97,7 +97,7 @@ public class Utils {
       final String sfmt = String.format("%%%ds", len);
       ret = String.format(sfmt, Utils.df.format(d));
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "Invalid fmt";
     }
     return ret;
@@ -178,7 +178,7 @@ public class Utils {
   }
 
   /**
-   * 
+   *
    * @param i
    * @param len
    * @return
@@ -189,7 +189,7 @@ public class Utils {
   }
 
   /**
-   * 
+   *
    * @param i
    * @param len
    * @return
@@ -285,7 +285,7 @@ public class Utils {
   }
 
   /**
-   * 
+   *
    * @param path
    * @param zipStream
    * @throws FileNotFoundException

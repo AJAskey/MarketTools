@@ -6,9 +6,9 @@ import net.ajaskey.common.DateTime;
 
 public class OptionData {
 
-  final protected static String header = "Name,Type,LastTrade,Expiry,Strike,Last,Bid,Ask,Vol,OI,IV,Theta,Delta,Gamma,Vega,Rho,Theory,Intrins,TimeValue";
-  protected final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-  protected final static SimpleDateFormat sdfOut = new SimpleDateFormat("dd-MMM-yyyy");
+  final protected static String           header     = "Name,Type,LastTrade,Expiry,Strike,Last,Bid,Ask,Vol,OI,IV,Theta,Delta,Gamma,Vega,Rho,Theory,Intrins,TimeValue";
+  protected final static SimpleDateFormat sdf        = new SimpleDateFormat("yyyy-MM-dd");
+  protected final static SimpleDateFormat sdfOut     = new SimpleDateFormat("dd-MMM-yyyy");
   protected final static SimpleDateFormat sdfOutTime = new SimpleDateFormat("yyyyMMdd_HHmmss");
 
   protected final static SimpleDateFormat sdftime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -17,16 +17,16 @@ public class OptionData {
   public Double   bid;
   public Double   change;
   public Double   changePercent;
-  public String contractName;
-  public String contractSize;
-  public String currency;
+  public String   contractName;
+  public String   contractSize;
+  public String   currency;
   public Long     daysBeforeExpiration;
   public Double   delta;
   public DateTime expirationDate;
   public Double   gamma;
   public Double   impliedVolatility;
   public Double   intrinsicValue;
-  public Boolean itm;
+  public Boolean  itm;
   public Double   lastPrice;
   public DateTime lastTradeDateTime;
   public Long     openInterest;
@@ -40,11 +40,11 @@ public class OptionData {
 
   public DateTime updatedAt;
 
-  public boolean  valid;
+  public boolean valid;
 
-  public Double   vega;
+  public Double vega;
 
-  public Long     volume;
+  public Long volume;
 
   public OptionData() {
     this.strike = 0.0;

@@ -85,6 +85,7 @@ public class PriceData {
 
     return ret;
   }
+
   /**
    *
    * @param prices
@@ -98,6 +99,7 @@ public class PriceData {
       return 0.0;
     }
   }
+
   public static PriceData queryDate(DateTime dt, List<PriceData> prices) {
     for (final PriceData d : prices) {
       if (d.date.isEqual(dt)) {
@@ -110,23 +112,25 @@ public class PriceData {
     // Return last data point
     return prices.get(prices.size() - 1);
   }
+
   private static String getFilename(String index) {
     // TODO Auto-generated method stub
     return null;
   }
-  public double    close;
+
+  public double   close;
   public DateTime date;
-  public double    high;
+  public double   high;
 
-  public double    low;
+  public double low;
 
-  public double    open;
+  public double open;
 
-  public long      volume;
+  public long volume;
 
   private FormType form;
 
-  private boolean  valid;
+  private boolean valid;
 
   /**
    * This method serves as a constructor for the class.

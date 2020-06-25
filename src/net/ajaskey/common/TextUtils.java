@@ -126,7 +126,7 @@ public class TextUtils {
         ret += s + Utils.NL;
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;

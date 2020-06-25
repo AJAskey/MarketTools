@@ -46,18 +46,18 @@ public class TickerData {
   private final static int FIELDS = 7;
 
   private final static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-  public double[]   close;
-  public DateTime[] date;
-  public int days;
-  public double[]   high;
-  public double[]   low;
-  public double[]   oi;
+  public double[]                       close;
+  public DateTime[]                     date;
+  public int                            days;
+  public double[]                       high;
+  public double[]                       low;
+  public double[]                       oi;
 
-  public double[]   open;
+  public double[] open;
 
   public String ticker;
 
-  public double[]   volume;
+  public double[] volume;
 
   /**
    * This method serves as a constructor for the class.

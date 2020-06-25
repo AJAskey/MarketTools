@@ -54,7 +54,7 @@ public class FieldDataBinary implements Serializable {
     FieldDataBinaryFile fdbf = null;
     try {
 
-      File f = new File(fname);
+      final File f = new File(fname);
 
       if (f.exists()) {
         final ObjectInputStream objBinFile = new ObjectInputStream(new FileInputStream(fname));

@@ -44,34 +44,53 @@ import java.util.Locale;
  */
 public class DateTime implements Serializable {
 
+  public static final int APRIL = Calendar.APRIL;
+
+  public static final int   AUGUST           = Calendar.AUGUST;
+  public static final int   DATE             = Calendar.DATE;
+  public static final int   DECEMBER         = Calendar.DECEMBER;
+  public static final int   FEBRUARY         = Calendar.FEBRUARY;
+  public static final int   FRIDAY           = Calendar.FRIDAY;
+  public static final int   HOUR             = Calendar.HOUR;
+  public static final int   JANUARY          = Calendar.JANUARY;
+  public static final int   JULY             = Calendar.JULY;
+  public static final int   JUNE             = Calendar.JUNE;
+  public static final int   MARCH            = Calendar.MARCH;
+  public static final int   MAY              = Calendar.MAY;
+  public static final int   MILLSECOND       = Calendar.MILLISECOND;
+  public static final int   MINUTE           = Calendar.MINUTE;
+  public static final int   MONDAY           = Calendar.MONDAY;
+  public static final int   MONTH            = Calendar.MONTH;
+  public static final int   NOVEMBER         = Calendar.NOVEMBER;
+  public static final int   OCTOBER          = Calendar.OCTOBER;
+  public static final int   SATURDAY         = Calendar.SATURDAY;
+  public static final int   SECOND           = Calendar.SECOND;
+  public static final int   SEPTEMBER        = Calendar.SEPTEMBER;
+  public static final int   SUNDAY           = Calendar.SUNDAY;
+  public static final int   THURSDAY         = Calendar.THURSDAY;
+  public static final int   TUESDAY          = Calendar.TUESDAY;
+  public static final int   WEDNESDAY        = Calendar.WEDNESDAY;
+  public static final int   YEAR             = Calendar.YEAR;
   private static final long serialVersionUID = -4689128633349138281L;
 
-  public static final int APRIL      = Calendar.APRIL;
-  public static final int AUGUST     = Calendar.AUGUST;
-  public static final int DATE       = Calendar.DATE;
-  public static final int DECEMBER   = Calendar.DECEMBER;
-  public static final int FEBRUARY   = Calendar.FEBRUARY;
-  public static final int FRIDAY     = Calendar.FRIDAY;
-  public static final int HOUR       = Calendar.HOUR;
-  public static final int JANUARY    = Calendar.JANUARY;
-  public static final int JULY       = Calendar.JULY;
-  public static final int JUNE       = Calendar.JUNE;
-  public static final int MARCH      = Calendar.MARCH;
-  public static final int MAY        = Calendar.MAY;
-  public static final int MILLSECOND = Calendar.MILLISECOND;
-  public static final int MINUTE     = Calendar.MINUTE;
-  public static final int MONDAY     = Calendar.MONDAY;
-  public static final int MONTH      = Calendar.MONTH;
-  public static final int NOVEMBER   = Calendar.NOVEMBER;
-  public static final int OCTOBER    = Calendar.OCTOBER;
-  public static final int SATURDAY   = Calendar.SATURDAY;
-  public static final int SECOND     = Calendar.SECOND;
-  public static final int SEPTEMBER  = Calendar.SEPTEMBER;
-  public static final int SUNDAY     = Calendar.SUNDAY;
-  public static final int THURSDAY   = Calendar.THURSDAY;
-  public static final int TUESDAY    = Calendar.TUESDAY;
-  public static final int WEDNESDAY  = Calendar.WEDNESDAY;
-  public static final int YEAR       = Calendar.YEAR;
+  /**
+   *
+   * net.ajaskey.market.misc.copy
+   *
+   * @param dt Instantiated DateTime variable
+   * @return
+   */
+  public static DateTime copy(final DateTime dt) {
+    try {
+      if (!dt.isNull()) {
+        final DateTime d = new DateTime(dt.cal.getTime());
+        return d;
+      }
+    }
+    catch (final Exception e) {
+    }
+    return null;
+  }
 
   /**
    *
@@ -134,13 +153,14 @@ public class DateTime implements Serializable {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       return false;
     }
     return false;
   }
 
-  private Calendar         cal = null;
+  private Calendar cal = null;
+
   private SimpleDateFormat sdf = null;
 
   /**
@@ -239,7 +259,7 @@ public class DateTime implements Serializable {
     try {
       this.build(this, value, sdf, sdf);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
     }
   }
 
@@ -247,7 +267,7 @@ public class DateTime implements Serializable {
     try {
       this.build(this, value, sdf, sdfout);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
     }
   }
 
@@ -262,7 +282,7 @@ public class DateTime implements Serializable {
       final SimpleDateFormat sdfIn = new SimpleDateFormat(fmt);
       this.build(this, value, sdfIn, sdfIn);
     }
-    catch (Exception e) {
+    catch (final Exception e) {
     }
   }
 
@@ -274,7 +294,7 @@ public class DateTime implements Serializable {
    * @param knt  Any integer
    */
   public void add(final int unit, final int knt) {
-    DateTime tmp = DateTime.copy(this);
+    final DateTime tmp = DateTime.copy(this);
     try {
       if (!this.isNull()) {
         if (unit == DateTime.DATE || unit == DateTime.MONTH || unit == DateTime.YEAR) {
@@ -290,25 +310,6 @@ public class DateTime implements Serializable {
         }
       }
     }
-  }
-
-  /**
-   *
-   * net.ajaskey.market.misc.copy
-   *
-   * @param dt Instantiated DateTime variable
-   * @return
-   */
-  public static DateTime copy(final DateTime dt) {
-    try {
-      if (!dt.isNull()) {
-        final DateTime d = new DateTime(dt.cal.getTime());
-        return d;
-      }
-    }
-    catch (final Exception e) {
-    }
-    return null;
   }
 
   /**
@@ -424,7 +425,7 @@ public class DateTime implements Serializable {
         dd = (s2 - s1) / 86400000;
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       dd = 0L;
     }
     return dd;
@@ -439,7 +440,7 @@ public class DateTime implements Serializable {
         ret = dt2Ms - dt1Ms;
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = 0L;
     }
     return ret;
@@ -551,7 +552,7 @@ public class DateTime implements Serializable {
 
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       delta = 0;
     }
     return delta;
@@ -664,7 +665,7 @@ public class DateTime implements Serializable {
         ret = true;
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = true;
     }
     return ret;
@@ -682,7 +683,7 @@ public class DateTime implements Serializable {
       final int d = this.cal.get(Calendar.DAY_OF_WEEK);
       ret = d > DateTime.SUNDAY && d < DateTime.SATURDAY;
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = false;
     }
     return ret;
@@ -749,7 +750,7 @@ public class DateTime implements Serializable {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       return false;
     }
     return false;
@@ -849,7 +850,7 @@ public class DateTime implements Serializable {
     try {
       ret = Utils.sdfFull.format(this.cal.getTime());
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "Invalid Time";
     }
     return ret;
@@ -873,7 +874,7 @@ public class DateTime implements Serializable {
   }
 
   /**
-   * 
+   *
    * @param retThis
    * @param value
    * @param sdf

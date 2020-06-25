@@ -56,7 +56,7 @@ public class PropertyData {
   }
 
   /**
-   * 
+   *
    * @param key
    * @return
    */
@@ -94,7 +94,7 @@ public class PropertyData {
   }
 
   /**
-   * 
+   *
    * @param key
    * @return
    */
@@ -113,7 +113,7 @@ public class PropertyData {
   }
 
   /**
-   * 
+   *
    * @param key
    * @return
    */

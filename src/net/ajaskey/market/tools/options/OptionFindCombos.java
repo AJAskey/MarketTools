@@ -21,7 +21,7 @@ public class OptionFindCombos {
   static double                 chg[]  = { 0.05, 0.10, 0.15, 0.20 };
 
   final private static double MinOptionPrice = 0.10;
-  private static double ulPrice = 0.0;
+  private static double       ulPrice        = 0.0;
 
   /**
    *
@@ -59,6 +59,7 @@ public class OptionFindCombos {
 
     OptionFindCombos.process(args[0].trim(), args[1].trim(), tf);
   }
+
   /**
    *
    * @param code
@@ -250,6 +251,7 @@ public class OptionFindCombos {
     // OptionsProcessor.CloseDebug();
 
   }
+
   /**
    *
    * @param d
@@ -274,6 +276,7 @@ public class OptionFindCombos {
     }
     return null;
   }
+
   /**
    *
    * @param ofc
@@ -290,6 +293,7 @@ public class OptionFindCombos {
     }
     return null;
   }
+
   /**
    *
    * @param propFile
@@ -299,23 +303,23 @@ public class OptionFindCombos {
 
   }
 
-  public double          bsBuyPrice;
+  public double bsBuyPrice;
 
   public DateTime buyDate;
 
-  public double change;
+  public double          change;
   public CboeCallPutData data;
-  public DateTime expiry;
+  public DateTime        expiry;
   public double          optBuyPrice;
   public double          optSellPrice;
 
   public double premium;
 
-  public double          profit;
+  public double profit;
 
   public double strike;
 
-  public double   ulBuyPrice;
+  public double ulBuyPrice;
 
   public double ulSellPrice;
 

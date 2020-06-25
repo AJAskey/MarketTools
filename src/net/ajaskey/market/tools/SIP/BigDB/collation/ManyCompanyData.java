@@ -40,17 +40,17 @@ public class ManyCompanyData {
 
   /**
    * Create of list of company data from input list of tickers
-   * 
+   *
    * @param tickers
    * @return List of ManyCompanyData
    */
   public static List<ManyCompanyData> createList(List<String> tickers) {
 
-    List<ManyCompanyData> retList = new ArrayList<>();
+    final List<ManyCompanyData> retList = new ArrayList<>();
 
-    for (String ticker : tickers) {
+    for (final String ticker : tickers) {
 
-      ManyCompanyData mcd = new ManyCompanyData(OneCompanyData.getCompany(ticker), ticker);
+      final ManyCompanyData mcd = new ManyCompanyData(OneCompanyData.getCompany(ticker), ticker);
       retList.add(mcd);
     }
 
@@ -62,7 +62,7 @@ public class ManyCompanyData {
 
   /**
    * Constructor is private for use by internal procedures.
-   * 
+   *
    * @param list
    * @param ticker
    */
@@ -73,7 +73,7 @@ public class ManyCompanyData {
 
   @Override
   public String toString() {
-    String ret = String.format("%s : %d", this.ticker, this.ocdList.size());
+    final String ret = String.format("%s : %d", this.ticker, this.ocdList.size());
     return ret;
   }
 }

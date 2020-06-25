@@ -49,8 +49,8 @@ import net.ajaskey.market.misc.Debug;
  */
 public class FredBookkeeping {
 
-  private static List<DataSeriesInfo> dsiList = new ArrayList<>();
-  private static final String fsiFilename      = "fred-series-info.txt";
+  private static List<DataSeriesInfo> dsiList     = new ArrayList<>();
+  private static final String         fsiFilename = "fred-series-info.txt";
 
   // private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd
   // HH:mm:ss.SSS");

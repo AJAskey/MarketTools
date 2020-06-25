@@ -41,17 +41,17 @@ import net.ajaskey.common.Utils;
  */
 public class IciCombinedFlowData {
 
-  private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+  private static SimpleDateFormat sdf       = new SimpleDateFormat("MM/dd/yyyy");
   private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
-  public long     bondMuni;
-  public long     bondTaxable;
-  public long     commodity;
-  public Calendar date;
-  public long     equityDomestic;
+  public long                     bondMuni;
+  public long                     bondTaxable;
+  public long                     commodity;
+  public Calendar                 date;
+  public long                     equityDomestic;
 
-  public long     equityWorld;
+  public long equityWorld;
 
-  public boolean  valid;
+  public boolean valid;
 
   /**
    * This method serves as a constructor for the class.
@@ -89,7 +89,7 @@ public class IciCombinedFlowData {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.lang.Object#toString()
    */
   @Override

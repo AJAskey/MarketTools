@@ -44,7 +44,7 @@ public class FieldDataYear {
 
   /**
    * Constructor
-   * 
+   *
    * @param yr
    */
   public FieldDataYear(int yr) {
@@ -56,25 +56,9 @@ public class FieldDataYear {
     this.q4 = null;
   }
 
-  public FieldDataQuarter getQ1() {
-    return this.q1;
-  }
-
-  public FieldDataQuarter getQ2() {
-    return this.q2;
-  }
-
-  public FieldDataQuarter getQ3() {
-    return this.q3;
-  }
-
-  public FieldDataQuarter getQ4() {
-    return this.q4;
-  }
-
   /**
    * Returns the requested quarter of data.
-   * 
+   *
    * @param qtr quarter
    * @return FieldDataQuarter
    */
@@ -100,6 +84,22 @@ public class FieldDataYear {
     return ret;
   }
 
+  public FieldDataQuarter getQ1() {
+    return this.q1;
+  }
+
+  public FieldDataQuarter getQ2() {
+    return this.q2;
+  }
+
+  public FieldDataQuarter getQ3() {
+    return this.q3;
+  }
+
+  public FieldDataQuarter getQ4() {
+    return this.q4;
+  }
+
   public int getYear() {
     return this.year;
   }
@@ -110,7 +110,7 @@ public class FieldDataYear {
 
   /**
    * Checks if requested data has been set.
-   * 
+   *
    * @param qtr quarter
    * @return TRUE if data is available. FALSE otherwise.
    */
@@ -159,7 +159,7 @@ public class FieldDataYear {
 
   /**
    * Sets the requested quarter with FieldDataQuarter passed in.
-   * 
+   *
    * @param qtr quarter
    * @param fdq FieldDataQuarter
    */

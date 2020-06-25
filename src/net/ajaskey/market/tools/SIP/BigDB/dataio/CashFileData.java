@@ -46,13 +46,17 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 public class CashFileData implements Serializable {
 
   /**
-   * 
-   */
-  private static final long         serialVersionUID = 1L;
-  /**
    * Stores all EstimateFileDate read in from DB.
    */
   private static List<CashFileData> cashfdList       = new ArrayList<>();
+  /**
+   *
+   */
+  private static final long         serialVersionUID = 1L;
+
+  public static void clearList() {
+    CashFileData.cashfdList.clear();
+  }
 
   /**
    * Returns the EstimateFileData instance for requested ticker.
@@ -73,17 +77,8 @@ public class CashFileData implements Serializable {
     return null;
   }
 
-  public CashFileData(CashFileData cfd) {
-    if (cfd != null) {
-      this.capExQtr = cfd.capExQtr;
-      this.cashFromOpsQtr = cfd.cashFromOpsQtr;
-      this.cashFromInvQtr = cfd.cashFromInvQtr;
-      this.cashFromFinQtr = cfd.cashFromFinQtr;
-      this.ticker = cfd.ticker;
-    }
-    else {
-      this.ticker = "";
-    }
+  public static List<CashFileData> getCashfdList() {
+    return CashFileData.cashfdList;
   }
 
   /**
@@ -106,6 +101,17 @@ public class CashFileData implements Serializable {
       ret += c.toString();
     }
     return ret;
+  }
+
+  public static void main(final String[] args) throws FileNotFoundException {
+
+    CashFileData.readSipData("data/CASH-2020Q2.TXT");
+
+    for (final CashFileData c : CashFileData.cashfdList) {
+      System.out.println(c.ticker);
+      System.out.println(c.toDbOutput());
+    }
+
   }
 
   /**
@@ -171,40 +177,31 @@ public class CashFileData implements Serializable {
   }
 
   private double[] capExQtr;
-  private double[] cashFromOpsQtr;
-  private double[] cashFromInvQtr;
   private double[] cashFromFinQtr;
-  private String   ticker;
+  private double[] cashFromInvQtr;
 
-  public static List<CashFileData> getCashfdList() {
-    return cashfdList;
-  }
+  private double[] cashFromOpsQtr;
 
-  public double[] getCapExQtr() {
-    return capExQtr;
-  }
+  private String ticker;
 
-  public double[] getCashFromOpsQtr() {
-    return cashFromOpsQtr;
-  }
-
-  public double[] getCashFromInvQtr() {
-    return cashFromInvQtr;
-  }
-
-  public double[] getCashFromFinQtr() {
-    return cashFromFinQtr;
-  }
-
-  public String getTicker() {
-    return ticker;
+  public CashFileData(CashFileData cfd) {
+    if (cfd != null) {
+      this.capExQtr = cfd.capExQtr;
+      this.cashFromOpsQtr = cfd.cashFromOpsQtr;
+      this.cashFromInvQtr = cfd.cashFromInvQtr;
+      this.cashFromFinQtr = cfd.cashFromFinQtr;
+      this.ticker = cfd.ticker;
+    }
+    else {
+      this.ticker = "";
+    }
   }
 
   /**
    * Constructor - package level.
    */
   CashFileData() {
-    ticker = "";
+    this.ticker = "";
   }
 
   /**
@@ -227,6 +224,26 @@ public class CashFileData implements Serializable {
 
   }
 
+  public double[] getCapExQtr() {
+    return this.capExQtr;
+  }
+
+  public double[] getCashFromFinQtr() {
+    return this.cashFromFinQtr;
+  }
+
+  public double[] getCashFromInvQtr() {
+    return this.cashFromInvQtr;
+  }
+
+  public double[] getCashFromOpsQtr() {
+    return this.cashFromOpsQtr;
+  }
+
+  public String getTicker() {
+    return this.ticker;
+  }
+
   /**
    * Creates string of formatted data structures.
    *
@@ -240,7 +257,7 @@ public class CashFileData implements Serializable {
       ret += String.format("  cash from investing   : %s%n", SipOutput.buildArray("", this.cashFromInvQtr, 10, 3, 1));
       ret += String.format("  cash from operations  : %s%n", SipOutput.buildArray("", this.cashFromOpsQtr, 10, 3, 1));
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       ret = "";
     }
     return ret;
@@ -251,20 +268,5 @@ public class CashFileData implements Serializable {
     String ret = "Cash File Data";
     ret += this.toDbOutput();
     return ret;
-  }
-
-  public static void clearList() {
-    cashfdList.clear();
-  }
-
-  public static void main(final String[] args) throws FileNotFoundException {
-
-    readSipData("data/CASH-2020Q2.TXT");
-
-    for (CashFileData c : cashfdList) {
-      System.out.println(c.ticker);
-      System.out.println(c.toDbOutput());
-    }
-
   }
 }

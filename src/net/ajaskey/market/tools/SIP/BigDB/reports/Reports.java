@@ -99,49 +99,38 @@ public class Reports {
     return ret;
   }
 
-  public static String memoryOverview() {
+  /**
+   *
+   * @param ticker
+   * @return
+   */
+  public static List<String> getCompanyNetIncome(String ticker) {
 
-    String ret = "";
+    final List<String> ret = new ArrayList<>();
 
-    for (int year = Globals.startYear; year <= Globals.endYear; year++) {
+    final List<OneCompanyData> ocdList = OneCompanyData.getCompany(ticker);
 
-      FieldDataYear fdy = Globals.getYear(year);
-      if (fdy != null) {
-
-        ret += String.format("%n----------%d Q1----------------%n", year);
-        int qtr = 1;
-        int knt = 0;
-        if (fdy.quarterDataAvailable(qtr)) {
-          knt = fdy.getQ(qtr).fieldDataList.size();
-        }
-        ret += String.format("  Companies : %d%n", knt);
-
-        ret += String.format("%n----------%d Q2----------------%n", year);
-        qtr = 2;
-        knt = 0;
-        if (fdy.quarterDataAvailable(qtr)) {
-          knt = fdy.getQ(qtr).fieldDataList.size();
-        }
-        ret += String.format("  Companies : %d%n", knt);
-
-        ret += String.format("%n----------%d Q3----------------%n", year);
-        qtr = 3;
-        knt = 0;
-        if (fdy.quarterDataAvailable(qtr)) {
-          knt = fdy.getQ(qtr).fieldDataList.size();
-        }
-        ret += String.format("  Companies : %d%n", knt);
-
-        ret += String.format("%n----------%d Q4----------------%n", year);
-        qtr = 4;
-        knt = 0;
-        if (fdy.quarterDataAvailable(qtr)) {
-          knt = fdy.getQ(qtr).fieldDataList.size();
-        }
-        ret += String.format("  Companies : %d%n", knt);
-      }
+    for (final OneCompanyData ocd : ocdList) {
+      final double net = ocd.getQ2().getIncSheetData().getNetIncYr()[0];
+      final String s = String.format("%d : %f", ocd.getYear(), net);
+      ret.add(s);
     }
+
     return ret;
+  }
+
+  public static List<String> getCompanyNetIncome(String ticker, int startYr, int endYr, int quarter) {
+
+    final List<String> ret = new ArrayList<>();
+
+    for (int yr = startYr; yr <= endYr; yr++) {
+      final FieldData fd = FieldData.getFromDb(ticker, yr, quarter, FiletypeEnum.BINARY);
+      final String s = String.format("%d : %f", yr, fd.getIncSheetData().getNetIncYr()[0]);
+      ret.add(s);
+    }
+
+    return ret;
+
   }
 
   /**
@@ -286,6 +275,51 @@ public class Reports {
     return ret;
   }
 
+  public static String memoryOverview() {
+
+    String ret = "";
+
+    for (int year = Globals.startYear; year <= Globals.endYear; year++) {
+
+      final FieldDataYear fdy = Globals.getYear(year);
+      if (fdy != null) {
+
+        ret += String.format("%n----------%d Q1----------------%n", year);
+        int qtr = 1;
+        int knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+
+        ret += String.format("%n----------%d Q2----------------%n", year);
+        qtr = 2;
+        knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+
+        ret += String.format("%n----------%d Q3----------------%n", year);
+        qtr = 3;
+        knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+
+        ret += String.format("%n----------%d Q4----------------%n", year);
+        qtr = 4;
+        knt = 0;
+        if (fdy.quarterDataAvailable(qtr)) {
+          knt = fdy.getQ(qtr).fieldDataList.size();
+        }
+        ret += String.format("  Companies : %d%n", knt);
+      }
+    }
+    return ret;
+  }
+
   /**
    * Procedure takes a NL delimited string and returns a list of strings.
    *
@@ -304,7 +338,7 @@ public class Reports {
   }
 
   /**
-   * 
+   *
    * @param fd
    * @return
    */
@@ -314,47 +348,13 @@ public class Reports {
   }
 
   /**
-   * 
+   *
    * @param yr
    * @param qtr
    * @return
    */
   private static String header(int yr, int qtr) {
     return String.format("Summary of requested Company Ticker, Name, Exchange SnP, Dow for year %d quarter %d%n", yr, qtr);
-  }
-
-  /**
-   * 
-   * @param ticker
-   * @return
-   */
-  public static List<String> getCompanyNetIncome(String ticker) {
-
-    List<String> ret = new ArrayList<>();
-
-    List<OneCompanyData> ocdList = OneCompanyData.getCompany(ticker);
-
-    for (OneCompanyData ocd : ocdList) {
-      double net = ocd.getQ2().getIncSheetData().getNetIncYr()[0];
-      String s = String.format("%d : %f", ocd.getYear(), net);
-      ret.add(s);
-    }
-
-    return ret;
-  }
-
-  public static List<String> getCompanyNetIncome(String ticker, int startYr, int endYr, int quarter) {
-
-    List<String> ret = new ArrayList<>();
-
-    for (int yr = startYr; yr <= endYr; yr++) {
-      FieldData fd = FieldData.getFromDb(ticker, yr, quarter, FiletypeEnum.BINARY);
-      String s = String.format("%d : %f", yr, fd.getIncSheetData().getNetIncYr()[0]);
-      ret.add(s);
-    }
-
-    return ret;
-
   }
 
 }

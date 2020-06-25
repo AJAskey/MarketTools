@@ -19,6 +19,7 @@ import net.ajaskey.common.Utils;
 public class PortfolioValue {
 
   final static List<PortfolioValue> pvData = new ArrayList<>();
+
   public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 
     final Object obj = new JSONParser().parse(new FileReader("data/AAPL.json"));
@@ -90,12 +91,13 @@ public class PortfolioValue {
 //    }
 
   }
+
   double bsPrice;
   double iv;
   double lPrice;
   String optName;
 
-  int    quantity;
+  int quantity;
 
   double tPrice;
 

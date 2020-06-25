@@ -52,13 +52,13 @@ public class FredDataDownloader {
 
   public static final int maxRetries = 1;
 
-  public static int         retryCount   = 0;
+  public static int retryCount = 0;
 
   // public static final Logger LOGGER =
   // Logger.getLogger(FredDataDownloader.class.getName());
 
-  public static PrintWriter tryAgainFile = null;
-  private static final String NL = "\n";
+  public static PrintWriter   tryAgainFile = null;
+  private static final String NL           = "\n";
 
   /**
    * net.ajaskey.market.tools.fred.main

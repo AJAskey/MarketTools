@@ -25,77 +25,22 @@ public class QuarterlyDouble {
   private QuarterlyDouble() {
   }
 
-  public double getMostRecent() {
-    return this.dArr[1];
-  }
+  public double deltaQ(int q1, int q2) {
 
-  public double get(int i) {
-    double ret = 0.0;
-    try {
-      ret = this.dArr[i];
+    final double ret = 0.0;
+    if (q1 >= q2) {
+      return ret;
     }
-    catch (Exception e) {
-      ret = -9999.9999;
+    if (q1 > 3 || q2 < 2) {
+      return ret;
     }
-    return ret;
-  }
 
-  /**
-   * 
-   * @return
-   */
-  public double getQoQ() {
+    return this.dArr[q2] - this.dArr[q1];
 
-    double ret = 0.0;
-    if (this.dArr[5] != 0.0) {
-      ret = (this.dArr[1] - this.dArr[5]) / Math.abs(this.dArr[5]) * 100.0;
-    }
-    return ret;
   }
 
   /**
-   * 
-   * @return
-   */
-  public double getQseqQ() {
-
-    double ret = 0.0;
-    if (this.dArr[2] != 0.0) {
-      ret = (this.dArr[1] - this.dArr[2]) / Math.abs(this.dArr[2]) * 100.0;
-    }
-    return ret;
-  }
-
-  /**
-   * 
-   * @return
-   */
-  public double getTtm() {
-
-    double ret = 0.0;
-    try {
-      if (this.dArr.length > 3) {
-        ret = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
-      }
-    }
-    catch (Exception e) {
-      ret = 0.0;
-    }
-    return ret;
-  }
-
-  public double getTtmAvg() {
-    double d = 0.0;
-    try {
-      d = getTtm();
-    }
-    catch (Exception e) {
-    }
-    return d / 4.0;
-  }
-
-  /**
-   * 
+   *
    * @param desc
    * @return
    */
@@ -108,7 +53,7 @@ public class QuarterlyDouble {
   }
 
   /**
-   * 
+   *
    * @param desc
    * @return
    */
@@ -120,18 +65,73 @@ public class QuarterlyDouble {
     return ret;
   }
 
-  public double deltaQ(int q1, int q2) {
+  public double get(int i) {
+    double ret = 0.0;
+    try {
+      ret = this.dArr[i];
+    }
+    catch (final Exception e) {
+      ret = -9999.9999;
+    }
+    return ret;
+  }
+
+  public double getMostRecent() {
+    return this.dArr[1];
+  }
+
+  /**
+   *
+   * @return
+   */
+  public double getQoQ() {
 
     double ret = 0.0;
-    if (q1 >= q2) {
-      return ret;
+    if (this.dArr[5] != 0.0) {
+      ret = (this.dArr[1] - this.dArr[5]) / Math.abs(this.dArr[5]) * 100.0;
     }
-    if ((q1 > 3) || (q2 < 2)) {
-      return ret;
+    return ret;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public double getQseqQ() {
+
+    double ret = 0.0;
+    if (this.dArr[2] != 0.0) {
+      ret = (this.dArr[1] - this.dArr[2]) / Math.abs(this.dArr[2]) * 100.0;
     }
+    return ret;
+  }
 
-    return this.dArr[q2] - this.dArr[q1];
+  /**
+   *
+   * @return
+   */
+  public double getTtm() {
 
+    double ret = 0.0;
+    try {
+      if (this.dArr.length > 3) {
+        ret = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+    }
+    return ret;
+  }
+
+  public double getTtmAvg() {
+    double d = 0.0;
+    try {
+      d = this.getTtm();
+    }
+    catch (final Exception e) {
+    }
+    return d / 4.0;
   }
 
 }

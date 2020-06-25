@@ -41,18 +41,18 @@ import net.ajaskey.common.Utils;
  */
 public class IciMoneyFlowData {
 
-  private static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+  private static SimpleDateFormat sdf       = new SimpleDateFormat("MM/dd/yyyy");
   private static SimpleDateFormat sdfOptuma = new SimpleDateFormat("yyyy-MM-dd");
-  public Calendar date;
-  public long     domestic;
-  public long     equity;
-  public long     lcap;
-  public long     mcap;
-  public long     scap;
+  public Calendar                 date;
+  public long                     domestic;
+  public long                     equity;
+  public long                     lcap;
+  public long                     mcap;
+  public long                     scap;
 
-  public long     total;
+  public long total;
 
-  public boolean  valid;
+  public boolean valid;
 
   /**
    * This method serves as a constructor for the class.
@@ -87,7 +87,7 @@ public class IciMoneyFlowData {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.lang.Object#toString()
    */
   @Override
