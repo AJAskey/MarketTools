@@ -37,7 +37,7 @@ public class CompanyData {
    * Returns a list of companies with FieldData for each quarter of requested
    * ticker list.
    *
-   * @param tickers
+   * @param tickers The individual stock symbols
    * @return List of CompanyData
    */
   public static List<CompanyData> getCompanies(List<String> tickers) {
@@ -73,7 +73,7 @@ public class CompanyData {
   /**
    * Returns a CompanyData for each quarter of requested ticker
    *
-   * @param ticker
+   * @param ticker The individual stock symbol
    * @return CompanyData
    */
   public static CompanyData getCompany(String ticker) {
@@ -100,7 +100,7 @@ public class CompanyData {
   /**
    * Returns FieldData for ticker, year, and quarter of requested
    *
-   * @param ticker
+   * @param ticker The individual stock symbol
    * @return CompanyData
    */
   public static FieldData getCompany(String ticker, int yr, int qtr) {
@@ -259,8 +259,8 @@ public class CompanyData {
   /**
    *
    * @param ticker
-   * @param tickers
-   * @return
+   * @param tickers The individual stock symbols
+   * @return TRUE is ticker found. False if not.
    */
   private static boolean isTickerInList(String ticker, List<String> tickers) {
     for (final String s : tickers) {

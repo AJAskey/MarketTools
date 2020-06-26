@@ -42,8 +42,8 @@ public class EstimateFileData implements Serializable {
   /**
    * Returns the EstimateFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The individual stock symbol
+   * @return EstimateFileData
    */
   public static EstimateFileData find(String ticker) {
     if (ticker != null) {
@@ -61,7 +61,7 @@ public class EstimateFileData implements Serializable {
   /**
    * Returns the number of instances in the list read from the DB.
    *
-   * @return
+   * @return Number of entries in internal memory
    */
   public static int getListCount() {
     return EstimateFileData.efdList.size();
@@ -70,7 +70,7 @@ public class EstimateFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -83,8 +83,8 @@ public class EstimateFileData implements Serializable {
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param data List of strings to parse
+   * @return EstimateFileData
    */
   public static EstimateFileData readFromDb(List<String> data) {
 
@@ -130,8 +130,7 @@ public class EstimateFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filename
-   * @return
+   * @param filename Name of SIP file to parse
    */
   public static void readSipData(String filename) {
 
@@ -184,8 +183,7 @@ public class EstimateFileData implements Serializable {
   /**
    * Constructor fills data structures.
    *
-   * @param filename
-   * @return
+   * @param fld List of strings to parse
    */
   EstimateFileData(String[] fld) {
 
@@ -252,7 +250,7 @@ public class EstimateFileData implements Serializable {
   }
 
   /**
-   * Creates string of formatted data structures.
+   * Returns string of output to write to DB file
    *
    * @return String
    */

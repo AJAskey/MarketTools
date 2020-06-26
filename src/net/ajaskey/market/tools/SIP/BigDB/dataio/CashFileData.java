@@ -18,7 +18,6 @@
  */
 package net.ajaskey.market.tools.SIP.BigDB.dataio;
 
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +45,8 @@ public class CashFileData implements Serializable {
   /**
    * Returns the EstimateFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The individual stock symbol
+   * @return CahsFileData
    */
   public static CashFileData find(String ticker) {
     if (ticker != null) {
@@ -62,6 +61,11 @@ public class CashFileData implements Serializable {
     return null;
   }
 
+  /**
+   * Returns internal list of CashFileData
+   * 
+   * @return CashFileData
+   */
   public static List<CashFileData> getCashfdList() {
     return CashFileData.cashfdList;
   }
@@ -69,7 +73,7 @@ public class CashFileData implements Serializable {
   /**
    * Returns the number of instances in the list read from the DB.
    *
-   * @return
+   * @return Number in list
    */
   public static int getListCount() {
     return CashFileData.cashfdList.size();
@@ -78,7 +82,7 @@ public class CashFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -88,22 +92,11 @@ public class CashFileData implements Serializable {
     return ret;
   }
 
-  public static void main(final String[] args) throws FileNotFoundException {
-
-    CashFileData.readSipData("data/CASH-2020Q2.TXT");
-
-    for (final CashFileData c : CashFileData.cashfdList) {
-      System.out.println(c.ticker);
-      System.out.println(c.toDbOutput());
-    }
-
-  }
-
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param data List of strings to parse
+   * @return CashFileData
    */
   public static CashFileData readFromDb(List<String> data) {
 
@@ -147,8 +140,8 @@ public class CashFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filename
-   * @return
+   * @param filename SIP data file name
+   * 
    */
   public static void readSipData(String filename) {
 
@@ -164,11 +157,14 @@ public class CashFileData implements Serializable {
   private double[] capExQtr;
   private double[] cashFromFinQtr;
   private double[] cashFromInvQtr;
-
   private double[] cashFromOpsQtr;
+  private String   ticker;
 
-  private String ticker;
-
+  /**
+   * Copy Constructor
+   * 
+   * @param cfd CashFileData to copy
+   */
   public CashFileData(CashFileData cfd) {
     if (cfd != null) {
       this.capExQtr = cfd.capExQtr;
@@ -192,8 +188,8 @@ public class CashFileData implements Serializable {
   /**
    * Constructor fills data structures.
    *
-   * @param filename
-   * @return
+   * @param fld String data to parse
+   * 
    */
   CashFileData(String[] fld) {
 
@@ -230,7 +226,7 @@ public class CashFileData implements Serializable {
   }
 
   /**
-   * Creates string of formatted data structures.
+   * Returns string of output to write to DB file
    *
    * @return String
    */

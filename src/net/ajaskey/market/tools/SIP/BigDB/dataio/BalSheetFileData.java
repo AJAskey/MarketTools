@@ -41,8 +41,8 @@ public class BalSheetFileData implements Serializable {
   /**
    * Returns the IncSheetFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The individual stock symbol
+   * @return BalSheetFileData
    */
   public static BalSheetFileData find(String ticker) {
     if (ticker != null) {
@@ -61,8 +61,8 @@ public class BalSheetFileData implements Serializable {
   /**
    * Returns the IncSheetFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The individual stock symbol
+   * @return Number in list
    */
   public static int getListCount() {
     return BalSheetFileData.bfdList.size();
@@ -71,7 +71,7 @@ public class BalSheetFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -82,10 +82,10 @@ public class BalSheetFileData implements Serializable {
   }
 
   /**
-   * Parses data and fills data structures from DB files.
+   * Parses data and fills data structures to DB files.
    *
-   * @param data
-   * @return
+   * @param data List of strings to parse
+   * @return BalSheetFileData
    */
   public static BalSheetFileData readFromDb(List<String> data) {
 
@@ -303,8 +303,8 @@ public class BalSheetFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filenameQtr
-   * @param filenameYr
+   * @param filenameQtr Name of quarter data file
+   * @param filenameYr  Name of year data file
    */
   public static void readSipData(String filenameQtr, String filenameYr) {
 
@@ -395,13 +395,12 @@ public class BalSheetFileData implements Serializable {
   private double[] totalAssetsQtr;
   private double[] totalAssetsYr;
   private double[] totalLiabQtr;
-
   private double[] totalLiabYr;
 
   /**
    * Copy Constructor
    *
-   * @param bfd
+   * @param bfd BalSheetFileData to copy
    */
   public BalSheetFileData(BalSheetFileData bfd) {
     if (bfd != null) {
@@ -469,8 +468,8 @@ public class BalSheetFileData implements Serializable {
   /**
    * Constructor fills data structures.
    *
-   * @param strFldQtr
-   * @param strFldYr
+   * @param strFldQtr Array of quarter FieldData
+   * @param strFldYr  Array of year FieldData
    */
   BalSheetFileData(String[] fldQtr, String[] fldYr) {
 
@@ -796,6 +795,11 @@ public class BalSheetFileData implements Serializable {
     return this.totalLiabYr;
   }
 
+  /**
+   * Returns string of output to write to DB file
+   * 
+   * @return String
+   */
   public String toDbOutput() {
     String ret = "";
     try {
