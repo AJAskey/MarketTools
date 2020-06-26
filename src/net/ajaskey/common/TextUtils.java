@@ -122,7 +122,7 @@ public class TextUtils {
       lines = FileUtils.readLines(file, "UTF-8");
     }
     catch (final IOException e) {
-      return null;
+      return ret;
     }
 
     if (ignoreBlanks) {
@@ -151,6 +151,11 @@ public class TextUtils {
     return TextUtils.readTextFile(f, ignoreBlanks);
   }
 
+  /**
+   * 
+   * @param data
+   * @return
+   */
   public static String toString(List<String> data) {
     String ret = "";
     try {

@@ -111,10 +111,12 @@ public class Utils {
    */
   public static List<File> getDir(final String dir, final String[] ext) {
 
-    final File d = new File(dir);
-    if (d.exists()) {
-      final List<File> retFiles = (List<File>) FileUtils.listFiles(d, ext, false);
-      return retFiles;
+    if ((dir != null) && (ext != null)) {
+      final File d = new File(dir);
+      if (d.exists()) {
+        final List<File> retFiles = (List<File>) FileUtils.listFiles(d, ext, false);
+        return retFiles;
+      }
     }
     return null;
 
