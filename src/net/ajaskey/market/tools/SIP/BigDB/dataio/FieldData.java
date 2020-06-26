@@ -233,7 +233,7 @@ public class FieldData implements Serializable {
 
   /**
    * Returns the trailing 12 months of data
-   * 
+   *
    * @param dArr Quarter array of data
    * @return Sum of data
    */
@@ -474,7 +474,7 @@ public class FieldData implements Serializable {
   }
 
   /**
-   * 
+   *
    * @param yr     year
    * @param qtr    quarter
    * @param ticker The individual stock symbol

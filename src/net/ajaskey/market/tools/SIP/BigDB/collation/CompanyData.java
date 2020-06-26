@@ -53,17 +53,17 @@ public class CompanyData {
    * Returns a list of CompanyData for tickers, the year, and quarter requested.
    *
    * @param tickers List of string ticker values,
-   * @param year
-   * @param quarter
-   * @return
+   * @param yr      year
+   * @param qtr     quarter
+   * @return List of CompanyData
    */
-  public static List<CompanyData> getCompanies(List<String> tickers, int year, int quarter) {
+  public static List<CompanyData> getCompanies(List<String> tickers, int yr, int qtr) {
     final List<CompanyData> ret = new ArrayList<>();
 
     for (final String ticker : tickers) {
 
       final CompanyData cd = new CompanyData(ticker);
-      final FieldData fd = CompanyData.getCompany(ticker, year, quarter);
+      final FieldData fd = CompanyData.getCompany(ticker, yr, qtr);
       cd.fdList.add(fd);
       ret.add(cd);
     }
@@ -101,7 +101,9 @@ public class CompanyData {
    * Returns FieldData for ticker, year, and quarter of requested
    *
    * @param ticker The individual stock symbol
-   * @return CompanyData
+   * @param yr     year
+   * @param qtr    quarter
+   * @return FieldData
    */
   public static FieldData getCompany(String ticker, int yr, int qtr) {
 
@@ -113,15 +115,15 @@ public class CompanyData {
   /**
    * Returns a list of tickers from the requesting Dow index
    *
-   * @param index
-   * @param year
-   * @param quarter
+   * @param index DowEnum
+   * @param yr    year
+   * @param qtr   quarter
    * @return List of String
    */
-  public static List<String> getTickers(DowEnum index, int year, int quarter) {
+  public static List<String> getTickers(DowEnum index, int yr, int qtr) {
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(year, quarter);
+    final List<File> files = CompanyData.getFiles(yr, qtr);
 
     List<String> input = null;
     for (final File f : files) {
@@ -143,12 +145,12 @@ public class CompanyData {
   /**
    * Returns a list of tickers from the requested market exchange.
    *
-   * @param index
-   * @param year
-   * @param quarter
-   * @return
+   * @param index ExchEnum
+   * @param yr    year
+   * @param qtr   quarter
+   * @return List of String
    */
-  public static List<String> getTickers(ExchEnum index, int year, int quarter) {
+  public static List<String> getTickers(ExchEnum index, int yr, int qtr) {
 
     final List<String> ret = new ArrayList<>();
 
@@ -156,7 +158,7 @@ public class CompanyData {
       return ret;
     }
 
-    final List<File> files = CompanyData.getFiles(year, quarter);
+    final List<File> files = CompanyData.getFiles(yr, qtr);
 
     List<String> input = null;
 
@@ -181,15 +183,15 @@ public class CompanyData {
   /**
    * Returns a list of tickers for the year and quarter requested.
    *
-   * @param year
-   * @param quarter
-   * @return
+   * @param yr  year
+   * @param qtr quarter
+   * @return List of String
    */
-  public static List<String> getTickers(int year, int quarter) {
+  public static List<String> getTickers(int yr, int qtr) {
     final List<String> ret = new ArrayList<>();
     try {
       final String[] ext = { "txt", "gz" };
-      final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, year, quarter);
+      final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, yr, qtr);
       final List<File> fList = Utils.getDirTree(dir, ext);
       if (fList != null) {
         for (final File f : fList) {
@@ -210,16 +212,16 @@ public class CompanyData {
   /**
    * Returns of list of tickers from the requested SnP index
    *
-   * @param index
-   * @param year
-   * @param quarter
+   * @param index SnpEnum
+   * @param yr    year
+   * @param qtr   quarter
    * @return List of String
    */
-  public static List<String> getTickers(SnpEnum index, int year, int quarter) {
+  public static List<String> getTickers(SnpEnum index, int yr, int qtr) {
 
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(year, quarter);
+    final List<File> files = CompanyData.getFiles(yr, qtr);
 
     List<String> input = null;
     for (final File f : files) {
@@ -333,10 +335,10 @@ public class CompanyData {
   /**
    * Constructor
    *
-   * @param tick
+   * @param ticker The name of the individual stock symbol file
    */
-  public CompanyData(String tick) {
-    this.ticker = tick;
+  public CompanyData(String ticker) {
+    this.ticker = ticker;
   }
 
   public List<FieldData> getFdList() {

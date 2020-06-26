@@ -63,7 +63,7 @@ public class CashFileData implements Serializable {
 
   /**
    * Returns internal list of CashFileData
-   * 
+   *
    * @return CashFileData
    */
   public static List<CashFileData> getCashfdList() {
@@ -141,7 +141,7 @@ public class CashFileData implements Serializable {
    * Reads the data from SIP tab delimited files and fills data structures.
    *
    * @param filename SIP data file name
-   * 
+   *
    */
   public static void readSipData(String filename) {
 
@@ -162,7 +162,7 @@ public class CashFileData implements Serializable {
 
   /**
    * Copy Constructor
-   * 
+   *
    * @param cfd CashFileData to copy
    */
   public CashFileData(CashFileData cfd) {
@@ -189,7 +189,7 @@ public class CashFileData implements Serializable {
    * Constructor fills data structures.
    *
    * @param fld String data to parse
-   * 
+   *
    */
   CashFileData(String[] fld) {
 

@@ -41,8 +41,8 @@ public class SharesFileData implements Serializable {
   /**
    * Returns the ShareFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The name of the individual stock symbol file
+   * @return SharesFileData
    */
   public static SharesFileData find(String ticker) {
     if (ticker != null) {
@@ -60,7 +60,7 @@ public class SharesFileData implements Serializable {
   /**
    * Returns the number of instances in the list read from the DB.
    *
-   * @return
+   * @return count
    */
   public static int getListCount() {
     return SharesFileData.sfdList.size();
@@ -69,7 +69,7 @@ public class SharesFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -82,8 +82,8 @@ public class SharesFileData implements Serializable {
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param data Data to parse
+   * @return SharesFileData
    */
   public static SharesFileData readFromDb(List<String> data) {
 
@@ -174,8 +174,7 @@ public class SharesFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filename
-   * @return
+   * @param filename Name of SIP file to parse
    */
   public static void readSipData(String filename) {
 

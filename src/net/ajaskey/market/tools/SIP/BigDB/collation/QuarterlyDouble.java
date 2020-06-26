@@ -26,7 +26,7 @@ public class QuarterlyDouble {
 
   /**
    * Constructor
-   * 
+   *
    * @param inArr Quarterly data
    */
   public QuarterlyDouble(double[] inArr) {
@@ -50,7 +50,7 @@ public class QuarterlyDouble {
 
   /**
    * Returns the difference between two quarters of data
-   * 
+   *
    * @param q1 Earlier quarter
    * @param q2 Later quarter
    * @return Zero if bad inputs or the delta
@@ -99,7 +99,7 @@ public class QuarterlyDouble {
 
   /**
    * Returns requested quarter of data
-   * 
+   *
    * @param i quarter to return
    * @return double
    */
@@ -120,7 +120,7 @@ public class QuarterlyDouble {
 
   /**
    * Returns percent change of q4 vs q1
-   * 
+   *
    * @return double
    */
   public double getQoQ() {
@@ -134,7 +134,7 @@ public class QuarterlyDouble {
 
   /**
    * Returns percent change of q2 vs q1
-   * 
+   *
    * @return double
    */
   public double getQseqQ() {
@@ -148,7 +148,7 @@ public class QuarterlyDouble {
 
   /**
    * Returns trailing 12 months
-   * 
+   *
    * @return q1 + q2 + q3 + q4
    */
   public double getTtm() {
@@ -167,7 +167,7 @@ public class QuarterlyDouble {
 
   /**
    * Returns the average of the trailing 12 months
-   * 
+   *
    * @return (q1 + q2 + q3 + q4) / 4
    */
   public double getTtmAvg() {

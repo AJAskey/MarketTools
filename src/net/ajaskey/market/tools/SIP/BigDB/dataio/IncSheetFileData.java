@@ -41,8 +41,8 @@ public class IncSheetFileData implements Serializable {
   /**
    * Returns the IncSheetFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The name of the individual stock symbol file
+   * @return IncSheetFileData
    */
   public static IncSheetFileData find(String ticker) {
     if (ticker != null) {
@@ -60,7 +60,7 @@ public class IncSheetFileData implements Serializable {
   /**
    * Returns the number of instances in the list read from the DB.
    *
-   * @return
+   * @return count
    */
   public static int getListCount() {
     return IncSheetFileData.ifdList.size();
@@ -69,7 +69,7 @@ public class IncSheetFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -82,8 +82,8 @@ public class IncSheetFileData implements Serializable {
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param data List of strings to parse
+   * @return IncSheetFileData
    */
   public static IncSheetFileData readFromDb(List<String> data) {
 
@@ -295,8 +295,8 @@ public class IncSheetFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filenameQtr
-   * @param filenameYr
+   * @param filenameQtr File name of quarterly data
+   * @param filenameYr  File name of yearly data
    */
   public static void readSipData(String filenameQtr, String filenameYr) {
 

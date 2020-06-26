@@ -64,8 +64,8 @@ public class CompanyFileData implements Serializable {
   /**
    * Returns the CompanyFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The name of the individual stock symbol file
+   * @return CompanyFileData
    */
   public static CompanyFileData find(String ticker) {
     if (ticker != null) {
@@ -95,7 +95,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Returns the number of instances in the list read from the DB.
    *
-   * @return
+   * @return count
    */
   public static int getListCount() {
     return CompanyFileData.cfdList.size();
@@ -104,7 +104,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -117,8 +117,8 @@ public class CompanyFileData implements Serializable {
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param input List of strings to parse
+   * @return CompanyFileData
    */
   public static CompanyFileData readFromDb(List<String> input) {
 
@@ -202,8 +202,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filename
-   * @return
+   * @param filename Name of SIP file to parse
    */
   public static void readSipData(String filename) {
 
@@ -258,8 +257,7 @@ public class CompanyFileData implements Serializable {
     }
   }
 
-  private boolean adr;
-
+  private boolean  adr;
   private String   city;
   private String   country;
   private DowEnum  dowIndex;
@@ -288,7 +286,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Copy Constructor
    *
-   * @param cfd
+   * @param cfd CompanyFileData to copy
    */
   public CompanyFileData(CompanyFileData cfd) {
     if (cfd != null) {
@@ -328,6 +326,11 @@ public class CompanyFileData implements Serializable {
     return this.dowIndex;
   }
 
+  /**
+   * Returns capitalized string of DowEnum
+   *
+   * @return String
+   */
   public String getDowIndexStr() {
     String ret = "";
     try {
@@ -371,6 +374,11 @@ public class CompanyFileData implements Serializable {
     return this.snpIndex;
   }
 
+  /**
+   * Returns capitalized string of SnpEnum
+   *
+   * @return String
+   */
   public String getSnpIndexStr() {
     String ret = "";
     try {
@@ -413,8 +421,8 @@ public class CompanyFileData implements Serializable {
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param data List of string to parse and set values
+   * @return List of String
    */
   public List<String> set(List<String> data) {
 
@@ -628,6 +636,11 @@ public class CompanyFileData implements Serializable {
     return ret;
   }
 
+  /**
+   * Returns capitalized string of ExchEnum
+   *
+   * @return String
+   */
   private String getExchangeStr() {
     return this.exchange.toString().toUpperCase();
   }

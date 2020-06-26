@@ -47,17 +47,12 @@ public class OneCompanyData {
   }
 
   /**
-   *
-   * @param ticker
-   * @return
-   */
-
-  /**
+   * Returns FieldData for requested parameters
    *
    * @param fdList List of FieldData
    * @param yr     year
    * @param qtr    quarter
-   * @return
+   * @return FieldData
    */
   public static FieldData getFieldData(List<FieldData> fdList, int yr, int qtr) {
     for (final FieldData fd : fdList) {
@@ -69,7 +64,8 @@ public class OneCompanyData {
   }
 
   /**
-   * 
+   * Returns quarter
+   *
    * @param name The name of the individual stock symbol file
    * @return Numeric value of quarter
    */
@@ -87,7 +83,8 @@ public class OneCompanyData {
   }
 
   /**
-   * 
+   * Returns year
+   *
    * @param name The name of the individual stock symbol file
    * @return Numeric value of year
    */

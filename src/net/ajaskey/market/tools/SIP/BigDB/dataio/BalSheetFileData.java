@@ -61,7 +61,6 @@ public class BalSheetFileData implements Serializable {
   /**
    * Returns the IncSheetFileData instance for requested ticker.
    *
-   * @param ticker The individual stock symbol
    * @return Number in list
    */
   public static int getListCount() {
@@ -797,7 +796,7 @@ public class BalSheetFileData implements Serializable {
 
   /**
    * Returns string of output to write to DB file
-   * 
+   *
    * @return String
    */
   public String toDbOutput() {

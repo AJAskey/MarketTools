@@ -30,7 +30,7 @@ public class FieldDataYear {
   /**
    * Constructor
    *
-   * @param yr
+   * @param yr year
    */
   public FieldDataYear(int yr) {
     this.inUse = false;
