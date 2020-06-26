@@ -36,7 +36,7 @@ public class Fundamentals {
     // FieldData.setQMemory(2020, 2, FiletypeEnum.TEXT);
     FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
 
-    Fundamentals.fdList = FieldData.getAllFromMemory(2020, 2);
+    Fundamentals.fdList = FieldData.getQFromMemory(2020, 2);
     FundamentalReports.write();
   }
 

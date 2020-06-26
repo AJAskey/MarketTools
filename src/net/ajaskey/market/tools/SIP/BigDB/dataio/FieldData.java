@@ -81,11 +81,11 @@ public class FieldData implements Serializable {
    * Returns a list of FieldData for the requested year and quarter from DB files.
    *
    * @param yr  year
-   * @param qtr quarter
-   * @param ft  FiletypeEnum
+   * @param qtr quarter (1-4)
+   * @param ft  FiletypeEnum TEXT, BINARY, or BIG_BINARY
    * @return List of FieldData
    */
-  public static List<FieldData> getAllFromDb(int yr, int qtr, FiletypeEnum ft) {
+  public static List<FieldData> getQFromDb(int yr, int qtr, FiletypeEnum ft) {
 
     List<FieldData> fdList = null;
     if (ft == FiletypeEnum.TEXT) {
@@ -94,22 +94,22 @@ public class FieldData implements Serializable {
     else if (ft == FiletypeEnum.BINARY) {
       fdList = FieldData.parseFromDbBinData(yr, qtr);
     }
-    else {
-      System.out.printf("Waring. Invalid Filetype in getAllFromDb : %s%n", ft.toString());
+    else if (ft == FiletypeEnum.BIG_BINARY) {
+      fdList = FieldData.parseFromDbBigBinData(yr, qtr);
     }
 
     return fdList;
   }
 
   /**
-   * Returns a list of FieldData for all tickers from year and quarter from
-   * internal memory.
+   * Returns a list of FieldData for all tickers of requested year and quarter
+   * from internal memory.
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @return List of FieldData
    */
-  public static List<FieldData> getAllFromMemory(int yr, int qtr) {
+  public static List<FieldData> getQFromMemory(int yr, int qtr) {
 
     final List<FieldData> fdList = new ArrayList<>();
 
@@ -177,7 +177,7 @@ public class FieldData implements Serializable {
    *
    * @param tkr The individual stock symbol
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @return FieldData
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
@@ -246,7 +246,7 @@ public class FieldData implements Serializable {
    * Reads SIP tab separated data files. Stores the data in array for later use.
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @param ft  FiletypeEnum
    * @throws FileNotFoundException Requested file not found
    */
@@ -395,7 +395,7 @@ public class FieldData implements Serializable {
    * Sets internal memory to request year and quarter.
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @param ft  FiletypeEnum BINARY or TEXT valid
    */
   public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
@@ -424,7 +424,7 @@ public class FieldData implements Serializable {
    * Reads individual company binary DB file.
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @return List of FieldData
    */
   private static List<FieldData> parseFromDbBigBinData(int yr, int qtr) {
@@ -446,7 +446,7 @@ public class FieldData implements Serializable {
    * Read the company binary DB file corresponding to year and quarter
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @return List of FieldData
    */
   private static List<FieldData> parseFromDbBinData(int yr, int qtr) {
@@ -498,7 +498,7 @@ public class FieldData implements Serializable {
    * quarters "may" make processing faster for large comprehensive reports.
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @return List of FieldData for year and quarter
    */
   private static List<FieldData> parseFromDbData(int yr, int qtr) {
@@ -635,7 +635,7 @@ public class FieldData implements Serializable {
    * tickers are returned.
    *
    * @param yr  year
-   * @param qtr quarter 1-4
+   * @param qtr quarter (1-4) 1-4
    * @param ft  FiletypeEnum
    * @return A list of FieldData for each ticket in the DB for year and quarter.
    *
@@ -787,7 +787,7 @@ public class FieldData implements Serializable {
    * Constructor
    *
    * @param yr  year
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    */
   public FieldData(int yr, int qtr) {
 
