@@ -1,3 +1,21 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with this
+ * work for additional information regarding copyright ownership. The ASF
+ * licenses this file to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ *
+ * Original author : Andy Askey (ajaskey34@gmail.com)
+ */
 
 package net.ajaskey.common;
 
@@ -7,45 +25,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * This class encapsulates and improves the implementation of the
- * java.utils.Calendar class.
- *
- * @author Andy Askey
- *
- *         <p>
- *         PTV-Parser Copyright (c) 2015, Andy Askey. All rights reserved.
- *         </p>
- *
- *         <p>
- *         Permission is hereby granted, free of charge, to any person obtaining
- *         a copy of this software and associated documentation files (the
- *         "Software"), to deal in the Software without restriction, including
- *         without limitation the rights to use, copy, modify, merge, publish,
- *         distribute, sublicense, and/or sell copies of the Software, and to
- *         permit persons to whom the Software is furnished to do so, subject to
- *         the following conditions:
- *
- *         The above copyright notice and this permission notice shall be
- *         included in all copies or substantial portions of the Software.
- *         </p>
- *
- *         <p>
- *         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- *         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- *         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- *         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- *         BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- *         ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- *         CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *         SOFTWARE.
- *         </p>
- *
- */
 public class DateTime implements Serializable {
 
-  public static final int APRIL = Calendar.APRIL;
-
+  public static final int   APRIL            = Calendar.APRIL;
   public static final int   AUGUST           = Calendar.AUGUST;
   public static final int   DATE             = Calendar.DATE;
   public static final int   DECEMBER         = Calendar.DECEMBER;
@@ -456,6 +438,10 @@ public class DateTime implements Serializable {
     return dd / 365.0;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getHour() {
     int ret = -1;
     if (!this.isNull()) {
@@ -464,6 +450,10 @@ public class DateTime implements Serializable {
     return ret;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getMinute() {
     int ret = -1;
     if (!this.isNull()) {
@@ -473,8 +463,6 @@ public class DateTime implements Serializable {
   }
 
   /**
-   *
-   * net.ajaskey.market.misc.getMonth
    *
    * @return
    */
@@ -486,6 +474,10 @@ public class DateTime implements Serializable {
     return ret;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getMs() {
     int ret = -1;
     if (!this.isNull()) {
@@ -496,14 +488,16 @@ public class DateTime implements Serializable {
 
   /**
    *
-   * net.ajaskey.market.misc.getSdf
-   *
    * @return
    */
   public SimpleDateFormat getSdf() {
     return this.sdf;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getSecond() {
     int ret = -1;
     if (!this.isNull()) {
@@ -512,6 +506,10 @@ public class DateTime implements Serializable {
     return ret;
   }
 
+  /**
+   *
+   * @return
+   */
   public Date getTime() {
     Date ret = null;
     if (!this.isNull()) {
@@ -520,6 +518,10 @@ public class DateTime implements Serializable {
     return ret;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getYear() {
     int ret = -1;
     if (!this.isNull()) {
@@ -528,24 +530,29 @@ public class DateTime implements Serializable {
     return ret;
   }
 
-  public int getYears(DateTime date2) {
+  /**
+   *
+   * @param dt
+   * @return
+   */
+  public int getYears(DateTime dt) {
     int delta = 0;
     try {
-      if (date2.isNull() || this.isNull()) {
+      if (dt.isNull() || this.isNull()) {
         return 0;
       }
 
       final int y1 = this.cal.get(DateTime.YEAR);
-      final int y2 = date2.cal.get(DateTime.YEAR);
+      final int y2 = dt.cal.get(DateTime.YEAR);
       delta = y2 - y1;
       final int m1 = this.cal.get(DateTime.MONTH);
-      final int m2 = date2.cal.get(DateTime.MONTH);
+      final int m2 = dt.cal.get(DateTime.MONTH);
       if (m2 < m1) {
         delta--;
       }
       else if (m2 == m1) {
         final int d1 = this.cal.get(DateTime.DATE);
-        final int d2 = date2.cal.get(DateTime.DATE);
+        final int d2 = dt.cal.get(DateTime.DATE);
         if (d2 < d1) {
           delta--;
         }
@@ -658,6 +665,10 @@ public class DateTime implements Serializable {
     return ret;
   }
 
+  /**
+   *
+   * @return
+   */
   public boolean isNull() {
     boolean ret = false;
     try {
@@ -672,8 +683,6 @@ public class DateTime implements Serializable {
   }
 
   /**
-   *
-   * net.ajaskey.market.misc.isWeekday
    *
    * @return
    */
@@ -690,8 +699,6 @@ public class DateTime implements Serializable {
   }
 
   /**
-   *
-   * net.ajaskey.market.misc.parse
    *
    * @param src
    * @return
@@ -712,8 +719,6 @@ public class DateTime implements Serializable {
 
   /**
    *
-   * net.ajaskey.market.misc.parse
-   *
    * @param src
    * @param fmt
    * @return
@@ -733,18 +738,18 @@ public class DateTime implements Serializable {
 
   /**
    *
-   * @param dt2
+   * @param dt
    * @return
    */
-  public boolean sameDate(final DateTime dt2) {
+  public boolean sameDate(final DateTime dt) {
 
-    if (dt2.isNull()) {
+    if (dt.isNull()) {
       return false;
     }
     try {
-      if (this.cal.get(Calendar.YEAR) == dt2.cal.get(Calendar.YEAR)) {
-        if (this.cal.get(Calendar.MONTH) == dt2.cal.get(Calendar.MONTH)) {
-          if (this.cal.get(Calendar.DATE) == dt2.cal.get(Calendar.DATE)) {
+      if (this.cal.get(Calendar.YEAR) == dt.cal.get(Calendar.YEAR)) {
+        if (this.cal.get(Calendar.MONTH) == dt.cal.get(Calendar.MONTH)) {
+          if (this.cal.get(Calendar.DATE) == dt.cal.get(Calendar.DATE)) {
             return true;
           }
         }
@@ -758,9 +763,7 @@ public class DateTime implements Serializable {
 
   /**
    *
-   * net.ajaskey.market.misc.set
-   *
-   * @param c
+   * @param c Calendar
    */
   public void set(final Calendar c) {
     if (c != null) {
@@ -773,9 +776,7 @@ public class DateTime implements Serializable {
 
   /**
    *
-   * net.ajaskey.market.misc.set
-   *
-   * @param d
+   * @param d Date
    */
   public void set(final Date d) {
     if (d != null) {
@@ -787,8 +788,6 @@ public class DateTime implements Serializable {
   }
 
   /**
-   *
-   * net.ajaskey.market.misc.set
    *
    * @param dt
    */
@@ -802,8 +801,6 @@ public class DateTime implements Serializable {
   }
 
   /**
-   *
-   * net.ajaskey.market.misc.set
    *
    * @param year
    * @param month
@@ -831,8 +828,6 @@ public class DateTime implements Serializable {
 
   /**
    *
-   * net.ajaskey.market.misc.setSdf
-   *
    * @param simpledateformat
    */
   public void setSdf(final SimpleDateFormat simpledateformat) {
@@ -840,8 +835,6 @@ public class DateTime implements Serializable {
   }
 
   /**
-   *
-   * net.ajaskey.market.misc.toFullString
    *
    * @return
    */
