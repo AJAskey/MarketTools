@@ -77,65 +77,6 @@ public class FieldData implements Serializable {
   }
 
   /**
-   *
-   * Returns a list of FieldData for the requested year and quarter from DB files.
-   *
-   * @param yr  year
-   * @param qtr quarter (1-4)
-   * @param ft  FiletypeEnum TEXT, BINARY, or BIG_BINARY
-   * @return List of FieldData
-   */
-  public static List<FieldData> getQFromDb(int yr, int qtr, FiletypeEnum ft) {
-
-    List<FieldData> fdList = null;
-    if (ft == FiletypeEnum.TEXT) {
-      fdList = FieldData.parseFromDbData(yr, qtr);
-    }
-    else if (ft == FiletypeEnum.BINARY) {
-      fdList = FieldData.parseFromDbBinData(yr, qtr);
-    }
-    else if (ft == FiletypeEnum.BIG_BINARY) {
-      fdList = FieldData.parseFromDbBigBinData(yr, qtr);
-    }
-
-    return fdList;
-  }
-
-  /**
-   * Returns a list of FieldData for all tickers of requested year and quarter
-   * from internal memory.
-   *
-   * @param yr  year
-   * @param qtr quarter (1-4)
-   * @return List of FieldData
-   */
-  public static List<FieldData> getQFromMemory(int yr, int qtr) {
-
-    final List<FieldData> fdList = new ArrayList<>();
-
-    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
-
-    for (final FieldDataYear fdy : Globals.allDataList) {
-
-      if (yr == fdy.getYear()) {
-
-        if (fdy.isInUse()) {
-
-          if (fdy.quarterDataAvailable(qtr)) {
-
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
-
-            for (final FieldData fd : fdq.fieldDataList) {
-              fdList.add(fd);
-            }
-          }
-        }
-      }
-    }
-    return fdList;
-  }
-
-  /**
    * Returns a capitalized string
    *
    * @param enm ExchEnum
@@ -229,6 +170,65 @@ public class FieldData implements Serializable {
     final String fname = String.format("%s/%s-fundamental-data-%dQ%d.%s", outdir, ticker, yr, qtr, ext);
 
     return fname;
+  }
+
+  /**
+   *
+   * Returns a list of FieldData for the requested year and quarter from DB files.
+   *
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @param ft  FiletypeEnum TEXT, BINARY, or BIG_BINARY
+   * @return List of FieldData
+   */
+  public static List<FieldData> getQFromDb(int yr, int qtr, FiletypeEnum ft) {
+
+    List<FieldData> fdList = null;
+    if (ft == FiletypeEnum.TEXT) {
+      fdList = FieldData.parseFromDbData(yr, qtr);
+    }
+    else if (ft == FiletypeEnum.BINARY) {
+      fdList = FieldData.parseFromDbBinData(yr, qtr);
+    }
+    else if (ft == FiletypeEnum.BIG_BINARY) {
+      fdList = FieldData.parseFromDbBigBinData(yr, qtr);
+    }
+
+    return fdList;
+  }
+
+  /**
+   * Returns a list of FieldData for all tickers of requested year and quarter
+   * from internal memory.
+   *
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return List of FieldData
+   */
+  public static List<FieldData> getQFromMemory(int yr, int qtr) {
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
+
+    for (final FieldDataYear fdy : Globals.allDataList) {
+
+      if (yr == fdy.getYear()) {
+
+        if (fdy.isInUse()) {
+
+          if (fdy.quarterDataAvailable(qtr)) {
+
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
+
+            for (final FieldData fd : fdq.fieldDataList) {
+              fdList.add(fd);
+            }
+          }
+        }
+      }
+    }
+    return fdList;
   }
 
   /**
@@ -869,7 +869,7 @@ public class FieldData implements Serializable {
     return this.getBalSheetData().getBvpsYr();
   }
 
-  public double[] getCapEx() {
+  public double[] getCapExQtr() {
     return this.cashData.getCapExQtr();
   }
 
@@ -877,15 +877,15 @@ public class FieldData implements Serializable {
     return this.cashData;
   }
 
-  public double[] getCashFromFin() {
+  public double[] getCashFromFinQtr() {
     return this.cashData.getCashFromFinQtr();
   }
 
-  public double[] getCashFromInv() {
+  public double[] getCashFromInvQtr() {
     return this.cashData.getCashFromInvQtr();
   }
 
-  public double[] getCashFromOps() {
+  public double[] getCashFromOpsQtr() {
     return this.cashData.getCashFromOpsQtr();
   }
 
@@ -1407,22 +1407,6 @@ public class FieldData implements Serializable {
 
   public String getZip() {
     return this.getCompanyInfo().getZip();
-  }
-
-  public double[] getCapExQtr() {
-    return this.cashData.getCapExQtr();
-  }
-
-  public double[] getCashFromFinQtr() {
-    return this.cashData.getCashFromFinQtr();
-  }
-
-  public double[] getCashFromInvQtr() {
-    return this.cashData.getCashFromInvQtr();
-  }
-
-  public double[] getCashFromOpsQtr() {
-    return this.cashData.getCashFromOpsQtr();
   }
 
   public boolean isAdr() {

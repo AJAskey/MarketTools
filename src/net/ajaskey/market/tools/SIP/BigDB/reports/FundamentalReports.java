@@ -214,8 +214,8 @@ public class FundamentalReports extends Fundamentals {
 
     final double fcf = cashops.getTtm() - capex.getTtm() - dividend.getTtm() * shares.getTtmAvg();
 
-    final QuarterlyDouble cashfin = new QuarterlyDouble(fd.getCashFromFin());
-    final QuarterlyDouble cashinv = new QuarterlyDouble(fd.getCashFromInv());
+    final QuarterlyDouble cashfin = new QuarterlyDouble(fd.getCashFromFinQtr());
+    final QuarterlyDouble cashinv = new QuarterlyDouble(fd.getCashFromInvQtr());
 
     final double netcashflow = cashops.getTtm() + cashfin.getTtm();
     final double cashflow = netcashflow + cashinv.getTtm();
