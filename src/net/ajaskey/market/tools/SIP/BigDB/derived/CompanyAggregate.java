@@ -57,7 +57,7 @@ public class CompanyAggregate {
     CompanyAggregate.loadDb(2020, 2, FiletypeEnum.BIG_BINARY);
 
     final List<String> tickers = new ArrayList<>();
-    tickers.add("JPM");
+    // tickers.add("JPM");
     tickers.add("MSFT");
     tickers.add("W");
 
@@ -163,6 +163,8 @@ public class CompanyAggregate {
   private QuarterlyDouble fcfQdata;
   private QuarterlyDouble wcfcfQdata;
   private QuarterlyDouble divCostQdata;
+  private QuarterlyDouble netMarginQdata;
+  private QuarterlyDouble opMarginQdata;
 
   /**
    * Constructor
@@ -179,8 +181,6 @@ public class CompanyAggregate {
       this.quarter = qtr;
       System.out.println("Setting fd : " + fd.getTicker());
       this.fd = fd;
-
-      //
 
       this.sharesQdata = new QuarterlyDouble(fd.getSharesQ());
 
@@ -304,7 +304,7 @@ public class CompanyAggregate {
 
     final double wcfcfArr[] = new double[6];
     for (int i = 0; i < wcfcfArr.length; i++) {
-      wcfcfArr[i] = workingCapitalQdata.getMostRecent() + fcfQdata.getMostRecent();
+      wcfcfArr[i] = workingCapitalQdata.getMostRecent() + fcfQdata.getTtm();
     }
     wcfcfQdata = new QuarterlyDouble(wcfcfArr);
 
@@ -313,6 +313,28 @@ public class CompanyAggregate {
       divArr[i] = this.dividendQdata.get(i) * this.sharesQdata.get(i);
     }
     divCostQdata = new QuarterlyDouble(divArr);
+
+    final double nMarArr[] = new double[6];
+    for (int i = 0; i < nMarArr.length; i++) {
+      if (this.salesQdata.get(i) != 0.0) {
+        nMarArr[i] = this.netIncQdata.get(i) / this.salesQdata.get(i) * 100.0;
+      }
+      else {
+        nMarArr[i] = 0.0;
+      }
+    }
+    netMarginQdata = new QuarterlyDouble(nMarArr);
+
+    final double oMarArr[] = new double[6];
+    for (int i = 0; i < oMarArr.length; i++) {
+      if (this.salesQdata.get(i) != 0.0) {
+        oMarArr[i] = this.grossOpIncQdata.get(i) / this.salesQdata.get(i) * 100.0;
+      }
+      else {
+        oMarArr[i] = 0.0;
+      }
+    }
+    opMarginQdata = new QuarterlyDouble(oMarArr);
   }
 
   /**
@@ -390,15 +412,13 @@ public class CompanyAggregate {
 
         pw.println("\n" + ca.cashFromOpsQdata.fmtGrowth4Q("Cash <- Ops 12m"));
         pw.println(ca.capExQdata.fmtGrowth4Q("  CapEx 12m"));
-        if (fd.getDividendQtr()[1] > 0.0) {
-          final double div = ca.dividendQdata.getTtm() * ca.sharesQdata.getTtmAvg();
+        if (ca.dividendQdata.getTtm() > 0.0) {
           final double dyld = ca.dividendQdata.getTtm() / fd.getPrice() * 100.0;
-          pw.printf("\t  Dividends 12m   : %s M (Yield=%.2f%%)%n", Utils.fmt(div, 13), dyld);
+          pw.printf("\t  Dividends 12m   : %s M (Yield=%.2f%%)%n", Utils.fmt(ca.divCostQdata.getTtm(), 13), dyld);
 
         }
         else {
-          final double d = ca.dividendQdata.getTtm() * ca.sharesQdata.getTtmAvg();
-          pw.printf("\t  Dividends 12m   : %s M%n", Utils.fmt(d, 13));
+          pw.printf("\t  Dividends 12m   : %s M%n", Utils.fmt(ca.divCostQdata.getTtm(), 13));
         }
 
         pw.printf("\t    FCF 12m       : %s M %s%n", Utils.fmt(ca.fcfQdata.getTtm(), 13), "[Cash from Operations - CapEx - Dividends]");
