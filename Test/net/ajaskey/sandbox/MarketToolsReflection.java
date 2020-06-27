@@ -69,15 +69,15 @@ public class MarketToolsReflection {
    */
   public static void main(String[] args) {
 
-    Field[] allFields = net.ajaskey.market.tools.SIP.BigDB.dataio.BalSheetFileData.class.getDeclaredFields();
+    Field[] allFields = net.ajaskey.market.tools.SIP.BigDB.dataio.CashFileData.class.getDeclaredFields();
 
     List<String> fields = new ArrayList<>();
     for (Field f : allFields) {
       fields.add(f.toString());
     }
 
-    processCopyConstructor(fields);
-    // processQdata(fields);
+    // processCopyConstructor(fields);
+    processQdata(fields);
 
   }
 
