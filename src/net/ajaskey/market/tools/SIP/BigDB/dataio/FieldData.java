@@ -404,7 +404,7 @@ public class FieldData implements Serializable {
 
     if (ft == FiletypeEnum.BINARY) {
 
-      FieldData.readDbBigBinData(yr, qtr);
+      FieldData.readDbData(yr, qtr, ft);
     }
     else if (ft == FiletypeEnum.TEXT) {
 

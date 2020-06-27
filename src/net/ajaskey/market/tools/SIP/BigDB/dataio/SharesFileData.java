@@ -212,8 +212,8 @@ public class SharesFileData implements Serializable {
   private double   price52hi;
   private double   price52lo;
   private String   sector;
-  private double[] sharesQ;
-  private double[] sharesY;
+  private double[] sharesQtr;
+  private double[] sharesYr;
   private String   ticker;
   private long     volume10d;
   private long     volumeMonth3m;
@@ -242,8 +242,8 @@ public class SharesFileData implements Serializable {
       this.price52hi = sfd.price52hi;
       this.price52lo = sfd.price52lo;
       this.sector = sfd.sector;
-      this.sharesQ = sfd.sharesQ;
-      this.sharesY = sfd.sharesY;
+      this.sharesQtr = sfd.sharesQtr;
+      this.sharesYr = sfd.sharesYr;
       this.ticker = sfd.ticker;
       this.volume10d = sfd.volume10d;
       this.volumeMonth3m = sfd.volumeMonth3m;
@@ -255,10 +255,10 @@ public class SharesFileData implements Serializable {
   }
 
   SharesFileData() {
-    this.sharesQ = new double[1];
-    this.sharesQ[0] = 0.0;
-    this.sharesY = new double[1];
-    this.sharesY[0] = 0.0;
+    this.sharesQtr = new double[1];
+    this.sharesQtr[0] = 0.0;
+    this.sharesYr = new double[1];
+    this.sharesYr[0] = 0.0;
   }
 
   /**
@@ -290,8 +290,8 @@ public class SharesFileData implements Serializable {
     this.price = SipUtils.parseDouble(fld[19]);
     this.price52hi = SipUtils.parseDouble(fld[20]);
     this.price52lo = SipUtils.parseDouble(fld[21]);
-    this.sharesQ = SipUtils.parseDoubles(fld, 38, 8);
-    this.sharesY = SipUtils.parseDoubles(fld, 46, 7);
+    this.sharesQtr = SipUtils.parseDoubles(fld, 38, 8);
+    this.sharesYr = SipUtils.parseDoubles(fld, 46, 7);
     this.volume10d = SipUtils.parseLong(fld[56]);
     this.volumeMonth3m = SipUtils.parseLong(fld[57]);
     this.dollar3m = SipUtils.parseDouble(fld[58]);
@@ -386,11 +386,11 @@ public class SharesFileData implements Serializable {
   }
 
   public double[] getSharesQ() {
-    return this.sharesQ;
+    return this.sharesQtr;
   }
 
   public double[] getSharesY() {
-    return this.sharesY;
+    return this.sharesYr;
   }
 
   public String getTicker() {
@@ -474,11 +474,11 @@ public class SharesFileData implements Serializable {
   }
 
   public void setSharesQ(double[] flds) {
-    this.sharesQ = flds;
+    this.sharesQtr = flds;
   }
 
   public void setSharesY(double[] flds) {
-    this.sharesY = flds;
+    this.sharesYr = flds;
   }
 
   public void setVolume10d(String fld) {
@@ -515,8 +515,8 @@ public class SharesFileData implements Serializable {
     ret += String.format("  inst sell shares    : %d%n", this.instSellShrs);
     ret += String.format("  inst shareholders   : %d%n", this.instShareholders);
     ret += String.format("  inst ownership      : %f%n", this.instOwnership);
-    ret += String.format("  shares quarterly    : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4, 1));
-    ret += String.format("  shares yearly       : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4, 1));
+    ret += String.format("  shares quarterly    : %s%n", SipOutput.buildArray("", this.sharesQtr, 10, 4, 1));
+    ret += String.format("  shares yearly       : %s%n", SipOutput.buildArray("", this.sharesYr, 10, 4, 1));
     return ret;
   }
 
@@ -533,8 +533,8 @@ public class SharesFileData implements Serializable {
           SipOutput.ifmt(this.instSellShrs, 1), SipOutput.ifmt(this.instShareholders, 1), SipOutput.fmt(this.instOwnership, 1, 1));
       ret += String.format("  Insider B / S / Net          : %d-%d  %d-%d  %d%n", this.insiderBuys, this.insiderBuyShrs, this.insiderSells,
           this.insiderSellShrs, this.insiderNetTrades);
-      ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQ, 10, 4));
-      ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesY, 10, 4));
+      ret += String.format("  Shares Quarterly             : %s%n", SipOutput.buildArray("", this.sharesQtr, 10, 4));
+      ret += String.format("  Shares Yearly                : %s%n", SipOutput.buildArray("", this.sharesYr, 10, 4));
     }
     catch (final Exception e) {
       ret = "";
