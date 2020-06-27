@@ -119,11 +119,60 @@ public class CompanyAggregate {
   private QuarterlyDouble otherLiab;
   private int             quarter;
   private QuarterlyDouble sales;
-  private QuarterlyDouble shares;
   private QuarterlyDouble stDebt;
   private QuarterlyDouble stInvest;
   private boolean         valid;
   private int             year;
+
+  //
+  private QuarterlyDouble sharesQdata;
+
+  private QuarterlyDouble adjToIncQdata;
+  private QuarterlyDouble cogsQdata;
+  private QuarterlyDouble depreciationQdata;
+  private QuarterlyDouble dividendQdata;
+  private QuarterlyDouble epsContQdata;
+  private QuarterlyDouble epsDilContQdata;
+  private QuarterlyDouble epsDilQdata;
+  private QuarterlyDouble epsQdata;
+  private QuarterlyDouble grossIncQdata;
+  private QuarterlyDouble grossOpIncQdata;
+  private QuarterlyDouble incAfterTaxQdata;
+  private QuarterlyDouble incPrimaryEpsQdata;
+  private QuarterlyDouble incTaxQdata;
+  private QuarterlyDouble intExpNonOpQdata;
+  private QuarterlyDouble intExpQdata;
+  private QuarterlyDouble netIncQdata;
+  private QuarterlyDouble nonrecurringItemsQdata;
+  private QuarterlyDouble otherIncQdata;
+  private QuarterlyDouble preTaxIncQdata;
+  private QuarterlyDouble rdQdata;
+  private QuarterlyDouble salesQdata;
+  private QuarterlyDouble totalOpExpQdata;
+  private QuarterlyDouble unusualIncQdata;
+
+  private QuarterlyDouble acctPayableQdata;
+  private QuarterlyDouble acctRxQdata;
+  private QuarterlyDouble bvpsQdata;
+  private QuarterlyDouble cashQdata;
+  private QuarterlyDouble currAssetsQdata;
+  private QuarterlyDouble currLiabQdata;
+  private QuarterlyDouble equityQdata;
+  private QuarterlyDouble goodwillQdata;
+  private QuarterlyDouble inventoryQdata;
+  private QuarterlyDouble liabEquityQdata;
+  private QuarterlyDouble ltDebtQdata;
+  private QuarterlyDouble ltInvestQdata;
+  private QuarterlyDouble netFixedAssetsQdata;
+  private QuarterlyDouble otherCurrAssetsQdata;
+  private QuarterlyDouble otherCurrLiabQdata;
+  private QuarterlyDouble otherLtAssetsQdata;
+  private QuarterlyDouble otherLtLiabQdata;
+  private QuarterlyDouble prefStockQdata;
+  private QuarterlyDouble stDebtQdata;
+  private QuarterlyDouble stInvestQdata;
+  private QuarterlyDouble totalAssetsQdata;
+  private QuarterlyDouble totalLiabQdata;
 
   /**
    * Constructor
@@ -160,9 +209,57 @@ public class CompanyAggregate {
       this.equity = new QuarterlyDouble(fd.getEquityQtr());
       this.ltDebt = new QuarterlyDouble(fd.getLtDebtQtr());
       this.goodwill = new QuarterlyDouble(fd.getGoodwillQtr());
-      this.shares = new QuarterlyDouble(fd.getSharesQ());
 
-      this.process();
+      //
+
+      this.sharesQdata = new QuarterlyDouble(fd.getSharesQ());
+
+      this.adjToIncQdata = new QuarterlyDouble(fd.getAdjToIncQtr());
+      this.cogsQdata = new QuarterlyDouble(fd.getCogsQtr());
+      this.depreciationQdata = new QuarterlyDouble(fd.getDepreciationQtr());
+      this.dividendQdata = new QuarterlyDouble(fd.getDividendQtr());
+      this.epsContQdata = new QuarterlyDouble(fd.getEpsContQtr());
+      this.epsDilContQdata = new QuarterlyDouble(fd.getEpsDilContQtr());
+      this.epsDilQdata = new QuarterlyDouble(fd.getEpsDilQtr());
+      this.epsQdata = new QuarterlyDouble(fd.getEpsQtr());
+      this.grossIncQdata = new QuarterlyDouble(fd.getGrossIncQtr());
+      this.grossOpIncQdata = new QuarterlyDouble(fd.getGrossOpIncQtr());
+      this.incAfterTaxQdata = new QuarterlyDouble(fd.getIncAfterTaxQtr());
+      this.incPrimaryEpsQdata = new QuarterlyDouble(fd.getIncPrimaryEpsQtr());
+      this.incTaxQdata = new QuarterlyDouble(fd.getIncTaxQtr());
+      this.intExpNonOpQdata = new QuarterlyDouble(fd.getIntExpNonOpQtr());
+      this.intExpQdata = new QuarterlyDouble(fd.getIntExpQtr());
+      this.netIncQdata = new QuarterlyDouble(fd.getNetIncQtr());
+      this.nonrecurringItemsQdata = new QuarterlyDouble(fd.getNonrecurringItemsQtr());
+      this.otherIncQdata = new QuarterlyDouble(fd.getOtherIncQtr());
+      this.preTaxIncQdata = new QuarterlyDouble(fd.getPreTaxIncQtr());
+      this.rdQdata = new QuarterlyDouble(fd.getRdQtr());
+      this.salesQdata = new QuarterlyDouble(fd.getSalesQtr());
+      this.totalOpExpQdata = new QuarterlyDouble(fd.getTotalOpExpQtr());
+      this.unusualIncQdata = new QuarterlyDouble(fd.getUnusualIncQtr());
+
+      this.acctPayableQdata = new QuarterlyDouble(fd.getAcctPayableQtr());
+      this.acctRxQdata = new QuarterlyDouble(fd.getAcctRxQtr());
+      this.bvpsQdata = new QuarterlyDouble(fd.getBvpsQtr());
+      this.cashQdata = new QuarterlyDouble(fd.getCashQtr());
+      this.currAssetsQdata = new QuarterlyDouble(fd.getCurrAssetsQtr());
+      this.currLiabQdata = new QuarterlyDouble(fd.getCurrLiabQtr());
+      this.equityQdata = new QuarterlyDouble(fd.getEquityQtr());
+      this.goodwillQdata = new QuarterlyDouble(fd.getGoodwillQtr());
+      this.inventoryQdata = new QuarterlyDouble(fd.getInventoryQtr());
+      this.liabEquityQdata = new QuarterlyDouble(fd.getLiabEquityQtr());
+      this.ltDebtQdata = new QuarterlyDouble(fd.getLtDebtQtr());
+      this.ltInvestQdata = new QuarterlyDouble(fd.getLtInvestQtr());
+      this.netFixedAssetsQdata = new QuarterlyDouble(fd.getNetFixedAssetsQtr());
+      this.otherCurrAssetsQdata = new QuarterlyDouble(fd.getOtherCurrAssetsQtr());
+      this.otherCurrLiabQdata = new QuarterlyDouble(fd.getOtherCurrLiabQtr());
+      this.otherLtAssetsQdata = new QuarterlyDouble(fd.getOtherLtAssetsQtr());
+      this.otherLtLiabQdata = new QuarterlyDouble(fd.getOtherLtLiabQtr());
+      this.prefStockQdata = new QuarterlyDouble(fd.getPrefStockQtr());
+      this.stDebtQdata = new QuarterlyDouble(fd.getStDebtQtr());
+      this.stInvestQdata = new QuarterlyDouble(fd.getStInvestQtr());
+
+      this.derived();
 
       this.valid = true;
     }
@@ -176,7 +273,7 @@ public class CompanyAggregate {
   /**
    * Calculates Derived Data
    */
-  private void process() {
+  private void derived() {
 
     this.netcashflow = this.cashops.getTtm() + this.cashfin.getTtm();
     this.cashflow = this.netcashflow + this.cashinv.getTtm();
@@ -258,8 +355,8 @@ public class CompanyAggregate {
         pw.printf("\tPrice         :  %11.2f%n", fd.getPrice());
         pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(fd.getMktCap(), 13));
 
-        pw.println(ca.shares.fmtGrowth1Q("Shares"));
-        final double sc = ca.shares.deltaQ(1, 2);
+        pw.println(ca.sharesQdata.fmtGrowth1Q("Shares"));
+        final double sc = ca.sharesQdata.deltaQ(1, 2);
         if (sc < -0.250) {
           final double bbest = Math.abs(sc) * ((fd.getPrice52hi() + fd.getPrice52lo()) / 2.0);
           pw.printf("\tShare Change 12m  : %s M (Buyback Est= $%sM)%n", Utils.fmt(sc, 13), Utils.fmt(bbest, 1));
@@ -282,17 +379,17 @@ public class CompanyAggregate {
         pw.println("\n" + ca.cashops.fmtGrowth4Q("Cash <- Ops 12m"));
         pw.println(ca.capex.fmtGrowth4Q("  CapEx 12m"));
         if (fd.getDividendQtr()[1] > 0.0) {
-          final double div = ca.dividend.getTtm() * ca.shares.getTtmAvg();
+          final double div = ca.dividend.getTtm() * ca.sharesQdata.getTtmAvg();
           final double dyld = ca.dividend.getTtm() / fd.getPrice() * 100.0;
           pw.printf("\t  Dividends 12m   : %s M (Yield=%.2f%%)%n", Utils.fmt(div, 13), dyld);
 
         }
         else {
-          final double d = ca.dividend.getTtm() * ca.shares.getTtmAvg();
+          final double d = ca.dividend.getTtm() * ca.sharesQdata.getTtmAvg();
           pw.printf("\t  Dividends 12m   : %s M%n", Utils.fmt(d, 13));
         }
 
-        final double fcf = ca.cashops.getTtm() - ca.capex.getTtm() - ca.dividend.getTtm() * ca.shares.getTtmAvg();
+        final double fcf = ca.cashops.getTtm() - ca.capex.getTtm() - ca.dividend.getTtm() * ca.sharesQdata.getTtmAvg();
 
         pw.printf("\t    FCF 12m       : %s M %s%n", Utils.fmt(fcf, 13), "[Cash from Operations - CapEx - Dividends]");
 

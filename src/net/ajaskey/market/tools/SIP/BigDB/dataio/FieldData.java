@@ -1053,12 +1053,12 @@ public class FieldData implements Serializable {
     return this.getIncSheetData().getGrossIncYr();
   }
 
-  public double[] getGrossOpExpQtr() {
-    return this.getIncSheetData().getGrossOpExpQtr();
+  public double[] getGrossOpIncQtr() {
+    return this.getIncSheetData().getGrossOpIncQtr();
   }
 
-  public double[] getGrossOpExpYr() {
-    return this.getIncSheetData().getGrossOpExpYr();
+  public double[] getGrossOpIncYr() {
+    return this.getIncSheetData().getGrossOpIncYr();
   }
 
   public double[] getIncAfterTaxQtr() {

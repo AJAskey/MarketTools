@@ -645,11 +645,11 @@ public class IncSheetFileData implements Serializable {
     return this.grossIncYr;
   }
 
-  public double[] getGrossOpExpQtr() {
+  public double[] getGrossOpIncQtr() {
     return this.grossOpIncQtr;
   }
 
-  public double[] getGrossOpExpYr() {
+  public double[] getGrossOpIncYr() {
     return this.grossOpIncYr;
   }
 
