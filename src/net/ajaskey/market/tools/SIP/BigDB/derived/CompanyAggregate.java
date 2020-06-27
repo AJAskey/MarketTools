@@ -57,6 +57,7 @@ public class CompanyAggregate {
     CompanyAggregate.loadDb(2020, 2, FiletypeEnum.BIG_BINARY);
 
     final List<String> tickers = new ArrayList<>();
+    tickers.add("JPM");
     tickers.add("MSFT");
     tickers.add("W");
 
@@ -157,10 +158,11 @@ public class CompanyAggregate {
   private double          cashflow;
   private double          netcashflow;
   private QuarterlyDouble tanAssetsQdata;
-  private double          workingCapital;
-  private double          currentRatio;
-  private double          fcf;
-  private double          wcfcf;
+  private QuarterlyDouble workingCapitalQdata;
+  private QuarterlyDouble currentRatioQdata;
+  private QuarterlyDouble fcfQdata;
+  private QuarterlyDouble wcfcfQdata;
+  private QuarterlyDouble divCostQdata;
 
   /**
    * Constructor
@@ -264,17 +266,17 @@ public class CompanyAggregate {
     }
     this.currLiabQdata = new QuarterlyDouble(cliab);
 
-    final double gArr[] = new double[9];
-    for (int i = 0; i < gArr.length; i++) {
-      gArr[i] = this.currAssetsQdata.get(i) - this.goodwillQdata.get(i);
+    final double gwArr[] = new double[9];
+    for (int i = 0; i < gwArr.length; i++) {
+      gwArr[i] = this.currAssetsQdata.get(i) - this.goodwillQdata.get(i);
     }
-    this.goodwillQdata = new QuarterlyDouble(gArr);
+    this.goodwillQdata = new QuarterlyDouble(gwArr);
 
-    final double tArr[] = new double[9];
-    for (int i = 0; i < tArr.length; i++) {
-      tArr[i] = this.currAssetsQdata.get(i) - this.goodwillQdata.get(i);
+    final double tanArr[] = new double[9];
+    for (int i = 0; i < tanArr.length; i++) {
+      tanArr[i] = this.currAssetsQdata.get(i) - this.goodwillQdata.get(i);
     }
-    tanAssetsQdata = new QuarterlyDouble(tArr);
+    tanAssetsQdata = new QuarterlyDouble(tanArr);
 
     final double intArr[] = new double[9];
     for (int i = 0; i < intArr.length; i++) {
@@ -282,11 +284,35 @@ public class CompanyAggregate {
     }
     this.intTotQdata = new QuarterlyDouble(intArr);
 
-    workingCapital = this.currAssetsQdata.getMostRecent() - this.currLiabQdata.getMostRecent();
-    currentRatio = this.currAssetsQdata.getMostRecent() / this.currLiabQdata.getMostRecent();
+    final double wcArr[] = new double[9];
+    for (int i = 0; i < wcArr.length; i++) {
+      wcArr[i] = this.currAssetsQdata.get(i) - this.currLiabQdata.get(i);
+    }
+    workingCapitalQdata = new QuarterlyDouble(wcArr);
 
-    fcf = this.cashFromOpsQdata.getTtm() - this.capExQdata.getTtm() - this.dividendQdata.getTtm() * this.sharesQdata.getTtmAvg();
-    wcfcf = workingCapital + fcf;
+    final double crArr[] = new double[9];
+    for (int i = 0; i < crArr.length; i++) {
+      crArr[i] = this.currAssetsQdata.get(i) / this.currLiabQdata.get(i);
+    }
+    currentRatioQdata = new QuarterlyDouble(crArr);
+
+    final double fcfArr[] = new double[6];
+    for (int i = 0; i < fcfArr.length; i++) {
+      fcfArr[i] = this.cashFromOpsQdata.get(i) - this.capExQdata.get(i) - (this.dividendQdata.get(i) * this.sharesQdata.get(i));
+    }
+    fcfQdata = new QuarterlyDouble(fcfArr);
+
+    final double wcfcfArr[] = new double[6];
+    for (int i = 0; i < wcfcfArr.length; i++) {
+      wcfcfArr[i] = workingCapitalQdata.getMostRecent() + fcfQdata.getMostRecent();
+    }
+    wcfcfQdata = new QuarterlyDouble(wcfcfArr);
+
+    final double divArr[] = new double[6];
+    for (int i = 0; i < divArr.length; i++) {
+      divArr[i] = this.dividendQdata.get(i) * this.sharesQdata.get(i);
+    }
+    divCostQdata = new QuarterlyDouble(divArr);
   }
 
   /**
@@ -375,7 +401,7 @@ public class CompanyAggregate {
           pw.printf("\t  Dividends 12m   : %s M%n", Utils.fmt(d, 13));
         }
 
-        pw.printf("\t    FCF 12m       : %s M %s%n", Utils.fmt(ca.fcf, 13), "[Cash from Operations - CapEx - Dividends]");
+        pw.printf("\t    FCF 12m       : %s M %s%n", Utils.fmt(ca.fcfQdata.getTtm(), 13), "[Cash from Operations - CapEx - Dividends]");
 
         pw.printf("\tCash <- Fin 12m   : %s M %s%n", Utils.fmt(ca.cashFromFinQdata.getTtm(), 13),
             "[Movement of cash between a firm and its owners/creditors : borrowing, debt repayment, dividend paid, equity financing.]");
@@ -389,6 +415,12 @@ public class CompanyAggregate {
 
         //
 
+//        pw.println(Utils.NL + ca.cashFromOpsQdata.fmtGrowth4Q("CashOps"));
+//        pw.println(ca.dividendQdata.fmtGrowth4Q("Div"));
+//        pw.println(ca.divCostQdata.fmtGrowth4Q("DivCost"));
+//        pw.println(ca.capExQdata.fmtGrowth4Q("CapEx"));
+//        pw.println(ca.fcfQdata.fmtGrowth4Q("FCF"));
+
         pw.println(Utils.NL + ca.currAssetsQdata.fmtGrowth1Q("Current Assets"));
         pw.println(ca.cashQdata.fmtGrowth1Q("  Cash"));
         pw.println(ca.acctRxQdata.fmtGrowth1Q("  Acct Rx"));
@@ -401,8 +433,9 @@ public class CompanyAggregate {
         pw.println(ca.stDebtQdata.fmtGrowth1Q("  ST Debt"));
         pw.println(ca.otherCurrLiabQdata.fmtGrowth1Q("  Other"));
 
-        pw.printf("\tWorking Capital   : %s M (Ratio=%.2f)%n", Utils.fmt(ca.workingCapital, 13), ca.currentRatio);
-        pw.printf("\tWC + FCF          : %s M%n", Utils.fmt(ca.wcfcf, 13));
+        pw.printf("\tWorking Capital   : %s M (Ratio=%.2f)%n", Utils.fmt(ca.workingCapitalQdata.getMostRecent(), 13),
+            ca.currentRatioQdata.getMostRecent());
+        pw.printf("\tWC + FCF          : %s M%n", Utils.fmt(ca.wcfcfQdata.getMostRecent(), 13));
 
         //
 
