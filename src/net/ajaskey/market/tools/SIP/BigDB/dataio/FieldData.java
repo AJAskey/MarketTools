@@ -1409,6 +1409,22 @@ public class FieldData implements Serializable {
     return this.getCompanyInfo().getZip();
   }
 
+  public double[] getCapExQtr() {
+    return this.cashData.getCapExQtr();
+  }
+
+  public double[] getCashFromFinQtr() {
+    return this.cashData.getCashFromFinQtr();
+  }
+
+  public double[] getCashFromInvQtr() {
+    return this.cashData.getCashFromInvQtr();
+  }
+
+  public double[] getCashFromOpsQtr() {
+    return this.cashData.getCashFromOpsQtr();
+  }
+
   public boolean isAdr() {
     return this.getCompanyInfo().isAdr();
   }
