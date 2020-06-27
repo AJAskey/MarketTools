@@ -11,13 +11,13 @@ public class MarketToolsReflection {
   String qname;
   String name;
 
+  static List<MarketToolsReflection> dList = new ArrayList<>();
+
   /**
    * 
    * @param fields
    */
   public static void processQdata(List<String> fields) {
-
-    List<MarketToolsReflection> dList = new ArrayList<>();
 
     for (String f : fields) {
       if (!f.contains("static")) {
@@ -46,11 +46,9 @@ public class MarketToolsReflection {
    */
   public static void processCopyConstructor(List<String> fields) {
 
-    List<CopyConstructorTool> dList = new ArrayList<>();
-
     for (String f : fields) {
       if (!f.contains("static")) {
-        CopyConstructorTool fld = new CopyConstructorTool(f);
+        MarketToolsReflection fld = new MarketToolsReflection(f);
         System.out.println(fld);
         dList.add(fld);
       }
@@ -58,7 +56,7 @@ public class MarketToolsReflection {
 
     String prefix = "sfd";
     System.out.printf("if(%s != null) {%n", prefix);
-    for (CopyConstructorTool d : dList) {
+    for (MarketToolsReflection d : dList) {
       d.genCopyConstructor(prefix);
     }
     System.out.println("}");
