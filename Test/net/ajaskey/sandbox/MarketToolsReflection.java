@@ -11,20 +11,46 @@ public class MarketToolsReflection {
   String qname;
   String name;
 
-  static List<MarketToolsReflection> dList = new ArrayList<>();
+  /**
+   * 
+   * @param fields
+   */
+  public static void processQdata(List<String> fields) {
 
-  public static void main(String[] args) {
-
-    Field[] allFields = net.ajaskey.market.tools.SIP.BigDB.dataio.SharesFileData.class.getDeclaredFields();
-
-    List<String> fields = new ArrayList<>();
-    for (Field f : allFields) {
-      fields.add(f.toString());
-    }
+    List<MarketToolsReflection> dList = new ArrayList<>();
 
     for (String f : fields) {
       if (!f.contains("static")) {
-        MarketToolsReflection fld = new MarketToolsReflection(f);
+        if (f.startsWith("private double[]")) {
+          if (f.contains("Q")) {
+            MarketToolsReflection fld = new MarketToolsReflection(f);
+            System.out.println(fld);
+            dList.add(fld);
+          }
+        }
+      }
+    }
+
+    for (MarketToolsReflection d : dList) {
+      d.genQuarterlyDecl();
+    }
+
+    for (MarketToolsReflection d : dList) {
+      d.genQuarterlyAssign();
+    }
+  }
+
+  /**
+   * 
+   * @param fields
+   */
+  public static void processCopyConstructor(List<String> fields) {
+
+    List<CopyConstructorTool> dList = new ArrayList<>();
+
+    for (String f : fields) {
+      if (!f.contains("static")) {
+        CopyConstructorTool fld = new CopyConstructorTool(f);
         System.out.println(fld);
         dList.add(fld);
       }
@@ -32,12 +58,35 @@ public class MarketToolsReflection {
 
     String prefix = "sfd";
     System.out.printf("if(%s != null) {%n", prefix);
-    for (MarketToolsReflection d : dList) {
+    for (CopyConstructorTool d : dList) {
       d.genCopyConstructor(prefix);
     }
     System.out.println("}");
+
   }
 
+  /**
+   * 
+   * @param args
+   */
+  public static void main(String[] args) {
+
+    Field[] allFields = net.ajaskey.market.tools.SIP.BigDB.dataio.BalSheetFileData.class.getDeclaredFields();
+
+    List<String> fields = new ArrayList<>();
+    for (Field f : allFields) {
+      fields.add(f.toString());
+    }
+
+    processCopyConstructor(fields);
+    // processQdata(fields);
+
+  }
+
+  /**
+   * 
+   * @param flds
+   */
   public MarketToolsReflection(String flds) {
     String[] fld = flds.split(" ");
     this.scope = fld[0];
@@ -49,6 +98,25 @@ public class MarketToolsReflection {
 
   public void genCopyConstructor(String prefix) {
     String s = String.format("this.%s = %s.%s;", name, prefix, name);
+    System.out.println(s);
+  }
+
+  public void genQuarterlyDecl() {
+    int idx = name.indexOf("Q");
+    String prefix = name.substring(0, idx);
+    String s = String.format("private QuarterlyDouble %s;", prefix + "Qdata");
+    System.out.println(s);
+  }
+
+  public void genQuarterlyAssign() {
+    int idx = name.indexOf("Q");
+    String prefix = name.substring(0, idx);
+
+    String methodName = name.substring(0, 1).toUpperCase();
+    methodName += name.substring(1);
+
+    String s = String.format("this.%s = new QuarterlyDouble(fd.get%s());", prefix + "Qdata", methodName);
+    // this.cash = new QuarterlyDouble(fd.getCashQtr());
     System.out.println(s);
   }
 
