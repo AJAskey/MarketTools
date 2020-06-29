@@ -102,6 +102,7 @@ public class CompanyAggregate {
 
   //
   private QuarterlyDouble sharesQdata;
+  private QuarterlyDouble pricesQdata;
 
   private QuarterlyDouble adjToIncQdata;
   private QuarterlyDouble cogsQdata;
@@ -165,6 +166,7 @@ public class CompanyAggregate {
   private QuarterlyDouble divCostQdata;
   private QuarterlyDouble netMarginQdata;
   private QuarterlyDouble opMarginQdata;
+  private QuarterlyDouble peQdata;
 
   /**
    * Constructor
@@ -182,7 +184,8 @@ public class CompanyAggregate {
       System.out.println("Setting fd : " + fd.getTicker());
       this.fd = fd;
 
-      this.sharesQdata = new QuarterlyDouble(fd.getSharesQ());
+      this.sharesQdata = new QuarterlyDouble(fd.getSharesQtr());
+      this.pricesQdata = new QuarterlyDouble(fd.getPricesQtr());
 
       this.adjToIncQdata = new QuarterlyDouble(fd.getAdjToIncQtr());
       this.cogsQdata = new QuarterlyDouble(fd.getCogsQtr());
@@ -335,6 +338,18 @@ public class CompanyAggregate {
       }
     }
     opMarginQdata = new QuarterlyDouble(oMarArr);
+
+    final double peArr[] = new double[6];
+    for (int i = 0; i < peArr.length; i++) {
+      if (this.netIncQdata.get(i) != 0.0) {
+        double pe = pricesQdata.get(i) / (netIncQdata.get(i) / sharesQdata.get(i));
+        peArr[i] = pe;
+      }
+      else {
+        peArr[i] = 0.0;
+      }
+    }
+    peQdata = new QuarterlyDouble(peArr);
   }
 
   /**
@@ -433,14 +448,6 @@ public class CompanyAggregate {
 
         pw.printf("\t  Cash Flow 12m   : %s M %s%n", Utils.fmt(ca.cashflow, 13), "[Cash from Ops + Cash from Financing + Cash from Investing]");
 
-        //
-
-//        pw.println(Utils.NL + ca.cashFromOpsQdata.fmtGrowth4Q("CashOps"));
-//        pw.println(ca.dividendQdata.fmtGrowth4Q("Div"));
-//        pw.println(ca.divCostQdata.fmtGrowth4Q("DivCost"));
-//        pw.println(ca.capExQdata.fmtGrowth4Q("CapEx"));
-//        pw.println(ca.fcfQdata.fmtGrowth4Q("FCF"));
-
         pw.println(Utils.NL + ca.currAssetsQdata.fmtGrowth1Q("Current Assets"));
         pw.println(ca.cashQdata.fmtGrowth1Q("  Cash"));
         pw.println(ca.acctRxQdata.fmtGrowth1Q("  Acct Rx"));
@@ -469,6 +476,10 @@ public class CompanyAggregate {
         else {
           pw.printf("\tLT Debt Tan Asset : %s%n", Utils.fmt(ca.ltDebtQdata.getMostRecent() / ca.tanAssetsQdata.getMostRecent(), 13));
         }
+
+        pw.println(Utils.NL + ca.netMarginQdata.fmtGrowth1Q("Net Margin"));
+        pw.println(ca.opMarginQdata.fmtGrowth1Q("Op Margin"));
+        pw.println(ca.peQdata.fmtGrowth1Q("PE"));
 
         pw.printf("%n\tFloat             : %s M%n", Utils.fmt(fd.getFloatshr(), 13));
         double d = fd.getInsiderOwnership();

@@ -385,11 +385,11 @@ public class SharesFileData implements Serializable {
     return this.sector;
   }
 
-  public double[] getSharesQ() {
+  public double[] getSharesQtr() {
     return this.sharesQtr;
   }
 
-  public double[] getSharesY() {
+  public double[] getSharesYr() {
     return this.sharesYr;
   }
 

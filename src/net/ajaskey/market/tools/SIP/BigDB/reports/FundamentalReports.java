@@ -162,7 +162,7 @@ public class FundamentalReports extends Fundamentals {
     pw.printf("\tPrice         :  %11.2f%n", fd.getPrice());
     pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(fd.getMktCap(), 13));
 
-    final QuarterlyDouble shares = new QuarterlyDouble(fd.getSharesQ());
+    final QuarterlyDouble shares = new QuarterlyDouble(fd.getSharesQtr());
     pw.println(shares.fmtGrowth1Q("Shares"));
     final double sc = shares.deltaQ(1, 2);
     if (sc < -0.250) {

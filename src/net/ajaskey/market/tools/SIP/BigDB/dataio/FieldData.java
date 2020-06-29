@@ -34,10 +34,19 @@ import net.ajaskey.common.DateTime;
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.BigDB.Globals;
+import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.collation.FieldDataBinary;
 
+/**
+ * This class provides most of the interfaces needed for reading SIP data and
+ * writing DB data.
+ */
 public class FieldData implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long  serialVersionUID = 2772336615089382916L;
   /**
    * Set this to the directories you store you SIP data (inbasedir) and where you
    * want your DB output to be stored (outbasedir).
@@ -45,36 +54,8 @@ public class FieldData implements Serializable {
    * You do not need the SIP data as I have uploaded the database data to the DB
    * folder.
    */
-  final public static String inbasedir  = String.format("data/BigDB/");
-  final public static String outbasedir = String.format("out/BigDB/");
-
-  /**
-   * Used when reading SIP exchange SIP data.
-   *
-   * @param enumStr Exchange in string format
-   * @return ExchEnum
-   */
-  public static ExchEnum convertExchange(String enumStr) {
-    ExchEnum ret = ExchEnum.NONE;
-    try {
-      if (enumStr.contains("M - Nasdaq")) {
-        ret = ExchEnum.NASDAQ;
-      }
-      else if (enumStr.contains("N - New York")) {
-        ret = ExchEnum.NYSE;
-      }
-      else if (enumStr.contains("A - American")) {
-        ret = ExchEnum.AMEX;
-      }
-      else if (enumStr.contains("O - Over the counter")) {
-        ret = ExchEnum.OTC;
-      }
-    }
-    catch (final Exception e) {
-      ret = ExchEnum.NONE;
-    }
-    return ret;
-  }
+  final public static String inbasedir        = String.format("data/BigDB/");
+  final public static String outbasedir       = String.format("out/BigDB/");
 
   /**
    * Returns a capitalized string
@@ -93,7 +74,7 @@ public class FieldData implements Serializable {
    * @param ticker The individual stock symbol
    * @param yr     year
    * @param qtr    quarter
-   * @param ft     FiletypeEnum
+   * @param ft     FiletypeEnum TEXT or BINARY
    * @return FieldData
    */
   public static FieldData getFromDb(String ticker, int yr, int qtr, FiletypeEnum ft) {
@@ -113,7 +94,7 @@ public class FieldData implements Serializable {
   }
 
   /**
-   * Returns FieldData for requested ticker from year and quarter from internal
+   * Returns FieldData for requested ticker for year and quarter from internal
    * memory.
    *
    * @param tkr The individual stock symbol
@@ -145,6 +126,28 @@ public class FieldData implements Serializable {
       }
     }
     return null;
+  }
+
+  /**
+   * Returns List of FieldData for requested ticker list for year and quarter from
+   * internal memory.
+   *
+   * @param tList The list of individual stock symbols
+   * @param yr    year
+   * @param qtr   quarter (1-4)
+   * @return List of FieldData
+   */
+  public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    for (final String t : tList) {
+      final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
+      if (fd != null) {
+        fdList.add(fd);
+      }
+    }
+    return fdList;
   }
 
   /**
@@ -341,6 +344,11 @@ public class FieldData implements Serializable {
       CashFileData.readSipData(ffname);
     }
 
+    /**
+     * Write Company list for creating ticker lists
+     */
+    CompanySummary.write(yr, qtr);
+
     for (final CompanyFileData cfd : CompanyFileData.getList()) {
 
       final String ticker = cfd.getTicker();
@@ -418,6 +426,34 @@ public class FieldData implements Serializable {
     else {
       System.out.printf("Waring. Invalid Filetype in setQMemory : %s%n", ft.toString());
     }
+  }
+
+  /**
+   * Used when reading SIP exchange SIP data.
+   *
+   * @param enumStr Exchange in string format
+   * @return ExchEnum
+   */
+  static ExchEnum convertExchange(String enumStr) {
+    ExchEnum ret = ExchEnum.NONE;
+    try {
+      if (enumStr.contains("M - Nasdaq")) {
+        ret = ExchEnum.NASDAQ;
+      }
+      else if (enumStr.contains("N - New York")) {
+        ret = ExchEnum.NYSE;
+      }
+      else if (enumStr.contains("A - American")) {
+        ret = ExchEnum.AMEX;
+      }
+      else if (enumStr.contains("O - Over the counter")) {
+        ret = ExchEnum.OTC;
+      }
+    }
+    catch (final Exception e) {
+      ret = ExchEnum.NONE;
+    }
+    return ret;
   }
 
   /**
@@ -1297,6 +1333,10 @@ public class FieldData implements Serializable {
     return this.shareData.getPrice52lo();
   }
 
+  public double[] getPricesQtr() {
+    return this.companyInfo.getPriceQtr();
+  }
+
   public int getQuarter() {
     return this.quarter;
   }
@@ -1325,12 +1365,12 @@ public class FieldData implements Serializable {
     return this.shareData;
   }
 
-  public double[] getSharesQ() {
-    return this.shareData.getSharesQ();
+  public double[] getSharesQtr() {
+    return this.shareData.getSharesQtr();
   }
 
-  public double[] getSharesY() {
-    return this.shareData.getSharesY();
+  public double[] getSharesYr() {
+    return this.shareData.getSharesYr();
   }
 
   public String getSic() {
@@ -1411,10 +1451,6 @@ public class FieldData implements Serializable {
 
   public boolean isAdr() {
     return this.getCompanyInfo().isAdr();
-  }
-
-  public boolean isDrp() {
-    return this.getCompanyInfo().isDrp();
   }
 
   public void setQuarter(int quarter) {

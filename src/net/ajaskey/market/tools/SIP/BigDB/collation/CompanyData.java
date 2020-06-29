@@ -58,6 +58,7 @@ public class CompanyData {
    * @return List of CompanyData
    */
   public static List<CompanyData> getCompanies(List<String> tickers, int yr, int qtr) {
+
     final List<CompanyData> ret = new ArrayList<>();
 
     for (final String ticker : tickers) {

@@ -30,6 +30,11 @@ import net.ajaskey.market.tools.SIP.SipUtils;
 public class IncSheetFileData implements Serializable {
 
   /**
+   * 
+   */
+  private static final long serialVersionUID = -8671370518675426370L;
+
+  /**
    * Stores all IncSheetFileDate read in from DB.
    */
   private static List<IncSheetFileData> ifdList = new ArrayList<>();
