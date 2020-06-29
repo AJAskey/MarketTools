@@ -24,11 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ajaskey.common.TextUtils;
+import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
 
 /**
  * This class reads a company summary file and provides utility methods to

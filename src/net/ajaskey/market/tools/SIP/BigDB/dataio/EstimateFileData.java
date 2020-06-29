@@ -27,6 +27,7 @@ import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.SipUtils;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 
 public class EstimateFileData implements Serializable {
 

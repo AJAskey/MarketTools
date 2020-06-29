@@ -16,7 +16,7 @@
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
  */
-package net.ajaskey.market.tools.SIP.BigDB.dataio;
+package net.ajaskey.market.tools.SIP.BigDB;
 
 public enum DowEnum {
   INDUSTRIAL, NONE, TRANSPORTATION, UTILITY;

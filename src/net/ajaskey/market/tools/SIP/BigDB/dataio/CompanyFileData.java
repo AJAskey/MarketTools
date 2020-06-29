@@ -26,6 +26,9 @@ import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.SipUtils;
+import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 
 public class CompanyFileData implements Serializable {
 

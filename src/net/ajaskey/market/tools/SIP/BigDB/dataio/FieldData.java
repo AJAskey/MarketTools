@@ -33,7 +33,11 @@ import java.util.List;
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.Globals;
+import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.collation.FieldDataBinary;
 
@@ -103,29 +107,7 @@ public class FieldData implements Serializable {
    * @return FieldData
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
-
-    final String ticker = tkr.trim().toUpperCase();
-
-    for (final FieldDataYear fdy : Globals.allDataList) {
-
-      if (yr == fdy.getYear()) {
-
-        if (fdy.isInUse()) {
-
-          if (fdy.quarterDataAvailable(qtr)) {
-
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
-
-            for (final FieldData fd : fdq.fieldDataList) {
-              if (fd.getTicker().equals(ticker)) {
-                return fd;
-              }
-            }
-          }
-        }
-      }
-    }
-    return null;
+    return Globals.getFromMemory(tkr, yr, qtr);
   }
 
   /**
@@ -138,16 +120,7 @@ public class FieldData implements Serializable {
    * @return List of FieldData
    */
   public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
-
-    final List<FieldData> fdList = new ArrayList<>();
-
-    for (final String t : tList) {
-      final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
-      if (fd != null) {
-        fdList.add(fd);
-      }
-    }
-    return fdList;
+    return Globals.getListFromMemory(tList, yr, qtr);
   }
 
   /**
@@ -200,38 +173,8 @@ public class FieldData implements Serializable {
     return fdList;
   }
 
-  /**
-   * Returns a list of FieldData for all tickers of requested year and quarter
-   * from internal memory.
-   *
-   * @param yr  year
-   * @param qtr quarter (1-4)
-   * @return List of FieldData
-   */
   public static List<FieldData> getQFromMemory(int yr, int qtr) {
-
-    final List<FieldData> fdList = new ArrayList<>();
-
-    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
-
-    for (final FieldDataYear fdy : Globals.allDataList) {
-
-      if (yr == fdy.getYear()) {
-
-        if (fdy.isInUse()) {
-
-          if (fdy.quarterDataAvailable(qtr)) {
-
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
-
-            for (final FieldData fd : fdq.fieldDataList) {
-              fdList.add(fd);
-            }
-          }
-        }
-      }
-    }
-    return fdList;
+    return Globals.getQFromMemory(yr, qtr);
   }
 
   /**
@@ -1475,6 +1418,7 @@ public class FieldData implements Serializable {
         ret += this.shareData.toDbOutput();
         ret += this.incSheetData.toDbOutput();
         ret += this.balSheetData.toDbOutput();
+        ret += this.cashData.toDbOutput();
       }
     }
     catch (final Exception e) {

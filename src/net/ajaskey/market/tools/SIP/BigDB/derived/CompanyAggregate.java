@@ -25,9 +25,9 @@ import java.util.List;
 
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.reports.Fundamentals;
 
 /**

@@ -53,6 +53,63 @@ public class Globals {
   }
 
   /**
+   * Returns FieldData for requested ticker for year and quarter from internal
+   * memory. Designed to be called from FieldData.
+   *
+   * @param tkr The individual stock symbol
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return FieldData
+   */
+  public static FieldData getFromMemory(String tkr, int yr, int qtr) {
+
+    final String ticker = tkr.trim().toUpperCase();
+
+    for (final FieldDataYear fdy : Globals.allDataList) {
+
+      if (yr == fdy.getYear()) {
+
+        if (fdy.isInUse()) {
+
+          if (fdy.quarterDataAvailable(qtr)) {
+
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
+
+            for (final FieldData fd : fdq.fieldDataList) {
+              if (fd.getTicker().equals(ticker)) {
+                return fd;
+              }
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns List of FieldData for requested ticker list for year and quarter from
+   * internal memory. Designed to be called from FieldData.
+   *
+   * @param tList The list of individual stock symbols
+   * @param yr    year
+   * @param qtr   quarter (1-4)
+   * @return List of FieldData
+   */
+  public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    for (final String t : tList) {
+      final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
+      if (fd != null) {
+        fdList.add(fd);
+      }
+    }
+    return fdList;
+  }
+
+  /**
    * Sets internal memory (allDataList) to request year and quarter.
    *
    * @param yr     year
@@ -86,6 +143,40 @@ public class Globals {
       }
     }
     System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
+  }
+  
+  /**
+   * Returns a list of FieldData for all tickers of requested year and quarter
+   * from internal memory.
+   *
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return List of FieldData
+   */
+  public static List<FieldData> getQFromMemory(int yr, int qtr) {
+
+    final List<FieldData> fdList = new ArrayList<>();
+
+    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
+
+    for (final FieldDataYear fdy : Globals.allDataList) {
+
+      if (yr == fdy.getYear()) {
+
+        if (fdy.isInUse()) {
+
+          if (fdy.quarterDataAvailable(qtr)) {
+
+            final FieldDataQuarter fdq = fdy.getQ(qtr);
+
+            for (final FieldData fd : fdq.fieldDataList) {
+              fdList.add(fd);
+            }
+          }
+        }
+      }
+    }
+    return fdList;
   }
 
   /**

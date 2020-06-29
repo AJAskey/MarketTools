@@ -1,3 +1,4 @@
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with this
@@ -16,30 +17,11 @@
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
  */
-package net.ajaskey.market.tools.SIP.BigDB.reports;
+package net.ajaskey.market.tools.SIP.BigDB;
 
-import java.io.FileNotFoundException;
-import java.util.List;
-
-import net.ajaskey.market.tools.SIP.QuarterlyData;
-import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-
-public class Fundamentals {
-
-  public static final double MILLION = 1000000.0;
-
-  static List<FieldData> fdList;
-
-  public static void main(String[] args) throws FileNotFoundException {
-
-    // FieldData.setQMemory(2020, 2, FiletypeEnum.TEXT);
-    FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
-
-    Fundamentals.fdList = FieldData.getQFromMemory(2020, 2);
-    FundamentalReports.write();
-  }
-
-  public QuarterlyData shares;
+/**
+ * This class is used as the public API into all other classes.
+ */
+public class MarketTools {
 
 }
