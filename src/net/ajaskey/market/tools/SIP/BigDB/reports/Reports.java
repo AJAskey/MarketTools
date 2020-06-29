@@ -22,15 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.Globals;
+import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.collation.OneCompanyData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataQuarter;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldDataYear;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
 
 public class Reports {
 

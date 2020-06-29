@@ -26,35 +26,42 @@ import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.SipUtils;
+import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 
 public class CompanyFileData implements Serializable {
 
-  private static int ADR = 6;
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -5994427284354231386L;
 
   /**
    * Stores all CompanyFileDate read in from DB.
    */
   private static List<CompanyFileData> cfdList = new ArrayList<>();
 
-  private static int CITY = 11;
+  private static String fld[] = null;
 
-  private static int    COUNTRY  = 13;
-  private static int    DOW      = 7;
-  private static int    DRP      = 9;
-  private static int    EMP      = 17;
-  private static int    EXCHANGE = 2;
-  private static String fld[]    = null;
-  private static int    INDUSTRY = 4;
-  private static int    NAME     = 0;
-  private static int    PHONE    = 15;
-  private static int    SECTOR   = 3;
-  private static int    SIC      = 5;
-  private static int    SNP      = 8;
-  private static int    STATE    = 12;
-  private static int    STREET   = 10;
-  private static int    TICKER   = 1;
-  private static int    WEB      = 16;
-  private static int    ZIP      = 14;
+  final private static int ADR      = 6;
+  final private static int CITY     = 11;
+  final private static int COUNTRY  = 13;
+  final private static int DOW      = 7;
+  final private static int EMP      = 17;
+  final private static int EXCHANGE = 2;
+  final private static int INDUSTRY = 4;
+  final private static int NAME     = 0;
+  final private static int PHONE    = 15;
+  final private static int PRICE    = 18;
+  final private static int SECTOR   = 3;
+  final private static int SIC      = 5;
+  final private static int SNP      = 8;
+  final private static int STATE    = 12;
+  final private static int STREET   = 10;
+  final private static int TICKER   = 1;
+  final private static int WEB      = 16;
+  final private static int ZIP      = 14;
 
   public static void clearList() {
     CompanyFileData.cfdList.clear();
@@ -64,8 +71,8 @@ public class CompanyFileData implements Serializable {
   /**
    * Returns the CompanyFileData instance for requested ticker.
    *
-   * @param ticker
-   * @return
+   * @param ticker The name of the individual stock symbol file
+   * @return CompanyFileData
    */
   public static CompanyFileData find(String ticker) {
     if (ticker != null) {
@@ -95,7 +102,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Returns the number of instances in the list read from the DB.
    *
-   * @return
+   * @return count
    */
   public static int getListCount() {
     return CompanyFileData.cfdList.size();
@@ -104,7 +111,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
-   * @return
+   * @return String
    */
   public static String listToString() {
     String ret = "";
@@ -117,8 +124,8 @@ public class CompanyFileData implements Serializable {
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param input List of strings to parse
+   * @return CompanyFileData
    */
   public static CompanyFileData readFromDb(List<String> input) {
 
@@ -170,9 +177,6 @@ public class CompanyFileData implements Serializable {
       else if (fld.equals("adr")) {
         cfd.setAdr(val);
       }
-      else if (fld.equals("drp")) {
-        cfd.setDrp(val);
-      }
       else if (fld.equals("street")) {
         cfd.setStreet(val);
       }
@@ -194,6 +198,10 @@ public class CompanyFileData implements Serializable {
       else if (fld.equals("web")) {
         cfd.setWeb(val + val2);
       }
+      else if (fld.equals("prices")) {
+        final double[] priceQ = SipUtils.parseArrayDoubles(tfld[1], 1);
+        cfd.setPriceQtr(priceQ);
+      }
     }
 
     return cfd;
@@ -202,8 +210,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Reads the data from SIP tab delimited files and fills data structures.
    *
-   * @param filename
-   * @return
+   * @param filename Name of SIP file to parse
    */
   public static void readSipData(String filename) {
 
@@ -243,8 +250,14 @@ public class CompanyFileData implements Serializable {
         cfd.dowIndex = DowEnum.NONE;
       }
 
-      cfd.adr = Boolean.parseBoolean(CompanyFileData.fld[CompanyFileData.ADR].trim());
-      cfd.drp = SipUtils.parseBoolean(CompanyFileData.fld[CompanyFileData.DRP].trim());
+      String tmpAdr = CompanyFileData.fld[CompanyFileData.ADR].trim();
+      if (tmpAdr.trim().toUpperCase().equals("T")) {
+        cfd.adr = true;
+      }
+      else {
+        cfd.adr = false;
+      }
+
       cfd.street = CompanyFileData.fld[CompanyFileData.STREET].trim();
       cfd.city = CompanyFileData.fld[CompanyFileData.CITY].trim();
       cfd.state = CompanyFileData.fld[CompanyFileData.STATE].trim();
@@ -253,22 +266,22 @@ public class CompanyFileData implements Serializable {
       cfd.phone = CompanyFileData.fld[CompanyFileData.PHONE].trim();
       cfd.web = CompanyFileData.fld[CompanyFileData.WEB].trim();
       cfd.numEmployees = SipUtils.parseInt(CompanyFileData.fld[CompanyFileData.EMP].trim());
+      cfd.priceQtr = SipUtils.parseDoubles(CompanyFileData.fld, CompanyFileData.PRICE, 8);
 
       CompanyFileData.cfdList.add(cfd);
     }
   }
 
-  private boolean adr;
-
+  private boolean  adr;
   private String   city;
   private String   country;
   private DowEnum  dowIndex;
-  private boolean  drp;
   private ExchEnum exchange;
   private String   industry;
   private String   name;
   private int      numEmployees;
   private String   phone;
+  private double[] priceQtr;
   private String   sector;
   private String   sic;
   private SnpEnum  snpIndex;
@@ -288,7 +301,7 @@ public class CompanyFileData implements Serializable {
   /**
    * Copy Constructor
    *
-   * @param cfd
+   * @param cfd CompanyFileData to copy
    */
   public CompanyFileData(CompanyFileData cfd) {
     if (cfd != null) {
@@ -296,7 +309,6 @@ public class CompanyFileData implements Serializable {
       this.city = cfd.city;
       this.country = cfd.country;
       this.dowIndex = cfd.dowIndex;
-      this.drp = cfd.drp;
       this.exchange = cfd.exchange;
       this.industry = cfd.industry;
       this.name = cfd.name;
@@ -310,6 +322,7 @@ public class CompanyFileData implements Serializable {
       this.ticker = cfd.ticker;
       this.web = cfd.web;
       this.zip = cfd.zip;
+      this.priceQtr = cfd.priceQtr;
     }
     else {
       this.ticker = "";
@@ -328,6 +341,11 @@ public class CompanyFileData implements Serializable {
     return this.dowIndex;
   }
 
+  /**
+   * Returns capitalized string of DowEnum
+   *
+   * @return String
+   */
   public String getDowIndexStr() {
     String ret = "";
     try {
@@ -359,6 +377,10 @@ public class CompanyFileData implements Serializable {
     return this.phone;
   }
 
+  public double[] getPriceQtr() {
+    return this.priceQtr;
+  }
+
   public String getSector() {
     return this.sector;
   }
@@ -371,6 +393,11 @@ public class CompanyFileData implements Serializable {
     return this.snpIndex;
   }
 
+  /**
+   * Returns capitalized string of SnpEnum
+   *
+   * @return String
+   */
   public String getSnpIndexStr() {
     String ret = "";
     try {
@@ -406,15 +433,11 @@ public class CompanyFileData implements Serializable {
     return this.adr;
   }
 
-  public boolean isDrp() {
-    return this.drp;
-  }
-
   /**
    * Parses data and fills data structures from DB files.
    *
-   * @param data
-   * @return
+   * @param data List of string to parse and set values
+   * @return List of String
    */
   public List<String> set(List<String> data) {
 
@@ -466,9 +489,6 @@ public class CompanyFileData implements Serializable {
       else if (fld.equals("adr")) {
         this.adr = SipUtils.parseBoolean(val);
       }
-      else if (fld.equals("drp")) {
-        this.drp = SipUtils.parseBoolean(val);
-      }
       else if (fld.equals("street")) {
         this.street = val;
       }
@@ -489,6 +509,9 @@ public class CompanyFileData implements Serializable {
       }
       else if (fld.equals("web")) {
         this.web = val + val2;
+      }
+      else if (fld.equals("prices")) {
+        this.priceQtr = SipUtils.parseArrayDoubles(tfld[1], 1);
       }
       else if (fld.contains("Data for ")) {
       }
@@ -519,10 +542,6 @@ public class CompanyFileData implements Serializable {
     catch (final Exception e) {
       this.dowIndex = DowEnum.NONE;
     }
-  }
-
-  public void setDrp(String drp) {
-    this.drp = SipUtils.parseBoolean(drp);
   }
 
   public void setExchange(String exch) {
@@ -599,7 +618,6 @@ public class CompanyFileData implements Serializable {
     ret += String.format("  snp index : %s%n", this.getSnpIndexStr());
     ret += String.format("  dow index : %s%n", this.getDowIndexStr());
     ret += String.format("  adr       : %s%n", this.adr);
-    ret += String.format("  drp       : %s%n", this.drp);
     ret += String.format("  street    : %s%n", this.street);
     ret += String.format("  city      : %s%n", this.city);
     ret += String.format("  state     : %s%n", this.state);
@@ -607,6 +625,7 @@ public class CompanyFileData implements Serializable {
     ret += String.format("  zip       : %s%n", this.zip);
     ret += String.format("  phone     : %s%n", this.phone);
     ret += String.format("  web       : %s%n", this.getWeb());
+    ret += String.format("  prices    : %s%n", SipOutput.buildArray("", this.priceQtr, 10, 4, 1));
     return ret;
   }
 
@@ -616,11 +635,12 @@ public class CompanyFileData implements Serializable {
     try {
       ret = SipOutput.SipHeader(this.ticker, this.name, this.getExchangeStr(), this.sector, this.industry);
       ret += String.format("  SIC     : %s%n", this.getSic());
-      ret += String.format("  Index   : %-10s\t%-12s\t%s\t%s%n", this.getSnpIndexStr(), this.getDowIndexStr(), this.isAdr(), this.isDrp());
+      ret += String.format("  Index   : %-10s\t%-12s\t%s%n", this.getSnpIndexStr(), this.getDowIndexStr(), this.isAdr());
       ret += String.format("  Num Emp : %d%n", this.getNumEmployees());
       ret += String.format("  Address : %s\t%s\t%s\t%s\t%s\t%s%n", this.getStreet(), this.getCity(), this.getState(), this.getCountry(),
           this.getZip(), this.getPhone());
       ret += String.format("  Web     : %s%n", this.getWeb());
+      ret += String.format("  prices    : %s%n", SipOutput.buildArray("", this.priceQtr, 10, 4, 1));
     }
     catch (final Exception e) {
       ret = "";
@@ -628,8 +648,17 @@ public class CompanyFileData implements Serializable {
     return ret;
   }
 
-  private String getExchangeStr() {
+  /**
+   * Returns capitalized string of ExchEnum
+   *
+   * @return String
+   */
+  public String getExchangeStr() {
     return this.exchange.toString().toUpperCase();
+  }
+
+  private void setPriceQtr(double[] priceQ) {
+    this.priceQtr = priceQ;
   }
 
 }

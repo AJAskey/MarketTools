@@ -33,8 +33,8 @@ public class FieldDataBinary implements Serializable {
   /**
    * Constructor
    *
-   * @param yr
-   * @param qtr
+   * @param yr  year
+   * @param qtr quarter
    */
   public FieldDataBinary(int yr, int qtr) {
     this.year = yr;

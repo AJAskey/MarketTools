@@ -22,8 +22,8 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import net.ajaskey.market.tools.SIP.QuarterlyData;
+import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
 
 public class Fundamentals {
 
@@ -36,7 +36,7 @@ public class Fundamentals {
     // FieldData.setQMemory(2020, 2, FiletypeEnum.TEXT);
     FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
 
-    Fundamentals.fdList = FieldData.getAllFromMemory(2020, 2);
+    Fundamentals.fdList = FieldData.getQFromMemory(2020, 2);
     FundamentalReports.write();
   }
 

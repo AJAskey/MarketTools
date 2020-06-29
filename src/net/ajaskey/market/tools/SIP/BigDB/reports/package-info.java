@@ -1,4 +1,9 @@
 /**
+ * <p>
+ * The <b>reports</b> package contains the classes and tools to generate text
+ * reports from the derived and raw data.
+ * </p>
+ * 
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with this
  * work for additional information regarding copyright ownership. The ASF
@@ -15,13 +20,6 @@
  * the License.
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
- * 
- * 
- * 
- * <p>
- * The <b>reports</b> package contains the classes and tools to generate text
- * reports from the derived and raw data.
- * </p>
  */
 
 package net.ajaskey.market.tools.SIP.BigDB.reports;

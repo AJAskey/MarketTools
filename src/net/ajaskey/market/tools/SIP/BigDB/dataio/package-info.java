@@ -1,4 +1,10 @@
 /**
+ * <p>
+ * The <b>dataio</b> package contains the classes to import Stock Investor Pro
+ * data and export to a common file format. Each xxxFileData class will
+ * import/export the data specific to that class.
+ * </p>
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with this
  * work for additional information regarding copyright ownership. The ASF
@@ -15,13 +21,5 @@
  * the License.
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
- *
- * 
- * 
- * <p>
- * The <b>dataio</b> package contains the classes to import Stock Investor Pro
- * data and export to a common file format. Each xxxFileData class will
- * import/export the data specific to that class.
- * </p>
  */
 package net.ajaskey.market.tools.SIP.BigDB.dataio;

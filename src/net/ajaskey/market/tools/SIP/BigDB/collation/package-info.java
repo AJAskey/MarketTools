@@ -1,4 +1,11 @@
 /**
+ * <p>
+ * The <b>collation</b> package contains the classes and tools to generate
+ * orders and subsets of the large data array created by ingesting the common
+ * format data files.
+ * </p>
+ *
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with this
  * work for additional information regarding copyright ownership. The ASF
@@ -15,14 +22,7 @@
  * the License.
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
- * 
- * 
- * 
- * <p>
- * The <b>collation</b> package contains the classes and tools to generate
- * orders and subsets of the large data array created by ingesting the common
- * format data files.
- * </p>
+ *
  */
 
 package net.ajaskey.market.tools.SIP.BigDB.collation;

@@ -1,3 +1,4 @@
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with this
@@ -16,10 +17,11 @@
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
  */
-package net.ajaskey.market.tools.SIP.BigDB.dataio;
+package net.ajaskey.market.tools.SIP.BigDB;
 
-public enum FiletypeEnum {
-
-  BIG_BINARY, BINARY, NONE, TEXT;
+/**
+ * This class is used as the public API into all other classes.
+ */
+public class MarketTools {
 
 }

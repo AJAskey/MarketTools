@@ -24,12 +24,12 @@ import java.util.List;
 
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
+import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
+import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.DowEnum;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.SnpEnum;
 
 public class CompanyData {
 
@@ -37,7 +37,7 @@ public class CompanyData {
    * Returns a list of companies with FieldData for each quarter of requested
    * ticker list.
    *
-   * @param tickers
+   * @param tickers The individual stock symbols
    * @return List of CompanyData
    */
   public static List<CompanyData> getCompanies(List<String> tickers) {
@@ -53,17 +53,18 @@ public class CompanyData {
    * Returns a list of CompanyData for tickers, the year, and quarter requested.
    *
    * @param tickers List of string ticker values,
-   * @param year
-   * @param quarter
-   * @return
+   * @param yr      year
+   * @param qtr     quarter
+   * @return List of CompanyData
    */
-  public static List<CompanyData> getCompanies(List<String> tickers, int year, int quarter) {
+  public static List<CompanyData> getCompanies(List<String> tickers, int yr, int qtr) {
+
     final List<CompanyData> ret = new ArrayList<>();
 
     for (final String ticker : tickers) {
 
       final CompanyData cd = new CompanyData(ticker);
-      final FieldData fd = CompanyData.getCompany(ticker, year, quarter);
+      final FieldData fd = CompanyData.getCompany(ticker, yr, qtr);
       cd.fdList.add(fd);
       ret.add(cd);
     }
@@ -73,7 +74,7 @@ public class CompanyData {
   /**
    * Returns a CompanyData for each quarter of requested ticker
    *
-   * @param ticker
+   * @param ticker The individual stock symbol
    * @return CompanyData
    */
   public static CompanyData getCompany(String ticker) {
@@ -100,8 +101,10 @@ public class CompanyData {
   /**
    * Returns FieldData for ticker, year, and quarter of requested
    *
-   * @param ticker
-   * @return CompanyData
+   * @param ticker The individual stock symbol
+   * @param yr     year
+   * @param qtr    quarter
+   * @return FieldData
    */
   public static FieldData getCompany(String ticker, int yr, int qtr) {
 
@@ -113,15 +116,15 @@ public class CompanyData {
   /**
    * Returns a list of tickers from the requesting Dow index
    *
-   * @param index
-   * @param year
-   * @param quarter
+   * @param index DowEnum
+   * @param yr    year
+   * @param qtr   quarter
    * @return List of String
    */
-  public static List<String> getTickers(DowEnum index, int year, int quarter) {
+  public static List<String> getTickers(DowEnum index, int yr, int qtr) {
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(year, quarter);
+    final List<File> files = CompanyData.getFiles(yr, qtr);
 
     List<String> input = null;
     for (final File f : files) {
@@ -143,12 +146,12 @@ public class CompanyData {
   /**
    * Returns a list of tickers from the requested market exchange.
    *
-   * @param index
-   * @param year
-   * @param quarter
-   * @return
+   * @param index ExchEnum
+   * @param yr    year
+   * @param qtr   quarter
+   * @return List of String
    */
-  public static List<String> getTickers(ExchEnum index, int year, int quarter) {
+  public static List<String> getTickers(ExchEnum index, int yr, int qtr) {
 
     final List<String> ret = new ArrayList<>();
 
@@ -156,7 +159,7 @@ public class CompanyData {
       return ret;
     }
 
-    final List<File> files = CompanyData.getFiles(year, quarter);
+    final List<File> files = CompanyData.getFiles(yr, qtr);
 
     List<String> input = null;
 
@@ -181,15 +184,15 @@ public class CompanyData {
   /**
    * Returns a list of tickers for the year and quarter requested.
    *
-   * @param year
-   * @param quarter
-   * @return
+   * @param yr  year
+   * @param qtr quarter
+   * @return List of String
    */
-  public static List<String> getTickers(int year, int quarter) {
+  public static List<String> getTickers(int yr, int qtr) {
     final List<String> ret = new ArrayList<>();
     try {
       final String[] ext = { "txt", "gz" };
-      final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, year, quarter);
+      final String dir = String.format("%s%d/Q%d", FieldData.outbasedir, yr, qtr);
       final List<File> fList = Utils.getDirTree(dir, ext);
       if (fList != null) {
         for (final File f : fList) {
@@ -210,16 +213,16 @@ public class CompanyData {
   /**
    * Returns of list of tickers from the requested SnP index
    *
-   * @param index
-   * @param year
-   * @param quarter
+   * @param index SnpEnum
+   * @param yr    year
+   * @param qtr   quarter
    * @return List of String
    */
-  public static List<String> getTickers(SnpEnum index, int year, int quarter) {
+  public static List<String> getTickers(SnpEnum index, int yr, int qtr) {
 
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(year, quarter);
+    final List<File> files = CompanyData.getFiles(yr, qtr);
 
     List<String> input = null;
     for (final File f : files) {
@@ -259,8 +262,8 @@ public class CompanyData {
   /**
    *
    * @param ticker
-   * @param tickers
-   * @return
+   * @param tickers The individual stock symbols
+   * @return TRUE is ticker found. False if not.
    */
   private static boolean isTickerInList(String ticker, List<String> tickers) {
     for (final String s : tickers) {
@@ -333,10 +336,10 @@ public class CompanyData {
   /**
    * Constructor
    *
-   * @param tick
+   * @param ticker The name of the individual stock symbol file
    */
-  public CompanyData(String tick) {
-    this.ticker = tick;
+  public CompanyData(String ticker) {
+    this.ticker = ticker;
   }
 
   public List<FieldData> getFdList() {

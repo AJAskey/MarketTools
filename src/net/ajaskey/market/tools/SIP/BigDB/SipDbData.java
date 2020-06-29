@@ -21,14 +21,16 @@ package net.ajaskey.market.tools.SIP.BigDB;
 import java.io.FileNotFoundException;
 
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum;
 
+/**
+ * This class serves as a test driver to check new development.
+ */
 public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-    final int year = 2020;
-    final int qtr = 2;
+    final int year = 2018;
+    final int qtr = 1;
 
 //    for (int i = 2018; i < 2021; i++) {
 //      for (int j = 1; j < 5; j++) {
@@ -38,10 +40,10 @@ public class SipDbData {
 
     // FieldData.parseSipData(2020, 1, FiletypeEnum.NONE);
 
-    // FieldData.parseSipData(2020, 2, FiletypeEnum.BIG_BINARY);
+    FieldData.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
 
-    FieldData.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
-    final FieldData fd = FieldData.getFromMemory("NVAX", year, qtr);
+    FieldData.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
+    final FieldData fd = FieldData.getFromMemory("MSFT", year, qtr);
     System.out.println(fd);
 
     // FieldData.setMemory(2018, 2020, FiletypeEnum.BINARY);

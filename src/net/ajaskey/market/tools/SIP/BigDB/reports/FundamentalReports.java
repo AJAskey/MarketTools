@@ -162,7 +162,7 @@ public class FundamentalReports extends Fundamentals {
     pw.printf("\tPrice         :  %11.2f%n", fd.getPrice());
     pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(fd.getMktCap(), 13));
 
-    final QuarterlyDouble shares = new QuarterlyDouble(fd.getSharesQ());
+    final QuarterlyDouble shares = new QuarterlyDouble(fd.getSharesQtr());
     pw.println(shares.fmtGrowth1Q("Shares"));
     final double sc = shares.deltaQ(1, 2);
     if (sc < -0.250) {
@@ -214,8 +214,8 @@ public class FundamentalReports extends Fundamentals {
 
     final double fcf = cashops.getTtm() - capex.getTtm() - dividend.getTtm() * shares.getTtmAvg();
 
-    final QuarterlyDouble cashfin = new QuarterlyDouble(fd.getCashFromFin());
-    final QuarterlyDouble cashinv = new QuarterlyDouble(fd.getCashFromInv());
+    final QuarterlyDouble cashfin = new QuarterlyDouble(fd.getCashFromFinQtr());
+    final QuarterlyDouble cashinv = new QuarterlyDouble(fd.getCashFromInvQtr());
 
     final double netcashflow = cashops.getTtm() + cashfin.getTtm();
     final double cashflow = netcashflow + cashinv.getTtm();

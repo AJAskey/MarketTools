@@ -30,9 +30,9 @@ public class FieldDataQuarter {
   /**
    * Constructor
    *
-   * @param yr
-   * @param qtr
-   * @param fdl
+   * @param yr  year
+   * @param qtr quarter
+   * @param fdl LIst of FieldData
    */
   public FieldDataQuarter(int yr, int qtr, List<FieldData> fdl) {
     this.year = yr;

@@ -30,7 +30,7 @@ public class OneCompanyData {
   /**
    * Returns all requested data for ticker supplied
    *
-   * @param ticker
+   * @param ticker The individual stock symbol
    * @return One instance in list for each year of data
    */
   public static List<OneCompanyData> getCompany(String ticker) {
@@ -47,17 +47,12 @@ public class OneCompanyData {
   }
 
   /**
+   * Returns FieldData for requested parameters
    *
-   * @param ticker
-   * @return
-   */
-
-  /**
-   *
-   * @param fdList
-   * @param yr
-   * @param qtr
-   * @return
+   * @param fdList List of FieldData
+   * @param yr     year
+   * @param qtr    quarter
+   * @return FieldData
    */
   public static FieldData getFieldData(List<FieldData> fdList, int yr, int qtr) {
     for (final FieldData fd : fdList) {
@@ -68,6 +63,12 @@ public class OneCompanyData {
     return null;
   }
 
+  /**
+   * Returns quarter
+   *
+   * @param name The name of the individual stock symbol file
+   * @return Numeric value of quarter
+   */
   private static int parseQuarter(String name) {
     int ret = 0;
     try {
@@ -81,6 +82,12 @@ public class OneCompanyData {
     return ret;
   }
 
+  /**
+   * Returns year
+   *
+   * @param name The name of the individual stock symbol file
+   * @return Numeric value of year
+   */
   private static int parseYear(String name) {
     int ret = 0;
     try {
@@ -104,8 +111,8 @@ public class OneCompanyData {
   /**
    * Constructor is private for use by internal procedures
    *
-   * @param t
-   * @param fdy
+   * @param t   The individual stock symbol
+   * @param fdy Year of FieldData
    */
   private OneCompanyData(String t, FieldDataYear fdy) {
 
@@ -154,7 +161,7 @@ public class OneCompanyData {
   /**
    * getter allowing for external loops to retrieve quarter data
    *
-   * @param qtr
+   * @param qtr quarter
    * @return corresponding quarter data
    */
   public FieldData getQ(int qtr) {

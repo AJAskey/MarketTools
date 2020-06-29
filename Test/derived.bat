@@ -1,0 +1,1 @@
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=derived.txt --time-limit=30 --regression-test-basename=DerivedTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB.derived

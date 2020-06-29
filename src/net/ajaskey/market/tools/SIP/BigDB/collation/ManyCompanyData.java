@@ -26,7 +26,7 @@ public class ManyCompanyData {
   /**
    * Create of list of company data from input list of tickers
    *
-   * @param tickers
+   * @param tickers The individual stock symbols
    * @return List of ManyCompanyData
    */
   public static List<ManyCompanyData> createList(List<String> tickers) {
@@ -48,8 +48,8 @@ public class ManyCompanyData {
   /**
    * Constructor is private for use by internal procedures.
    *
-   * @param list
-   * @param ticker
+   * @param list   List of OneComanyData
+   * @param ticker The individual stock symbol
    */
   private ManyCompanyData(List<OneCompanyData> list, String ticker) {
     this.ticker = ticker;

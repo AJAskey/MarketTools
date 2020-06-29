@@ -28,11 +28,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.BalSheetFileData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.CashFileData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.EstimateFileData;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.IncSheetFileData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.SharesFileData;
@@ -41,29 +41,34 @@ public class FieldDataBinary implements Serializable {
 
   public static final long serialVersionUID = 2600255321596652398L;
 
+  /**
+   * Internal storage for all data records to be written
+   */
   private static List<FieldDataBinary> bigList = new ArrayList<>();
 
   /**
+   * Adds an entry to <b>bigList</b>
    *
-   * @param cfd
-   * @param efd
-   * @param sfd
-   * @param ifd
-   * @param bfd
-   * @param cashfd
-   * @param yr
-   * @param qtr
+   * @param cfd  CompanyFileData
+   * @param efd  EstimateFileData
+   * @param sfd  SharesFileData
+   * @param ifd  IncSheetFileData
+   * @param bfd  BalSheetFileData
+   * @param cash CashFileData
+   * @param yr   year
+   * @param qtr  quarter
    */
-  public static void add(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
-      CashFileData cashfd, int yr, int qtr) {
+  public static void add(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd, CashFileData cash,
+      int yr, int qtr) {
 
-    new FieldDataBinary(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
+    new FieldDataBinary(cfd, efd, sfd, ifd, bfd, cash, yr, qtr);
   }
 
   /**
+   * Reads the big binary file containing ome quarter of data
    *
-   * @param fname
-   * @return
+   * @param fname File name to read
+   * @return List of FieldData
    */
   public static List<FieldData> readBinaryFile(String fname) {
 
@@ -98,15 +103,17 @@ public class FieldDataBinary implements Serializable {
 
   /**
    *
-   * @param year
-   * @param quarter
+   * Writes the big binary file containing one quarter of data
+   *
+   * @param yr  year
+   * @param qtr quarter
    */
-  public static void writeBinaryFile(int year, int quarter) {
+  public static void writeBinaryFile(int yr, int qtr) {
 
-    final FieldDataBinaryFile fdbf = new FieldDataBinaryFile(year, quarter, FieldDataBinary.bigList);
+    final FieldDataBinaryFile fdbf = new FieldDataBinaryFile(yr, qtr, FieldDataBinary.bigList);
 
     try {
-      final String fname = String.format("%s%s/all-companies-%dQ%d.bin", FieldData.outbasedir, year, year, quarter);
+      final String fname = String.format("%s%s/all-companies-%dQ%d.bin", FieldData.outbasedir, yr, yr, qtr);
       final ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(fname));
       o.writeObject(fdbf);
       o.close();
@@ -132,16 +139,18 @@ public class FieldDataBinary implements Serializable {
   public int              year;
 
   /**
+   * Constructor
    *
-   * @param cfd
-   * @param efd
-   * @param sfd
-   * @param ifd
-   * @param bfd
-   * @param cashfd
-   * @param yr
-   * @param qtr
+   * @param cfd  CompanyFileData
+   * @param efd  EstimateFileData
+   * @param sfd  SharesFileData
+   * @param ifd  IncSheetFileData
+   * @param bfd  BalSheetFileData
+   * @param cash CashFileData
+   * @param yr   year
+   * @param qtr  quarter
    */
+
   private FieldDataBinary(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
       CashFileData cashfd, int yr, int qtr) {
 
@@ -172,12 +181,11 @@ public class FieldDataBinary implements Serializable {
     if (this.valid) {
       FieldDataBinary.bigList.add(this);
     }
-
-    // System.out.println(balSheetData);
-    // System.out.println(balSheetData);
-
   }
 
+  /**
+   * @return Reference to <b>bigList</b>
+   */
   public List<FieldDataBinary> getBigList() {
     return FieldDataBinary.bigList;
   }

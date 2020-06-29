@@ -1,4 +1,9 @@
 /**
+ * <p>
+ * The <b>BigDB</b> package contains data structures filled by reading the
+ * common data format files can be used to generate reports.
+ * </p>
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with this
  * work for additional information regarding copyright ownership. The ASF
@@ -15,17 +20,6 @@
  * the License.
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
- */
-/**
- * <p>
- * The <b>BigDB</b> package contains the sub-packages and classes to import
- * Stock Investor Pro data and export to a common file format.
- * </p>
- *
- * <p>
- * Data structures filled by reading the common data format files can be used to
- * generate reports.
- * </p>
  */
 
 package net.ajaskey.market.tools.SIP.BigDB;

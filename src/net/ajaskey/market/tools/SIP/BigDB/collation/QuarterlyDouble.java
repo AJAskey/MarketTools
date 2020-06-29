@@ -24,6 +24,11 @@ public class QuarterlyDouble {
 
   public double[] dArr = null;
 
+  /**
+   * Constructor
+   *
+   * @param inArr Quarterly data
+   */
   public QuarterlyDouble(double[] inArr) {
     if (inArr == null) {
       this.dArr = new double[10];
@@ -43,6 +48,13 @@ public class QuarterlyDouble {
   private QuarterlyDouble() {
   }
 
+  /**
+   * Returns the difference between two quarters of data
+   *
+   * @param q1 Earlier quarter
+   * @param q2 Later quarter
+   * @return Zero if bad inputs or the delta
+   */
   public double deltaQ(int q1, int q2) {
 
     final double ret = 0.0;
@@ -58,9 +70,10 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Formats latest quarter of data into predetermined string.
    *
-   * @param desc
-   * @return
+   * @param desc Text to use as prefix
+   * @return String
    */
   public String fmtGrowth1Q(final String desc) {
 
@@ -71,9 +84,10 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Formats trailing 12 months of data into predetermined string.
    *
-   * @param desc
-   * @return
+   * @param desc Text to use as prefix
+   * @return String
    */
   public String fmtGrowth4Q(final String desc) {
 
@@ -83,6 +97,12 @@ public class QuarterlyDouble {
     return ret;
   }
 
+  /**
+   * Returns requested quarter of data
+   *
+   * @param i quarter to return
+   * @return double
+   */
   public double get(int i) {
     double ret = 0.0;
     try {
@@ -99,8 +119,9 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Returns percent change of q4 vs q1
    *
-   * @return
+   * @return double
    */
   public double getQoQ() {
 
@@ -112,8 +133,9 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Returns percent change of q2 vs q1
    *
-   * @return
+   * @return double
    */
   public double getQseqQ() {
 
@@ -125,8 +147,9 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Returns trailing 12 months
    *
-   * @return
+   * @return q1 + q2 + q3 + q4
    */
   public double getTtm() {
 
@@ -142,6 +165,11 @@ public class QuarterlyDouble {
     return ret;
   }
 
+  /**
+   * Returns the average of the trailing 12 months
+   *
+   * @return (q1 + q2 + q3 + q4) / 4
+   */
   public double getTtmAvg() {
     double d = 0.0;
     try {

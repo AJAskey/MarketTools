@@ -16,10 +16,10 @@
  *
  * Original author : Andy Askey (ajaskey34@gmail.com)
  */
-package net.ajaskey.market.tools.SIP.BigDB.dataio;
+package net.ajaskey.market.tools.SIP.BigDB;
 
-public enum SnpEnum {
+public enum ExchEnum {
 
-  NONE, SP400, SP500, SP600;
+  AMEX, NASDAQ, NONE, NYSE, OTC
 
 }
