@@ -1,1 +1,2 @@
 net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate
+

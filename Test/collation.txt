@@ -1,5 +1,5 @@
 net.ajaskey.market.tools.SIP.BigDB.collation.CompanyData
-net.ajaskey.market.tools.SIP.BigDB.collation.FieldDataBinary
+net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary
 net.ajaskey.market.tools.SIP.BigDB.collation.ManyCompanyData
 net.ajaskey.market.tools.SIP.BigDB.collation.OneCompanyData
 net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble

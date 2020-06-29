@@ -26,7 +26,6 @@ class CompanyFileDataTest {
     Assert.assertEquals("M - Nasdaq", cfd.getExchange());
     Assert.assertEquals("7372", cfd.getSic());
     Assert.assertEquals(false, cfd.isAdr());
-    Assert.assertEquals(false, cfd.isDrp());
     Assert.assertEquals("SP500", cfd.getSnpIndex());
     Assert.assertEquals("Industrial", cfd.getDowIndex());
     Assert.assertEquals(144000, cfd.getNumEmployees());

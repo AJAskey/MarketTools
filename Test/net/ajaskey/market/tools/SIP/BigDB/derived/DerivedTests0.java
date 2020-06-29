@@ -10,9 +10,9 @@ public class DerivedTests0 {
     public static boolean debug = false;
 
     @Test
-    public void test0001() throws Throwable {
+    public void test001() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0001");
+            System.out.format("%n%s%n", "DerivedTests0.test001");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "hi!" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -29,41 +29,41 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0002() throws Throwable {
+    public void test002() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0002");
+            System.out.format("%n%s%n", "DerivedTests0.test002");
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.write();
     }
 
     @Test
-    public void test0003() throws Throwable {
+    public void test003() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0003");
+            System.out.format("%n%s%n", "DerivedTests0.test003");
         java.lang.Object obj0 = new java.lang.Object();
         java.lang.Class<?> wildcardClass1 = obj0.getClass();
         org.junit.Assert.assertNotNull(wildcardClass1);
     }
 
     @Test
-    public void test0004() throws Throwable {
+    public void test004() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0004");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test004");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0005() throws Throwable {
+    public void test005() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0005");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test005");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0006() throws Throwable {
+    public void test006() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0006");
+            System.out.format("%n%s%n", "DerivedTests0.test006");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (short) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -71,9 +71,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0007() throws Throwable {
+    public void test007() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0007");
+            System.out.format("%n%s%n", "DerivedTests0.test007");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -81,49 +81,49 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0008() throws Throwable {
+    public void test008() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0008");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test008");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0009() throws Throwable {
+    public void test009() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0009");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test009");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0010() throws Throwable {
+    public void test010() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0010");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test010");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0011() throws Throwable {
+    public void test011() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0011");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test011");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0012() throws Throwable {
+    public void test012() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0012");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test012");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0013() throws Throwable {
+    public void test013() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0013");
+            System.out.format("%n%s%n", "DerivedTests0.test013");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -152,17 +152,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0014() throws Throwable {
+    public void test014() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0014");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test014");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', 100, filetypeEnum2);
     }
 
     @Test
-    public void test0015() throws Throwable {
+    public void test015() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0015");
+            System.out.format("%n%s%n", "DerivedTests0.test015");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -170,9 +170,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0016() throws Throwable {
+    public void test016() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0016");
+            System.out.format("%n%s%n", "DerivedTests0.test016");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -201,17 +201,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0017() throws Throwable {
+    public void test017() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0017");
+            System.out.format("%n%s%n", "DerivedTests0.test017");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) (short) 1, fieldData2);
     }
 
     @Test
-    public void test0018() throws Throwable {
+    public void test018() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0018");
+            System.out.format("%n%s%n", "DerivedTests0.test018");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (byte) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -219,9 +219,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0019() throws Throwable {
+    public void test019() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0019");
+            System.out.format("%n%s%n", "DerivedTests0.test019");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', 0, fieldData2);
+    }
+
+    @Test
+    public void test020() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test020");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -238,33 +246,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0020() throws Throwable {
+    public void test021() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0020");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test021");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', 0, filetypeEnum2);
     }
 
     @Test
-    public void test0021() throws Throwable {
+    public void test022() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0021");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test022");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0022() throws Throwable {
+    public void test023() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0022");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test023");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0023() throws Throwable {
+    public void test024() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0023");
+            System.out.format("%n%s%n", "DerivedTests0.test024");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -272,49 +280,49 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0024() throws Throwable {
+    public void test025() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0024");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test025");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0025() throws Throwable {
+    public void test026() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0025");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test026");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0026() throws Throwable {
+    public void test027() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0026");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test027");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0027() throws Throwable {
+    public void test028() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0027");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test028");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0028() throws Throwable {
+    public void test029() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0028");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test029");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0029() throws Throwable {
+    public void test030() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0029");
+            System.out.format("%n%s%n", "DerivedTests0.test030");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -331,33 +339,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0030() throws Throwable {
+    public void test031() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0030");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test031");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0031() throws Throwable {
+    public void test032() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0031");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test032");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0032() throws Throwable {
+    public void test033() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0032");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test033");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0033() throws Throwable {
+    public void test034() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0033");
+            System.out.format("%n%s%n", "DerivedTests0.test034");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -392,33 +400,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0034() throws Throwable {
+    public void test035() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0034");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test035");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0035() throws Throwable {
+    public void test036() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0035");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test036");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0036() throws Throwable {
+    public void test037() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0036");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test037");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0037() throws Throwable {
+    public void test038() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0037");
+            System.out.format("%n%s%n", "DerivedTests0.test038");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -471,17 +479,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0038() throws Throwable {
+    public void test039() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0038");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test039");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0039() throws Throwable {
+    public void test040() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0039");
+            System.out.format("%n%s%n", "DerivedTests0.test040");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -546,25 +554,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0040() throws Throwable {
+    public void test041() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0040");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test041");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0041() throws Throwable {
+    public void test042() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0041");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test042");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', 1, filetypeEnum2);
     }
 
     @Test
-    public void test0042() throws Throwable {
+    public void test043() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0042");
+            System.out.format("%n%s%n", "DerivedTests0.test043");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -647,17 +655,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0043() throws Throwable {
+    public void test044() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0043");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test044");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0044() throws Throwable {
+    public void test045() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0044");
+            System.out.format("%n%s%n", "DerivedTests0.test045");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -758,49 +766,49 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0045() throws Throwable {
+    public void test046() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0045");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test046");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', 1, filetypeEnum2);
     }
 
     @Test
-    public void test0046() throws Throwable {
+    public void test047() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0046");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test047");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0047() throws Throwable {
+    public void test048() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0047");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test048");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', 100, filetypeEnum2);
     }
 
     @Test
-    public void test0048() throws Throwable {
+    public void test049() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0048");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test049");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0049() throws Throwable {
+    public void test050() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0049");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test050");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0050() throws Throwable {
+    public void test051() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0050");
+            System.out.format("%n%s%n", "DerivedTests0.test051");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -808,9 +816,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0051() throws Throwable {
+    public void test052() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0051");
+            System.out.format("%n%s%n", "DerivedTests0.test052");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -833,9 +841,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0052() throws Throwable {
+    public void test053() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0052");
+            System.out.format("%n%s%n", "DerivedTests0.test053");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -918,9 +926,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0053() throws Throwable {
+    public void test054() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0053");
+            System.out.format("%n%s%n", "DerivedTests0.test054");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -973,25 +981,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0054() throws Throwable {
+    public void test055() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0054");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test055");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0055() throws Throwable {
+    public void test056() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0055");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test056");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0056() throws Throwable {
+    public void test057() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0056");
+            System.out.format("%n%s%n", "DerivedTests0.test057");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -999,17 +1007,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0057() throws Throwable {
+    public void test058() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0057");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test058");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0058() throws Throwable {
+    public void test059() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0058");
+            System.out.format("%n%s%n", "DerivedTests0.test059");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -1110,17 +1118,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0059() throws Throwable {
+    public void test060() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0059");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test060");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0060() throws Throwable {
+    public void test061() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0060");
+            System.out.format("%n%s%n", "DerivedTests0.test061");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1128,57 +1136,57 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0061() throws Throwable {
+    public void test062() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0061");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test062");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0062() throws Throwable {
+    public void test063() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0062");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test063");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0063() throws Throwable {
+    public void test064() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0063");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test064");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0064() throws Throwable {
+    public void test065() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0064");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test065");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0065() throws Throwable {
+    public void test066() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0065");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test066");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0066() throws Throwable {
+    public void test067() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0066");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test067");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0067() throws Throwable {
+    public void test068() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0067");
+            System.out.format("%n%s%n", "DerivedTests0.test068");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1186,9 +1194,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0068() throws Throwable {
+    public void test069() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0068");
+            System.out.format("%n%s%n", "DerivedTests0.test069");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -1265,17 +1273,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0069() throws Throwable {
+    public void test070() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0069");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test070");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0070() throws Throwable {
+    public void test071() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0070");
+            System.out.format("%n%s%n", "DerivedTests0.test071");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1283,17 +1291,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0071() throws Throwable {
+    public void test072() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0071");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test072");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0072() throws Throwable {
+    public void test073() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0072");
+            System.out.format("%n%s%n", "DerivedTests0.test073");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) '4', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1301,9 +1309,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0073() throws Throwable {
+    public void test074() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0073");
+            System.out.format("%n%s%n", "DerivedTests0.test074");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1311,9 +1319,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0074() throws Throwable {
+    public void test075() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0074");
+            System.out.format("%n%s%n", "DerivedTests0.test075");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -1396,9 +1404,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0075() throws Throwable {
+    public void test076() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0075");
+            System.out.format("%n%s%n", "DerivedTests0.test076");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1406,9 +1414,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0076() throws Throwable {
+    public void test077() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0076");
+            System.out.format("%n%s%n", "DerivedTests0.test077");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1416,9 +1424,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0077() throws Throwable {
+    public void test078() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0077");
+            System.out.format("%n%s%n", "DerivedTests0.test078");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -1447,9 +1455,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0078() throws Throwable {
+    public void test079() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0078");
+            System.out.format("%n%s%n", "DerivedTests0.test079");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -1502,9 +1510,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0079() throws Throwable {
+    public void test080() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0079");
+            System.out.format("%n%s%n", "DerivedTests0.test080");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1512,25 +1520,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0080() throws Throwable {
+    public void test081() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0080");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test081");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0081() throws Throwable {
+    public void test082() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0081");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test082");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0082() throws Throwable {
+    public void test083() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0082");
+            System.out.format("%n%s%n", "DerivedTests0.test083");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -1583,17 +1591,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0083() throws Throwable {
+    public void test084() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0083");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test084");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), 10, filetypeEnum2);
     }
 
     @Test
-    public void test0084() throws Throwable {
+    public void test085() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0084");
+            System.out.format("%n%s%n", "DerivedTests0.test085");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -1646,9 +1654,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0085() throws Throwable {
+    public void test086() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0085");
+            System.out.format("%n%s%n", "DerivedTests0.test086");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -1731,25 +1739,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0086() throws Throwable {
+    public void test087() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0086");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test087");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0087() throws Throwable {
+    public void test088() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0087");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test088");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', 0, filetypeEnum2);
     }
 
     @Test
-    public void test0088() throws Throwable {
+    public void test089() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0088");
+            System.out.format("%n%s%n", "DerivedTests0.test089");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) '#', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1757,41 +1765,41 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0089() throws Throwable {
+    public void test090() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0089");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test090");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0090() throws Throwable {
+    public void test091() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0090");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test091");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0091() throws Throwable {
+    public void test092() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0091");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test092");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0092() throws Throwable {
+    public void test093() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0092");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test093");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0093() throws Throwable {
+    public void test094() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0093");
+            System.out.format("%n%s%n", "DerivedTests0.test094");
         java.util.List<java.lang.String> strList0 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList6 = new java.util.ArrayList<java.lang.String>();
@@ -1858,25 +1866,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0094() throws Throwable {
+    public void test095() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0094");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test095");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0095() throws Throwable {
+    public void test096() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0095");
+            System.out.format("%n%s%n", "DerivedTests0.test096");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, 100, fieldData2);
     }
 
     @Test
-    public void test0096() throws Throwable {
+    public void test097() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0096");
+            System.out.format("%n%s%n", "DerivedTests0.test097");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1884,9 +1892,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0097() throws Throwable {
+    public void test098() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0097");
+            System.out.format("%n%s%n", "DerivedTests0.test098");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -1927,17 +1935,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0098() throws Throwable {
+    public void test099() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0098");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test099");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0099() throws Throwable {
+    public void test100() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0099");
+            System.out.format("%n%s%n", "DerivedTests0.test100");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -1945,9 +1953,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0100() throws Throwable {
+    public void test101() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0100");
+            System.out.format("%n%s%n", "DerivedTests0.test101");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2000,9 +2008,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0101() throws Throwable {
+    public void test102() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0101");
+            System.out.format("%n%s%n", "DerivedTests0.test102");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2067,33 +2075,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0102() throws Throwable {
+    public void test103() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0102");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test103");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0103() throws Throwable {
+    public void test104() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0103");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test104");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0104() throws Throwable {
+    public void test105() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0104");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test105");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0105() throws Throwable {
+    public void test106() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0105");
+            System.out.format("%n%s%n", "DerivedTests0.test106");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -2101,9 +2109,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0106() throws Throwable {
+    public void test107() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0106");
+            System.out.format("%n%s%n", "DerivedTests0.test107");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -2111,9 +2119,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0107() throws Throwable {
+    public void test108() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0107");
+            System.out.format("%n%s%n", "DerivedTests0.test108");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2184,17 +2192,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0108() throws Throwable {
+    public void test109() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0108");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test109");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0109() throws Throwable {
+    public void test110() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0109");
+            System.out.format("%n%s%n", "DerivedTests0.test110");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2271,17 +2279,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0110() throws Throwable {
+    public void test111() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0110");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test111");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0111() throws Throwable {
+    public void test112() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0111");
+            System.out.format("%n%s%n", "DerivedTests0.test112");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -2358,9 +2366,82 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0112() throws Throwable {
+    public void test113() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0112");
+            System.out.format("%n%s%n", "DerivedTests0.test113");
+        java.util.List<java.lang.String> strList0 = null;
+        java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
+        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
+        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray9 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList10 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10, fieldDataArray9);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray15 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList16 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16, fieldDataArray15);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16);
+        java.lang.String[] strArray22 = new java.lang.String[] { "hi!" };
+        java.util.ArrayList<java.lang.String> strList23 = new java.util.ArrayList<java.lang.String>();
+        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList23, strArray22);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray27 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList28 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28, fieldDataArray27);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList23, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28);
+        java.lang.String[] strArray36 = new java.lang.String[] { "", "" };
+        java.util.ArrayList<java.lang.String> strList37 = new java.util.ArrayList<java.lang.String>();
+        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList37, strArray36);
+        java.lang.String[] strArray42 = new java.lang.String[] { "hi!" };
+        java.util.ArrayList<java.lang.String> strList43 = new java.util.ArrayList<java.lang.String>();
+        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList43, strArray42);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray47 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList48 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48, fieldDataArray47);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList43, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray53 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList54 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean55 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList54, fieldDataArray53);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList43, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList54);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList37, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList54);
+        java.lang.String[] strArray61 = new java.lang.String[] { "hi!" };
+        java.util.ArrayList<java.lang.String> strList62 = new java.util.ArrayList<java.lang.String>();
+        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList62, strArray61);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray66 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList67 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67, fieldDataArray66);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList62, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList37, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 0, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, 0, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
+        org.junit.Assert.assertNotNull(strArray4);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
+        org.junit.Assert.assertNotNull(fieldDataArray9);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertNotNull(fieldDataArray15);
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+        org.junit.Assert.assertNotNull(strArray22);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + true + "'", boolean24 == true);
+        org.junit.Assert.assertNotNull(fieldDataArray27);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertNotNull(strArray36);
+        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + true + "'", boolean38 == true);
+        org.junit.Assert.assertNotNull(strArray42);
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + true + "'", boolean44 == true);
+        org.junit.Assert.assertNotNull(fieldDataArray47);
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+        org.junit.Assert.assertNotNull(fieldDataArray53);
+        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + false + "'", boolean55 == false);
+        org.junit.Assert.assertNotNull(strArray61);
+        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + true + "'", boolean63 == true);
+        org.junit.Assert.assertNotNull(fieldDataArray66);
+        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
+    }
+
+    @Test
+    public void test114() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test114");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -2368,9 +2449,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0113() throws Throwable {
+    public void test115() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0113");
+            System.out.format("%n%s%n", "DerivedTests0.test115");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2441,9 +2522,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0114() throws Throwable {
+    public void test116() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0114");
+            System.out.format("%n%s%n", "DerivedTests0.test116");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -2451,57 +2532,57 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0115() throws Throwable {
+    public void test117() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0115");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test117");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0116() throws Throwable {
+    public void test118() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0116");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test118");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0117() throws Throwable {
+    public void test119() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0117");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test119");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0118() throws Throwable {
+    public void test120() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0118");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test120");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0119() throws Throwable {
+    public void test121() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0119");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test121");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0120() throws Throwable {
+    public void test122() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0120");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test122");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0121() throws Throwable {
+    public void test123() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0121");
+            System.out.format("%n%s%n", "DerivedTests0.test123");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2590,49 +2671,49 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0122() throws Throwable {
+    public void test124() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0122");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test124");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0123() throws Throwable {
+    public void test125() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0123");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test125");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0124() throws Throwable {
+    public void test126() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0124");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test126");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0125() throws Throwable {
+    public void test127() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0125");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test127");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0126() throws Throwable {
+    public void test128() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0126");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test128");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0127() throws Throwable {
+    public void test129() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0127");
+            System.out.format("%n%s%n", "DerivedTests0.test129");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2697,9 +2778,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0128() throws Throwable {
+    public void test130() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0128");
+            System.out.format("%n%s%n", "DerivedTests0.test130");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2770,33 +2851,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0129() throws Throwable {
+    public void test131() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0129");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test131");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0130() throws Throwable {
+    public void test132() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0130");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test132");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0131() throws Throwable {
+    public void test133() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0131");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test133");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0132() throws Throwable {
+    public void test134() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0132");
+            System.out.format("%n%s%n", "DerivedTests0.test134");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -2804,17 +2885,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0133() throws Throwable {
+    public void test135() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0133");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test135");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0134() throws Throwable {
+    public void test136() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0134");
+            System.out.format("%n%s%n", "DerivedTests0.test136");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2873,17 +2954,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0135() throws Throwable {
+    public void test137() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0135");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test137");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0136() throws Throwable {
+    public void test138() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0136");
+            System.out.format("%n%s%n", "DerivedTests0.test138");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2918,9 +2999,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0137() throws Throwable {
+    public void test139() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0137");
+            System.out.format("%n%s%n", "DerivedTests0.test139");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -2928,25 +3009,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0138() throws Throwable {
+    public void test140() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0138");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test140");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0139() throws Throwable {
+    public void test141() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0139");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test141");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0140() throws Throwable {
+    public void test142() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0140");
+            System.out.format("%n%s%n", "DerivedTests0.test142");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -2975,33 +3056,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0141() throws Throwable {
+    public void test143() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0141");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test143");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0142() throws Throwable {
+    public void test144() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0142");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test144");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0143() throws Throwable {
+    public void test145() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0143");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test145");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0144() throws Throwable {
+    public void test146() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0144");
+            System.out.format("%n%s%n", "DerivedTests0.test146");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3009,17 +3090,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0145() throws Throwable {
+    public void test147() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0145");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test147");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0146() throws Throwable {
+    public void test148() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0146");
+            System.out.format("%n%s%n", "DerivedTests0.test148");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3072,9 +3153,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0147() throws Throwable {
+    public void test149() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0147");
+            System.out.format("%n%s%n", "DerivedTests0.test149");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3082,9 +3163,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0148() throws Throwable {
+    public void test150() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0148");
+            System.out.format("%n%s%n", "DerivedTests0.test150");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (byte) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3092,9 +3173,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0149() throws Throwable {
+    public void test151() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0149");
+            System.out.format("%n%s%n", "DerivedTests0.test151");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3102,9 +3183,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0150() throws Throwable {
+    public void test152() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0150");
+            System.out.format("%n%s%n", "DerivedTests0.test152");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3112,9 +3193,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0151() throws Throwable {
+    public void test153() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0151");
+            System.out.format("%n%s%n", "DerivedTests0.test153");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3122,9 +3203,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0152() throws Throwable {
+    public void test154() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0152");
+            System.out.format("%n%s%n", "DerivedTests0.test154");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3132,9 +3213,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0153() throws Throwable {
+    public void test155() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0153");
+            System.out.format("%n%s%n", "DerivedTests0.test155");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) '4', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3142,9 +3223,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0154() throws Throwable {
+    public void test156() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0154");
+            System.out.format("%n%s%n", "DerivedTests0.test156");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3152,9 +3233,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0155() throws Throwable {
+    public void test157() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0155");
+            System.out.format("%n%s%n", "DerivedTests0.test157");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) (short) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3162,9 +3243,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0156() throws Throwable {
+    public void test158() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0156");
+            System.out.format("%n%s%n", "DerivedTests0.test158");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, (int) (byte) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3172,9 +3253,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0157() throws Throwable {
+    public void test159() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0157");
+            System.out.format("%n%s%n", "DerivedTests0.test159");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (byte) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3182,25 +3263,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0158() throws Throwable {
+    public void test160() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0158");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test160");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (byte) 100, fieldData2);
+    }
+
+    @Test
+    public void test161() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test161");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0159() throws Throwable {
+    public void test162() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0159");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test162");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0160() throws Throwable {
+    public void test163() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0160");
+            System.out.format("%n%s%n", "DerivedTests0.test163");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3283,17 +3372,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0161() throws Throwable {
+    public void test164() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0161");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test164");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0162() throws Throwable {
+    public void test165() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0162");
+            System.out.format("%n%s%n", "DerivedTests0.test165");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, (int) (byte) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3301,25 +3390,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0163() throws Throwable {
+    public void test166() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0163");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test166");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0164() throws Throwable {
+    public void test167() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0164");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test167");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0165() throws Throwable {
+    public void test168() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0165");
+            System.out.format("%n%s%n", "DerivedTests0.test168");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '#', 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3327,49 +3416,49 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0166() throws Throwable {
+    public void test169() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0166");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test169");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0167() throws Throwable {
+    public void test170() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0167");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test170");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0168() throws Throwable {
+    public void test171() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0168");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test171");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0169() throws Throwable {
+    public void test172() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0169");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test172");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', 10, filetypeEnum2);
     }
 
     @Test
-    public void test0170() throws Throwable {
+    public void test173() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0170");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test173");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0171() throws Throwable {
+    public void test174() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0171");
+            System.out.format("%n%s%n", "DerivedTests0.test174");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, (int) '4', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3377,25 +3466,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0172() throws Throwable {
+    public void test175() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0172");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test175");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0173() throws Throwable {
+    public void test176() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0173");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test176");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0174() throws Throwable {
+    public void test177() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0174");
+            System.out.format("%n%s%n", "DerivedTests0.test177");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3430,57 +3519,57 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0175() throws Throwable {
+    public void test178() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0175");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test178");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0176() throws Throwable {
+    public void test179() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0176");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test179");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0177() throws Throwable {
+    public void test180() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0177");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test180");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0178() throws Throwable {
+    public void test181() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0178");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test181");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0179() throws Throwable {
+    public void test182() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0179");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test182");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0180() throws Throwable {
+    public void test183() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0180");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test183");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0181() throws Throwable {
+    public void test184() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0181");
+            System.out.format("%n%s%n", "DerivedTests0.test184");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3488,25 +3577,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0182() throws Throwable {
+    public void test185() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0182");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test185");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0183() throws Throwable {
+    public void test186() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0183");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test186");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0184() throws Throwable {
+    public void test187() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0184");
+            System.out.format("%n%s%n", "DerivedTests0.test187");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3514,9 +3603,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0185() throws Throwable {
+    public void test188() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0185");
+            System.out.format("%n%s%n", "DerivedTests0.test188");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3581,33 +3670,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0186() throws Throwable {
+    public void test189() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0186");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test189");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0187() throws Throwable {
+    public void test190() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0187");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test190");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0188() throws Throwable {
+    public void test191() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0188");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test191");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0189() throws Throwable {
+    public void test192() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0189");
+            System.out.format("%n%s%n", "DerivedTests0.test192");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3660,9 +3749,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0190() throws Throwable {
+    public void test193() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0190");
+            System.out.format("%n%s%n", "DerivedTests0.test193");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '#', (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3670,17 +3759,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0191() throws Throwable {
+    public void test194() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0191");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test194");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0192() throws Throwable {
+    public void test195() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0192");
+            System.out.format("%n%s%n", "DerivedTests0.test195");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, 0, fieldData2);
+    }
+
+    @Test
+    public void test196() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test196");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3688,9 +3785,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0193() throws Throwable {
+    public void test197() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0193");
+            System.out.format("%n%s%n", "DerivedTests0.test197");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (-1), fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3698,17 +3795,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0194() throws Throwable {
+    public void test198() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0194");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test198");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0195() throws Throwable {
+    public void test199() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0195");
+            System.out.format("%n%s%n", "DerivedTests0.test199");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (-1), fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3716,9 +3813,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0196() throws Throwable {
+    public void test200() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0196");
+            System.out.format("%n%s%n", "DerivedTests0.test200");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3726,49 +3823,57 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0197() throws Throwable {
+    public void test201() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0197");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test201");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0198() throws Throwable {
+    public void test202() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0198");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test202");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0199() throws Throwable {
+    public void test203() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0199");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test203");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0200() throws Throwable {
+    public void test204() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0200");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test204");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) (short) 10, fieldData2);
+    }
+
+    @Test
+    public void test205() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test205");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0201() throws Throwable {
+    public void test206() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0201");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test206");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0202() throws Throwable {
+    public void test207() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0202");
+            System.out.format("%n%s%n", "DerivedTests0.test207");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (int) '#', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -3776,9 +3881,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0203() throws Throwable {
+    public void test208() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0203");
+            System.out.format("%n%s%n", "DerivedTests0.test208");
         java.lang.String[] strArray1 = new java.lang.String[] { "" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3849,25 +3954,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0204() throws Throwable {
+    public void test209() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0204");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test209");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0205() throws Throwable {
+    public void test210() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0205");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test210");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0206() throws Throwable {
+    public void test211() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0206");
+            System.out.format("%n%s%n", "DerivedTests0.test211");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -3962,25 +4067,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0207() throws Throwable {
+    public void test212() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0207");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test212");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0208() throws Throwable {
+    public void test213() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0208");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test213");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0209() throws Throwable {
+    public void test214() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0209");
+            System.out.format("%n%s%n", "DerivedTests0.test214");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -4069,17 +4174,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0210() throws Throwable {
+    public void test215() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0210");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test215");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0211() throws Throwable {
+    public void test216() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0211");
+            System.out.format("%n%s%n", "DerivedTests0.test216");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -4156,41 +4261,41 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0212() throws Throwable {
+    public void test217() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0212");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test217");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', 1, filetypeEnum2);
     }
 
     @Test
-    public void test0213() throws Throwable {
+    public void test218() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0213");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test218");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0214() throws Throwable {
+    public void test219() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0214");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test219");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0215() throws Throwable {
+    public void test220() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0215");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test220");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0216() throws Throwable {
+    public void test221() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0216");
+            System.out.format("%n%s%n", "DerivedTests0.test221");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4198,9 +4303,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0217() throws Throwable {
+    public void test222() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0217");
+            System.out.format("%n%s%n", "DerivedTests0.test222");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -4295,17 +4400,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0218() throws Throwable {
+    public void test223() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0218");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test223");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0219() throws Throwable {
+    public void test224() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0219");
+            System.out.format("%n%s%n", "DerivedTests0.test224");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4313,17 +4418,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0220() throws Throwable {
+    public void test225() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0220");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test225");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0221() throws Throwable {
+    public void test226() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0221");
+            System.out.format("%n%s%n", "DerivedTests0.test226");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4331,17 +4436,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0222() throws Throwable {
+    public void test227() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0222");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test227");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0223() throws Throwable {
+    public void test228() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0223");
+            System.out.format("%n%s%n", "DerivedTests0.test228");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4349,9 +4454,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0224() throws Throwable {
+    public void test229() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0224");
+            System.out.format("%n%s%n", "DerivedTests0.test229");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -4422,9 +4527,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0225() throws Throwable {
+    public void test230() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0225");
+            System.out.format("%n%s%n", "DerivedTests0.test230");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4432,25 +4537,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0226() throws Throwable {
+    public void test231() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0226");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test231");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0227() throws Throwable {
+    public void test232() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0227");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test232");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0228() throws Throwable {
+    public void test233() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0228");
+            System.out.format("%n%s%n", "DerivedTests0.test233");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -4527,9 +4632,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0229() throws Throwable {
+    public void test234() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0229");
+            System.out.format("%n%s%n", "DerivedTests0.test234");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4537,17 +4642,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0230() throws Throwable {
+    public void test235() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0230");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test235");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0231() throws Throwable {
+    public void test236() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0231");
+            System.out.format("%n%s%n", "DerivedTests0.test236");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) (byte) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4555,9 +4660,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0232() throws Throwable {
+    public void test237() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0232");
+            System.out.format("%n%s%n", "DerivedTests0.test237");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -4652,9 +4757,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0233() throws Throwable {
+    public void test238() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0233");
+            System.out.format("%n%s%n", "DerivedTests0.test238");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (-1), fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4662,17 +4767,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0234() throws Throwable {
+    public void test239() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0234");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test239");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0235() throws Throwable {
+    public void test240() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0235");
+            System.out.format("%n%s%n", "DerivedTests0.test240");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4680,33 +4785,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0236() throws Throwable {
+    public void test241() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0236");
+            System.out.format("%n%s%n", "DerivedTests0.test241");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) (byte) 10, fieldData2);
     }
 
     @Test
-    public void test0237() throws Throwable {
+    public void test242() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0237");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test242");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0238() throws Throwable {
+    public void test243() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0238");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test243");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0239() throws Throwable {
+    public void test244() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0239");
+            System.out.format("%n%s%n", "DerivedTests0.test244");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -4714,25 +4819,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0240() throws Throwable {
+    public void test245() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0240");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test245");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0241() throws Throwable {
+    public void test246() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0241");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test246");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0242() throws Throwable {
+    public void test247() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0242");
+            System.out.format("%n%s%n", "DerivedTests0.test247");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -4811,9 +4916,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0243() throws Throwable {
+    public void test248() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0243");
+            System.out.format("%n%s%n", "DerivedTests0.test248");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -4908,17 +5013,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0244() throws Throwable {
+    public void test249() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0244");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test249");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0245() throws Throwable {
+    public void test250() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0245");
+            System.out.format("%n%s%n", "DerivedTests0.test250");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -5017,25 +5122,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0246() throws Throwable {
+    public void test251() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0246");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test251");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0247() throws Throwable {
+    public void test252() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0247");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test252");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', 0, filetypeEnum2);
     }
 
     @Test
-    public void test0248() throws Throwable {
+    public void test253() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0248");
+            System.out.format("%n%s%n", "DerivedTests0.test253");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) (byte) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5043,25 +5148,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0249() throws Throwable {
+    public void test254() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0249");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test254");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) (byte) 0, fieldData2);
+    }
+
+    @Test
+    public void test255() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test255");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0250() throws Throwable {
+    public void test256() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0250");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test256");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0251() throws Throwable {
+    public void test257() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0251");
+            System.out.format("%n%s%n", "DerivedTests0.test257");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5069,17 +5182,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0252() throws Throwable {
+    public void test258() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0252");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test258");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) (short) 0, fieldData2);
+    }
+
+    @Test
+    public void test259() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test259");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0253() throws Throwable {
+    public void test260() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0253");
+            System.out.format("%n%s%n", "DerivedTests0.test260");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -5174,33 +5295,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0254() throws Throwable {
+    public void test261() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0254");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test261");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0255() throws Throwable {
+    public void test262() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0255");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test262");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0256() throws Throwable {
+    public void test263() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0256");
+            System.out.format("%n%s%n", "DerivedTests0.test263");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (int) (byte) 0, fieldData2);
     }
 
     @Test
-    public void test0257() throws Throwable {
+    public void test264() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0257");
+            System.out.format("%n%s%n", "DerivedTests0.test264");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, (int) '#', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5208,9 +5329,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0258() throws Throwable {
+    public void test265() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0258");
+            System.out.format("%n%s%n", "DerivedTests0.test265");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (-1), fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5218,33 +5339,41 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0259() throws Throwable {
+    public void test266() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0259");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test266");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0260() throws Throwable {
+    public void test267() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0260");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test267");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) 'a', fieldData2);
+    }
+
+    @Test
+    public void test268() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test268");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0261() throws Throwable {
+    public void test269() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0261");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test269");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0262() throws Throwable {
+    public void test270() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0262");
+            System.out.format("%n%s%n", "DerivedTests0.test270");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5252,17 +5381,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0263() throws Throwable {
+    public void test271() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0263");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test271");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0264() throws Throwable {
+    public void test272() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0264");
+            System.out.format("%n%s%n", "DerivedTests0.test272");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) 'a', fieldData2);
+    }
+
+    @Test
+    public void test273() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test273");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5270,17 +5407,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0265() throws Throwable {
+    public void test274() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0265");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test274");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0266() throws Throwable {
+    public void test275() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0266");
+            System.out.format("%n%s%n", "DerivedTests0.test275");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (-1), fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5288,17 +5425,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0267() throws Throwable {
+    public void test276() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0267");
+            System.out.format("%n%s%n", "DerivedTests0.test276");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '#', (int) ' ', fieldData2);
     }
 
     @Test
-    public void test0268() throws Throwable {
+    public void test277() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0268");
+            System.out.format("%n%s%n", "DerivedTests0.test277");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -5393,17 +5530,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0269() throws Throwable {
+    public void test278() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0269");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test278");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0270() throws Throwable {
+    public void test279() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0270");
+            System.out.format("%n%s%n", "DerivedTests0.test279");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5411,25 +5548,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0271() throws Throwable {
+    public void test280() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0271");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test280");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0272() throws Throwable {
+    public void test281() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0272");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test281");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0273() throws Throwable {
+    public void test282() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0273");
+            System.out.format("%n%s%n", "DerivedTests0.test282");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) '#', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5437,9 +5574,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0274() throws Throwable {
+    public void test283() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0274");
+            System.out.format("%n%s%n", "DerivedTests0.test283");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5447,17 +5584,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0275() throws Throwable {
+    public void test284() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0275");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test284");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0276() throws Throwable {
+    public void test285() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0276");
+            System.out.format("%n%s%n", "DerivedTests0.test285");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) (short) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5465,17 +5602,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0277() throws Throwable {
+    public void test286() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0277");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test286");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0278() throws Throwable {
+    public void test287() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0278");
+            System.out.format("%n%s%n", "DerivedTests0.test287");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5483,9 +5620,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0279() throws Throwable {
+    public void test288() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0279");
+            System.out.format("%n%s%n", "DerivedTests0.test288");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) '4', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5493,9 +5630,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0280() throws Throwable {
+    public void test289() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0280");
+            System.out.format("%n%s%n", "DerivedTests0.test289");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5503,25 +5640,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0281() throws Throwable {
+    public void test290() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0281");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test290");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0282() throws Throwable {
+    public void test291() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0282");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test291");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0283() throws Throwable {
+    public void test292() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0283");
+            System.out.format("%n%s%n", "DerivedTests0.test292");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5529,25 +5666,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0284() throws Throwable {
+    public void test293() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0284");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test293");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0285() throws Throwable {
+    public void test294() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0285");
+            System.out.format("%n%s%n", "DerivedTests0.test294");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) (byte) -1, fieldData2);
     }
 
     @Test
-    public void test0286() throws Throwable {
+    public void test295() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0286");
+            System.out.format("%n%s%n", "DerivedTests0.test295");
         java.util.List<java.lang.String> strList0 = null;
         java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList3 = null;
         // The following exception was thrown during execution in test generation
@@ -5560,25 +5697,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0287() throws Throwable {
+    public void test296() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0287");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test296");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, (int) '4', fieldData2);
+    }
+
+    @Test
+    public void test297() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test297");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', 10, filetypeEnum2);
     }
 
     @Test
-    public void test0288() throws Throwable {
+    public void test298() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0288");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test298");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0289() throws Throwable {
+    public void test299() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0289");
+            System.out.format("%n%s%n", "DerivedTests0.test299");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -5601,17 +5746,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0290() throws Throwable {
+    public void test300() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0290");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test300");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0291() throws Throwable {
+    public void test301() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0291");
+            System.out.format("%n%s%n", "DerivedTests0.test301");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -5700,33 +5845,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0292() throws Throwable {
+    public void test302() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0292");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test302");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0293() throws Throwable {
+    public void test303() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0293");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test303");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0294() throws Throwable {
+    public void test304() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0294");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test304");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0295() throws Throwable {
+    public void test305() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0295");
+            System.out.format("%n%s%n", "DerivedTests0.test305");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -5815,9 +5960,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0296() throws Throwable {
+    public void test306() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0296");
+            System.out.format("%n%s%n", "DerivedTests0.test306");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -5894,17 +6039,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0297() throws Throwable {
+    public void test307() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0297");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test307");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (short) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0298() throws Throwable {
+    public void test308() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0298");
+            System.out.format("%n%s%n", "DerivedTests0.test308");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -5975,9 +6120,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0299() throws Throwable {
+    public void test309() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0299");
+            System.out.format("%n%s%n", "DerivedTests0.test309");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) 'a', fieldData2);
+    }
+
+    @Test
+    public void test310() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test310");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -5985,17 +6138,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0300() throws Throwable {
+    public void test311() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0300");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test311");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0301() throws Throwable {
+    public void test312() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0301");
+            System.out.format("%n%s%n", "DerivedTests0.test312");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6072,9 +6225,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0302() throws Throwable {
+    public void test313() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0302");
+            System.out.format("%n%s%n", "DerivedTests0.test313");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6082,9 +6235,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0303() throws Throwable {
+    public void test314() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0303");
+            System.out.format("%n%s%n", "DerivedTests0.test314");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -6131,17 +6284,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0304() throws Throwable {
+    public void test315() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0304");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test315");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0305() throws Throwable {
+    public void test316() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0305");
+            System.out.format("%n%s%n", "DerivedTests0.test316");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6200,9 +6353,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0306() throws Throwable {
+    public void test317() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0306");
+            System.out.format("%n%s%n", "DerivedTests0.test317");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6210,17 +6363,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0307() throws Throwable {
+    public void test318() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0307");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test318");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0308() throws Throwable {
+    public void test319() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0308");
+            System.out.format("%n%s%n", "DerivedTests0.test319");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (byte) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6228,9 +6381,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0309() throws Throwable {
+    public void test320() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0309");
+            System.out.format("%n%s%n", "DerivedTests0.test320");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -6295,33 +6448,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0310() throws Throwable {
+    public void test321() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0310");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test321");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0311() throws Throwable {
+    public void test322() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0311");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test322");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0312() throws Throwable {
+    public void test323() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0312");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test323");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0313() throws Throwable {
+    public void test324() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0313");
+            System.out.format("%n%s%n", "DerivedTests0.test324");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6418,9 +6571,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0314() throws Throwable {
+    public void test325() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0314");
+            System.out.format("%n%s%n", "DerivedTests0.test325");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6428,9 +6581,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0315() throws Throwable {
+    public void test326() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0315");
+            System.out.format("%n%s%n", "DerivedTests0.test326");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (int) '#', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6438,17 +6591,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0316() throws Throwable {
+    public void test327() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0316");
+            System.out.format("%n%s%n", "DerivedTests0.test327");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) (byte) 1, fieldData2);
     }
 
     @Test
-    public void test0317() throws Throwable {
+    public void test328() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0317");
+            System.out.format("%n%s%n", "DerivedTests0.test328");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6456,9 +6609,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0318() throws Throwable {
+    public void test329() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0318");
+            System.out.format("%n%s%n", "DerivedTests0.test329");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6466,17 +6619,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0319() throws Throwable {
+    public void test330() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0319");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test330");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0320() throws Throwable {
+    public void test331() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0320");
+            System.out.format("%n%s%n", "DerivedTests0.test331");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) (short) -1, fieldData2);
+    }
+
+    @Test
+    public void test332() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test332");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) (byte) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6484,17 +6645,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0321() throws Throwable {
+    public void test333() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0321");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test333");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0322() throws Throwable {
+    public void test334() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0322");
+            System.out.format("%n%s%n", "DerivedTests0.test334");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6559,17 +6720,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0323() throws Throwable {
+    public void test335() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0323");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test335");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0324() throws Throwable {
+    public void test336() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0324");
+            System.out.format("%n%s%n", "DerivedTests0.test336");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, 1, fieldData2);
+    }
+
+    @Test
+    public void test337() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test337");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6634,9 +6803,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0325() throws Throwable {
+    public void test338() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0325");
+            System.out.format("%n%s%n", "DerivedTests0.test338");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6644,17 +6813,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0326() throws Throwable {
+    public void test339() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0326");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test339");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0327() throws Throwable {
+    public void test340() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0327");
+            System.out.format("%n%s%n", "DerivedTests0.test340");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, (int) (byte) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6662,9 +6831,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0328() throws Throwable {
+    public void test341() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0328");
+            System.out.format("%n%s%n", "DerivedTests0.test341");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6705,25 +6874,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0329() throws Throwable {
+    public void test342() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0329");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test342");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0330() throws Throwable {
+    public void test343() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0330");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test343");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0331() throws Throwable {
+    public void test344() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0331");
+            System.out.format("%n%s%n", "DerivedTests0.test344");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6731,41 +6900,41 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0332() throws Throwable {
+    public void test345() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0332");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test345");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0333() throws Throwable {
+    public void test346() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0333");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test346");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0334() throws Throwable {
+    public void test347() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0334");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test347");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, 100, filetypeEnum2);
     }
 
     @Test
-    public void test0335() throws Throwable {
+    public void test348() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0335");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test348");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0336() throws Throwable {
+    public void test349() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0336");
+            System.out.format("%n%s%n", "DerivedTests0.test349");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6854,33 +7023,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0337() throws Throwable {
+    public void test350() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0337");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test350");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0338() throws Throwable {
+    public void test351() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0338");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test351");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0339() throws Throwable {
+    public void test352() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0339");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test352");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0340() throws Throwable {
+    public void test353() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0340");
+            System.out.format("%n%s%n", "DerivedTests0.test353");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -6888,9 +7057,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0341() throws Throwable {
+    public void test354() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0341");
+            System.out.format("%n%s%n", "DerivedTests0.test354");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -6919,25 +7088,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0342() throws Throwable {
+    public void test355() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0342");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test355");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0343() throws Throwable {
+    public void test356() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0343");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test356");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), 100, filetypeEnum2);
     }
 
     @Test
-    public void test0344() throws Throwable {
+    public void test357() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0344");
+            System.out.format("%n%s%n", "DerivedTests0.test357");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -7038,17 +7207,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0345() throws Throwable {
+    public void test358() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0345");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test358");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0346() throws Throwable {
+    public void test359() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0346");
+            System.out.format("%n%s%n", "DerivedTests0.test359");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) '#', fieldData2);
+    }
+
+    @Test
+    public void test360() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test360");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) (byte) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7056,33 +7233,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0347() throws Throwable {
+    public void test361() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0347");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test361");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0348() throws Throwable {
+    public void test362() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0348");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test362");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0349() throws Throwable {
+    public void test363() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0349");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test363");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) (byte) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0350() throws Throwable {
+    public void test364() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0350");
+            System.out.format("%n%s%n", "DerivedTests0.test364");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '#', (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7090,9 +7267,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0351() throws Throwable {
+    public void test365() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0351");
+            System.out.format("%n%s%n", "DerivedTests0.test365");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7100,9 +7277,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0352() throws Throwable {
+    public void test366() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0352");
+            System.out.format("%n%s%n", "DerivedTests0.test366");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7110,9 +7287,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0353() throws Throwable {
+    public void test367() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0353");
+            System.out.format("%n%s%n", "DerivedTests0.test367");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7120,9 +7297,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0354() throws Throwable {
+    public void test368() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0354");
+            System.out.format("%n%s%n", "DerivedTests0.test368");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7130,17 +7307,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0355() throws Throwable {
+    public void test369() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0355");
+            System.out.format("%n%s%n", "DerivedTests0.test369");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) '#', fieldData2);
     }
 
     @Test
-    public void test0356() throws Throwable {
+    public void test370() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0356");
+            System.out.format("%n%s%n", "DerivedTests0.test370");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) (short) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7148,9 +7325,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0357() throws Throwable {
+    public void test371() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0357");
+            System.out.format("%n%s%n", "DerivedTests0.test371");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -7239,9 +7416,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0358() throws Throwable {
+    public void test372() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0358");
+            System.out.format("%n%s%n", "DerivedTests0.test372");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -7336,25 +7513,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0359() throws Throwable {
+    public void test373() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0359");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test373");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (short) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0360() throws Throwable {
+    public void test374() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0360");
+            System.out.format("%n%s%n", "DerivedTests0.test374");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) (short) 1, fieldData2);
     }
 
     @Test
-    public void test0361() throws Throwable {
+    public void test375() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0361");
+            System.out.format("%n%s%n", "DerivedTests0.test375");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) (byte) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7362,9 +7539,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0362() throws Throwable {
+    public void test376() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0362");
+            System.out.format("%n%s%n", "DerivedTests0.test376");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -7459,9 +7636,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0363() throws Throwable {
+    public void test377() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0363");
+            System.out.format("%n%s%n", "DerivedTests0.test377");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7469,9 +7646,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0364() throws Throwable {
+    public void test378() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0364");
+            System.out.format("%n%s%n", "DerivedTests0.test378");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) '4', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7479,9 +7656,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0365() throws Throwable {
+    public void test379() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0365");
+            System.out.format("%n%s%n", "DerivedTests0.test379");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -7576,49 +7753,49 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0366() throws Throwable {
+    public void test380() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0366");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test380");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0367() throws Throwable {
+    public void test381() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0367");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test381");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0368() throws Throwable {
+    public void test382() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0368");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test382");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0369() throws Throwable {
+    public void test383() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0369");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test383");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0370() throws Throwable {
+    public void test384() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0370");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test384");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0371() throws Throwable {
+    public void test385() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0371");
+            System.out.format("%n%s%n", "DerivedTests0.test385");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7626,9 +7803,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0372() throws Throwable {
+    public void test386() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0372");
+            System.out.format("%n%s%n", "DerivedTests0.test386");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -7723,33 +7900,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0373() throws Throwable {
+    public void test387() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0373");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test387");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) ' ', (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0374() throws Throwable {
+    public void test388() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0374");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test388");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0375() throws Throwable {
+    public void test389() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0375");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test389");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0376() throws Throwable {
+    public void test390() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0376");
+            System.out.format("%n%s%n", "DerivedTests0.test390");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -7826,9 +8003,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0377() throws Throwable {
+    public void test391() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0377");
+            System.out.format("%n%s%n", "DerivedTests0.test391");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) '#', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7836,17 +8013,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0378() throws Throwable {
+    public void test392() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0378");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test392");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0379() throws Throwable {
+    public void test393() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0379");
+            System.out.format("%n%s%n", "DerivedTests0.test393");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -7941,9 +8118,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0380() throws Throwable {
+    public void test394() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0380");
+            System.out.format("%n%s%n", "DerivedTests0.test394");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, (-1), fieldData2);
+    }
+
+    @Test
+    public void test395() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test395");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -7951,25 +8136,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0381() throws Throwable {
+    public void test396() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0381");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test396");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (byte) -1, fieldData2);
+    }
+
+    @Test
+    public void test397() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test397");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 0, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0382() throws Throwable {
+    public void test398() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0382");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test398");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0383() throws Throwable {
+    public void test399() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0383");
+            System.out.format("%n%s%n", "DerivedTests0.test399");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8064,17 +8257,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0384() throws Throwable {
+    public void test400() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0384");
+            System.out.format("%n%s%n", "DerivedTests0.test400");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, (int) (short) 100, fieldData2);
+    }
+
+    @Test
+    public void test401() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test401");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, 100, fieldData2);
     }
 
     @Test
-    public void test0385() throws Throwable {
+    public void test402() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0385");
+            System.out.format("%n%s%n", "DerivedTests0.test402");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8082,9 +8283,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0386() throws Throwable {
+    public void test403() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0386");
+            System.out.format("%n%s%n", "DerivedTests0.test403");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8092,9 +8293,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0387() throws Throwable {
+    public void test404() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0387");
+            System.out.format("%n%s%n", "DerivedTests0.test404");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8177,17 +8378,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0388() throws Throwable {
+    public void test405() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0388");
+            System.out.format("%n%s%n", "DerivedTests0.test405");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, (int) (byte) 10, fieldData2);
     }
 
     @Test
-    public void test0389() throws Throwable {
+    public void test406() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0389");
+            System.out.format("%n%s%n", "DerivedTests0.test406");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8240,9 +8441,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0390() throws Throwable {
+    public void test407() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0390");
+            System.out.format("%n%s%n", "DerivedTests0.test407");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 1, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8250,17 +8451,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0391() throws Throwable {
+    public void test408() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0391");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test408");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0392() throws Throwable {
+    public void test409() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0392");
+            System.out.format("%n%s%n", "DerivedTests0.test409");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) (byte) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8268,9 +8469,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0393() throws Throwable {
+    public void test410() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0393");
+            System.out.format("%n%s%n", "DerivedTests0.test410");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (-1), fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8278,9 +8479,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0394() throws Throwable {
+    public void test411() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0394");
+            System.out.format("%n%s%n", "DerivedTests0.test411");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '#', (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8288,17 +8489,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0395() throws Throwable {
+    public void test412() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0395");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test412");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0396() throws Throwable {
+    public void test413() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0396");
+            System.out.format("%n%s%n", "DerivedTests0.test413");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8306,9 +8507,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0397() throws Throwable {
+    public void test414() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0397");
+            System.out.format("%n%s%n", "DerivedTests0.test414");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8316,9 +8517,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0398() throws Throwable {
+    public void test415() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0398");
+            System.out.format("%n%s%n", "DerivedTests0.test415");
         java.lang.String[] strArray1 = new java.lang.String[] { "" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8401,17 +8602,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0399() throws Throwable {
+    public void test416() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0399");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test416");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 10, (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0400() throws Throwable {
+    public void test417() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0400");
+            System.out.format("%n%s%n", "DerivedTests0.test417");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8500,17 +8701,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0401() throws Throwable {
+    public void test418() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0401");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test418");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, (int) '4', filetypeEnum2);
     }
 
     @Test
-    public void test0402() throws Throwable {
+    public void test419() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0402");
+            System.out.format("%n%s%n", "DerivedTests0.test419");
         java.util.List<java.lang.String> strList0 = null;
         java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
@@ -8595,9 +8796,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0403() throws Throwable {
+    public void test420() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0403");
+            System.out.format("%n%s%n", "DerivedTests0.test420");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8605,9 +8806,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0404() throws Throwable {
+    public void test421() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0404");
+            System.out.format("%n%s%n", "DerivedTests0.test421");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) -1, (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8615,17 +8816,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0405() throws Throwable {
+    public void test422() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0405");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test422");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (short) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0406() throws Throwable {
+    public void test423() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0406");
+            System.out.format("%n%s%n", "DerivedTests0.test423");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) 'a', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8633,9 +8834,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0407() throws Throwable {
+    public void test424() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0407");
+            System.out.format("%n%s%n", "DerivedTests0.test424");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (short) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8643,17 +8844,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0408() throws Throwable {
+    public void test425() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0408");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test425");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0409() throws Throwable {
+    public void test426() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0409");
+            System.out.format("%n%s%n", "DerivedTests0.test426");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8730,9 +8931,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0410() throws Throwable {
+    public void test427() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0410");
+            System.out.format("%n%s%n", "DerivedTests0.test427");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8740,9 +8941,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0411() throws Throwable {
+    public void test428() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0411");
+            System.out.format("%n%s%n", "DerivedTests0.test428");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8750,9 +8951,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0412() throws Throwable {
+    public void test429() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0412");
+            System.out.format("%n%s%n", "DerivedTests0.test429");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -8847,9 +9048,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0413() throws Throwable {
+    public void test430() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0413");
+            System.out.format("%n%s%n", "DerivedTests0.test430");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -8944,9 +9145,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0414() throws Throwable {
+    public void test431() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0414");
+            System.out.format("%n%s%n", "DerivedTests0.test431");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8954,25 +9155,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0415() throws Throwable {
+    public void test432() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0415");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test432");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0416() throws Throwable {
+    public void test433() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0416");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test433");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (byte) 0, filetypeEnum2);
     }
 
     @Test
-    public void test0417() throws Throwable {
+    public void test434() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0417");
+            System.out.format("%n%s%n", "DerivedTests0.test434");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (int) (short) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -8980,9 +9181,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0418() throws Throwable {
+    public void test435() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0418");
+            System.out.format("%n%s%n", "DerivedTests0.test435");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9053,9 +9254,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0419() throws Throwable {
+    public void test436() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0419");
+            System.out.format("%n%s%n", "DerivedTests0.test436");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9132,9 +9333,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0420() throws Throwable {
+    public void test437() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0420");
+            System.out.format("%n%s%n", "DerivedTests0.test437");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9175,25 +9376,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0421() throws Throwable {
+    public void test438() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0421");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test438");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) ' ', filetypeEnum2);
     }
 
     @Test
-    public void test0422() throws Throwable {
+    public void test439() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0422");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test439");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0423() throws Throwable {
+    public void test440() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0423");
+            System.out.format("%n%s%n", "DerivedTests0.test440");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9294,17 +9495,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0424() throws Throwable {
+    public void test441() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0424");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test441");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0425() throws Throwable {
+    public void test442() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0425");
+            System.out.format("%n%s%n", "DerivedTests0.test442");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9333,25 +9534,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0426() throws Throwable {
+    public void test443() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0426");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test443");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 1, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0427() throws Throwable {
+    public void test444() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0427");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test444");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0428() throws Throwable {
+    public void test445() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0428");
+            System.out.format("%n%s%n", "DerivedTests0.test445");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 10, 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9359,9 +9560,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0429() throws Throwable {
+    public void test446() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0429");
+            System.out.format("%n%s%n", "DerivedTests0.test446");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9432,9 +9633,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0430() throws Throwable {
+    public void test447() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0430");
+            System.out.format("%n%s%n", "DerivedTests0.test447");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) (byte) 1, fieldData2);
+    }
+
+    @Test
+    public void test448() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test448");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9442,9 +9651,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0431() throws Throwable {
+    public void test449() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0431");
+            System.out.format("%n%s%n", "DerivedTests0.test449");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (short) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9452,9 +9661,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0432() throws Throwable {
+    public void test450() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0432");
+            System.out.format("%n%s%n", "DerivedTests0.test450");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(0, (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9462,9 +9671,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0433() throws Throwable {
+    public void test451() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0433");
+            System.out.format("%n%s%n", "DerivedTests0.test451");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9472,17 +9681,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0434() throws Throwable {
+    public void test452() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0434");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test452");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0435() throws Throwable {
+    public void test453() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0435");
+            System.out.format("%n%s%n", "DerivedTests0.test453");
         java.util.List<java.lang.String> strList0 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList6 = new java.util.ArrayList<java.lang.String>();
@@ -9525,9 +9734,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0436() throws Throwable {
+    public void test454() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0436");
+            System.out.format("%n%s%n", "DerivedTests0.test454");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9535,65 +9744,73 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0437() throws Throwable {
+    public void test455() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0437");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test455");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) (short) -1, fieldData2);
+    }
+
+    @Test
+    public void test456() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test456");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, 0, filetypeEnum2);
     }
 
     @Test
-    public void test0438() throws Throwable {
+    public void test457() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0438");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test457");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) 'a', filetypeEnum2);
     }
 
     @Test
-    public void test0439() throws Throwable {
+    public void test458() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0439");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test458");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0440() throws Throwable {
+    public void test459() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0440");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test459");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0441() throws Throwable {
+    public void test460() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0441");
+            System.out.format("%n%s%n", "DerivedTests0.test460");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', 10, fieldData2);
     }
 
     @Test
-    public void test0442() throws Throwable {
+    public void test461() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0442");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test461");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0443() throws Throwable {
+    public void test462() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0443");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test462");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (byte) 1, filetypeEnum2);
     }
 
     @Test
-    public void test0444() throws Throwable {
+    public void test463() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0444");
+            System.out.format("%n%s%n", "DerivedTests0.test463");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -9664,17 +9881,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0445() throws Throwable {
+    public void test464() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0445");
+            System.out.format("%n%s%n", "DerivedTests0.test464");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) (byte) 1, fieldData2);
     }
 
     @Test
-    public void test0446() throws Throwable {
+    public void test465() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0446");
+            System.out.format("%n%s%n", "DerivedTests0.test465");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9775,17 +9992,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0447() throws Throwable {
+    public void test466() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0447");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test466");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (-1), filetypeEnum2);
     }
 
     @Test
-    public void test0448() throws Throwable {
+    public void test467() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0448");
+            System.out.format("%n%s%n", "DerivedTests0.test467");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (int) (short) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9793,9 +10010,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0449() throws Throwable {
+    public void test468() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0449");
+            System.out.format("%n%s%n", "DerivedTests0.test468");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -9866,41 +10083,41 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0450() throws Throwable {
+    public void test469() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0450");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test469");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(0, 1, filetypeEnum2);
     }
 
     @Test
-    public void test0451() throws Throwable {
+    public void test470() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0451");
+            System.out.format("%n%s%n", "DerivedTests0.test470");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) (short) 1, fieldData2);
     }
 
     @Test
-    public void test0452() throws Throwable {
+    public void test471() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0452");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test471");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0453() throws Throwable {
+    public void test472() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0453");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test472");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0454() throws Throwable {
+    public void test473() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0454");
+            System.out.format("%n%s%n", "DerivedTests0.test473");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) (byte) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -9908,9 +10125,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0455() throws Throwable {
+    public void test474() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0455");
+            System.out.format("%n%s%n", "DerivedTests0.test474");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -10005,9 +10222,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0456() throws Throwable {
+    public void test475() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0456");
+            System.out.format("%n%s%n", "DerivedTests0.test475");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 1, (int) (byte) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10015,17 +10232,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0457() throws Throwable {
+    public void test476() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0457");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test476");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) -1, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0458() throws Throwable {
+    public void test477() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0458");
+            System.out.format("%n%s%n", "DerivedTests0.test477");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) (short) 10, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10033,9 +10250,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0459() throws Throwable {
+    public void test478() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0459");
+            System.out.format("%n%s%n", "DerivedTests0.test478");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -10124,9 +10341,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0460() throws Throwable {
+    public void test479() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0460");
+            System.out.format("%n%s%n", "DerivedTests0.test479");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(1, (int) (byte) 0, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10134,9 +10351,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0461() throws Throwable {
+    public void test480() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0461");
+            System.out.format("%n%s%n", "DerivedTests0.test480");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10144,17 +10361,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0462() throws Throwable {
+    public void test481() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0462");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test481");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(10, (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0463() throws Throwable {
+    public void test482() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0463");
+            System.out.format("%n%s%n", "DerivedTests0.test482");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -10249,9 +10466,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0464() throws Throwable {
+    public void test483() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0464");
+            System.out.format("%n%s%n", "DerivedTests0.test483");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -10292,9 +10509,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0465() throws Throwable {
+    public void test484() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0465");
+            System.out.format("%n%s%n", "DerivedTests0.test484");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -10389,9 +10606,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0466() throws Throwable {
+    public void test485() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0466");
+            System.out.format("%n%s%n", "DerivedTests0.test485");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(10, (int) (byte) 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10399,9 +10616,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0467() throws Throwable {
+    public void test486() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0467");
+            System.out.format("%n%s%n", "DerivedTests0.test486");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (int) (byte) -1, fieldData2);
+    }
+
+    @Test
+    public void test487() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests0.test487");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) ' ', fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10409,17 +10634,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0468() throws Throwable {
+    public void test488() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0468");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test488");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 100, (int) (short) -1, filetypeEnum2);
     }
 
     @Test
-    public void test0469() throws Throwable {
+    public void test489() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0469");
+            System.out.format("%n%s%n", "DerivedTests0.test489");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, (int) (byte) 100, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10427,9 +10652,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0470() throws Throwable {
+    public void test490() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0470");
+            System.out.format("%n%s%n", "DerivedTests0.test490");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -10518,25 +10743,25 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0471() throws Throwable {
+    public void test491() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0471");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test491");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) 'a', (int) (byte) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0472() throws Throwable {
+    public void test492() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0472");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test492");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, 10, filetypeEnum2);
     }
 
     @Test
-    public void test0473() throws Throwable {
+    public void test493() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0473");
+            System.out.format("%n%s%n", "DerivedTests0.test493");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) (byte) -1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10544,33 +10769,33 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0474() throws Throwable {
+    public void test494() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0474");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test494");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) '#', filetypeEnum2);
     }
 
     @Test
-    public void test0475() throws Throwable {
+    public void test495() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0475");
+            System.out.format("%n%s%n", "DerivedTests0.test495");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 0, (int) (short) 10, fieldData2);
     }
 
     @Test
-    public void test0476() throws Throwable {
+    public void test496() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0476");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test496");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 10, (int) (short) 10, filetypeEnum2);
     }
 
     @Test
-    public void test0477() throws Throwable {
+    public void test497() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0477");
+            System.out.format("%n%s%n", "DerivedTests0.test497");
         java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
         java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
         boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
@@ -10659,9 +10884,9 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0478() throws Throwable {
+    public void test498() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0478");
+            System.out.format("%n%s%n", "DerivedTests0.test498");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', 1, fieldData2);
         java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
@@ -10669,17 +10894,17 @@ public class DerivedTests0 {
     }
 
     @Test
-    public void test0479() throws Throwable {
+    public void test499() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0479");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
+            System.out.format("%n%s%n", "DerivedTests0.test499");
+        net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum filetypeEnum2 = null;
         net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((-1), (int) (byte) 100, filetypeEnum2);
     }
 
     @Test
-    public void test0480() throws Throwable {
+    public void test500() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0480");
+            System.out.format("%n%s%n", "DerivedTests0.test500");
         java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
         java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
         boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
@@ -10735,771 +10960,6 @@ public class DerivedTests0 {
         org.junit.Assert.assertNotNull(fieldDataArray48);
         org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
         org.junit.Assert.assertNotNull(wildcardClass54);
-    }
-
-    @Test
-    public void test0481() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0481");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '#', 100, fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
-    }
-
-    @Test
-    public void test0482() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0482");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 100, (int) ' ', filetypeEnum2);
-    }
-
-    @Test
-    public void test0483() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0483");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) '4', filetypeEnum2);
-    }
-
-    @Test
-    public void test0484() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0484");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) 'a', filetypeEnum2);
-    }
-
-    @Test
-    public void test0485() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0485");
-        java.lang.String[] strArray1 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        java.lang.String[] strArray7 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList8 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean9 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList8, strArray7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList8, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray37 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList38 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean39 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList38, strArray37);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray42 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList43 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43, fieldDataArray42);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList38, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList38, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        java.lang.String[] strArray55 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList56 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList56, strArray55);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray60 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList61 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean62 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61, fieldDataArray60);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList56, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList38, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (byte) 100, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList8, (int) '#', (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 100, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray70 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList71 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean72 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71, fieldDataArray70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (-1), 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71);
-        java.lang.Class<?> wildcardClass74 = strList2.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(strArray7);
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + true + "'", boolean9 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray37);
-        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + true + "'", boolean39 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(strArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + true + "'", boolean57 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray60);
-        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + false + "'", boolean62 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray70);
-        org.junit.Assert.assertTrue("'" + boolean72 + "' != '" + false + "'", boolean72 == false);
-        org.junit.Assert.assertNotNull(wildcardClass74);
-    }
-
-    @Test
-    public void test0486() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0486");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 100, (-1), fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
-    }
-
-    @Test
-    public void test0487() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0487");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (short) 1, (int) (short) 0, filetypeEnum2);
-    }
-
-    @Test
-    public void test0488() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0488");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(100, (int) (byte) 0, filetypeEnum2);
-    }
-
-    @Test
-    public void test0489() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0489");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, 0, fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
-    }
-
-    @Test
-    public void test0490() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0490");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '#', (int) (byte) 10, filetypeEnum2);
-    }
-
-    @Test
-    public void test0491() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0491");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (-1), filetypeEnum2);
-    }
-
-    @Test
-    public void test0492() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0492");
-        java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
-        java.lang.String[] strArray8 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList9 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean10 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList9, strArray8);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray13 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList14 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean15 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14, fieldDataArray13);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray19 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList20 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20, fieldDataArray19);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20);
-        java.lang.String[] strArray27 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList28 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList28, strArray27);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray32 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList33 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33, fieldDataArray32);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33);
-        java.lang.String[] strArray40 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList41 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean42 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList41, strArray40);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray45 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList46 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean47 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList46, fieldDataArray45);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList41, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList46);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) (byte) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList46);
-        java.lang.String[] strArray53 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList54 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean55 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList54, strArray53);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray58 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList59 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59, fieldDataArray58);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList54, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, 10, (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray65 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList66 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean67 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList66, fieldDataArray65);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) 'a', (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList66);
-        java.lang.String[] strArray72 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList73 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean74 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList73, strArray72);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray77 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList78 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean79 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList78, fieldDataArray77);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList73, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList78);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray83 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList84 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean85 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84, fieldDataArray83);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList73, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) (short) 10, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84);
-        java.lang.Class<?> wildcardClass88 = strList3.getClass();
-        org.junit.Assert.assertNotNull(strArray2);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + true + "'", boolean4 == true);
-        org.junit.Assert.assertNotNull(strArray8);
-        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + true + "'", boolean10 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray13);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
-        org.junit.Assert.assertNotNull(strArray27);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + true + "'", boolean29 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
-        org.junit.Assert.assertNotNull(strArray40);
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + true + "'", boolean42 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray45);
-        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
-        org.junit.Assert.assertNotNull(strArray53);
-        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + true + "'", boolean55 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray58);
-        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray65);
-        org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + false + "'", boolean67 == false);
-        org.junit.Assert.assertNotNull(strArray72);
-        org.junit.Assert.assertTrue("'" + boolean74 + "' != '" + true + "'", boolean74 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray77);
-        org.junit.Assert.assertTrue("'" + boolean79 + "' != '" + false + "'", boolean79 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray83);
-        org.junit.Assert.assertTrue("'" + boolean85 + "' != '" + false + "'", boolean85 == false);
-        org.junit.Assert.assertNotNull(wildcardClass88);
-    }
-
-    @Test
-    public void test0493() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0493");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray37 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList38 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean39 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList38, strArray37);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray42 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList43 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43, fieldDataArray42);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList38, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 100, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        java.lang.String[] strArray51 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList52 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList52, strArray51);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray56 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList57 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean58 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList57, fieldDataArray56);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList57);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray62 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList63 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63, fieldDataArray62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) -1, (int) (short) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        java.lang.String[] strArray70 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList71 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean72 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList71, strArray70);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray75 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList76 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean77 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList76, fieldDataArray75);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList71, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList76);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray81 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList82 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean83 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82, fieldDataArray81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList71, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (-1), (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        java.lang.Class<?> wildcardClass86 = strList2.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray37);
-        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + true + "'", boolean39 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(strArray51);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + true + "'", boolean53 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray56);
-        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + false + "'", boolean58 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + false + "'", boolean64 == false);
-        org.junit.Assert.assertNotNull(strArray70);
-        org.junit.Assert.assertTrue("'" + boolean72 + "' != '" + true + "'", boolean72 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray75);
-        org.junit.Assert.assertTrue("'" + boolean77 + "' != '" + false + "'", boolean77 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray81);
-        org.junit.Assert.assertTrue("'" + boolean83 + "' != '" + false + "'", boolean83 == false);
-        org.junit.Assert.assertNotNull(wildcardClass86);
-    }
-
-    @Test
-    public void test0494() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0494");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) 0, (int) 'a', filetypeEnum2);
-    }
-
-    @Test
-    public void test0495() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0495");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        java.lang.String[] strArray32 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList33 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList33, strArray32);
-        java.lang.String[] strArray38 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray43 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList44 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44, fieldDataArray43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray49 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList50 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50, fieldDataArray49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList33, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        java.lang.String[] strArray57 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList58 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList58, strArray57);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray62 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList63 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63, fieldDataArray62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList58, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList33, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, 0, (int) (byte) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        java.lang.String[] strArray72 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList73 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean74 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList73, strArray72);
-        java.lang.String[] strArray78 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList79 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean80 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList79, strArray78);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray83 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList84 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean85 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84, fieldDataArray83);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList79, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray89 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList90 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean91 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90, fieldDataArray89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList79, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList73, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (byte) 10, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 10, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList98 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) '#', (int) (byte) 10, fieldDataList98);
-            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-        } catch (java.lang.NullPointerException e) {
-        // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(strArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + true + "'", boolean34 == true);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertNotNull(strArray57);
-        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + true + "'", boolean59 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + false + "'", boolean64 == false);
-        org.junit.Assert.assertNotNull(strArray72);
-        org.junit.Assert.assertTrue("'" + boolean74 + "' != '" + true + "'", boolean74 == true);
-        org.junit.Assert.assertNotNull(strArray78);
-        org.junit.Assert.assertTrue("'" + boolean80 + "' != '" + true + "'", boolean80 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray83);
-        org.junit.Assert.assertTrue("'" + boolean85 + "' != '" + false + "'", boolean85 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray89);
-        org.junit.Assert.assertTrue("'" + boolean91 + "' != '" + false + "'", boolean91 == false);
-    }
-
-    @Test
-    public void test0496() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0496");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        java.lang.String[] strArray32 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList33 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList33, strArray32);
-        java.lang.String[] strArray38 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray43 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList44 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44, fieldDataArray43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44);
-        java.lang.String[] strArray50 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList51 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean52 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList51, strArray50);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList51, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray61 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList62 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62, fieldDataArray61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList51, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
-        java.lang.String[] strArray68 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList69 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList69, strArray68);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray73 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList74 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74, fieldDataArray73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList69, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray79 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList80 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean81 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList80, fieldDataArray79);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList69, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList80);
-        java.lang.String[] strArray86 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList87 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean88 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList87, strArray86);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray91 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList92 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean93 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92, fieldDataArray91);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList87, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList69, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList51, (int) (byte) 100, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) '#', (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList33, (int) (byte) 100, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 0, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(strArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + true + "'", boolean34 == true);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
-        org.junit.Assert.assertNotNull(strArray50);
-        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + true + "'", boolean52 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray61);
-        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
-        org.junit.Assert.assertNotNull(strArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray73);
-        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray79);
-        org.junit.Assert.assertTrue("'" + boolean81 + "' != '" + false + "'", boolean81 == false);
-        org.junit.Assert.assertNotNull(strArray86);
-        org.junit.Assert.assertTrue("'" + boolean88 + "' != '" + true + "'", boolean88 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray91);
-        org.junit.Assert.assertTrue("'" + boolean93 + "' != '" + false + "'", boolean93 == false);
-    }
-
-    @Test
-    public void test0497() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0497");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        java.lang.String[] strArray32 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList33 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList33, strArray32);
-        java.lang.String[] strArray38 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray43 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList44 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44, fieldDataArray43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray49 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList50 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50, fieldDataArray49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList33, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        java.lang.String[] strArray57 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList58 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList58, strArray57);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray62 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList63 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63, fieldDataArray62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList58, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList33, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, 0, (int) (byte) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        java.lang.String[] strArray72 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList73 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean74 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList73, strArray72);
-        java.lang.String[] strArray78 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList79 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean80 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList79, strArray78);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray83 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList84 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean85 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84, fieldDataArray83);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList79, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray89 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList90 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean91 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90, fieldDataArray89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList79, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList73, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (byte) 10, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 10, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList98 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 100, (int) (byte) 100, fieldDataList98);
-            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-        } catch (java.lang.NullPointerException e) {
-        // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(strArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + true + "'", boolean34 == true);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertNotNull(strArray57);
-        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + true + "'", boolean59 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + false + "'", boolean64 == false);
-        org.junit.Assert.assertNotNull(strArray72);
-        org.junit.Assert.assertTrue("'" + boolean74 + "' != '" + true + "'", boolean74 == true);
-        org.junit.Assert.assertNotNull(strArray78);
-        org.junit.Assert.assertTrue("'" + boolean80 + "' != '" + true + "'", boolean80 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray83);
-        org.junit.Assert.assertTrue("'" + boolean85 + "' != '" + false + "'", boolean85 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray89);
-        org.junit.Assert.assertTrue("'" + boolean91 + "' != '" + false + "'", boolean91 == false);
-    }
-
-    @Test
-    public void test0498() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0498");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb(1, (int) (byte) 1, filetypeEnum2);
-    }
-
-    @Test
-    public void test0499() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0499");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 10, (int) (byte) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.lang.String[] strArray25 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList26 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList26, strArray25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray38 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        java.lang.String[] strArray44 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList45 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList45, strArray44);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray49 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList50 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50, fieldDataArray49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList45, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList45, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        java.lang.String[] strArray63 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList64 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList64, strArray63);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList64, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray76 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList77 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean78 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77, fieldDataArray76);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) -1, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 0, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        java.lang.Class<?> wildcardClass81 = strList2.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(strArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + true + "'", boolean27 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(strArray44);
-        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + true + "'", boolean46 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(strArray63);
-        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + true + "'", boolean65 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray76);
-        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + false + "'", boolean78 == false);
-        org.junit.Assert.assertNotNull(wildcardClass81);
-    }
-
-    @Test
-    public void test0500() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "DerivedTests0.test0500");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) 'a', (int) '#', fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
     }
 }
 
