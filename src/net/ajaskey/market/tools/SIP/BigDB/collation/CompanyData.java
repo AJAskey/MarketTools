@@ -42,9 +42,11 @@ public class CompanyData {
    */
   public static List<CompanyData> getCompanies(List<String> tickers) {
     final List<CompanyData> retList = new ArrayList<>();
-    for (final String ticker : tickers) {
-      final CompanyData cd = CompanyData.getCompany(ticker);
-      retList.add(cd);
+    if (tickers != null) {
+      for (final String ticker : tickers) {
+        final CompanyData cd = CompanyData.getCompany(ticker);
+        retList.add(cd);
+      }
     }
     return retList;
   }
@@ -79,23 +81,31 @@ public class CompanyData {
    */
   public static CompanyData getCompany(String ticker) {
 
-    final CompanyData cd = new CompanyData(ticker);
+    if (ticker != null) {
 
-    final String[] ext = { "txt", "gz" };
-    final List<File> fList = Utils.getDirTree(FieldData.outbasedir, ext);
-    for (final File f : fList) {
-      if (f.getName().startsWith(ticker.toUpperCase() + "-")) {
-        // System.out.println(f.getAbsolutePath());
-        final int yr = CompanyData.parseYear(f.getName());
-        final int qtr = CompanyData.parseQuarter(f.getName());
-        final FieldData fd = FieldData.getFromDb(ticker, yr, qtr, FiletypeEnum.BINARY);
-        fd.setYear(yr);
-        fd.setQuarter(qtr);
-        cd.fdList.add(fd);
+      try {
+        final CompanyData cd = new CompanyData(ticker);
+
+        final String[] ext = { "txt", "gz" };
+        final List<File> fList = Utils.getDirTree(FieldData.outbasedir, ext);
+        for (final File f : fList) {
+          if (f.getName().startsWith(ticker.toUpperCase() + "-")) {
+            // System.out.println(f.getAbsolutePath());
+            final int yr = CompanyData.parseYear(f.getName());
+            final int qtr = CompanyData.parseQuarter(f.getName());
+            final FieldData fd = FieldData.getFromDb(ticker, yr, qtr, FiletypeEnum.TEXT);
+            fd.setYear(yr);
+            fd.setQuarter(qtr);
+            cd.fdList.add(fd);
+          }
+
+        }
+        return cd;
       }
-
+      catch (Exception e) {
+      }
     }
-    return cd;
+    return null;
   }
 
   /**
@@ -198,8 +208,10 @@ public class CompanyData {
         for (final File f : fList) {
           final String name = f.getName();
           final int idx = name.indexOf("-fundamental");
-          final String s = name.substring(0, idx);
-          ret.add(s);
+          if (idx > 0) {
+            final String s = name.substring(0, idx);
+            ret.add(s);
+          }
         }
       }
     }

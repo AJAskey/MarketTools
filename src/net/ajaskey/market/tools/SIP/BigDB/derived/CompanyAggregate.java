@@ -181,65 +181,67 @@ public class CompanyAggregate {
     try {
       this.year = yr;
       this.quarter = qtr;
-      System.out.println("Setting fd : " + fd.getTicker());
-      this.fd = fd;
+      if (fd != null) {
+        System.out.println("Setting fd : " + fd.getTicker());
+        this.fd = fd;
 
-      this.sharesQdata = new QuarterlyDouble(fd.getSharesQtr());
-      this.pricesQdata = new QuarterlyDouble(fd.getPricesQtr());
+        this.sharesQdata = new QuarterlyDouble(fd.getSharesQtr());
+        this.pricesQdata = new QuarterlyDouble(fd.getPricesQtr());
 
-      this.adjToIncQdata = new QuarterlyDouble(fd.getAdjToIncQtr());
-      this.cogsQdata = new QuarterlyDouble(fd.getCogsQtr());
-      this.depreciationQdata = new QuarterlyDouble(fd.getDepreciationQtr());
-      this.dividendQdata = new QuarterlyDouble(fd.getDividendQtr());
-      this.epsContQdata = new QuarterlyDouble(fd.getEpsContQtr());
-      this.epsDilContQdata = new QuarterlyDouble(fd.getEpsDilContQtr());
-      this.epsDilQdata = new QuarterlyDouble(fd.getEpsDilQtr());
-      this.epsQdata = new QuarterlyDouble(fd.getEpsQtr());
-      this.grossIncQdata = new QuarterlyDouble(fd.getGrossIncQtr());
-      this.grossOpIncQdata = new QuarterlyDouble(fd.getGrossOpIncQtr());
-      this.incAfterTaxQdata = new QuarterlyDouble(fd.getIncAfterTaxQtr());
-      this.incPrimaryEpsQdata = new QuarterlyDouble(fd.getIncPrimaryEpsQtr());
-      this.incTaxQdata = new QuarterlyDouble(fd.getIncTaxQtr());
-      this.intExpNonOpQdata = new QuarterlyDouble(fd.getIntExpNonOpQtr());
-      this.intExpQdata = new QuarterlyDouble(fd.getIntExpQtr());
-      this.netIncQdata = new QuarterlyDouble(fd.getNetIncQtr());
-      this.nonrecurringItemsQdata = new QuarterlyDouble(fd.getNonrecurringItemsQtr());
-      this.otherIncQdata = new QuarterlyDouble(fd.getOtherIncQtr());
-      this.preTaxIncQdata = new QuarterlyDouble(fd.getPreTaxIncQtr());
-      this.rdQdata = new QuarterlyDouble(fd.getRdQtr());
-      this.salesQdata = new QuarterlyDouble(fd.getSalesQtr());
-      this.totalOpExpQdata = new QuarterlyDouble(fd.getTotalOpExpQtr());
-      this.unusualIncQdata = new QuarterlyDouble(fd.getUnusualIncQtr());
+        this.adjToIncQdata = new QuarterlyDouble(fd.getAdjToIncQtr());
+        this.cogsQdata = new QuarterlyDouble(fd.getCogsQtr());
+        this.depreciationQdata = new QuarterlyDouble(fd.getDepreciationQtr());
+        this.dividendQdata = new QuarterlyDouble(fd.getDividendQtr());
+        this.epsContQdata = new QuarterlyDouble(fd.getEpsContQtr());
+        this.epsDilContQdata = new QuarterlyDouble(fd.getEpsDilContQtr());
+        this.epsDilQdata = new QuarterlyDouble(fd.getEpsDilQtr());
+        this.epsQdata = new QuarterlyDouble(fd.getEpsQtr());
+        this.grossIncQdata = new QuarterlyDouble(fd.getGrossIncQtr());
+        this.grossOpIncQdata = new QuarterlyDouble(fd.getGrossOpIncQtr());
+        this.incAfterTaxQdata = new QuarterlyDouble(fd.getIncAfterTaxQtr());
+        this.incPrimaryEpsQdata = new QuarterlyDouble(fd.getIncPrimaryEpsQtr());
+        this.incTaxQdata = new QuarterlyDouble(fd.getIncTaxQtr());
+        this.intExpNonOpQdata = new QuarterlyDouble(fd.getIntExpNonOpQtr());
+        this.intExpQdata = new QuarterlyDouble(fd.getIntExpQtr());
+        this.netIncQdata = new QuarterlyDouble(fd.getNetIncQtr());
+        this.nonrecurringItemsQdata = new QuarterlyDouble(fd.getNonrecurringItemsQtr());
+        this.otherIncQdata = new QuarterlyDouble(fd.getOtherIncQtr());
+        this.preTaxIncQdata = new QuarterlyDouble(fd.getPreTaxIncQtr());
+        this.rdQdata = new QuarterlyDouble(fd.getRdQtr());
+        this.salesQdata = new QuarterlyDouble(fd.getSalesQtr());
+        this.totalOpExpQdata = new QuarterlyDouble(fd.getTotalOpExpQtr());
+        this.unusualIncQdata = new QuarterlyDouble(fd.getUnusualIncQtr());
 
-      this.acctPayableQdata = new QuarterlyDouble(fd.getAcctPayableQtr());
-      this.acctRxQdata = new QuarterlyDouble(fd.getAcctRxQtr());
-      this.bvpsQdata = new QuarterlyDouble(fd.getBvpsQtr());
-      this.cashQdata = new QuarterlyDouble(fd.getCashQtr());
-      this.currAssetsQdata = new QuarterlyDouble(fd.getCurrAssetsQtr());
-      this.currLiabQdata = new QuarterlyDouble(fd.getCurrLiabQtr());
-      this.equityQdata = new QuarterlyDouble(fd.getEquityQtr());
-      this.goodwillQdata = new QuarterlyDouble(fd.getGoodwillQtr());
-      this.inventoryQdata = new QuarterlyDouble(fd.getInventoryQtr());
-      this.liabEquityQdata = new QuarterlyDouble(fd.getLiabEquityQtr());
-      this.ltDebtQdata = new QuarterlyDouble(fd.getLtDebtQtr());
-      this.ltInvestQdata = new QuarterlyDouble(fd.getLtInvestQtr());
-      this.netFixedAssetsQdata = new QuarterlyDouble(fd.getNetFixedAssetsQtr());
-      this.otherCurrAssetsQdata = new QuarterlyDouble(fd.getOtherCurrAssetsQtr());
-      this.otherCurrLiabQdata = new QuarterlyDouble(fd.getOtherCurrLiabQtr());
-      this.otherLtAssetsQdata = new QuarterlyDouble(fd.getOtherLtAssetsQtr());
-      this.otherLtLiabQdata = new QuarterlyDouble(fd.getOtherLtLiabQtr());
-      this.prefStockQdata = new QuarterlyDouble(fd.getPrefStockQtr());
-      this.stDebtQdata = new QuarterlyDouble(fd.getStDebtQtr());
-      this.stInvestQdata = new QuarterlyDouble(fd.getStInvestQtr());
+        this.acctPayableQdata = new QuarterlyDouble(fd.getAcctPayableQtr());
+        this.acctRxQdata = new QuarterlyDouble(fd.getAcctRxQtr());
+        this.bvpsQdata = new QuarterlyDouble(fd.getBvpsQtr());
+        this.cashQdata = new QuarterlyDouble(fd.getCashQtr());
+        this.currAssetsQdata = new QuarterlyDouble(fd.getCurrAssetsQtr());
+        this.currLiabQdata = new QuarterlyDouble(fd.getCurrLiabQtr());
+        this.equityQdata = new QuarterlyDouble(fd.getEquityQtr());
+        this.goodwillQdata = new QuarterlyDouble(fd.getGoodwillQtr());
+        this.inventoryQdata = new QuarterlyDouble(fd.getInventoryQtr());
+        this.liabEquityQdata = new QuarterlyDouble(fd.getLiabEquityQtr());
+        this.ltDebtQdata = new QuarterlyDouble(fd.getLtDebtQtr());
+        this.ltInvestQdata = new QuarterlyDouble(fd.getLtInvestQtr());
+        this.netFixedAssetsQdata = new QuarterlyDouble(fd.getNetFixedAssetsQtr());
+        this.otherCurrAssetsQdata = new QuarterlyDouble(fd.getOtherCurrAssetsQtr());
+        this.otherCurrLiabQdata = new QuarterlyDouble(fd.getOtherCurrLiabQtr());
+        this.otherLtAssetsQdata = new QuarterlyDouble(fd.getOtherLtAssetsQtr());
+        this.otherLtLiabQdata = new QuarterlyDouble(fd.getOtherLtLiabQtr());
+        this.prefStockQdata = new QuarterlyDouble(fd.getPrefStockQtr());
+        this.stDebtQdata = new QuarterlyDouble(fd.getStDebtQtr());
+        this.stInvestQdata = new QuarterlyDouble(fd.getStInvestQtr());
 
-      this.capExQdata = new QuarterlyDouble(fd.getCapExQtr());
-      this.cashFromFinQdata = new QuarterlyDouble(fd.getCashFromFinQtr());
-      this.cashFromInvQdata = new QuarterlyDouble(fd.getCashFromInvQtr());
-      this.cashFromOpsQdata = new QuarterlyDouble(fd.getCashFromOpsQtr());
+        this.capExQdata = new QuarterlyDouble(fd.getCapExQtr());
+        this.cashFromFinQdata = new QuarterlyDouble(fd.getCashFromFinQtr());
+        this.cashFromInvQdata = new QuarterlyDouble(fd.getCashFromInvQtr());
+        this.cashFromOpsQdata = new QuarterlyDouble(fd.getCashFromOpsQtr());
 
-      this.derived();
+        this.derived();
 
-      this.valid = true;
+        this.valid = true;
+      }
     }
     catch (final Exception e) {
       this.valid = false;
