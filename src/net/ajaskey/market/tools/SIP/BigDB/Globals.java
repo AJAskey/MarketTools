@@ -63,27 +63,32 @@ public class Globals {
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
 
-    final String ticker = tkr.trim().toUpperCase();
+    try {
+      final String ticker = tkr.trim().toUpperCase();
 
-    for (final FieldDataYear fdy : Globals.allDataList) {
+      for (final FieldDataYear fdy : Globals.allDataList) {
 
-      if (yr == fdy.getYear()) {
+        if (yr == fdy.getYear()) {
 
-        if (fdy.isInUse()) {
+          if (fdy.isInUse()) {
 
-          if (fdy.quarterDataAvailable(qtr)) {
+            if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
+              final FieldDataQuarter fdq = fdy.getQ(qtr);
 
-            for (final FieldData fd : fdq.fieldDataList) {
-              if (fd.getTicker().equals(ticker)) {
-                return fd;
+              for (final FieldData fd : fdq.fieldDataList) {
+                if (fd.getTicker().equals(ticker)) {
+                  return fd;
+                }
               }
             }
           }
         }
       }
     }
+    catch (Exception e) {
+    }
+
     return null;
   }
 
@@ -100,11 +105,15 @@ public class Globals {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    for (final String t : tList) {
-      final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
-      if (fd != null) {
-        fdList.add(fd);
+    try {
+      for (final String t : tList) {
+        final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
+        if (fd != null) {
+          fdList.add(fd);
+        }
       }
+    }
+    catch (Exception e) {
     }
     return fdList;
   }
@@ -144,7 +153,7 @@ public class Globals {
     }
     System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
   }
-  
+
   /**
    * Returns a list of FieldData for all tickers of requested year and quarter
    * from internal memory.

@@ -29,8 +29,8 @@ public class SipDbData {
 
   public static void main(final String[] args) throws FileNotFoundException {
 
-    final int year = 2018;
-    final int qtr = 1;
+    final int year = 2020;
+    final int qtr = 2;
 
 //    for (int i = 2018; i < 2021; i++) {
 //      for (int j = 1; j < 5; j++) {
