@@ -40,13 +40,13 @@ public class SipDbData {
 
     // FieldData.parseSipData(2020, 1, FiletypeEnum.NONE);
 
-    FieldData.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
+    MarketTools.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
 
-    FieldData.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
-    final FieldData fd = FieldData.getFromMemory("MSFT", year, qtr);
+    MarketTools.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
+    final FieldData fd = MarketTools.getFromMemory("MSFT", year, qtr);
     System.out.println(fd);
 
-    // FieldData.setMemory(2018, 2020, FiletypeEnum.BINARY);
+    // MarketTools.setMemory(2018, 2020, FiletypeEnum.BINARY);
 
     // System.out.println(Reports.memoryOverview());
 

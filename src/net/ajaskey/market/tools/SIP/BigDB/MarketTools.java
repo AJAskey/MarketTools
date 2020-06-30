@@ -261,6 +261,20 @@ public class MarketTools {
     return FieldData.getFromDb(ticker, yr, qtr, ft);
   }
 
+  /**
+   * memory.
+   *
+   * @param tkr The individual stock symbol
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return FieldData
+   *
+   * @see net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData#getFromMemory
+   */
+  public static FieldData getFromMemory(String tkr, int yr, int qtr) {
+    return FieldData.getFromMemory(tkr, yr, qtr);
+  }
+
   public static double[] getGoodwillQtr(FieldData fd) {
     return fd.getBalSheetData().getGoodwillQtr();
   }
