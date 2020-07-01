@@ -12,7 +12,7 @@ import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate;
 
 class HappyPathTest {
 
-  // @Test
+  @Test
   void testSipParser() {
     for (int year = 2018; year <= 2020; year++) {
       for (int quarter = 1; quarter <= 4; quarter++) {
@@ -94,7 +94,6 @@ class HappyPathTest {
     org.junit.Assert.assertArrayEquals(cashFin, MarketTools.getCashFromFinQtr(fd), 0.01);
 
     CompanyAggregate ca = new CompanyAggregate(year, quarter, fd);
-    // System.out.println(ca.getNetcashflowQdata());
 
     double[] netCash = { 0.0, 2859.0, 1765.0, 3609.0, 7422.0, 5919.0, -4316.0, 6273.0, 5379.0 };
     org.junit.Assert.assertArrayEquals(netCash, ca.getNetcashflowQdata().dArr, 0.01);
