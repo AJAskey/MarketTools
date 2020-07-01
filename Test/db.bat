@@ -1,1 +1,1 @@
-java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=db.txt --time-limit=100 --regression-test-basename=DbTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=db.txt --time-limit=30 --regression-test-basename=DbTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB
