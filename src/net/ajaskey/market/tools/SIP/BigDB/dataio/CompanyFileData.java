@@ -32,36 +32,36 @@ import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 
 public class CompanyFileData implements Serializable {
 
-  /**
-   * 
-   */
-  private static final long serialVersionUID = -5994427284354231386L;
+  final private static int ADR = 6;
 
   /**
    * Stores all CompanyFileDate read in from DB.
    */
   private static List<CompanyFileData> cfdList = new ArrayList<>();
 
-  private static String fld[] = null;
+  final private static int CITY = 11;
 
-  final private static int ADR      = 6;
-  final private static int CITY     = 11;
-  final private static int COUNTRY  = 13;
-  final private static int DOW      = 7;
-  final private static int EMP      = 17;
-  final private static int EXCHANGE = 2;
-  final private static int INDUSTRY = 4;
-  final private static int NAME     = 0;
-  final private static int PHONE    = 15;
-  final private static int PRICE    = 18;
-  final private static int SECTOR   = 3;
-  final private static int SIC      = 5;
-  final private static int SNP      = 8;
-  final private static int STATE    = 12;
-  final private static int STREET   = 10;
-  final private static int TICKER   = 1;
-  final private static int WEB      = 16;
-  final private static int ZIP      = 14;
+  final private static int  COUNTRY          = 13;
+  final private static int  DOW              = 7;
+  final private static int  EMP              = 17;
+  final private static int  EXCHANGE         = 2;
+  private static String     fld[]            = null;
+  final private static int  INDUSTRY         = 4;
+  final private static int  NAME             = 0;
+  final private static int  PHONE            = 15;
+  final private static int  PRICE            = 18;
+  final private static int  SECTOR           = 3;
+  /**
+   *
+   */
+  private static final long serialVersionUID = -5994427284354231386L;
+  final private static int  SIC              = 5;
+  final private static int  SNP              = 8;
+  final private static int  STATE            = 12;
+  final private static int  STREET           = 10;
+  final private static int  TICKER           = 1;
+  final private static int  WEB              = 16;
+  final private static int  ZIP              = 14;
 
   public static void clearList() {
     CompanyFileData.cfdList.clear();
@@ -250,7 +250,7 @@ public class CompanyFileData implements Serializable {
         cfd.dowIndex = DowEnum.NONE;
       }
 
-      String tmpAdr = CompanyFileData.fld[CompanyFileData.ADR].trim();
+      final String tmpAdr = CompanyFileData.fld[CompanyFileData.ADR].trim();
       if (tmpAdr.trim().toUpperCase().equals("T")) {
         cfd.adr = true;
       }
@@ -359,6 +359,15 @@ public class CompanyFileData implements Serializable {
 
   public ExchEnum getExchange() {
     return this.exchange;
+  }
+
+  /**
+   * Returns capitalized string of ExchEnum
+   *
+   * @return String
+   */
+  public String getExchangeStr() {
+    return this.exchange.toString().toUpperCase();
   }
 
   public String getIndustry() {
@@ -646,15 +655,6 @@ public class CompanyFileData implements Serializable {
       ret = "";
     }
     return ret;
-  }
-
-  /**
-   * Returns capitalized string of ExchEnum
-   *
-   * @return String
-   */
-  public String getExchangeStr() {
-    return this.exchange.toString().toUpperCase();
   }
 
   private void setPriceQtr(double[] priceQ) {

@@ -29,13 +29,14 @@ import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
 import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
 import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.reports.Fundamentals;
 
 /**
  * This class contains data and methods used to aggregate financial and price
  * data.
  */
 public class CompanyAggregate {
+
+  public static final double MILLION = 1000000.0;
 
   private static List<CompanyAggregate> agList = new ArrayList<>();
 
@@ -47,26 +48,6 @@ public class CompanyAggregate {
    */
   public static void loadDb(int yr, int qtr, FiletypeEnum ft) {
     FieldData.setQMemory(yr, qtr, FiletypeEnum.BIG_BINARY);
-  }
-
-  public static void main(final String[] args) throws FileNotFoundException {
-
-    final int yr = 2020;
-    final int qtr = 2;
-    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
-
-    CompanyAggregate.loadDb(2020, 2, FiletypeEnum.BIG_BINARY);
-
-    final List<String> tickers = new ArrayList<>();
-    // tickers.add("JPM");
-    tickers.add("MSFT");
-    tickers.add("W");
-
-    final List<FieldData> fdList = FieldData.getQFromDb(yr, qtr, ft);
-
-    CompanyAggregate.processList(tickers, yr, qtr, fdList);
-    CompanyAggregate.write();
-
   }
 
   /**
@@ -137,7 +118,7 @@ public class CompanyAggregate {
         }
         pw.printf("\tEmployees     : %s%n", sNumEmp);
         if (MarketTools.getNumEmployees(fd) > 0) {
-          final double d = FieldData.getTtm(MarketTools.getGrossIncQtr(fd)) / MarketTools.getNumEmployees(fd) * Fundamentals.MILLION;
+          final double d = ca.grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * MILLION;
           final int i = (int) d;
           pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
         }
@@ -223,6 +204,8 @@ public class CompanyAggregate {
 
         pw.println(Utils.NL + ca.netMarginQdata.fmtGrowth1Q("Net Margin"));
         pw.println(ca.opMarginQdata.fmtGrowth1Q("Op Margin"));
+        pw.println(ca.roeQdata.fmtGrowth1Q("ROE"));
+        // System.out.println(ca.roeQdata);
         pw.println(ca.peQdata.fmtGrowth1Q("PE"));
 
         pw.printf("%n\tFloat             : %s M%n", Utils.fmt(MarketTools.getFloatshr(fd), 13));
@@ -309,7 +292,7 @@ public class CompanyAggregate {
   private QuarterlyDouble rdQdata;
 
   private QuarterlyDouble salesQdata;
-  //
+
   private QuarterlyDouble sharesQdata;
   private QuarterlyDouble stDebtQdata;
   private QuarterlyDouble stInvestQdata;
@@ -321,6 +304,7 @@ public class CompanyAggregate {
   private boolean         valid;
   private QuarterlyDouble wcfcfQdata;
   private QuarterlyDouble workingCapitalQdata;
+  private QuarterlyDouble roeQdata;
 
   private int year;
 
@@ -497,17 +481,57 @@ public class CompanyAggregate {
     }
     this.opMarginQdata = new QuarterlyDouble(oMarArr);
 
+//    final double pe2Arr[] = new double[6];
+//    for (int i = 0; i < pe2Arr.length; i++) {
+//      if (this.netIncQdata.get(i) != 0.0) {
+//        final double pe = this.pricesQdata.get(i) / (this.netIncQdata.get(i) / this.sharesQdata.get(i));
+//        pe2Arr[i] = pe;
+//      }
+//      else {
+//        pe2Arr[i] = 0.0;
+//      }
+//    }
+// this.peQdata = new QuarterlyDouble(pe2Arr);
+
     final double peArr[] = new double[6];
+    double eps = this.epsContQdata.getTtm();
     for (int i = 0; i < peArr.length; i++) {
-      if (this.netIncQdata.get(i) != 0.0) {
-        final double pe = this.pricesQdata.get(i) / (this.netIncQdata.get(i) / this.sharesQdata.get(i));
-        peArr[i] = pe;
-      }
-      else {
-        peArr[i] = 0.0;
-      }
+      peArr[i] = 0.0;
+    }
+    if (eps > 0.0) {
+      peArr[1] = pricesQdata.get(1) / eps;
+    }
+    eps = this.epsContQdata.get2QTtm();
+    if (eps > 0.0) {
+      peArr[2] = pricesQdata.get(2) / eps;
+    }
+    eps = this.epsContQdata.getPrevTtm();
+    if (eps > 0.0) {
+      peArr[5] = pricesQdata.get(5) / eps;
     }
     this.peQdata = new QuarterlyDouble(peArr);
+
+    final double roeArr[] = new double[6];
+    double net = this.netIncQdata.getTtm();
+    double eq = this.equityQdata.getTtm();
+    for (int i = 0; i < roeArr.length; i++) {
+      roeArr[i] = 0.0;
+    }
+    if ((net > 0.0) && (eq > 0.0)) {
+      roeArr[1] = net / eq * 100.0;
+    }
+    net = this.netIncQdata.get2QTtm();
+    eq = this.equityQdata.get2QTtm();
+    if ((net > 0.0) && (eq > 0.0)) {
+      roeArr[2] = net / eq * 100.0;
+    }
+    net = this.netIncQdata.getPrevTtm();
+    eq = this.equityQdata.getPrevTtm();
+    if ((net > 0.0) && (eq > 0.0)) {
+      roeArr[5] = net / eq * 100.0;
+    }
+    this.roeQdata = new QuarterlyDouble(roeArr);
+
   }
 
 }

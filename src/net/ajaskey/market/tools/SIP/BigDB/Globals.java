@@ -59,7 +59,7 @@ public class Globals {
    * @param tkr The individual stock symbol
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return FieldData
+   * @return FieldData or NULL if error.
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
 
@@ -99,7 +99,7 @@ public class Globals {
    * @param tList The list of individual stock symbols
    * @param yr    year
    * @param qtr   quarter (1-4)
-   * @return List of FieldData
+   * @return List of FieldData or empty List if error
    */
   public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
 
@@ -114,6 +114,7 @@ public class Globals {
       }
     }
     catch (Exception e) {
+      fdList.clear();
     }
     return fdList;
   }
@@ -160,30 +161,35 @@ public class Globals {
    *
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return List of FieldData
+   * @return List of FieldData or an empty List if error
    */
   public static List<FieldData> getQFromMemory(int yr, int qtr) {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
+    try {
+      System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
 
-    for (final FieldDataYear fdy : Globals.allDataList) {
+      for (final FieldDataYear fdy : Globals.allDataList) {
 
-      if (yr == fdy.getYear()) {
+        if (yr == fdy.getYear()) {
 
-        if (fdy.isInUse()) {
+          if (fdy.isInUse()) {
 
-          if (fdy.quarterDataAvailable(qtr)) {
+            if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
+              final FieldDataQuarter fdq = fdy.getQ(qtr);
 
-            for (final FieldData fd : fdq.fieldDataList) {
-              fdList.add(fd);
+              for (final FieldData fd : fdq.fieldDataList) {
+                fdList.add(fd);
+              }
             }
           }
         }
       }
+    }
+    catch (Exception e) {
+      fdList.clear();
     }
     return fdList;
   }

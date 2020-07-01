@@ -152,7 +152,8 @@ public class FundamentalReports extends Fundamentals {
     }
     pw.printf("\tEmployees     : %s%n", sNumEmp);
     if (MarketTools.getNumEmployees(fd) > 0) {
-      final double d = FieldData.getTtm(MarketTools.getGrossIncQtr(fd)) / MarketTools.getNumEmployees(fd) * Fundamentals.MILLION;
+      QuarterlyDouble grossIncQdata = new QuarterlyDouble(MarketTools.getGrossIncQtr(fd));
+      final double d = grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * MILLION;
       final int i = (int) d;
       pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
     }

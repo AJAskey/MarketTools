@@ -65,7 +65,12 @@ public class FieldData implements Serializable {
    * @return String
    */
   public static String getExchangeStr(ExchEnum enm) {
-    return enm.toString().toUpperCase();
+
+    String ret = "NONE";
+    if (enm != null) {
+      ret = enm.toString().toUpperCase();
+    }
+    return ret;
   }
 
   /**
@@ -76,19 +81,25 @@ public class FieldData implements Serializable {
    * @param yr     year
    * @param qtr    quarter
    * @param ft     FiletypeEnum TEXT or BINARY
-   * @return FieldData
+   * @return FieldData or NULL is error
    */
   public static FieldData getFromDb(String ticker, int yr, int qtr, FiletypeEnum ft) {
 
     FieldData fd = null;
-    if (ft == FiletypeEnum.TEXT) {
-      fd = FieldData.parseFromDbData(yr, qtr, ticker);
+    try {
+      if (ft == FiletypeEnum.TEXT) {
+        fd = FieldData.parseFromDbData(yr, qtr, ticker);
+      }
+      else if (ft == FiletypeEnum.BINARY) {
+        fd = FieldData.parseFromDbBinData(yr, qtr, ticker);
+      }
+      else {
+        System.out.printf("Waring. Invalid Filetype in getFromDb : %s%n", ft.toString());
+      }
     }
-    else if (ft == FiletypeEnum.BINARY) {
-      fd = FieldData.parseFromDbBinData(yr, qtr, ticker);
-    }
-    else {
-      System.out.printf("Waring. Invalid Filetype in getFromDb : %s%n", ft.toString());
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fd = null;
     }
 
     return fd;
@@ -102,6 +113,9 @@ public class FieldData implements Serializable {
    * @param yr  year
    * @param qtr quarter (1-4)
    * @return FieldData
+   *
+   * @see net.ajaskey.market.tools.SIP.BigDB.Globals#getFromMemory(String, int,
+   *      int)
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
     return Globals.getFromMemory(tkr, yr, qtr);
@@ -115,6 +129,9 @@ public class FieldData implements Serializable {
    * @param yr    year
    * @param qtr   quarter (1-4)
    * @return List of FieldData
+   *
+   * @see net.ajaskey.market.tools.SIP.BigDB.Globals#getListFromMemory(List, int,
+   *      int)
    */
   public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
     return Globals.getListFromMemory(tList, yr, qtr);
@@ -131,17 +148,23 @@ public class FieldData implements Serializable {
    */
   public static String getOutfileName(int yr, int qtr, String ticker, String ext) {
 
-    final String yearDir = String.format("%s%s", FieldData.outbasedir, yr);
-    final String qtrDir = String.format("%s/Q%s", yearDir, qtr);
+    String fname = "";
+    try {
+      final String yearDir = String.format("%s%s", FieldData.outbasedir, yr);
+      final String qtrDir = String.format("%s/Q%s", yearDir, qtr);
 
-    final String outdir = qtrDir;
+      final String outdir = qtrDir;
 
-    Utils.makeDir(String.format("%s", FieldData.outbasedir));
-    Utils.makeDir(yearDir);
-    Utils.makeDir(qtrDir);
+      Utils.makeDir(String.format("%s", FieldData.outbasedir));
+      Utils.makeDir(yearDir);
+      Utils.makeDir(qtrDir);
 
-    final String fname = String.format("%s/%s-fundamental-data-%dQ%d.%s", outdir, ticker, yr, qtr, ext);
-
+      fname = String.format("%s/%s-fundamental-data-%dQ%d.%s", outdir, ticker, yr, qtr, ext);
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fname = "";
+    }
     return fname;
   }
 
@@ -153,19 +176,25 @@ public class FieldData implements Serializable {
    * @param yr  year
    * @param qtr quarter (1-4)
    * @param ft  FiletypeEnum TEXT, BINARY, or BIG_BINARY
-   * @return List of FieldData
+   * @return List of FieldData or empty list if error
    */
   public static List<FieldData> getQFromDb(int yr, int qtr, FiletypeEnum ft) {
 
-    List<FieldData> fdList = null;
-    if (ft == FiletypeEnum.TEXT) {
-      fdList = FieldData.parseFromDbData(yr, qtr);
+    List<FieldData> fdList = new ArrayList<>();
+    try {
+      if (ft == FiletypeEnum.TEXT) {
+        fdList = FieldData.parseFromDbData(yr, qtr);
+      }
+      else if (ft == FiletypeEnum.BINARY) {
+        fdList = FieldData.parseFromDbBinData(yr, qtr);
+      }
+      else if (ft == FiletypeEnum.BIG_BINARY) {
+        fdList = FieldData.parseFromDbBigBinData(yr, qtr);
+      }
     }
-    else if (ft == FiletypeEnum.BINARY) {
-      fdList = FieldData.parseFromDbBinData(yr, qtr);
-    }
-    else if (ft == FiletypeEnum.BIG_BINARY) {
-      fdList = FieldData.parseFromDbBigBinData(yr, qtr);
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fdList.clear();
     }
 
     return fdList;
@@ -179,20 +208,11 @@ public class FieldData implements Serializable {
    * @param yr  year
    * @param qtr quarter (1-4)
    * @return List of FieldData
+   *
+   * @see net.ajaskey.market.tools.SIP.BigDB.Globals#getQFromMemory(int, int)
    */
   public static List<FieldData> getQFromMemory(int yr, int qtr) {
     return Globals.getQFromMemory(yr, qtr);
-  }
-
-  /**
-   * Returns the trailing 12 months of data
-   *
-   * @param dArr Quarter array of data
-   * @return Sum of data
-   */
-  public static double getTtm(double[] dArr) {
-    final double ret = dArr[1] + dArr[2] + dArr[3] + dArr[4];
-    return ret;
   }
 
   /**
@@ -201,134 +221,141 @@ public class FieldData implements Serializable {
    * @param yr  year
    * @param qtr quarter (1-4)
    * @param ft  FiletypeEnum
-   * @throws FileNotFoundException Requested file not found
+   * @return FALSE on any error, TRUE is successful processing
    */
-  public static void parseSipData(int yr, int qtr, FiletypeEnum ft) throws FileNotFoundException {
+  public static boolean parseSipData(int yr, int qtr, FiletypeEnum ft) {
 
-    CompanyFileData.clearList();
-    EstimateFileData.clearList();
-    SharesFileData.clearList();
-    IncSheetFileData.clearList();
-    BalSheetFileData.clearList();
+    try {
+      CompanyFileData.clearList();
+      EstimateFileData.clearList();
+      SharesFileData.clearList();
+      IncSheetFileData.clearList();
+      BalSheetFileData.clearList();
 
-    Utils.makeDir("out");
-    Utils.makeDir("out/BigDB");
+      Utils.makeDir("out");
+      Utils.makeDir("out/BigDB");
 
-    final String dir = String.format("%s%s/Q%d/", FieldData.inbasedir, yr, qtr);
-    final String tail = String.format("%dQ%d.txt", yr, qtr);
+      final String dir = String.format("%s%s/Q%d/", FieldData.inbasedir, yr, qtr);
+      final String tail = String.format("%dQ%d.txt", yr, qtr);
 
-    File dirCk = new File(dir);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested SIP Data Directory does not exist! %s%n", dir);
-      return;
-    }
-
-    System.out.printf("Processing SIP Year %d Quarter %d data.%n", yr, qtr);
-
-    String head = String.format("CompanyInfo-");
-    String ffname = String.format("%s%s%s", dir, head, tail);
-    dirCk = new File(ffname);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
-      return;
-    }
-    CompanyFileData.readSipData(ffname);
-
-    head = "Shares-";
-    ffname = String.format("%s%s%s", dir, head, tail);
-    dirCk = new File(ffname);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
-      return;
-    }
-    SharesFileData.readSipData(ffname);
-
-    // System.out.println(SharesFileData.listToString());
-
-    head = "Estimates-";
-    ffname = String.format("%s%s%s", dir, head, tail);
-    dirCk = new File(ffname);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
-      return;
-    }
-    EstimateFileData.readSipData(ffname);
-    // System.out.println(EstimateFileData.listToString());
-
-    head = "Balsheet-";
-    String ffname1 = dir + head + "QTR-" + tail;
-    String ffname2 = dir + head + "ANN-" + tail;
-    dirCk = new File(ffname1);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname1);
-      return;
-    }
-    dirCk = new File(ffname2);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname2);
-      return;
-    }
-    BalSheetFileData.readSipData(ffname1, ffname2);
-    // System.out.println(BalSheetFileData.listToString());
-
-    head = "Income-";
-    ffname1 = dir + head + "QTR-" + tail;
-    ffname2 = dir + head + "ANN-" + tail;
-    dirCk = new File(ffname1);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname1);
-      return;
-    }
-    dirCk = new File(ffname2);
-    if (!dirCk.exists()) {
-      System.out.printf("Warning ... Requested File does not exist! %s%n", ffname2);
-      return;
-    }
-    IncSheetFileData.readSipData(ffname1, ffname2);
-    // System.out.println(IncSheetFileData.listToString());
-
-    head = "Cash-";
-    ffname = String.format("%s%s%s", dir, head, tail);
-    dirCk = new File(ffname);
-    if (dirCk.exists()) {
-      CashFileData.readSipData(ffname);
-    }
-
-    /**
-     * Write Company list for creating ticker lists
-     */
-    CompanySummary.write(yr, qtr);
-
-    for (final CompanyFileData cfd : CompanyFileData.getList()) {
-
-      final String ticker = cfd.getTicker();
-
-      final SharesFileData sfd = SharesFileData.find(ticker);
-      final EstimateFileData efd = EstimateFileData.find(ticker);
-      final IncSheetFileData ifd = IncSheetFileData.find(ticker);
-      final BalSheetFileData bfd = BalSheetFileData.find(ticker);
-      final CashFileData cashfd = CashFileData.find(ticker);
-
-      final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
-
-      if (ft == FiletypeEnum.BINARY) {
-        final String fname = FieldData.getOutfileName(yr, qtr, ticker, "bin");
-        FieldData.writeDbBinary(fname, fd);
+      File dirCk = new File(dir);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested SIP Data Directory does not exist! %s%n", dir);
+        return false;
       }
-      else if (ft == FiletypeEnum.TEXT) {
-        FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
-      }
-      else if (ft == FiletypeEnum.BIG_BINARY) {
-        FieldDataBinary.add(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
-      }
-    }
 
-    /**
-     * Write big binary file for year and quarter data
-     */
-    if (ft == FiletypeEnum.BIG_BINARY) {
-      FieldDataBinary.writeBinaryFile(yr, qtr);
+      System.out.printf("Processing SIP Year %d Quarter %d data.%n", yr, qtr);
+
+      String head = String.format("CompanyInfo-");
+      String ffname = String.format("%s%s%s", dir, head, tail);
+      dirCk = new File(ffname);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+        return false;
+      }
+      CompanyFileData.readSipData(ffname);
+
+      head = "Shares-";
+      ffname = String.format("%s%s%s", dir, head, tail);
+      dirCk = new File(ffname);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+        return false;
+      }
+      SharesFileData.readSipData(ffname);
+
+      // System.out.println(SharesFileData.listToString());
+
+      head = "Estimates-";
+      ffname = String.format("%s%s%s", dir, head, tail);
+      dirCk = new File(ffname);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+        return false;
+      }
+      EstimateFileData.readSipData(ffname);
+      // System.out.println(EstimateFileData.listToString());
+
+      head = "Balsheet-";
+      String ffname1 = dir + head + "QTR-" + tail;
+      String ffname2 = dir + head + "ANN-" + tail;
+      dirCk = new File(ffname1);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname1);
+        return false;
+      }
+      dirCk = new File(ffname2);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname2);
+        return false;
+      }
+      BalSheetFileData.readSipData(ffname1, ffname2);
+      // System.out.println(BalSheetFileData.listToString());
+
+      head = "Income-";
+      ffname1 = dir + head + "QTR-" + tail;
+      ffname2 = dir + head + "ANN-" + tail;
+      dirCk = new File(ffname1);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname1);
+        return false;
+      }
+      dirCk = new File(ffname2);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname2);
+        return false;
+      }
+      IncSheetFileData.readSipData(ffname1, ffname2);
+      // System.out.println(IncSheetFileData.listToString());
+
+      head = "Cash-";
+      ffname = String.format("%s%s%s", dir, head, tail);
+      dirCk = new File(ffname);
+      if (dirCk.exists()) {
+        CashFileData.readSipData(ffname);
+      }
+
+      /**
+       * Write Company list for creating ticker lists
+       */
+      CompanySummary.write(yr, qtr);
+
+      for (final CompanyFileData cfd : CompanyFileData.getList()) {
+
+        final String ticker = cfd.getTicker();
+
+        final SharesFileData sfd = SharesFileData.find(ticker);
+        final EstimateFileData efd = EstimateFileData.find(ticker);
+        final IncSheetFileData ifd = IncSheetFileData.find(ticker);
+        final BalSheetFileData bfd = BalSheetFileData.find(ticker);
+        final CashFileData cashfd = CashFileData.find(ticker);
+
+        final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
+
+        if (ft == FiletypeEnum.BINARY) {
+          final String fname = FieldData.getOutfileName(yr, qtr, ticker, "bin");
+          FieldData.writeDbBinary(fname, fd);
+        }
+        else if (ft == FiletypeEnum.TEXT) {
+          FieldData.writeDbOutput(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
+        }
+        else if (ft == FiletypeEnum.BIG_BINARY) {
+          FieldDataBinary.add(cfd, efd, sfd, ifd, bfd, cashfd, yr, qtr);
+        }
+      }
+
+      /**
+       * Write big binary file for year and quarter data
+       */
+      if (ft == FiletypeEnum.BIG_BINARY) {
+        FieldDataBinary.writeBinaryFile(yr, qtr);
+      }
     }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -340,12 +367,17 @@ public class FieldData implements Serializable {
    */
   public static void setMemory(int firstYear, int endYear, FiletypeEnum ft) {
 
-    if (ft == FiletypeEnum.BIG_BINARY) {
-      for (int yr = firstYear; yr <= endYear; yr++) {
-        for (int qtr = 1; qtr <= 4; qtr++) {
-          FieldData.readDbBigBinData(yr, qtr);
+    try {
+      if (ft == FiletypeEnum.BIG_BINARY) {
+        for (int yr = firstYear; yr <= endYear; yr++) {
+          for (int qtr = 1; qtr <= 4; qtr++) {
+            FieldData.readDbBigBinData(yr, qtr);
+          }
         }
       }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
     }
   }
 
@@ -358,24 +390,71 @@ public class FieldData implements Serializable {
    */
   public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
 
-    System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
+    try {
+      System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
 
-    if (ft == FiletypeEnum.BINARY) {
+      if (ft == FiletypeEnum.BINARY) {
 
-      FieldData.readDbData(yr, qtr, ft);
+        FieldData.readDbData(yr, qtr, ft);
+      }
+      else if (ft == FiletypeEnum.TEXT) {
+
+        FieldData.readDbData(yr, qtr, ft);
+      }
+      else if (ft == FiletypeEnum.BIG_BINARY) {
+
+        FieldData.readDbBigBinData(yr, qtr);
+      }
+
+      else {
+        System.out.printf("Waring. Invalid Filetype in setQMemory : %s%n", ft.toString());
+      }
     }
-    else if (ft == FiletypeEnum.TEXT) {
-
-      FieldData.readDbData(yr, qtr, ft);
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
     }
-    else if (ft == FiletypeEnum.BIG_BINARY) {
+  }
 
-      FieldData.readDbBigBinData(yr, qtr);
-    }
+  /**
+   * Returns formatted constructor error message
+   *
+   * @param e Exception thrown
+   * @return String
+   */
+  protected static String getConstructorError(Throwable e) {
+    String ret = "";
+    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
+    ret += String.format("%nError. Unexpected exception in Constructor : %s%n", m);
+    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
+    return ret;
+  }
 
-    else {
-      System.out.printf("Waring. Invalid Filetype in setQMemory : %s%n", ft.toString());
-    }
+  /**
+   * Returns formatted error message
+   *
+   * @param e Exception thrown
+   * @return String
+   */
+  protected static String getError(Throwable e) {
+    String ret = "";
+    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
+    ret += String.format("%nError. Unexpected exception in method : %s%n", m);
+    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
+    return ret;
+  }
+
+  /**
+   * Returns formatted warning message
+   *
+   * @param e Exception thrown
+   * @return String
+   */
+  protected static String getWarning(Throwable e) {
+    String ret = "";
+    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
+    ret += String.format("%nWarning. Unexpected exception in method : %s%n", m);
+    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
+    return ret;
   }
 
   /**
@@ -401,6 +480,7 @@ public class FieldData implements Serializable {
       }
     }
     catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
       ret = ExchEnum.NONE;
     }
     return ret;
@@ -411,19 +491,22 @@ public class FieldData implements Serializable {
    *
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return List of FieldData
+   * @return List of FieldData or empty list if error
    */
   private static List<FieldData> parseFromDbBigBinData(int yr, int qtr) {
 
-    final String fname = String.format("%s%d/all-companies-%dQ%d.bin", FieldData.outbasedir, yr, yr, qtr);
+    List<FieldData> fdList = new ArrayList<>();
+    try {
+      final String fname = String.format("%s%d/all-companies-%dQ%d.bin", FieldData.outbasedir, yr, yr, qtr);
 
-    List<FieldData> fdList = null;
-
-    final File f = new File(fname);
-    if (f.exists()) {
-
-      fdList = FieldDataBinary.readBinaryFile(fname);
-
+      final File f = new File(fname);
+      if (f.exists()) {
+        fdList = FieldDataBinary.readBinaryFile(fname);
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fdList.clear();
     }
     return fdList;
   }
@@ -433,26 +516,33 @@ public class FieldData implements Serializable {
    *
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return List of FieldData
+   * @return List of FieldData or empty list if error
    */
   private static List<FieldData> parseFromDbBinData(int yr, int qtr) {
 
-    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, yr, qtr);
-
-    final File indirCk = new File(indir);
-    if (!indirCk.exists()) {
-      System.out.printf("Warning... DB directory does not exists. %s%n", indir);
-      return null;
-    }
-
     final List<FieldData> fdList = new ArrayList<>();
-    final String[] ext = { "bin" };
-    final List<File> fList = Utils.getDirTree(indir, ext);
-    for (final File f : fList) {
-      final FieldData fd = FieldData.readBinaryFieldData(f.getAbsoluteFile());
-      if (fd != null && fd.companyInfo.getTicker() != null) {
-        fdList.add(fd);
+
+    try {
+      final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, yr, qtr);
+
+      final File indirCk = new File(indir);
+      if (!indirCk.exists()) {
+        System.out.printf("Warning... DB directory does not exists. %s%n", indir);
+        return null;
       }
+
+      final String[] ext = { "bin" };
+      final List<File> fList = Utils.getDirTree(indir, ext);
+      for (final File f : fList) {
+        final FieldData fd = FieldData.readBinaryFieldData(f.getAbsoluteFile());
+        if (fd != null && fd.companyInfo.getTicker() != null) {
+          fdList.add(fd);
+        }
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fdList.clear();
     }
 
     return fdList;
@@ -464,16 +554,22 @@ public class FieldData implements Serializable {
    * @param yr     year
    * @param qtr    quarter
    * @param ticker The individual stock symbol
-   * @return
+   * @return FieldData or NULL if error
    */
   private static FieldData parseFromDbBinData(int yr, int qtr, String ticker) {
 
-    final String fname = FieldData.getOutfileName(yr, qtr, ticker, "bin");
-    final File f = new File(fname);
     FieldData fd = null;
+    try {
+      final String fname = FieldData.getOutfileName(yr, qtr, ticker, "bin");
+      final File f = new File(fname);
 
-    if (f.exists()) {
-      fd = FieldData.readBinaryFieldData(f);
+      if (f.exists()) {
+        fd = FieldData.readBinaryFieldData(f);
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fd = null;
     }
     return fd;
 
@@ -485,49 +581,56 @@ public class FieldData implements Serializable {
    *
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return List of FieldData for year and quarter
+   * @return List of FieldData for year and quarter or empty list if error
    */
   private static List<FieldData> parseFromDbData(int yr, int qtr) {
 
-    final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, yr, qtr);
-
-    final File indirCk = new File(indir);
-    if (!indirCk.exists()) {
-      System.out.printf("Warning... DB directory does not exists. %s%n", indir);
-      return null;
-    }
-
     final List<FieldData> fdList = new ArrayList<>();
 
-    final String[] ext = { "txt", "gz" };
-    final List<File> fList = Utils.getDirTree(indir, ext);
-    for (final File f : fList) {
+    try {
 
-      List<String> data = null;
-      if (f.getName().endsWith(".gz")) {
-        data = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        data = TextUtils.readTextFile(f, true);
+      final String indir = String.format("%s%s/Q%d/", FieldData.outbasedir, yr, qtr);
+
+      final File indirCk = new File(indir);
+      if (!indirCk.exists()) {
+        System.out.printf("Warning... DB directory does not exists. %s%n", indir);
+        return null;
       }
 
-      final FieldData fd = new FieldData(yr, qtr);
+      final String[] ext = { "txt", "gz" };
+      final List<File> fList = Utils.getDirTree(indir, ext);
+      for (final File f : fList) {
 
-      fd.companyInfo = CompanyFileData.readFromDb(data);
-      fd.shareData = SharesFileData.readFromDb(data);
-      fd.estimateData = EstimateFileData.readFromDb(data);
-      fd.incSheetData = IncSheetFileData.readFromDb(data);
-      fd.balSheetData = BalSheetFileData.readFromDb(data);
-      fd.cashData = CashFileData.readFromDb(data);
-      fd.setNameFields(fd.companyInfo);
-      fd.shareData.setNameFields(fd.companyInfo);
-      fd.estimateData.setNameFields(fd.companyInfo);
-      fd.incSheetData.setNameFields(fd.companyInfo);
-      fd.balSheetData.setNameFields(fd.companyInfo);
+        List<String> data = null;
+        if (f.getName().endsWith(".gz")) {
+          data = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          data = TextUtils.readTextFile(f, true);
+        }
 
-      if (fd.companyInfo.getTicker() != null) {
-        fdList.add(fd);
+        final FieldData fd = new FieldData(yr, qtr);
+
+        fd.companyInfo = CompanyFileData.readFromDb(data);
+        fd.shareData = SharesFileData.readFromDb(data);
+        fd.estimateData = EstimateFileData.readFromDb(data);
+        fd.incSheetData = IncSheetFileData.readFromDb(data);
+        fd.balSheetData = BalSheetFileData.readFromDb(data);
+        fd.cashData = CashFileData.readFromDb(data);
+        fd.setNameFields(fd.companyInfo);
+        fd.shareData.setNameFields(fd.companyInfo);
+        fd.estimateData.setNameFields(fd.companyInfo);
+        fd.incSheetData.setNameFields(fd.companyInfo);
+        fd.balSheetData.setNameFields(fd.companyInfo);
+
+        if (fd.companyInfo.getTicker() != null) {
+          fdList.add(fd);
+        }
       }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fdList.clear();
     }
     return fdList;
   }
@@ -538,32 +641,38 @@ public class FieldData implements Serializable {
    * @param yr     year
    * @param qtr    quarter
    * @param ticker The individual stock symbol
-   * @return FieldData for year, quarter, and ticker.
+   * @return FieldData for year, quarter, and ticker or NULL if error.
    */
   private static FieldData parseFromDbData(int yr, int qtr, String ticker) {
 
-    final String fname = FieldData.getOutfileName(yr, qtr, ticker, "txt");
+    FieldData fd = null;
+    try {
+      final String fname = FieldData.getOutfileName(yr, qtr, ticker, "txt");
 
-    List<String> data = null;
+      List<String> data = null;
 
-    data = TextUtils.readTextFile(fname, true);
-    if (data == null) {
-      data = TextUtils.readGzipFile(fname + ".gz", true);
+      data = TextUtils.readTextFile(fname, true);
+      if (data == null) {
+        data = TextUtils.readGzipFile(fname + ".gz", true);
+      }
+      if (data == null) {
+        System.out.printf("Warning... File not found %s", fname);
+        return null;
+      }
+
+      fd = new FieldData(yr, qtr);
+
+      fd.companyInfo = CompanyFileData.readFromDb(data);
+      fd.shareData = SharesFileData.readFromDb(data);
+      fd.estimateData = EstimateFileData.readFromDb(data);
+      fd.incSheetData = IncSheetFileData.readFromDb(data);
+      fd.balSheetData = BalSheetFileData.readFromDb(data);
+      fd.setNameFields(fd.companyInfo);
     }
-    if (data == null) {
-      System.out.printf("Warning... File not found %s", fname);
-      return null;
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fd = null;
     }
-
-    final FieldData fd = new FieldData(yr, qtr);
-
-    fd.companyInfo = CompanyFileData.readFromDb(data);
-    fd.shareData = SharesFileData.readFromDb(data);
-    fd.estimateData = EstimateFileData.readFromDb(data);
-    fd.incSheetData = IncSheetFileData.readFromDb(data);
-    fd.balSheetData = BalSheetFileData.readFromDb(data);
-    fd.setNameFields(fd.companyInfo);
-
     return fd;
   }
 
@@ -585,7 +694,7 @@ public class FieldData implements Serializable {
       return fd;
     }
     catch (final Exception e) {
-      e.printStackTrace();
+      System.out.println(FieldData.getWarning(e));
     }
     return null;
   }
@@ -597,22 +706,25 @@ public class FieldData implements Serializable {
    * @param yr     year
    * @param qtr    quarter 1-4
    * @param binary False for text output and TRUE for binary output
-   * @return A list of FieldData for each ticket in the DB for year and quarter.
-   *
-   * @exception FileNotFoundException when year, quarter, ticker does not match
-   *                                  any data in DB
-   *
+   * @return A list of FieldData for each ticket in the DB for year and quarter or
+   *         empty List when error
    */
   private static List<FieldData> readDbBigBinData(int yr, int qtr) {
 
-    System.out.printf("Processing DB %d %d%n", yr, qtr);
+    List<FieldData> fdList = new ArrayList<>();
 
-    List<FieldData> fdList = null;
+    try {
+      System.out.printf("Processing DB %d %d%n", yr, qtr);
 
-    fdList = FieldData.parseFromDbBigBinData(yr, qtr);
+      fdList = FieldData.parseFromDbBigBinData(yr, qtr);
 
-    Globals.setLists(yr, qtr, fdList);
+      Globals.setLists(yr, qtr, fdList);
 
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fdList.clear();
+    }
     return fdList;
   }
 
@@ -623,49 +735,34 @@ public class FieldData implements Serializable {
    * @param yr  year
    * @param qtr quarter (1-4) 1-4
    * @param ft  FiletypeEnum
-   * @return A list of FieldData for each ticket in the DB for year and quarter.
-   *
-   * @exception FileNotFoundException when year, quarter, ticker does not match
-   *                                  any data in DB
-   *
+   * @return A list of FieldData for each ticket in the DB for year and quarter or
+   *         empty List when error
    */
   private static List<FieldData> readDbData(int yr, int qtr, FiletypeEnum ft) {
 
-    System.out.printf("Processing DB %d %d%n", yr, qtr);
+    List<FieldData> fdList = new ArrayList<>();
 
-    List<FieldData> fdList = null;
-    if (ft == FiletypeEnum.BINARY) {
-      fdList = FieldData.parseFromDbBinData(yr, qtr);
-    }
-    else if (ft == FiletypeEnum.TEXT) {
-      fdList = FieldData.parseFromDbData(yr, qtr);
-    }
-    else {
-      System.out.printf("Waring. Invalid Filetype in readDbData : %s%n", ft.toString());
-      return null;
-    }
+    try {
+      System.out.printf("Processing DB %d %d%n", yr, qtr);
 
-    Globals.setLists(yr, qtr, fdList);
+      if (ft == FiletypeEnum.BINARY) {
+        fdList = FieldData.parseFromDbBinData(yr, qtr);
+      }
+      else if (ft == FiletypeEnum.TEXT) {
+        fdList = FieldData.parseFromDbData(yr, qtr);
+      }
+      else {
+        System.out.printf("Waring. Invalid Filetype in readDbData : %s%n", ft.toString());
+        return null;
+      }
 
+      Globals.setLists(yr, qtr, fdList);
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      fdList.clear();
+    }
     return fdList;
-  }
-
-  /**
-   * Reads the DB for specific year, quarter and ticker inputs.
-   *
-   * @param yr     year
-   * @param qtr    quarter 1-4
-   * @param ticker The individual stock symbol
-   * @return FieldData
-   *
-   * @exception FileNotFoundException when year, quarter, ticker does not match
-   *                                  any data in DB
-   */
-  private static FieldData readDbData(int yr, int qtr, String ticker) {
-
-    final FieldData fd = FieldData.parseFromDbData(yr, qtr, ticker);
-
-    return fd;
   }
 
   /**
@@ -699,21 +796,25 @@ public class FieldData implements Serializable {
    * @param cash CashFileData
    * @param yr   year
    * @param qtr  quarter
-   * @throws FileNotFoundException Thrown if unable to create output file
    */
   private static void writeDbOutput(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd,
       CashFileData cash, int yr, int qtr) throws FileNotFoundException {
 
-    final String fname = FieldData.getOutfileName(yr, qtr, cfd.getTicker(), "txt");
+    try {
+      final String fname = FieldData.getOutfileName(yr, qtr, cfd.getTicker(), "txt");
 
-    final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cash, yr, qtr);
+      final FieldData fd = new FieldData(cfd, efd, sfd, ifd, bfd, cash, yr, qtr);
 
-    final String rpt = fd.genOutput();
+      final String rpt = fd.genOutput();
 
-    if (rpt != null && rpt.length() > 0) {
-      try (PrintWriter pw = new PrintWriter(fname)) {
-        pw.println(rpt);
+      if (rpt != null && rpt.length() > 0) {
+        try (PrintWriter pw = new PrintWriter(fname)) {
+          pw.println(rpt);
+        }
       }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getError(e));
     }
   }
 
@@ -745,28 +846,34 @@ public class FieldData implements Serializable {
    */
   public FieldData(CompanyFileData cfd, EstimateFileData efd, SharesFileData sfd, IncSheetFileData ifd, BalSheetFileData bfd, CashFileData cash,
       int yr, int qtr) {
-    this.companyInfo = cfd;
-    this.cashData = cash;
-    this.estimateData = efd;
-    this.shareData = sfd;
-    this.incSheetData = ifd;
-    this.balSheetData = bfd;
-    if (cfd != null) {
-      this.ticker = cfd.getTicker();
-      this.name = cfd.getName();
-      this.exchange = cfd.getExchange();
-      this.sector = cfd.getSector();
-      this.industry = cfd.getIndustry();
+    try {
+      this.companyInfo = cfd;
+      this.cashData = cash;
+      this.estimateData = efd;
+      this.shareData = sfd;
+      this.incSheetData = ifd;
+      this.balSheetData = bfd;
+      if (cfd != null) {
+        this.ticker = cfd.getTicker();
+        this.name = cfd.getName();
+        this.exchange = cfd.getExchange();
+        this.sector = cfd.getSector();
+        this.industry = cfd.getIndustry();
+      }
+      else {
+        this.ticker = "";
+        this.name = "";
+        this.exchange = ExchEnum.NONE;
+        this.sector = "";
+        this.industry = "";
+      }
+      this.year = yr;
+      this.quarter = qtr;
     }
-    else {
+    catch (final Exception e) {
+      System.out.println(FieldData.getConstructorError(e));
       this.ticker = "";
-      this.name = "";
-      this.exchange = ExchEnum.NONE;
-      this.sector = "";
-      this.industry = "";
     }
-    this.year = yr;
-    this.quarter = qtr;
   }
 
   /**
@@ -776,20 +883,24 @@ public class FieldData implements Serializable {
    * @param qtr quarter (1-4)
    */
   public FieldData(int yr, int qtr) {
-
-    this.year = yr;
-    this.quarter = qtr;
-    this.ticker = "";
-    this.name = "";
-    this.sector = "";
-    this.industry = "";
-    this.cashData = new CashFileData();
-    this.companyInfo = new CompanyFileData();
-    this.estimateData = new EstimateFileData();
-    this.shareData = new SharesFileData();
-    this.incSheetData = new IncSheetFileData();
-    this.balSheetData = new BalSheetFileData();
-
+    try {
+      this.year = yr;
+      this.quarter = qtr;
+      this.ticker = "";
+      this.name = "";
+      this.sector = "";
+      this.industry = "";
+      this.cashData = new CashFileData();
+      this.companyInfo = new CompanyFileData();
+      this.estimateData = new EstimateFileData();
+      this.shareData = new SharesFileData();
+      this.incSheetData = new IncSheetFileData();
+      this.balSheetData = new BalSheetFileData();
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getConstructorError(e));
+      this.ticker = "";
+    }
   }
 
   /**
@@ -809,6 +920,7 @@ public class FieldData implements Serializable {
       ret += this.cashData.toDbOutput();
     }
     catch (final Exception e) {
+      System.out.println(FieldData.getError(e));
       ret = "";
     }
     return ret;
@@ -867,6 +979,16 @@ public class FieldData implements Serializable {
     return this.year;
   }
 
+  /**
+   * Any valid ticker String created by a Constructor will have a length of 1 or
+   * more
+   *
+   * @return TRUE if any ticker String length greater than 0, FALSE otherwise
+   */
+  public boolean isDataValid() {
+    return this.ticker.trim().length() > 0;
+  }
+
   public void setQuarter(int quarter) {
     this.quarter = quarter;
   }
@@ -893,6 +1015,7 @@ public class FieldData implements Serializable {
       }
     }
     catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
       ret = "";
     }
     return ret;
@@ -904,12 +1027,17 @@ public class FieldData implements Serializable {
    * @param cfd CompanyFileData
    */
   private void setNameFields(CompanyFileData cfd) {
-    this.ticker = cfd.getTicker();
-    this.name = cfd.getName();
-    this.sector = cfd.getSector();
-    this.industry = cfd.getIndustry();
-    this.exchange = cfd.getExchange();
-
+    try {
+      this.ticker = cfd.getTicker();
+      this.name = cfd.getName();
+      this.sector = cfd.getSector();
+      this.industry = cfd.getIndustry();
+      this.exchange = cfd.getExchange();
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+      this.ticker = "";
+    }
   }
 
 }

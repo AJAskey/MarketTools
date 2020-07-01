@@ -19,8 +19,11 @@
 package net.ajaskey.market.tools.SIP.BigDB;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate;
 
 /**
  * This class serves as a test driver to check new development.
@@ -40,11 +43,28 @@ public class SipDbData {
 
     // FieldData.parseSipData(2020, 1, FiletypeEnum.NONE);
 
-    MarketTools.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
+//    MarketTools.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
+//
+//    MarketTools.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
+//    final FieldData fd = MarketTools.getFromMemory("MSFT", year, qtr);
+//    System.out.println(fd);
 
-    MarketTools.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
-    final FieldData fd = MarketTools.getFromMemory("MSFT", year, qtr);
-    System.out.println(fd);
+    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
+
+    CompanyAggregate.loadDb(2020, 2, FiletypeEnum.BIG_BINARY);
+
+    final List<String> tickers = new ArrayList<>();
+    tickers.add("MSFT");
+    tickers.add("W");
+    tickers.add("JPM");
+    tickers.add("XOM");
+    tickers.add("UAL");
+    tickers.add("RCL");
+
+    final List<FieldData> fdList = FieldData.getQFromDb(year, qtr, ft);
+
+    CompanyAggregate.processList(tickers, year, qtr, fdList);
+    CompanyAggregate.write();
 
     // MarketTools.setMemory(2018, 2020, FiletypeEnum.BINARY);
 
