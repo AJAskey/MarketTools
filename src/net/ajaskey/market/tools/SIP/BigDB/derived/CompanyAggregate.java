@@ -40,6 +40,14 @@ public class CompanyAggregate {
 
   private static List<CompanyAggregate> agList = new ArrayList<>();
 
+  public static List<CompanyAggregate> getAgList() {
+    return CompanyAggregate.agList;
+  }
+
+  public static double getMillion() {
+    return CompanyAggregate.MILLION;
+  }
+
   /**
    *
    * @param yr  year
@@ -81,7 +89,7 @@ public class CompanyAggregate {
    *
    * @throws FileNotFoundException
    */
-  public static void write() throws FileNotFoundException {
+  public static void write(int yr, int qtr) throws FileNotFoundException {
 
     System.out.println("Writing Fundamental Report");
 
@@ -89,7 +97,9 @@ public class CompanyAggregate {
 
     new ArrayList<>();
 
-    try (PrintWriter pw = new PrintWriter("out/Companies.txt")) {
+    final String fname = String.format("out/Companies-%dQ%d.txt", yr, qtr);
+
+    try (PrintWriter pw = new PrintWriter(fname)) {
 
       final DateTime now = new DateTime();
       now.setSdf(Utils.sdfFull);
@@ -118,7 +128,7 @@ public class CompanyAggregate {
         }
         pw.printf("\tEmployees     : %s%n", sNumEmp);
         if (MarketTools.getNumEmployees(fd) > 0) {
-          final double d = ca.grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * MILLION;
+          final double d = ca.grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * CompanyAggregate.MILLION;
           final int i = (int) d;
           pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
         }
@@ -166,12 +176,13 @@ public class CompanyAggregate {
         pw.printf("\tCash <- Fin 12m   : %s M %s%n", Utils.fmt(ca.cashFromFinQdata.getTtm(), 13),
             "[Movement of cash between a firm and its owners/creditors : borrowing, debt repayment, dividend paid, equity financing.]");
 
-        pw.printf("\t  Net Cash 12m    : %s M %s%n", Utils.fmt(ca.netcashflow, 13), "[Cash from Ops + Cash from Financing]");
+        pw.printf("\t  Net Cash 12m    : %s M %s%n", Utils.fmt(ca.netcashflowQdata.getTtm(), 13), "[Cash from Ops + Cash from Financing]");
 
         pw.printf("\tCash <- Inv 12m   : %s M %s%n", Utils.fmt(ca.cashFromInvQdata.getTtm(), 13),
             "[Purchases and sales of long-term assets such as plant and machinery - assumed infrequent.]");
 
-        pw.printf("\t  Cash Flow 12m   : %s M %s%n", Utils.fmt(ca.cashflow, 13), "[Cash from Ops + Cash from Financing + Cash from Investing]");
+        pw.printf("\t  Cash Flow 12m   : %s M %s%n", Utils.fmt(ca.cashflowQdata.getTtm(), 13),
+            "[Cash from Ops + Cash from Financing + Cash from Investing]");
 
         pw.println(Utils.NL + ca.currAssetsQdata.fmtGrowth1Q("Current Assets"));
         pw.println(ca.cashQdata.fmtGrowth1Q("  Cash"));
@@ -236,11 +247,9 @@ public class CompanyAggregate {
   private QuarterlyDouble acctPayableQdata;
   private QuarterlyDouble acctRxQdata;
   private QuarterlyDouble adjToIncQdata;
-
   private QuarterlyDouble bvpsQdata;
   private QuarterlyDouble capExQdata;
-
-  private double          cashflow;
+  private QuarterlyDouble cashflowQdata;
   private QuarterlyDouble cashFromFinQdata;
   private QuarterlyDouble cashFromInvQdata;
   private QuarterlyDouble cashFromOpsQdata;
@@ -263,7 +272,6 @@ public class CompanyAggregate {
   private QuarterlyDouble grossIncQdata;
   private QuarterlyDouble grossOpIncQdata;
   private QuarterlyDouble incAfterTaxQdata;
-
   private QuarterlyDouble incPrimaryEpsQdata;
   private QuarterlyDouble incTaxQdata;
   private QuarterlyDouble intExpNonOpQdata;
@@ -273,7 +281,7 @@ public class CompanyAggregate {
   private QuarterlyDouble liabEquityQdata;
   private QuarterlyDouble ltDebtQdata;
   private QuarterlyDouble ltInvestQdata;
-  private double          netcashflow;
+  private QuarterlyDouble netcashflowQdata;
   private QuarterlyDouble netFixedAssetsQdata;
   private QuarterlyDouble netIncQdata;
   private QuarterlyDouble netMarginQdata;
@@ -290,9 +298,8 @@ public class CompanyAggregate {
   private QuarterlyDouble pricesQdata;
   private int             quarter;
   private QuarterlyDouble rdQdata;
-
+  private QuarterlyDouble roeQdata;
   private QuarterlyDouble salesQdata;
-
   private QuarterlyDouble sharesQdata;
   private QuarterlyDouble stDebtQdata;
   private QuarterlyDouble stInvestQdata;
@@ -304,9 +311,7 @@ public class CompanyAggregate {
   private boolean         valid;
   private QuarterlyDouble wcfcfQdata;
   private QuarterlyDouble workingCapitalQdata;
-  private QuarterlyDouble roeQdata;
-
-  private int year;
+  private int             year;
 
   /**
    * Constructor
@@ -390,13 +395,290 @@ public class CompanyAggregate {
 
   }
 
+  public QuarterlyDouble getAcctPayableQdata() {
+    return this.acctPayableQdata;
+  }
+
+  public QuarterlyDouble getAcctRxQdata() {
+    return this.acctRxQdata;
+  }
+
+  public QuarterlyDouble getAdjToIncQdata() {
+    return this.adjToIncQdata;
+  }
+
+  public QuarterlyDouble getBvpsQdata() {
+    return this.bvpsQdata;
+  }
+
+  public QuarterlyDouble getCapExQdata() {
+    return this.capExQdata;
+  }
+
+  public QuarterlyDouble getCashflowQdata() {
+    return this.cashflowQdata;
+  }
+
+  public QuarterlyDouble getCashFromFinQdata() {
+    return this.cashFromFinQdata;
+  }
+
+  public QuarterlyDouble getCashFromInvQdata() {
+    return this.cashFromInvQdata;
+  }
+
+  public QuarterlyDouble getCashFromOpsQdata() {
+    return this.cashFromOpsQdata;
+  }
+
+  public QuarterlyDouble getCashQdata() {
+    return this.cashQdata;
+  }
+
+  public QuarterlyDouble getCogsQdata() {
+    return this.cogsQdata;
+  }
+
+  public QuarterlyDouble getCurrAssetsQdata() {
+    return this.currAssetsQdata;
+  }
+
+  public QuarterlyDouble getCurrentRatioQdata() {
+    return this.currentRatioQdata;
+  }
+
+  public QuarterlyDouble getCurrLiabQdata() {
+    return this.currLiabQdata;
+  }
+
+  public QuarterlyDouble getDepreciationQdata() {
+    return this.depreciationQdata;
+  }
+
+  public QuarterlyDouble getDivCostQdata() {
+    return this.divCostQdata;
+  }
+
+  public QuarterlyDouble getDividendQdata() {
+    return this.dividendQdata;
+  }
+
+  public QuarterlyDouble getEpsContQdata() {
+    return this.epsContQdata;
+  }
+
+  public QuarterlyDouble getEpsDilContQdata() {
+    return this.epsDilContQdata;
+  }
+
+  public QuarterlyDouble getEpsDilQdata() {
+    return this.epsDilQdata;
+  }
+
+  public QuarterlyDouble getEpsQdata() {
+    return this.epsQdata;
+  }
+
+  public QuarterlyDouble getEquityQdata() {
+    return this.equityQdata;
+  }
+
+  public QuarterlyDouble getFcfQdata() {
+    return this.fcfQdata;
+  }
+
+  public QuarterlyDouble getGoodwillQdata() {
+    return this.goodwillQdata;
+  }
+
+  public QuarterlyDouble getGrossIncQdata() {
+    return this.grossIncQdata;
+  }
+
+  public QuarterlyDouble getGrossOpIncQdata() {
+    return this.grossOpIncQdata;
+  }
+
+  public QuarterlyDouble getIncAfterTaxQdata() {
+    return this.incAfterTaxQdata;
+  }
+
+  public QuarterlyDouble getIncPrimaryEpsQdata() {
+    return this.incPrimaryEpsQdata;
+  }
+
+  public QuarterlyDouble getIncTaxQdata() {
+    return this.incTaxQdata;
+  }
+
+  public QuarterlyDouble getIntExpNonOpQdata() {
+    return this.intExpNonOpQdata;
+  }
+
+  public QuarterlyDouble getIntExpQdata() {
+    return this.intExpQdata;
+  }
+
+  public QuarterlyDouble getIntTotQdata() {
+    return this.intTotQdata;
+  }
+
+  public QuarterlyDouble getInventoryQdata() {
+    return this.inventoryQdata;
+  }
+
+  public QuarterlyDouble getLiabEquityQdata() {
+    return this.liabEquityQdata;
+  }
+
+  public QuarterlyDouble getLtDebtQdata() {
+    return this.ltDebtQdata;
+  }
+
+  public QuarterlyDouble getLtInvestQdata() {
+    return this.ltInvestQdata;
+  }
+
+  public QuarterlyDouble getNetcashflowQdata() {
+    return this.netcashflowQdata;
+  }
+
+  public QuarterlyDouble getNetFixedAssetsQdata() {
+    return this.netFixedAssetsQdata;
+  }
+
+  public QuarterlyDouble getNetIncQdata() {
+    return this.netIncQdata;
+  }
+
+  public QuarterlyDouble getNetMarginQdata() {
+    return this.netMarginQdata;
+  }
+
+  public QuarterlyDouble getNonrecurringItemsQdata() {
+    return this.nonrecurringItemsQdata;
+  }
+
+  public QuarterlyDouble getOpMarginQdata() {
+    return this.opMarginQdata;
+  }
+
+  public QuarterlyDouble getOtherCurrAssetsQdata() {
+    return this.otherCurrAssetsQdata;
+  }
+
+  public QuarterlyDouble getOtherCurrLiabQdata() {
+    return this.otherCurrLiabQdata;
+  }
+
+  public QuarterlyDouble getOtherIncQdata() {
+    return this.otherIncQdata;
+  }
+
+  public QuarterlyDouble getOtherLtAssetsQdata() {
+    return this.otherLtAssetsQdata;
+  }
+
+  public QuarterlyDouble getOtherLtLiabQdata() {
+    return this.otherLtLiabQdata;
+  }
+
+  public QuarterlyDouble getPeQdata() {
+    return this.peQdata;
+  }
+
+  public QuarterlyDouble getPrefStockQdata() {
+    return this.prefStockQdata;
+  }
+
+  public QuarterlyDouble getPreTaxIncQdata() {
+    return this.preTaxIncQdata;
+  }
+
+  public QuarterlyDouble getPricesQdata() {
+    return this.pricesQdata;
+  }
+
+  public int getQuarter() {
+    return this.quarter;
+  }
+
+  public QuarterlyDouble getRdQdata() {
+    return this.rdQdata;
+  }
+
+  public QuarterlyDouble getRoeQdata() {
+    return this.roeQdata;
+  }
+
+  public QuarterlyDouble getSalesQdata() {
+    return this.salesQdata;
+  }
+
+  public QuarterlyDouble getSharesQdata() {
+    return this.sharesQdata;
+  }
+
+  public QuarterlyDouble getStDebtQdata() {
+    return this.stDebtQdata;
+  }
+
+  public QuarterlyDouble getStInvestQdata() {
+    return this.stInvestQdata;
+  }
+
+  public QuarterlyDouble getTanAssetsQdata() {
+    return this.tanAssetsQdata;
+  }
+
+  public QuarterlyDouble getTotalAssetsQdata() {
+    return this.totalAssetsQdata;
+  }
+
+  public QuarterlyDouble getTotalLiabQdata() {
+    return this.totalLiabQdata;
+  }
+
+  public QuarterlyDouble getTotalOpExpQdata() {
+    return this.totalOpExpQdata;
+  }
+
+  public QuarterlyDouble getUnusualIncQdata() {
+    return this.unusualIncQdata;
+  }
+
+  public QuarterlyDouble getWcfcfQdata() {
+    return this.wcfcfQdata;
+  }
+
+  public QuarterlyDouble getWorkingCapitalQdata() {
+    return this.workingCapitalQdata;
+  }
+
+  public int getYear() {
+    return this.year;
+  }
+
+  public boolean isValid() {
+    return this.valid;
+  }
+
   /**
    * Calculates Derived Data
    */
   private void derived() {
 
-    this.netcashflow = this.cashFromOpsQdata.getTtm() + this.cashFromFinQdata.getTtm();
-    this.cashflow = this.netcashflow + this.cashFromInvQdata.getTtm();
+    final double ncf[] = new double[9];
+    for (int i = 0; i < ncf.length; i++) {
+      ncf[i] = this.cashFromOpsQdata.get(i) + this.cashFromFinQdata.get(i);
+    }
+    this.netcashflowQdata = new QuarterlyDouble(ncf);
+
+    final double cf[] = new double[9];
+    for (int i = 0; i < cf.length; i++) {
+      cf[i] = this.cashFromOpsQdata.get(i) + this.cashFromInvQdata.get(i) + this.cashFromFinQdata.get(i);
+    }
+    this.cashflowQdata = new QuarterlyDouble(cf);
 
     final double cAssets[] = new double[9];
     for (int i = 0; i < cAssets.length; i++) {
@@ -499,15 +781,15 @@ public class CompanyAggregate {
       peArr[i] = 0.0;
     }
     if (eps > 0.0) {
-      peArr[1] = pricesQdata.get(1) / eps;
+      peArr[1] = this.pricesQdata.get(1) / eps;
     }
     eps = this.epsContQdata.get2QTtm();
     if (eps > 0.0) {
-      peArr[2] = pricesQdata.get(2) / eps;
+      peArr[2] = this.pricesQdata.get(2) / eps;
     }
     eps = this.epsContQdata.getPrevTtm();
     if (eps > 0.0) {
-      peArr[5] = pricesQdata.get(5) / eps;
+      peArr[5] = this.pricesQdata.get(5) / eps;
     }
     this.peQdata = new QuarterlyDouble(peArr);
 
@@ -517,17 +799,17 @@ public class CompanyAggregate {
     for (int i = 0; i < roeArr.length; i++) {
       roeArr[i] = 0.0;
     }
-    if ((net > 0.0) && (eq > 0.0)) {
+    if (net > 0.0 && eq > 0.0) {
       roeArr[1] = net / eq * 100.0;
     }
     net = this.netIncQdata.get2QTtm();
     eq = this.equityQdata.get2QTtm();
-    if ((net > 0.0) && (eq > 0.0)) {
+    if (net > 0.0 && eq > 0.0) {
       roeArr[2] = net / eq * 100.0;
     }
     net = this.netIncQdata.getPrevTtm();
     eq = this.equityQdata.getPrevTtm();
-    if ((net > 0.0) && (eq > 0.0)) {
+    if (net > 0.0 && eq > 0.0) {
       roeArr[5] = net / eq * 100.0;
     }
     this.roeQdata = new QuarterlyDouble(roeArr);
