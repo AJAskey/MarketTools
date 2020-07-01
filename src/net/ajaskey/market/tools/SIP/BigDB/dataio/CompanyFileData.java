@@ -367,7 +367,15 @@ public class CompanyFileData implements Serializable {
    * @return String
    */
   public String getExchangeStr() {
-    return this.exchange.toString().toUpperCase();
+    String ret = "";
+    try {
+      ret = this.exchange.toString().toUpperCase();
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
+      ret = "NONE";
+    }
+    return ret;
   }
 
   public String getIndustry() {
@@ -617,24 +625,31 @@ public class CompanyFileData implements Serializable {
    * @return String
    */
   public String toDbOuput() {
-    String ret = String.format("ticker      : %s%n", this.ticker);
-    ret += String.format("  name      : %s%n", this.name);
-    ret += String.format("  exchange  : %s%n", this.exchange);
-    ret += String.format("  sector    : %s%n", this.sector);
-    ret += String.format("  industry  : %s%n", this.industry);
-    ret += String.format("  sic       : %s%n", this.getSic());
-    ret += String.format("  employees : %d%n", this.getNumEmployees());
-    ret += String.format("  snp index : %s%n", this.getSnpIndexStr());
-    ret += String.format("  dow index : %s%n", this.getDowIndexStr());
-    ret += String.format("  adr       : %s%n", this.adr);
-    ret += String.format("  street    : %s%n", this.street);
-    ret += String.format("  city      : %s%n", this.city);
-    ret += String.format("  state     : %s%n", this.state);
-    ret += String.format("  country   : %s%n", this.country);
-    ret += String.format("  zip       : %s%n", this.zip);
-    ret += String.format("  phone     : %s%n", this.phone);
-    ret += String.format("  web       : %s%n", this.getWeb());
-    ret += String.format("  prices    : %s%n", SipOutput.buildArray("", this.priceQtr, 10, 4, 1));
+    String ret = "";
+    try {
+      ret += String.format("ticker      : %s%n", this.ticker);
+      ret += String.format("  name      : %s%n", this.name);
+      ret += String.format("  exchange  : %s%n", this.exchange);
+      ret += String.format("  sector    : %s%n", this.sector);
+      ret += String.format("  industry  : %s%n", this.industry);
+      ret += String.format("  sic       : %s%n", this.getSic());
+      ret += String.format("  employees : %d%n", this.getNumEmployees());
+      ret += String.format("  snp index : %s%n", this.getSnpIndexStr());
+      ret += String.format("  dow index : %s%n", this.getDowIndexStr());
+      ret += String.format("  adr       : %s%n", this.adr);
+      ret += String.format("  street    : %s%n", this.street);
+      ret += String.format("  city      : %s%n", this.city);
+      ret += String.format("  state     : %s%n", this.state);
+      ret += String.format("  country   : %s%n", this.country);
+      ret += String.format("  zip       : %s%n", this.zip);
+      ret += String.format("  phone     : %s%n", this.phone);
+      ret += String.format("  web       : %s%n", this.getWeb());
+      ret += String.format("  prices    : %s%n", SipOutput.buildArray("", this.priceQtr, 10, 4, 1));
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
+      ret = "";
+    }
     return ret;
   }
 
