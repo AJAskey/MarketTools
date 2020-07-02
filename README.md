@@ -13,16 +13,16 @@ https://tortoisesvn.net
 
 https://winmerge.org/?lang=en
 
-##What works now:
+## What works now:
 * Parsing SIP data files and writing DB text, binary, and big binary.
 * Reading DB text, binary, and big binary files.
 * CompanySummary lists for each year and quarter.
 * CompanyDerived reads DB files and calculates derived data from these (example PE, Margin, ROE)
 
-##In progress now
+## In progress now
 * IndexDerived. Create and index or use SP500 to calculate a number of metrics, such as weighted earnings of index.
 
-##Up next
+## Up next
 * Report to write Zombie companies from the CompanyDerived class.
 
 A work in progress. Constant updates...
