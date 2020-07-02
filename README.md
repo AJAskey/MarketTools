@@ -19,7 +19,7 @@ A couple tools find useful to work with this github repository:
 * CompanyDerived reads DB files and calculates derived data from these (example PE, Margin, ROE)
 
 ## In progress now
-* IndexDerived. Create and index or use SP500 to calculate a number of metrics, such as weighted earnings of index.
+* IndexDerived. Create your own index or use SP500 index to calculate a number of metrics, such as weighted earnings of index.
 
 ## Up next
 * Report to write Zombie companies from the CompanyDerived class.
