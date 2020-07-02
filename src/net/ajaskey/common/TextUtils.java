@@ -29,41 +29,35 @@ import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.io.FileUtils;
 
+/**
+ * This class contains various utility methods for process text
+ */
 public class TextUtils {
 
   /**
-   *
-   * @param args
-   */
-  public static void main(String[] args) {
-    final List<String> data = TextUtils.readTextFile("data/test.txt", true);
-
-    for (final String s : data) {
-      System.out.println(s);
-    }
-
-  }
-
-  /**
-   *
-   * @param list
+   * Prints a List of String to Standard output
+   * 
+   * @param list List of String
    */
   public static void print(List<String> list) {
     System.out.println(TextUtils.toString(list));
   }
 
   /**
-   *
-   * @param s
+   * Prints a String to Standard output
+   * 
+   * @param s String to print
    */
   public static void printline(String s) {
     System.out.println(s);
   }
 
   /**
-   *
-   * @param fname
-   * @return
+   * Reads a file that has been Gzipped
+   * 
+   * @param file         File
+   * @param ignoreBlanks Does not return blank lines from file if TRUE
+   * @return List of String
    */
   public static List<String> readGzipFile(File file, boolean ignoreBlanks) {
 
@@ -90,10 +84,11 @@ public class TextUtils {
   }
 
   /**
-   *
-   * @param fname
-   * @param ignoreBlanks
-   * @return
+   * Reads a file that has been Gzipped
+   * 
+   * @param fname        File name
+   * @param ignoreBlanks Does not return blank lines from file if TRUE
+   * @return List of String
    */
   public static List<String> readGzipFile(String fname, boolean ignoreBlanks) {
 
@@ -103,10 +98,11 @@ public class TextUtils {
   }
 
   /**
-   *
-   * @param file
-   * @param ignoreBlanks
-   * @return
+   * Reads a text file
+   * 
+   * @param file         File
+   * @param ignoreBlanks Does not return blank lines from file if TRUE
+   * @return List of String
    */
   public static List<String> readTextFile(File file, boolean ignoreBlanks) {
 
@@ -139,10 +135,11 @@ public class TextUtils {
   }
 
   /**
-   *
-   * @param fname
-   * @param ignoreBlanks
-   * @return
+   * Reads a text file
+   * 
+   * @param fname        File name
+   * @param ignoreBlanks Does not return blank lines from file if TRUE
+   * @return List of String
    */
   public static List<String> readTextFile(String fname, boolean ignoreBlanks) {
 
@@ -152,9 +149,10 @@ public class TextUtils {
   }
 
   /**
+   * Returns a newline delimited String from List of String
    * 
-   * @param data
-   * @return
+   * @param list List of String
+   * @return String
    */
   public static String toString(List<String> data) {
     String ret = "";
