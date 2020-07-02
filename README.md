@@ -19,7 +19,7 @@ https://winmerge.org/?lang=en
 * CompanySummary lists for each year and quarter.
 * CompanyDerived reads DB files and calculates derived data from these (example PE, Margin, ROE)
 
-##Inprogress now
+##In progress now
 * IndexDerived. Create and index or use SP500 to calculate a number of metrics, such as weighted earnings of index.
 
 ##Up next
