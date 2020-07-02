@@ -232,10 +232,10 @@ public class FieldData implements Serializable {
       IncSheetFileData.clearList();
       BalSheetFileData.clearList();
 
-      Utils.makeDir("out");
-      Utils.makeDir("out/BigDB");
+      Utils.makeDirs(String.format("out/BigDB/%d/Q%d", yr, qtr));
 
-      final String dir = String.format("%s%s/Q%d/", FieldData.inbasedir, yr, qtr);
+      final String yearDir = String.format("%s%s", FieldData.inbasedir, yr);
+      final String dir = String.format("%s/Q%d/", yearDir, qtr);
       final String tail = String.format("%dQ%d.txt", yr, qtr);
 
       File dirCk = new File(dir);
