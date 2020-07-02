@@ -34,18 +34,18 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
  * This class contains data and methods used to aggregate financial and price
  * data.
  */
-public class CompanyAggregate {
+public class CompanyDerived {
 
   public static final double MILLION = 1000000.0;
 
-  private static List<CompanyAggregate> agList = new ArrayList<>();
+  private static List<CompanyDerived> agList = new ArrayList<>();
 
-  public static List<CompanyAggregate> getAgList() {
-    return CompanyAggregate.agList;
+  public static List<CompanyDerived> getAgList() {
+    return CompanyDerived.agList;
   }
 
   public static double getMillion() {
-    return CompanyAggregate.MILLION;
+    return CompanyDerived.MILLION;
   }
 
   /**
@@ -67,7 +67,7 @@ public class CompanyAggregate {
    */
   public static void processList(List<String> tickers, int yr, int qtr, List<FieldData> fdList) {
 
-    CompanyAggregate.agList.clear();
+    CompanyDerived.agList.clear();
 
     for (final FieldData fd : fdList) {
 
@@ -75,9 +75,9 @@ public class CompanyAggregate {
 
         if (t.trim().equalsIgnoreCase(fd.getTicker())) {
 
-          final CompanyAggregate ca = new CompanyAggregate(yr, qtr, fd);
+          final CompanyDerived ca = new CompanyDerived(yr, qtr, fd);
           if (ca.valid) {
-            CompanyAggregate.agList.add(ca);
+            CompanyDerived.agList.add(ca);
           }
 
         }
@@ -111,7 +111,7 @@ public class CompanyAggregate {
       pw.println("QoQ : this quarter versus same quarter a year ago.");
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
 
-      for (final CompanyAggregate ca : CompanyAggregate.agList) {
+      for (final CompanyDerived ca : CompanyDerived.agList) {
 
         final FieldData fd = ca.fd;
 
@@ -128,7 +128,7 @@ public class CompanyAggregate {
         }
         pw.printf("\tEmployees     : %s%n", sNumEmp);
         if (MarketTools.getNumEmployees(fd) > 0) {
-          final double d = ca.grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * CompanyAggregate.MILLION;
+          final double d = ca.grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * CompanyDerived.MILLION;
           final int i = (int) d;
           pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
         }
@@ -321,7 +321,7 @@ public class CompanyAggregate {
    * @param qtr
    * @param ft
    */
-  public CompanyAggregate(int yr, int qtr, FieldData fd) {
+  public CompanyDerived(int yr, int qtr, FieldData fd) {
 
     try {
       this.year = yr;
