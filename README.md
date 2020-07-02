@@ -9,9 +9,8 @@ I work on the code using Eclipse. But feel free to create your own environment a
 
 A couple tools find useful to work with this github repository:
 
-https://tortoisesvn.net
-
-https://winmerge.org/?lang=en
+* https://tortoisesvn.net
+* https://winmerge.org/?lang=en
 
 ## What works now:
 * Parsing SIP data files and writing DB text, binary, and big binary.
