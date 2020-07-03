@@ -1,3 +1,5 @@
+# MarketTools
+
 Java tools for processing market and economic data.
 
 This set of tools reads many years in Stock Investor Pro data and converts to a common DB format.
@@ -8,7 +10,7 @@ I work on the code using Eclipse. But feel free to create your own environment a
 
 A couple tools find useful to work with this github repository:
 
-<<<<<<< dev
+## Tools I find useful working this project
 * https://tortoisesvn.net
 * https://winmerge.org
 
@@ -24,12 +26,7 @@ A couple tools find useful to work with this github repository:
 ## Up next
 * Report to write Zombie companies from the CompanyDerived class. 
 
-## Tools I find useful working this project
-* https://tortoisesvn.net
-* https://winmerge.org/?lang=en
-
-
-#Status 
+## Status 
 
 A work in progress. Constant updates...
 
