@@ -6,13 +6,14 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate;
+import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 
 class HappyPathTest {
 
-  @Test
+  // @Test
   void testSipParser() {
     for (int year = 2018; year <= 2020; year++) {
       for (int quarter = 1; quarter <= 4; quarter++) {
@@ -22,13 +23,13 @@ class HappyPathTest {
             return;
           }
 
-          MarketTools.parseSipData(year, quarter, FiletypeEnum.BIG_BINARY);
+          MarketTools.parseSipData(year, quarter, FiletypeEnum.BIG_BINARY, false);
 
           MarketTools.setQMemory(year, quarter, FiletypeEnum.BIG_BINARY);
           final FieldData fd = MarketTools.getFromMemory("MSFT", year, quarter);
           org.junit.Assert.assertTrue(fd.getTicker().equals("MSFT"));
         }
-        catch (FileNotFoundException e) {
+        catch (Exception e) {
           e.printStackTrace();
           org.junit.Assert.fail("MarketTools.parseSipData() Exception thrown");
         }
@@ -41,10 +42,17 @@ class HappyPathTest {
 
     int year = 2020;
     int quarter = 2;
-
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    CompanyAggregate.loadDb(year, quarter, FiletypeEnum.BIG_BINARY);
+    try {
+      MarketTools.parseSipData(year, quarter, ft, false);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      org.junit.Assert.fail();
+    }
+
+    CompanyDerived.loadDb(year, quarter, ft);
 
     final List<String> tickers = new ArrayList<>();
     tickers.add("MSFT");
@@ -56,9 +64,9 @@ class HappyPathTest {
 
     final List<FieldData> fdList = FieldData.getQFromDb(year, quarter, ft);
 
-    CompanyAggregate.processList(tickers, year, quarter, fdList);
+    CompanyDerived.processList(tickers, year, quarter, fdList);
     try {
-      CompanyAggregate.write(year, quarter);
+      CompanyDerived.write(year, quarter);
     }
     catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -67,14 +75,22 @@ class HappyPathTest {
   }
 
   @Test
-  void testData() {
+  void testSipData() {
 
     int year = 2020;
     int quarter = 2;
 
+    try {
+      MarketTools.parseSipData(year, quarter, FiletypeEnum.BIG_BINARY, false);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      org.junit.Assert.fail();
+    }
+
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    CompanyAggregate.loadDb(year, quarter, FiletypeEnum.BIG_BINARY);
+    CompanyDerived.loadDb(year, quarter, ft);
 
     final FieldData fd = MarketTools.getFromMemory("MSFT", year, quarter);
 
@@ -93,7 +109,7 @@ class HappyPathTest {
     double[] cashFin = { 0.0, -14645.0, -8915.0, -10209.0, -8686.0, -7601.0, -13216.0, -7384.0, -6039.0 };
     org.junit.Assert.assertArrayEquals(cashFin, MarketTools.getCashFromFinQtr(fd), 0.01);
 
-    CompanyAggregate ca = new CompanyAggregate(year, quarter, fd);
+    CompanyDerived ca = new CompanyDerived(year, quarter, fd);
 
     double[] netCash = { 0.0, 2859.0, 1765.0, 3609.0, 7422.0, 5919.0, -4316.0, 6273.0, 5379.0 };
     org.junit.Assert.assertArrayEquals(netCash, ca.getNetcashflowQdata().dArr, 0.01);
@@ -117,6 +133,58 @@ class HappyPathTest {
     org.junit.Assert.assertEquals(1.0, qd.getMostRecent(), 0.01);
     org.junit.Assert.assertEquals(2.5, qd.getTtmAvg(), 0.01);
 
+  }
+
+  @Test
+  void testCompanySummary() {
+
+    try {
+      MarketTools.parseSipData(2020, 2, FiletypeEnum.BIG_BINARY, false);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      org.junit.Assert.fail();
+    }
+
+    List<String> list = CompanySummary.get(2020, 2, SnpEnum.SP500, DowEnum.INDUSTRIAL, ExchEnum.NYSE, 20.0, 100000);
+    org.junit.Assert.assertTrue(list.size() == 24);
+
+    List<String> list2 = CompanySummary.get(2020, 2, SnpEnum.SP500, DowEnum.TRANSPORTATION, ExchEnum.NASDAQ, 20.0, 100000);
+    org.junit.Assert.assertTrue(list2.size() == 5);
+
+    List<String> list3 = CompanySummary.get(2020, 2, SnpEnum.SP600, DowEnum.TRANSPORTATION, ExchEnum.NYSE, 5.0, 50000);
+    org.junit.Assert.assertTrue(list3.size() == 1);
+
+    List<String> list4 = CompanySummary.get(2020, 2, SnpEnum.SP400, DowEnum.NONE, ExchEnum.NASDAQ, 20.0, 1000000);
+    org.junit.Assert.assertTrue(list4.size() == 49);
+
+    List<String> list5 = CompanySummary.get(2020, 2, SnpEnum.NONE, DowEnum.NONE, ExchEnum.AMEX, 7.0, 75000);
+    org.junit.Assert.assertTrue(list5.size() == 89);
+
+    List<CompanySummary> list6 = CompanySummary.getCompanySummary(2020, 2);
+    org.junit.Assert.assertTrue(list6.size() == 6141);
+
+    List<String> list7 = CompanySummary.getAdr(2020, 2);
+    org.junit.Assert.assertTrue(list7.size() == 484);
+
+    List<String> list8 = CompanySummary.getSnp(SnpEnum.SP500, 2020, 2);
+    org.junit.Assert.assertTrue(list8.size() == 499);
+
+    List<String> list9 = CompanySummary.getDow(DowEnum.INDUSTRIAL, 2020, 2);
+    org.junit.Assert.assertTrue(list9.size() == 29);
+
+    List<String> list10 = CompanySummary.getExch(ExchEnum.AMEX, 2020, 2);
+    org.junit.Assert.assertTrue(list10.size() == 183);
+
+    List<String> list11 = CompanySummary.getExch(ExchEnum.NONE, 2020, 2);
+    org.junit.Assert.assertTrue(list11.size() == 2);
+
+    List<String> list12 = CompanySummary.getExch(ExchEnum.OTC, 2020, 2);
+    org.junit.Assert.assertTrue(list12.size() == 1479);
+
+    // List<CompanySummary> list13 = CompanySummary.getCompanySummary(2019, 3);
+    // org.junit.Assert.assertTrue(list13.size() == 6099);
+    // System.out.println(list13.size());
   }
 
 }
