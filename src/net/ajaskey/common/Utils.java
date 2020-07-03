@@ -38,6 +38,9 @@ import java.util.zip.ZipOutputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
+/**
+ * This class contains various utility methods
+ */
 public class Utils {
 
   public static DecimalFormatSymbols   decimalFormatSymbols = new DecimalFormatSymbols();
@@ -50,10 +53,11 @@ public class Utils {
   private static DecimalFormat dfmt = new DecimalFormat("#,###");
 
   /**
-   *
-   * @param map
-   * @param key
-   * @return
+   * Returns String from Map based on requested key
+   * 
+   * @param map Map of key:value pairs
+   * @param key Requested key
+   * @return String
    */
   public static String findName(final Map<String, Integer> map, final Integer key) {
 
@@ -62,14 +66,15 @@ public class Utils {
         return entry.getKey();
       }
     }
-    return "NotFound";
+    return "";
   }
 
   /**
-   *
-   * @param d
-   * @param len
-   * @return
+   * Formats a double
+   * 
+   * @param d   Value to format
+   * @param len Length of output
+   * @return String
    */
   public static String fmt(final double d, final int len) {
     String ret = "";
@@ -87,10 +92,11 @@ public class Utils {
   }
 
   /**
-   *
-   * @param top
-   * @param ext
-   * @return
+   * Returns files from a directory tree from the request top directory
+   * 
+   * @param top Directory
+   * @param ext Array of String extensions to return, other extensions are ignored
+   * @return List of File
    */
   public static List<File> getDirTree(final String top, final String[] ext) {
 
@@ -104,10 +110,11 @@ public class Utils {
   }
 
   /**
+   * Returns files from a directory
    * 
-   * @param dir
-   * @param ext
-   * @return
+   * @param dir Directory
+   * @param ext Array of String extensions to return, other extensions are ignored
+   * @return List of File
    */
   public static List<File> getDir(final String dir, final String[] ext) {
 
@@ -123,8 +130,9 @@ public class Utils {
   }
 
   /**
-   *
-   * @param f
+   * Returns a file name without extension
+   * 
+   * @param f File
    * @return File name without extension
    */
   public static String getFileBaseName(File f) {
@@ -137,9 +145,10 @@ public class Utils {
   }
 
   /**
-   *
-   * @param f
-   * @return File extension
+   * Returns a file extension
+   * 
+   * @param f File
+   * @return String extension
    */
   public static String getFileExt(File f) {
     String ret = "";
@@ -150,9 +159,10 @@ public class Utils {
   }
 
   /**
-   *
-   * @param url
-   * @return
+   * Connects to URL and returns response
+   * 
+   * @param url URL
+   * @return Response
    */
   public static String getFromUrl(final String url) {
 
@@ -180,10 +190,11 @@ public class Utils {
   }
 
   /**
-   *
-   * @param i
-   * @param len
-   * @return
+   * Formats an integer
+   * 
+   * @param i   Value to format
+   * @param len Length of output
+   * @return String
    */
   public static String ifmt(final int i, final int len) {
 
@@ -191,10 +202,11 @@ public class Utils {
   }
 
   /**
-   *
-   * @param i
-   * @param len
-   * @return
+   * Formats a long
+   * 
+   * @param i   Value to format
+   * @param len Length of output
+   * @return String
    */
   public static String lfmt(final long i, final int len) {
 
@@ -204,8 +216,9 @@ public class Utils {
   }
 
   /**
-   *
-   * @param dir
+   * Creates request directory if it does not already exist
+   * 
+   * @param dir Directory to create
    */
   static public void makeDir(final String dir) {
 
@@ -216,14 +229,29 @@ public class Utils {
   }
 
   /**
-   *
-   * @param dt1
-   * @param dt2
-   * @return
+   * Creates requested directory (including sub-directories) if any do not already
+   * exist
+   * 
+   * @param dir Directory to create
+   */
+  static public void makeDirs(final String dir) {
+
+    final File theDir = new File(dir);
+    if (!theDir.exists()) {
+      theDir.mkdirs();
+    }
+  }
+
+  /**
+   * Compares DateTime pair using only date and ignore time
+   * 
+   * @param dt1 DateTime1
+   * @param dt2 DateTime2
+   * @return TRUE if same date, FALSE otherwise
    */
   public static boolean sameDate(final DateTime dt1, final DateTime dt2) {
 
-    if (dt1 == null || dt2 == null) {
+    if (dt1.isNull() || dt2.isNull()) {
       return false;
     }
     if (dt1.getYear() == dt2.getYear()) {
@@ -237,14 +265,15 @@ public class Utils {
   }
 
   /**
-   *
-   * @param dt1
-   * @param dt2
-   * @return
+   * Compares DateTime pair month
+   * 
+   * @param dt1 DateTime1
+   * @param dt2 DateTime2
+   * @return TRUE if months match, FALSE otherwise
    */
   public static boolean sameMonth(final DateTime dt1, final DateTime dt2) {
 
-    if (dt1 == null || dt2 == null) {
+    if (dt1.isNull() || dt2.isNull()) {
       return false;
     }
     if (dt1.getYear() == dt2.getYear()) {
@@ -256,8 +285,9 @@ public class Utils {
   }
 
   /**
-   *
-   * @param milliseconds
+   * Pauses processing
+   * 
+   * @param milliseconds Time to pause
    */
   public static void sleep(final int milliseconds) {
 
@@ -274,11 +304,12 @@ public class Utils {
   }
 
   /**
-   *
-   * @param path
-   * @param zipStream
-   * @throws FileNotFoundException
-   * @throws IOException
+   * Writes file to Zip format
+   * 
+   * @param path      File path
+   * @param zipStream Stream for output
+   * @throws FileNotFoundException Error
+   * @throws IOException           Error
    */
   public static void writeToZipFile(final String path, final ZipOutputStream zipStream) throws FileNotFoundException, IOException {
 

@@ -64,6 +64,10 @@ public class FieldDataBinary implements Serializable {
     new FieldDataBinary(cfd, efd, sfd, ifd, bfd, cash, yr, qtr);
   }
 
+  public static void clearList() {
+    bigList.clear();
+  }
+
   /**
    * Reads the big binary file containing ome quarter of data
    *

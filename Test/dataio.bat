@@ -1,1 +1,1 @@
-java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=dataio.txt --time-limit=300 --regression-test-basename=DataIoTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB.dataio
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=dataio.txt --time-limit=30 --regression-test-basename=DataIoTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB.dataio

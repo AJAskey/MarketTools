@@ -1,1 +1,3 @@
-net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate
+net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived
+net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData
+net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived

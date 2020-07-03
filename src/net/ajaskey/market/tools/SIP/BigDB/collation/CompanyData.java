@@ -42,9 +42,11 @@ public class CompanyData {
    */
   public static List<CompanyData> getCompanies(List<String> tickers) {
     final List<CompanyData> retList = new ArrayList<>();
-    for (final String ticker : tickers) {
-      final CompanyData cd = CompanyData.getCompany(ticker);
-      retList.add(cd);
+    if (tickers != null) {
+      for (final String ticker : tickers) {
+        final CompanyData cd = CompanyData.getCompany(ticker);
+        retList.add(cd);
+      }
     }
     return retList;
   }
@@ -79,23 +81,31 @@ public class CompanyData {
    */
   public static CompanyData getCompany(String ticker) {
 
-    final CompanyData cd = new CompanyData(ticker);
+    if (ticker != null) {
 
-    final String[] ext = { "txt", "gz" };
-    final List<File> fList = Utils.getDirTree(FieldData.outbasedir, ext);
-    for (final File f : fList) {
-      if (f.getName().startsWith(ticker.toUpperCase() + "-")) {
-        // System.out.println(f.getAbsolutePath());
-        final int yr = CompanyData.parseYear(f.getName());
-        final int qtr = CompanyData.parseQuarter(f.getName());
-        final FieldData fd = FieldData.getFromDb(ticker, yr, qtr, FiletypeEnum.BINARY);
-        fd.setYear(yr);
-        fd.setQuarter(qtr);
-        cd.fdList.add(fd);
+      try {
+        final CompanyData cd = new CompanyData(ticker);
+
+        final String[] ext = { "txt", "gz" };
+        final List<File> fList = Utils.getDirTree(FieldData.outbasedir, ext);
+        for (final File f : fList) {
+          if (f.getName().startsWith(ticker.toUpperCase() + "-")) {
+            // System.out.println(f.getAbsolutePath());
+            final int yr = CompanyData.parseYear(f.getName());
+            final int qtr = CompanyData.parseQuarter(f.getName());
+            final FieldData fd = FieldData.getFromDb(ticker, yr, qtr, FiletypeEnum.TEXT);
+            fd.setYear(yr);
+            fd.setQuarter(qtr);
+            cd.fdList.add(fd);
+          }
+
+        }
+        return cd;
       }
-
+      catch (Exception e) {
+      }
     }
-    return cd;
+    return null;
   }
 
   /**
@@ -124,21 +134,26 @@ public class CompanyData {
   public static List<String> getTickers(DowEnum index, int yr, int qtr) {
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(yr, qtr);
+    try {
+      final List<File> files = CompanyData.getFiles(yr, qtr);
 
-    List<String> input = null;
-    for (final File f : files) {
-      if (f.getName().endsWith(".gz")) {
-        input = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        input = TextUtils.readTextFile(f, true);
-      }
+      List<String> input = null;
+      for (final File f : files) {
+        if (f.getName().endsWith(".gz")) {
+          input = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          input = TextUtils.readTextFile(f, true);
+        }
 
-      final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-      if (cfd.getDowIndex() == index) {
-        ret.add(cfd.getTicker());
+        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+        if (cfd.getDowIndex() == index) {
+          ret.add(cfd.getTicker());
+        }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return ret;
   }
@@ -155,28 +170,29 @@ public class CompanyData {
 
     final List<String> ret = new ArrayList<>();
 
-    if (index == null) {
-      return ret;
-    }
+    try {
+      final List<File> files = CompanyData.getFiles(yr, qtr);
 
-    final List<File> files = CompanyData.getFiles(yr, qtr);
+      List<String> input = null;
 
-    List<String> input = null;
+      if (files != null) {
+        for (final File f : files) {
+          if (f.getName().endsWith(".gz")) {
+            input = TextUtils.readGzipFile(f, true);
+          }
+          else {
+            input = TextUtils.readTextFile(f, true);
+          }
 
-    if (files != null) {
-      for (final File f : files) {
-        if (f.getName().endsWith(".gz")) {
-          input = TextUtils.readGzipFile(f, true);
-        }
-        else {
-          input = TextUtils.readTextFile(f, true);
-        }
-
-        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-        if (cfd.getExchange() == index) {
-          ret.add(cfd.getTicker());
+          final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+          if (cfd.getExchange() == index) {
+            ret.add(cfd.getTicker());
+          }
         }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return ret;
   }
@@ -198,8 +214,10 @@ public class CompanyData {
         for (final File f : fList) {
           final String name = f.getName();
           final int idx = name.indexOf("-fundamental");
-          final String s = name.substring(0, idx);
-          ret.add(s);
+          if (idx > 0) {
+            final String s = name.substring(0, idx);
+            ret.add(s);
+          }
         }
       }
     }
@@ -222,21 +240,27 @@ public class CompanyData {
 
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(yr, qtr);
+    try {
 
-    List<String> input = null;
-    for (final File f : files) {
-      if (f.getName().endsWith(".gz")) {
-        input = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        input = TextUtils.readTextFile(f, true);
-      }
+      final List<File> files = CompanyData.getFiles(yr, qtr);
 
-      final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-      if (cfd.getSnpIndex() == index) {
-        ret.add(cfd.getTicker());
+      List<String> input = null;
+      for (final File f : files) {
+        if (f.getName().endsWith(".gz")) {
+          input = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          input = TextUtils.readTextFile(f, true);
+        }
+
+        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+        if (cfd.getSnpIndex() == index) {
+          ret.add(cfd.getTicker());
+        }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return ret;
   }

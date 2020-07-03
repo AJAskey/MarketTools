@@ -59,31 +59,36 @@ public class Globals {
    * @param tkr The individual stock symbol
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return FieldData
+   * @return FieldData or NULL if error.
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
 
-    final String ticker = tkr.trim().toUpperCase();
+    try {
+      final String ticker = tkr.trim().toUpperCase();
 
-    for (final FieldDataYear fdy : Globals.allDataList) {
+      for (final FieldDataYear fdy : Globals.allDataList) {
 
-      if (yr == fdy.getYear()) {
+        if (yr == fdy.getYear()) {
 
-        if (fdy.isInUse()) {
+          if (fdy.isInUse()) {
 
-          if (fdy.quarterDataAvailable(qtr)) {
+            if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
+              final FieldDataQuarter fdq = fdy.getQ(qtr);
 
-            for (final FieldData fd : fdq.fieldDataList) {
-              if (fd.getTicker().equals(ticker)) {
-                return fd;
+              for (final FieldData fd : fdq.fieldDataList) {
+                if (fd.getTicker().equals(ticker)) {
+                  return fd;
+                }
               }
             }
           }
         }
       }
     }
+    catch (Exception e) {
+    }
+
     return null;
   }
 
@@ -94,19 +99,45 @@ public class Globals {
    * @param tList The list of individual stock symbols
    * @param yr    year
    * @param qtr   quarter (1-4)
-   * @return List of FieldData
+   * @return List of FieldData or empty List if error
    */
   public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    for (final String t : tList) {
-      final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
-      if (fd != null) {
-        fdList.add(fd);
+    try {
+      for (final String t : tList) {
+        final FieldData fd = FieldData.getFromMemory(t, yr, qtr);
+        if (fd != null) {
+          fdList.add(fd);
+        }
       }
     }
+    catch (Exception e) {
+      fdList.clear();
+    }
     return fdList;
+  }
+
+  /**
+   * Returns state of loaded Global lists
+   * 
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return TRUE if requested yr/qtr is available in memory, FALSE otherwise
+   */
+  public static boolean checkLists(int yr, int qtr) {
+    try {
+      for (final FieldDataYear fdy : Globals.allDataList) {
+        if (fdy.getYear() == yr) {
+          FieldDataQuarter fdq = fdy.getQ(qtr);
+          return (fdq != null);
+        }
+      }
+    }
+    catch (Exception e) {
+    }
+    return false;
   }
 
   /**
@@ -135,46 +166,56 @@ public class Globals {
       Globals.init(Globals.startYear, Globals.endYear);
     }
 
+    if (checkLists(yr, qtr)) {
+      return;
+    }
+
     final FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
     for (final FieldDataYear fdy : Globals.allDataList) {
       if (fdy.getYear() == yr) {
-        fdy.set(qtr, fdq);
+        fdy.setQ(qtr, fdq);
+        System.out.printf(" Internal memory set for %d Q%d%n", yr, qtr);
         return;
       }
     }
     System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
   }
-  
+
   /**
    * Returns a list of FieldData for all tickers of requested year and quarter
    * from internal memory.
    *
    * @param yr  year
    * @param qtr quarter (1-4)
-   * @return List of FieldData
+   * @return List of FieldData or an empty List if error
    */
   public static List<FieldData> getQFromMemory(int yr, int qtr) {
 
     final List<FieldData> fdList = new ArrayList<>();
 
-    System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
+    try {
+      System.out.printf("Retrieving from memory : %dQ%d%n", yr, qtr);
 
-    for (final FieldDataYear fdy : Globals.allDataList) {
+      for (final FieldDataYear fdy : Globals.allDataList) {
 
-      if (yr == fdy.getYear()) {
+        if (yr == fdy.getYear()) {
 
-        if (fdy.isInUse()) {
+          if (fdy.isInUse()) {
 
-          if (fdy.quarterDataAvailable(qtr)) {
+            if (fdy.quarterDataAvailable(qtr)) {
 
-            final FieldDataQuarter fdq = fdy.getQ(qtr);
+              final FieldDataQuarter fdq = fdy.getQ(qtr);
 
-            for (final FieldData fd : fdq.fieldDataList) {
-              fdList.add(fd);
+              for (final FieldData fd : fdq.fieldDataList) {
+                fdList.add(fd);
+              }
             }
           }
         }
       }
+    }
+    catch (Exception e) {
+      fdList.clear();
     }
     return fdList;
   }

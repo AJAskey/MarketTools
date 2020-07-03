@@ -18,7 +18,6 @@
  */
 package net.ajaskey.market.tools.SIP.BigDB.collation;
 
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +28,7 @@ import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.CompanyFileData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.SharesFileData;
 
 /**
  * This class reads a company summary file and provides utility methods to
@@ -41,16 +41,52 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 public class CompanySummary {
 
   /**
+   * Returns List of tickers matching requested criteria
+   *
+   * @param yr    year
+   * @param qtr   quarter (1-4)
+   * @param snp   SNP enumeration
+   * @param dow   DOW enumeration
+   * @param exch  Exchange enumeration
+   * @param price Lowest price
+   * @param vol   Lowest volume
+   * @return List of String
+   */
+  public static List<String> get(int yr, int qtr, SnpEnum snp, DowEnum dow, ExchEnum exch, double price, long vol) {
+
+    final List<String> retList = new ArrayList<>();
+
+    final List<CompanySummary> csList = CompanySummary.getCompanySummary(yr, qtr);
+
+    for (final CompanySummary cs : csList) {
+
+      if (CompanySummary.matchSnp(cs.snp, snp)) {
+        if (CompanySummary.matchDow(cs.dow, dow)) {
+          if (CompanySummary.matchExch(cs.exch, exch)) {
+            if (cs.price >= price) {
+              if (cs.volume >= vol) {
+                retList.add(cs.ticker);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return retList;
+  }
+
+  /**
    * Returns a list of tickers that are ADR.
    *
    * @param yr  year
    * @param qtr quarter (1-4)
    * @return List of String
    */
-  public static List<String> getAdr(int year, int qtr) {
+  public static List<String> getAdr(int yr, int qtr) {
 
     final List<String> retList = new ArrayList<>();
-    final List<CompanySummary> csList = CompanySummary.getCompanySummary(2020, 2);
+    final List<CompanySummary> csList = CompanySummary.getCompanySummary(yr, qtr);
     for (final CompanySummary cs : csList) {
       if (cs.isAdr) {
         retList.add(cs.ticker);
@@ -70,14 +106,20 @@ public class CompanySummary {
 
     final List<CompanySummary> sumList = new ArrayList<>();
 
-    final String fname = String.format("%s%d/Q%d/CompanySummary.txt", FieldData.outbasedir, yr, qtr);
-    final List<String> retList = TextUtils.readTextFile(fname, true);
+    try {
 
-    for (final String s : retList) {
-      final CompanySummary cs = new CompanySummary(s);
-      if (cs.valid) {
-        sumList.add(cs);
+      final String fname = String.format("%s%d/Q%d/CompanySummary.txt", FieldData.outbasedir, yr, qtr);
+      final List<String> retList = TextUtils.readTextFile(fname, true);
+
+      for (final String s : retList) {
+        final CompanySummary cs = new CompanySummary(s);
+        if (cs.valid) {
+          sumList.add(cs);
+        }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return sumList;
   }
@@ -90,10 +132,10 @@ public class CompanySummary {
    * @param qtr   quarter (1-4)
    * @return List of String
    */
-  public static List<String> getDow(DowEnum index, int year, int qtr) {
+  public static List<String> getDow(DowEnum index, int yr, int qtr) {
 
     final List<String> retList = new ArrayList<>();
-    final List<CompanySummary> csList = CompanySummary.getCompanySummary(2020, 2);
+    final List<CompanySummary> csList = CompanySummary.getCompanySummary(yr, qtr);
     for (final CompanySummary cs : csList) {
       if (cs.dow.equals(index)) {
         retList.add(cs.ticker);
@@ -110,10 +152,10 @@ public class CompanySummary {
    * @param qtr   quarter (1-4)
    * @return List of String
    */
-  public static List<String> getExch(ExchEnum index, int year, int qtr) {
+  public static List<String> getExch(ExchEnum index, int yr, int qtr) {
 
     final List<String> retList = new ArrayList<>();
-    final List<CompanySummary> csList = CompanySummary.getCompanySummary(2020, 2);
+    final List<CompanySummary> csList = CompanySummary.getCompanySummary(yr, qtr);
     for (final CompanySummary cs : csList) {
       if (cs.exch.equals(index)) {
         retList.add(cs.ticker);
@@ -130,25 +172,16 @@ public class CompanySummary {
    * @param qtr   quarter (1-4)
    * @return List of String
    */
-  public static List<String> getSnp(SnpEnum index, int year, int qtr) {
+  public static List<String> getSnp(SnpEnum index, int yr, int qtr) {
 
     final List<String> retList = new ArrayList<>();
-    final List<CompanySummary> csList = CompanySummary.getCompanySummary(2020, 2);
+    final List<CompanySummary> csList = CompanySummary.getCompanySummary(yr, qtr);
     for (final CompanySummary cs : csList) {
       if (cs.snp.equals(index)) {
         retList.add(cs.ticker);
       }
     }
     return retList;
-  }
-
-  public static void main(final String[] args) throws FileNotFoundException {
-
-    final List<String> sList = CompanySummary.getAdr(2020, 2);
-    for (final String s : sList) {
-      System.out.println(s);
-    }
-    System.out.println(sList.size());
   }
 
   /**
@@ -162,8 +195,16 @@ public class CompanySummary {
     final String fnameout = String.format("%s%d/Q%d/CompanySummary.txt", FieldData.outbasedir, yr, qtr);
     try (PrintWriter pw = new PrintWriter(fnameout)) {
       for (final CompanyFileData cfd : CompanyFileData.getList()) {
-        pw.printf("%s\t%s\t%s\t%s\t%s\t%s%n", cfd.getTicker(), cfd.getName(), cfd.getSnpIndexStr(), cfd.getDowIndexStr(), cfd.getExchangeStr(),
-            cfd.isAdr());
+        final SharesFileData sfd = SharesFileData.find(cfd.getTicker());
+        if (sfd != null) {
+          final double avgPrice = (sfd.getPrice() * 8.0 + sfd.getPrice52hi() + sfd.getPrice52lo()) / 10.0;
+          final long avgVol = sfd.getVolumeMonth3m() / 21 * 1000;
+          pw.printf("%s\t%s\t%s\t%s\t%s\t%s\t%.2f\t%d%n", cfd.getTicker(), cfd.getName(), cfd.getSnpIndexStr(), cfd.getDowIndexStr(),
+              cfd.getExchangeStr(), cfd.isAdr(), avgPrice, avgVol);
+        }
+        else {
+          System.out.println("Warning. CompanySummary.write() sfd is null for " + cfd.getTicker());
+        }
       }
     }
     catch (final Exception e) {
@@ -171,13 +212,84 @@ public class CompanySummary {
     }
   }
 
+  /**
+   * Returns dow1 equals dow2
+   *
+   * @param dow1
+   * @param dow2
+   * @return boolean
+   */
+  private static boolean matchDow(DowEnum dow1, DowEnum dow2) {
+    boolean ret = false;
+    try {
+      if (dow2.equals(DowEnum.NONE)) {
+        return true;
+      }
+      ret = dow1.equals(dow2);
+    }
+    catch (final Exception e) {
+      ret = false;
+    }
+    return ret;
+  }
+
+  /**
+   * Returns exch1 equals exch2
+   *
+   * @param exch1
+   * @param exch2
+   * @return boolean
+   */
+  private static boolean matchExch(ExchEnum exch1, ExchEnum exch2) {
+    boolean ret = false;
+    try {
+      if (exch2.equals(ExchEnum.NONE)) {
+        return true;
+      }
+      ret = exch1.equals(exch2);
+    }
+    catch (final Exception e) {
+      ret = false;
+    }
+    return ret;
+  }
+
+  /**
+   * Returns snp1 equals snp2
+   *
+   * @param snp1
+   * @param snp2
+   * @return boolean
+   */
+  private static boolean matchSnp(SnpEnum snp1, SnpEnum snp2) {
+    boolean ret = false;
+    try {
+      if (snp2.equals(SnpEnum.NONE)) {
+        return true;
+      }
+      ret = snp1.equals(snp2);
+    }
+    catch (final Exception e) {
+      ret = false;
+    }
+    return ret;
+  }
+
   public DowEnum  dow;
   public ExchEnum exch;
   public boolean  isAdr;
   public String   name;
+  public double   price;
   public SnpEnum  snp;
   public String   ticker;
+  public long     volume;
   private boolean valid;
+
+  /**
+   * Constructor private
+   */
+  private CompanySummary() {
+  }
 
   /**
    * Constructor private
@@ -193,17 +305,13 @@ public class CompanySummary {
       this.dow = DowEnum.valueOf(fld[3].trim());
       this.exch = ExchEnum.valueOf(fld[4].trim());
       this.isAdr = Boolean.parseBoolean(fld[5].trim());
+      this.price = Double.parseDouble(fld[6].trim());
+      this.volume = Integer.parseInt(fld[7].trim());
       this.valid = true;
     }
     catch (final Exception e) {
       this.valid = false;
     }
-  }
-
-  /**
-   * Constructor private
-   */
-  private CompanySummary() {
   }
 
   @Override

@@ -166,6 +166,45 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Returns previous year trailing 12 months started at Q2 (used for sequential
+   * comparisons)
+   *
+   * @return q2 + q3 + q4 + q5
+   */
+  public double get2QTtm() {
+
+    double ret = 0.0;
+    try {
+      if (this.dArr.length > 5) {
+        ret = this.dArr[2] + this.dArr[3] + this.dArr[4] + this.dArr[5];
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+    }
+    return ret;
+  }
+
+  /**
+   * Returns previous year trailing 12 months
+   *
+   * @return q5 + q6 + q7 + q8
+   */
+  public double getPrevTtm() {
+
+    double ret = 0.0;
+    try {
+      if (this.dArr.length > 8) {
+        ret = this.dArr[5] + this.dArr[6] + this.dArr[7] + this.dArr[8];
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+    }
+    return ret;
+  }
+
+  /**
    * Returns the average of the trailing 12 months
    *
    * @return (q1 + q2 + q3 + q4) / 4
@@ -178,6 +217,15 @@ public class QuarterlyDouble {
     catch (final Exception e) {
     }
     return d / 4.0;
+  }
+
+  @Override
+  public String toString() {
+    String ret = "";
+    for (int i = 0; i < this.dArr.length; i++) {
+      ret += String.format("\t i=%d %.4f", i, this.dArr[i]);
+    }
+    return ret;
   }
 
 }

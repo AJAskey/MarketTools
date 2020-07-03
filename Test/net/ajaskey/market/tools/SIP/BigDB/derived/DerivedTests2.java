@@ -13,455 +13,201 @@ public class DerivedTests2 {
     public void test1001() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1001");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) (byte) -1, 100, filetypeEnum2);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getLtDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getSharesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getInventoryQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getIntExpNonOpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
     }
 
     @Test
     public void test1002() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1002");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        java.util.List<java.lang.String> strList6 = null;
-        java.lang.String[] strArray10 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList11 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList11, strArray10);
-        java.lang.String[] strArray16 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList17 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList17, strArray16);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray21 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList22 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22, fieldDataArray21);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList17, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22);
-        java.lang.String[] strArray28 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList29 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList29, strArray28);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray33 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList34 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34, fieldDataArray33);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray39 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList40 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean41 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40, fieldDataArray39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40);
-        java.lang.String[] strArray46 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList47 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean48 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList47, strArray46);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray51 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList52 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52, fieldDataArray51);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray57 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList58 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList58, fieldDataArray57);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList58);
-        java.lang.String[] strArray64 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList65 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean66 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList65, strArray64);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray69 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList70 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean71 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70, fieldDataArray69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList65, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (byte) 100, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList17, (int) '#', (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList11, (int) (byte) 100, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList6, (int) (short) 0, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 1, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList70);
-        java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList81 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) '#', (-1), fieldDataList81);
-            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-        } catch (java.lang.NullPointerException e) {
-        // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(strArray10);
-        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + true + "'", boolean12 == true);
-        org.junit.Assert.assertNotNull(strArray16);
-        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + true + "'", boolean18 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray21);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
-        org.junit.Assert.assertNotNull(strArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + true + "'", boolean30 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray33);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray39);
-        org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + false + "'", boolean41 == false);
-        org.junit.Assert.assertNotNull(strArray46);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + true + "'", boolean48 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray51);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray57);
-        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + false + "'", boolean59 == false);
-        org.junit.Assert.assertNotNull(strArray64);
-        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + true + "'", boolean66 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray69);
-        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + false + "'", boolean71 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOpMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEquityQdata();
+        boolean boolean8 = companyDerived3.isValid();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
     }
 
     @Test
     public void test1003() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1003");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray9 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList10 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10, fieldDataArray9);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray15 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList16 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16, fieldDataArray15);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16);
-        java.lang.String[] strArray22 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList23 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList23, strArray22);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray27 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList28 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28, fieldDataArray27);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList23, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28);
-        java.lang.String[] strArray35 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList36 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean37 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList36, strArray35);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray40 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList41 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean42 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList41, fieldDataArray40);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList41);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray46 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList47 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean48 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList47, fieldDataArray46);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList47);
-        java.lang.String[] strArray53 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList54 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean55 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList54, strArray53);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray58 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList59 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59, fieldDataArray58);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList54, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        java.lang.String[] strArray66 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList67 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList67, strArray66);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray71 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList72 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean73 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72, fieldDataArray71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList67, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, 1, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, 0, (-1), (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (int) 'a', 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        org.junit.Assert.assertNotNull(strArray4);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray9);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray15);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertNotNull(strArray22);
-        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + true + "'", boolean24 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray27);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
-        org.junit.Assert.assertNotNull(strArray35);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + true + "'", boolean37 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray40);
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray46);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + false + "'", boolean48 == false);
-        org.junit.Assert.assertNotNull(strArray53);
-        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + true + "'", boolean55 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray58);
-        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
-        org.junit.Assert.assertNotNull(strArray66);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + true + "'", boolean68 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray71);
-        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + false + "'", boolean73 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getDividendQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
     }
 
     @Test
     public void test1004() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1004");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray38 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray43 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList44 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44, fieldDataArray43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44);
-        java.lang.String[] strArray51 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList52 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList52, strArray51);
-        java.lang.String[] strArray57 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList58 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList58, strArray57);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray62 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList63 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63, fieldDataArray62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList58, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList58, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        java.lang.String[] strArray76 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList77 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean78 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList77, strArray76);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray81 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList82 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean83 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82, fieldDataArray81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList77, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 0, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList90 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) (short) 100, fieldDataList90);
-            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-        } catch (java.lang.NullPointerException e) {
-        // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
-        org.junit.Assert.assertNotNull(strArray51);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + true + "'", boolean53 == true);
-        org.junit.Assert.assertNotNull(strArray57);
-        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + true + "'", boolean59 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + false + "'", boolean64 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(strArray76);
-        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + true + "'", boolean78 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray81);
-        org.junit.Assert.assertTrue("'" + boolean83 + "' != '" + false + "'", boolean83 == false);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(100, (int) '#');
+        int int3 = companyDerivedData2.quarter;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList4 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.getAgList();
+        companyDerivedData2.dList = companyDerivedList4;
+        int int6 = companyDerivedData2.quarter;
+        int int7 = companyDerivedData2.quarter;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList8 = companyDerivedData2.dList;
+        companyDerivedData2.year = (byte) 1;
+        org.junit.Assert.assertTrue("'" + int3 + "' != '" + 35 + "'", int3 == 35);
+        org.junit.Assert.assertNotNull(companyDerivedList4);
+        org.junit.Assert.assertTrue("'" + int6 + "' != '" + 35 + "'", int6 == 35);
+        org.junit.Assert.assertTrue("'" + int7 + "' != '" + 35 + "'", int7 == 35);
+        org.junit.Assert.assertNotNull(companyDerivedList8);
     }
 
     @Test
     public void test1005() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1005");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) ' ', (int) (short) 10, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        java.util.List<java.lang.String> strList4 = indexDerived3.indexList;
+        indexDerived3.listName = "";
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived10 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived10.writeList("");
+        java.util.List<java.lang.String> strList13 = indexDerived10.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived17 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived17.writeList("");
+        java.util.List<java.lang.String> strList20 = indexDerived17.indexList;
+        indexDerived10.indexList = strList20;
+        indexDerived3.addToList(strList20);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived26 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived26.writeList("");
+        java.util.List<java.lang.String> strList29 = indexDerived26.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived33 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived33.writeList("");
+        java.util.List<java.lang.String> strList36 = indexDerived33.indexList;
+        indexDerived26.indexList = strList36;
+        indexDerived3.addToList(strList36);
+        boolean boolean39 = indexDerived3.valid;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived43 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList44 = indexDerived43.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData47 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData47.year = 1;
+        int int50 = companyDerivedData47.year;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData53 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData56 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((int) (short) 0, 0);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData59 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData62 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData62.year = 1;
+        int int65 = companyDerivedData62.year;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList66 = companyDerivedData62.dList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData69 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData69.year = 1;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList72 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.getAgList();
+        companyDerivedData69.dList = companyDerivedList72;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData[] companyDerivedDataArray74 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData[] { companyDerivedData47, companyDerivedData53, companyDerivedData56, companyDerivedData59, companyDerivedData62, companyDerivedData69 };
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData> companyDerivedDataList75 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData>();
+        boolean boolean76 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData>) companyDerivedDataList75, companyDerivedDataArray74);
+        indexDerived43.idList = companyDerivedDataList75;
+        java.util.List<java.lang.String> strList78 = indexDerived43.indexList;
+        java.util.List<java.lang.String> strList79 = indexDerived43.indexList;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData> companyDerivedDataList80 = indexDerived43.idList;
+        indexDerived3.idList = companyDerivedDataList80;
+        org.junit.Assert.assertNotNull(strList4);
+        org.junit.Assert.assertNotNull(strList13);
+        org.junit.Assert.assertNotNull(strList20);
+        org.junit.Assert.assertNotNull(strList29);
+        org.junit.Assert.assertNotNull(strList36);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertNotNull(strList44);
+        org.junit.Assert.assertTrue("'" + int50 + "' != '" + 1 + "'", int50 == 1);
+        org.junit.Assert.assertTrue("'" + int65 + "' != '" + 1 + "'", int65 == 1);
+        org.junit.Assert.assertNotNull(companyDerivedList66);
+        org.junit.Assert.assertNotNull(companyDerivedList72);
+        org.junit.Assert.assertNotNull(companyDerivedDataArray74);
+        org.junit.Assert.assertTrue("'" + boolean76 + "' != '" + true + "'", boolean76 == true);
+        org.junit.Assert.assertNotNull(strList78);
+        org.junit.Assert.assertNotNull(strList79);
+        org.junit.Assert.assertNotNull(companyDerivedDataList80);
     }
 
     @Test
     public void test1006() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1006");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.lang.String[] strArray25 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList26 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList26, strArray25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray36 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList37 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37, fieldDataArray36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray42 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList43 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43, fieldDataArray42);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        java.lang.String[] strArray49 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList50 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList50, strArray49);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray54 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList55 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean56 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55, fieldDataArray54);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList50, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray60 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList61 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean62 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61, fieldDataArray60);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList50, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray66 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList67 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67, fieldDataArray66);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList50, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 100, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 0, (int) (short) 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        java.lang.Class<?> wildcardClass72 = fieldDataList67.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(strArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + true + "'", boolean27 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray36);
-        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(strArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + true + "'", boolean51 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray54);
-        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray60);
-        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + false + "'", boolean62 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray66);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
-        org.junit.Assert.assertNotNull(wildcardClass72);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getTotalOpExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getNonrecurringItemsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getStInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getSalesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getIntExpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
     }
 
     @Test
     public void test1007() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1007");
-        java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
-        java.lang.String[] strArray8 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList9 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean10 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList9, strArray8);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray13 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList14 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean15 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14, fieldDataArray13);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14);
-        java.lang.String[] strArray21 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList22 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList22, strArray21);
-        java.lang.String[] strArray27 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList28 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList28, strArray27);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray32 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList33 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33, fieldDataArray32);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray38 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList39 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39, fieldDataArray38);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList22, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        java.lang.String[] strArray46 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList47 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean48 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList47, strArray46);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray51 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList52 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52, fieldDataArray51);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList22, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray59 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList60 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean61 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList60, fieldDataArray59);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) -1, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList60);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) '#', (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList60);
-        java.lang.String[] strArray68 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList69 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList69, strArray68);
-        java.lang.String[] strArray74 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList75 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean76 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList75, strArray74);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray79 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList80 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean81 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList80, fieldDataArray79);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList75, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList80);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray85 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList86 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean87 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86, fieldDataArray85);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList75, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList69, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) (short) 0, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86);
-        java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList93 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) (short) 100, (-1), fieldDataList93);
-            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: null");
-        } catch (java.lang.NullPointerException e) {
-        // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(strArray2);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + true + "'", boolean4 == true);
-        org.junit.Assert.assertNotNull(strArray8);
-        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + true + "'", boolean10 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray13);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
-        org.junit.Assert.assertNotNull(strArray21);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + true + "'", boolean23 == true);
-        org.junit.Assert.assertNotNull(strArray27);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + true + "'", boolean29 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
-        org.junit.Assert.assertNotNull(strArray46);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + true + "'", boolean48 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray51);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray59);
-        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + false + "'", boolean61 == false);
-        org.junit.Assert.assertNotNull(strArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
-        org.junit.Assert.assertNotNull(strArray74);
-        org.junit.Assert.assertTrue("'" + boolean76 + "' != '" + true + "'", boolean76 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray79);
-        org.junit.Assert.assertTrue("'" + boolean81 + "' != '" + false + "'", boolean81 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray85);
-        org.junit.Assert.assertTrue("'" + boolean87 + "' != '" + false + "'", boolean87 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getGrossIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOpMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getTotalLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getBvpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getEpsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
     }
 
     @Test
@@ -469,90 +215,29 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1008");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (byte) -1, fieldData2);
     }
 
     @Test
     public void test1009() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1009");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        java.lang.String[] strArray25 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList26 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList26, strArray25);
-        java.lang.String[] strArray31 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList32 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean33 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList32, strArray31);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray36 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList37 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37, fieldDataArray36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList32, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray42 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList43 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43, fieldDataArray42);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList32, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList32, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        java.lang.String[] strArray55 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList56 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList56, strArray55);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray60 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList61 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean62 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61, fieldDataArray60);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList56, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray66 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList67 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67, fieldDataArray66);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList56, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray72 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList73 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean74 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList73, fieldDataArray72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList56, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList32, (int) (short) 100, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (byte) 1, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) ' ', (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList73);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(strArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + true + "'", boolean27 == true);
-        org.junit.Assert.assertNotNull(strArray31);
-        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + true + "'", boolean33 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray36);
-        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(strArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + true + "'", boolean57 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray60);
-        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + false + "'", boolean62 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray66);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray72);
-        org.junit.Assert.assertTrue("'" + boolean74 + "' != '" + false + "'", boolean74 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        int int5 = companyDerived3.getQuarter();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getStInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTanAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCapExQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
     }
 
     @Test
@@ -560,475 +245,177 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1010");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) 'a', fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getRdQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getEpsDilQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
     }
 
     @Test
     public void test1011() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1011");
-        java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
-        java.lang.String[] strArray8 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList9 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean10 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList9, strArray8);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray13 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList14 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean15 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14, fieldDataArray13);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray19 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList20 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20, fieldDataArray19);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray26 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList27 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean28 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList27, fieldDataArray26);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, 100, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList27);
-        java.lang.String[] strArray33 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList34 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList34, strArray33);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray38 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList39 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39, fieldDataArray38);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList34, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        java.lang.String[] strArray46 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList47 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean48 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList47, strArray46);
-        java.lang.String[] strArray52 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList53 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList53, strArray52);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray57 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList58 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList58, fieldDataArray57);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList53, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList58);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray63 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList64 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList64, fieldDataArray63);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList53, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList64);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList64);
-        java.lang.String[] strArray71 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList72 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean73 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList72, strArray71);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray76 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList77 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean78 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77, fieldDataArray76);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList72, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList34, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        java.lang.String[] strArray85 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList86 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean87 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList86, strArray85);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray90 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList91 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean92 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList91, fieldDataArray90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList86, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList91);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList34, (int) (byte) 0, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList91);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) (byte) 100, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList91);
-        org.junit.Assert.assertNotNull(strArray2);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + true + "'", boolean4 == true);
-        org.junit.Assert.assertNotNull(strArray8);
-        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + true + "'", boolean10 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray13);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray26);
-        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
-        org.junit.Assert.assertNotNull(strArray33);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + true + "'", boolean35 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
-        org.junit.Assert.assertNotNull(strArray46);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + true + "'", boolean48 == true);
-        org.junit.Assert.assertNotNull(strArray52);
-        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + true + "'", boolean54 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray57);
-        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + false + "'", boolean59 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray63);
-        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + false + "'", boolean65 == false);
-        org.junit.Assert.assertNotNull(strArray71);
-        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + true + "'", boolean73 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray76);
-        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + false + "'", boolean78 == false);
-        org.junit.Assert.assertNotNull(strArray85);
-        org.junit.Assert.assertTrue("'" + boolean87 + "' != '" + true + "'", boolean87 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray90);
-        org.junit.Assert.assertTrue("'" + boolean92 + "' != '" + false + "'", boolean92 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) (byte) -1, (int) (short) 100, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getAcctRxQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
     }
 
     @Test
     public void test1012() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1012");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray38 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        java.lang.String[] strArray44 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList45 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList45, strArray44);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray49 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList50 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50, fieldDataArray49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList45, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList45, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        java.lang.String[] strArray63 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList64 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList64, strArray63);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList64, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        java.lang.String[] strArray76 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList77 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean78 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList77, strArray76);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray81 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList82 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean83 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82, fieldDataArray81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList77, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (byte) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (byte) 0, (int) (byte) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) (short) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList82);
-        java.lang.Class<?> wildcardClass88 = fieldDataList82.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(strArray44);
-        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + true + "'", boolean46 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(strArray63);
-        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + true + "'", boolean65 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(strArray76);
-        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + true + "'", boolean78 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray81);
-        org.junit.Assert.assertTrue("'" + boolean83 + "' != '" + false + "'", boolean83 == false);
-        org.junit.Assert.assertNotNull(wildcardClass88);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getNonrecurringItemsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getEpsDilQdata();
+        int int10 = companyDerived3.getQuarter();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 1 + "'", int10 == 1);
     }
 
     @Test
     public void test1013() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1013");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray5 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList6 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList6, strArray5);
-        java.lang.String[] strArray11 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList12 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean13 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList12, strArray11);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray16 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList17 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17, fieldDataArray16);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList12, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray22 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList23 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23, fieldDataArray22);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList12, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
-        java.lang.String[] strArray30 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList31 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList31, strArray30);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray35 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList36 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean37 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36, fieldDataArray35);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList31, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36);
-        java.lang.String[] strArray43 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList44 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList44, strArray43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) (byte) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        java.lang.String[] strArray56 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList57 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean58 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList57, strArray56);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray61 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList62 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62, fieldDataArray61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList57, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, 10, (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) 'a', (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        java.lang.String[] strArray75 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList76 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean77 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList76, strArray75);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray80 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList81 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean82 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81, fieldDataArray80);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList76, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray86 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList87 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean88 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87, fieldDataArray86);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList76, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) (short) 10, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, 0, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87);
-        org.junit.Assert.assertNotNull(strArray5);
-        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + true + "'", boolean7 == true);
-        org.junit.Assert.assertNotNull(strArray11);
-        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + true + "'", boolean13 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray16);
-        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray22);
-        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
-        org.junit.Assert.assertNotNull(strArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + true + "'", boolean32 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray35);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
-        org.junit.Assert.assertNotNull(strArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + true + "'", boolean45 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(strArray56);
-        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + true + "'", boolean58 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray61);
-        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(strArray75);
-        org.junit.Assert.assertTrue("'" + boolean77 + "' != '" + true + "'", boolean77 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray80);
-        org.junit.Assert.assertTrue("'" + boolean82 + "' != '" + false + "'", boolean82 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray86);
-        org.junit.Assert.assertTrue("'" + boolean88 + "' != '" + false + "'", boolean88 == false);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((int) (byte) 1, 10);
+        companyDerivedData2.year = 0;
     }
 
     @Test
     public void test1014() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1014");
-        java.lang.String[] strArray1 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        java.lang.String[] strArray7 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList8 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean9 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList8, strArray7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList8, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList8, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 0, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.lang.Class<?> wildcardClass23 = fieldDataList19.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(strArray7);
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + true + "'", boolean9 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(wildcardClass23);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getIncTaxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getOtherIncQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
     }
 
     @Test
     public void test1015() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1015");
-        java.util.List<java.lang.String> strList0 = null;
-        java.util.List<java.lang.String> strList3 = null;
-        java.lang.String[] strArray7 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList8 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean9 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList8, strArray7);
-        java.lang.String[] strArray13 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList14 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean15 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList14, strArray13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList14, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.lang.String[] strArray25 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList26 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList26, strArray25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray36 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList37 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37, fieldDataArray36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37);
-        java.lang.String[] strArray43 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList44 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList44, strArray43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray54 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList55 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean56 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55, fieldDataArray54);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55);
-        java.lang.String[] strArray61 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList62 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList62, strArray61);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray66 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList67 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67, fieldDataArray66);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList62, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (byte) 100, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList14, (int) '#', (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList8, (int) (byte) 100, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList3, (int) (short) 0, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, 0, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList67);
-        java.lang.Class<?> wildcardClass76 = fieldDataList67.getClass();
-        org.junit.Assert.assertNotNull(strArray7);
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + true + "'", boolean9 == true);
-        org.junit.Assert.assertNotNull(strArray13);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + true + "'", boolean15 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(strArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + true + "'", boolean27 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray36);
-        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
-        org.junit.Assert.assertNotNull(strArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + true + "'", boolean45 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray54);
-        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
-        org.junit.Assert.assertNotNull(strArray61);
-        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + true + "'", boolean63 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray66);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
-        org.junit.Assert.assertNotNull(wildcardClass76);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 100, (int) (byte) -1);
+        indexDerived3.listName = "hi!";
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived9 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList10 = indexDerived9.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived16 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived16.writeList("");
+        java.util.List<java.lang.String> strList19 = indexDerived16.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray22 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList23 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23, fieldDataArray22);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList25 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList19, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList26 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList10, 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived32 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived32.writeList("");
+        java.util.List<java.lang.String> strList35 = indexDerived32.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray38 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList39 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39, fieldDataArray38);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList41 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList35, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList42 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList10, (int) (byte) 0, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived48 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList49 = indexDerived48.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived55 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived55.writeList("");
+        java.util.List<java.lang.String> strList58 = indexDerived55.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray61 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList62 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62, fieldDataArray61);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList64 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList58, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList65 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList49, 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived71 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived71.writeList("");
+        java.util.List<java.lang.String> strList74 = indexDerived71.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray77 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList78 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean79 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList78, fieldDataArray77);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList80 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList74, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList78);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList81 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList49, (int) (byte) 0, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList78);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList82 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList10, (int) (byte) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList78);
+        indexDerived3.addToList(strList10);
+        boolean boolean85 = indexDerived3.isInList("");
+        indexDerived3.listName = "";
+        boolean boolean88 = indexDerived3.valid;
+        org.junit.Assert.assertNotNull(strList10);
+        org.junit.Assert.assertNotNull(strList19);
+        org.junit.Assert.assertNotNull(fieldDataArray22);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList25);
+        org.junit.Assert.assertNotNull(companyDerivedList26);
+        org.junit.Assert.assertNotNull(strList35);
+        org.junit.Assert.assertNotNull(fieldDataArray38);
+        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList41);
+        org.junit.Assert.assertNotNull(companyDerivedList42);
+        org.junit.Assert.assertNotNull(strList49);
+        org.junit.Assert.assertNotNull(strList58);
+        org.junit.Assert.assertNotNull(fieldDataArray61);
+        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList64);
+        org.junit.Assert.assertNotNull(companyDerivedList65);
+        org.junit.Assert.assertNotNull(strList74);
+        org.junit.Assert.assertNotNull(fieldDataArray77);
+        org.junit.Assert.assertTrue("'" + boolean79 + "' != '" + false + "'", boolean79 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList80);
+        org.junit.Assert.assertNotNull(companyDerivedList81);
+        org.junit.Assert.assertNotNull(companyDerivedList82);
+        org.junit.Assert.assertTrue("'" + boolean85 + "' != '" + false + "'", boolean85 == false);
+        org.junit.Assert.assertTrue("'" + boolean88 + "' != '" + false + "'", boolean88 == false);
     }
 
     @Test
     public void test1016() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1016");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        java.util.List<java.lang.String> strList12 = null;
-        java.lang.String[] strArray17 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList18 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean19 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList18, strArray17);
-        java.lang.String[] strArray23 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList24 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean25 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList24, strArray23);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray28 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList29 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList29, fieldDataArray28);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList24, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList29);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray34 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList35 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean36 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList35, fieldDataArray34);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList24, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList35);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList18, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList35);
-        java.lang.String[] strArray42 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList43 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList43, strArray42);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray47 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList48 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48, fieldDataArray47);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList43, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList18, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48);
-        java.lang.String[] strArray55 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList56 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList56, strArray55);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray60 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList61 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean62 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61, fieldDataArray60);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList56, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList18, (int) (byte) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList61);
-        java.lang.String[] strArray68 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList69 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList69, strArray68);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray73 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList74 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74, fieldDataArray73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList69, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList18, 10, (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList12, 1, 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        java.lang.Class<?> wildcardClass80 = fieldDataList74.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(strArray17);
-        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + true + "'", boolean19 == true);
-        org.junit.Assert.assertNotNull(strArray23);
-        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + true + "'", boolean25 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray34);
-        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
-        org.junit.Assert.assertNotNull(strArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + true + "'", boolean44 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray47);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
-        org.junit.Assert.assertNotNull(strArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + true + "'", boolean57 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray60);
-        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + false + "'", boolean62 == false);
-        org.junit.Assert.assertNotNull(strArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray73);
-        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
-        org.junit.Assert.assertNotNull(wildcardClass80);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getDivCostQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
     }
 
     @Test
@@ -1036,205 +423,77 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1017");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate(100, (int) (short) -1, fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getRdQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getGoodwillQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getLtInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
     }
 
     @Test
     public void test1018() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1018");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray9 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList10 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10, fieldDataArray9);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray15 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList16 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16, fieldDataArray15);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16);
-        java.lang.String[] strArray22 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList23 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList23, strArray22);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray27 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList28 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28, fieldDataArray27);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList23, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList28);
-        java.lang.String[] strArray35 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList36 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean37 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList36, strArray35);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray40 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList41 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean42 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList41, fieldDataArray40);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList41);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray46 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList47 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean48 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList47, fieldDataArray46);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList47);
-        java.lang.String[] strArray53 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList54 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean55 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList54, strArray53);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray58 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList59 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59, fieldDataArray58);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList54, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        java.lang.String[] strArray66 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList67 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList67, strArray66);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray71 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList72 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean73 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72, fieldDataArray71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList67, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList36, 1, (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, 0, (-1), (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        java.lang.String[] strArray80 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList81 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean82 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList81, strArray80);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray85 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList86 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean87 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86, fieldDataArray85);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList81, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray91 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList92 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean93 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92, fieldDataArray91);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList81, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 100, 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, 10, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        java.lang.Class<?> wildcardClass97 = fieldDataList92.getClass();
-        org.junit.Assert.assertNotNull(strArray4);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray9);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray15);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertNotNull(strArray22);
-        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + true + "'", boolean24 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray27);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
-        org.junit.Assert.assertNotNull(strArray35);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + true + "'", boolean37 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray40);
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray46);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + false + "'", boolean48 == false);
-        org.junit.Assert.assertNotNull(strArray53);
-        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + true + "'", boolean55 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray58);
-        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
-        org.junit.Assert.assertNotNull(strArray66);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + true + "'", boolean68 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray71);
-        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + false + "'", boolean73 == false);
-        org.junit.Assert.assertNotNull(strArray80);
-        org.junit.Assert.assertTrue("'" + boolean82 + "' != '" + true + "'", boolean82 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray85);
-        org.junit.Assert.assertTrue("'" + boolean87 + "' != '" + false + "'", boolean87 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray91);
-        org.junit.Assert.assertTrue("'" + boolean93 + "' != '" + false + "'", boolean93 == false);
-        org.junit.Assert.assertNotNull(wildcardClass97);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOpMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getTotalLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCashFromOpsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
     }
 
     @Test
     public void test1019() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1019");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray5 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList6 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList6, strArray5);
-        java.lang.String[] strArray11 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList12 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean13 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList12, strArray11);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray16 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList17 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17, fieldDataArray16);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList12, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray22 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList23 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23, fieldDataArray22);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList12, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
-        java.lang.String[] strArray30 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList31 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList31, strArray30);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray35 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList36 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean37 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36, fieldDataArray35);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList31, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36);
-        java.lang.String[] strArray43 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList44 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList44, strArray43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) (byte) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        java.lang.String[] strArray56 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList57 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean58 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList57, strArray56);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray61 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList62 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62, fieldDataArray61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList57, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, 10, (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) 'a', (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        java.lang.String[] strArray75 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList76 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean77 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList76, strArray75);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray80 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList81 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean82 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81, fieldDataArray80);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList76, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray86 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList87 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean88 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87, fieldDataArray86);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList76, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) (short) 10, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList87);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray93 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList94 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean95 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList94, fieldDataArray93);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) ' ', (-1), (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList94);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (int) ' ', (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList94);
-        org.junit.Assert.assertNotNull(strArray5);
-        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + true + "'", boolean7 == true);
-        org.junit.Assert.assertNotNull(strArray11);
-        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + true + "'", boolean13 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray16);
-        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray22);
-        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
-        org.junit.Assert.assertNotNull(strArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + true + "'", boolean32 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray35);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
-        org.junit.Assert.assertNotNull(strArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + true + "'", boolean45 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(strArray56);
-        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + true + "'", boolean58 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray61);
-        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(strArray75);
-        org.junit.Assert.assertTrue("'" + boolean77 + "' != '" + true + "'", boolean77 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray80);
-        org.junit.Assert.assertTrue("'" + boolean82 + "' != '" + false + "'", boolean82 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray86);
-        org.junit.Assert.assertTrue("'" + boolean88 + "' != '" + false + "'", boolean88 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray93);
-        org.junit.Assert.assertTrue("'" + boolean95 + "' != '" + false + "'", boolean95 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getIncAfterTaxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherLtAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getNonrecurringItemsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromInvQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getTotalOpExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getIntExpNonOpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
     }
 
     @Test
@@ -1242,9 +501,23 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1020");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (int) (short) 100, fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getStInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getInventoryQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
     }
 
     @Test
@@ -1252,9 +525,25 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1021");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) -1, (int) ' ', fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOtherCurrAssetsQdata();
+        int int10 = companyDerived3.getQuarter();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getFcfQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 1 + "'", int10 == 1);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
     }
 
     @Test
@@ -1262,488 +551,177 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1022");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (short) 100, (int) (short) 0, fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getIntTotQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashFromOpsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
     }
 
     @Test
     public void test1023() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1023");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        java.lang.String[] strArray14 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList15 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean16 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList15, strArray14);
-        java.lang.String[] strArray20 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList21 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean22 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList21, strArray20);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray25 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList26 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList26, fieldDataArray25);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList21, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList26);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray31 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList32 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean33 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList32, fieldDataArray31);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList21, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList32);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList15, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList32);
-        java.lang.String[] strArray39 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList40 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean41 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList40, strArray39);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray44 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList45 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList45, fieldDataArray44);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList40, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList45);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList15, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList45);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList45);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray52 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList53 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53, fieldDataArray52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) -1, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53);
-        java.lang.String[] strArray59 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList60 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean61 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList60, strArray59);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray64 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList65 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean66 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList65, fieldDataArray64);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList60, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList65);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray70 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList71 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean72 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71, fieldDataArray70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList60, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71);
-        java.lang.String[] strArray77 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList78 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean79 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList78, strArray77);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray82 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList83 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean84 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList83, fieldDataArray82);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList78, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList83);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList60, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList83);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 0, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList83);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(strArray14);
-        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + true + "'", boolean16 == true);
-        org.junit.Assert.assertNotNull(strArray20);
-        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + true + "'", boolean22 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray31);
-        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
-        org.junit.Assert.assertNotNull(strArray39);
-        org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + true + "'", boolean41 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray44);
-        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + false + "'", boolean46 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray52);
-        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
-        org.junit.Assert.assertNotNull(strArray59);
-        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + true + "'", boolean61 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray64);
-        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + false + "'", boolean66 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray70);
-        org.junit.Assert.assertTrue("'" + boolean72 + "' != '" + false + "'", boolean72 == false);
-        org.junit.Assert.assertNotNull(strArray77);
-        org.junit.Assert.assertTrue("'" + boolean79 + "' != '" + true + "'", boolean79 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray82);
-        org.junit.Assert.assertTrue("'" + boolean84 + "' != '" + false + "'", boolean84 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getPricesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCashFromInvQdata();
+        boolean boolean9 = companyDerived3.isValid();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getSharesQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertNull(quarterlyDouble10);
     }
 
     @Test
     public void test1024() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1024");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray4 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
-        java.lang.String[] strArray10 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList11 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList11, strArray10);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray15 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList16 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16, fieldDataArray15);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList11, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray21 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList22 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22, fieldDataArray21);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList11, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22);
-        java.lang.String[] strArray28 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList29 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList29, strArray28);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray33 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList34 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34, fieldDataArray33);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray39 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList40 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean41 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40, fieldDataArray39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList11, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40);
-        java.lang.String[] strArray47 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList48 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList48, strArray47);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray52 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList53 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53, fieldDataArray52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray58 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList59 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59, fieldDataArray58);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        java.lang.String[] strArray65 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList66 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean67 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList66, strArray65);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray70 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList71 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean72 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71, fieldDataArray70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList66, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray76 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList77 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean78 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77, fieldDataArray76);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList66, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        java.lang.String[] strArray83 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList84 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean85 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList84, strArray83);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray88 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList89 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean90 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89, fieldDataArray88);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList84, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList66, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (byte) 100, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList11, (-1), (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) 'a', 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (-1), (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList89);
-        org.junit.Assert.assertNotNull(strArray4);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
-        org.junit.Assert.assertNotNull(strArray10);
-        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + true + "'", boolean12 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray15);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray21);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
-        org.junit.Assert.assertNotNull(strArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + true + "'", boolean30 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray33);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray39);
-        org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + false + "'", boolean41 == false);
-        org.junit.Assert.assertNotNull(strArray47);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + true + "'", boolean49 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray52);
-        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray58);
-        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
-        org.junit.Assert.assertNotNull(strArray65);
-        org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + true + "'", boolean67 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray70);
-        org.junit.Assert.assertTrue("'" + boolean72 + "' != '" + false + "'", boolean72 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray76);
-        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + false + "'", boolean78 == false);
-        org.junit.Assert.assertNotNull(strArray83);
-        org.junit.Assert.assertTrue("'" + boolean85 + "' != '" + true + "'", boolean85 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray88);
-        org.junit.Assert.assertTrue("'" + boolean90 + "' != '" + false + "'", boolean90 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCurrLiabQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
     }
 
     @Test
     public void test1025() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1025");
-        java.lang.String[] strArray2 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList3 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList3, strArray2);
-        java.lang.String[] strArray8 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList9 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean10 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList9, strArray8);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray13 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList14 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean15 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14, fieldDataArray13);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList14);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray19 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList20 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20, fieldDataArray19);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList9, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList20);
-        java.lang.String[] strArray27 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList28 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList28, strArray27);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray32 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList33 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33, fieldDataArray32);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray38 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList39 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39, fieldDataArray38);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray44 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList45 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList45, fieldDataArray44);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, 10, (int) (byte) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList45);
-        java.lang.String[] strArray51 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList52 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList52, strArray51);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray56 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList57 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean58 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList57, fieldDataArray56);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList57);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray62 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList63 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63, fieldDataArray62);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList63);
-        java.lang.String[] strArray69 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList70 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean71 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList70, strArray69);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray74 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList75 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean76 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75, fieldDataArray74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList70, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray80 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList81 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean82 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81, fieldDataArray80);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList70, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList52, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, 0, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList3, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        org.junit.Assert.assertNotNull(strArray2);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + true + "'", boolean4 == true);
-        org.junit.Assert.assertNotNull(strArray8);
-        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + true + "'", boolean10 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray13);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
-        org.junit.Assert.assertNotNull(strArray27);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + true + "'", boolean29 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray44);
-        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + false + "'", boolean46 == false);
-        org.junit.Assert.assertNotNull(strArray51);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + true + "'", boolean53 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray56);
-        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + false + "'", boolean58 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + false + "'", boolean64 == false);
-        org.junit.Assert.assertNotNull(strArray69);
-        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + true + "'", boolean71 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray74);
-        org.junit.Assert.assertTrue("'" + boolean76 + "' != '" + false + "'", boolean76 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray80);
-        org.junit.Assert.assertTrue("'" + boolean82 + "' != '" + false + "'", boolean82 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getFcfQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
     }
 
     @Test
     public void test1026() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1026");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray9 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList10 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10, fieldDataArray9);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray15 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList16 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16, fieldDataArray15);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray21 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList22 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22, fieldDataArray21);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, 10, (int) (byte) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22);
-        java.lang.String[] strArray28 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList29 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList29, strArray28);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray33 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList34 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34, fieldDataArray33);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray39 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList40 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean41 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40, fieldDataArray39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40);
-        java.lang.String[] strArray46 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList47 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean48 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList47, strArray46);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray51 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList52 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52, fieldDataArray51);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList47, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 0, (int) (short) 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList52);
-        java.lang.String[] strArray60 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList61 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean62 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList61, strArray60);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray65 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList66 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean67 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList66, fieldDataArray65);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList61, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList66);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray71 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList72 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean73 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72, fieldDataArray71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList61, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        java.lang.String[] strArray78 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList79 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean80 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList79, strArray78);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray83 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList84 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean85 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84, fieldDataArray83);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList79, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList84);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray89 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList90 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean91 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90, fieldDataArray89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList79, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList61, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, 10, (int) (short) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (int) (byte) 1, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        java.lang.Class<?> wildcardClass96 = fieldDataList90.getClass();
-        org.junit.Assert.assertNotNull(strArray4);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray9);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray15);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray21);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
-        org.junit.Assert.assertNotNull(strArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + true + "'", boolean30 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray33);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray39);
-        org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + false + "'", boolean41 == false);
-        org.junit.Assert.assertNotNull(strArray46);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + true + "'", boolean48 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray51);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
-        org.junit.Assert.assertNotNull(strArray60);
-        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + true + "'", boolean62 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray65);
-        org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + false + "'", boolean67 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray71);
-        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + false + "'", boolean73 == false);
-        org.junit.Assert.assertNotNull(strArray78);
-        org.junit.Assert.assertTrue("'" + boolean80 + "' != '" + true + "'", boolean80 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray83);
-        org.junit.Assert.assertTrue("'" + boolean85 + "' != '" + false + "'", boolean85 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray89);
-        org.junit.Assert.assertTrue("'" + boolean91 + "' != '" + false + "'", boolean91 == false);
-        org.junit.Assert.assertNotNull(wildcardClass96);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIntTotQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getIncPrimaryEpsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
     }
 
     @Test
     public void test1027() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1027");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FiletypeEnum filetypeEnum2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.loadDb((int) '4', (int) (byte) 1, filetypeEnum2);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        boolean boolean4 = companyDerived3.isValid();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getTotalOpExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getIntTotQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getDivCostQdata();
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
     }
 
     @Test
     public void test1028() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1028");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 10, (int) (byte) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.lang.String[] strArray25 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList26 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList26, strArray25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray36 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList37 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37, fieldDataArray36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37);
-        java.lang.String[] strArray43 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList44 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList44, strArray43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray54 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList55 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean56 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55, fieldDataArray54);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 0, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList55);
-        java.lang.String[] strArray63 = new java.lang.String[] { "" };
-        java.util.ArrayList<java.lang.String> strList64 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList64, strArray63);
-        java.lang.String[] strArray69 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList70 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean71 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList70, strArray69);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray74 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList75 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean76 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75, fieldDataArray74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList70, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray80 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList81 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean82 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81, fieldDataArray80);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList70, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList64, 0, (int) ' ', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 100, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList81);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(strArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + true + "'", boolean27 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray36);
-        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
-        org.junit.Assert.assertNotNull(strArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + true + "'", boolean45 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray54);
-        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
-        org.junit.Assert.assertNotNull(strArray63);
-        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + true + "'", boolean65 == true);
-        org.junit.Assert.assertNotNull(strArray69);
-        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + true + "'", boolean71 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray74);
-        org.junit.Assert.assertTrue("'" + boolean76 + "' != '" + false + "'", boolean76 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray80);
-        org.junit.Assert.assertTrue("'" + boolean82 + "' != '" + false + "'", boolean82 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getDividendQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getPrefStockQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getOtherLtAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getSalesQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
     }
 
     @Test
     public void test1029() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1029");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((-1), (int) ' ', fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        int int3 = companyDerivedData2.year;
+        int int4 = companyDerivedData2.year;
+        companyDerivedData2.year = (short) 1;
+        org.junit.Assert.assertTrue("'" + int3 + "' != '" + (-1) + "'", int3 == (-1));
+        org.junit.Assert.assertTrue("'" + int4 + "' != '" + (-1) + "'", int4 == (-1));
     }
 
     @Test
@@ -1751,86 +729,22 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1030");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) '4', (int) '#', fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getLtDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCashFromInvQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
     }
 
     @Test
     public void test1031() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1031");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray9 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList10 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10, fieldDataArray9);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10);
-        java.lang.String[] strArray17 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList18 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean19 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList18, strArray17);
-        java.lang.String[] strArray23 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList24 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean25 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList24, strArray23);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray28 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList29 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList29, fieldDataArray28);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList24, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList29);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray34 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList35 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean36 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList35, fieldDataArray34);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList24, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList35);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList18, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList35);
-        java.lang.String[] strArray42 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList43 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList43, strArray42);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray47 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList48 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48, fieldDataArray47);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList43, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList18, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList48);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) -1, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        java.lang.String[] strArray62 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList63 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList63, strArray62);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray67 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList68 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean69 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList68, fieldDataArray67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList63, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList68);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray73 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList74 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74, fieldDataArray73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList63, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, 0, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (int) (byte) 1, (int) (byte) 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        org.junit.Assert.assertNotNull(strArray4);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray9);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertNotNull(strArray17);
-        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + true + "'", boolean19 == true);
-        org.junit.Assert.assertNotNull(strArray23);
-        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + true + "'", boolean25 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray34);
-        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
-        org.junit.Assert.assertNotNull(strArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + true + "'", boolean44 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray47);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(strArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + true + "'", boolean64 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray67);
-        org.junit.Assert.assertTrue("'" + boolean69 + "' != '" + false + "'", boolean69 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray73);
-        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(32, (int) (short) 0);
     }
 
     @Test
@@ -1838,636 +752,1694 @@ public class DerivedTests2 {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1032");
         net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 0, (int) (byte) 0, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOtherCurrAssetsQdata();
+        int int10 = companyDerived3.getQuarter();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getDivCostQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 1 + "'", int10 == 1);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
     }
 
     @Test
     public void test1033() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1033");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray19 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList20 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList20, strArray19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList20, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray38 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray43 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList44 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44, fieldDataArray43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList44);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray49 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList50 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50, fieldDataArray49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, 10, (int) (byte) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        java.lang.String[] strArray62 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList63 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean64 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList63, strArray62);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray67 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList68 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean69 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList68, fieldDataArray67);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList63, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList68);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray73 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList74 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74, fieldDataArray73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList63, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        java.lang.String[] strArray80 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList81 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean82 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList81, strArray80);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray85 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList86 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean87 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86, fieldDataArray85);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList81, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList86);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray91 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList92 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean93 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92, fieldDataArray91);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList81, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList63, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, 100, (-1), (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 1, (int) (short) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList92);
-        java.lang.Class<?> wildcardClass98 = fieldDataList92.getClass();
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray19);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(strArray62);
-        org.junit.Assert.assertTrue("'" + boolean64 + "' != '" + true + "'", boolean64 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray67);
-        org.junit.Assert.assertTrue("'" + boolean69 + "' != '" + false + "'", boolean69 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray73);
-        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
-        org.junit.Assert.assertNotNull(strArray80);
-        org.junit.Assert.assertTrue("'" + boolean82 + "' != '" + true + "'", boolean82 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray85);
-        org.junit.Assert.assertTrue("'" + boolean87 + "' != '" + false + "'", boolean87 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray91);
-        org.junit.Assert.assertTrue("'" + boolean93 + "' != '" + false + "'", boolean93 == false);
-        org.junit.Assert.assertNotNull(wildcardClass98);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        int int5 = companyDerived3.getQuarter();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getDividendQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getFcfQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
     }
 
     @Test
     public void test1034() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1034");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray5 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList6 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList6, strArray5);
-        java.lang.String[] strArray11 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList12 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean13 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList12, strArray11);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray16 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList17 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17, fieldDataArray16);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList12, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray22 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList23 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23, fieldDataArray22);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList12, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
-        java.lang.String[] strArray30 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList31 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList31, strArray30);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray35 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList36 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean37 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36, fieldDataArray35);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList31, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList36);
-        java.lang.String[] strArray43 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList44 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList44, strArray43);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray48 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList49 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49, fieldDataArray48);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList44, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, (int) (byte) -1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList49);
-        java.lang.String[] strArray57 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList58 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList58, strArray57);
-        java.lang.String[] strArray63 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList64 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList64, strArray63);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList64, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray74 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList75 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean76 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75, fieldDataArray74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList64, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList58, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList75);
-        java.lang.String[] strArray82 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList83 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean84 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList83, strArray82);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray87 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList88 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean89 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList88, fieldDataArray87);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList83, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList88);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList58, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList88);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList6, 10, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList88);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (int) (byte) 0, (int) (byte) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList88);
-        org.junit.Assert.assertNotNull(strArray5);
-        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + true + "'", boolean7 == true);
-        org.junit.Assert.assertNotNull(strArray11);
-        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + true + "'", boolean13 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray16);
-        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray22);
-        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
-        org.junit.Assert.assertNotNull(strArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + true + "'", boolean32 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray35);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
-        org.junit.Assert.assertNotNull(strArray43);
-        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + true + "'", boolean45 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray48);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertNotNull(strArray57);
-        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + true + "'", boolean59 == true);
-        org.junit.Assert.assertNotNull(strArray63);
-        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + true + "'", boolean65 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray74);
-        org.junit.Assert.assertTrue("'" + boolean76 + "' != '" + false + "'", boolean76 == false);
-        org.junit.Assert.assertNotNull(strArray82);
-        org.junit.Assert.assertTrue("'" + boolean84 + "' != '" + true + "'", boolean84 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray87);
-        org.junit.Assert.assertTrue("'" + boolean89 + "' != '" + false + "'", boolean89 == false);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(0, (int) (byte) 0);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList3 = companyDerivedData2.dList;
+        org.junit.Assert.assertNotNull(companyDerivedList3);
     }
 
     @Test
     public void test1035() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1035");
-        java.util.List<java.lang.String> strList0 = null;
-        java.lang.String[] strArray4 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList5 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean6 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList5, strArray4);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray9 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList10 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10, fieldDataArray9);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList10);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray15 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList16 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16, fieldDataArray15);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList16);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray21 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList22 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22, fieldDataArray21);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList22);
-        java.lang.String[] strArray28 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList29 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList29, strArray28);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray33 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList34 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34, fieldDataArray33);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray39 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList40 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean41 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40, fieldDataArray39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList40);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray45 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList46 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean47 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList46, fieldDataArray45);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList46);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) (byte) 10, (int) (byte) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList46);
-        java.lang.String[] strArray54 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList55 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean56 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList55, strArray54);
-        java.lang.String[] strArray60 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList61 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean62 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList61, strArray60);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray65 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList66 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean67 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList66, fieldDataArray65);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList61, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList66);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray71 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList72 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean73 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72, fieldDataArray71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList61, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList55, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        java.lang.String[] strArray79 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList80 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean81 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList80, strArray79);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray84 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList85 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean86 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList85, fieldDataArray84);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList80, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList85);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList55, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList85);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList5, (int) 'a', (int) (short) 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList85);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList0, (int) (byte) 0, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList85);
-        org.junit.Assert.assertNotNull(strArray4);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + true + "'", boolean6 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray9);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray15);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray21);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
-        org.junit.Assert.assertNotNull(strArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + true + "'", boolean30 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray33);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray39);
-        org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + false + "'", boolean41 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray45);
-        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
-        org.junit.Assert.assertNotNull(strArray54);
-        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + true + "'", boolean56 == true);
-        org.junit.Assert.assertNotNull(strArray60);
-        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + true + "'", boolean62 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray65);
-        org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + false + "'", boolean67 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray71);
-        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + false + "'", boolean73 == false);
-        org.junit.Assert.assertNotNull(strArray79);
-        org.junit.Assert.assertTrue("'" + boolean81 + "' != '" + true + "'", boolean81 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray84);
-        org.junit.Assert.assertTrue("'" + boolean86 + "' != '" + false + "'", boolean86 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getPeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getWorkingCapitalQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
     }
 
     @Test
     public void test1036() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1036");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        java.lang.String[] strArray13 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList14 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean15 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList14, strArray13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList14, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray24 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList25 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean26 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25, fieldDataArray24);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList14, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList25);
-        java.lang.String[] strArray31 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList32 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean33 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList32, strArray31);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray36 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList37 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37, fieldDataArray36);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList32, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList37);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray42 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList43 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43, fieldDataArray42);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList32, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList14, (int) (short) 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList43);
-        java.lang.String[] strArray50 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList51 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean52 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList51, strArray50);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList51, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray61 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList62 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62, fieldDataArray61);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList51, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList62);
-        java.lang.String[] strArray68 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList69 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList69, strArray68);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray73 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList74 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74, fieldDataArray73);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList69, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList51, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList14, (int) '4', (int) (short) 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 0, (int) (byte) 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(strArray13);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + true + "'", boolean15 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray24);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertNotNull(strArray31);
-        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + true + "'", boolean33 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray36);
-        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray42);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(strArray50);
-        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + true + "'", boolean52 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray61);
-        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
-        org.junit.Assert.assertNotNull(strArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray73);
-        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getIntExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getIntTotQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
     }
 
     @Test
     public void test1037() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1037");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 10, (int) (byte) 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.lang.String[] strArray25 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList26 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList26, strArray25);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray30 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList31 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31, fieldDataArray30);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList31);
-        java.lang.String[] strArray38 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList39 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList39, strArray38);
-        java.lang.String[] strArray44 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList45 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList45, strArray44);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray49 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList50 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50, fieldDataArray49);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList45, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList50);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray55 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList56 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56, fieldDataArray55);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList45, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList56);
-        java.lang.String[] strArray63 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList64 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList64, strArray63);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray68 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList69 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69, fieldDataArray68);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList64, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList39, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (byte) 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList69);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray76 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList77 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean78 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77, fieldDataArray76);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList26, (int) (short) -1, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 0, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList77);
-        java.lang.String[] strArray84 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList85 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean86 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList85, strArray84);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray89 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList90 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean91 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90, fieldDataArray89);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList85, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 1, (int) (byte) 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList90);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(strArray25);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + true + "'", boolean27 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray30);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(strArray38);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + true + "'", boolean40 == true);
-        org.junit.Assert.assertNotNull(strArray44);
-        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + true + "'", boolean46 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray49);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray55);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertNotNull(strArray63);
-        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + true + "'", boolean65 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray68);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray76);
-        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + false + "'", boolean78 == false);
-        org.junit.Assert.assertNotNull(strArray84);
-        org.junit.Assert.assertTrue("'" + boolean86 + "' != '" + true + "'", boolean86 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray89);
-        org.junit.Assert.assertTrue("'" + boolean91 + "' != '" + false + "'", boolean91 == false);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData2.year = 1;
+        int int5 = companyDerivedData2.year;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived9 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList10 = indexDerived9.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived16 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived16.writeList("");
+        java.util.List<java.lang.String> strList19 = indexDerived16.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray22 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList23 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23, fieldDataArray22);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList25 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList19, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList26 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList10, 100, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList23);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived32 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived32.writeList("");
+        java.util.List<java.lang.String> strList35 = indexDerived32.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray38 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList39 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39, fieldDataArray38);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList41 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList35, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList42 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList10, (int) (byte) 0, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
+        companyDerivedData2.dList = companyDerivedList42;
+        companyDerivedData2.year = (short) 100;
+        int int46 = companyDerivedData2.quarter;
+        int int47 = companyDerivedData2.quarter;
+        int int48 = companyDerivedData2.quarter;
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
+        org.junit.Assert.assertNotNull(strList10);
+        org.junit.Assert.assertNotNull(strList19);
+        org.junit.Assert.assertNotNull(fieldDataArray22);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList25);
+        org.junit.Assert.assertNotNull(companyDerivedList26);
+        org.junit.Assert.assertNotNull(strList35);
+        org.junit.Assert.assertNotNull(fieldDataArray38);
+        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList41);
+        org.junit.Assert.assertNotNull(companyDerivedList42);
+        org.junit.Assert.assertTrue("'" + int46 + "' != '" + (-1) + "'", int46 == (-1));
+        org.junit.Assert.assertTrue("'" + int47 + "' != '" + (-1) + "'", int47 == (-1));
+        org.junit.Assert.assertTrue("'" + int48 + "' != '" + (-1) + "'", int48 == (-1));
     }
 
     @Test
     public void test1038() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1038");
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate companyAggregate3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate((int) (byte) 10, (int) '#', fieldData2);
-        java.lang.Class<?> wildcardClass4 = companyAggregate3.getClass();
-        org.junit.Assert.assertNotNull(wildcardClass4);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived3.writeList("");
+        java.util.List<java.lang.String> strList6 = indexDerived3.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived10 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived10.writeList("");
+        java.util.List<java.lang.String> strList13 = indexDerived10.indexList;
+        indexDerived3.indexList = strList13;
+        boolean boolean15 = indexDerived3.valid;
+        indexDerived3.listName = "hi!";
+        org.junit.Assert.assertNotNull(strList6);
+        org.junit.Assert.assertNotNull(strList13);
+        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
     }
 
     @Test
     public void test1039() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1039");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray6 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList7 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7, fieldDataArray6);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray18 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList19 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean20 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19, fieldDataArray18);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (byte) 1, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList19);
-        java.util.List<java.lang.String> strList24 = null;
-        java.lang.String[] strArray28 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList29 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList29, strArray28);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray33 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList34 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34, fieldDataArray33);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList34);
-        java.lang.String[] strArray41 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList42 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean43 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList42, strArray41);
-        java.lang.String[] strArray47 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList48 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList48, strArray47);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray52 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList53 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53, fieldDataArray52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray58 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList59 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59, fieldDataArray58);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList42, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        java.lang.String[] strArray66 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList67 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean68 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList67, strArray66);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray71 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList72 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean73 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72, fieldDataArray71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList67, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList42, (int) ' ', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList29, 0, (int) (byte) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList(strList24, (int) (byte) 1, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 10, (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList72);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray6);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray18);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertNotNull(strArray28);
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + true + "'", boolean30 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray33);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
-        org.junit.Assert.assertNotNull(strArray41);
-        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + true + "'", boolean43 == true);
-        org.junit.Assert.assertNotNull(strArray47);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + true + "'", boolean49 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray52);
-        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray58);
-        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
-        org.junit.Assert.assertNotNull(strArray66);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + true + "'", boolean68 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray71);
-        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + false + "'", boolean73 == false);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        java.util.List<java.lang.String> strList4 = indexDerived3.indexList;
+        indexDerived3.valid = true;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData> companyDerivedDataList7 = indexDerived3.idList;
+        indexDerived3.writeList("");
+        org.junit.Assert.assertNotNull(strList4);
+        org.junit.Assert.assertNull(companyDerivedDataList7);
     }
 
     @Test
     public void test1040() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "DerivedTests2.test1040");
-        java.lang.String[] strArray1 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList2 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList2, strArray1);
-        java.lang.String[] strArray7 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList8 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean9 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList8, strArray7);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray12 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList13 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13, fieldDataArray12);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList8, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) -1, 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList13);
-        java.lang.String[] strArray21 = new java.lang.String[] { "", "" };
-        java.util.ArrayList<java.lang.String> strList22 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList22, strArray21);
-        java.lang.String[] strArray27 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList28 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean29 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList28, strArray27);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray32 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList33 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33, fieldDataArray32);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList33);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray38 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList39 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39, fieldDataArray38);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList28, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList22, (int) 'a', (int) 'a', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, 1, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList39);
-        java.lang.String[] strArray47 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList48 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList48, strArray47);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray52 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList53 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53, fieldDataArray52);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList53);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray58 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList59 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59, fieldDataArray58);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 10, (int) '#', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList59);
-        java.lang.String[] strArray65 = new java.lang.String[] { "hi!" };
-        java.util.ArrayList<java.lang.String> strList66 = new java.util.ArrayList<java.lang.String>();
-        boolean boolean67 = java.util.Collections.addAll((java.util.Collection<java.lang.String>) strList66, strArray65);
-        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray70 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
-        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList71 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
-        boolean boolean72 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71, fieldDataArray70);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList66, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList48, (int) (short) 100, 100, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71);
-        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate.processList((java.util.List<java.lang.String>) strList2, (int) (short) 1, (int) '4', (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList71);
-        org.junit.Assert.assertNotNull(strArray1);
-        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + true + "'", boolean3 == true);
-        org.junit.Assert.assertNotNull(strArray7);
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + true + "'", boolean9 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray12);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertNotNull(strArray21);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + true + "'", boolean23 == true);
-        org.junit.Assert.assertNotNull(strArray27);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + true + "'", boolean29 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray32);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray38);
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIntExpNonOpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOtherCurrAssetsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1041() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1041");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData2.year = 10;
+        int int5 = companyDerivedData2.quarter;
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + (-1) + "'", int5 == (-1));
+    }
+
+    @Test
+    public void test1042() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1042");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) (short) 100, (int) (byte) 100, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashFromInvQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+    }
+
+    @Test
+    public void test1043() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1043");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getEquityQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+    }
+
+    @Test
+    public void test1044() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1044");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList4 = indexDerived3.indexList;
+        indexDerived3.valid = true;
+        indexDerived3.valid = false;
+        java.util.List<java.lang.String> strList9 = indexDerived3.indexList;
+        indexDerived3.listName = "";
+        indexDerived3.readList("");
+        org.junit.Assert.assertNotNull(strList4);
+        org.junit.Assert.assertNotNull(strList9);
+    }
+
+    @Test
+    public void test1045() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1045");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIntTotQdata();
+        boolean boolean9 = companyDerived3.isValid();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getEpsDilContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getIntExpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+    }
+
+    @Test
+    public void test1046() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1046");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData2.year = 1;
+        int int5 = companyDerivedData2.year;
+        companyDerivedData2.quarter = (short) 1;
+        int int8 = companyDerivedData2.year;
+        int int9 = companyDerivedData2.year;
+        companyDerivedData2.quarter = (short) 1;
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
+        org.junit.Assert.assertTrue("'" + int8 + "' != '" + 1 + "'", int8 == 1);
+        org.junit.Assert.assertTrue("'" + int9 + "' != '" + 1 + "'", int9 == 1);
+    }
+
+    @Test
+    public void test1047() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1047");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getInventoryQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getDivCostQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1048() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1048");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getAcctPayableQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+    }
+
+    @Test
+    public void test1049() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1049");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getAdjToIncQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1050() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1050");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList4 = indexDerived3.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData7 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData7.year = 1;
+        int int10 = companyDerivedData7.year;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData13 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData16 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((int) (short) 0, 0);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData19 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData22 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData22.year = 1;
+        int int25 = companyDerivedData22.year;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList26 = companyDerivedData22.dList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData29 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData29.year = 1;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList32 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.getAgList();
+        companyDerivedData29.dList = companyDerivedList32;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData[] companyDerivedDataArray34 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData[] { companyDerivedData7, companyDerivedData13, companyDerivedData16, companyDerivedData19, companyDerivedData22, companyDerivedData29 };
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData> companyDerivedDataList35 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData>();
+        boolean boolean36 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData>) companyDerivedDataList35, companyDerivedDataArray34);
+        indexDerived3.idList = companyDerivedDataList35;
+        java.util.List<java.lang.String> strList38 = indexDerived3.indexList;
+        boolean boolean40 = indexDerived3.isInList("");
+        org.junit.Assert.assertNotNull(strList4);
+        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 1 + "'", int10 == 1);
+        org.junit.Assert.assertTrue("'" + int25 + "' != '" + 1 + "'", int25 == 1);
+        org.junit.Assert.assertNotNull(companyDerivedList26);
+        org.junit.Assert.assertNotNull(companyDerivedList32);
+        org.junit.Assert.assertNotNull(companyDerivedDataArray34);
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + true + "'", boolean36 == true);
+        org.junit.Assert.assertNotNull(strList38);
         org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
-        org.junit.Assert.assertNotNull(strArray47);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + true + "'", boolean49 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray52);
-        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
-        org.junit.Assert.assertNotNull(fieldDataArray58);
-        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
-        org.junit.Assert.assertNotNull(strArray65);
-        org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + true + "'", boolean67 == true);
-        org.junit.Assert.assertNotNull(fieldDataArray70);
-        org.junit.Assert.assertTrue("'" + boolean72 + "' != '" + false + "'", boolean72 == false);
+    }
+
+    @Test
+    public void test1051() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1051");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        int int5 = companyDerived3.getQuarter();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getPrefStockQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOpMarginQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 1 + "'", int5 == 1);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1052() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1052");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getWorkingCapitalQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble15 = companyDerived3.getSalesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble16 = companyDerived3.getIntExpNonOpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble17 = companyDerived3.getEpsDilQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble18 = companyDerived3.getIncTaxQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+        org.junit.Assert.assertNull(quarterlyDouble15);
+        org.junit.Assert.assertNull(quarterlyDouble16);
+        org.junit.Assert.assertNull(quarterlyDouble17);
+        org.junit.Assert.assertNull(quarterlyDouble18);
+    }
+
+    @Test
+    public void test1053() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1053");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEpsDilContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getPeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getIncAfterTaxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getTanAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCashFromInvQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1054() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1054");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getNetFixedAssetsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+    }
+
+    @Test
+    public void test1055() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1055");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getWorkingCapitalQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble15 = companyDerived3.getCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble16 = companyDerived3.getDividendQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+        org.junit.Assert.assertNull(quarterlyDouble15);
+        org.junit.Assert.assertNull(quarterlyDouble16);
+    }
+
+    @Test
+    public void test1056() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1056");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        java.util.List<java.lang.String> strList4 = indexDerived3.indexList;
+        indexDerived3.valid = true;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData> companyDerivedDataList7 = indexDerived3.idList;
+        java.util.List<java.lang.String> strList8 = indexDerived3.indexList;
+        org.junit.Assert.assertNotNull(strList4);
+        org.junit.Assert.assertNull(companyDerivedDataList7);
+        org.junit.Assert.assertNotNull(strList8);
+    }
+
+    @Test
+    public void test1057() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1057");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(0, (int) (byte) 1);
+    }
+
+    @Test
+    public void test1058() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1058");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getNonrecurringItemsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getSalesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTotalLiabQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1059() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1059");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((-1), (int) (short) -1);
+        companyDerivedData2.year = 1;
+        companyDerivedData2.quarter = '4';
+    }
+
+    @Test
+    public void test1060() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1060");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getBvpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getRoeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getStInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+    }
+
+    @Test
+    public void test1061() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1061");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) (byte) 0, 10, fieldData2);
+    }
+
+    @Test
+    public void test1062() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1062");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getLtDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1063() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1063");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((int) '#', 100);
+    }
+
+    @Test
+    public void test1064() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1064");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        boolean boolean4 = companyDerived3.isValid();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getPrefStockQdata();
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+    }
+
+    @Test
+    public void test1065() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1065");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsDilQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getSharesQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1066() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1066");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromOpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getLtInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+    }
+
+    @Test
+    public void test1067() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1067");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEpsDilContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getGrossIncQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1068() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1068");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getGoodwillQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getGrossIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getAdjToIncQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+    }
+
+    @Test
+    public void test1069() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1069");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getIncAfterTaxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherLtAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getNonrecurringItemsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOpMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getEquityQdata();
+        int int12 = companyDerived3.getYear();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertTrue("'" + int12 + "' != '" + 35 + "'", int12 == 35);
+    }
+
+    @Test
+    public void test1070() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1070");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAdjToIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCashFromInvQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getInventoryQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1071() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1071");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOpMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getDivCostQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getTotalOpExpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1072() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1072");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getRdQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+    }
+
+    @Test
+    public void test1073() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1073");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherLtAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getWcfcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getStInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1074() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1074");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getWorkingCapitalQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEpsDilContQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+    }
+
+    @Test
+    public void test1075() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1075");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getInventoryQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getWorkingCapitalQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1076() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1076");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getGrossIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOpMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCapExQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getIntTotQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getNetMarginQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+    }
+
+    @Test
+    public void test1077() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1077");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived4 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", 1, (int) (byte) 0);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived8 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived8.writeList("");
+        java.util.List<java.lang.String> strList11 = indexDerived8.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived15 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived15.writeList("");
+        java.util.List<java.lang.String> strList18 = indexDerived15.indexList;
+        indexDerived8.indexList = strList18;
+        indexDerived8.readList("");
+        java.util.List<java.lang.String> strList22 = indexDerived8.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray25 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList26 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList26, fieldDataArray25);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList28 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList22, (int) 'a', (int) (byte) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList26);
+        indexDerived4.indexList = strList22;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived32 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", strList22, (int) '#', (int) (byte) 1);
+        org.junit.Assert.assertNotNull(strList11);
+        org.junit.Assert.assertNotNull(strList18);
+        org.junit.Assert.assertNotNull(strList22);
+        org.junit.Assert.assertNotNull(fieldDataArray25);
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList28);
+    }
+
+    @Test
+    public void test1078() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1078");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(35, (int) '4');
+        int int3 = companyDerivedData2.year;
+        int int4 = companyDerivedData2.quarter;
+        org.junit.Assert.assertTrue("'" + int3 + "' != '" + 35 + "'", int3 == 35);
+        org.junit.Assert.assertTrue("'" + int4 + "' != '" + 52 + "'", int4 == 52);
+    }
+
+    @Test
+    public void test1079() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1079");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getPricesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getLtDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1080() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1080");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", (int) '#', 1);
+        indexDerived3.valid = true;
+        indexDerived3.writeList("hi!");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived11 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("hi!", (int) (byte) -1, (int) ' ');
+        java.util.List<java.lang.String> strList12 = indexDerived11.indexList;
+        indexDerived11.valid = true;
+        indexDerived11.valid = false;
+        indexDerived11.writeList("");
+        java.util.List<java.lang.String> strList19 = indexDerived11.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived23 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 100, (int) (byte) -1);
+        java.util.List<java.lang.String> strList24 = indexDerived23.indexList;
+        indexDerived11.addToList(strList24);
+        indexDerived3.indexList = strList24;
+        org.junit.Assert.assertNotNull(strList12);
+        org.junit.Assert.assertNotNull(strList19);
+        org.junit.Assert.assertNotNull(strList24);
+    }
+
+    @Test
+    public void test1081() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1081");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) (short) -1, 0, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherLtAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getLtDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getNetMarginQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+    }
+
+    @Test
+    public void test1082() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1082");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAdjToIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsDilQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1083() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1083");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getRdQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getDividendQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+    }
+
+    @Test
+    public void test1084() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1084");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((int) (short) 0, 0);
+        companyDerivedData2.quarter = (byte) 100;
+        companyDerivedData2.year = 10;
+        int int7 = companyDerivedData2.year;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData10 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(100, (int) '#');
+        int int11 = companyDerivedData10.quarter;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList12 = companyDerivedData10.dList;
+        companyDerivedData2.dList = companyDerivedList12;
+        companyDerivedData2.year = (byte) 0;
+        org.junit.Assert.assertTrue("'" + int7 + "' != '" + 10 + "'", int7 == 10);
+        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 35 + "'", int11 == 35);
+        org.junit.Assert.assertNotNull(companyDerivedList12);
+    }
+
+    @Test
+    public void test1085() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1085");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTotalOpExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getPrefStockQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getGrossIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getPeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getIntExpNonOpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getRdQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+    }
+
+    @Test
+    public void test1086() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1086");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCogsQdata();
+        boolean boolean8 = companyDerived3.isValid();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getEpsDilQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1087() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1087");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTotalOpExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getGoodwillQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getNetIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getGoodwillQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getEpsDilQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble15 = companyDerived3.getCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble16 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble17 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble18 = companyDerived3.getLtInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+        org.junit.Assert.assertNull(quarterlyDouble15);
+        org.junit.Assert.assertNull(quarterlyDouble16);
+        org.junit.Assert.assertNull(quarterlyDouble17);
+        org.junit.Assert.assertNull(quarterlyDouble18);
+    }
+
+    @Test
+    public void test1088() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1088");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.write(10, 32);
+    }
+
+    @Test
+    public void test1089() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1089");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getIncAfterTaxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getTotalOpExpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getWcfcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getIntExpNonOpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+    }
+
+    @Test
+    public void test1090() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1090");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getInventoryQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIncPrimaryEpsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+    }
+
+    @Test
+    public void test1091() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1091");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getRdQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getStInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble15 = companyDerived3.getGrossIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble16 = companyDerived3.getStDebtQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+        org.junit.Assert.assertNull(quarterlyDouble15);
+        org.junit.Assert.assertNull(quarterlyDouble16);
+    }
+
+    @Test
+    public void test1092() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1092");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData(0, (int) (byte) 0);
+        int int3 = companyDerivedData2.year;
+        java.util.List<java.lang.String> strList4 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived10 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived10.writeList("");
+        java.util.List<java.lang.String> strList13 = indexDerived10.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray16 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList17 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17, fieldDataArray16);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList19 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList13, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList20 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList4, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList17);
+        companyDerivedData2.dList = companyDerivedList20;
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList22 = companyDerivedData2.dList;
+        org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
+        org.junit.Assert.assertNotNull(strList13);
+        org.junit.Assert.assertNotNull(fieldDataArray16);
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList19);
+        org.junit.Assert.assertNotNull(companyDerivedList20);
+        org.junit.Assert.assertNotNull(companyDerivedList22);
+    }
+
+    @Test
+    public void test1093() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1093");
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData companyDerivedData2 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerivedData((int) (byte) 10, (int) (byte) 1);
+    }
+
+    @Test
+    public void test1094() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1094");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        int int5 = companyDerived3.getYear();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getRoeQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getNetIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getCashFromInvQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getPrefStockQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 35 + "'", int5 == 35);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+    }
+
+    @Test
+    public void test1095() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1095");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getRdQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIncPrimaryEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCashFromFinQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getStInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getIntExpQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+    }
+
+    @Test
+    public void test1096() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1096");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getPricesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getTanAssetsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1097() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1097");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) (byte) 0, (int) ' ', fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getBvpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getLtInvestQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+    }
+
+    @Test
+    public void test1098() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1098");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getTotalLiabQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+    }
+
+    @Test
+    public void test1099() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1099");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetMarginQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getGrossOpIncQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+    }
+
+    @Test
+    public void test1100() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1100");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getAcctRxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getOtherCurrAssetsQdata();
+        boolean boolean9 = companyDerived3.isValid();
+        int int10 = companyDerived3.getQuarter();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCashFromOpsQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 1 + "'", int10 == 1);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1101() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1101");
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived3.writeList("");
+        java.util.List<java.lang.String> strList6 = indexDerived3.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived10 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived10.writeList("");
+        java.util.List<java.lang.String> strList13 = indexDerived10.indexList;
+        indexDerived3.indexList = strList13;
+        indexDerived3.readList("");
+        java.util.List<java.lang.String> strList17 = indexDerived3.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived23 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        java.util.List<java.lang.String> strList24 = indexDerived23.indexList;
+        indexDerived23.listName = "";
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived30 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived30.writeList("");
+        java.util.List<java.lang.String> strList33 = indexDerived30.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived37 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived37.writeList("");
+        java.util.List<java.lang.String> strList40 = indexDerived37.indexList;
+        indexDerived30.indexList = strList40;
+        indexDerived23.addToList(strList40);
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived46 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived46.writeList("");
+        java.util.List<java.lang.String> strList49 = indexDerived46.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived53 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived53.writeList("");
+        java.util.List<java.lang.String> strList56 = indexDerived53.indexList;
+        indexDerived46.indexList = strList56;
+        indexDerived23.addToList(strList56);
+        java.util.List<java.lang.String> strList61 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived indexDerived67 = new net.ajaskey.market.tools.SIP.BigDB.derived.IndexDerived("", 10, 0);
+        indexDerived67.writeList("");
+        java.util.List<java.lang.String> strList70 = indexDerived67.indexList;
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] fieldDataArray73 = new net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData[] {};
+        java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData> fieldDataList74 = new java.util.ArrayList<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>();
+        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74, fieldDataArray73);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList76 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList70, 10, (int) (short) 1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList77 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList61, (int) (short) 1, 0, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList78 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList56, (int) (short) 1, (int) (byte) -1, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
+        java.util.List<net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived> companyDerivedList79 = net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived.processList(strList17, 100, 10, (java.util.List<net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData>) fieldDataList74);
+        org.junit.Assert.assertNotNull(strList6);
+        org.junit.Assert.assertNotNull(strList13);
+        org.junit.Assert.assertNotNull(strList17);
+        org.junit.Assert.assertNotNull(strList24);
+        org.junit.Assert.assertNotNull(strList33);
+        org.junit.Assert.assertNotNull(strList40);
+        org.junit.Assert.assertNotNull(strList49);
+        org.junit.Assert.assertNotNull(strList56);
+        org.junit.Assert.assertNotNull(strList70);
+        org.junit.Assert.assertNotNull(fieldDataArray73);
+        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
+        org.junit.Assert.assertNotNull(companyDerivedList76);
+        org.junit.Assert.assertNotNull(companyDerivedList77);
+        org.junit.Assert.assertNotNull(companyDerivedList78);
+        org.junit.Assert.assertNotNull(companyDerivedList79);
+    }
+
+    @Test
+    public void test1102() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1102");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getIncAfterTaxQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getCurrentRatioQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherLtAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getDivCostQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getWcfcfQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+    }
+
+    @Test
+    public void test1103() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1103");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getEpsContQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getWorkingCapitalQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getEpsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getUnusualIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getAdjToIncQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+    }
+
+    @Test
+    public void test1104() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1104");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getCashQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getGrossOpIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getFcfQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getDivCostQdata();
+        boolean boolean9 = companyDerived3.isValid();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+    }
+
+    @Test
+    public void test1105() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1105");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getIntExpNonOpQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getStDebtQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getNetFixedAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getOtherCurrLiabQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+    }
+
+    @Test
+    public void test1106() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1106");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getOtherLtLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getOtherCurrLiabQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getAcctPayableQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getLiabEquityQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getLtInvestQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getWorkingCapitalQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getTotalAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble14 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble15 = companyDerived3.getSalesQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble16 = companyDerived3.getCashFromInvQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
+        org.junit.Assert.assertNull(quarterlyDouble14);
+        org.junit.Assert.assertNull(quarterlyDouble15);
+        org.junit.Assert.assertNull(quarterlyDouble16);
+    }
+
+    @Test
+    public void test1107() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "DerivedTests2.test1107");
+        net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData fieldData2 = null;
+        net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived companyDerived3 = new net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived((int) '#', (int) (short) 1, fieldData2);
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble4 = companyDerived3.getOtherCurrAssetsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble5 = companyDerived3.getPreTaxIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble6 = companyDerived3.getDepreciationQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble7 = companyDerived3.getNetIncQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble8 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble9 = companyDerived3.getCapExQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble10 = companyDerived3.getNetcashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble11 = companyDerived3.getCogsQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble12 = companyDerived3.getCashflowQdata();
+        net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble quarterlyDouble13 = companyDerived3.getEpsDilQdata();
+        org.junit.Assert.assertNull(quarterlyDouble4);
+        org.junit.Assert.assertNull(quarterlyDouble5);
+        org.junit.Assert.assertNull(quarterlyDouble6);
+        org.junit.Assert.assertNull(quarterlyDouble7);
+        org.junit.Assert.assertNull(quarterlyDouble8);
+        org.junit.Assert.assertNull(quarterlyDouble9);
+        org.junit.Assert.assertNull(quarterlyDouble10);
+        org.junit.Assert.assertNull(quarterlyDouble11);
+        org.junit.Assert.assertNull(quarterlyDouble12);
+        org.junit.Assert.assertNull(quarterlyDouble13);
     }
 }
 

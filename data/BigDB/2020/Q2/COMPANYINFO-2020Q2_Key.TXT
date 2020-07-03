@@ -16,7 +16,6 @@
 "PHONE"	"Phone"
 "WEB_ADDR"	"Web address"
 "EMPLOYEES"	"Number of employees"
-"PRICE"	"Price"
 "PRICE_M001"	"Price M001"
 "PRICE_M004"	"Price M004"
 "PRICE_M008"	"Price M008"

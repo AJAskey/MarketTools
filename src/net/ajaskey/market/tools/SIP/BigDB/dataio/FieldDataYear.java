@@ -44,45 +44,33 @@ public class FieldDataYear {
   /**
    * Returns the requested quarter of data.
    *
-   * @param qtr quarter
+   * @param qtr quarter (1-4)
    * @return FieldDataQuarter
    */
   public FieldDataQuarter getQ(int qtr) {
 
     FieldDataQuarter ret = null;
 
-    if (this.inUse) {
-
-      if (qtr == 1) {
-        ret = this.q1;
-      }
-      else if (qtr == 2) {
-        ret = this.q2;
-      }
-      else if (qtr == 3) {
-        ret = this.q3;
-      }
-      else if (qtr == 4) {
-        ret = this.q4;
+    try {
+      if (this.inUse) {
+        if (qtr == 1) {
+          ret = this.q1;
+        }
+        else if (qtr == 2) {
+          ret = this.q2;
+        }
+        else if (qtr == 3) {
+          ret = this.q3;
+        }
+        else if (qtr == 4) {
+          ret = this.q4;
+        }
       }
     }
+    catch (final Exception e) {
+      ret = null;
+    }
     return ret;
-  }
-
-  public FieldDataQuarter getQ1() {
-    return this.q1;
-  }
-
-  public FieldDataQuarter getQ2() {
-    return this.q2;
-  }
-
-  public FieldDataQuarter getQ3() {
-    return this.q3;
-  }
-
-  public FieldDataQuarter getQ4() {
-    return this.q4;
   }
 
   public int getYear() {
@@ -106,37 +94,25 @@ public class FieldDataYear {
         if (this.q1 == null) {
           return false;
         }
-        else if (this.q1.fieldDataList == null) {
-          return false;
-        }
-        return true;
+        return this.q1.fieldDataList != null;
       }
       else if (qtr == 2) {
         if (this.q2 == null) {
           return false;
         }
-        else if (this.q2.fieldDataList == null) {
-          return false;
-        }
-        return true;
+        return this.q2.fieldDataList != null;
       }
       else if (qtr == 3) {
         if (this.q3 == null) {
           return false;
         }
-        else if (this.q3.fieldDataList == null) {
-          return false;
-        }
-        return true;
+        return this.q3.fieldDataList != null;
       }
       else if (qtr == 4) {
         if (this.q4 == null) {
           return false;
         }
-        else if (this.q4.fieldDataList == null) {
-          return false;
-        }
-        return true;
+        return this.q4.fieldDataList != null;
       }
     }
     return false;
@@ -148,7 +124,7 @@ public class FieldDataYear {
    * @param qtr quarter
    * @param fdq FieldDataQuarter
    */
-  public void set(int qtr, FieldDataQuarter fdq) {
+  public void setQ(int qtr, FieldDataQuarter fdq) {
     this.inUse = true;
     if (qtr == 1) {
       this.q1 = fdq;
