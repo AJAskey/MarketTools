@@ -24,7 +24,7 @@ A couple tools find useful to work with this github repository:
 ## Up next
 * Report to write Zombie companies from the CompanyDerived class. 
 
-#Status 
+## Status 
 
 A work in progress. Constant updates...
 
