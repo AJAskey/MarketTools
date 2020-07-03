@@ -120,6 +120,27 @@ public class Globals {
   }
 
   /**
+   * Returns state of loaded Global lists
+   * 
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return TRUE if requested yr/qtr is available in memory, FALSE otherwise
+   */
+  public static boolean checkLists(int yr, int qtr) {
+    try {
+      for (final FieldDataYear fdy : Globals.allDataList) {
+        if (fdy.getYear() == yr) {
+          FieldDataQuarter fdq = fdy.getQ(qtr);
+          return (fdq != null);
+        }
+      }
+    }
+    catch (Exception e) {
+    }
+    return false;
+  }
+
+  /**
    * Sets internal memory (allDataList) to request year and quarter.
    *
    * @param yr     year
@@ -145,10 +166,15 @@ public class Globals {
       Globals.init(Globals.startYear, Globals.endYear);
     }
 
+    if (checkLists(yr, qtr)) {
+      return;
+    }
+
     final FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
     for (final FieldDataYear fdy : Globals.allDataList) {
       if (fdy.getYear() == yr) {
-        fdy.set(qtr, fdq);
+        fdy.setQ(qtr, fdq);
+        System.out.printf(" Internal memory set for %d Q%d%n", yr, qtr);
         return;
       }
     }

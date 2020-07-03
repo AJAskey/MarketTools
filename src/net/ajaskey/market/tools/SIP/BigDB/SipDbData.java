@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
-import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyAggregate;
+import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 
 /**
  * This class serves as a test driver to check new development.
@@ -43,15 +43,17 @@ public class SipDbData {
 
     // FieldData.parseSipData(2020, 1, FiletypeEnum.NONE);
 
-    MarketTools.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
+    // MarketTools.parseSipData(year, qtr, FiletypeEnum.BIG_BINARY);
 
     MarketTools.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
+    MarketTools.setQMemory(year, qtr, FiletypeEnum.BIG_BINARY);
+
     final FieldData fd = MarketTools.getFromMemory("MSFT", year, qtr);
     System.out.println(fd);
 
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    CompanyAggregate.loadDb(2020, 2, FiletypeEnum.BIG_BINARY);
+    CompanyDerived.loadDb(2020, 2, FiletypeEnum.BIG_BINARY);
 
     final List<String> tickers = new ArrayList<>();
     tickers.add("MSFT");
@@ -63,8 +65,8 @@ public class SipDbData {
 
     final List<FieldData> fdList = FieldData.getQFromDb(year, qtr, ft);
 
-    CompanyAggregate.processList(tickers, year, qtr, fdList);
-    CompanyAggregate.write(year, qtr);
+    CompanyDerived.processList(tickers, year, qtr, fdList);
+    CompanyDerived.write(year, qtr);
 
     // MarketTools.setMemory(2018, 2020, FiletypeEnum.BINARY);
 

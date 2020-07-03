@@ -106,14 +106,20 @@ public class CompanySummary {
 
     final List<CompanySummary> sumList = new ArrayList<>();
 
-    final String fname = String.format("%s%d/Q%d/CompanySummary.txt", FieldData.outbasedir, yr, qtr);
-    final List<String> retList = TextUtils.readTextFile(fname, true);
+    try {
 
-    for (final String s : retList) {
-      final CompanySummary cs = new CompanySummary(s);
-      if (cs.valid) {
-        sumList.add(cs);
+      final String fname = String.format("%s%d/Q%d/CompanySummary.txt", FieldData.outbasedir, yr, qtr);
+      final List<String> retList = TextUtils.readTextFile(fname, true);
+
+      for (final String s : retList) {
+        final CompanySummary cs = new CompanySummary(s);
+        if (cs.valid) {
+          sumList.add(cs);
+        }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return sumList;
   }

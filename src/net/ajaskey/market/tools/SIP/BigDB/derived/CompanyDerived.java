@@ -65,7 +65,7 @@ public class CompanyDerived {
    * @param qtr
    * @param fdList
    */
-  public static void processList(List<String> tickers, int yr, int qtr, List<FieldData> fdList) {
+  public static List<CompanyDerived> processList(List<String> tickers, int yr, int qtr, List<FieldData> fdList) {
 
     CompanyDerived.agList.clear();
 
@@ -83,6 +83,7 @@ public class CompanyDerived {
         }
       }
     }
+    return CompanyDerived.agList;
   }
 
   /**

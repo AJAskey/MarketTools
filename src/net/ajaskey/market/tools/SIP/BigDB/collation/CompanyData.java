@@ -134,21 +134,26 @@ public class CompanyData {
   public static List<String> getTickers(DowEnum index, int yr, int qtr) {
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(yr, qtr);
+    try {
+      final List<File> files = CompanyData.getFiles(yr, qtr);
 
-    List<String> input = null;
-    for (final File f : files) {
-      if (f.getName().endsWith(".gz")) {
-        input = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        input = TextUtils.readTextFile(f, true);
-      }
+      List<String> input = null;
+      for (final File f : files) {
+        if (f.getName().endsWith(".gz")) {
+          input = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          input = TextUtils.readTextFile(f, true);
+        }
 
-      final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-      if (cfd.getDowIndex() == index) {
-        ret.add(cfd.getTicker());
+        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+        if (cfd.getDowIndex() == index) {
+          ret.add(cfd.getTicker());
+        }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return ret;
   }
@@ -165,28 +170,29 @@ public class CompanyData {
 
     final List<String> ret = new ArrayList<>();
 
-    if (index == null) {
-      return ret;
-    }
+    try {
+      final List<File> files = CompanyData.getFiles(yr, qtr);
 
-    final List<File> files = CompanyData.getFiles(yr, qtr);
+      List<String> input = null;
 
-    List<String> input = null;
+      if (files != null) {
+        for (final File f : files) {
+          if (f.getName().endsWith(".gz")) {
+            input = TextUtils.readGzipFile(f, true);
+          }
+          else {
+            input = TextUtils.readTextFile(f, true);
+          }
 
-    if (files != null) {
-      for (final File f : files) {
-        if (f.getName().endsWith(".gz")) {
-          input = TextUtils.readGzipFile(f, true);
-        }
-        else {
-          input = TextUtils.readTextFile(f, true);
-        }
-
-        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-        if (cfd.getExchange() == index) {
-          ret.add(cfd.getTicker());
+          final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+          if (cfd.getExchange() == index) {
+            ret.add(cfd.getTicker());
+          }
         }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return ret;
   }
@@ -234,21 +240,27 @@ public class CompanyData {
 
     final List<String> ret = new ArrayList<>();
 
-    final List<File> files = CompanyData.getFiles(yr, qtr);
+    try {
 
-    List<String> input = null;
-    for (final File f : files) {
-      if (f.getName().endsWith(".gz")) {
-        input = TextUtils.readGzipFile(f, true);
-      }
-      else {
-        input = TextUtils.readTextFile(f, true);
-      }
+      final List<File> files = CompanyData.getFiles(yr, qtr);
 
-      final CompanyFileData cfd = CompanyFileData.readFromDb(input);
-      if (cfd.getSnpIndex() == index) {
-        ret.add(cfd.getTicker());
+      List<String> input = null;
+      for (final File f : files) {
+        if (f.getName().endsWith(".gz")) {
+          input = TextUtils.readGzipFile(f, true);
+        }
+        else {
+          input = TextUtils.readTextFile(f, true);
+        }
+
+        final CompanyFileData cfd = CompanyFileData.readFromDb(input);
+        if (cfd.getSnpIndex() == index) {
+          ret.add(cfd.getTicker());
+        }
       }
+    }
+    catch (Exception e) {
+      FieldData.getWarning(e);
     }
     return ret;
   }

@@ -218,19 +218,33 @@ public class FieldData implements Serializable {
   /**
    * Reads SIP tab separated data files. Stores the data in array for later use.
    *
-   * @param yr  year
-   * @param qtr quarter (1-4)
-   * @param ft  FiletypeEnum
+   * @param yr        year
+   * @param qtr       quarter (1-4)
+   * @param ft        FiletypeEnum
+   * @param overwrite
    * @return FALSE on any error, TRUE is successful processing
    */
-  public static boolean parseSipData(int yr, int qtr, FiletypeEnum ft) {
+  public static boolean parseSipData(int yr, int qtr, FiletypeEnum ft, boolean overwrite) {
 
     try {
+
+      if (ft == FiletypeEnum.BIG_BINARY) {
+        if (!overwrite) {
+          final String outfname = String.format("%s%d/all-companies-%dQ%d.bin", outbasedir, yr, yr, qtr);
+          File f = new File(outfname);
+          if (f.exists()) {
+            System.out.printf("File %s already exists.%n", outfname);
+            return true;
+          }
+        }
+      }
+
       CompanyFileData.clearList();
       EstimateFileData.clearList();
       SharesFileData.clearList();
       IncSheetFileData.clearList();
       BalSheetFileData.clearList();
+      FieldDataBinary.clearList();
 
       Utils.makeDirs(String.format("out/BigDB/%d/Q%d", yr, qtr));
 
@@ -311,9 +325,11 @@ public class FieldData implements Serializable {
       head = "Cash-";
       ffname = String.format("%s%s%s", dir, head, tail);
       dirCk = new File(ffname);
-      if (dirCk.exists()) {
-        CashFileData.readSipData(ffname);
+      if (!dirCk.exists()) {
+        System.out.printf("Warning ... Requested File does not exist! %s%n", ffname);
+        return false;
       }
+      CashFileData.readSipData(ffname);
 
       /**
        * Write Company list for creating ticker lists
@@ -391,7 +407,10 @@ public class FieldData implements Serializable {
   public static void setQMemory(int yr, int qtr, FiletypeEnum ft) {
 
     try {
-      System.out.printf("Setting internal memory : %dQ%d%n", yr, qtr);
+
+      boolean qm = FieldData.checkQMemory(yr, qtr);
+
+      System.out.printf("Setting internal memory : %d Q%d%n", yr, qtr);
 
       if (ft == FiletypeEnum.BINARY) {
 
@@ -415,13 +434,18 @@ public class FieldData implements Serializable {
     }
   }
 
+  private static boolean checkQMemory(int yr, int qtr) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
   /**
    * Returns formatted constructor error message
    *
    * @param e Exception thrown
    * @return String
    */
-  protected static String getConstructorError(Throwable e) {
+  public static String getConstructorError(Throwable e) {
     String ret = "";
     final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
     ret += String.format("%nError. Unexpected exception in Constructor : %s%n", m);
@@ -435,7 +459,7 @@ public class FieldData implements Serializable {
    * @param e Exception thrown
    * @return String
    */
-  protected static String getError(Throwable e) {
+  public static String getError(Throwable e) {
     String ret = "";
     final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
     ret += String.format("%nError. Unexpected exception in method : %s%n", m);
@@ -449,7 +473,7 @@ public class FieldData implements Serializable {
    * @param e Exception thrown
    * @return String
    */
-  protected static String getWarning(Throwable e) {
+  public static String getWarning(Throwable e) {
     String ret = "";
     final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
     ret += String.format("%nWarning. Unexpected exception in method : %s%n", m);
@@ -709,12 +733,18 @@ public class FieldData implements Serializable {
    * @return A list of FieldData for each ticket in the DB for year and quarter or
    *         empty List when error
    */
-  private static List<FieldData> readDbBigBinData(int yr, int qtr) {
+  private static void readDbBigBinData(int yr, int qtr) {
 
     List<FieldData> fdList = new ArrayList<>();
 
     try {
-      System.out.printf("Processing DB %d %d%n", yr, qtr);
+
+      if (Globals.checkLists(yr, qtr)) {
+        System.out.printf(" DB data %d Q%d already in memory.%n", yr, qtr);
+        return;
+      }
+
+      System.out.printf(" Reading BigBinary DB for %d Q%d%n", yr, qtr);
 
       fdList = FieldData.parseFromDbBigBinData(yr, qtr);
 
@@ -725,7 +755,6 @@ public class FieldData implements Serializable {
       System.out.println(FieldData.getWarning(e));
       fdList.clear();
     }
-    return fdList;
   }
 
   /**

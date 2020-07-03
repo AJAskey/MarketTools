@@ -1548,8 +1548,8 @@ public class MarketTools {
    *
    * @see net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData#parseSipData
    */
-  public static boolean parseSipData(int yr, int qtr, FiletypeEnum ft) throws FileNotFoundException {
-    return FieldData.parseSipData(yr, qtr, ft);
+  public static boolean parseSipData(int yr, int qtr, FiletypeEnum ft, boolean overwrite) {
+    return FieldData.parseSipData(yr, qtr, ft, overwrite);
   }
 
   /**
