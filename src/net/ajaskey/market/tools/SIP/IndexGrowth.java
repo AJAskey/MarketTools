@@ -60,6 +60,8 @@ public class IndexGrowth extends CompanyData {
       return;
     }
 
+    Utils.makeDir("sipout");
+
     IndexGrowth.yesterday.add(DateTime.DATE, -1);
 
     final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
@@ -107,7 +109,7 @@ public class IndexGrowth extends CompanyData {
           notIndexList.add(cd);
         }
       }
-      try (PrintWriter pw = new PrintWriter("out/NoEarningsReported.txt")) {
+      try (PrintWriter pw = new PrintWriter("sipout/NoEarningsReported.txt")) {
         for (final CompanyData cd : notIndexList) {
           pw.printf("%-10s %s %10s %50s %55s%n", cd.ticker, cd.eoq, cd.spIndex, cd.sector, cd.industry);
         }
@@ -139,7 +141,7 @@ public class IndexGrowth extends CompanyData {
       final String s = String.format("%s", criteria.replace(",", "_").replace("!", "Not_"));
       final String sData = td.process(s, IndexGrowth.yesterday);
 
-      String dir = "out/Fundies";
+      String dir = "sipout/Fundies";
       final String fld[] = criteria.split(",");
       if (fld.length > 3 && fld[3].length() > 0) {
         dir += "/" + fld[3];
@@ -353,7 +355,7 @@ public class IndexGrowth extends CompanyData {
    *
    */
   private static void writeCompanyInfo() {
-    try (PrintWriter pw = new PrintWriter("out/CompanyInfo.csv")) {
+    try (PrintWriter pw = new PrintWriter("sipout/CompanyInfo.csv")) {
       pw.println("Ticker,Sector,Industry,Index,EOQ");
       for (final CompanyData cd : CompanyData.companyList) {
         final String ind = cd.industry.replace(",", "");
@@ -436,7 +438,7 @@ public class IndexGrowth extends CompanyData {
       final String s = String.format("%s", c.replace(",", "_"));
       final String sData = td.process(s, IndexGrowth.yesterday);
 
-      final String dir = "out/Fundies/Industries";
+      final String dir = "sipout/Fundies/Industries";
       Utils.makeDir(dir);
       final String tdfn = String.format("%s/%s_TotalData_%s.txt", dir, s, IndexGrowth.yesterday.format("yyyy-MM-dd"));
 
@@ -517,7 +519,7 @@ public class IndexGrowth extends CompanyData {
       final String s = String.format("%s", c.replace(",", "_"));
       final String sData = td.process(s, IndexGrowth.yesterday);
 
-      final String dir = "out/Fundies/Sectors";
+      final String dir = "sipout/Fundies/Sectors";
       Utils.makeDir(dir);
       final String tdfn = String.format("%s/%s_TotalData_%s.txt", dir, s, IndexGrowth.yesterday.format("yyyy-MM-dd"));
 

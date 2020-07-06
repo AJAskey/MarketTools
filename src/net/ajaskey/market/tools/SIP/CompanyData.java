@@ -20,21 +20,16 @@
 package net.ajaskey.market.tools.SIP;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.text.WordUtils;
 
@@ -51,13 +46,12 @@ public class CompanyData {
   public static List<CompanyData>      companyList  = new ArrayList<>();
   public final static SimpleDateFormat sdf          = new SimpleDateFormat("MM/dd/yyyy");
   public static List<String>           sectorList;
-  protected final static String        balsheetFile = "data/US-STOCKS-BALANCESHEETQTR.TXT";
-  protected final static String        cashFile     = "data/US-STOCKS-CASH.TXT";
+  protected final static String        balsheetFile = "sipdata/US-STOCKS-BALANCESHEETQTR.TXT";
+  protected final static String        cashFile     = "sipdata/US-STOCKS-CASH.TXT";
 
-  protected final static String incstatementFile = "data/US-STOCKS-INCOMESTMTQTR.TXT";
-  protected final static String miscFile         = "data/US-STOCKS-MISC.TXT";
+  protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
+  protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
 
-  static PrintWriter          pwnktr      = null;
   final private static String NL          = Utils.NL;
   final private static String TAB         = Utils.TAB;
   private static Set<String>  theGoodList = new HashSet<>();
@@ -94,6 +88,8 @@ public class CompanyData {
 
     final String totIndex = "SP500";
 
+    Utils.makeDir("sipout");
+
     if (!CompanyData.validateInputFiles()) {
       return;
     }
@@ -101,42 +97,12 @@ public class CompanyData {
     final DateTime yesterday = new DateTime();
     yesterday.add(DateTime.DATE, -1);
 
-    CompanyData.pwnktr = new PrintWriter("out/nktr.dbg");
-
     final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
     final double day0 = spxData.getLatest();
     final double day65 = spxData.getOffsetPrice(65);
     final double spxChg13wk = (day0 - day65) / day65 * 100.0;
 
     final double spxPrice = day0;
-
-    List<String> backupNames = new ArrayList<>();
-    backupNames.add("CompanyData.log");
-    backupNames.add("out/Zombies.txt");
-    backupNames.add("out/DividendCutters.txt");
-    backupNames.add("out/BestCompanies.txt");
-    backupNames.add("out/CompanyReports.txt");
-    backupNames.add("data/US-STOCKS-MISC.txt");
-    backupNames.add("data/US-STOCKS-CASH.txt");
-    backupNames.add("data/US-STOCKS-INCOMESTMTQTR.txt");
-    backupNames.add("data/US-STOCKS-BALANCESHEETQTR.txt");
-
-    final DateTime datetime = new DateTime();
-    final String fname = String.format("companyfinancials/companydata_%s.7z", datetime.format("ddMMMyyyyHHmmss"));
-    final FileOutputStream fos = new FileOutputStream(fname);
-    final ZipOutputStream zipFile = new ZipOutputStream(fos);
-    try {
-      for (final String s : backupNames) {
-        Utils.writeToZipFile(s, zipFile);
-        final File f = new File(s);
-        final File to = new File("companyfinancials/" + f.getName());
-        Files.copy(f.toPath(), to.toPath(), StandardCopyOption.REPLACE_EXISTING);
-      }
-    }
-    catch (final Exception e) {
-    }
-    fos.close();
-    backupNames = null;
 
     Debug.init("CompanyData.log");
 
@@ -147,46 +113,17 @@ public class CompanyData {
     CompanyData.readCashData(CompanyData.cashFile);
     CompanyData.readMiscData(CompanyData.miscFile, spxChg13wk);
 
-    CompanyData.printNktr("after data read");
-
     final List<String> latestQDate = new ArrayList<>();
 
-    // int kntRecentQtr = 0;
-    // DateTime recentQtr = new DateTime(2020, DateTime.JANUARY, 31);
-
     for (final CompanyData cd : CompanyData.companyList) {
-//      if (cd.ticker.equals("DOW")) {
-//        System.out.println(cd);
-//      }
+
       cd.partOfTotalCap = cd.marketCap / CompanyData.totalMarketCap;
       final double te = cd.id.epsDilCont.getMostRecent() * Math.min(0.01, cd.partOfTotalCap) * 100.0;
       CompanyData.totalEps += te;
-      // System.out.printf("%f\t%f\t%f%n", cd.id.eps.getMostRecent(),
-      // cd.partOfTotalCap * 100.0, te);
-
-//      final String fn = String.format("out/CompanyReports/%s_QQData.txt", cd.ticker);
-//      try (PrintWriter pw = new PrintWriter(fn)) {
-//        final String idStr = cd.id.getQoQ();
-//        final String qStr = cd.eoq.toString();
-//        final DateTime q5 = new DateTime(cd.eoq);
-//        q5.add(DateTime.YEAR, -1);
-//        final String q5Str = q5.format("MMM-yyyy");
-//        String q1Str = cd.eoq.format("MMM-yyyy");
-//        pw.printf("%6s%24s%17s%n%s%n", cd.ticker, qStr, q5Str, idStr);
-//        if (cd.spIndex.equals(totIndex)) {
-//          q1Str = cd.eoq.format("yyyy-MM-dd");
-//          latestQDate.add(String.format("%s_%s", q1Str, cd.ticker));
-//          if (cd.eoq.isGreaterThan(recentQtr)) {
-//            kntRecentQtr++;
-//          }
-//        }
-//      }
     }
 
-    CompanyData.printNktr("after new QQData");
-
     Collections.sort(latestQDate, Collections.reverseOrder());
-    try (PrintWriter pw = new PrintWriter("out/LatestQDate.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/LatestQDate.txt")) {
       for (final String s : latestQDate) {
         pw.println(s);
       }
@@ -222,7 +159,7 @@ public class CompanyData {
     statList.add(divYldStats);
     statList.add(epsYldStats);
 
-    try (PrintWriter pw = new PrintWriter("data/spx-stocks.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipdata/spx-stocks.txt")) {
       for (final CompanyData cd : CompanyData.companyList) {
         pw.println(cd.ticker);
         bvpsStats.addValues(cd.bsd.bvps);
@@ -241,7 +178,7 @@ public class CompanyData {
     }
 
     // output data
-    try (PrintWriter pw = new PrintWriter("out/companystats.dbg")) {
+    try (PrintWriter pw = new PrintWriter("sipout/companystats.dbg")) {
 
       for (final CompanyData cd : CompanyData.companyList) {
         pw.println(cd);
@@ -268,7 +205,6 @@ public class CompanyData {
     }
 
     List<CompanyData> filteredList = new ArrayList<>();
-    // final Calendar endCal = Utils.buildCalendar(2017, Calendar.NOVEMBER, 30);
     final DateTime endDt = new DateTime(2018, DateTime.JULY, 31);
     for (final CompanyData cd : CompanyData.companyList) {
       final DateTime dt = new DateTime(cd.eoq);
@@ -299,7 +235,7 @@ public class CompanyData {
     System.out.printf("Total Buyback Estimate   :  $%sB%n", QuarterlyData.fmt(CompanyData.totalBuyBacks / 1000.0, 2));
     System.out.printf("Total New Share Estimate :  $%sB%n", QuarterlyData.fmt(CompanyData.totalNewShares / 1000.0, 2));
 
-    try (PrintWriter pw = new PrintWriter("out/buybacks.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/buybacks.txt")) {
       pw.println("Ticker\tShares(M)\tEst Cost(M)");
       for (final CompanyData cd : CompanyData.buybackList) {
         final double sc = DerivedData.calcShareChange(cd);
@@ -315,11 +251,10 @@ public class CompanyData {
       }
     }
     System.out.println(spxList.size());
-    // WriteOptumaFiles.processData(spxList);
 
     List<String> tgl = new ArrayList<>(CompanyData.theGoodList);
     Collections.sort(tgl);
-    try (PrintWriter pw = new PrintWriter("out/good-list.csv"); PrintWriter pwSc = new PrintWriter("out/good-list-sc.csv")) {
+    try (PrintWriter pw = new PrintWriter("sipout/good-list.csv"); PrintWriter pwSc = new PrintWriter("sipout/good-list-sc.csv")) {
       pw.println("code");
       for (final String s : tgl) {
         pw.println(s);
@@ -329,10 +264,6 @@ public class CompanyData {
     }
     tgl = null;
 
-    CompanyData.printNktr("at end");
-
-    CompanyData.pwnktr.close();
-
     // Cleanup - not necessary but stops memory leaks
     CompanyData.companyList = null;
     CompanyData.theGoodList = null;
@@ -340,42 +271,6 @@ public class CompanyData {
     CompanyData.buybackList = null;
     statList = null;
     filteredList = null;
-  }
-
-  public static void printHeaderData(final CompanyData cd) {
-
-    CompanyData.pwnktr.println(" " + cd.ticker);
-    CompanyData.pwnktr.printf("\t%s : %s, %s%n", cd.name, cd.city, cd.state);
-
-    String index = "";
-    if (cd.spIndex.length() > 0) {
-      index = ", " + cd.spIndex;
-    }
-
-    CompanyData.pwnktr.printf("\t%s, %s%s%n", cd.sector, cd.industry, index);
-    // pw.printf("\t%s%n", cd.industry);
-    String sNumEmp = "?";
-    if (cd.numEmp > 0) {
-      sNumEmp = QuarterlyData.ifmt(cd.numEmp, 12);
-    }
-    CompanyData.pwnktr.printf("\tEmployees     : %s%n", sNumEmp);
-    if (cd.numEmp > 0) {
-      final double d = cd.id.grossOpIncome.getTtm() / cd.numEmp * 1000000.0;
-      final int i = (int) d;
-      CompanyData.pwnktr.printf("\tOpInc per Emp : $%s%n", QuarterlyData.ifmt(i, 11));
-    }
-
-    final String dat = cd.eoq.toString(); // Utils.stringDate(cd.eoq);
-    CompanyData.pwnktr.printf("\t10Q Date      :  %s%n", dat);
-
-    // this.printState(pw, cd);
-
-    // if (cd.ticker.equalsIgnoreCase("MAXR")) {
-    // System.out.println(cd);
-    // }
-    CompanyData.pwnktr.printf("%n\tMarket Cap        : %s M%n", QuarterlyData.fmt(cd.marketCap, 13));
-    CompanyData.pwnktr.println(cd.shares.fmtGrowth1Q("Shares"));
-
   }
 
   /**
@@ -427,11 +322,9 @@ public class CompanyData {
             cd.inst = QuarterlyData.parseDouble(fld[8].trim());
             cd.adv = (int) QuarterlyData.parseDouble(fld[9].trim()) * 1000;
             cd.floatShares = QuarterlyData.parseDouble(fld[10].trim());
-            // cd.capEx = QuarterlyData.parseDouble(fld[11].trim());
             cd.cashFlow = QuarterlyData.parseDouble(fld[12].trim());
             cd.q0EstGrowth = QuarterlyData.parseDouble(fld[13].trim());
             cd.y1EstGrowth = QuarterlyData.parseDouble(fld[14].trim());
-            // cd.cashFromInv = QuarterlyData.parseDouble(fld[15].trim());
             cd.opInc3yrGrowth = QuarterlyData.parseDouble(fld[16].trim());
             cd.city = fld[17].trim();
             cd.state = fld[18].trim();
@@ -540,16 +433,6 @@ public class CompanyData {
       System.out.println("Ticker mismatch between " + CompanyData.balsheetFile + " and " + CompanyData.cashFile);
       ret = false;
     }
-//    } else {
-//      for (int i = 0; i < btCount; i++) {
-//        System.out.println(baseTickers.get(i) + "\t" + tickers.get(i));
-//        if (!baseTickers.get(i).equals(tickers.get(i))) {
-//          ret = false;
-//          System.out.println("Ticker mismatch between " + balsheetFile + " and " + cashFile);
-//          break;
-//        }
-//      }
-//    }
 
     if (!CompanyData.validateInputFile(CompanyData.miscFile)) {
       System.out.println("Invalid input file : " + CompanyData.miscFile);
@@ -617,14 +500,11 @@ public class CompanyData {
         final String str = line.replaceAll("\"", "").trim();
         if (str.length() > 1) {
 
-          // System.out.println(str);
           final String fld[] = str.split(CompanyData.TAB);
           final String ticker = fld[0].trim();
           final CompanyData cd = CompanyData.getCompany(ticker);
           if (cd != null) {
             cd.cashData = CashData.setCashDataInfo(fld);
-            // System.out.println(ticker);
-            // System.out.println(cd.cashData);
           }
         }
       }
@@ -655,10 +535,6 @@ public class CompanyData {
           if (cd != null) {
             sectors.add(cd.sector);
             cd.id = IncomeData.setIncomeData(fld);
-//            String fn = String.format("out/CompanyReports/%s_IdData.txt", ticker);
-//            try (PrintWriter pw = new PrintWriter(fn)) {
-//              pw.println(cd.id.getQoQ());
-//            }
           }
         }
       }
@@ -860,16 +736,6 @@ public class CompanyData {
     return false;
   }
 
-  private static void printNktr(String desc) {
-    for (final CompanyData cd : CompanyData.companyList) {
-      if (cd.ticker.equalsIgnoreCase("nktr")) {
-        CompanyData.pwnktr.printf("%n%s%n", desc);
-        CompanyData.printHeaderData(cd);
-        return;
-      }
-    }
-  }
-
   /**
    * net.ajaskey.market.tools.SIP.setCompanyInfo
    *
@@ -926,92 +792,58 @@ public class CompanyData {
     return ret;
   }
 
-  public int    adv;
-  public double avgPrice;
-  // aggregate data
+  public int              adv;
+  public double           avgPrice;
   public BalanceSheetData bsd;
   public CashData         cashData;
-  // public double capEx;
-  public double   cashFlow;
-  public String   city;
-  public double   currentRatio;
-  public double   debtCash;
-  public double   divYld;
-  public DateTime eoq;
-  public double   epsYld;
-  public String   exchange;
-
-  public double floatShares;
-  public double freeCashFlow;
-  public double gscore;
-
-  public double     high52wk;
-  public IncomeData id;
-
-  public String industry;
-
-  public double insiders;
-
-  public double inst;
-
-  public double interestRate;
-
-  public double lastPrice;
-
-  public double ltDebtEquity;
-  public double marketCap;
-
-  // from data
-  public String name;
-
-  public double netCashFlow;
-  public double netMargin;
-  public int    numEmp;
-
-  public double opInc3yrGrowth;
-  public double opMargin;
-  public double partOfTotalCap;
-  // derived data
-  public double pe;
-
-  public double pricePercOff52High;
-  public double psales;
-  public double q0EstGrowth;
-  public double roe;
-
-  public double rs;
-
-  public String sector;
-
-  public QuarterlyData shares;
-
-  public String spIndex;
-
-  public String state;
-
-  public double stDebtOpIncome;
-
-  public double sumCurrAssets;
-
-  public double sumCurrLiab;
-
-  public double taxRate;
-
-  public String ticker;
-
-  public double totalCashFlow;
-
-  public double turnover;
-
-  public double workingCapital;
-
-  public double workingCashFlow;
-
-  public double y1EstGrowth;
-
-  // public ZombieData zd;
-
-  public ZombieScore zscore;
+  public double           cashFlow;
+  public String           city;
+  public double           currentRatio;
+  public double           debtCash;
+  public double           divYld;
+  public DateTime         eoq;
+  public double           epsYld;
+  public String           exchange;
+  public double           floatShares;
+  public double           freeCashFlow;
+  public double           gscore;
+  public double           high52wk;
+  public IncomeData       id;
+  public String           industry;
+  public double           insiders;
+  public double           inst;
+  public double           interestRate;
+  public double           lastPrice;
+  public double           ltDebtEquity;
+  public double           marketCap;
+  public String           name;
+  public double           netCashFlow;
+  public double           netMargin;
+  public int              numEmp;
+  public double           opInc3yrGrowth;
+  public double           opMargin;
+  public double           partOfTotalCap;
+  public double           pe;
+  public double           pricePercOff52High;
+  public double           psales;
+  public double           q0EstGrowth;
+  public double           roe;
+  public double           rs;
+  public String           sector;
+  public QuarterlyData    shares;
+  public String           spIndex;
+  public String           state;
+  public double           stDebtOpIncome;
+  public double           sumCurrAssets;
+  public double           sumCurrLiab;
+  public double           taxRate;
+  public String           ticker;
+  public double           totalCashFlow;
+  public double           turnover;
+  public double           workingCapital;
+  public double           workingCashFlow;
+  public double           y1EstGrowth;
+  public ZombieScore      zscore;
 
   /**
    * This method serves as a constructor for the class.
@@ -1037,14 +869,10 @@ public class CompanyData {
     this.floatShares = 0.0;
     this.opInc3yrGrowth = 0.0;
     this.cashFlow = 0.0;
-    // this.capEx = 0.0;
     this.q0EstGrowth = 0.0;
     this.y1EstGrowth = 0.0;
-    // this.cashFromInv = 0.0;
     this.shares = new QuarterlyData("shares");
-
     this.gscore = 0.0;
-
     this.lastPrice = 0.0;
     this.avgPrice = 0.0;
     this.pricePercOff52High = 0.0;
@@ -1064,14 +892,12 @@ public class CompanyData {
     this.debtCash = 0.0;
     this.marketCap = 0.0;
     this.partOfTotalCap = 0.0;
-
     this.sumCurrAssets = 0.0;
     this.sumCurrLiab = 0.0;
     this.currentRatio = 0.0;
     this.workingCapital = 0.0;
     this.netCashFlow = 0.0;
     this.totalCashFlow = 0.0;
-
     this.high52wk = 0.0;
   }
 

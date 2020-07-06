@@ -48,7 +48,7 @@ public class SpxEarnings {
    */
   public static void main(String[] args) throws FileNotFoundException {
 
-    final List<String> input = TextUtils.readTextFile("data/SPX-Earnings.txt", true);
+    final List<String> input = TextUtils.readTextFile("sipdata/SPX-Earnings.txt", true);
 
     for (final String s : input) {
       final SpxEarnings data = new SpxEarnings(s);
@@ -63,8 +63,8 @@ public class SpxEarnings {
     final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
     final double spxPrice = spxData.getLatest();
 
-    String dir = "out/earnings";
-    Utils.makeDir(dir);
+    String dir = "sipout/earnings";
+    Utils.makeDirs(dir);
     final DateTime today = new DateTime();
     today.setSdf(new SimpleDateFormat("yyyyMMdd"));
     String fname = String.format("%s/SPX_%s_Historic_Earnings.txt", dir, today);
@@ -95,7 +95,7 @@ public class SpxEarnings {
       tmp.incEps[0] = tmp.est1;
       estList.add(tmp);
     }
-    dir = "out/earnings";
+    dir = "sipout/earnings";
     fname = String.format("%s/SPX_%s_Estimated_Earnings.txt", dir, today);
     SpxEarnings.process(estList, 0.0, fname);
 
@@ -285,26 +285,17 @@ public class SpxEarnings {
   }
 
   public DateTime currentFiscalYear;
-
-  public double est1;
-
-  public double estNet1;
-
+  public double   est1;
+  public double   estNet1;
   public String   exchange;
   public Double[] incEps = new Double[SpxEarnings.QoD];
-
   public String   industry;
   public DateTime lastQtrEps;
-
   public Double[] mktCap = new Double[SpxEarnings.QoD];
-
-  public String name;
-
-  public String sector;
-
+  public String   name;
+  public String   sector;
   public Double[] shares = new Double[SpxEarnings.QoD];
-
-  public String ticker;
+  public String   ticker;
 
   private boolean valid;
 

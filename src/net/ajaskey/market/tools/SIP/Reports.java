@@ -109,7 +109,7 @@ public class Reports {
    */
   public void WriteBestFinancial() throws FileNotFoundException {
 
-    Utils.makeDir("out/CompanyReports");
+    Utils.makeDirs("sipout/CompanyReports");
 
     final List<CompanyData> bestList = new ArrayList<>();
 
@@ -117,7 +117,7 @@ public class Reports {
      *
      */
     int knt = 0;
-    try (PrintWriter pw = new PrintWriter("out/BestCompanies.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/BestCompanies.txt")) {
 
       final DateTime now = new DateTime();
       now.setSdf(Utils.sdfFull);
@@ -230,7 +230,7 @@ public class Reports {
     }
     System.out.printf("Total Best Companies found : %d%n", knt);
 
-    try (PrintWriter pw = new PrintWriter("out/best-list.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/best-list.txt")) {
       for (final CompanyData cd : bestList) {
         pw.printf(" $%s", cd.ticker);
         // System.out.println("*adding to goodlist :" + cd.ticker);
@@ -249,12 +249,12 @@ public class Reports {
    */
   public void WriteCompanyReports() throws FileNotFoundException {
 
-    Utils.makeDir("out/CompanyReports");
+    Utils.makeDir("sipout/CompanyReports");
 
-    final PrintWriter pwAll = new PrintWriter("out/CompanyReports.txt");
+    final PrintWriter pwAll = new PrintWriter("sipout/CompanyReports.txt");
 
     for (final CompanyData cd : this.companyList) {
-      try (PrintWriter pw = new PrintWriter("out/CompanyReports/" + cd.ticker + ".txt")) {
+      try (PrintWriter pw = new PrintWriter("sipout/CompanyReports/" + cd.ticker + ".txt")) {
         this.printHeaderData(pw, cd);
         this.WriteShareData(pw, cd);
 
@@ -296,7 +296,7 @@ public class Reports {
 
   public void WriteDividendCutters() throws FileNotFoundException {
 
-    Utils.makeDir("out/CompanyReports");
+    Utils.makeDir("sipout/CompanyReports");
 
     final List<CompanyData> noDivList = new ArrayList<>();
     for (final CompanyData cd : this.companyList) {
@@ -319,7 +319,7 @@ public class Reports {
 
     final List<String> divcutList = new ArrayList<>();
 
-    try (PrintWriter pw = new PrintWriter("out/DividendCutters.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/DividendCutters.txt")) {
 
       final DateTime now = new DateTime();
       now.setSdf(Utils.sdfFull);
@@ -339,7 +339,7 @@ public class Reports {
         }
       }
     }
-    try (PrintWriter pw = new PrintWriter("out/divcutlist.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/divcutlist.txt")) {
       for (final String s : divcutList) {
         pw.printf(" $%s", s);
       }
@@ -349,7 +349,7 @@ public class Reports {
 
   public void WriteGoodFinancial() throws FileNotFoundException {
 
-    Utils.makeDir("out/CompanyReports");
+    Utils.makeDir("sipout/CompanyReports");
 
     // final List<CompanyData> goodList = new ArrayList<>();
 
@@ -358,7 +358,7 @@ public class Reports {
     final double spxP0 = spxData.getLatest();
     final double spxChg = (spxP0 - spxP1) / spxP1;
 
-    try (PrintWriter pw = new PrintWriter("out/GoodCompanies.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/GoodCompanies.txt")) {
 
       final DateTime now = new DateTime();
       now.setSdf(Utils.sdfFull);
@@ -475,8 +475,8 @@ public class Reports {
     }
 //    System.out.printf("Total Good Companies found : %d%n", knt);
 //
-//    try (PrintWriter pw = new PrintWriter("out/good-list.txt");
-//        PrintWriter pwSc = new PrintWriter("out/good-list-sc.txt")) {
+//    try (PrintWriter pw = new PrintWriter("sipout/good-list.txt");
+//        PrintWriter pwSc = new PrintWriter("sipout/good-list-sc.txt")) {
 //      int knter = 0;
 //      System.out.println("Writing Goodlist Knt : " + goodList.size());
 //      for (final CompanyData cd : goodList) {
@@ -499,7 +499,7 @@ public class Reports {
    */
   public void WriteZombies(String prefix) throws FileNotFoundException {
 
-    Utils.makeDir("out/CompanyReports");
+    Utils.makeDir("sipout/CompanyReports");
 
     final List<CompanyData> zombieList = new ArrayList<>();
     for (final CompanyData cd : this.companyList) {
@@ -534,7 +534,7 @@ public class Reports {
       }
     }
 
-    try (PrintWriter pw = new PrintWriter("out/" + prefix + "Zombie-Sectors.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/" + prefix + "Zombie-Sectors.txt")) {
 
       final DateTime now = new DateTime();
       now.setSdf(Utils.sdfFull);
@@ -560,7 +560,7 @@ public class Reports {
       }
     }
 
-    try (PrintWriter pw = new PrintWriter("out/" + prefix + "Zombies.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/" + prefix + "Zombies.txt")) {
 
       final DateTime now = new DateTime();
       now.setSdf(Utils.sdfFull);
@@ -628,7 +628,7 @@ public class Reports {
       pw.println("QoQ : this quarter versus same quarter a year ago.");
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
 
-      try (PrintWriter pwPz = new PrintWriter("out/" + prefix + "Pre-Zombies.txt")) {
+      try (PrintWriter pwPz = new PrintWriter("sipout/" + prefix + "Pre-Zombies.txt")) {
         for (final CompanyData cd : finalZombieList) {
 
           if (cd.zscore.score < 80.0) {
@@ -644,9 +644,9 @@ public class Reports {
 
       knt = 1;
       int rank = 1;
-      try (PrintWriter pwCode = new PrintWriter("out/" + prefix + "zombie-list.txt");
-          PrintWriter pwCsv = new PrintWriter("out/" + prefix + "Zombies.csv");
-          PrintWriter pwSc = new PrintWriter("out/" + prefix + "Zombies-sc.txt")) {
+      try (PrintWriter pwCode = new PrintWriter("sipout/" + prefix + "zombie-list.txt");
+          PrintWriter pwCsv = new PrintWriter("sipout/" + prefix + "Zombies.csv");
+          PrintWriter pwSc = new PrintWriter("sipout/" + prefix + "Zombies-sc.txt")) {
 
         pwCsv.println("Ticker,");
 
