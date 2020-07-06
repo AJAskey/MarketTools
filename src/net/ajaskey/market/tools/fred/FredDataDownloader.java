@@ -42,8 +42,7 @@ public class FredDataDownloader {
   // public static final Logger LOGGER =
   // Logger.getLogger(FredDataDownloader.class.getName());
 
-  public static PrintWriter   tryAgainFile = null;
-  private static final String NL           = "\n";
+  public static PrintWriter tryAgainFile = null;
 
   /**
    * net.ajaskey.market.tools.fred.main
@@ -53,9 +52,9 @@ public class FredDataDownloader {
    */
   public static void main(final String[] args) throws IOException {
 
-    Debug.init("FredDataDownloader.log");
+    Debug.init("debug/FredDataDownloader.log");
 
-    FredDataDownloader.tryAgainFile = new PrintWriter("fred-try-again.txt");
+    FredDataDownloader.tryAgainFile = new PrintWriter("out/fred-try-again.txt");
 
     Utils.makeDir(FredCommon.fredPath);
 
@@ -63,11 +62,11 @@ public class FredDataDownloader {
 
     List<String> codeNames = new ArrayList<>();
 
-    codeNames = FredCommon.readSeriesList(FredCommon.fredPath + "/fred-series-new-names.txt");
+    codeNames = FredCommon.readSeriesList("data/fred-series-new-names.txt");
     Collections.sort(codeNames);
-    String codes = "Processing codes :" + FredDataDownloader.NL;
+    String codes = "Processing codes :" + Utils.NL;
     for (final String s : codeNames) {
-      codes += s + FredDataDownloader.NL;
+      codes += s + Utils.NL;
     }
     Debug.log(codes);
 

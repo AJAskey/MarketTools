@@ -82,7 +82,7 @@ public class FredCommon {
 
     Collections.sort(data);
 
-    try (PrintWriter pw = new PrintWriter(FredCommon.fredPath + "/fred-series-info.txt")) {
+    try (PrintWriter pw = new PrintWriter("data/fred-series-info.txt")) {
       pw.println(FredCommon.infoHeader);
 
       for (final String s : data) {
@@ -177,7 +177,7 @@ public class FredCommon {
     }
     System.out.println(toDirectory);
 
-    final List<String> copy_names = FredCommon.readTextNames(FredCommon.fredPath + "fred-copy-names.txt");
+    final List<String> copy_names = FredCommon.readTextNames("out/fred-copy-names.txt");
 
     final File folder = new File(FredCommon.fredPath);
     final File[] existingFiles = folder.listFiles();

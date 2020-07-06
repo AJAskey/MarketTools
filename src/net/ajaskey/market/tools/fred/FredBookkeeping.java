@@ -36,12 +36,12 @@ import net.ajaskey.market.misc.Debug;
 public class FredBookkeeping {
 
   private static List<DataSeriesInfo> dsiList     = new ArrayList<>();
-  private static final String         fsiFilename = "fred-series-info.txt";
+  private static final String         fsiFilename = "data/fred-series-info.txt";
 
   // private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd
   // HH:mm:ss.SSS");
 
-  private static final String tryAgainFilename = "fred-try-again.txt";
+  private static final String tryAgainFilename = "out/fred-try-again.txt";
 
   /**
    * net.ajaskey.market.tools.fred.main
@@ -51,7 +51,9 @@ public class FredBookkeeping {
    */
   public static void main(final String[] args) throws IOException {
 
-    Debug.init("fred-bookkeeping.dbg");
+    Utils.makeDir("debug");
+
+    Debug.init("debug/fred-bookkeeping.dbg");
     FredDataDownloader.tryAgainFile = new PrintWriter(FredBookkeeping.tryAgainFilename);
 
     final String folder = FredCommon.fredPath;
@@ -81,7 +83,7 @@ public class FredBookkeeping {
     final List<String> codes = new ArrayList<>(uniqCodes);
     Collections.sort(codes);
 
-    FredBookkeeping.process(codes, "CodesToUpdate.txt");
+    FredBookkeeping.process(codes, "out/CodesToUpdate.txt");
 
     FredDataDownloader.tryAgainFile.close();
 
@@ -89,7 +91,7 @@ public class FredBookkeeping {
     Debug.log("Processing retry attempts...");
 
     final List<String> retry = FredCommon.readSeriesList(FredBookkeeping.tryAgainFilename);
-    FredBookkeeping.process(retry, "RetryCodesToAdd.txt");
+    FredBookkeeping.process(retry, "out/RetryCodesToAdd.txt");
 
     FredDataDownloader.tryAgainFile = new PrintWriter(FredBookkeeping.tryAgainFilename);
 
