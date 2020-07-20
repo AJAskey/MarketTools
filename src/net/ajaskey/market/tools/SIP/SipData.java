@@ -87,8 +87,8 @@ public class SipData {
    */
   public static void main(final String[] args) throws FileNotFoundException, IOException, ParseException {
 
-    SipData.readDataFile_1("data/SP-STOCKS.txt");
-    final DateTime latest = SipData.readDataFile_2("data/SP-STOCKS-B.txt");
+    SipData.readDataFile_1("sipdata/SP-STOCKS.txt");
+    final DateTime latest = SipData.readDataFile_2("sipdata/SP-STOCKS-B.txt");
 
     System.out.println(latest);
 
@@ -374,13 +374,14 @@ public class SipData {
     final List<String> dir = new ArrayList<>();
     dir.add(SipData.path);
     final List<String> fil = new ArrayList<>();
-    fil.add("data\\SP-Stocks.txt");
-    fil.add("data\\SP-Stocks-B.txt");
+    fil.add("sipdata\\SP-Stocks.txt");
+    fil.add("sipdata\\SP-Stocks-B.txt");
 
     final DateTime now = new DateTime();
     now.setSdf(Utils.sdf);
 
     final String fname = "SIP-" + latest + "_" + now + ".zip";
+    Utils.makeDirs("archive");
     Zip.create(dir, fil, "archive", fname);
 
   }

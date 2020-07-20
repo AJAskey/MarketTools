@@ -362,7 +362,6 @@ public class QuarterlyData {
 
     double ret = 0.0;
     if (Math.abs(this.q5) > 0.0 && Math.abs(this.q6) > 0.0 && Math.abs(this.q7) > 0.0 && Math.abs(this.q8) > 0.0) {
-
       ret = this.q5 + this.q6 + this.q7 + this.q8;
     }
     return ret;

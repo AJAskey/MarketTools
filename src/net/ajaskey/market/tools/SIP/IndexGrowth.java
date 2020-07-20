@@ -38,10 +38,11 @@ public class IndexGrowth extends CompanyData {
   static double day0   = 0.0;
   static double day365 = 0.0;
 
-  static double          day65     = 0.0;
-  static double          day730    = 0.0;
-  static DateTime        qDate     = null;
-  static final DateTime  recentQtr = new DateTime(2020, DateTime.JANUARY, 31);
+  static double   day65  = 0.0;
+  static double   day730 = 0.0;
+  static DateTime qDate  = null;
+  // static final DateTime recentQtr = new DateTime(2020, DateTime.JANUARY, 31);
+  static final DateTime  recentQtr = new DateTime(2020, DateTime.APRIL, 30);
   static TickerPriceData spxData   = null;
 
   static DateTime yesterday = new DateTime();
@@ -491,14 +492,14 @@ public class IndexGrowth extends CompanyData {
 
         if (IndexGrowth.isMatch(cd, IndexGrowth.recentQtr, c)) {
 
-          Boolean process = true;
+          Boolean doProcess = true;
           if (spxOnly) {
             if (!cd.spIndex.equals("SP500")) {
-              process = false;
+              doProcess = false;
             }
           }
 
-          if (process) {
+          if (doProcess) {
             cFromSec.add(cd);
             System.out.printf("Adding : %s\t--\t%s, %s, %s%n", sec, cd.ticker, cd.sector, cd.industry);
             td.add(cd);

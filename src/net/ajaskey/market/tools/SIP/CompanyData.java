@@ -104,7 +104,7 @@ public class CompanyData {
 
     final double spxPrice = day0;
 
-    Debug.init("CompanyData.log");
+    Debug.init("debug/CompanyData.log");
 
     QuarterlyData.init();
 
@@ -178,7 +178,7 @@ public class CompanyData {
     }
 
     // output data
-    try (PrintWriter pw = new PrintWriter("sipout/companystats.dbg")) {
+    try (PrintWriter pw = new PrintWriter("debug/companystats.dbg")) {
 
       for (final CompanyData cd : CompanyData.companyList) {
         pw.println(cd);
@@ -214,10 +214,11 @@ public class CompanyData {
     }
 
     final Reports reports = new Reports(filteredList);
-    reports.WriteBestFinancial();
-    reports.WriteGoodFinancial();
-    reports.WriteZombies("");
-    reports.WriteDividendCutters();
+    reports.writeBestFinancial();
+    reports.writeGoodFinancial();
+    reports.writeZombies("");
+    reports.writeDividendCutters();
+    reports.writeSpreadsheetData();
 
     List<CompanyData> noBrainZombies = new ArrayList<>();
     for (final CompanyData cd : filteredList) {
@@ -226,11 +227,11 @@ public class CompanyData {
       }
     }
     final Reports nbzReport = new Reports(noBrainZombies);
-    nbzReport.WriteZombies("noBrain-");
+    nbzReport.writeZombies("noBrain-");
     noBrainZombies = null;
 
     final Reports tdReport = new Reports(CompanyData.companyList);
-    tdReport.WriteCompanyReports();
+    tdReport.writeCompanyReports();
 
     System.out.printf("Total Buyback Estimate   :  $%sB%n", QuarterlyData.fmt(CompanyData.totalBuyBacks / 1000.0, 2));
     System.out.printf("Total New Share Estimate :  $%sB%n", QuarterlyData.fmt(CompanyData.totalNewShares / 1000.0, 2));
@@ -710,27 +711,29 @@ public class CompanyData {
     if (cd.sector.contains("Utilities")) {
       return false;
     }
-    if (cd.lastPrice > 12.0) {
+    if (cd.lastPrice >= 20.0) {
+
       final double wcfcf = cd.workingCapital + cd.freeCashFlow;
       cd.zscore = ZombieScore.calculate(cd);
 
-      if (cd.zscore.score > 79.9) {
+      if (cd.zscore.score > 79.99) {
 
-        if (wcfcf < 0.0) {
+        final double cf = cd.cashData.cashFromOps.getTtm() + cd.cashData.cashFromFin.getTtm() + cd.cashData.cashFromInv.getTtm();
+        if (wcfcf < 0.0 && cf < 0.0) {
           return true;
 
         }
-        else {
-          final double ti = cd.id.totalInterest.getTtm();
-          // final double fcf = cd.freeCashFlow;
-          final double ratio = ti / wcfcf;
-          if (wcfcf < ti) {
-            return true;
-          }
-          if (ratio > 0.199) {
-            return true;
-          }
-        }
+//        else {
+//          final double ti = cd.id.totalInterest.getTtm();
+//          // final double fcf = cd.freeCashFlow;
+//          final double ratio = ti / wcfcf;
+//          if (wcfcf < ti) {
+//            return true;
+//          }
+//          if (ratio > 0.199) {
+//            return true;
+//          }
+//        }
       }
     }
     return false;
@@ -792,7 +795,8 @@ public class CompanyData {
     return ret;
   }
 
-  public int              adv;
+  public int adv;
+
   public double           avgPrice;
   public BalanceSheetData bsd;
   public CashData         cashData;
@@ -910,6 +914,19 @@ public class CompanyData {
 
     this.ticker = code;
     this.shares = new QuarterlyData("shares");
+  }
+
+  /**
+   *
+   * @param cd
+   * @return
+   */
+  public String getExchange() {
+    String ret = this.exchange;
+    if (this.exchange.equalsIgnoreCase("New York")) {
+      ret = "NYSE";
+    }
+    return ret;
   }
 
   public String printMisc(String ret) {

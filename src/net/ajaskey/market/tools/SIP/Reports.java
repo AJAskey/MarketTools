@@ -107,7 +107,7 @@ public class Reports {
    *
    * @throws FileNotFoundException
    */
-  public void WriteBestFinancial() throws FileNotFoundException {
+  public void writeBestFinancial() throws FileNotFoundException {
 
     Utils.makeDirs("sipout/CompanyReports");
 
@@ -214,7 +214,7 @@ public class Reports {
         }
 
         this.printHeaderData(pw, cd);
-        this.WriteShareData(pw, cd);
+        this.writeShareData(pw, cd);
         pw.println();
 
         pw.println(cd.id.sales.fmtGrowthQY("Sales 12m"));
@@ -247,7 +247,7 @@ public class Reports {
    * @throws FileNotFoundException
    *
    */
-  public void WriteCompanyReports() throws FileNotFoundException {
+  public void writeCompanyReports() throws FileNotFoundException {
 
     Utils.makeDir("sipout/CompanyReports");
 
@@ -256,11 +256,11 @@ public class Reports {
     for (final CompanyData cd : this.companyList) {
       try (PrintWriter pw = new PrintWriter("sipout/CompanyReports/" + cd.ticker + ".txt")) {
         this.printHeaderData(pw, cd);
-        this.WriteShareData(pw, cd);
+        this.writeShareData(pw, cd);
 
         this.printHeaderData(pwAll, cd);
 
-        this.WriteShareData(pwAll, cd);
+        this.writeShareData(pwAll, cd);
         pw.println();
 
         pwAll.println(cd.id.sales.fmtGrowthQY("Sales 12m"));
@@ -280,7 +280,7 @@ public class Reports {
    * @param pw
    * @param cd
    */
-  public void WriteCsvLine(PrintWriter pw, CompanyData cd) {
+  public void writeCsvLine(PrintWriter pw, CompanyData cd) {
 
     final String exch = ":US";
 //    if (cd.exchange.contains("New York")) {
@@ -294,7 +294,7 @@ public class Reports {
 
   }
 
-  public void WriteDividendCutters() throws FileNotFoundException {
+  public void writeDividendCutters() throws FileNotFoundException {
 
     Utils.makeDir("sipout/CompanyReports");
 
@@ -347,7 +347,7 @@ public class Reports {
     }
   }
 
-  public void WriteGoodFinancial() throws FileNotFoundException {
+  public void writeGoodFinancial() throws FileNotFoundException {
 
     Utils.makeDir("sipout/CompanyReports");
 
@@ -459,7 +459,7 @@ public class Reports {
         }
 
         this.printHeaderData(pw, cd);
-        this.WriteShareData(pw, cd);
+        this.writeShareData(pw, cd);
         pw.println();
 
         pw.println(cd.id.sales.fmtGrowthQY("Sales 12m"));
@@ -467,28 +467,45 @@ public class Reports {
         pw.printf("\tOpInc Growth 3Y   : %13.2f%%%n", cd.opInc3yrGrowth);
         pw.println();
 
-        // System.out.println(" adding to goodlist :" + cd.ticker);
-        // goodList.add(cd);
         CompanyData.addToGoodList(cd);
-
       }
     }
-//    System.out.printf("Total Good Companies found : %d%n", knt);
-//
-//    try (PrintWriter pw = new PrintWriter("sipout/good-list.txt");
-//        PrintWriter pwSc = new PrintWriter("sipout/good-list-sc.txt")) {
-//      int knter = 0;
-//      System.out.println("Writing Goodlist Knt : " + goodList.size());
-//      for (final CompanyData cd : goodList) {
-//        knter++;
-//        if (knter > 100)
-//          break;
-//        WriteCsvLine(pw, cd);
-//        System.out.println("Writing to goodlist :" + cd.ticker);
-//        pwSc.println(cd.ticker);
-//      }
-//    }
 
+  }
+
+  /**
+   * Prints to comma separated file
+   */
+  public void writeSpreadsheetData() {
+
+    try (PrintWriter pw = new PrintWriter("sipout/spx-fundies.csv")) {
+
+      pw.println("Ticker,Sector,Industry,Index,Exch,Last Q,Sales Q5,Sales Q1,Sales Chg,Net Q5,Net Q1,Net Chg,"
+          + "CashOps pTTM,CashOps TTM,CashOps Chg,PE,Q0 Est,Y1 Est");
+
+      for (final CompanyData cd : this.companyList) {
+        double pe = -0.001;
+        if (cd.id.netIncome.dd.ttm > 0.0) {
+          final double petmp = cd.lastPrice / (cd.id.netIncome.dd.ttm / cd.shares.q1);
+          pe = Math.min(petmp, 300.0);
+        }
+        final String sector = cd.sector.replace(",", " ");
+        final String industry = cd.industry.replace(",", " ");
+        final double cops = cd.cashData.cashFromOps.getTtm();
+        final double cops58 = cd.cashData.cashFromOps.getPrevTtm();
+        double chg = 0.0;
+        if (cops58 != 0.0) {
+          chg = (cops - cops58) / Math.abs(cops58) * 100.0;
+        }
+        final String s = String.format("%s,%s,%s,%s,%s,%s,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", cd.ticker, sector, industry, cd.spIndex,
+            cd.getExchange(), cd.eoq, cd.id.sales.q1, cd.id.sales.q5, cd.id.sales.dd.qoqGrowth, cd.id.netIncome.q5, cd.id.netIncome.q1,
+            cd.id.netIncome.dd.qoqGrowth, cops58, cops, chg, pe, cd.q0EstGrowth, cd.y1EstGrowth);
+        pw.println(s);
+      }
+    }
+    catch (final FileNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -497,7 +514,7 @@ public class Reports {
    *
    * @throws FileNotFoundException
    */
-  public void WriteZombies(String prefix) throws FileNotFoundException {
+  public void writeZombies(String prefix) throws FileNotFoundException {
 
     Utils.makeDir("sipout/CompanyReports");
 
@@ -516,8 +533,20 @@ public class Reports {
             if (cd.zscore.score > 50.0 && cd.rs < 5.0) {
               zombieList.add(cd);
             }
+            else {
+              Debug.log(String.format("ZOMBIE Check Fail : %s zscore=%.2f  rs=%.2f%n", cd.ticker, cd.zscore.score, cd.rs));
+            }
+          }
+          else {
+            Debug.log(String.format("ZOMBIE Check Fail : %s%n", state.replace(Utils.NL, "")));
           }
         }
+        else {
+          Debug.log(String.format("ZOMBIE Check Fail : %s price=%.2f%n", cd.ticker, cd.lastPrice));
+        }
+      }
+      else {
+        Debug.log(String.format("ZOMBIE Check Fail : %s sector=%s%n", cd.ticker, cd.sector));
       }
     }
 
@@ -664,7 +693,7 @@ public class Reports {
 //            }
             pwCode.printf(" $%s", cd.ticker);
             if (cd.lastPrice > 12.0) {
-              this.WriteCsvLine(pwCsv, cd);
+              this.writeCsvLine(pwCsv, cd);
               pwSc.println(cd.ticker);
               knt++;
             }
@@ -910,7 +939,7 @@ public class Reports {
    * @param pw
    * @param cd
    */
-  private void WriteShareData(final PrintWriter pw, final CompanyData cd) {
+  private void writeShareData(final PrintWriter pw, final CompanyData cd) {
 
     pw.printf("%n\tFloat             : %s M%n", QuarterlyData.fmt(cd.floatShares, 13));
     double d = cd.insiders * cd.floatShares / 100.0;
