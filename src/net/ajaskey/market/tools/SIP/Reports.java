@@ -32,21 +32,14 @@ import net.ajaskey.market.optuma.TickerPriceData;
 
 public class Reports {
 
-  private static final double cratioLWM = 0.75;
-
-  private static final double intToSalesHWM = 15.0;
-
-  private static final double lteHWM = 5.0;
-
-  private static final double MILLION = 1000000.0;
-
-  private static final String NL = "\n";
-
+  private static final double cratioLWM       = 0.75;
+  private static final double intToSalesHWM   = 15.0;
+  private static final double lteHWM          = 5.0;
+  private static final double MILLION         = 1000000.0;
+  private static final String NL              = Utils.NL;
   private static final double supplyDemandLWM = 350.0;
 
   /**
-   *
-   * net.ajaskey.market.tools.SIP.checkMaxValue
    *
    * @param ticker
    * @param desc
@@ -69,8 +62,6 @@ public class Reports {
 
   /**
    *
-   * net.ajaskey.market.tools.SIP.checkMinValue
-   *
    * @param ticker
    * @param desc
    * @param val
@@ -90,6 +81,9 @@ public class Reports {
     return ret;
   }
 
+  /**
+   * Main list
+   */
   private List<CompanyData> companyList = null;
 
   /**
@@ -102,8 +96,6 @@ public class Reports {
   }
 
   /**
-   *
-   * net.ajaskey.market.tools.SIP.WriteBestFinancial
    *
    * @throws FileNotFoundException
    */
@@ -242,10 +234,7 @@ public class Reports {
 
   /**
    *
-   * net.ajaskey.market.tools.SIP.DumpCompanyReports
-   *
    * @throws FileNotFoundException
-   *
    */
   public void writeCompanyReports() throws FileNotFoundException {
 
@@ -294,6 +283,10 @@ public class Reports {
 
   }
 
+  /**
+   *
+   * @throws FileNotFoundException
+   */
   public void writeDividendCutters() throws FileNotFoundException {
 
     Utils.makeDir("sipout/CompanyReports");
@@ -347,6 +340,10 @@ public class Reports {
     }
   }
 
+  /**
+   *
+   * @throws FileNotFoundException
+   */
   public void writeGoodFinancial() throws FileNotFoundException {
 
     Utils.makeDir("sipout/CompanyReports");

@@ -42,19 +42,20 @@ import net.ajaskey.market.optuma.TickerPriceData;
 public class CompanyData {
 
   public static List<CompanyData> buybackList = new ArrayList<>();
+  public static List<CompanyData> companyList = new ArrayList<>();
 
-  public static List<CompanyData>      companyList = new ArrayList<>();
-  public final static SimpleDateFormat sdf         = new SimpleDateFormat("MM/dd/yyyy");
+  public static List<String> sectorList;
 
-  public static List<String>    sectorList;
   protected final static String balsheetFile     = "sipdata/US-STOCKS-BALANCESHEETQTR.TXT";
   protected final static String cashFile         = "sipdata/US-STOCKS-CASH.TXT";
   protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
   protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
 
-  final private static String NL          = Utils.NL;
-  final private static String TAB         = Utils.TAB;
-  private static Set<String>  theGoodList = new HashSet<>();
+  private final static String           NL  = Utils.NL;
+  private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+  private final static String           TAB = Utils.TAB;
+
+  private static Set<String> theGoodList = new HashSet<>();
 
   private static double totalBuyBacks  = 0.0;
   private static double totalEps       = 0.0;
