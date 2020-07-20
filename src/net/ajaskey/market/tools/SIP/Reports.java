@@ -60,7 +60,7 @@ public class Reports {
 
     if (val > max) {
       final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is greater than Max : %.2f%n", s, val, max));
+      Debug.LOGGER.info(String.format("  %-15s Value : %.2f is greater than Max : %.2f%n", s, val, max));
       ret = false;
     }
 
@@ -83,7 +83,7 @@ public class Reports {
 
     if (val < min) {
       final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
+      Debug.LOGGER.info(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
       ret = false;
     }
 
@@ -209,7 +209,7 @@ public class Reports {
         final boolean earnEst = cd.q0EstGrowth < 0.0 && cd.y1EstGrowth < 0.0;
         if (earnEst) {
           final String s = cd.ticker + " Negative earings estimates";
-          Debug.log(String.format("  %-15s%n", s));
+          Debug.LOGGER.info(String.format("  %-15s%n", s));
           continue;
         }
 
@@ -454,7 +454,7 @@ public class Reports {
         final boolean earnEst = cd.q0EstGrowth < 0.0 && cd.y1EstGrowth < 0.0;
         if (earnEst) {
           final String s = cd.ticker + " Negative earings estimates";
-          Debug.log(String.format("  %-15s%n", s));
+          Debug.LOGGER.info(String.format("  %-15s%n", s));
           continue;
         }
 
@@ -521,10 +521,6 @@ public class Reports {
     final List<CompanyData> zombieList = new ArrayList<>();
     for (final CompanyData cd : this.companyList) {
 
-      if (cd.ticker.equalsIgnoreCase("W")) {
-        System.out.println(cd);
-      }
-
       if (!cd.sector.equalsIgnoreCase("Financials")) {
         if (cd.lastPrice >= 12.0) {
           final String state = this.getState(cd);
@@ -534,19 +530,19 @@ public class Reports {
               zombieList.add(cd);
             }
             else {
-              Debug.log(String.format("ZOMBIE Check Fail : %s zscore=%.2f  rs=%.2f%n", cd.ticker, cd.zscore.score, cd.rs));
+              Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s zscore=%.2f  rs=%.2f%n", cd.ticker, cd.zscore.score, cd.rs));
             }
           }
           else {
-            Debug.log(String.format("ZOMBIE Check Fail : %s%n", state.replace(Utils.NL, "")));
+            Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s%n", state.replace(Utils.NL, "")));
           }
         }
         else {
-          Debug.log(String.format("ZOMBIE Check Fail : %s price=%.2f%n", cd.ticker, cd.lastPrice));
+          Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s price=%.2f%n", cd.ticker, cd.lastPrice));
         }
       }
       else {
-        Debug.log(String.format("ZOMBIE Check Fail : %s sector=%s%n", cd.ticker, cd.sector));
+        Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s sector=%s%n", cd.ticker, cd.sector));
       }
     }
 
