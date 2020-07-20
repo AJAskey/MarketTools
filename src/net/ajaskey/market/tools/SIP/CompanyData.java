@@ -43,12 +43,12 @@ public class CompanyData {
 
   public static List<CompanyData> buybackList = new ArrayList<>();
 
-  public static List<CompanyData>      companyList  = new ArrayList<>();
-  public final static SimpleDateFormat sdf          = new SimpleDateFormat("MM/dd/yyyy");
-  public static List<String>           sectorList;
-  protected final static String        balsheetFile = "sipdata/US-STOCKS-BALANCESHEETQTR.TXT";
-  protected final static String        cashFile     = "sipdata/US-STOCKS-CASH.TXT";
+  public static List<CompanyData>      companyList = new ArrayList<>();
+  public final static SimpleDateFormat sdf         = new SimpleDateFormat("MM/dd/yyyy");
 
+  public static List<String>    sectorList;
+  protected final static String balsheetFile     = "sipdata/US-STOCKS-BALANCESHEETQTR.TXT";
+  protected final static String cashFile         = "sipdata/US-STOCKS-CASH.TXT";
   protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
   protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
 
@@ -292,7 +292,6 @@ public class CompanyData {
         final String str = line.replaceAll("\"", "").trim();
         if (str.length() > 1) {
 
-          // System.out.println(str);
           final String fld[] = str.split(CompanyData.TAB);
           final String ticker = fld[0].trim();
           final CompanyData cd = CompanyData.getCompany(ticker);
@@ -303,7 +302,6 @@ public class CompanyData {
             cd.numEmp = (int) Double.parseDouble(fld[2].trim());
             cd.eoq = new DateTime(fld[3].trim(), "MM/dd/yyyy");
             cd.eoq.setSdf(Utils.sdf);
-            // cd.eoq.
             final String s = fld[1].trim();
             if (s.length() > 0) {
               if (s.contains("500")) {
@@ -367,8 +365,6 @@ public class CompanyData {
 
             cd.pricePercOff52High = DerivedData.calc52weekHighPercent(cd);
 
-            // cd.zd.calc(cd);
-
             if (cd.spIndex.equals("SP500")) {
               final double sc = DerivedData.calcShareChange(cd);
               final double bbest = Math.abs(sc) * cd.avgPrice;
@@ -383,7 +379,6 @@ public class CompanyData {
 
             CompanyData.totalMarketCap += cd.marketCap;
           }
-          // System.out.println(cd.printMisc(cd.ticker + NL));
         }
       }
     }
@@ -546,145 +541,6 @@ public class CompanyData {
 
   }
 
-  private static String calcTotalBvps(TotalData td) {
-
-    final String fldEquity[] = td.equity.getQoQ(100.0).replace(",", "").split("\\s+");
-    final String fldShares[] = td.shares.getQoQ().replace(",", "").split("\\s+");
-
-    final long q1e = Long.parseLong(fldEquity[1].trim());
-    final long q5e = Long.parseLong(fldEquity[2].trim());
-
-    final long q1s = Long.parseLong(fldShares[1].trim());
-    final long q5s = Long.parseLong(fldShares[2].trim());
-
-    final long q1bvps = q1e / q1s;
-    final long q5bvps = q5e / q5s;
-
-    double chg = 0.0;
-    if (Math.abs(q5bvps) > 0) {
-      final double r1 = q1bvps;
-      final double r5 = q5bvps;
-      chg = (r1 - r5) / Math.abs(r5) * 100.0;
-    }
-
-    final double dq1 = q1bvps / 100.0;
-    final double dq5 = q5bvps / 100.0;
-
-    final String q1 = String.format("%,16.2f", dq1);
-    final String q5 = String.format("%,16.2f", dq5);
-    final String sRet = String.format("%s %s   --> %12.2f%%", q1, q5, chg);
-
-    return sRet;
-  }
-
-  private static String calcTotalStAssets(TotalData td) {
-
-    final long[] ret = { 0, 0 };
-
-    String fld[] = td.cash.getQoQ().replace(",", "").split("\\s+");
-    long q1 = Long.parseLong(fld[1].trim());
-    long q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    fld = td.stInvestments.getQoQ().replace(",", "").split("\\s+");
-    q1 = Long.parseLong(fld[1].trim());
-    q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    fld = td.acctReceiveable.getQoQ().replace(",", "").split("\\s+");
-    q1 = Long.parseLong(fld[1].trim());
-    q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    fld = td.inventory.getQoQ().replace(",", "").split("\\s+");
-    q1 = Long.parseLong(fld[1].trim());
-    q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    fld = td.otherAssets.getQoQ().replace(",", "").split("\\s+");
-    q1 = Long.parseLong(fld[1].trim());
-    q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    double chg = 0.0;
-    if (Math.abs(ret[1]) > 0) {
-      final double r1 = ret[0];
-      final double r5 = ret[1];
-      chg = (r1 - r5) / Math.abs(r5) * 100.0;
-    }
-    final String q1s = String.format("%,16d", ret[0]);
-    final String q5s = String.format("%,16d", ret[1]);
-    final String sRet = String.format("%s %s   --> %12.2f%%", q1s, q5s, chg);
-
-    return sRet;
-  }
-
-  private static String calcTotalStLiab(TotalData td) {
-
-    final long[] ret = { 0, 0 };
-
-    String fld[] = td.stDebt.getQoQ().replace(",", "").split("\\s+");
-    long q1 = Long.parseLong(fld[1].trim());
-    long q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    fld = td.acctPayable.getQoQ().replace(",", "").split("\\s+");
-    q1 = Long.parseLong(fld[1].trim());
-    q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    fld = td.otherCurrLiab.getQoQ().replace(",", "").split("\\s+");
-    q1 = Long.parseLong(fld[1].trim());
-    q5 = Long.parseLong(fld[2].trim());
-    ret[0] += q1;
-    ret[1] += q5;
-
-    double chg = 0.0;
-    if (Math.abs(ret[1]) > 0) {
-      final double r1 = ret[0];
-      final double r5 = ret[1];
-      chg = (r1 - r5) / Math.abs(r5) * 100.0;
-    }
-    final String q1s = String.format("%,16d", ret[0]);
-    final String q5s = String.format("%,16d", ret[1]);
-    final String sRet = String.format("%s %s   --> %12.2f%%", q1s, q5s, chg);
-
-    return sRet;
-  }
-
-  private static String calcTotalWC(String totstasset, String totstliab) {
-
-    final String fldAsset[] = totstasset.replace(",", "").split("\\s+");
-    final long q1a = Long.parseLong(fldAsset[1].trim());
-    final long q5a = Long.parseLong(fldAsset[2].trim());
-
-    final String fldLiab[] = totstliab.replace(",", "").split("\\s+");
-    final long q1l = Long.parseLong(fldLiab[1].trim());
-    final long q5l = Long.parseLong(fldLiab[2].trim());
-
-    final long q1diff = q1a - q1l;
-    final long q5diff = q5a - q5l;
-
-    double chg = 0.0;
-    if (Math.abs(q5diff) > 0) {
-      final double r1 = q1diff;
-      final double r5 = q5diff;
-      chg = (r1 - r5) / Math.abs(r5) * 100.0;
-    }
-    final String q1s = String.format("%,16d", q1diff);
-    final String q5s = String.format("%,16d", q5diff);
-    final String sRet = String.format("%s %s   --> %12.2f%%", q1s, q5s, chg);
-
-    return sRet;
-  }
-
   /**
    *
    * @param fname
@@ -723,17 +579,6 @@ public class CompanyData {
           return true;
 
         }
-//        else {
-//          final double ti = cd.id.totalInterest.getTtm();
-//          // final double fcf = cd.freeCashFlow;
-//          final double ratio = ti / wcfcf;
-//          if (wcfcf < ti) {
-//            return true;
-//          }
-//          if (ratio > 0.199) {
-//            return true;
-//          }
-//        }
       }
     }
     return false;
@@ -795,8 +640,7 @@ public class CompanyData {
     return ret;
   }
 
-  public int adv;
-
+  public int              adv;
   public double           avgPrice;
   public BalanceSheetData bsd;
   public CashData         cashData;
@@ -922,13 +766,18 @@ public class CompanyData {
    * @return
    */
   public String getExchange() {
-    String ret = this.exchange;
+    String ret = this.exchange.toUpperCase().trim();
     if (this.exchange.equalsIgnoreCase("New York")) {
       ret = "NYSE";
     }
     return ret;
   }
 
+  /**
+   *
+   * @param ret
+   * @return
+   */
   public String printMisc(String ret) {
 
     ret += CompanyData.TAB + this.name + CompanyData.NL;
