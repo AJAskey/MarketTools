@@ -32,9 +32,10 @@ public class Debug {
 
   public static final Level SEVERE  = Level.SEVERE;
   public static final Level WARNING = Level.WARNING;
-  private static boolean    isInit  = false;
 
-  public static final Logger LOGGER = Logger.getLogger("MarketToolsLogger");
+  private static boolean isInit = false;
+
+  public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
   /**
    *
@@ -56,12 +57,13 @@ public class Debug {
       LogManager.getLogManager().reset();
 
       fileHandler = new FileHandler(logfileName);
-      Debug.LOGGER.addHandler(fileHandler);
 
       simpleFormatter = new SimpleFormatter();
       fileHandler.setFormatter(simpleFormatter);
 
-      fileHandler.setLevel(Level.INFO);
+      fileHandler.setLevel(Level.ALL);
+
+      Debug.LOGGER.addHandler(fileHandler);
 
       Debug.isInit = true;
 
