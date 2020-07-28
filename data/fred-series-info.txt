@@ -1,4 +1,7 @@
-Name	Title	Method	Frequency	Units	Type	Last Download	Last Data Update	Tue 28-Jul-2020 09:16:27
+Name	Title	Method	Frequency	Units	Type	Last Download	Last Data Update	Tue 28-Jul-2020 10:02:24
+WEI	Weekly Economic Index (Lewis-Mertens-Stock)	NSA	Weekly, Ending Saturday	Index	LIN	28-Jul-2020	25-Jul-2020
+DAAA	Moody's Seasoned Aaa Corporate Bond Yield	NSA	Daily	Percent	LIN	28-Jul-2020	27-Jul-2020
+DBAA	Moody's Seasoned Baa Corporate Bond Yield	NSA	Daily	Percent	LIN	28-Jul-2020	27-Jul-2020
 CSUSHPISA	S&P/Case-Shiller U.S. National Home Price Index	SA	Monthly	Index Jan 2000=100	LIN	28-Jul-2020	01-May-2020
 EFFRVOL	Effective Federal Funds Volume	NSA	Daily	Billions of U.S. Dollars	LIN	28-Jul-2020	27-Jul-2020
 SOFR	Secured Overnight Financing Rate	NSA	Daily	Percent	LIN	28-Jul-2020	27-Jul-2020
@@ -74,8 +77,6 @@ RIFSPPNAAD15NB	15-Day AA Nonfinancial Commercial Paper Interest Rate	NSA	Daily	P
 RIFSPPNAAD07NB	7-Day AA Nonfinancial Commercial Paper Interest Rate	NSA	Daily	Percent	LIN	27-Jul-2020	24-Jul-2020
 RIFSPPNAAD30NB	30-Day AA Nonfinancial Commercial Paper Interest Rate	NSA	Daily	Percent	LIN	27-Jul-2020	24-Jul-2020
 RIFSPPNAAD90NB	90-Day AA Nonfinancial Commercial Paper Interest Rate	NSA	Daily	Percent	LIN	27-Jul-2020	24-Jul-2020
-DAAA	Moody's Seasoned Aaa Corporate Bond Yield	NSA	Daily	Percent	LIN	27-Jul-2020	24-Jul-2020
-DBAA	Moody's Seasoned Baa Corporate Bond Yield	NSA	Daily	Percent	LIN	27-Jul-2020	24-Jul-2020
 FGIUAMFRBDAL	Current Finished Goods Inventories; Diffusion Index for Texas	NSA	Monthly	Index	LIN	27-Jul-2020	01-Jul-2020
 CEXPUAMFRBDAL	Current Capital Expenditures; Diffusion Index for Texas	NSA	Monthly	Index	LIN	27-Jul-2020	01-Jul-2020
 BACTUAMFRBDAL	Current General Business Activity; Diffusion Index for Texas	NSA	Monthly	Index	LIN	27-Jul-2020	01-Jul-2020
@@ -228,7 +229,6 @@ M2	M2 Money Stock	SA	Weekly, Ending Monday	Billions of Dollars	LIN	23-Jul-2020	1
 COMPUTN	Commercial Paper Outstanding	NSA	Weekly, Ending Wednesday	Billions of Dollars	LIN	23-Jul-2020	22-Jul-2020
 MORTGAGE15US	15-Year Fixed Rate Mortgage Average in the United States	NSA	Weekly, Ending Thursday	Percent	LIN	23-Jul-2020	23-Jul-2020
 MORTGAGE30US	30-Year Fixed Rate Mortgage Average in the United States	NSA	Weekly, Ending Thursday	Percent	LIN	23-Jul-2020	23-Jul-2020
-WEI	Weekly Economic Index (Lewis-Mertens-Stock)	NSA	Weekly, Ending Saturday	Index	LIN	23-Jul-2020	18-Jul-2020
 CCNSA	Continued Claims (Insured Unemployment)	NSA	Weekly, Ending Saturday	Number	LIN	23-Jul-2020	11-Jul-2020
 ICNSA	Initial Claims	NSA	Weekly, Ending Saturday	Number	LIN	23-Jul-2020	18-Jul-2020
 ICSA	Initial Claims	SA	Weekly, Ending Saturday	Number	LIN	23-Jul-2020	18-Jul-2020
@@ -803,9 +803,9 @@ SUUR0000SAE	Chained Consumer Price Index for All Urban Consumers: Education and 
 SUUR0000SAE2	Chained Consumer Price Index for All Urban Consumers: Communication in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
 SUUR0000SAF1	Chained Consumer Price Index for All Urban Consumers: Food in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
 SUUR0000SAF116	Chained Consumer Price Index for All Urban Consumers: Alcoholic Beverages in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
-SUUR0000SAH2	Chained Consumer Price Index for All Urban Consumers: Fuels and Utilities in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
 SUUR0000SAN	Chained Consumer Price Index for All Urban Consumers: Nondurables in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
 SUUR0000SAT	Chained Consumer Price Index for All Urban Consumers: Transportation in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
+SUUR0000SAH2	Chained Consumer Price Index for All Urban Consumers: Fuels and Utilities in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
 CPIEDUNS	Consumer Price Index for All Urban Consumers: Education and Communication in U.S. City Average	NSA	Monthly	Index Dec 1997=100	LIN	14-Jul-2020	01-Jun-2020
 CPIULFNS	Consumer Price Index for All Urban Consumers: All Items Less Food in U.S. City Average	NSA	Monthly	Index 1982-1984=100	LIN	14-Jul-2020	01-Jun-2020
 SUUR0000SAM	Chained Consumer Price Index for All Urban Consumers: Medical Care in U.S. City Average	NSA	Monthly	Index Dec 1999=100	LIN	14-Jul-2020	01-Jun-2020
@@ -1433,9 +1433,9 @@ CEU1021100001	All Employees, Oil and Gas Extraction	NSA	Monthly	Thousands of Per
 CEU3100000001	All Employees, Durable Goods	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
 CEU3200000001	All Employees, Nondurable Goods	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
 CEU5500000001	All Employees, Financial Activities	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
-CEU3133660001	All Employees, Ship and Boat Building	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-May-2020
 CEU4000000001	All Employees, Trade, Transportation, and Utilities	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
 CEU4348100001	All Employees, Air Transportation	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
+CEU3133660001	All Employees, Ship and Boat Building	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-May-2020
 CEU0500000016	Indexes of Aggregate Weekly Hours of All Employees, Total Private	NSA	Monthly	Index 2007=100	LIN	02-Jul-2020	01-Jun-2020
 CEU4348400001	All Employees, Truck Transportation	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
 CEU3000000001	All Employees, Manufacturing	NSA	Monthly	Thousands of Persons	LIN	02-Jul-2020	01-Jun-2020
@@ -1647,9 +1647,6 @@ IY32619	Export Price Index (NAICS): Other plastics product manufacturing	NSA	Mon
 IY3329	Export Price Index (NAICS): Other fabricated metal product manufacturing	NSA	Monthly	Index 2005=100	LIN	16-Jan-2020	01-Dec-2019
 IZ3325	Import Price Index (NAICS): Hardware manufacturing	NSA	Monthly	Index 2005=100	LIN	16-Jan-2020	01-Dec-2019
 IZ33591	Import Price Index (NAICS): Battery manufacturing	NSA	Monthly	Index Dec 2009=100	LIN	16-Jan-2020	01-Dec-2019
-ADJRESNS	St. Louis Adjusted Reserves (DISCONTINUED)	NSA	Monthly	Billions of Dollars	LIN	20-Dec-2019	01-Nov-2019
-BASE	St. Louis Adjusted Monetary Base (DISCONTINUED)	SA	Biweekly, Ending Wednesday	Billions of Dollars	LIN	19-Dec-2019	18-Dec-2019
-AMBNS	St. Louis Adjusted Monetary Base (DISCONTINUED)	NSA	Monthly	Billions of Dollars	LIN	13-Dec-2019	01-Nov-2019
 MYAGM2CNM189N	M2 for China	NSA	Monthly	National Currency	LIN	11-Nov-2019	01-Aug-2019
 DDDM01USA156NWDB	Stock Market Capitalization to GDP for United States	NSA	Annual	Percent	LIN	21-Oct-2019	01-Jan-2017
 VALEXPRUM052N	Goods, Value of Exports for Russian Federation	NSA	Monthly	Dollars	LIN	01-Apr-2019	01-Dec-2018
