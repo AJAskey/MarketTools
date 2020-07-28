@@ -379,14 +379,14 @@ public class FredCommon {
           if (dsi.getTitle() != null) {
             FredDataDownloader.retryCount = 0;
             final boolean needsUpdate = dsi.getLastObservation().isGreaterThan(lastUpdate);
-            Debug.log(String.format("%nReceived data for %s%n%s%n", dsi.getResponse(), needsUpdate));
+            Debug.LOGGER.info(String.format("%nReceived data for %s%n%s%n", dsi.getResponse(), needsUpdate));
             return dsi;
           }
         }
       }
       FredDataDownloader.retryCount++;
       if (i < FredDataDownloader.maxRetries) {
-        Debug.log(String.format("Retrying DSI query for %s", code));
+        Debug.LOGGER.info(String.format("Retrying DSI query for %s", code));
       }
       else if (i == FredDataDownloader.maxRetries) {
         FredDataDownloader.tryAgainFile.println(code);
@@ -395,7 +395,8 @@ public class FredCommon {
     }
 
     if (FredDataDownloader.retryCount > FredDataDownloader.consecutiveRetryFailures) {
-      Debug.log(String.format("Too many retries (%d). Sleeping %d seconds.", FredDataDownloader.retryCount, FredDataDownloader.longSleep / 1000));
+      Debug.LOGGER
+          .info(String.format("Too many retries (%d). Sleeping %d seconds.", FredDataDownloader.retryCount, FredDataDownloader.longSleep / 1000));
 
       Utils.sleep(FredDataDownloader.longSleep);
       FredDataDownloader.retryCount = 0;

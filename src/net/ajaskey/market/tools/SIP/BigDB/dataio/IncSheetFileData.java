@@ -73,6 +73,18 @@ public class IncSheetFileData implements Serializable {
   }
 
   /**
+   *
+   * @return
+   */
+  public static List<String> getTickers() {
+    final List<String> tickers = new ArrayList<>();
+    for (final IncSheetFileData ifd : IncSheetFileData.ifdList) {
+      tickers.add(ifd.ticker.trim().toUpperCase());
+    }
+    return tickers;
+  }
+
+  /**
    * Returns a string containing text for all data in the list read from the DB.
    *
    * @return String
@@ -394,6 +406,7 @@ public class IncSheetFileData implements Serializable {
   private String   ticker;
   private double[] totalOpExpQtr;
   private double[] totalOpExpYr;
+
   private double[] unusualIncQtr;
 
   private double[] unusualIncYr;

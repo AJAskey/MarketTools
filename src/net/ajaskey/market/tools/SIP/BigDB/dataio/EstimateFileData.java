@@ -69,6 +69,18 @@ public class EstimateFileData implements Serializable {
   }
 
   /**
+   *
+   * @return
+   */
+  public static List<String> getTickers() {
+    final List<String> tickers = new ArrayList<>();
+    for (final EstimateFileData efd : EstimateFileData.efdList) {
+      tickers.add(efd.ticker.trim().toUpperCase());
+    }
+    return tickers;
+  }
+
+  /**
    * Returns a string containing text for all data in the list read from the DB.
    *
    * @return String
@@ -154,7 +166,8 @@ public class EstimateFileData implements Serializable {
   private String   industry;
   private DateTime latestQtrEps;
   private String   name;
-  private String   sector;
+
+  private String sector;
 
   private String ticker;
 
@@ -196,10 +209,10 @@ public class EstimateFileData implements Serializable {
     this.currFiscalYear = new DateTime(fld[5].trim(), "MM/dd/yyyy");
     this.latestQtrEps = new DateTime(fld[6].trim(), "MM/dd/yyyy");
     this.epsQ0 = SipUtils.parseDouble(fld[7]);
-    this.epsQ1 = SipUtils.parseDouble(fld[8]);
-    this.epsY0 = SipUtils.parseDouble(fld[9]);
-    this.epsY1 = SipUtils.parseDouble(fld[10]);
-    this.epsY2 = SipUtils.parseDouble(fld[11]);
+    this.epsQ1 = SipUtils.parseDouble(fld[16]);
+    this.epsY0 = SipUtils.parseDouble(fld[25]);
+    this.epsY1 = SipUtils.parseDouble(fld[34]);
+    this.epsY2 = SipUtils.parseDouble(fld[43]);
   }
 
   public DateTime getCurrFiscalYear() {

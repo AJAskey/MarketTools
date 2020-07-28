@@ -68,13 +68,13 @@ public class FredDataDownloader {
     for (final String s : codeNames) {
       codes += s + Utils.NL;
     }
-    Debug.log(codes);
+    Debug.LOGGER.info(codes);
 
     Utils.sleep(1000);
 
     final List<DataSeriesInfo> allNames = FredCommon.queryFredDsi(codeNames);
 
-    Debug.log("\n----------------------------------------------------------\n");
+    Debug.LOGGER.info("\n----------------------------------------------------------\n");
 
     for (final DataSeriesInfo dsi : allNames) {
       FredDataDownloader.process(dsi);
@@ -98,7 +98,7 @@ public class FredDataDownloader {
     ds.setAggType(AggregationMethodType.EOP);
     ds.setRespType(DataSeries.ResponseType.LIN);
 
-    Debug.log("Querying for data values ...\n");
+    Debug.LOGGER.info("Querying for data values ...\n");
 
     List<DataValues> dvList = null;
     for (int i = 0; i <= FredDataDownloader.maxRetries; i++) {
@@ -111,13 +111,13 @@ public class FredDataDownloader {
       }
       FredDataDownloader.retryCount++;
       if (i < FredDataDownloader.maxRetries) {
-        Debug.log(String.format("\tQuery dvList retry for %s ...%n", seriesDsi.getName()));
+        Debug.LOGGER.info(String.format("\tQuery dvList retry for %s ...%n", seriesDsi.getName()));
       }
     }
 
     if (dvList != null && dvList.size() > 0) {
 
-      Debug.log(String.format("Writing to Optuma%n%s%nvalues : %d%n", ds, dvList.size()));
+      Debug.LOGGER.info(String.format("Writing to Optuma%n%s%nvalues : %d%n", ds, dvList.size()));
 
       final String outname = FredCommon.toFullFileName(seriesDsi.getName(), seriesDsi.getTitle());
 
@@ -126,12 +126,13 @@ public class FredDataDownloader {
       // Debug.pwDbg.println(ds);
     }
     else {
-      Debug.log(String.format("%nZero Data Values: %s : %s%n", seriesDsi.getName(), seriesDsi.getTitle()));
+      Debug.LOGGER.info(String.format("%nZero Data Values: %s : %s%n", seriesDsi.getName(), seriesDsi.getTitle()));
 
       FredDataDownloader.tryAgainFile.println(seriesDsi.getName());
       FredDataDownloader.tryAgainFile.flush();
       if (FredDataDownloader.retryCount > FredDataDownloader.consecutiveRetryFailures) {
-        Debug.log(String.format("Too many retries (%d). Sleeping %d seconds.%n", FredDataDownloader.retryCount, FredDataDownloader.longSleep / 1000));
+        Debug.LOGGER
+            .info(String.format("Too many retries (%d). Sleeping %d seconds.%n", FredDataDownloader.retryCount, FredDataDownloader.longSleep / 1000));
 
         Utils.sleep(FredDataDownloader.longSleep);
         FredDataDownloader.retryCount = 0;

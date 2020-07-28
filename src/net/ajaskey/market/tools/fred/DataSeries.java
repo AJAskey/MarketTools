@@ -259,7 +259,7 @@ public class DataSeries {
     final String url = "https://api.stlouisfed.org/fred/series/observations?series_id=" + this.name + this.getAggType() + this.getFileType()
         + this.getLimit() + this.getOffset() + this.getOrder() + this.getRespType() + "&api_key=" + ApiKey.get();
 
-    Debug.log(url + "\n");
+    Debug.LOGGER.info(url + "\n");
 
     String resp;
     try {

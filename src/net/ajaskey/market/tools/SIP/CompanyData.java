@@ -577,8 +577,9 @@ public class CompanyData {
 
         final double cf = cd.cashData.cashFromOps.getTtm() + cd.cashData.cashFromFin.getTtm() + cd.cashData.cashFromInv.getTtm();
         if (wcfcf < 0.0 && cf < 0.0) {
-          return true;
-
+          if (cd.bsd.equity.q1 < 0.0) {
+            return true;
+          }
         }
       }
     }

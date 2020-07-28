@@ -33,23 +33,24 @@ public class Globals {
   final public static int startYear = 2015;
 
   /**
-   * Returns the requested year from global memory.
+   * Returns state of loaded Global lists
    *
-   * @param yr year
-   * @return FieldDataYear if available.
+   * @param yr  year
+   * @param qtr quarter (1-4)
+   * @return TRUE if requested yr/qtr is available in memory, FALSE otherwise
    */
-  public static FieldDataYear getYear(int yr) {
-
-    if (yr >= Globals.startYear && yr <= Globals.endYear) {
+  public static boolean checkLists(int yr, int qtr) {
+    try {
       for (final FieldDataYear fdy : Globals.allDataList) {
-        if (fdy.isInUse()) {
-          if (fdy.getYear() == yr) {
-            return fdy;
-          }
+        if (fdy.getYear() == yr) {
+          final FieldDataQuarter fdq = fdy.getQ(qtr);
+          return fdq != null;
         }
       }
     }
-    return null;
+    catch (final Exception e) {
+    }
+    return false;
   }
 
   /**
@@ -86,7 +87,7 @@ public class Globals {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
     }
 
     return null;
@@ -101,7 +102,7 @@ public class Globals {
    * @param qtr   quarter (1-4)
    * @return List of FieldData or empty List if error
    */
-  public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
+  public static List<FieldData> getQFromMemory(List<String> tList, int yr, int qtr) {
 
     final List<FieldData> fdList = new ArrayList<>();
 
@@ -113,72 +114,10 @@ public class Globals {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       fdList.clear();
     }
     return fdList;
-  }
-
-  /**
-   * Returns state of loaded Global lists
-   * 
-   * @param yr  year
-   * @param qtr quarter (1-4)
-   * @return TRUE if requested yr/qtr is available in memory, FALSE otherwise
-   */
-  public static boolean checkLists(int yr, int qtr) {
-    try {
-      for (final FieldDataYear fdy : Globals.allDataList) {
-        if (fdy.getYear() == yr) {
-          FieldDataQuarter fdq = fdy.getQ(qtr);
-          return (fdq != null);
-        }
-      }
-    }
-    catch (Exception e) {
-    }
-    return false;
-  }
-
-  /**
-   * Sets internal memory (allDataList) to request year and quarter.
-   *
-   * @param yr     year
-   * @param qtr    quarter
-   * @param fdList The FieldData list for all companies in the requested year and
-   *               quarter.
-   */
-  public static void setLists(int yr, int qtr, List<FieldData> fdList) {
-
-    if (fdList == null) {
-      System.out.printf("Warning. SetLists(): NULL fdList for %dQ%d%n", yr, qtr);
-      return;
-    }
-    if (yr < Globals.startYear || yr > Globals.endYear) {
-      System.out.printf("Warning. SetLists(): Invalid year %d%n", yr);
-      return;
-    }
-
-    /**
-     * Perform the first time through.
-     */
-    if (Globals.allDataList.size() == 0) {
-      Globals.init(Globals.startYear, Globals.endYear);
-    }
-
-    if (checkLists(yr, qtr)) {
-      return;
-    }
-
-    final FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
-    for (final FieldDataYear fdy : Globals.allDataList) {
-      if (fdy.getYear() == yr) {
-        fdy.setQ(qtr, fdq);
-        System.out.printf(" Internal memory set for %d Q%d%n", yr, qtr);
-        return;
-      }
-    }
-    System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
   }
 
   /**
@@ -214,10 +153,71 @@ public class Globals {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       fdList.clear();
     }
     return fdList;
+  }
+
+  /**
+   * Returns the requested year from global memory.
+   *
+   * @param yr year
+   * @return FieldDataYear if available.
+   */
+  public static FieldDataYear getYear(int yr) {
+
+    if (yr >= Globals.startYear && yr <= Globals.endYear) {
+      for (final FieldDataYear fdy : Globals.allDataList) {
+        if (fdy.isInUse()) {
+          if (fdy.getYear() == yr) {
+            return fdy;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Sets internal memory (allDataList) to request year and quarter.
+   *
+   * @param yr     year
+   * @param qtr    quarter
+   * @param fdList The FieldData list for all companies in the requested year and
+   *               quarter.
+   */
+  public static void setLists(int yr, int qtr, List<FieldData> fdList) {
+
+    if (fdList == null) {
+      System.out.printf("Warning. SetLists(): NULL fdList for %dQ%d%n", yr, qtr);
+      return;
+    }
+    if (yr < Globals.startYear || yr > Globals.endYear) {
+      System.out.printf("Warning. SetLists(): Invalid year %d%n", yr);
+      return;
+    }
+
+    /**
+     * Perform the first time through.
+     */
+    if (Globals.allDataList.size() == 0) {
+      Globals.init(Globals.startYear, Globals.endYear);
+    }
+
+    if (Globals.checkLists(yr, qtr)) {
+      return;
+    }
+
+    final FieldDataQuarter fdq = new FieldDataQuarter(yr, qtr, fdList);
+    for (final FieldDataYear fdy : Globals.allDataList) {
+      if (fdy.getYear() == yr) {
+        fdy.setQ(qtr, fdq);
+        System.out.printf(" Internal memory set for %d Q%d%n", yr, qtr);
+        return;
+      }
+    }
+    System.out.printf("Warning -- SetLists : Data not found. Year=%d Quarter=%d%n", yr, qtr);
   }
 
   /**

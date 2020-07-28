@@ -13,48 +13,23 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 public class IndexDerived {
 
   public static void main(String[] args) {
-    List<String> tickers = new ArrayList<>();
-    tickers.add("msft");
-    tickers.add("GE");
-    IndexDerived id = new IndexDerived(" msft", tickers, 2020, 2);
+    final List<String> tickers = new ArrayList<>();
+    tickers.add(" msft");
+    tickers.add(" GE ");
+
+    IndexDerived id = new IndexDerived(" test index", tickers, 2020, 2);
+    // add(id);
+    id = new IndexDerived(" test index", tickers, 2020, 1);
+
     System.out.println(id.valid);
     System.out.println(id.indexList.size());
-    for (String s : id.indexList) {
+    for (final String s : id.indexList) {
       System.out.println(s);
     }
   }
 
   /**
    *
-   * @param fullFileName
-   * @return
-   */
-  public void readList(String fullFileName) {
-    try {
-      final List<String> inList = TextUtils.readTextFile(fullFileName, true);
-      for (String s : inList) {
-        this.checkAndAdd(s);
-      }
-    }
-    catch (final Exception e) {
-      System.out.println(FieldData.getWarning(e));
-    }
-  }
-
-  /**
-   * 
-   * @param s
-   */
-  private void checkAndAdd(String s) {
-    if (isStringValid(s)) {
-      if (!isInList(s)) {
-        this.indexList.add(s.trim().toUpperCase());
-      }
-    }
-  }
-
-  /**
-   * 
    * @param s
    * @return
    */
@@ -67,44 +42,48 @@ public class IndexDerived {
     return false;
   }
 
-  List<String>             indexList;
-  List<CompanyDerivedData> idList;
-  String                   listName;
-  boolean                  valid;
+  List<CompanyDerivedData> cddList;
+
+  List<IndexDerived> idList;
+  List<String>       indexList;
+  String             listName;
+
+  boolean valid;
 
   /**
    * Constructor
-   * 
+   *
+   * @param name Index name
+   */
+  public IndexDerived(String name, int yr, int qtr) {
+    this.indexList = new ArrayList<>();
+    this.valid = this.build(name, null);
+  }
+
+  /**
+   * Constructor
+   *
    * @param name   Index name
    * @param inList List of ticker making up index
    */
   public IndexDerived(String name, List<String> inList, int yr, int qtr) {
-    this.indexList = new ArrayList<String>();
-    this.valid = build(name, inList);
+    this.indexList = new ArrayList<>();
+    this.cddList = new ArrayList<>();
+    this.valid = this.build(name, inList);
     if (this.valid) {
       FieldData.setQMemory(yr, qtr, FiletypeEnum.BIG_BINARY);
-      CompanyDerivedData cdd = new CompanyDerivedData(yr, qtr);
-      for (String ticker : indexList) {
-        FieldData fd = MarketTools.getFromMemory(ticker, yr, qtr);
+      final CompanyDerivedData cdd = new CompanyDerivedData(yr, qtr);
+      for (final String ticker : this.indexList) {
+        final FieldData fd = MarketTools.getFromMemory(ticker, yr, qtr);
         if (fd.isDataValid()) {
-          CompanyDerived cd = new CompanyDerived(yr, qtr, fd);
+          final CompanyDerived cd = new CompanyDerived(fd);
           if (cd.isValid()) {
             cdd.dList.add(cd);
           }
         }
       }
-      this.idList.add(cdd);
+      this.cddList.add(cdd);
     }
-  }
-
-  /**
-   * Constructor
-   * 
-   * @param name Index name
-   */
-  public IndexDerived(String name, int yr, int qtr) {
-    this.indexList = new ArrayList<String>();
-    this.valid = build(name, null);
   }
 
   /**
@@ -115,8 +94,84 @@ public class IndexDerived {
   }
 
   /**
+   *
+   * @param addList List of tickers to add
+   */
+  public void addToList(List<String> addList) {
+    try {
+      for (final String s : addList) {
+        this.checkAndAdd(s);
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+    }
+  }
+
+  /**
+   *
+   * @param s String to check against existing List
+   * @return
+   */
+  public boolean isInList(String s) {
+    try {
+      if (s != null) {
+        if (s.length() > 0) {
+          for (final String t : this.indexList) {
+            if (s.trim().toUpperCase().equals(t)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+    }
+    return false;
+  }
+
+  /**
+   *
+   * @param fullFileName
+   * @return
+   */
+  public void readList(String fullFileName) {
+    try {
+      final List<String> inList = TextUtils.readTextFile(fullFileName, true);
+      for (final String s : inList) {
+        this.checkAndAdd(s);
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+    }
+  }
+
+  /**
+   *
+   * @param path
+   */
+  public void writeList(String path) {
+    final String fname = String.format("%s/IndexList-%s.txt", path, this.listName);
+    Utils.makeDirs(path);
+    try (PrintWriter pw = new PrintWriter(fname)) {
+      for (final String s : this.indexList) {
+        pw.println(s);
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+    }
+  }
+
+  private void add(IndexDerived id) {
+    this.idList.add(id);
+  }
+
+  /**
    * Used by constructors
-   * 
+   *
    * @param n    Name of index
    * @param list List of tickers to add to index
    * @return TRUE if all is well, FALSE otherwise
@@ -149,57 +204,14 @@ public class IndexDerived {
   }
 
   /**
-   * 
-   * @param addList List of tickers to add
+   *
+   * @param s
    */
-  public void addToList(List<String> addList) {
-    try {
-      for (final String s : addList) {
-        this.checkAndAdd(s);
+  private void checkAndAdd(String s) {
+    if (IndexDerived.isStringValid(s)) {
+      if (!this.isInList(s)) {
+        this.indexList.add(s.trim().toUpperCase());
       }
-    }
-    catch (final Exception e) {
-      System.out.println(FieldData.getWarning(e));
-    }
-  }
-
-  /**
-   * 
-   * @param s String to check against existing List
-   * @return
-   */
-  public boolean isInList(String s) {
-    try {
-      if (s != null) {
-        if (s.length() > 0) {
-          for (final String t : this.indexList) {
-            if (s.trim().toUpperCase().equals(t)) {
-              return true;
-            }
-          }
-        }
-      }
-    }
-    catch (final Exception e) {
-      System.out.println(FieldData.getWarning(e));
-    }
-    return false;
-  }
-
-  /**
-   * 
-   * @param path
-   */
-  public void writeList(String path) {
-    final String fname = String.format("%s/IndexList-%s.txt", path, this.listName);
-    Utils.makeDirs(path);
-    try (PrintWriter pw = new PrintWriter(fname)) {
-      for (final String s : this.indexList) {
-        pw.println(s);
-      }
-    }
-    catch (final Exception e) {
-      System.out.println(FieldData.getWarning(e));
     }
   }
 

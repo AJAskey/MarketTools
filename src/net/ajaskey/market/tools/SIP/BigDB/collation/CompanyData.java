@@ -102,7 +102,7 @@ public class CompanyData {
         }
         return cd;
       }
-      catch (Exception e) {
+      catch (final Exception e) {
       }
     }
     return null;
@@ -152,7 +152,7 @@ public class CompanyData {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       FieldData.getWarning(e);
     }
     return ret;
@@ -191,7 +191,7 @@ public class CompanyData {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       FieldData.getWarning(e);
     }
     return ret;
@@ -259,7 +259,7 @@ public class CompanyData {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       FieldData.getWarning(e);
     }
     return ret;

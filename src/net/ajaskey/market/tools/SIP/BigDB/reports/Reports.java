@@ -67,7 +67,7 @@ public class Reports {
   }
 
   /**
-   * 
+   *
    * @param yrs
    * @return
    */
@@ -110,7 +110,7 @@ public class Reports {
   }
 
   /**
-   * 
+   *
    * @param ticker
    * @param startYr
    * @param endYr
@@ -274,7 +274,7 @@ public class Reports {
   }
 
   /**
-   * 
+   *
    * @return
    */
   public static String memoryOverview() {

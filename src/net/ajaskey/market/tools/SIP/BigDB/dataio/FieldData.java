@@ -59,6 +59,34 @@ public class FieldData implements Serializable {
   private static final long  serialVersionUID = 2772336615089382916L;
 
   /**
+   * Returns formatted constructor error message
+   *
+   * @param e Exception thrown
+   * @return String
+   */
+  public static String getConstructorError(Throwable e) {
+    String ret = "";
+    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
+    ret += String.format("%nError. Unexpected exception in Constructor : %s%n", m);
+    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
+    return ret;
+  }
+
+  /**
+   * Returns formatted error message
+   *
+   * @param e Exception thrown
+   * @return String
+   */
+  public static String getError(Throwable e) {
+    String ret = "";
+    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
+    ret += String.format("%nError. Unexpected exception in method : %s%n", m);
+    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
+    return ret;
+  }
+
+  /**
    * Returns a capitalized string
    *
    * @param enm ExchEnum
@@ -134,7 +162,7 @@ public class FieldData implements Serializable {
    *      int)
    */
   public static List<FieldData> getListFromMemory(List<String> tList, int yr, int qtr) {
-    return Globals.getListFromMemory(tList, yr, qtr);
+    return Globals.getQFromMemory(tList, yr, qtr);
   }
 
   /**
@@ -215,6 +243,24 @@ public class FieldData implements Serializable {
     return Globals.getQFromMemory(yr, qtr);
   }
 
+  public static List<FieldData> getQFromMemory(List<String> list, int yr, int qtr) {
+    return Globals.getQFromMemory(list, yr, qtr);
+  }
+
+  /**
+   * Returns formatted warning message
+   *
+   * @param e Exception thrown
+   * @return String
+   */
+  public static String getWarning(Throwable e) {
+    String ret = "";
+    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
+    ret += String.format("%nWarning. Unexpected exception in method : %s%n", m);
+    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
+    return ret;
+  }
+
   /**
    * Reads SIP tab separated data files. Stores the data in array for later use.
    *
@@ -230,8 +276,8 @@ public class FieldData implements Serializable {
 
       if (ft == FiletypeEnum.BIG_BINARY) {
         if (!overwrite) {
-          final String outfname = String.format("%s%d/all-companies-%dQ%d.bin", outbasedir, yr, yr, qtr);
-          File f = new File(outfname);
+          final String outfname = String.format("%s%d/all-companies-%dQ%d.bin", FieldData.outbasedir, yr, yr, qtr);
+          final File f = new File(outfname);
           if (f.exists()) {
             System.out.printf("File %s already exists.%n", outfname);
             return true;
@@ -331,6 +377,10 @@ public class FieldData implements Serializable {
       }
       CashFileData.readSipData(ffname);
 
+      if (!FieldData.validateData()) {
+        return false;
+      }
+
       /**
        * Write Company list for creating ticker lists
        */
@@ -408,7 +458,7 @@ public class FieldData implements Serializable {
 
     try {
 
-      boolean qm = FieldData.checkQMemory(yr, qtr);
+      FieldData.checkQMemory(yr, qtr);
 
       System.out.printf("Setting internal memory : %d Q%d%n", yr, qtr);
 
@@ -432,53 +482,6 @@ public class FieldData implements Serializable {
     catch (final Exception e) {
       System.out.println(FieldData.getWarning(e));
     }
-  }
-
-  private static boolean checkQMemory(int yr, int qtr) {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  /**
-   * Returns formatted constructor error message
-   *
-   * @param e Exception thrown
-   * @return String
-   */
-  public static String getConstructorError(Throwable e) {
-    String ret = "";
-    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
-    ret += String.format("%nError. Unexpected exception in Constructor : %s%n", m);
-    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
-    return ret;
-  }
-
-  /**
-   * Returns formatted error message
-   *
-   * @param e Exception thrown
-   * @return String
-   */
-  public static String getError(Throwable e) {
-    String ret = "";
-    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
-    ret += String.format("%nError. Unexpected exception in method : %s%n", m);
-    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
-    return ret;
-  }
-
-  /**
-   * Returns formatted warning message
-   *
-   * @param e Exception thrown
-   * @return String
-   */
-  public static String getWarning(Throwable e) {
-    String ret = "";
-    final String m = String.format("%s.%s", e.getStackTrace()[0].getClassName(), e.getStackTrace()[0].getMethodName());
-    ret += String.format("%nWarning. Unexpected exception in method : %s%n", m);
-    ret += String.format("  Line number = %d%n%n", e.getStackTrace()[0].getLineNumber());
-    return ret;
   }
 
   /**
@@ -508,6 +511,11 @@ public class FieldData implements Serializable {
       ret = ExchEnum.NONE;
     }
     return ret;
+  }
+
+  private static boolean checkQMemory(int yr, int qtr) {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   /**
@@ -792,6 +800,80 @@ public class FieldData implements Serializable {
       fdList.clear();
     }
     return fdList;
+  }
+
+  /**
+   * Checks for ticker mismatches between SIP data lists
+   *
+   * @return True if all match, False otherwise
+   */
+  private static boolean validateData() {
+
+    final int sizeCompanyData = CompanyFileData.getListCount();
+    final List<String> companyTickers = CompanyFileData.getTickers();
+
+    if (CashFileData.getListCount() != sizeCompanyData) {
+      System.out.println("Data Validation Error : CashFileData size != CompanyFileData size!");
+      return false;
+    }
+    else if (!FieldData.validateDataTickers(CashFileData.getTickers(), companyTickers)) {
+      System.out.println("Data Validation Error : Ticker mismatch in CashFileData!");
+      return false;
+    }
+
+    if (EstimateFileData.getListCount() != sizeCompanyData) {
+      System.out.println("Data Validation Error : EstimateFileData size != CompanyFileData size!");
+      return false;
+    }
+    else if (!FieldData.validateDataTickers(EstimateFileData.getTickers(), companyTickers)) {
+      System.out.println("Data Validation Error : Ticker mismatch in EstimateFileData!");
+      return false;
+    }
+
+    if (SharesFileData.getListCount() != sizeCompanyData) {
+      System.out.println("Data Validation Error : SharesFileData size != CompanyFileData size!");
+      return false;
+    }
+    else if (!FieldData.validateDataTickers(SharesFileData.getTickers(), companyTickers)) {
+      System.out.println("Data Validation Error : Ticker mismatch in SharesFileData!");
+      return false;
+    }
+
+    if (BalSheetFileData.getListCount() != sizeCompanyData) {
+      System.out.println("Data Validation Error : BalFileData size != CompanyFileData size!");
+      return false;
+    }
+    else if (!FieldData.validateDataTickers(BalSheetFileData.getTickers(), companyTickers)) {
+      System.out.println("Data Validation Error : Ticker mismatch in BalSheetFileData!");
+      return false;
+    }
+
+    if (IncSheetFileData.getListCount() != sizeCompanyData) {
+      System.out.println("Data Validation Error : IncSheetFileData size != CompanyFileData size!");
+      return false;
+    }
+    else if (!FieldData.validateDataTickers(IncSheetFileData.getTickers(), companyTickers)) {
+      System.out.println("Data Validation Error : Ticker mismatch in IncSheetFileData!");
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Checks for ticker mismatches between SIP data lists
+   *
+   * @param tickers        List of tickers to check
+   * @param companyTickers List of CompanyFileData tickers to use as baseline
+   * @return True if all match, False otherwise
+   */
+  private static boolean validateDataTickers(List<String> tickers, List<String> companyTickers) {
+    for (int i = 0; i < tickers.size(); i++) {
+      if (!tickers.get(i).equals(companyTickers.get(i))) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**

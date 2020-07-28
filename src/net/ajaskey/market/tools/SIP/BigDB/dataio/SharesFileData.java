@@ -68,6 +68,18 @@ public class SharesFileData implements Serializable {
   }
 
   /**
+   *
+   * @return
+   */
+  public static List<String> getTickers() {
+    final List<String> tickers = new ArrayList<>();
+    for (final SharesFileData sfd : SharesFileData.sfdList) {
+      tickers.add(sfd.ticker.trim().toUpperCase());
+    }
+    return tickers;
+  }
+
+  /**
    * Returns a string containing text for all data in the list read from the DB.
    *
    * @return String
@@ -217,7 +229,8 @@ public class SharesFileData implements Serializable {
   private double[] sharesYr;
   private String   ticker;
   private long     volume10d;
-  private long     volumeMonth3m;
+
+  private long volumeMonth3m;
 
   public SharesFileData(SharesFileData sfd) {
     if (sfd != null) {

@@ -65,7 +65,7 @@ public class FieldDataBinary implements Serializable {
   }
 
   public static void clearList() {
-    bigList.clear();
+    FieldDataBinary.bigList.clear();
   }
 
   /**

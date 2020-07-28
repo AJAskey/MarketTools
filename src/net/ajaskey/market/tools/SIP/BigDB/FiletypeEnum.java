@@ -20,7 +20,7 @@ package net.ajaskey.market.tools.SIP.BigDB;
 
 /**
  * This enumeration contain the follow types:
- * 
+ *
  * <p>
  * <i>NONE</i> - Default type. No processing assigned to this state.
  * </p>
@@ -46,6 +46,6 @@ package net.ajaskey.market.tools.SIP.BigDB;
  */
 public enum FiletypeEnum {
 
-  NONE, BIG_BINARY, BINARY, TEXT;
+  BIG_BINARY, BINARY, NONE, TEXT;
 
 }

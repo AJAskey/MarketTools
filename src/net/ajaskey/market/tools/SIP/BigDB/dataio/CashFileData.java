@@ -79,6 +79,14 @@ public class CashFileData implements Serializable {
     return CashFileData.cashfdList.size();
   }
 
+  public static List<String> getTickers() {
+    final List<String> tickers = new ArrayList<>();
+    for (final CashFileData cfd : CashFileData.cashfdList) {
+      tickers.add(cfd.ticker.trim().toUpperCase());
+    }
+    return tickers;
+  }
+
   /**
    * Returns a string containing text for all data in the list read from the DB.
    *
@@ -158,7 +166,8 @@ public class CashFileData implements Serializable {
   private double[] cashFromFinQtr;
   private double[] cashFromInvQtr;
   private double[] cashFromOpsQtr;
-  private String   ticker;
+
+  private String ticker;
 
   /**
    * Copy Constructor

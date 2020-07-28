@@ -69,6 +69,18 @@ public class BalSheetFileData implements Serializable {
   }
 
   /**
+   *
+   * @return
+   */
+  public static List<String> getTickers() {
+    final List<String> tickers = new ArrayList<>();
+    for (final BalSheetFileData bfd : BalSheetFileData.bfdList) {
+      tickers.add(bfd.ticker.trim().toUpperCase());
+    }
+    return tickers;
+  }
+
+  /**
    * Returns a string containing text for all data in the list read from the DB.
    *
    * @return String
@@ -395,6 +407,7 @@ public class BalSheetFileData implements Serializable {
   private double[] totalAssetsQtr;
   private double[] totalAssetsYr;
   private double[] totalLiabQtr;
+
   private double[] totalLiabYr;
 
   /**

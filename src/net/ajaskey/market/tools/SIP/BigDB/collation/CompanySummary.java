@@ -118,7 +118,7 @@ public class CompanySummary {
         }
       }
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       FieldData.getWarning(e);
     }
     return sumList;

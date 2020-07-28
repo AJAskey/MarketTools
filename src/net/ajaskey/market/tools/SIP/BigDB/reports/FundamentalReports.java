@@ -61,7 +61,7 @@ public class FundamentalReports extends Fundamentals {
         final boolean earnEst = MarketTools.getEpsQ1(fd) < 0.0 && MarketTools.getEpsQ0(fd) < 0.0;
         if (earnEst) {
           final String s = fd.getTicker() + " Negative earings estimates";
-          Debug.log(String.format("  %-15s%n", s));
+          Debug.LOGGER.info(String.format("  %-15s%n", s));
           continue;
         }
 
@@ -116,7 +116,7 @@ public class FundamentalReports extends Fundamentals {
 
     if (val > max) {
       final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is greater than Max : %.2f%n", s, val, max));
+      Debug.LOGGER.info(String.format("  %-15s Value : %.2f is greater than Max : %.2f%n", s, val, max));
       ret = false;
     }
 
@@ -129,7 +129,7 @@ public class FundamentalReports extends Fundamentals {
 
     if (val < min) {
       final String s = ticker + desc;
-      Debug.log(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
+      Debug.LOGGER.info(String.format("  %-15s Value : %.2f is less than Min : %.2f%n", s, val, min));
       ret = false;
     }
 
@@ -152,8 +152,8 @@ public class FundamentalReports extends Fundamentals {
     }
     pw.printf("\tEmployees     : %s%n", sNumEmp);
     if (MarketTools.getNumEmployees(fd) > 0) {
-      QuarterlyDouble grossIncQdata = new QuarterlyDouble(MarketTools.getGrossIncQtr(fd));
-      final double d = grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * MILLION;
+      final QuarterlyDouble grossIncQdata = new QuarterlyDouble(MarketTools.getGrossIncQtr(fd));
+      final double d = grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * Fundamentals.MILLION;
       final int i = (int) d;
       pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
     }

@@ -89,7 +89,7 @@ public class DataSeriesInfo {
 
             final Element eElement = (Element) nodeResp;
             final String series = eElement.getAttribute("id");
-            Debug.log("Series : " + series);
+            Debug.LOGGER.info("Series : " + series);
 
             dsi.setName(series);
             dsi.setTitle(eElement.getAttribute("title"));

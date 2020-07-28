@@ -109,6 +109,18 @@ public class CompanyFileData implements Serializable {
   }
 
   /**
+   *
+   * @return
+   */
+  public static List<String> getTickers() {
+    final List<String> tickers = new ArrayList<>();
+    for (final CompanyFileData cfd : CompanyFileData.cfdList) {
+      tickers.add(cfd.ticker.trim().toUpperCase());
+    }
+    return tickers;
+  }
+
+  /**
    * Returns a string containing text for all data in the list read from the DB.
    *
    * @return String
@@ -289,7 +301,8 @@ public class CompanyFileData implements Serializable {
   private String   street;
   private String   ticker;
   private String   web;
-  private String   zip;
+
+  private String zip;
 
   /**
    * Constructor
@@ -371,7 +384,7 @@ public class CompanyFileData implements Serializable {
     try {
       ret = this.exchange.toString().toUpperCase();
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       FieldData.getWarning(e);
       ret = "NONE";
     }
@@ -646,7 +659,7 @@ public class CompanyFileData implements Serializable {
       ret += String.format("  web       : %s%n", this.getWeb());
       ret += String.format("  prices    : %s%n", SipOutput.buildArray("", this.priceQtr, 10, 4, 1));
     }
-    catch (Exception e) {
+    catch (final Exception e) {
       FieldData.getWarning(e);
       ret = "";
     }

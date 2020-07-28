@@ -114,8 +114,47 @@ public class QuarterlyDouble {
     return ret;
   }
 
+  /**
+   * Returns previous year trailing 12 months started at Q2 (used for sequential
+   * comparisons)
+   *
+   * @return q2 + q3 + q4 + q5
+   */
+  public double get2QTtm() {
+
+    double ret = 0.0;
+    try {
+      if (this.dArr.length > 5) {
+        ret = this.dArr[2] + this.dArr[3] + this.dArr[4] + this.dArr[5];
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+    }
+    return ret;
+  }
+
   public double getMostRecent() {
     return this.dArr[1];
+  }
+
+  /**
+   * Returns previous year trailing 12 months
+   *
+   * @return q5 + q6 + q7 + q8
+   */
+  public double getPrevTtm() {
+
+    double ret = 0.0;
+    try {
+      if (this.dArr.length > 8) {
+        ret = this.dArr[5] + this.dArr[6] + this.dArr[7] + this.dArr[8];
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+    }
+    return ret;
   }
 
   /**
@@ -157,45 +196,6 @@ public class QuarterlyDouble {
     try {
       if (this.dArr.length > 3) {
         ret = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
-      }
-    }
-    catch (final Exception e) {
-      ret = 0.0;
-    }
-    return ret;
-  }
-
-  /**
-   * Returns previous year trailing 12 months started at Q2 (used for sequential
-   * comparisons)
-   *
-   * @return q2 + q3 + q4 + q5
-   */
-  public double get2QTtm() {
-
-    double ret = 0.0;
-    try {
-      if (this.dArr.length > 5) {
-        ret = this.dArr[2] + this.dArr[3] + this.dArr[4] + this.dArr[5];
-      }
-    }
-    catch (final Exception e) {
-      ret = 0.0;
-    }
-    return ret;
-  }
-
-  /**
-   * Returns previous year trailing 12 months
-   *
-   * @return q5 + q6 + q7 + q8
-   */
-  public double getPrevTtm() {
-
-    double ret = 0.0;
-    try {
-      if (this.dArr.length > 8) {
-        ret = this.dArr[5] + this.dArr[6] + this.dArr[7] + this.dArr[8];
       }
     }
     catch (final Exception e) {
