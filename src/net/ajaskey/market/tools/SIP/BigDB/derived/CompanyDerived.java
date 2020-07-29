@@ -26,6 +26,7 @@ import java.util.List;
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
 import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
@@ -43,16 +44,6 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 public class CompanyDerived {
 
   public static final double MILLION = 1000000.0;
-
-  private static List<CompanyDerived> agList = new ArrayList<>();
-
-  public static List<CompanyDerived> getAgList() {
-    return CompanyDerived.agList;
-  }
-
-  public static double getMillion() {
-    return CompanyDerived.MILLION;
-  }
 
   /**
    *
@@ -86,8 +77,8 @@ public class CompanyDerived {
     Utils.makeDir("sipout");
     final String fname = String.format("sipout/Companies-%dQ%d.txt", year, qtr);
 
-    CompanyDerived.processList(fdList, year, qtr);
-    CompanyDerived.write(fname, year, qtr);
+    final List<CompanyDerived> agList = CompanyDerived.processList(fdList);
+    CompanyDerived.write(fname, agList, false);
 
     final List<String> over10List = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 10.0, 100000L);
 
@@ -95,65 +86,69 @@ public class CompanyDerived {
     System.out.println(over10List.size());
 
     fdList = CompanyDerived.getFieldData(over10List, year, qtr);
-    CompanyDerived.processList(fdList, year, qtr);
-    CompanyDerived.write("sipout/over10stocks.txt", year, qtr);
+    final List<CompanyDerived> ag10List = CompanyDerived.processList(fdList);
+    CompanyDerived.write("sipout/over10stocks.txt", ag10List, false);
+
+    fdList = CompanyDerived.getFieldData(year, qtr);
+    List<CompanyDerived> zombieList = processZombies(fdList);
+    CompanyDerived.write("sipout/zombies-new.txt", zombieList, true);
+
   }
 
   /**
+   * Converts all in FieldData list to a CompanyDerived list
    *
-   * @param yr
-   * @param qtr
-   * @param fdList
-   * @return
+   * @param fdList List of FieldData
+   * @return List of CompanyDerived
    */
-  public static List<CompanyDerived> processList(List<FieldData> fdList, int yr, int qtr) {
+  public static List<CompanyDerived> processList(List<FieldData> fdList) {
 
-    CompanyDerived.agList.clear();
+    final List<CompanyDerived> agList = new ArrayList<>();
 
     for (final FieldData fd : fdList) {
 
       final CompanyDerived ca = new CompanyDerived(fd);
       if (ca.valid) {
-        CompanyDerived.agList.add(ca);
+        agList.add(ca);
       }
     }
-    return CompanyDerived.agList;
+    return agList;
   }
 
   /**
+   * Returns a list of companies considered Zombies
    *
-   * @param tickers
-   * @param yr
-   * @param qtr
-   * @param fdList
+   * @param fdList FieldData list of inputs
+   * @return List of CompanyDerived Zombies
    */
-  public static List<CompanyDerived> processList(List<String> tickers, int yr, int qtr, List<FieldData> fdList) {
+  public static List<CompanyDerived> processZombies(List<FieldData> fdList) {
 
-    CompanyDerived.agList.clear();
+    final List<CompanyDerived> zombieList = new ArrayList<>();
 
     for (final FieldData fd : fdList) {
 
-      for (final String t : tickers) {
-
-        if (t.trim().equalsIgnoreCase(fd.getTicker())) {
-
-          final CompanyDerived ca = new CompanyDerived(fd);
-          if (ca.valid) {
-            CompanyDerived.agList.add(ca);
+      if (!fd.getSector().equalsIgnoreCase("Financials")) {
+        if (fd.getCompanyInfo().getPriceQtr()[1] >= 12.0) {
+          if (fd.getShareData().getVolume10d() > 100) {
+            final CompanyDerived cd = new CompanyDerived(fd);
+            if (cd.rs < 5.0) {
+              if (cd.zdata.getzScore() > 90.0) {
+                zombieList.add(cd);
+              }
+            }
           }
-
         }
       }
     }
-    return CompanyDerived.agList;
+    return zombieList;
   }
 
   /**
+   * Outputs formatted values for all entries in the static agList
    *
-   * @param fname
-   * @throws FileNotFoundException
+   * @param fname Name of output file
    */
-  public static void write(String fname, int yr, int qtr) throws FileNotFoundException {
+  public static void write(String fname, List<CompanyDerived> agList, boolean zombie) {
 
     System.out.println("Writing Fundamental Report to : " + fname);
 
@@ -173,7 +168,7 @@ public class CompanyDerived {
       pw.println("QoQ : this quarter versus same quarter a year ago.");
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
 
-      for (final CompanyDerived ca : CompanyDerived.agList) {
+      for (final CompanyDerived ca : agList) {
 
         final FieldData fd = ca.fd;
 
@@ -214,12 +209,15 @@ public class CompanyDerived {
         pw.println(ca.netIncQdata.fmtGrowth4Q("Net Income 12m"));
         pw.println(ca.intTotQdata.fmtGrowth4Q("Interest 12m"));
         //
-        final double totdebt = MarketTools.getStDebtQtr(fd)[1] + MarketTools.getLtDebtQtr(fd)[1];
+        final double totdebt = MarketTools.getStDebtQtr(fd)[2] + MarketTools.getLtDebtQtr(fd)[2];
         double intrate = 0.0;
         if (totdebt > 0.0) {
-          intrate = ca.intTotQdata.getTtm() / totdebt * 100.0;
+          intrate = ca.intTotQdata.getTtm() / totdebt;
         }
-        pw.printf("\tInterest Rate     :%14.2f%%%n", intrate);
+        pw.printf("\tInterest Rate     :%14.2f%%%n", intrate * 100.0);
+        double expInt = (ca.stDebtQdata.get(1) + ca.ltDebtQdata.get(1)) * intrate;
+        pw.printf("\tEst Interest 12m  :%s M%n", SipOutput.fmt(expInt, 14, 2));
+
         //
 
         pw.println("\n" + ca.cashFromOpsQdata.fmtGrowth4Q("Cash <- Ops 12m"));
@@ -275,11 +273,11 @@ public class CompanyDerived {
           pw.printf("\tLT Debt Tan Asset : %s%n", Utils.fmt(ca.ltDebtQdata.getMostRecent() / ca.tanAssetsQdata.getMostRecent(), 13));
         }
 
-        pw.println(Utils.NL + ca.netMarginQdata.fmtGrowth1Q("Net Margin"));
-        pw.println(ca.opMarginQdata.fmtGrowth1Q("Op Margin"));
-        pw.println(ca.roeQdata.fmtGrowth1Q("ROE"));
+        pw.println(Utils.NL + ca.netMarginQdata.fmtGrowth1QNoUnit("Net Margin"));
+        pw.println(ca.opMarginQdata.fmtGrowth1QNoUnit("Op Margin"));
+        pw.println(ca.roeQdata.fmtGrowth1QNoUnit("ROE"));
         // System.out.println(ca.roeQdata);
-        pw.println(ca.peQdata.fmtGrowth1Q("PE"));
+        pw.println(ca.peQdata.fmtGrowth1QNoUnit("PE"));
         pw.printf("\tQ0 Est Growth     : %13.2f %% (%.2f to %.2f)%n", ca.q0EstGrowth, ca.epsDilContQdata.dArr[4], ca.epsEstQ0);
         pw.printf("\tY1 Est Growth     : %13.2f %% (%.2f to %.2f)%n", ca.y1EstGrowth, ca.epsDilContQdata.getPrevTtm(), ca.epsEstY1);
         pw.printf("\tY2 Est Growth     : %13.2f %% (%.2f to %.2f)%n", ca.y2EstGrowth, ca.epsEstY1, ca.epsEstY2);
@@ -302,11 +300,31 @@ public class CompanyDerived {
           turnover = MarketTools.getFloatshr(fd) / (MarketTools.getVolume10d(fd) / 1000.0);
         }
         pw.printf("\tTurnover Float    : %s days%n", Utils.fmt(turnover, 13));
+        pw.printf("\tRS                : %s%n", Utils.fmt(ca.rs, 13));
+        // pw.printf("\tZScore : %s%n", Utils.fmt(ca.zdata.getzScore(), 13));
+
+        if (zombie) {
+          pw.printf("%n%s%n", ca.zdata);
+        }
 
         pw.println();
 
       }
     }
+    catch (final Exception e) {
+      final String s = String.format("Unable to write to output file : %s%n", fname);
+      System.out.printf("%s%n\t%s%n", FieldData.getWarning(e), s);
+    }
+  }
+
+  /**
+   *
+   * @param yr
+   * @param qtr
+   * @return
+   */
+  private static List<FieldData> getFieldData(int yr, int qtr) {
+    return Globals.getQFromMemory(yr, qtr);
   }
 
   /**
@@ -320,6 +338,7 @@ public class CompanyDerived {
   }
 
   private QuarterlyDouble acctPayableQdata;
+
   private QuarterlyDouble acctRxQdata;
   private QuarterlyDouble adjToIncQdata;
   private QuarterlyDouble bvpsQdata;
@@ -378,6 +397,7 @@ public class CompanyDerived {
   private int             quarter;
   private QuarterlyDouble rdQdata;
   private QuarterlyDouble roeQdata;
+  private double          rs;
   private QuarterlyDouble salesQdata;
   private QuarterlyDouble sharesQdata;
   private QuarterlyDouble stDebtQdata;
@@ -393,14 +413,12 @@ public class CompanyDerived {
   private double          y1EstGrowth;
   private double          y2EstGrowth;
   private int             year;
+  private ZData           zdata;
 
   /**
    * Constructor
    *
-   * @param tickers
-   * @param yr
-   * @param qtr
-   * @param ft
+   * @param fd FieldData
    */
   public CompanyDerived(FieldData fd) {
 
@@ -737,7 +755,7 @@ public class CompanyDerived {
     return this.unusualIncQdata;
   }
 
-  public QuarterlyDouble getWcfcfQdata() {
+  public QuarterlyDouble getWcFcfQdata() {
     return this.wcfcfQdata;
   }
 
@@ -754,9 +772,30 @@ public class CompanyDerived {
   }
 
   /**
+   * Calculate the Zombie'ness' of the company
+   *
+   * @param fd FieldData
+   * @return Zombie score value
+   */
+  private void calcZombieScore() {
+    ZData zd = new ZData(this);
+    this.zdata = zd;
+    // System.out.printf("%s%n%s%n%n", this.fd.getTicker(), zd);
+  }
+
+  /**
    * Calculates Derived Data
    */
   private void derived() {
+
+    double p1 = this.pricesQdata.get(1);
+    double p2 = this.pricesQdata.get(2);
+    if (p2 > 0.0) {
+      this.rs = (p1 - p2) / p2 * 100.0;
+    }
+    else {
+      this.rs = 0.0;
+    }
 
     final double eps4 = Math.abs(this.fd.getIncSheetData().getEpsDilContQtr()[4]);
     if (eps4 > 0.0) {
@@ -878,18 +917,6 @@ public class CompanyDerived {
     }
     this.opMarginQdata = new QuarterlyDouble(oMarArr);
 
-//    final double pe2Arr[] = new double[6];
-//    for (int i = 0; i < pe2Arr.length; i++) {
-//      if (this.netIncQdata.get(i) != 0.0) {
-//        final double pe = this.pricesQdata.get(i) / (this.netIncQdata.get(i) / this.sharesQdata.get(i));
-//        pe2Arr[i] = pe;
-//      }
-//      else {
-//        pe2Arr[i] = 0.0;
-//      }
-//    }
-// this.peQdata = new QuarterlyDouble(pe2Arr);
-
     final double peArr[] = new double[6];
     double eps = this.epsContQdata.getTtm();
     for (int i = 0; i < peArr.length; i++) {
@@ -929,6 +956,12 @@ public class CompanyDerived {
     }
     this.roeQdata = new QuarterlyDouble(roeArr);
 
+    this.calcZombieScore();
+
+  }
+
+  public double getRs() {
+    return this.rs;
   }
 
 }

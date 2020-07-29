@@ -19,6 +19,7 @@
 package net.ajaskey.market.tools.SIP.BigDB.collation;
 
 import net.ajaskey.common.Utils;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 
 public class QuarterlyDouble {
 
@@ -84,6 +85,20 @@ public class QuarterlyDouble {
   }
 
   /**
+   * Formats latest quarter of data into predetermined string.
+   *
+   * @param desc Text to use as prefix
+   * @return String
+   */
+  public String fmtGrowth1QNoUnit(final String desc) {
+
+    final String ret = String.format("\t%-17s:  %s   (Seq= %s%% : QoQ= %s%%)", desc, Utils.fmt(this.dArr[1], 13), Utils.fmt(this.getQseqQ(), 7),
+        Utils.fmt(this.getQoQ(), 7));
+
+    return ret;
+  }
+
+  /**
    * Formats trailing 12 months of data into predetermined string.
    *
    * @param desc Text to use as prefix
@@ -91,7 +106,7 @@ public class QuarterlyDouble {
    */
   public String fmtGrowth4Q(final String desc) {
 
-    final String ret = String.format("\t%-18s: %s M (Seq= %s%% : QoQ= %s%%)", desc, Utils.fmt(this.getTtm(), 13), Utils.fmt(this.getQseqQ(), 7),
+    final String ret = String.format("\t%-18s: %s M  (Seq= %s%% : QoQ= %s%%)", desc, Utils.fmt(this.getTtm(), 13), Utils.fmt(this.getQseqQ(), 7),
         Utils.fmt(this.getQoQ(), 7));
 
     return ret;
@@ -110,6 +125,7 @@ public class QuarterlyDouble {
     }
     catch (final Exception e) {
       ret = -9999.9999;
+      System.out.println(FieldData.getWarning(e));
     }
     return ret;
   }
@@ -130,6 +146,7 @@ public class QuarterlyDouble {
     }
     catch (final Exception e) {
       ret = 0.0;
+      System.out.println(FieldData.getWarning(e));
     }
     return ret;
   }
@@ -153,6 +170,7 @@ public class QuarterlyDouble {
     }
     catch (final Exception e) {
       ret = 0.0;
+      System.out.println(FieldData.getWarning(e));
     }
     return ret;
   }
@@ -160,13 +178,20 @@ public class QuarterlyDouble {
   /**
    * Returns percent change of q4 vs q1
    *
-   * @return double
+   * @return Percent change
    */
   public double getQoQ() {
 
     double ret = 0.0;
-    if (this.dArr[5] != 0.0) {
-      ret = (this.dArr[1] - this.dArr[5]) / Math.abs(this.dArr[5]) * 100.0;
+
+    try {
+      if (this.dArr[5] != 0.0) {
+        ret = (this.dArr[1] - this.dArr[5]) / Math.abs(this.dArr[5]) * 100.0;
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+      System.out.println(FieldData.getWarning(e));
     }
     return ret;
   }
@@ -217,6 +242,29 @@ public class QuarterlyDouble {
     catch (final Exception e) {
     }
     return d / 4.0;
+  }
+
+  /**
+   * Returns percent change of y2 vs y1
+   *
+   * @return Percent change
+   */
+  public double getYoY() {
+
+    double ret = 0.0;
+
+    try {
+      final double y1 = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
+      final double y2 = this.dArr[5] + this.dArr[6] + this.dArr[7] + this.dArr[8];
+      if (y1 != 0.0) {
+        ret = (y2 - y1) / Math.abs(y1) * 100.0;
+      }
+    }
+    catch (final Exception e) {
+      ret = 0.0;
+      System.out.println(FieldData.getWarning(e));
+    }
+    return ret;
   }
 
   @Override

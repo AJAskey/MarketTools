@@ -146,7 +146,9 @@ public class Globals {
               final FieldDataQuarter fdq = fdy.getQ(qtr);
 
               for (final FieldData fd : fdq.fieldDataList) {
-                fdList.add(fd);
+                if (fd != null) {
+                  fdList.add(fd);
+                }
               }
             }
           }
