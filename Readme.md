@@ -25,7 +25,8 @@ A couple tools find useful to work with this github repository:
 
 ## Up next
 * Report to write Zombie companies from the CompanyDerived class. 
-* [Long term plan](LongTermPlan.md)
+
+## [Long term plan](LongTermPlan.md)
 
 ## Status 
 
