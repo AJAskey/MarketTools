@@ -1,12 +1,12 @@
 # Long Term Plan for MarketTools
 I am retired and have plenty of time to move the existing MarketTools into a full stack Java project.
-My plan is to create a full stack Java application running on AWS.
+My plan is to create a full stack Java application running on an AWS server.
 
 # Notional Architecture
 This architecture is a "stream of consciousness" for long term planning.
 
 ## Front End
-The plan is to provide users with a Spring web based method of querying data which is return to the web browser.
+The plan is to provide users with a Spring web based method of querying data which is returned to the web browser.
 
 ## Back End
 The Back End will consist of the existing Java code re-structured to a Spring back-end technology.
