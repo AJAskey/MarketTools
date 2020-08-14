@@ -20,3 +20,13 @@ The database will be hidden from users but will be accessed using front-end and 
 # Moving to Freely Available Data
 The plan assumes data to the SEC in financial XML format (XBRL) will continue to be available.
 A tool is planned to constantly download and read this XBRL for all companies and populate an AWS database.
+
+## Costs
+- The plan is to create a GoFundMe page to pay for AWS and other data/tools necessary to run the project.
+- It is expected the cost per year during development will be around $1,000.
+
+## Availability
+The plan is to continue with the Apache 2.0 license to make the project available to anyone who can set it up and run it.
+
+- The plan is considering charging users for access to the completely functional AWS server created during development.
+- The plan is to provide any "team members" with free access to the completed AWS server.
