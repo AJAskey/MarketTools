@@ -29,4 +29,5 @@ A tool is planned to constantly download and read this XBRL for all companies an
 The plan is to continue with the Apache 2.0 license to make the project available to anyone who can set it up and run it.
 
 - The plan is considering charging users for access to the completely functional AWS server created during development.
-- The plan is to provide any "team members" with free access to the completed AWS server.
+- The plan is to provide any "team member" with free access to the completed AWS server.
+- The plan will consider funds donated to the GoFundMe page as future payment for access to the final AWS project.
