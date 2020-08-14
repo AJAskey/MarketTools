@@ -31,3 +31,4 @@ The plan is to continue with the Apache 2.0 license to make the project availabl
 - The plan is considering charging users for access to the completely functional AWS server created during development.
 - The plan is to provide any "team member" with free access to the completed AWS server.
 - The plan will consider funds donated to the GoFundMe page as future payment for access to the final AWS project.
+- The cost for use of the completed AWS server will require a marketing effort with no direct relationship to cost of development.
