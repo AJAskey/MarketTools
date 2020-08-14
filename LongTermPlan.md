@@ -19,4 +19,4 @@ The database will be hidden from users but will be accessed using front-end and 
 
 # Moving to Freely Available Data
 The plan assumes data to the SEC in financial XML format (XBRL) will continue to be available.
-A tool is planned to download and read this XBRL for all companies and populating a AWS database.
+A tool is planned to constantly download and read this XBRL for all companies and populate an AWS database.
