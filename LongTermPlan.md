@@ -6,10 +6,10 @@ My plan is to create a full stack Java application running on AWS.
 This architecture is a "stream of consciousness" for long term planning.
 
 ## Front End
-The method is TBD. The plan is to provide users with a web based method of querying data which are return to the web browser.
+The plan is to provide users with a Spring web based method of querying data which is return to the web browser.
 
 ## Back End
-The Back End will exist of the existing Java code re-structured to a Spring back-end technology.
+The Back End will consist of the existing Java code re-structured to a Spring back-end technology.
 
 ### APIs
 The visiable APIs of the back-end will be handled here using a Spring API technology.
