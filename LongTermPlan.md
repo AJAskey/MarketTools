@@ -23,7 +23,7 @@ A tool is planned to constantly download and read this XBRL for all companies an
 
 ## Costs
 - The plan is to create a GoFundMe page to pay for AWS and other data/tools necessary to run the project.
-- It is expected the cost per year during development will be around $1,000.
+- It is expected the cost per year during development will be around $2,000.
 
 ## Availability
 The plan is to continue with the Apache 2.0 license to make the project available to anyone who can set it up and run it.
