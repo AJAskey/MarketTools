@@ -17,18 +17,20 @@ The visiable APIs of the back-end will be handled here using a Spring API techno
 ### Database
 The database will be hidden from users but will be accessed using front-end and back-end calls to a Spring technology.
 
+Access to the database is the component that will be sold once complete.
+
 # Moving to Freely Available Data
 The plan assumes data to the SEC in financial XML format (XBRL) will continue to be available.
 A tool is planned to constantly download and read this XBRL for all companies and populate an AWS database.
 
 ## Costs
-- The plan is to create a GoFundMe page to pay for AWS and other data/tools necessary to run the project.
+- The plan is to create a GoFundMe (or similar) page to pay for AWS and other data/tools necessary to run the project.
 - It is expected the cost per year during development will be around $2,500.
 
 ## Availability
 The plan is to continue with the Apache 2.0 license to make the project available to anyone who can set it up and run it.
 
 - The plan is considering charging users for access to the completely functional AWS server created during development.
-- The plan is to provide any "team member" with free access to the completed AWS server.
-- The plan will consider funds donated to the GoFundMe page as future payment for access to the final AWS project.
+- The plan is to provide any "team member" with free access to the completed AWS server and possibly a cut of future business activity.
+- The plan will consider funds donated to the GoFundMe (or similar) page as future payment for access to the final AWS project.
 - The cost for use of the completed AWS server will require a marketing effort with no direct relationship to cost of development.
