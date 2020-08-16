@@ -1,5 +1,6 @@
 # Long Term Plan for MarketTools
-I am retired and have plenty of time to move the existing MarketTools into a full stack Java project.
+I am retired and have plenty of time to move the existing MarketTools into a full stack Java project. I am looking for teamates to share the open source work and possibly share in future revenue generated from the completed project.
+
 My plan is to create a full stack Java application running on an AWS server.
 
 # Notional Architecture
