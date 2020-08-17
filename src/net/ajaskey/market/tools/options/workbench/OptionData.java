@@ -53,16 +53,11 @@ public class OptionData {
   public Double   theoretical;
   public Double   theta;
   public Double   timeValue;
-
-  public String type;
-
+  public String   type;
   public DateTime updatedAt;
-
-  public boolean valid;
-
-  public Double vega;
-
-  public Long volume;
+  public boolean  valid;
+  public Double   vega;
+  public Long     volume;
 
   public OptionData() {
     this.strike = 0.0;

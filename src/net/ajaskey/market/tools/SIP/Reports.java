@@ -519,11 +519,12 @@ public class Reports {
     for (final CompanyData cd : this.companyList) {
 
       if (!cd.sector.equalsIgnoreCase("Financials")) {
-        if (cd.lastPrice >= 12.0) {
+        if (cd.lastPrice >= 20.0) {
           final String state = this.getState(cd);
           if (!state.contains("Good shape - no red flags")) {
             cd.zscore = ZombieScore.calculate(cd);
-            if (cd.zscore.score > 50.0 && cd.rs < 5.0) {
+            if (cd.zscore.score > 50.0) {
+//          if (cd.zscore.score > 50.0 && cd.rs < 5.0) {
               zombieList.add(cd);
             }
             else {
@@ -835,7 +836,9 @@ public class Reports {
       pw.printf("\tShare Change 12m  : %s M (Buyback Est= $%sM)%n", QuarterlyData.fmt(sc, 13), QuarterlyData.fmt(bbest, 1));
     }
 
-    pw.println("\n" + cd.id.sales.fmtGrowth4Q("Sales 12m"));
+    double salesps = cd.id.sales.getTtm() / cd.shares.getTtmAvg();
+    double pSales = cd.lastPrice / salesps;
+    pw.printf("%n%s :: SalesPS=%.2f --> pSales=%.2f%n", cd.id.sales.fmtGrowth4Q("Sales 12m"), salesps, pSales);
     pw.println(cd.id.grossOpIncome.fmtGrowth4Q("Ops Income 12m"));
     pw.println(cd.id.netIncome.fmtGrowth4Q("Net Income 12m"));
     pw.println(cd.id.totalInterest.fmtGrowth4Q("Interest Paid 12m"));
@@ -880,8 +883,8 @@ public class Reports {
       pw.printf("\tLT Debt Tan Asset : %s%n", QuarterlyData.fmt(cd.bsd.ltDebt.getMostRecent() / cd.bsd.assetsMinusGW.getMostRecent(), 13));
     }
 
-    pw.printf("%n\tLast Price          : %s : (52wkHi= %.2f %%offHigh=%d%%)%n", QuarterlyData.fmt(cd.lastPrice, 11), cd.high52wk,
-        (int) cd.pricePercOff52High);
+    pw.printf("%n\tLast Price          : %s : (52wkHi= %.2f %%offHigh=%d%%) :: RS= %.2f%n", QuarterlyData.fmt(cd.lastPrice, 11), cd.high52wk,
+        (int) cd.pricePercOff52High, cd.rs);
     pw.printf("\tPE                  : %s%n", QuarterlyData.fmt(cd.pe, 11));
     pw.printf("\tOp Margin           : %s%%%n", QuarterlyData.fmt(cd.opMargin, 11));
     pw.printf("\tNet Margin          : %s%%%n", QuarterlyData.fmt(cd.netMargin, 11));
@@ -941,6 +944,10 @@ public class Reports {
     pw.printf("\tInstitutions      : %s M (%s%%)%n", QuarterlyData.fmt(d, 13), QuarterlyData.fmt(cd.inst, 5));
     pw.printf("\tAvg Daily Vol     : %s%n", QuarterlyData.ifmt(cd.adv, 13));
     pw.printf("\tTurnover Float    : %s days%n", QuarterlyData.fmt(cd.turnover, 13));
+
+  }
+
+  public void writeZombieList(List<String> zList) {
 
   }
 

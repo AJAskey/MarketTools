@@ -221,6 +221,10 @@ public class CompanyData {
     reports.writeDividendCutters();
     reports.writeSpreadsheetData();
 
+//    List<CompanyData> zListcd = createZlist();
+//    Reports zListReport = new Reports(zListcd);
+//    zListReport.writeZombies("twitter");
+
     List<CompanyData> noBrainZombies = new ArrayList<>();
     for (final CompanyData cd : filteredList) {
       if (CompanyData.isNoBrainZombie(cd)) {
@@ -273,6 +277,41 @@ public class CompanyData {
     CompanyData.buybackList = null;
     statList = null;
     filteredList = null;
+  }
+
+  private static List<CompanyData> createZlist() {
+    List<String> zList = new ArrayList<>();
+    zList.add("OSTK");
+    zList.add("W");
+    zList.add("FLSY");
+    zList.add("PENN");
+    zList.add("CVNA");
+    zList.add("NIO");
+    zList.add("LL");
+    zList.add("SQ");
+    zList.add("ETSY");
+    zList.add("SE");
+    zList.add("WIX");
+    zList.add("PTON");
+    zList.add("MRNA");
+    zList.add("WING");
+    zList.add("SHOP");
+    zList.add("PINS");
+    zList.add("Z");
+
+    List<CompanyData> cdLst = new ArrayList<>();
+
+    for (CompanyData cd : companyList) {
+      for (String s : zList) {
+        if (s.equalsIgnoreCase(cd.ticker)) {
+          cdLst.add(cd);
+          break;
+        }
+      }
+    }
+
+    return cdLst;
+
   }
 
   /**
@@ -568,19 +607,25 @@ public class CompanyData {
     if (cd.sector.contains("Utilities")) {
       return false;
     }
-    if (cd.lastPrice >= 20.0) {
+//    if (cd.lastPrice >= 20.0) {
+//
+//      final double wcfcf = cd.workingCapital + cd.freeCashFlow;
+//      cd.zscore = ZombieScore.calculate(cd);
+//
+//      if (cd.zscore.score > 79.99) {
+//
+//        final double cf = cd.cashData.cashFromOps.getTtm() + cd.cashData.cashFromFin.getTtm() + cd.cashData.cashFromInv.getTtm();
+//        if (wcfcf < 0.0 && cf < 0.0) {
+//          if (cd.bsd.equity.q1 < 0.0) {
+//            return true;
+//          }
+//        }
+//      }
+//    }
 
-      final double wcfcf = cd.workingCapital + cd.freeCashFlow;
-      cd.zscore = ZombieScore.calculate(cd);
-
-      if (cd.zscore.score > 79.99) {
-
-        final double cf = cd.cashData.cashFromOps.getTtm() + cd.cashData.cashFromFin.getTtm() + cd.cashData.cashFromInv.getTtm();
-        if (wcfcf < 0.0 && cf < 0.0) {
-          if (cd.bsd.equity.q1 < 0.0) {
-            return true;
-          }
-        }
+    if (cd.bsd.equity.q1 <= 0.0) {
+      if (cd.bsd.ltDebt.q1 > cd.bsd.assetsMinusGW.q1) {
+        return true;
       }
     }
     return false;

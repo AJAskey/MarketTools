@@ -102,8 +102,14 @@ public class OptionCboe {
         pw.println(os);
 
         opt.writeBasefile();
+
+        List<OptionCollection> ocList = OptionCollection.collate(opt);
+
       }
     }
+
+    OptionCollection oc = OptionCollection.get("OEX", new DateTime("2020-Nov-20", "yyyy-MMM-dd"), "PUT");
+    System.out.println(oc);
 
     System.out.println(osIndex.toSumString());
 

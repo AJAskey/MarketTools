@@ -66,7 +66,7 @@ public class CompanyDerived {
     final int qtr = 3;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    MarketTools.parseSipData(year, qtr, ft, false);
+    MarketTools.parseSipData(year, qtr, ft, true);
 
     CompanyDerived.loadDb(year, qtr, ft);
 
@@ -89,7 +89,9 @@ public class CompanyDerived {
     final List<CompanyDerived> ag10List = CompanyDerived.processList(fdList);
     CompanyDerived.write("sipout/over10stocks.txt", ag10List, false);
 
-    fdList = CompanyDerived.getFieldData(year, qtr);
+    List<String> zList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 20.0, 100000);
+    fdList = CompanyDerived.getFieldData(zList, year, qtr);
+
     List<CompanyDerived> zombieList = processZombies(fdList);
     CompanyDerived.write("sipout/zombies-new.txt", zombieList, true);
 
@@ -128,14 +130,10 @@ public class CompanyDerived {
     for (final FieldData fd : fdList) {
 
       if (!fd.getSector().equalsIgnoreCase("Financials")) {
-        if (fd.getCompanyInfo().getPriceQtr()[1] >= 12.0) {
-          if (fd.getShareData().getVolume10d() > 100) {
-            final CompanyDerived cd = new CompanyDerived(fd);
-            if (cd.rs < 5.0) {
-              if (cd.zdata.getzScore() > 90.0) {
-                zombieList.add(cd);
-              }
-            }
+        final CompanyDerived cd = new CompanyDerived(fd);
+        if (cd.rs < 5.0) {
+          if (cd.zdata.getzScore() > 90.0) {
+            zombieList.add(cd);
           }
         }
       }

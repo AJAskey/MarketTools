@@ -32,11 +32,11 @@ public class ShillerData {
    */
   public ShillerData() {
 
-    this.ShillerEarnings = 80.0;
-    this.ShillerPE = 29.73;
-    this.Sp500Dividends = 59.18;
-    this.Sp500BVPS = 914.49;
-    this.Sp500Sales = 1273.50;
+    this.ShillerEarnings = 116.19;
+    this.ShillerPE = 31.00;
+    this.Sp500Dividends = 59.68;
+    this.Sp500BVPS = 885.59;
+    this.Sp500Sales = 1408.74;
   }
 
 }

@@ -184,4 +184,13 @@ public class Option {
 
   }
 
+  public void writeChangeFile(String type, double chg) {
+    for (final OptionData opt : this.optList) {
+      if (type.equalsIgnoreCase("PUT")) {
+        System.out.println(opt);
+      }
+    }
+
+  }
+
 }
