@@ -214,6 +214,16 @@ public class CompanyData {
       }
     }
 
+    List<CompanyData> iList = new ArrayList<>();
+    for (CompanyData cd : filteredList) {
+      if (cd.lastPrice >= 5.0) {
+        iList.add(cd);
+      }
+    }
+    final Reports iReports = new Reports(iList);
+    iReports.writeInsiders();
+    iReports.writeInstitutions();
+
     final Reports reports = new Reports(filteredList);
     reports.writeBestFinancial();
     reports.writeGoodFinancial();
@@ -277,41 +287,6 @@ public class CompanyData {
     CompanyData.buybackList = null;
     statList = null;
     filteredList = null;
-  }
-
-  private static List<CompanyData> createZlist() {
-    List<String> zList = new ArrayList<>();
-    zList.add("OSTK");
-    zList.add("W");
-    zList.add("FLSY");
-    zList.add("PENN");
-    zList.add("CVNA");
-    zList.add("NIO");
-    zList.add("LL");
-    zList.add("SQ");
-    zList.add("ETSY");
-    zList.add("SE");
-    zList.add("WIX");
-    zList.add("PTON");
-    zList.add("MRNA");
-    zList.add("WING");
-    zList.add("SHOP");
-    zList.add("PINS");
-    zList.add("Z");
-
-    List<CompanyData> cdLst = new ArrayList<>();
-
-    for (CompanyData cd : companyList) {
-      for (String s : zList) {
-        if (s.equalsIgnoreCase(cd.ticker)) {
-          cdLst.add(cd);
-          break;
-        }
-      }
-    }
-
-    return cdLst;
-
   }
 
   /**
@@ -578,6 +553,41 @@ public class CompanyData {
 
     CompanyData.sectorList = new ArrayList<>(sectors);
     Collections.sort(CompanyData.sectorList);
+
+  }
+
+  private static List<CompanyData> createZlist() {
+    final List<String> zList = new ArrayList<>();
+    zList.add("OSTK");
+    zList.add("W");
+    zList.add("FLSY");
+    zList.add("PENN");
+    zList.add("CVNA");
+    zList.add("NIO");
+    zList.add("LL");
+    zList.add("SQ");
+    zList.add("ETSY");
+    zList.add("SE");
+    zList.add("WIX");
+    zList.add("PTON");
+    zList.add("MRNA");
+    zList.add("WING");
+    zList.add("SHOP");
+    zList.add("PINS");
+    zList.add("Z");
+
+    final List<CompanyData> cdLst = new ArrayList<>();
+
+    for (final CompanyData cd : CompanyData.companyList) {
+      for (final String s : zList) {
+        if (s.equalsIgnoreCase(cd.ticker)) {
+          cdLst.add(cd);
+          break;
+        }
+      }
+    }
+
+    return cdLst;
 
   }
 

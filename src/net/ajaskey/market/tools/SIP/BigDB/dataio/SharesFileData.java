@@ -302,8 +302,8 @@ public class SharesFileData implements Serializable {
     this.mktCap = SipUtils.parseDouble(fld[17]);
     this.insiderNetPercentOutstanding = SipUtils.parseDouble(fld[18]);
     this.price = SipUtils.parseDouble(fld[19]);
-    this.price52hi = SipUtils.parseDouble(fld[20]);
-    this.price52lo = SipUtils.parseDouble(fld[21]);
+    this.price52hi = SipUtils.parseDouble(fld[30]);
+    this.price52lo = SipUtils.parseDouble(fld[31]);
     this.sharesQtr = SipUtils.parseDoubles(fld, 38, 8);
     this.sharesYr = SipUtils.parseDoubles(fld, 46, 7);
     this.volume10d = SipUtils.parseLong(fld[56]);

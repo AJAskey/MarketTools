@@ -321,7 +321,7 @@ public class CompanyDerived {
    * @param qtr
    * @return
    */
-  private static List<FieldData> getFieldData(int yr, int qtr) {
+  public static List<FieldData> getFieldData(int yr, int qtr) {
     return Globals.getQFromMemory(yr, qtr);
   }
 
@@ -331,7 +331,7 @@ public class CompanyDerived {
    * @param qtr
    * @return
    */
-  private static List<FieldData> getFieldData(List<String> tickers, int yr, int qtr) {
+  public static List<FieldData> getFieldData(List<String> tickers, int yr, int qtr) {
     return Globals.getQFromMemory(tickers, yr, qtr);
   }
 
