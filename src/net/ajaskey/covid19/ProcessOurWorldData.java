@@ -21,6 +21,7 @@ public class ProcessOurWorldData {
   public static void main(String[] args) {
 
     final List<String> dList = TextUtils.readTextFile("data/owid-covid-data.txt", true);
+    // final List<String> dList = OurWorldData.downloadLatest();
 
     for (int i = 1; i < dList.size(); i++) {
       final String str = dList.get(i).trim();
@@ -87,6 +88,9 @@ public class ProcessOurWorldData {
           if (owd.getTotal_tests() > 0) {
             pd.incTotalTests(owd.getTotal_tests());
           }
+          if (owd.getPopulation() > 0) {
+            pd.incPopulation(owd.getPopulation());
+          }
         }
       }
     }
@@ -145,7 +149,7 @@ public class ProcessOurWorldData {
     else {
       plotList = new ArrayList<>();
       for (final OurWorldData owd : newList) {
-        plotList.add(new PlotData(owd.getDate(), owd.getTotal_cases(), owd.getTotal_deaths(), owd.getTotal_tests()));
+        plotList.add(new PlotData(owd.getDate(), owd.getTotal_cases(), owd.getTotal_deaths(), owd.getTotal_tests(), owd.getPopulation()));
       }
     }
 
@@ -205,6 +209,33 @@ public class ProcessOurWorldData {
       }
     }
 
+    fname = String.format("%s_%s_CFR.csv", cont, loc);
+    filename = path + fname;
+    try (PrintWriter pw = new PrintWriter(filename)) {
+      for (int i = 0; i < plotList.size(); i++) {
+        PlotData pd = plotList.get(i);
+        double tc = pd.getTotalCases();
+        if (tc > 0) {
+          double cfr = (double) pd.getTotalDeaths() / (double) tc * 100.0;
+          final String s = String.format("%s,%.2f", pd.getDate().format("yyyy-MM-dd"), cfr);
+          pw.println(s);
+        }
+      }
+    }
+
+    fname = String.format("%s_%s_DeathsPerMillion.csv", cont, loc);
+    filename = path + fname;
+    try (PrintWriter pw = new PrintWriter(filename)) {
+      for (int i = 0; i < plotList.size(); i++) {
+        PlotData pd = plotList.get(i);
+        long pop = pd.getPopulation();
+        if (pop > 0) {
+          double dpm = (double) pd.getTotalDeaths() / (double) pop * 1000000.0;
+          final String s = String.format("%s,%.5f", pd.getDate().format("yyyy-MM-dd"), dpm);
+          pw.println(s);
+        }
+      }
+    }
   }
 
 }

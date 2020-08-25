@@ -8,19 +8,22 @@ public class PlotData {
   private int            totalCases;
   private int            totalDeaths;
   private int            totalTests;
+  private long           population;
 
   public PlotData(DateTime dt) {
     this.date = new DateTime(dt);
     this.totalCases = 0;
     this.totalDeaths = 0;
     this.totalTests = 0;
+    this.population = 0L;
   }
 
-  public PlotData(DateTime dt, int tc, int td, int tt) {
+  public PlotData(DateTime dt, int tc, int td, int tt, long pop) {
     this.date = new DateTime(dt);
     this.totalCases = tc;
     this.totalDeaths = td;
     this.totalTests = tt;
+    this.population = pop;
   }
 
   public DateTime getDate() {
@@ -41,6 +44,10 @@ public class PlotData {
 
   public void incTotalCases(int tc) {
     this.totalCases += tc;
+  }
+
+  public void incPopulation(long pop) {
+    this.population += pop;
   }
 
   public void incTotalDeaths(int td) {
@@ -65,7 +72,11 @@ public class PlotData {
 
   @Override
   public String toString() {
-    final String ret = String.format("%s %12d %12d %12d", this.date, this.totalCases, this.totalDeaths, this.totalTests);
+    final String ret = String.format("%s %12d %12d %12d %20L", this.date, this.totalCases, this.totalDeaths, this.totalTests, this.population);
     return ret;
+  }
+
+  public long getPopulation() {
+    return population;
   }
 }
