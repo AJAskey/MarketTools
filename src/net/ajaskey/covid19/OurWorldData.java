@@ -53,8 +53,7 @@ public class OurWorldData {
   private final static int              TOTAL_DEATHS                    = 7;
   private final static int              TOTAL_DEATHS_PER_MILLION        = 13;
   private final static int              TOTAL_TESTS                     = 17;
-
-  private final static int TOTAL_TESTS_PER_THOUSAND = 18;
+  private final static int              TOTAL_TESTS_PER_THOUSAND        = 18;
 
   /**
    *
@@ -93,6 +92,7 @@ public class OurWorldData {
     final List<String> sList = OurWorldData.downloadLatest();
 
     try (PrintWriter pw = new PrintWriter("data/owid-covid-data.txt")) {
+      pw.println(new DateTime().toFullString());
       for (String s : sList) {
         pw.println(s);
       }
@@ -180,10 +180,16 @@ public class OurWorldData {
   private int      total_deaths;
   private double   total_deaths_per_million;
   private int      total_tests;
+  private double   total_tests_per_thousand;
+  private boolean  valid;
 
-  private double total_tests_per_thousand;
+  public void setTotal_cases(int total_cases) {
+    this.total_cases = total_cases;
+  }
 
-  private boolean valid;
+  public void setTotal_deaths(int total_deaths) {
+    this.total_deaths = total_deaths;
+  }
 
   /**
    *

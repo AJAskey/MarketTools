@@ -22,20 +22,20 @@ public class WriteInstitutions {
     final int qtr = 3;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    MarketTools.parseSipData(year, qtr, ft, false);
+    MarketTools.parseSipData(year, qtr, ft, true);
 
     CompanyDerived.loadDb(year, qtr, ft);
 
     final List<String> sList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 5.0, 1L);
 
-    List<FieldData> fdList = CompanyDerived.getFieldData(sList, year, qtr);
+    final List<FieldData> fdList = CompanyDerived.getFieldData(sList, year, qtr);
 
     Utils.makeDir("sipout");
     final String fname = String.format("sipout/Institutions-%dQ%d.csv", year, qtr);
 
     try (PrintWriter pw = new PrintWriter(fname)) {
-      pw.println("Ticker,Name,Sector,Industry,NetShr,Price,Change,ShrOut,Percent");
-      for (FieldData fd : fdList) {
+      pw.println("Ticker,Name,Sector,Industry,NetShr,Price,Change($),ShrOut,Percent");
+      for (final FieldData fd : fdList) {
 
         double price = fd.getShareData().getPrice();
         if (fd.getCompanyInfo().getPriceQtr()[1] > 0.0 && fd.getCompanyInfo().getPriceQtr()[2] > 0.0 && fd.getCompanyInfo().getPriceQtr()[3] > 0.0) {
@@ -45,10 +45,10 @@ public class WriteInstitutions {
           price = (fd.getShareData().getPrice52lo() + fd.getShareData().getPrice52hi()) / 2.0;
         }
 
-        double buyShr = fd.getShareData().getInstBuyShrs();
-        double sellShr = fd.getShareData().getInstSellShrs();
-        double netShr = buyShr - sellShr;
-        double chg = netShr * price;
+        final double buyShr = fd.getShareData().getInstBuyShrs();
+        final double sellShr = fd.getShareData().getInstSellShrs();
+        final double netShr = buyShr - sellShr;
+        final double chg = netShr * price;
         double shares = fd.getShareData().getSharesQtr()[1] * 1000000.0;
         if (shares == 0.0) {
           shares = fd.getShareData().getFloatshr() * 1000000;
@@ -60,11 +60,11 @@ public class WriteInstitutions {
             pOut = netShr / shares;
           }
 
-          String name = fd.getName().replace(",", ";");
-          String sector = fd.getSector().replace(",", ";");
-          String industry = fd.getIndustry().replace(",", ";");
+          final String name = fd.getName().replace(",", ";");
+          final String sector = fd.getSector().replace(",", ";");
+          final String industry = fd.getIndustry().replace(",", ";");
 
-          String s = String.format("%s,%s,%s,%s,%d,%.2f,%d,%d,%f", fd.getTicker(), name, sector, industry, (int) netShr, price, (int) chg,
+          final String s = String.format("%s,%s,%s,%s,%d,%.2f,%d,%d,%f", fd.getTicker(), name, sector, industry, (int) netShr, price, (int) chg,
               (int) shares, pOut);
           pw.println(s);
         }

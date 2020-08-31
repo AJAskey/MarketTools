@@ -20,6 +20,6 @@ package net.ajaskey.market.tools.SIP.BigDB;
 
 public enum ExchEnum {
 
-  AMEX, NASDAQ, NONE, NYSE, OTC
+  AMEX, NASDAQ, NONE, NYSE, OTC, MAJOR
 
 }

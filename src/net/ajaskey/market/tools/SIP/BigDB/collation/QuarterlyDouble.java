@@ -187,6 +187,12 @@ public class QuarterlyDouble {
     try {
       if (this.dArr[5] != 0.0) {
         ret = (this.dArr[1] - this.dArr[5]) / Math.abs(this.dArr[5]) * 100.0;
+        if (ret < -9999.99) {
+          ret = -9999.99;
+        }
+        else if (ret > 9999.99) {
+          ret = 9999.99;
+        }
       }
     }
     catch (final Exception e) {
@@ -256,8 +262,8 @@ public class QuarterlyDouble {
     try {
       final double y1 = this.dArr[1] + this.dArr[2] + this.dArr[3] + this.dArr[4];
       final double y2 = this.dArr[5] + this.dArr[6] + this.dArr[7] + this.dArr[8];
-      if (y1 != 0.0) {
-        ret = (y2 - y1) / Math.abs(y1) * 100.0;
+      if (y2 != 0.0) {
+        ret = (y1 - y2) / Math.abs(y2) * 100.0;
       }
     }
     catch (final Exception e) {

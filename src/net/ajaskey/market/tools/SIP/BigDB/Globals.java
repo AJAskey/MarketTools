@@ -30,7 +30,7 @@ public class Globals {
   public static List<FieldDataYear> allDataList = new ArrayList<>();
 
   final public static int endYear   = 2020;
-  final public static int startYear = 2015;
+  final public static int startYear = 2018;
 
   /**
    * Returns state of loaded Global lists
@@ -53,6 +53,24 @@ public class Globals {
     return false;
   }
 
+  public static FieldDataYear getCompanyFromMemory(String ticker) {
+
+    List<FieldDataYear> fdyList = new ArrayList<>();
+
+    for (int yr = startYear; yr <= endYear; yr++) {
+      for (int qtr = 1; qtr <= 4; qtr++) {
+        FieldDataYear fdy = getYear(yr);
+        if (fdy != null) {
+
+          System.out.println("hey");
+        }
+      }
+    }
+
+    return null;
+
+  }
+
   /**
    * Returns FieldData for requested ticker for year and quarter from internal
    * memory. Designed to be called from FieldData.
@@ -62,7 +80,7 @@ public class Globals {
    * @param qtr quarter (1-4)
    * @return FieldData or NULL if error.
    */
-  public static FieldData getFromMemory(String tkr, int yr, int qtr) {
+  public static FieldData getQFromMemory(String tkr, int yr, int qtr) {
 
     try {
       final String ticker = tkr.trim().toUpperCase();

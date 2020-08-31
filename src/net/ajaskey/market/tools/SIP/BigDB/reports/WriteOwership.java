@@ -14,7 +14,7 @@ import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 
-public class WriteInsiders {
+public class WriteOwership {
 
   public static void main(String[] args) throws FileNotFoundException {
 
@@ -22,19 +22,20 @@ public class WriteInsiders {
     final int qtr = 3;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    MarketTools.parseSipData(year, qtr, ft, false);
+    MarketTools.parseSipData(year, qtr, ft, true);
 
-    FieldData.setQMemory(year, qtr, ft);
+    CompanyDerived.loadDb(year, qtr, ft);
 
     final List<String> sList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 5.0, 1L);
 
     final List<FieldData> fdList = CompanyDerived.getFieldData(sList, year, qtr);
 
     Utils.makeDir("sipout");
-    final String fname = String.format("sipout/Insiders-%dQ%d.csv", year, qtr);
+    final String fname = String.format("sipout/Ownership-%dQ%d.csv", year, qtr);
 
     try (PrintWriter pw = new PrintWriter(fname)) {
-      pw.println("Ticker,Name,Sector,Industry,NetShr,Price,Change($),ShrOut,Percent");
+      pw.println(
+          "Ticker,Name,Sector,Industry,Avg Price,ShrOut,Inst NetShr,Inst Change($),Inst Percent,Insider NetShr,Insider Change($),Insider Percent");
       for (final FieldData fd : fdList) {
 
         double price = fd.getShareData().getPrice();
@@ -45,32 +46,38 @@ public class WriteInsiders {
           price = (fd.getShareData().getPrice52lo() + fd.getShareData().getPrice52hi()) / 2.0;
         }
 
-        final double buyShr = fd.getShareData().getInsiderBuyShrs();
-        final double sellShr = fd.getShareData().getInsiderSellShrs();
-        final double netShr = buyShr - sellShr;
-        final double chg = netShr * price;
         double shares = fd.getShareData().getSharesQtr()[1] * 1000000.0;
         if (shares == 0.0) {
           shares = fd.getShareData().getFloatshr() * 1000000;
         }
 
+        final double ibuyShr = fd.getShareData().getInsiderBuyShrs();
+        final double isellShr = fd.getShareData().getInsiderSellShrs();
+        final double inetShr = ibuyShr - isellShr;
+        final double ichg = inetShr * price;
+
+        final double fbuyShr = fd.getShareData().getInstBuyShrs();
+        final double fsellShr = fd.getShareData().getInstSellShrs();
+        final double fnetShr = fbuyShr - fsellShr;
+        final double fchg = fnetShr * price;
+
         if (shares > 0.0) {
-          double pOut = 0.0;
-          if (shares != 0.0) {
-            pOut = netShr / shares;
-          }
+          double fpOut = 0.0;
+          double ipOut = 0.0;
+          fpOut = fnetShr / shares;
+          ipOut = inetShr / shares;
 
           final String name = fd.getName().replace(",", ";");
           final String sector = fd.getSector().replace(",", ";");
           final String industry = fd.getIndustry().replace(",", ";");
 
-          final String s = String.format("%s,%s,%s,%s,%d,%.2f,%d,%d,%f", fd.getTicker(), name, sector, industry, (int) netShr, price, (int) chg,
-              (int) shares, pOut);
+          final String s = String.format("%s,%s,%s,%s,%f,%d,%d,%d,%f,%d,%d,%f", fd.getTicker(), name, sector, industry, price, (int) shares,
+              (int) fnetShr, (int) fchg, fpOut, (int) inetShr, (int) ichg, ipOut);
           pw.println(s);
         }
       }
     }
-
+    System.out.println("Done.");
   }
 
 }

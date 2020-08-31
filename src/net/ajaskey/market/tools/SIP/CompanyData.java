@@ -46,10 +46,15 @@ public class CompanyData {
 
   public static List<String> sectorList;
 
-  protected final static String balsheetFile     = "sipdata/US-STOCKS-BALANCESHEETQTR.TXT";
-  protected final static String cashFile         = "sipdata/US-STOCKS-CASH.TXT";
-  protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
-  protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
+//  protected final static String balsheetFile     = "sipdata/US-STOCKS-BALANCESHEETQTR.TXT";
+//  protected final static String cashFile         = "sipdata/US-STOCKS-CASH.TXT";
+//  protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
+//  protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
+
+  protected final static String balsheetFile     = "data/BigDB/2020/Q3/BALSHEET-QTR-2020Q3.TXT";
+  protected final static String cashFile         = "data/BigDB/2020/Q3/CASH-2020Q3.TXT";
+  protected final static String incstatementFile = "data/BigDB/2020/Q3/INCOME-QTR-2020Q3.TXT";
+  protected final static String miscFile         = "data/BigDB/2020/Q3/US-STOCKS-MISC.TXT";
 
   private final static String           NL  = Utils.NL;
   private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -76,7 +81,7 @@ public class CompanyData {
     }
     final String str = String.format("%s:%s", cd.ticker.toUpperCase(), exch);
     CompanyData.theGoodList.add(str);
-    System.out.println("adding to theGoodList : " + str);
+    // System.out.println("adding to theGoodList : " + str);
   }
 
   /**
@@ -311,9 +316,7 @@ public class CompanyData {
           final String ticker = fld[0].trim();
           final CompanyData cd = CompanyData.getCompany(ticker);
           if (cd != null) {
-            if (cd.ticker.equalsIgnoreCase("NKTR")) {
-              System.out.println(fld[3]);
-            }
+
             cd.numEmp = (int) Double.parseDouble(fld[2].trim());
             cd.eoq = new DateTime(fld[3].trim(), "MM/dd/yyyy");
             cd.eoq.setSdf(Utils.sdf);

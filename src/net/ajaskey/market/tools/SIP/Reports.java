@@ -279,7 +279,7 @@ public class Reports {
 //    }
     final String str = String.format("%s%s,", cd.ticker, exch);
     pw.printf("%s%n", str);
-    System.out.printf("Adding Zombie to list : %s%n", str);
+    // System.out.printf("Adding Zombie to list : %s%n", str);
 
   }
 
@@ -549,11 +549,17 @@ public class Reports {
     final List<CompanyData> finalZombieList = new ArrayList<>();
     int knt = 0;
     for (final CompanyData cd : zombieList) {
-      if (knt++ < 150) {
-        finalZombieList.add(cd);
+      if (cd.exchange.equalsIgnoreCase("NEW YORK") || cd.exchange.equalsIgnoreCase("NASDAQ") || cd.exchange.contains("American")) {
+        if (knt++ < 150) {
+          System.out.printf("Zombie adding : %10s : %s%n", cd.ticker, cd.exchange);
+          finalZombieList.add(cd);
+        }
+        else {
+          break;
+        }
       }
       else {
-        break;
+        System.out.printf("Zombie NOT adding : %10s : %s%n", cd.ticker, cd.exchange);
       }
     }
 
@@ -563,7 +569,7 @@ public class Reports {
       now.setSdf(Utils.sdfFull);
 
       pw.printf("Created : %s\t%s%n", now, "This file is subject to change without notice.");
-      pw.println("Pre-filtered for US companies over $12 and average trading volume of at least 100K.");
+      pw.println("Pre-filtered for AMEX, NASDAQ, NYSE companies over $20 and average trading volume of at least 100K.");
 
       for (final String sec : CompanyData.sectorList) {
         if (sec.equalsIgnoreCase("financials") || sec.equalsIgnoreCase("utilities")) {
@@ -589,12 +595,12 @@ public class Reports {
       now.setSdf(Utils.sdfFull);
 
       pw.printf("Created : %s\t%s%n", now, "This file is subject to change without notice.");
-      pw.println("Pre-filtered for US companies over $12 and average trading volume of at least 100K.");
+      pw.println("Pre-filtered for AMEX, NASDAQ, NYSE companies over $20 and average trading volume of at least 100K.");
 
       pw.printf("%nList of tickers with Cash from Operations less than Working Capital deficit.%n");
       String str = "";
       for (final CompanyData cd : finalZombieList) {
-        System.out.println(cd.ticker);
+        // System.out.println(cd.ticker);
         if (cd.cashData.cashFromOps.getTtm() < cd.workingCapital && cd.workingCapital < 0.0) {
           str = this.addStr(cd.ticker, str);
         }
@@ -604,7 +610,7 @@ public class Reports {
       pw.printf("%nList of tickers with Current Ratio < %.2f and paying more than %.1f%% of Sales to Interest.%n", 1.0, Reports.intToSalesHWM);
       str = "";
       for (final CompanyData cd : finalZombieList) {
-        System.out.println(cd.ticker);
+        // System.out.println(cd.ticker);
         if (cd.currentRatio < 1.0 && cd.interestRate > Reports.intToSalesHWM) {
           str = this.addStr(cd.ticker, str);
         }
@@ -672,6 +678,10 @@ public class Reports {
           PrintWriter pwSc = new PrintWriter("sipout/" + prefix + "Zombies-sc.txt")) {
 
         pwCsv.println("Ticker,");
+        pwCsv.println("SPY:US,");
+        pwCsv.println("QQQ:US,");
+        pwCsv.println("IWM:US,");
+        pwCsv.println("DIA:US,");
 
         for (final CompanyData cd : finalZombieList) {
 
@@ -682,9 +692,7 @@ public class Reports {
           pw.printf("%s%n", cd.zscore);
 
           if (cd.zscore.score >= 80.0 || cd.zscore.score >= 70.0 && cd.marketCap < 2000.0) {
-//            if (cd.ticker.contains("XOM")) {
-//              System.out.println(cd.ticker);
-//            }
+
             pwCode.printf(" $%s", cd.ticker);
             if (cd.lastPrice > 12.0) {
               this.writeCsvLine(pwCsv, cd);
@@ -693,7 +701,7 @@ public class Reports {
             }
           }
 
-          if (knt > 50) {
+          if (knt > 100) {
             break;
           }
         }
@@ -806,7 +814,7 @@ public class Reports {
       index = ", " + cd.spIndex;
     }
 
-    pw.printf("\t%s, %s%s%n", cd.sector, cd.industry, index);
+    pw.printf("\t%s, %s, %s%s%n", cd.sector, cd.industry, cd.exchange.replace("A - ", ""), index);
     // pw.printf("\t%s%n", cd.industry);
     String sNumEmp = "?";
     if (cd.numEmp > 0) {

@@ -23,10 +23,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.ajaskey.common.DateTime;
 import net.ajaskey.common.TextUtils;
 import net.ajaskey.common.Utils;
-import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
 import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
@@ -36,6 +34,7 @@ import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.reports.WriteCompanyData;
 
 /**
  * This class contains data and methods used to aggregate financial and price
@@ -44,6 +43,26 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 public class CompanyDerived {
 
   public static final double MILLION = 1000000.0;
+
+  /**
+   *
+   * @param yr
+   * @param qtr
+   * @return
+   */
+  public static List<FieldData> getFieldData(int yr, int qtr) {
+    return Globals.getQFromMemory(yr, qtr);
+  }
+
+  /**
+   * @param tickers
+   * @param yr
+   * @param qtr
+   * @return
+   */
+  public static List<FieldData> getFieldData(List<String> tickers, int yr, int qtr) {
+    return Globals.getQFromMemory(tickers, yr, qtr);
+  }
 
   /**
    *
@@ -66,7 +85,7 @@ public class CompanyDerived {
     final int qtr = 3;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    MarketTools.parseSipData(year, qtr, ft, true);
+    MarketTools.parseSipData(year, qtr, ft, false);
 
     CompanyDerived.loadDb(year, qtr, ft);
 
@@ -75,25 +94,29 @@ public class CompanyDerived {
     List<FieldData> fdList = CompanyDerived.getFieldData(spxList, year, qtr);
 
     Utils.makeDir("sipout");
-    final String fname = String.format("sipout/Companies-%dQ%d.txt", year, qtr);
+    final String fname = String.format("sipout/Companies-%dQ%d", year, qtr);
 
     final List<CompanyDerived> agList = CompanyDerived.processList(fdList);
     CompanyDerived.write(fname, agList, false);
 
-    final List<String> over10List = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 10.0, 100000L);
+    final List<String> over10List = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.MAJOR, 10.0, 100000L);
 
     TextUtils.print(over10List);
     System.out.println(over10List.size());
 
     fdList = CompanyDerived.getFieldData(over10List, year, qtr);
     final List<CompanyDerived> ag10List = CompanyDerived.processList(fdList);
-    CompanyDerived.write("sipout/over10stocks.txt", ag10List, false);
+    CompanyDerived.write("sipout/over10stocks", ag10List, false);
 
-    List<String> zList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 20.0, 100000);
+    WriteCompanyData.writeEstimates("sipout/estimates.csv", agList);
+
+    final List<String> zList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 20.0, 100000);
     fdList = CompanyDerived.getFieldData(zList, year, qtr);
 
-    List<CompanyDerived> zombieList = processZombies(fdList);
-    CompanyDerived.write("sipout/zombies-new.txt", zombieList, true);
+    final List<CompanyDerived> zombieList = CompanyDerived.processZombies(fdList);
+    CompanyDerived.write("sipout/zombies-new", zombieList, true);
+
+    System.out.println("Done.");
 
   }
 
@@ -145,198 +168,40 @@ public class CompanyDerived {
    * Outputs formatted values for all entries in the static agList
    *
    * @param fname Name of output file
+   * @throws FileNotFoundException
    */
-  public static void write(String fname, List<CompanyDerived> agList, boolean zombie) {
+  public static void write(String fname, List<CompanyDerived> agList, boolean zombie) throws FileNotFoundException {
 
     System.out.println("Writing Fundamental Report to : " + fname);
 
     Utils.makeDir("out");
 
-    new ArrayList<>();
+    final String fname1 = String.format("%s.txt", fname);
+    final String fnameSnap = String.format("%s-snap.txt", fname);
 
-    try (PrintWriter pw = new PrintWriter(fname)) {
+    try (PrintWriter pw = new PrintWriter(fname1); PrintWriter pwSnap = new PrintWriter(fnameSnap)) {
 
-      final DateTime now = new DateTime();
-      now.setSdf(Utils.sdfFull);
+      WriteCompanyData.writeHeader(pw);
 
-      pw.printf("Created : %s\t%s%n", now, "This file is subject to change without notice.");
-      pw.println("Pre-filtered for US companies over $12 and average trading volume of at least 100K." + Utils.NL);
+      for (final CompanyDerived cdr : agList) {
 
-      pw.println("Seq : this quarter versus last quarter.");
-      pw.println("QoQ : this quarter versus same quarter a year ago.");
-      pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
+        WriteCompanyData.writeCompanyInfo(pw, cdr);
+        WriteCompanyData.writeCompanyInfo(pwSnap, cdr);
 
-      for (final CompanyDerived ca : agList) {
+        WriteCompanyData.write(pw, cdr);
 
-        final FieldData fd = ca.fd;
-
-        pw.println(" " + fd.getTicker());
-        pw.printf("\t%s : %s, %s%n", fd.getName(), MarketTools.getCity(fd), MarketTools.getState(fd));
-
-        final String index = ", " + MarketTools.getSnpIndexStr(fd);
-        final String exch = ", " + fd.getExchange().toString();
-
-        pw.printf("\t%s, %s%s%s%n", fd.getSector(), fd.getIndustry(), index, exch);
-        String sNumEmp = "?";
-        if (MarketTools.getNumEmployees(fd) > 0) {
-          sNumEmp = Utils.ifmt(MarketTools.getNumEmployees(fd), 12);
-        }
-        pw.printf("\tEmployees     : %s%n", sNumEmp);
-        if (MarketTools.getNumEmployees(fd) > 0) {
-          final double d = ca.grossIncQdata.getTtm() / MarketTools.getNumEmployees(fd) * CompanyDerived.MILLION;
-          final int i = (int) d;
-          pw.printf("\tOpInc per Emp : $%s%n", Utils.ifmt(i, 11));
-        }
-
-        final String dat = MarketTools.getLatestQtrEps(fd).format("yyyy-MMM-dd");
-        pw.printf("\t10Q Date      :  %s%n", dat);
-
-        pw.printf("\tPrice         :  %11.2f%n", MarketTools.getPrice(fd));
-        pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(MarketTools.getMktCap(fd), 13));
-
-        pw.println(ca.sharesQdata.fmtGrowth1Q("Shares"));
-        final double sc = ca.sharesQdata.deltaQ(1, 2);
-        if (sc < -0.250) {
-          final double bbest = Math.abs(sc) * ((MarketTools.getPrice52hi(fd) + MarketTools.getPrice52lo(fd)) / 2.0);
-          pw.printf("\tShare Change 12m  : %s M (Buyback Est= $%sM)%n", Utils.fmt(sc, 13), Utils.fmt(bbest, 1));
-        }
-
-        pw.println("\n" + ca.salesQdata.fmtGrowth4Q("Sales 12m"));
-        pw.println(ca.cogsQdata.fmtGrowth4Q("COGS 12m"));
-        pw.println(ca.grossOpIncQdata.fmtGrowth4Q("Ops Income 12m"));
-        pw.println(ca.netIncQdata.fmtGrowth4Q("Net Income 12m"));
-        pw.println(ca.intTotQdata.fmtGrowth4Q("Interest 12m"));
-        //
-        final double totdebt = MarketTools.getStDebtQtr(fd)[2] + MarketTools.getLtDebtQtr(fd)[2];
-        double intrate = 0.0;
-        if (totdebt > 0.0) {
-          intrate = ca.intTotQdata.getTtm() / totdebt;
-        }
-        pw.printf("\tInterest Rate     :%14.2f%%%n", intrate * 100.0);
-        double expInt = (ca.stDebtQdata.get(1) + ca.ltDebtQdata.get(1)) * intrate;
-        pw.printf("\tEst Interest 12m  :%s M%n", SipOutput.fmt(expInt, 14, 2));
-
-        //
-
-        pw.println("\n" + ca.cashFromOpsQdata.fmtGrowth4Q("Cash <- Ops 12m"));
-        pw.println(ca.capExQdata.fmtGrowth4Q("  CapEx 12m"));
-        if (ca.dividendQdata.getTtm() > 0.0) {
-          final double dyld = ca.dividendQdata.getTtm() / MarketTools.getPrice(fd) * 100.0;
-          pw.printf("\t  Dividends 12m   : %s M (Yield=%.2f%%)%n", Utils.fmt(ca.divCostQdata.getTtm(), 13), dyld);
-
-        }
-        else {
-          pw.printf("\t  Dividends 12m   : %s M%n", Utils.fmt(ca.divCostQdata.getTtm(), 13));
-        }
-
-        pw.printf("\t    FCF 12m       : %s M %s%n", Utils.fmt(ca.fcfQdata.getTtm(), 13), "[Cash from Operations - CapEx - Dividends]");
-
-        pw.printf("\tCash <- Fin 12m   : %s M %s%n", Utils.fmt(ca.cashFromFinQdata.getTtm(), 13),
-            "[Movement of cash between a firm and its owners/creditors : borrowing, debt repayment, dividend paid, equity financing.]");
-
-        pw.printf("\t  Net Cash 12m    : %s M %s%n", Utils.fmt(ca.netcashflowQdata.getTtm(), 13), "[Cash from Ops + Cash from Financing]");
-
-        pw.printf("\tCash <- Inv 12m   : %s M %s%n", Utils.fmt(ca.cashFromInvQdata.getTtm(), 13),
-            "[Purchases and sales of long-term assets such as plant and machinery - assumed infrequent.]");
-
-        pw.printf("\t  Cash Flow 12m   : %s M %s%n", Utils.fmt(ca.cashflowQdata.getTtm(), 13),
-            "[Cash from Ops + Cash from Financing + Cash from Investing]");
-
-        pw.println(Utils.NL + ca.currAssetsQdata.fmtGrowth1Q("Current Assets"));
-        pw.println(ca.cashQdata.fmtGrowth1Q("  Cash"));
-        pw.println(ca.acctRxQdata.fmtGrowth1Q("  Acct Rx"));
-        pw.println(ca.stInvestQdata.fmtGrowth1Q("  ST Invest"));
-        pw.println(ca.inventoryQdata.fmtGrowth1Q("  Inventory"));
-        pw.println(ca.otherCurrAssetsQdata.fmtGrowth1Q("  Other"));
-
-        pw.println(ca.currLiabQdata.fmtGrowth1Q("Current Liabs"));
-        pw.println(ca.acctPayableQdata.fmtGrowth1Q("  Acct Pay"));
-        pw.println(ca.stDebtQdata.fmtGrowth1Q("  ST Debt"));
-        pw.println(ca.otherCurrLiabQdata.fmtGrowth1Q("  Other"));
-
-        pw.printf("\tWorking Capital   : %s M (Ratio=%.2f)%n", Utils.fmt(ca.workingCapitalQdata.getMostRecent(), 13),
-            ca.currentRatioQdata.getMostRecent());
-        pw.printf("\tWC + FCF          : %s M%n", Utils.fmt(ca.wcfcfQdata.getMostRecent(), 13));
-
-        //
-
-        pw.println(Utils.NL + ca.equityQdata.fmtGrowth1Q("Sharehldr Equity"));
-        pw.println(ca.goodwillQdata.fmtGrowth1Q("Goodwill"));
-        pw.println(ca.tanAssetsQdata.fmtGrowth1Q("Tangible Assets"));
-        pw.println(ca.ltDebtQdata.fmtGrowth1Q("LT Debt"));
-        if (ca.equityQdata.getMostRecent() > 0.0) {
-          pw.printf("\tLT Debt to Equity : %s%n", Utils.fmt(ca.ltDebtQdata.getMostRecent() / ca.equityQdata.getMostRecent(), 13));
-        }
-        else {
-          pw.printf("\tLT Debt Tan Asset : %s%n", Utils.fmt(ca.ltDebtQdata.getMostRecent() / ca.tanAssetsQdata.getMostRecent(), 13));
-        }
-
-        pw.println(Utils.NL + ca.netMarginQdata.fmtGrowth1QNoUnit("Net Margin"));
-        pw.println(ca.opMarginQdata.fmtGrowth1QNoUnit("Op Margin"));
-        pw.println(ca.roeQdata.fmtGrowth1QNoUnit("ROE"));
-        // System.out.println(ca.roeQdata);
-        pw.println(ca.peQdata.fmtGrowth1QNoUnit("PE"));
-        pw.printf("\tQ0 Est Growth     : %13.2f %% (%.2f to %.2f)%n", ca.q0EstGrowth, ca.epsDilContQdata.dArr[4], ca.epsEstQ0);
-        pw.printf("\tY1 Est Growth     : %13.2f %% (%.2f to %.2f)%n", ca.y1EstGrowth, ca.epsDilContQdata.getPrevTtm(), ca.epsEstY1);
-        pw.printf("\tY2 Est Growth     : %13.2f %% (%.2f to %.2f)%n", ca.y2EstGrowth, ca.epsEstY1, ca.epsEstY2);
-
-        pw.printf("%n\tFloat             : %s M%n", Utils.fmt(MarketTools.getFloatshr(fd), 13));
-        double d = MarketTools.getInsiderOwnership(fd);
-        pw.printf("\tInsiders          : %s %%%n", Utils.fmt(d, 13));
-        d = MarketTools.getInstOwnership(fd);
-        pw.printf("\tInstitutions      : %s %% (Number %s)%n", Utils.fmt(d, 13), Utils.ifmt(MarketTools.getInstShareholders(fd), 5));
-
-        if (MarketTools.getVolume10d(fd) > 999) {
-          pw.printf("\tAvg Daily Vol     : %s M%n", Utils.fmt(MarketTools.getVolume10d(fd) / 1000.0, 13));
-        }
-        else {
-          pw.printf("\tAvg Daily Vol     : %s K%n", Utils.lfmt(MarketTools.getVolume10d(fd), 13));
-        }
-
-        double turnover = 0.0;
-        if (MarketTools.getVolumeMonth3m(fd) > 0.0) {
-          turnover = MarketTools.getFloatshr(fd) / (MarketTools.getVolume10d(fd) / 1000.0);
-        }
-        pw.printf("\tTurnover Float    : %s days%n", Utils.fmt(turnover, 13));
-        pw.printf("\tRS                : %s%n", Utils.fmt(ca.rs, 13));
-        // pw.printf("\tZScore : %s%n", Utils.fmt(ca.zdata.getzScore(), 13));
-
-        if (zombie) {
-          pw.printf("%n%s%n", ca.zdata);
-        }
+        WriteCompanyData.writeQuarterly(pw, cdr);
+        WriteCompanyData.writeQuarterly(pwSnap, cdr);
 
         pw.println();
+        pwSnap.println();
 
       }
-    }
-    catch (final Exception e) {
-      final String s = String.format("Unable to write to output file : %s%n", fname);
-      System.out.printf("%s%n\t%s%n", FieldData.getWarning(e), s);
-    }
-  }
 
-  /**
-   *
-   * @param yr
-   * @param qtr
-   * @return
-   */
-  public static List<FieldData> getFieldData(int yr, int qtr) {
-    return Globals.getQFromMemory(yr, qtr);
-  }
-
-  /**
-   * @param tickers
-   * @param yr
-   * @param qtr
-   * @return
-   */
-  public static List<FieldData> getFieldData(List<String> tickers, int yr, int qtr) {
-    return Globals.getQFromMemory(tickers, yr, qtr);
+    }
   }
 
   private QuarterlyDouble acctPayableQdata;
-
   private QuarterlyDouble acctRxQdata;
   private QuarterlyDouble adjToIncQdata;
   private QuarterlyDouble bvpsQdata;
@@ -357,6 +222,7 @@ public class CompanyDerived {
   private QuarterlyDouble epsDilContQdata;
   private QuarterlyDouble epsDilQdata;
   private double          epsEstQ0;
+  private double          epsEstQ0Growth;
   private double          epsEstY1;
   private double          epsEstY2;
   private QuarterlyDouble epsQdata;
@@ -372,6 +238,7 @@ public class CompanyDerived {
   private QuarterlyDouble intExpNonOpQdata;
   private QuarterlyDouble intExpQdata;
   private QuarterlyDouble intTotQdata;
+  private double          currInterestRate;
   private QuarterlyDouble inventoryQdata;
   private QuarterlyDouble liabEquityQdata;
   private QuarterlyDouble ltDebtQdata;
@@ -390,6 +257,8 @@ public class CompanyDerived {
   private QuarterlyDouble peQdata;
   private QuarterlyDouble prefStockQdata;
   private QuarterlyDouble preTaxIncQdata;
+  private double          priceChg3;
+  private double          priceChg7;
   private QuarterlyDouble pricesQdata;
   private double          q0EstGrowth;
   private int             quarter;
@@ -423,7 +292,7 @@ public class CompanyDerived {
     try {
       if (fd != null) {
 
-        System.out.println("Setting fd : " + fd.getTicker());
+        // System.out.println("Setting fd : " + fd.getTicker());
         this.fd = fd;
 
         this.year = fd.getYear();
@@ -439,6 +308,7 @@ public class CompanyDerived {
         this.epsEstQ0 = fd.getEstimateData().getEpsQ0();
         this.epsEstY1 = fd.getEstimateData().getEpsY1();
         this.epsEstY2 = fd.getEstimateData().getEpsY2();
+
         this.epsContQdata = new QuarterlyDouble(MarketTools.getEpsContQtr(fd));
         this.epsDilContQdata = new QuarterlyDouble(MarketTools.getEpsDilContQtr(fd));
         this.epsDilQdata = new QuarterlyDouble(MarketTools.getEpsDilQtr(fd));
@@ -577,8 +447,24 @@ public class CompanyDerived {
     return this.epsDilQdata;
   }
 
+  public double getEpsEstQ0() {
+    return this.epsEstQ0;
+  }
+
+  public double getEpsEstY1() {
+    return this.epsEstY1;
+  }
+
+  public double getEpsEstY2() {
+    return this.epsEstY2;
+  }
+
   public QuarterlyDouble getEpsQdata() {
     return this.epsQdata;
+  }
+
+  public Object getEpsY1() {
+    return this.y1EstGrowth;
   }
 
   public QuarterlyDouble getEquityQdata() {
@@ -701,8 +587,20 @@ public class CompanyDerived {
     return this.preTaxIncQdata;
   }
 
+  public double getPriceChg3() {
+    return this.priceChg3;
+  }
+
+  public double getPriceChg7() {
+    return this.priceChg7;
+  }
+
   public QuarterlyDouble getPricesQdata() {
     return this.pricesQdata;
+  }
+
+  public double getQ0EstGrowth() {
+    return this.q0EstGrowth;
   }
 
   public int getQuarter() {
@@ -715,6 +613,10 @@ public class CompanyDerived {
 
   public QuarterlyDouble getRoeQdata() {
     return this.roeQdata;
+  }
+
+  public double getRs() {
+    return this.rs;
   }
 
   public QuarterlyDouble getSalesQdata() {
@@ -761,8 +663,20 @@ public class CompanyDerived {
     return this.workingCapitalQdata;
   }
 
+  public Object getY1EstGrowth() {
+    return this.epsEstY1;
+  }
+
+  public double getY2EstGrowth() {
+    return this.y2EstGrowth;
+  }
+
   public int getYear() {
     return this.year;
+  }
+
+  public ZData getZdata() {
+    return this.zdata;
   }
 
   public boolean isValid() {
@@ -775,19 +689,21 @@ public class CompanyDerived {
    * @param fd FieldData
    * @return Zombie score value
    */
-  private void calcZombieScore() {
-    ZData zd = new ZData(this);
-    this.zdata = zd;
-    // System.out.printf("%s%n%s%n%n", this.fd.getTicker(), zd);
-  }
+//  private void calcZombieScore() {
+//    final ZData zd = new ZData(this);
+//    this.zdata = zd;
+//    // System.out.printf("%s%n%s%n%n", this.fd.getTicker(), zd);
+//  }
 
   /**
    * Calculates Derived Data
    */
   private void derived() {
 
-    double p1 = this.pricesQdata.get(1);
-    double p2 = this.pricesQdata.get(2);
+    this.epsEstQ0Growth = FieldData.getChange(this.epsEstQ0, this.getEpsDilContQdata().get(4));
+
+    final double p1 = this.pricesQdata.get(1);
+    final double p2 = this.pricesQdata.get(2);
     if (p2 > 0.0) {
       this.rs = (p1 - p2) / p2 * 100.0;
     }
@@ -795,17 +711,12 @@ public class CompanyDerived {
       this.rs = 0.0;
     }
 
-    final double eps4 = Math.abs(this.fd.getIncSheetData().getEpsDilContQtr()[4]);
-    if (eps4 > 0.0) {
-      this.q0EstGrowth = (this.fd.getEstimateData().getEpsQ0() - this.fd.getIncSheetData().getEpsDilContQtr()[4]) / eps4 * 100.0;
-    }
-    else {
-      this.q0EstGrowth = 0.0;
-    }
+    this.q0EstGrowth = FieldData.getChange(this.fd.getEstimateData().getEpsQ0(), this.fd.getIncSheetData().getEpsDilContQtr()[4]);
 
     double epsY1 = this.epsDilContQdata.getPrevTtm();
     if (epsY1 != 0.0) {
-      this.y1EstGrowth = (this.fd.getEstimateData().getEpsY1() - epsY1) / Math.abs(epsY1) * 100.0;
+      double tmp = this.fd.getEstimateData().getEpsY1() - epsY1;
+      this.y1EstGrowth = FieldData.getChange(tmp, epsY1);
     }
     else {
       this.y1EstGrowth = 0.0;
@@ -814,7 +725,8 @@ public class CompanyDerived {
     epsY1 = this.fd.getEstimateData().getEpsY1();
     final double epsY2 = this.fd.getEstimateData().getEpsY2();
     if (epsY1 != 0.0) {
-      this.y2EstGrowth = (epsY2 - epsY1) / Math.abs(epsY1) * 100.0;
+      double tmp = epsY2 - epsY1;
+      this.y2EstGrowth = FieldData.getChange(tmp, epsY1);
     }
     else {
       this.y2EstGrowth = 0.0;
@@ -862,6 +774,10 @@ public class CompanyDerived {
       intArr[i] = MarketTools.getIntExpQtr(this.fd)[i] + MarketTools.getIntExpNonOpQtr(this.fd)[i];
     }
     this.intTotQdata = new QuarterlyDouble(intArr);
+    double totDebt = stDebtQdata.get(2) + ltDebtQdata.get(2);
+    if (totDebt > 0.0) {
+      this.currInterestRate = intTotQdata.getTtm() / totDebt;
+    }
 
     final double wcArr[] = new double[9];
     for (int i = 0; i < wcArr.length; i++) {
@@ -954,12 +870,19 @@ public class CompanyDerived {
     }
     this.roeQdata = new QuarterlyDouble(roeArr);
 
-    this.calcZombieScore();
+    this.priceChg3 = FieldData.getChange(this.getPricesQdata().getMostRecent(), this.getPricesQdata().get(3));
+    this.priceChg7 = FieldData.getChange(this.getPricesQdata().getMostRecent(), this.getPricesQdata().get(7));
+
+    this.zdata = new ZData(this);
 
   }
 
-  public double getRs() {
-    return this.rs;
+  public double getEpsEstQ0Growth() {
+    return epsEstQ0Growth;
+  }
+
+  public double getCurrInterestRate() {
+    return currInterestRate;
   }
 
 }

@@ -118,6 +118,7 @@ public class ProcessQuandl {
 //    final List<PriceData> vixpc = ProcessQuandl.getPutCallData(vixpcURL, 1, 2, 3, 0);
 //    ProcessQuandl.writePcList(vixpc, "VIX PC");
 
+    System.out.println("Done.");
   }
 
   /**

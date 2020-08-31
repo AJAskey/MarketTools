@@ -142,11 +142,11 @@ public class FieldData implements Serializable {
    * @param qtr quarter (1-4)
    * @return FieldData
    *
-   * @see net.ajaskey.market.tools.SIP.BigDB.Globals#getFromMemory(String, int,
+   * @see net.ajaskey.market.tools.SIP.BigDB.Globals#getQFromMemory(String, int,
    *      int)
    */
   public static FieldData getFromMemory(String tkr, int yr, int qtr) {
-    return Globals.getFromMemory(tkr, yr, qtr);
+    return Globals.getQFromMemory(tkr, yr, qtr);
   }
 
   /**
@@ -286,6 +286,7 @@ public class FieldData implements Serializable {
       }
 
       CompanyFileData.clearList();
+      CashFileData.clearList();
       EstimateFileData.clearList();
       SharesFileData.clearList();
       IncSheetFileData.clearList();
@@ -436,6 +437,21 @@ public class FieldData implements Serializable {
     try {
       if (ft == FiletypeEnum.BIG_BINARY) {
         for (int yr = firstYear; yr <= endYear; yr++) {
+          for (int qtr = 1; qtr <= 4; qtr++) {
+            FieldData.readDbBigBinData(yr, qtr);
+          }
+        }
+      }
+    }
+    catch (final Exception e) {
+      System.out.println(FieldData.getWarning(e));
+    }
+  }
+
+  public static void setAllMemory(FiletypeEnum ft) {
+    try {
+      if (ft == FiletypeEnum.BIG_BINARY) {
+        for (int yr = Globals.startYear; yr <= Globals.endYear; yr++) {
           for (int qtr = 1; qtr <= 4; qtr++) {
             FieldData.readDbBigBinData(yr, qtr);
           }
@@ -870,6 +886,7 @@ public class FieldData implements Serializable {
   private static boolean validateDataTickers(List<String> tickers, List<String> companyTickers) {
     for (int i = 0; i < tickers.size(); i++) {
       if (!tickers.get(i).equals(companyTickers.get(i))) {
+        System.out.printf("%s  :  %s%n", tickers.get(i), companyTickers.get(i));
         return false;
       }
     }
@@ -1149,6 +1166,23 @@ public class FieldData implements Serializable {
       System.out.println(FieldData.getWarning(e));
       this.ticker = "";
     }
+  }
+
+  /**
+   * 
+   * @param mostRecent
+   * @param previous
+   * @return
+   */
+  public static double getChange(double mostRecent, double previous) {
+    double ret = 0.0;
+    try {
+      ret = (mostRecent - previous) / Math.abs(previous) * 100.0;
+    }
+    catch (Exception e) {
+      ret = 0.0;
+    }
+    return ret;
   }
 
 }

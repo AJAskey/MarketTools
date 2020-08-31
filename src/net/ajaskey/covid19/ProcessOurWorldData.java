@@ -23,7 +23,8 @@ public class ProcessOurWorldData {
     final List<String> dList = TextUtils.readTextFile("data/owid-covid-data.txt", true);
     // final List<String> dList = OurWorldData.downloadLatest();
 
-    for (int i = 1; i < dList.size(); i++) {
+    System.out.println(dList.get(0));
+    for (int i = 2; i < dList.size(); i++) {
       final String str = dList.get(i).trim();
       final OurWorldData owd = new OurWorldData(str);
       if (owd.isValid()) {
@@ -32,7 +33,12 @@ public class ProcessOurWorldData {
     }
 
     try {
+
+      mergeCurrentUS("data/us-current-covid.txt");
+
       ProcessOurWorldData.printData("North America", "United States", false);
+      ProcessOurWorldData.printData("Asia", "India", false);
+
       ProcessOurWorldData.printData("North America", "", true);
       ProcessOurWorldData.printData("Europe", "", true);
       ProcessOurWorldData.printData("Africa", "", true);
@@ -46,6 +52,29 @@ public class ProcessOurWorldData {
 
     System.out.println("Done.");
 
+  }
+
+  /**
+   * 
+   * @param fname
+   */
+  private static void mergeCurrentUS(String fname) {
+    List<String> data = TextUtils.readTextFile(fname, true);
+    int usCases = Integer.parseInt(data.get(0).trim());
+    int usDeaths = Integer.parseInt(data.get(1).trim());
+    DateTime today = new DateTime();
+    for (OurWorldData owd : owdList) {
+      if (owd.getLocation().equalsIgnoreCase("United States")) {
+        if (owd.getDate().isEqual(today)) {
+          if (usCases > owd.getTotal_cases() && usDeaths > owd.getTotal_deaths()) {
+            System.out.println("Using hand entered US cases and deaths data.");
+            owd.setTotal_cases(usCases);
+            owd.setTotal_deaths(usDeaths);
+          }
+          return;
+        }
+      }
+    }
   }
 
   /**

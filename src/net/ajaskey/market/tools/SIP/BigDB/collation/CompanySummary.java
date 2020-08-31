@@ -246,6 +246,14 @@ public class CompanySummary {
       if (exch2.equals(ExchEnum.NONE)) {
         return true;
       }
+      else if (exch2.equals(ExchEnum.MAJOR)) {
+        if ((exch2.equals(ExchEnum.OTC))) {
+          return false;
+        }
+        else {
+          return true;
+        }
+      }
       ret = exch1.equals(exch2);
     }
     catch (final Exception e) {
