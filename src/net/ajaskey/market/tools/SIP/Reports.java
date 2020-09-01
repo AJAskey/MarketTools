@@ -520,19 +520,23 @@ public class Reports {
 
       if (!cd.sector.equalsIgnoreCase("Financials")) {
         if (cd.lastPrice >= 20.0) {
-          final String state = this.getState(cd);
-          if (!state.contains("Good shape - no red flags")) {
-            cd.zscore = ZombieScore.calculate(cd);
-            if (cd.zscore.score > 50.0) {
-//          if (cd.zscore.score > 50.0 && cd.rs < 5.0) {
-              zombieList.add(cd);
+          if (cd.adv > 250000) {
+            final String state = this.getState(cd);
+            if (!state.contains("Good shape - no red flags")) {
+              cd.zscore = ZombieScore.calculate(cd);
+              if (cd.zscore.score > 50.0) {
+                zombieList.add(cd);
+              }
+              else {
+                Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s zscore=%.2f  rs=%.2f%n", cd.ticker, cd.zscore.score, cd.rs));
+              }
             }
             else {
-              Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s zscore=%.2f  rs=%.2f%n", cd.ticker, cd.zscore.score, cd.rs));
+              Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s%n", state.replace(Utils.NL, "")));
             }
           }
           else {
-            Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s%n", state.replace(Utils.NL, "")));
+            Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s volume=%d%n", cd.ticker, cd.adv));
           }
         }
         else {
@@ -542,6 +546,7 @@ public class Reports {
       else {
         Debug.LOGGER.info(String.format("ZOMBIE Check Fail : %s sector=%s%n", cd.ticker, cd.sector));
       }
+
     }
 
     Collections.sort(zombieList, new SortScore());

@@ -60,6 +60,10 @@ public class CompanySummary {
 
     for (final CompanySummary cs : csList) {
 
+//      if (cs.ticker.equalsIgnoreCase("CHKAQ")) {
+//        System.out.println("Here");
+//      }
+
       if (CompanySummary.matchSnp(cs.snp, snp)) {
         if (CompanySummary.matchDow(cs.dow, dow)) {
           if (CompanySummary.matchExch(cs.exch, exch)) {
@@ -247,7 +251,7 @@ public class CompanySummary {
         return true;
       }
       else if (exch2.equals(ExchEnum.MAJOR)) {
-        if ((exch2.equals(ExchEnum.OTC))) {
+        if ((exch1.equals(ExchEnum.OTC))) {
           return false;
         }
         else {

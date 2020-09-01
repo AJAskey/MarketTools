@@ -244,18 +244,4 @@ public class WriteCompanyData {
 
   }
 
-  public static void writeZombiesWork(PrintWriter pw, CompanyDerived cdr) {
-
-    String s = Utils.NL + cdr.getFd().getTicker() + Utils.NL + Utils.TAB;
-
-    s += SipOutput.buildArray("Sales         ", cdr.getSalesQdata().dArr, 10, 2);
-    pw.println(Utils.NL + Utils.TAB + s);
-    pw.printf("\tQoQ : %.2f%%%n", cdr.getSalesQdata().getQoQ());
-    pw.printf("\tYoY : %.2f%%\t%.2f\t%.2f%n", cdr.getSalesQdata().getYoY(), cdr.getSalesQdata().getTtm(), cdr.getSalesQdata().getPrevTtm());
-    pw.printf("zSales  : %.1f%n", cdr.getZdata().getzSales());
-
-    s = SipOutput.buildArray("CashFrom Ops  ", cdr.getCashFromOpsQdata().dArr, 10, 2);
-    pw.println(Utils.NL + Utils.TAB + s);
-  }
-
 }

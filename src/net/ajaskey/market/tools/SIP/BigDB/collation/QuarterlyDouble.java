@@ -49,6 +49,20 @@ public class QuarterlyDouble {
   private QuarterlyDouble() {
   }
 
+  public int getQuarterDataKnt() {
+    int ret = 0;
+
+    int len = this.dArr.length - 1;
+    for (int i = len; i > 0; i--) {
+      if (this.dArr[i] != 0.0) {
+        ret = i;
+        break;
+      }
+    }
+
+    return ret;
+  }
+
   /**
    * Returns the difference between two quarters of data
    *

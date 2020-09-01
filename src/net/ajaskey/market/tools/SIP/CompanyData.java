@@ -110,6 +110,7 @@ public class CompanyData {
 
     final double spxPrice = day0;
 
+    Utils.makeDir("debug");
     Debug.init("debug/CompanyData.log");
 
     QuarterlyData.init();
