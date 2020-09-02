@@ -110,11 +110,11 @@ public class CompanyDerived {
 
     WriteCompanyData.writeEstimates("sipout/estimates.csv", agList);
 
-    final List<String> zList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 20.0, 100000);
-    fdList = CompanyDerived.getFieldData(zList, year, qtr);
-
-    final List<CompanyDerived> zombieList = CompanyDerived.processZombies(fdList);
-    CompanyDerived.write("sipout/zombies-new", zombieList, true);
+//    final List<String> zList = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.NONE, 20.0, 100000);
+//    fdList = CompanyDerived.getFieldData(zList, year, qtr);
+//
+//    final List<CompanyDerived> zombieList = CompanyDerived.processZombies(fdList);
+//    CompanyDerived.write("sipout/zombies-new", zombieList, true);
 
     System.out.println("Done.");
 

@@ -15,6 +15,7 @@ import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
 import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
 import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.dataio.Options;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 import net.ajaskey.market.tools.SIP.BigDB.reports.utils.SortZScore;
 
@@ -27,6 +28,9 @@ public class WriteZombies {
    */
   public static List<CompanyDerived> findZombies(List<CompanyDerived> dRList) {
 
+    final String filename = String.format("%s2020/Q3/OPTIONABLE-2020Q3.TXT", FieldData.inbasedir);
+    Options.readOptionData(filename);
+
     final List<CompanyDerived> zList = new ArrayList<>();
 
     for (final CompanyDerived cdr : dRList) {
@@ -37,9 +41,11 @@ public class WriteZombies {
 
       if (!cdr.getFd().getSector().contains("Financials")) {
         if (cdr.getZdata().getzScore() > 149.99) {
-          int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
-          if (qtrs > 4) {
-            zList.add(cdr);
+          if (Options.isOptionable(cdr.getFd().getTicker())) {
+            int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
+            if (qtrs > 4) {
+              zList.add(cdr);
+            }
           }
         }
       }
@@ -74,9 +80,9 @@ public class WriteZombies {
 
     Collections.sort(dList, new SortZScore());
 
-    try (PrintWriter pw = new PrintWriter("sipout/zombies2.txt");
-        PrintWriter pwCsv = new PrintWriter("sipout/zombies2.csv");
-        PrintWriter pwTxt = new PrintWriter("sipout/zombies2-sc.txt")) {
+    try (PrintWriter pw = new PrintWriter("sipout/Zombies2.txt");
+        PrintWriter pwCsv = new PrintWriter("sipout/Zombies2.csv");
+        PrintWriter pwTxt = new PrintWriter("sipout/Zombies2-sc.txt")) {
       pwCsv.println("Ticker,");
 
       final DateTime now = new DateTime();
