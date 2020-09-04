@@ -8,6 +8,7 @@ import net.ajaskey.common.DateTime;
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
 import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
+import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 
@@ -32,11 +33,11 @@ public class WriteCompanyData {
 
     final FieldData fd = cdr.getFd();
 
-    pw.println(cdr.getSalesQdata().fmtGrowth4Q("Sales 12m"));
-    pw.println(cdr.getGrossOpIncQdata().fmtGrowth4Q("Ops Income 12m"));
-    pw.println(cdr.getNetIncQdata().fmtGrowth4Q("Net Income 12m"));
-    pw.println(cdr.getIntTotQdata().fmtGrowth4Q("Interest 12m"));
-    //
+    pw.printf("%s%n", formatData(cdr.getSalesQdata().fmtGrowth4Q("Sales 12m"), cdr.getSalesQdata()));
+    pw.printf("%s%n", formatData(cdr.getGrossOpIncQdata().fmtGrowth4Q("Ops Income 12m"), cdr.getGrossOpIncQdata()));
+    pw.printf("%s%n", formatData(cdr.getNetIncQdata().fmtGrowth4Q("Net Income 12m"), cdr.getNetIncQdata()));
+    pw.printf("%s%n", formatData(cdr.getIntTotQdata().fmtGrowth4Q("Interest 12m"), cdr.getIntTotQdata()));
+
     final double totdebt = MarketTools.getStDebtQtr(fd)[2] + MarketTools.getLtDebtQtr(fd)[2];
     double intrate = 0.0;
     if (totdebt > 0.0) {
@@ -48,8 +49,9 @@ public class WriteCompanyData {
 
     //
 
-    pw.println("\n" + cdr.getCashFromOpsQdata().fmtGrowth4Q("Cash <- Ops 12m"));
-    pw.println(cdr.getCapExQdata().fmtGrowth4Q("  CapEx 12m"));
+    pw.printf("%n%s%n", formatData(cdr.getCashFromOpsQdata().fmtGrowth4Q("Cash <- Ops 12m"), cdr.getCashFromOpsQdata()));
+    pw.printf("%s%n", formatData(cdr.getCapExQdata().fmtGrowth4Q("  CapEx 12m"), cdr.getCapExQdata()));
+
     if (cdr.getDividendQdata().getTtm() > 0.0) {
       final double dyld = cdr.getDividendQdata().getTtm() / MarketTools.getPrice(fd) * 100.0;
       pw.printf("\t  Dividends 12m   : %s M (Yield=%.2f%%)%n", Utils.fmt(cdr.getDivCostQdata().getTtm(), 13), dyld);
@@ -72,17 +74,17 @@ public class WriteCompanyData {
     pw.printf("\t  Cash Flow 12m   : %s M %s%n", Utils.fmt(cdr.getCashflowQdata().getTtm(), 13),
         "[Cash from Ops + Cash from Financing + Cash from Investing]");
 
-    pw.println(Utils.NL + cdr.getCurrAssetsQdata().fmtGrowth1Q("Current Assets"));
-    pw.println(cdr.getCashQdata().fmtGrowth1Q("  Cash"));
-    pw.println(cdr.getAcctRxQdata().fmtGrowth1Q("  Acct Rx"));
-    pw.println(cdr.getStInvestQdata().fmtGrowth1Q("  ST Invest"));
-    pw.println(cdr.getInventoryQdata().fmtGrowth1Q("  Inventory"));
-    pw.println(cdr.getOtherCurrAssetsQdata().fmtGrowth1Q("  Other"));
+    pw.printf("%n%s%n", formatData(cdr.getCurrAssetsQdata().fmtGrowth4Q("Current Assets"), cdr.getCurrAssetsQdata()));
+    pw.printf("%s%n", formatData(cdr.getCashQdata().fmtGrowth4Q("  Cash"), cdr.getCashQdata()));
+    pw.printf("%s%n", formatData(cdr.getAcctRxQdata().fmtGrowth4Q("  Acct Rx"), cdr.getAcctRxQdata()));
+    pw.printf("%s%n", formatData(cdr.getStInvestQdata().fmtGrowth4Q("  ST Invest"), cdr.getStInvestQdata()));
+    pw.printf("%s%n", formatData(cdr.getInventoryQdata().fmtGrowth4Q("  Inventory"), cdr.getInventoryQdata()));
+    pw.printf("%s%n", formatData(cdr.getOtherCurrAssetsQdata().fmtGrowth4Q("  Other"), cdr.getOtherCurrAssetsQdata()));
 
-    pw.println(cdr.getCurrLiabQdata().fmtGrowth1Q("Current Liabs"));
-    pw.println(cdr.getAcctPayableQdata().fmtGrowth1Q("  Acct Pay"));
-    pw.println(cdr.getStDebtQdata().fmtGrowth1Q("  ST Debt"));
-    pw.println(cdr.getOtherCurrLiabQdata().fmtGrowth1Q("  Other"));
+    pw.printf("%s%n", formatData(cdr.getCurrLiabQdata().fmtGrowth4Q("Current Liabs"), cdr.getCurrLiabQdata()));
+    pw.printf("%s%n", formatData(cdr.getAcctPayableQdata().fmtGrowth4Q("  Acct Pay"), cdr.getAcctPayableQdata()));
+    pw.printf("%s%n", formatData(cdr.getStDebtQdata().fmtGrowth4Q("  ST Debt"), cdr.getStDebtQdata()));
+    pw.printf("%s%n", formatData(cdr.getOtherCurrLiabQdata().fmtGrowth4Q("  Other"), cdr.getOtherCurrLiabQdata()));
 
     pw.printf("\tWorking Capital   : %s M (Ratio=%.2f)%n", Utils.fmt(cdr.getWorkingCapitalQdata().getMostRecent(), 13),
         cdr.getCurrentRatioQdata().getMostRecent());
@@ -90,29 +92,33 @@ public class WriteCompanyData {
 
     //
 
-    double bvps = 0.0;
-    if (cdr.getSharesQdata().getMostRecent() > 0.0) {
-      bvps = cdr.getEquityQdata().getMostRecent() / cdr.getSharesQdata().getMostRecent();
-    }
-    else if (MarketTools.getFloatshr(fd) > 0.0) {
-      bvps = cdr.getEquityQdata().getMostRecent() / MarketTools.getFloatshr(fd);
-    }
-    final String bv = String.format("%n%s\t- BVPS : %.2f", cdr.getEquityQdata().fmtGrowth1Q("Sharehldr Equity"), bvps);
-    pw.println(bv);
+//    double bvps = 0.0;
+//    if (cdr.getSharesQdata().getMostRecent() > 0.0) {
+//      bvps = cdr.getEquityQdata().getMostRecent() / cdr.getSharesQdata().getMostRecent();
+//    }
+//    else if (MarketTools.getFloatshr(fd) > 0.0) {
+//      bvps = cdr.getEquityQdata().getMostRecent() / MarketTools.getFloatshr(fd);
+//    }
+//    final String bv = String.format("%n%s\t- BVPS : %.2f", cdr.getEquityQdata().fmtGrowth1Q("Sharehldr Equity"), bvps);
+//    pw.println(bv);
 
-    pw.println(cdr.getGoodwillQdata().fmtGrowth1Q("Goodwill"));
+    pw.printf("%s%n", formatData(cdr.getEquityQdata().fmtGrowth4Q("Sharehldr Equity"), cdr.getEquityQdata()));
+    pw.printf("%s%n", formatData(cdr.getGoodwillQdata().fmtGrowth4Q("Goodwill"), cdr.getGoodwillQdata()));
+    pw.printf("%s%n", formatData(cdr.getTanAssetsQdata().fmtGrowth4Q("Tangible Assets"), cdr.getTanAssetsQdata()));
+    pw.printf("%s%n", formatData(cdr.getLtDebtQdata().fmtGrowth4Q("LT Debt"), cdr.getLtDebtQdata()));
+//    pw.println(cdr.getGoodwillQdata().fmtGrowth1Q("Goodwill"));
 
-    double taps = 0.0;
-    if (cdr.getSharesQdata().getMostRecent() > 0.0) {
-      taps = cdr.getTanAssetsQdata().getMostRecent() / cdr.getSharesQdata().getMostRecent();
-    }
-    else if (MarketTools.getFloatshr(fd) > 0.0) {
-      taps = cdr.getTanAssetsQdata().getMostRecent() / MarketTools.getFloatshr(fd);
-    }
-    final String ta = String.format("%s\t- TAPS : %.2f", cdr.getTanAssetsQdata().fmtGrowth1Q("Tangible Assets"), taps);
-    pw.println(ta);
+//    double taps = 0.0;
+//    if (cdr.getSharesQdata().getMostRecent() > 0.0) {
+//      taps = cdr.getTanAssetsQdata().getMostRecent() / cdr.getSharesQdata().getMostRecent();
+//    }
+//    else if (MarketTools.getFloatshr(fd) > 0.0) {
+//      taps = cdr.getTanAssetsQdata().getMostRecent() / MarketTools.getFloatshr(fd);
+//    }
+//    final String ta = String.format("%s\t- TAPS : %.2f", cdr.getTanAssetsQdata().fmtGrowth1Q("Tangible Assets"), taps);
+//    pw.println(ta);
 
-    pw.println(cdr.getLtDebtQdata().fmtGrowth1Q("LT Debt"));
+    // pw.println(cdr.getLtDebtQdata().fmtGrowth1Q("LT Debt"));
     if (cdr.getEquityQdata().getMostRecent() > 0.0) {
       pw.printf("\tLT Debt to Equity : %s%n", Utils.fmt(cdr.getLtDebtQdata().getMostRecent() / cdr.getEquityQdata().getMostRecent(), 13));
     }
@@ -125,9 +131,12 @@ public class WriteCompanyData {
     pw.println(cdr.getRoeQdata().fmtGrowth1QNoUnit("ROE"));
     // System.out.println(ca.roeQdata);
     pw.println(cdr.getPeQdata().fmtGrowth1QNoUnit("PE"));
-    pw.printf("\tQ0 Est Growth     : %13.2f %% (%.2f to %.2f)%n", cdr.getQ0EstGrowth(), cdr.getEpsDilContQdata().dArr[4], cdr.getEpsEstQ0());
-    pw.printf("\tY1 Est Growth     : %13.2f %% (%.2f to %.2f)%n", cdr.getY1EstGrowth(), cdr.getEpsDilContQdata().getPrevTtm(), cdr.getEpsEstY1());
-    pw.printf("\tY2 Est Growth     : %13.2f %% (%.2f to %.2f)%n", cdr.getY2EstGrowth(), cdr.getEpsEstY1(), cdr.getEpsEstY2());
+    double tmp = FieldData.getChange(cdr.getEpsEstQ0(), cdr.getEpsDilContQdata().dArr[4]);
+    pw.printf("\tQ0 Est Growth     : %13.2f %% (%.2f to %.2f)%n", tmp, cdr.getEpsDilContQdata().dArr[4], cdr.getEpsEstQ0());
+    tmp = FieldData.getChange(cdr.getEpsEstY1(), cdr.getEpsDilContQdata().getPrevTtm());
+    pw.printf("\tY1 Est Growth     : %13.2f %% (%.2f to %.2f)%n", tmp, cdr.getEpsDilContQdata().getPrevTtm(), cdr.getEpsEstY1());
+    tmp = FieldData.getChange(cdr.getEpsEstY2(), cdr.getEpsEstY1());
+    pw.printf("\tY2 Est Growth     : %13.2f %% (%.2f to %.2f)%n", tmp, cdr.getEpsEstY1(), cdr.getEpsEstY2());
 
     pw.printf("%n\tFloat             : %s M%n", Utils.fmt(MarketTools.getFloatshr(fd), 13));
     double d = MarketTools.getInsiderOwnership(fd);
@@ -150,6 +159,16 @@ public class WriteCompanyData {
     pw.printf("\tRS                : %s%n", Utils.fmt(cdr.getRs(), 13));
     // pw.printf("\tZScore : %s%n", Utils.fmt(ca.zdata.getzScore(), 13));
 
+  }
+
+  private static String formatData(String str1, QuarterlyDouble data) {
+    int len = str1.length();
+    int pad = 80 - len;
+    String str2 = SipOutput.buildArray("", data.dArr, 3, 2, 1);
+    String str2a = String.format("[%s ]", str2);
+    String fmt = String.format("%%s%%%ds%%s", pad);
+    String ret = String.format(fmt, str1, " ", str2a);
+    return ret;
   }
 
   /**

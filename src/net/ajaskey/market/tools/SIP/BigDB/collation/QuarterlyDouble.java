@@ -120,7 +120,7 @@ public class QuarterlyDouble {
    */
   public String fmtGrowth4Q(final String desc) {
 
-    final String ret = String.format("\t%-18s: %s M  (Seq= %s%% : QoQ= %s%%)", desc, Utils.fmt(this.getTtm(), 13), Utils.fmt(this.getQseqQ(), 7),
+    final String ret = String.format("\t%-18s: %s M (Seq= %s%% : QoQ= %s%%)", desc, Utils.fmt(this.getTtm(), 13), Utils.fmt(this.getQseqQ(), 7),
         Utils.fmt(this.getQoQ(), 7));
 
     return ret;

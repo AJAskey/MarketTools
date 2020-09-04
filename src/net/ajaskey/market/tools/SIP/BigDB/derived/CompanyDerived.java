@@ -715,7 +715,7 @@ public class CompanyDerived {
 
     double epsY1 = this.epsDilContQdata.getPrevTtm();
     if (epsY1 != 0.0) {
-      double tmp = this.fd.getEstimateData().getEpsY1() - epsY1;
+      double tmp = this.fd.getEstimateData().getEpsY2();
       this.y1EstGrowth = FieldData.getChange(tmp, epsY1);
     }
     else {
@@ -725,8 +725,8 @@ public class CompanyDerived {
     epsY1 = this.fd.getEstimateData().getEpsY1();
     final double epsY2 = this.fd.getEstimateData().getEpsY2();
     if (epsY1 != 0.0) {
-      double tmp = epsY2 - epsY1;
-      this.y2EstGrowth = FieldData.getChange(tmp, epsY1);
+      double tmp = epsY1;
+      this.y2EstGrowth = FieldData.getChange(tmp, epsY2);
     }
     else {
       this.y2EstGrowth = 0.0;
