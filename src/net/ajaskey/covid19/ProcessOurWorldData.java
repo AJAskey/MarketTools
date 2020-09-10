@@ -39,6 +39,8 @@ public class ProcessOurWorldData {
       ProcessOurWorldData.printData("North America", "United States", false);
       ProcessOurWorldData.printData("Asia", "India", false);
 
+      ProcessOurWorldData.printData("", "World", false);
+
       ProcessOurWorldData.printData("North America", "", true);
       ProcessOurWorldData.printData("Europe", "", true);
       ProcessOurWorldData.printData("Africa", "", true);

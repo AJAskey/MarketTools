@@ -141,30 +141,6 @@ public class CompanyDerived {
   }
 
   /**
-   * Returns a list of companies considered Zombies
-   *
-   * @param fdList FieldData list of inputs
-   * @return List of CompanyDerived Zombies
-   */
-  public static List<CompanyDerived> processZombies(List<FieldData> fdList) {
-
-    final List<CompanyDerived> zombieList = new ArrayList<>();
-
-    for (final FieldData fd : fdList) {
-
-      if (!fd.getSector().equalsIgnoreCase("Financials")) {
-        final CompanyDerived cd = new CompanyDerived(fd);
-        if (cd.rs < 5.0) {
-          if (cd.zdata.getzScore() > 90.0) {
-            zombieList.add(cd);
-          }
-        }
-      }
-    }
-    return zombieList;
-  }
-
-  /**
    * Outputs formatted values for all entries in the static agList
    *
    * @param fname Name of output file
@@ -700,37 +676,22 @@ public class CompanyDerived {
    */
   private void derived() {
 
-    this.epsEstQ0Growth = FieldData.getChange(this.epsEstQ0, this.getEpsDilContQdata().get(4));
+    this.epsEstQ0Growth = MarketTools.getChange(this.epsEstQ0, this.getEpsDilContQdata().get(4));
 
-    final double p1 = this.pricesQdata.get(1);
-    final double p2 = this.pricesQdata.get(2);
-    if (p2 > 0.0) {
-      this.rs = (p1 - p2) / p2 * 100.0;
-    }
-    else {
-      this.rs = 0.0;
-    }
+    // Today vs average of Q1 and Q2
+    final double p1 = this.fd.getShareData().getPrice();
+    final double p2 = (this.pricesQdata.get(1) + this.pricesQdata.get(2)) / 2.0;
+    this.rs = MarketTools.getChange(p1, p2);
 
-    this.q0EstGrowth = FieldData.getChange(this.fd.getEstimateData().getEpsQ0(), this.fd.getIncSheetData().getEpsDilContQtr()[4]);
+    this.q0EstGrowth = MarketTools.getChange(this.fd.getEstimateData().getEpsQ0(), this.fd.getIncSheetData().getEpsDilContQtr()[4]);
 
     double epsY1 = this.epsDilContQdata.getPrevTtm();
-    if (epsY1 != 0.0) {
-      double tmp = this.fd.getEstimateData().getEpsY2();
-      this.y1EstGrowth = FieldData.getChange(tmp, epsY1);
-    }
-    else {
-      this.y1EstGrowth = 0.0;
-    }
+    double tmp = this.fd.getEstimateData().getEpsY2();
+    this.y1EstGrowth = MarketTools.getChange(tmp, epsY1);
 
     epsY1 = this.fd.getEstimateData().getEpsY1();
     final double epsY2 = this.fd.getEstimateData().getEpsY2();
-    if (epsY1 != 0.0) {
-      double tmp = epsY1;
-      this.y2EstGrowth = FieldData.getChange(tmp, epsY2);
-    }
-    else {
-      this.y2EstGrowth = 0.0;
-    }
+    this.y2EstGrowth = MarketTools.getChange(epsY1, epsY2);
 
     final double ncf[] = new double[9];
     for (int i = 0; i < ncf.length; i++) {
@@ -870,11 +831,23 @@ public class CompanyDerived {
     }
     this.roeQdata = new QuarterlyDouble(roeArr);
 
-    this.priceChg3 = FieldData.getChange(this.getPricesQdata().getMostRecent(), this.getPricesQdata().get(3));
-    this.priceChg7 = FieldData.getChange(this.getPricesQdata().getMostRecent(), this.getPricesQdata().get(7));
+    this.priceChg3 = MarketTools.getChange(this.getPricesQdata().getMostRecent(), this.getPricesQdata().get(3));
+    this.priceChg7 = MarketTools.getChange(this.getPricesQdata().getMostRecent(), this.getPricesQdata().get(7));
 
     this.zdata = new ZData(this);
 
+  }
+
+  /**
+   * 
+   * @return
+   */
+  public double getTurnover() {
+    double turnover = 0.0;
+    if (MarketTools.getVolume10d(fd) > 0.0) {
+      turnover = MarketTools.getFloatshr(fd) / (MarketTools.getVolume10d(fd) / 1000.0);
+    }
+    return turnover;
   }
 
   public double getEpsEstQ0Growth() {

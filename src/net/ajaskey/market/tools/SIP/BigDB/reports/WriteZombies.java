@@ -8,15 +8,10 @@ import java.util.List;
 
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.Utils;
-import net.ajaskey.market.tools.SIP.BigDB.DowEnum;
-import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
-import net.ajaskey.market.tools.SIP.BigDB.FiletypeEnum;
-import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
-import net.ajaskey.market.tools.SIP.BigDB.SnpEnum;
-import net.ajaskey.market.tools.SIP.BigDB.collation.CompanySummary;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.Options;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
+import net.ajaskey.market.tools.SIP.BigDB.reports.utils.Scans;
 import net.ajaskey.market.tools.SIP.BigDB.reports.utils.SortZScore;
 
 public class WriteZombies {
@@ -61,26 +56,14 @@ public class WriteZombies {
    */
   public static void main(String[] args) throws FileNotFoundException {
 
-    final int year = 2020;
-    final int qtr = 3;
-    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
-    MarketTools.parseSipData(year, qtr, ft, false);
-    CompanyDerived.loadDb(year, qtr, ft);
-
-    final List<String> possibles = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.MAJOR, 20.0, 250000);
-    final List<FieldData> fdList = FieldData.getListFromMemory(possibles, year, qtr);
-
-//    for (FieldData fd : fdList) {
-//      System.out.printf("%10s %10s %12.2f %12d%n", fd.getTicker(), fd.getExchange(), fd.getShareData().getPrice(), fd.getShareData().getVolume10d());
-//    }
-
-    final List<CompanyDerived> dRList = CompanyDerived.processList(fdList);
+    List<CompanyDerived> dRList = Scans.findMajor(2020, 3, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteZombies.findZombies(dRList);
 
     Collections.sort(dList, new SortZScore());
 
     try (PrintWriter pw = new PrintWriter("sipout/Zombies2.txt");
+        PrintWriter pwSnap = new PrintWriter("sipout/Zombies2-snap.txt");
         PrintWriter pwCsv = new PrintWriter("sipout/Zombies2.csv");
         PrintWriter pwTxt = new PrintWriter("sipout/Zombies2-sc.txt")) {
       pwCsv.println("Ticker,");
@@ -101,8 +84,12 @@ public class WriteZombies {
         pw.printf(" Rank:%s Zscore:%3d%n", rank++, (int) cdr.getZdata().getzScore());
         WriteCompanyData.writeCompanyInfo(pw, cdr);
         WriteCompanyData.write(pw, cdr);
+        WriteCompanyData.writeQuarterly(pw, cdr);
 
-        // WriteCompanyData.writeQuarterly(pw, cdr);
+        WriteCompanyData.writeCompanyInfo(pwSnap, cdr);
+        pwSnap.printf("\tZScore            : %13.2f%n", cdr.getZdata().getzScore());
+        WriteCompanyData.writeQuarterly(pwSnap, cdr);
+        pwSnap.println("");
 
         pw.println(Utils.NL + cdr.getZdata());
 
@@ -117,7 +104,7 @@ public class WriteZombies {
       System.out.println(cdr.getFd().getTicker());
     }
     System.out.println(dList.size());
-
+    System.out.println("Done.");
   }
 
 }

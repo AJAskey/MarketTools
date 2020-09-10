@@ -98,6 +98,14 @@ public class QuarterlyDouble {
     return ret;
   }
 
+  public String fmtGrowth1QEps(final String desc) {
+
+    final String ret = String.format("\t%-18s: %s   (Seq= %s%% : QoQ= %s%%)", desc, Utils.fmt(this.dArr[1], 13), Utils.fmt(this.getQseqQ(), 7),
+        Utils.fmt(this.getQoQ(), 7));
+
+    return ret;
+  }
+
   /**
    * Formats latest quarter of data into predetermined string.
    *

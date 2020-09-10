@@ -33,7 +33,7 @@ public class ShillerData {
   public ShillerData() {
 
     this.ShillerEarnings = 116.77;
-    this.ShillerPE = 32.28;
+    this.ShillerPE = 31.47;
     this.Sp500Dividends = 59.99;
     this.Sp500BVPS = 885.59;
     this.Sp500Sales = 1408.74;

@@ -31,6 +31,15 @@ import net.ajaskey.market.tools.SIP.BigDB.ExchEnum;
 public class SharesFileData implements Serializable {
 
   /**
+   * 
+   */
+  private static final long serialVersionUID = 3414109230992409767L;
+
+  public static void main(String[] args) {
+    SharesFileData.readSipData("D:\\dev\\eclipse-markettools\\MarketTools\\data\\BigDB\\2020\\Q3\\SHARES-2020Q3.TXT");
+  }
+
+  /**
    * Stores all SharesFileDate read in from DB.
    */
   private static List<SharesFileData> sfdList = new ArrayList<>();

@@ -22,7 +22,7 @@ public class WriteOwership {
     final int qtr = 3;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
-    MarketTools.parseSipData(year, qtr, ft, true);
+    MarketTools.parseSipData(year, qtr, ft, false);
 
     CompanyDerived.loadDb(year, qtr, ft);
 

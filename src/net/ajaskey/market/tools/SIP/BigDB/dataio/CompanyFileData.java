@@ -39,8 +39,7 @@ public class CompanyFileData implements Serializable {
    */
   private static List<CompanyFileData> cfdList = new ArrayList<>();
 
-  final private static int CITY = 11;
-
+  final private static int  CITY             = 11;
   final private static int  COUNTRY          = 13;
   final private static int  DOW              = 7;
   final private static int  EMP              = 17;
@@ -51,9 +50,6 @@ public class CompanyFileData implements Serializable {
   final private static int  PHONE            = 15;
   final private static int  PRICE            = 18;
   final private static int  SECTOR           = 3;
-  /**
-   *
-   */
   private static final long serialVersionUID = -5994427284354231386L;
   final private static int  SIC              = 5;
   final private static int  SNP              = 8;

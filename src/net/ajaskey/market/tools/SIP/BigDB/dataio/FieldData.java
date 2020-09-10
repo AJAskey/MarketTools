@@ -285,6 +285,8 @@ public class FieldData implements Serializable {
         }
       }
 
+      System.out.printf("Updating Sip Data for %dQ%d%n", yr, qtr);
+
       CompanyFileData.clearList();
       CashFileData.clearList();
       EstimateFileData.clearList();
@@ -1166,23 +1168,6 @@ public class FieldData implements Serializable {
       System.out.println(FieldData.getWarning(e));
       this.ticker = "";
     }
-  }
-
-  /**
-   * 
-   * @param mostRecent
-   * @param previous
-   * @return
-   */
-  public static double getChange(double mostRecent, double previous) {
-    double ret = 0.0;
-    try {
-      ret = (mostRecent - previous) / Math.abs(previous) * 100.0;
-    }
-    catch (Exception e) {
-      ret = 0.0;
-    }
-    return ret;
   }
 
 }

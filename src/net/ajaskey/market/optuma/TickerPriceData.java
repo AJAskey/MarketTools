@@ -27,6 +27,14 @@ import java.util.List;
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.Utils;
 
+/**
+ * This class allows reading and usage of Optuma ticker data exported during
+ * price updates within Optuma. The Optuma exchange must be setup to write out
+ * text files.
+ * 
+ * @author Andy Askey
+ *
+ */
 public class TickerPriceData {
 
   static private List<DateTime> holidays = new ArrayList<>();

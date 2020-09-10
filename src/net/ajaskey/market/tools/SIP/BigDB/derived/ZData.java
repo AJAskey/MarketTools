@@ -21,7 +21,7 @@ package net.ajaskey.market.tools.SIP.BigDB.derived;
 
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
+import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
 
 public class ZData {
 
@@ -204,14 +204,23 @@ public class ZData {
     this.dbgStr += SipOutput.buildArray("Sales         ", this.cdr.getSalesQdata().dArr, 10, 2) + Utils.NL;
     this.dbgStr += String.format("\tQoQ : %.2f%%%n", qtr);
     this.dbgStr += String.format("\tYoY : %.2f%%\t%.2f\t%.2f%n", ttm, this.cdr.getSalesQdata().getTtm(), this.cdr.getSalesQdata().getPrevTtm());
-    if (this.cdr.getSalesQdata().getQoQ() < 0.0) {
+    if (qtr < 0.0) {
       this.zSales += Math.abs(Math.max(-17.5, qtr));
       this.dbgStr += String.format("\tMost recent QoQ growth neg - zSales : %.2f\t%.2f\n", this.zSales, qtr);
     }
-    if (this.cdr.getSalesQdata().getYoY() < 0.0) {
+    else {
+      this.zSales -= Math.abs(Math.min(20.0, qtr));
+      this.dbgStr += String.format("\tMost recent QoQ growth pos - zSales : %.2f\t%.2f\n", this.zSales, qtr);
+    }
+    if (ttm < 0.0) {
       this.zSales += Math.abs(Math.max(-17.5, ttm));
       this.dbgStr += String.format("\tMost recent YoY growth neg - zSales : %.2f\t%.2f\n", this.zSales, ttm);
     }
+    else {
+      this.zSales -= Math.abs(Math.min(20.0, ttm));
+      this.dbgStr += String.format("\tMost recent YoY growth pos - zSales : %.2f\t%.2f\n", this.zSales, ttm);
+    }
+    this.zScore += this.zSales;
 
     /**
      * Cash Flow from Ops
@@ -348,9 +357,9 @@ public class ZData {
      * Growth
      */
     final double y1net = this.cdr.getFd().getIncSheetData().getNetIncYr()[1];
-    final double y4net = this.cdr.getFd().getIncSheetData().getNetIncYr()[4];
-    final double gr = FieldData.getChange(y1net, y4net);
-    this.dbgStr += String.format("LT Net Growth : %.2f\t%.2f\t%.2f%n", gr, y1net, y4net);
+    final double y3net = this.cdr.getFd().getIncSheetData().getNetIncYr()[3];
+    final double gr = MarketTools.getChange(y1net, y3net);
+    this.dbgStr += String.format("LT Net Growth : %.2f\t%.2f\t%.2f%n", gr, y1net, y3net);
     this.dbgStr += SipOutput.buildArray("\tAnnual Net ", this.cdr.getFd().getIncSheetData().getNetIncYr(), 10, 2) + Utils.NL;
     if (gr < 0.0) {
       this.zGrowth3Yr = Math.abs(Math.max(-35.0, gr));
