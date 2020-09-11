@@ -1105,6 +1105,10 @@ public class FieldData implements Serializable {
     return this.ticker;
   }
 
+  public void overrideTicker(String t) {
+    this.ticker = t;
+  }
+
   public int getYear() {
     return this.year;
   }

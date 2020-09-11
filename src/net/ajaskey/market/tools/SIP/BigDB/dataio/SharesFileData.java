@@ -205,6 +205,25 @@ public class SharesFileData implements Serializable {
       final String[] fld = s.replace("\"", "").split(Utils.TAB);
       final SharesFileData sfd = new SharesFileData(fld);
       SharesFileData.sfdList.add(sfd);
+
+      /**
+       * These important tickers are not in SIP data. Use a copy to add to this DB.
+       * 
+       * GOOGL exists but GOOG does not.
+       * 
+       * BRK.A exists but BRK.B does not.
+       * 
+       */
+      if (sfd.ticker.equals("GOOGL")) {
+        SharesFileData goog = new SharesFileData(sfd);
+        goog.ticker = "GOOG";
+        SharesFileData.sfdList.add(goog);
+      }
+      else if (sfd.ticker.equals("BRK.A")) {
+        SharesFileData brkb = new SharesFileData(sfd);
+        brkb.ticker = "BRK.B";
+        SharesFileData.sfdList.add(brkb);
+      }
     }
   }
 

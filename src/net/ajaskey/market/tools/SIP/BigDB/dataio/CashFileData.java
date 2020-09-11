@@ -158,6 +158,26 @@ public class CashFileData implements Serializable {
       final String[] fld = s.replace("\"", "").split(Utils.TAB);
       final CashFileData cashfd = new CashFileData(fld);
       CashFileData.cashfdList.add(cashfd);
+
+      /**
+       * These important tickers are not in SIP data. Use a copy to add to this DB.
+       * 
+       * GOOGL exists but GOOG does not.
+       * 
+       * BRK.A exists but BRK.B does not.
+       * 
+       */
+      if (cashfd.ticker.equals("GOOGL")) {
+        CashFileData goog = new CashFileData(cashfd);
+        goog.ticker = "GOOG";
+        CashFileData.cashfdList.add(goog);
+      }
+      else if (cashfd.ticker.equals("BRK.A")) {
+        CashFileData brkb = new CashFileData(cashfd);
+        brkb.ticker = "BRK.B";
+        CashFileData.cashfdList.add(brkb);
+      }
+
     }
 
   }

@@ -353,6 +353,24 @@ public class IncSheetFileData implements Serializable {
         final IncSheetFileData isd = new IncSheetFileData(fldQtr, fldYr);
         IncSheetFileData.ifdList.add(isd);
 
+        /**
+         * These important tickers are not in SIP data. Use a copy to add to this DB.
+         * 
+         * GOOGL exists but GOOG does not.
+         * 
+         * BRK.A exists but BRK.B does not.
+         * 
+         */
+        if (isd.ticker.equals("GOOGL")) {
+          IncSheetFileData goog = new IncSheetFileData(isd);
+          goog.ticker = "GOOG";
+          IncSheetFileData.ifdList.add(goog);
+        }
+        else if (isd.ticker.equals("BRK.A")) {
+          IncSheetFileData brkb = new IncSheetFileData(isd);
+          brkb.ticker = "BRK.B";
+          IncSheetFileData.ifdList.add(brkb);
+        }
       }
     }
   }

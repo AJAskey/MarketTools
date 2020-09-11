@@ -14,25 +14,6 @@ import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 
 public class Scans {
 
-  public static void main(String[] args) {
-    // TODO Auto-generated method stub
-
-  }
-
-  public static List<CompanyDerived> findMajor(int year, int qtr, double lowPrice, long lowVolume) {
-
-    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
-    MarketTools.parseSipData(year, qtr, ft, false);
-    CompanyDerived.loadDb(year, qtr, ft);
-
-    final List<String> possibles = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.MAJOR, lowPrice, lowVolume);
-    final List<FieldData> fdList = FieldData.getListFromMemory(possibles, year, qtr);
-
-    final List<CompanyDerived> dRList = CompanyDerived.processList(fdList);
-
-    return dRList;
-  }
-
   /**
    *
    * @param ticker
@@ -73,6 +54,41 @@ public class Scans {
     }
 
     return ret;
+  }
+
+  /**
+   *
+   * @param year
+   * @param qtr
+   * @param ticker
+   * @return
+   */
+  public static CompanyDerived findCompany(int year, int qtr, String ticker) {
+    final FieldData fd = FieldData.getFromMemory(ticker, year, qtr);
+    final CompanyDerived cdr = new CompanyDerived(fd);
+    return cdr;
+  }
+
+  /**
+   *
+   * @param year
+   * @param qtr
+   * @param lowPrice
+   * @param lowVolume
+   * @return
+   */
+  public static List<CompanyDerived> findMajor(int year, int qtr, double lowPrice, long lowVolume) {
+
+    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
+    MarketTools.parseSipData(year, qtr, ft, false);
+    CompanyDerived.loadDb(year, qtr, ft);
+
+    final List<String> possibles = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.MAJOR, lowPrice, lowVolume);
+    final List<FieldData> fdList = FieldData.getListFromMemory(possibles, year, qtr);
+
+    final List<CompanyDerived> dRList = CompanyDerived.processList(fdList);
+
+    return dRList;
   }
 
 }

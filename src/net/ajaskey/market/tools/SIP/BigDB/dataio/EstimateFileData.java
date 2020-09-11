@@ -152,8 +152,26 @@ public class EstimateFileData implements Serializable {
       final String[] fld = s.replace("\"", "").split(Utils.TAB);
       final EstimateFileData efd = new EstimateFileData(fld);
       EstimateFileData.efdList.add(efd);
-    }
 
+      /**
+       * These important tickers are not in SIP data. Use a copy to add to this DB.
+       * 
+       * GOOGL exists but GOOG does not.
+       * 
+       * BRK.A exists but BRK.B does not.
+       * 
+       */
+      if (efd.ticker.equals("GOOGL")) {
+        EstimateFileData goog = new EstimateFileData(efd);
+        goog.ticker = "GOOG";
+        EstimateFileData.efdList.add(goog);
+      }
+      else if (efd.ticker.equals("BRK.A")) {
+        EstimateFileData brkb = new EstimateFileData(efd);
+        brkb.ticker = "BRK.B";
+        EstimateFileData.efdList.add(brkb);
+      }
+    }
   }
 
   private DateTime currFiscalYear;

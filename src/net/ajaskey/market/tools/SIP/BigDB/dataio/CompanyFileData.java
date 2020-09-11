@@ -277,6 +277,25 @@ public class CompanyFileData implements Serializable {
       cfd.priceQtr = SipUtils.parseDoubles(CompanyFileData.fld, CompanyFileData.PRICE, 8);
 
       CompanyFileData.cfdList.add(cfd);
+
+      /**
+       * These important tickers are not in SIP data. Use a copy to add to this DB.
+       * 
+       * GOOGL exists but GOOG does not.
+       * 
+       * BRK.A exists but BRK.B does not.
+       * 
+       */
+      if (cfd.ticker.equals("GOOGL")) {
+        CompanyFileData googCfd = new CompanyFileData(cfd);
+        googCfd.ticker = "GOOG";
+        CompanyFileData.cfdList.add(googCfd);
+      }
+      else if (cfd.ticker.equals("BRK.A")) {
+        CompanyFileData brkbCfd = new CompanyFileData(cfd);
+        brkbCfd.ticker = "BRK.B";
+        CompanyFileData.cfdList.add(brkbCfd);
+      }
     }
   }
 

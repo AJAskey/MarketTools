@@ -210,6 +210,7 @@ public class CompanySummary {
           System.out.println("Warning. CompanySummary.write() sfd is null for " + cfd.getTicker());
         }
       }
+
     }
     catch (final Exception e) {
       System.out.println("Error. Unable to write CompanySummary.txt file");

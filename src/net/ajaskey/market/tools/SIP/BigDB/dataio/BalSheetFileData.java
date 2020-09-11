@@ -355,6 +355,24 @@ public class BalSheetFileData implements Serializable {
         final BalSheetFileData bsd = new BalSheetFileData(fldQtr, fldYr);
         BalSheetFileData.bfdList.add(bsd);
 
+        /**
+         * These important tickers are not in SIP data. Use a copy to add to this DB.
+         * 
+         * GOOGL exists but GOOG does not.
+         * 
+         * BRK.A exists but BRK.B does not.
+         * 
+         */
+        if (bsd.ticker.equals("GOOGL")) {
+          BalSheetFileData goog = new BalSheetFileData(bsd);
+          goog.ticker = "GOOG";
+          BalSheetFileData.bfdList.add(goog);
+        }
+        else if (bsd.ticker.equals("BRK.A")) {
+          BalSheetFileData brkb = new BalSheetFileData(bsd);
+          brkb.ticker = "BRK.B";
+          BalSheetFileData.bfdList.add(brkb);
+        }
       }
     }
   }

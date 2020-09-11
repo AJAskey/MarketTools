@@ -35,6 +35,14 @@ public class Options {
       final String fld[] = ss.split(Utils.TAB);
       final Options opt = new Options(fld[0].trim(), fld[1].trim());
       Options.optList.add(opt);
+      if (fld[0].trim().equals("GOOGL")) {
+        Options o = new Options("GOOG", fld[1].trim());
+        Options.optList.add(o);
+      }
+      else if (fld[0].trim().equals("BRK.A")) {
+        Options o = new Options("BRK.B", fld[1].trim());
+        Options.optList.add(o);
+      }
     }
 
   }

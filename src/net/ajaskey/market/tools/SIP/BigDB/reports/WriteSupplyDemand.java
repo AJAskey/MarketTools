@@ -58,7 +58,7 @@ public class WriteSupplyDemand {
     try (PrintWriter pw = new PrintWriter("sipout/SupplyDemand.csv")) {
 
       for (final CompanyDerived cdr : dList) {
-        pw.printf("%s,%.2f%n", cdr.getFd().getTicker(), cdr.getTurnover());
+        pw.printf("%s,%n", cdr.getFd().getTicker());
       }
     }
 
