@@ -185,10 +185,14 @@ public class WriteCompanyData {
     final String dat = MarketTools.getLatestQtrEps(fd).format("yyyy-MMM-dd");
     pw.printf("\t10Q Date      :  %s%n", dat);
 
-    pw.printf("\tPrice         :  %11.2f%n", MarketTools.getPrice(fd));
+    String s = String.format("\tPrice         :  %11.2f", MarketTools.getPrice(fd));
+    pw.println(WriteCompanyData.formatData(s, cdr.getPricesQdata()));
+
     pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(MarketTools.getMktCap(fd), 13));
 
-    pw.println(cdr.getSharesQdata().fmtGrowth1Q("Shares"));
+    s = String.format("%s", cdr.getSharesQdata().fmtGrowth1Q("Shares"));
+    pw.println(WriteCompanyData.formatData(s, cdr.getSharesQdata()));
+
     final double sc = cdr.getSharesQdata().deltaQ(1, 2);
     if (sc < -0.250) {
       final double bbest = Math.abs(sc) * ((MarketTools.getPrice52hi(fd) + MarketTools.getPrice52lo(fd)) / 2.0);

@@ -844,10 +844,76 @@ public class CompanyDerived {
    */
   public double getTurnover() {
     double turnover = 0.0;
-    if (MarketTools.getVolume10d(fd) > 0.0) {
-      turnover = MarketTools.getFloatshr(fd) / (MarketTools.getVolume10d(fd) / 1000.0);
+    try {
+      if (MarketTools.getVolume10d(fd) > 0.0) {
+        turnover = MarketTools.getFloatshr(fd) / (MarketTools.getVolume10d(fd) / 1000.0);
+      }
+    }
+    catch (Exception e) {
+      System.out.println(FieldData.getError(e));
+      turnover = 0.0;
     }
     return turnover;
+  }
+
+  /**
+   * 
+   * @return
+   */
+  public double getInsiderDollarChg() {
+    double ret = 0.0;
+
+    try {
+      double price = fd.getShareData().getPrice();
+      if (fd.getCompanyInfo().getPriceQtr()[1] > 0.0 && fd.getCompanyInfo().getPriceQtr()[2] > 0.0 && fd.getCompanyInfo().getPriceQtr()[3] > 0.0) {
+        price = (fd.getCompanyInfo().getPriceQtr()[1] + fd.getCompanyInfo().getPriceQtr()[2] + fd.getCompanyInfo().getPriceQtr()[3]) / 3.0;
+      }
+      else if (fd.getShareData().getPrice52lo() > 0.0 && fd.getShareData().getPrice52hi() > 0.0) {
+        price = (fd.getShareData().getPrice52lo() + fd.getShareData().getPrice52hi()) / 2.0;
+      }
+
+      final double ibuyShr = fd.getShareData().getInsiderBuyShrs();
+      final double isellShr = fd.getShareData().getInsiderSellShrs();
+      final double inetShr = ibuyShr - isellShr;
+
+      ret = inetShr * price;
+    }
+    catch (Exception e) {
+      System.out.println(FieldData.getError(e));
+      ret = 0.0;
+    }
+    return ret;
+
+  }
+
+  /**
+   * 
+   * @return
+   */
+  public double getInstDollarChg() {
+    double ret = 0.0;
+
+    try {
+      double price = fd.getShareData().getPrice();
+      if (fd.getCompanyInfo().getPriceQtr()[1] > 0.0 && fd.getCompanyInfo().getPriceQtr()[2] > 0.0 && fd.getCompanyInfo().getPriceQtr()[3] > 0.0) {
+        price = (fd.getCompanyInfo().getPriceQtr()[1] + fd.getCompanyInfo().getPriceQtr()[2] + fd.getCompanyInfo().getPriceQtr()[3]) / 3.0;
+      }
+      else if (fd.getShareData().getPrice52lo() > 0.0 && fd.getShareData().getPrice52hi() > 0.0) {
+        price = (fd.getShareData().getPrice52lo() + fd.getShareData().getPrice52hi()) / 2.0;
+      }
+
+      final double ibuyShr = fd.getShareData().getInstBuyShrs();
+      final double isellShr = fd.getShareData().getInstSellShrs();
+      final double inetShr = ibuyShr - isellShr;
+
+      ret = inetShr * price;
+    }
+    catch (Exception e) {
+      System.out.println(FieldData.getError(e));
+      ret = 0.0;
+    }
+    return ret;
+
   }
 
   public double getEpsEstQ0Growth() {

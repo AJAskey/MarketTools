@@ -29,12 +29,14 @@ public class WriteOptumaExternal {
 
     try (PrintWriter pw = new PrintWriter("data/OptumaExternalData.csv")) {
 
-      pw.println("Code, CityExt, StateExt, CountryExt, EmpExt, FloatExt, TurnoverExt, QGrowthExt, QEstGrowthExt, YGrowthExt, OptionableExt");
+      pw.println(
+          "Code, CityExt, StateExt, CountryExt, EmpExt, FloatExt, TurnoverExt, QGrowthExt, QEstGrowthExt, YGrowthExt, OptionableExt, InsiderOwnExt,"
+              + "InsiderChgExt, InstOwnExt, InstChgExt");
 
       for (final CompanyDerived cdr : dRList) {
         print(pw, cdr);
-
       }
+
       // Add important not found by scan
       CompanyDerived brkb = Scans.findCompany(year, qtr, "BRK.B");
       print(pw, brkb);
@@ -64,6 +66,10 @@ public class WriteOptumaExternal {
       else {
         printcol(pw, " ");
       }
+      printcol(pw, fd.getShareData().getInsiderOwnership());
+      printcol(pw, cdr.getInsiderDollarChg());
+      printcol(pw, fd.getShareData().getInstOwnership());
+      printcol(pw, cdr.getInstDollarChg());
 
       pw.println("");
     }
