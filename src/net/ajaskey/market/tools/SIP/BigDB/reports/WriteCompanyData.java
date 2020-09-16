@@ -11,6 +11,7 @@ import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
 import net.ajaskey.market.tools.SIP.BigDB.collation.QuarterlyDouble;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
+import net.ajaskey.market.tools.SIP.BigDB.reports.utils.Utilities;
 
 public class WriteCompanyData {
 
@@ -209,20 +210,45 @@ public class WriteCompanyData {
   public static void writeEstimates(String fname, List<CompanyDerived> agList) throws FileNotFoundException {
 
     try (PrintWriter pw = new PrintWriter(fname)) {
-      pw.println("Ticker, Sector, Industry, MarketCap(M), Float(M), Estimate");
+      pw.println("Ticker,Sector,Industry,Q0Est,Q1,Q4,Q5,Y1Est,Y1,Chg40,Chg51,ChgYr");
+
+      double q0Total = 0.0;
+      double q1Total = 0.0;
+      double q4Total = 0.0;
+      double q5Total = 0.0;
+      double y1TtmTotal = 0.0;
+      double y1estTotal = 0.0;
       for (final CompanyDerived cdr : agList) {
-        double chg = 0.0;
-        final double q4 = cdr.getEpsDilContQdata().get(4);
-        if (q4 != 0.0) {
-          final FieldData fd = cdr.getFd();
-          chg = (cdr.getEpsEstQ0() - q4) / Math.abs(q4);
-          final String sector = fd.getSector().replace(",", ";");
-          final String industry = fd.getIndustry().replace(",", ";");
-          final long mktcap = (long) fd.getShareData().getMktCap();
-          final long flt = (long) fd.getShareData().getFloatshr();
-          pw.printf("%s,%s,%s,%d,%d,%f%n", fd.getTicker(), sector, industry, mktcap, flt, chg);
+        FieldData fd = cdr.getFd();
+        if (fd.getTicker().contains("BRK.") || fd.getTicker().equalsIgnoreCase("GOOG")) {
+          System.out.printf("Skipping %s%n", fd.getTicker());
+          continue;
         }
+        double q0 = fd.getEstimateData().getEpsQ0();
+        q0Total += q0;
+        double q1 = cdr.getEpsDilContQdata().get(1);
+        q1Total += q1;
+        double q4 = cdr.getEpsDilContQdata().get(4);
+        q4Total += q4;
+        double q5 = cdr.getEpsDilContQdata().get(5);
+        q5Total += q5;
+        double y1est = fd.getEstimateData().getEpsY1();
+        y1estTotal += y1est;
+        double y1 = cdr.getEpsDilContQdata().getTtm();
+        y1TtmTotal += y1;
+
+        double chg40 = MarketTools.getChange(q0, q4);
+        double chg51 = MarketTools.getChange(q1, q5);
+        double chgYr = MarketTools.getChange(y1est, y1);
+
+        pw.printf("%s,%s,%s,%f,%f,%f,%f,%f,%f,%f,%f,%f%n", cdr.getFd().getTicker(), Utilities.cleanSecInd(fd.getSector()),
+            Utilities.cleanSecInd(fd.getIndustry()), q0, q1, q4, q5, y1est, y1, chg40, chg51, chgYr);
       }
+      pw.printf(",,,%f,%f,%f,%f,%f,%f%n", q0Total, q1Total, q4Total, q5Total, y1estTotal, y1TtmTotal);
+      double chg40 = MarketTools.getChange(q0Total, q4Total);
+      double chg51 = MarketTools.getChange(q1Total, q5Total);
+      double chg1 = MarketTools.getChange(y1estTotal, y1TtmTotal);
+      pw.printf(",,,%f,%f,,,%f,%n", chg40, chg51, chg1);
     }
 
   }

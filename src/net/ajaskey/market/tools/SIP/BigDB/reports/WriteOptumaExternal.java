@@ -9,6 +9,7 @@ import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.Options;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 import net.ajaskey.market.tools.SIP.BigDB.reports.utils.Scans;
+import net.ajaskey.market.tools.SIP.BigDB.reports.utils.Utilities;
 
 public class WriteOptumaExternal {
 
@@ -18,6 +19,8 @@ public class WriteOptumaExternal {
    * @throws FileNotFoundException
    */
   public static void main(String[] args) throws FileNotFoundException {
+
+    System.out.println("WriteOptumaExternal...");
 
     int year = 2020;
     int qtr = 3;
@@ -30,7 +33,7 @@ public class WriteOptumaExternal {
     try (PrintWriter pw = new PrintWriter("data/OptumaExternalData.csv")) {
 
       pw.println(
-          "Code, CityExt, StateExt, CountryExt, EmpExt, FloatExt, TurnoverExt, QGrowthExt, QEstGrowthExt, YGrowthExt, OptionableExt, InsiderOwnExt,"
+          "Code, CityExt, StateExt, CountryExt, SectorExt, IndustryExt, EmpExt, FloatExt, TurnoverExt, QGrowthExt, QEstGrowthExt, YGrowthExt, OptionableExt, InsiderOwnExt,"
               + "InsiderChgExt, InstOwnExt, InstChgExt");
 
       for (final CompanyDerived cdr : dRList) {
@@ -52,6 +55,8 @@ public class WriteOptumaExternal {
       printcol(pw, fd.getCompanyInfo().getCity());
       printcol(pw, fd.getCompanyInfo().getState());
       printcol(pw, fd.getCompanyInfo().getCountry());
+      printcol(pw, Utilities.cleanSecInd(fd.getCompanyInfo().getSector()));
+      printcol(pw, Utilities.cleanSecInd(fd.getCompanyInfo().getIndustry()));
       printcol(pw, Math.max(fd.getCompanyInfo().getNumEmployees(), 1));
       printcol(pw, fd.getShareData().getFloatshr());
       printcol(pw, cdr.getTurnover());

@@ -81,6 +81,8 @@ public class CompanyDerived {
    */
   public static void main(final String[] args) throws FileNotFoundException {
 
+    System.out.println("CompanyDerived...");
+
     final int year = 2020;
     final int qtr = 3;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;

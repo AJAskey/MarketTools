@@ -35,7 +35,7 @@ public class WriteZombies {
 //      }
 
       if (!cdr.getFd().getSector().contains("Financials")) {
-        if (cdr.getZdata().getzScore() > 149.99) {
+        if (cdr.getZdata().getzScore() > 119.99) {
           if (Options.isOptionable(cdr.getFd().getTicker())) {
             int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
             if (qtrs > 4) {
@@ -55,6 +55,8 @@ public class WriteZombies {
    * @throws FileNotFoundException
    */
   public static void main(String[] args) throws FileNotFoundException {
+
+    System.out.println("WriteZombies...");
 
     List<CompanyDerived> dRList = Scans.findMajor(2020, 3, 20.0, 500000L);
 

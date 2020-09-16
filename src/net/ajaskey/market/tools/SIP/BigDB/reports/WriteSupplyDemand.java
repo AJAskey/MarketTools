@@ -51,6 +51,8 @@ public class WriteSupplyDemand {
    */
   public static void main(String[] args) throws FileNotFoundException {
 
+    System.out.println("SuppyDemand...");
+
     List<CompanyDerived> dRList = Scans.findMajor(2020, 3, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteSupplyDemand.findSupplyDemand(dRList);

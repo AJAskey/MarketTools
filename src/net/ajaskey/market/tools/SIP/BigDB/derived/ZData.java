@@ -21,7 +21,6 @@ package net.ajaskey.market.tools.SIP.BigDB.derived;
 
 import net.ajaskey.common.Utils;
 import net.ajaskey.market.tools.SIP.SipOutput;
-import net.ajaskey.market.tools.SIP.BigDB.MarketTools;
 
 public class ZData {
 
@@ -32,7 +31,7 @@ public class ZData {
   private final double         zCash;
   private double               zCashFlow;
   private double               zCashFromOps;
-  private final double         zDebt;
+  private double               zDebt;
   private final double         zDividend;
   private double               zEps;
   private double               zEquity;
@@ -160,18 +159,13 @@ public class ZData {
   public String toString() {
 
     String ret = "";
-    ret += Utils.TAB + "Zombie Score       : " + SipOutput.fmt(this.zScore, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Sales            : " + SipOutput.fmt(this.zSales, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Cash From Ops    : " + SipOutput.fmt(this.zCashFromOps, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Cash Flow        : " + SipOutput.fmt(this.zCashFlow, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Interest Rate    : " + SipOutput.fmt(this.zInterestRate, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Net              : " + SipOutput.fmt(this.zNet, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  EPS Est          : " + SipOutput.fmt(this.zEps, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Net Growth 3Yr   : " + SipOutput.fmt(this.zGrowth3Yr, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Equity           : " + SipOutput.fmt(this.zEquity, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  LtDebt to Equity : " + SipOutput.fmt(this.zLtDebtEquity, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Tangible Assets  : " + SipOutput.fmt(this.zTangibleAssets, 13, 2) + Utils.NL;
-    ret += Utils.TAB + "  Working Capital  : " + SipOutput.fmt(this.zWorkingCapital, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "Zombie Score        : " + SipOutput.fmt(this.zScore, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "  *Working Capital  : " + SipOutput.fmt(this.zWorkingCapital, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "  *Debt             : " + SipOutput.fmt(this.zDebt, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "  *Interest Rate    : " + SipOutput.fmt(this.zInterestRate, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "   Cash Flow        : " + SipOutput.fmt(this.zCashFlow, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "   Sales            : " + SipOutput.fmt(this.zSales, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "   Net              : " + SipOutput.fmt(this.zNet, 13, 2) + Utils.NL;
     // ret += this.dbgStr + Utils.NL;
 
     if (this.zIsZombie) {
@@ -185,15 +179,171 @@ public class ZData {
    */
   private String calc() {
 
+    /**
+     * Debug
+     */
+    if (this.cdr.getFd().getTicker().equalsIgnoreCase("ICPT")) {
+      System.out.println();
+    }
+
     this.dbgStr = Utils.NL + this.cdr.getFd().getTicker() + Utils.NL;
+
+    final double MAXVAL = 9999999.99;
 
     double qtr;
     double ttm;
     double seq;
+    double score;
+    double tmp;
+    double ratio;
 
-    if (this.cdr.getFd().getTicker().equalsIgnoreCase("ICPT")) {
-      System.out.println();
+    double salesTtm = this.cdr.getSalesQdata().getTtm();
+    double salesQtr = this.cdr.getSalesQdata().getMostRecent();
+    double currAssets = this.cdr.getCurrAssetsQdata().getMostRecent();
+    double currLiab = this.cdr.getCurrLiabQdata().getMostRecent();
+    double cashFromOpsTtm = this.cdr.getCashFromOpsQdata().getTtm();
+
+    this.dbgStr += String.format(" Sales Q/12       :\t%.2f\t%.2f%n", salesQtr, salesTtm);
+    this.dbgStr += String.format(" Curr Assets Liab :\t%.2f\t%.2f\t%.2f%n", currAssets, currLiab, (currAssets - currLiab));
+    this.dbgStr += String.format(" CashFromOpsTtm   :\t%.2f%n", cashFromOpsTtm);
+
+    /**
+     * 
+     * Major Zombie factors worth 100.0 points each
+     * 
+     */
+
+    /**
+     * Working Capital
+     */
+    if (currAssets > 0.0) {
+      ratio = currLiab / currAssets;
+      this.dbgStr += String.format("Working Capital : %.2f\t%.2f\t%.2f%n", ratio, currLiab, currAssets);
+      if (ratio > 1.0) {
+        if (cashFromOpsTtm > 0.0) {
+          tmp = currAssets - currLiab + cashFromOpsTtm;
+          if (tmp <= 0.0) {
+            score = (1.0 - (cashFromOpsTtm / Math.abs(currAssets - currLiab))) * 100.0;
+            this.zWorkingCapital = Math.min(100.0, score);
+            this.dbgStr += String.format("\tWC neg with not enough CashFromOps - zWorkingCapital : %.2f\t%.2f\t%.2f\n", this.zWorkingCapital, tmp,
+                score);
+          }
+          else {
+            score = Math.abs(currAssets - currLiab) / cashFromOpsTtm * 50.0;
+            this.zWorkingCapital = Math.min(100.0, score);
+            this.dbgStr += String.format("\tWC neg with enough CashFromOps - zWorkingCapital : %.2f\t%.2f\n", this.zWorkingCapital, score);
+          }
+        }
+        else {
+          // score = ratio * 100.0;
+          this.zWorkingCapital = 100.0;
+          this.dbgStr += String.format("\tWC neg no CashFromOps - zWorkingCapital : %.2f\n", this.zWorkingCapital);
+        }
+      }
     }
+    else {
+      this.zWorkingCapital = 100.0;
+      this.dbgStr += String.format("\tWC with CurrAssets neg - zWorkingCapital : %.2f\t%.2f\n", this.zWorkingCapital, currAssets);
+    }
+    this.zScore += this.zWorkingCapital;
+
+    /**
+     * Debt
+     */
+    double ltDebt = this.cdr.getLtDebtQdata().getMostRecent();
+    double stDebt = this.cdr.getStDebtQdata().getMostRecent();
+    double totDebt = ltDebt + stDebt;
+    double ta = this.cdr.getTanAssetsQdata().getMostRecent();
+    double equity = this.cdr.getEquityQdata().getMostRecent();
+    double debtToTa = 0.0;
+    double debtToSales = 0.0;
+    double debtToEquity = 0.0;
+    if (ta > 0.0) {
+      debtToTa = totDebt / ta;
+    }
+    if (salesTtm > 0.0) {
+      debtToSales = totDebt / salesTtm;
+    }
+    if (equity > 0.0) {
+      debtToEquity = totDebt / equity;
+    }
+
+    this.dbgStr += String.format("Debt ST/LT/Tot    :\t%.2f\t%.2f\t%.2f%n", stDebt, ltDebt, totDebt);
+    this.dbgStr += String.format(" TanAssets        :\t%.2f%n", ta);
+    this.dbgStr += String.format(" D/Eq D/TA D/S    :\t%.2f\t%.2f\t%.2f%n", debtToEquity, debtToTa, debtToSales);
+
+    if (equity > 0.0) {
+      tmp = 0.0;
+      if (debtToEquity > 1.0) {
+        tmp = POW(2.5, debtToEquity, MAXVAL);
+        score = MIN(100.0, tmp);
+        this.zDebt = score;
+      }
+      this.dbgStr += String.format("\tDebt To Equity - zDebt : %.2f\t%.2f\n", this.zDebt, tmp);
+    }
+    else if (ta > 0.0) {
+      tmp = 25.0;
+      tmp += POW(2.0, debtToTa, MAXVAL);
+      score = MIN(100.0, tmp);
+      this.zDebt = score;
+      this.dbgStr += String.format("\tDebt To Tangible Assets - zDebt : %.2f\t%.2f\n", this.zDebt, tmp);
+    }
+    else if (salesTtm > 0.0) {
+      tmp = 50.0;
+      tmp += POW(2.0, debtToSales, MAXVAL);
+      score = MIN(100.0, tmp);
+      this.zDebt = score;
+      this.dbgStr += String.format("\tDebt To Sales - zDebt : %.2f\t%.2f\n", this.zDebt, tmp);
+    }
+    else if (totDebt > 0.0) {
+      this.zDebt = 100.0;
+      this.dbgStr += String.format("\tDebt without backup - zDebt : %.2f\n", this.zDebt);
+    }
+    this.zScore += this.zDebt;
+
+    /**
+     * Interest Rate
+     */
+    double totDebtPrev = this.cdr.getLtDebtQdata().get(2) + this.cdr.getStDebtQdata().get(2);
+    double intRate = this.cdr.getCurrInterestRate();
+    double totInterest = totDebtPrev * intRate;
+    double intToSales = 0.0;
+    if (salesTtm > 0.0) {
+      intToSales = totInterest / salesTtm * 100.0;
+    }
+    this.dbgStr += String.format("Interest          :\t%.2f\t%.2f\t%.2f%n", totDebtPrev, intRate * 100.0, totInterest);
+    this.dbgStr += String.format(" Int to Sales     :\t%.2f%n", intToSales);
+    tmp = 0.0;
+    if (intRate > 0.035) {
+
+      tmp = POW(1.8, (intRate * 100.0), MAXVAL);
+      this.zInterestRate += MIN(50.0, tmp);
+      this.dbgStr += String.format("\tInterest - zInterestRate : %.2f\t%.2f\n", this.zInterestRate, tmp);
+    }
+    if (intToSales > 0.0) {
+      tmp = POW(2.0, intToSales, MAXVAL);
+      this.zInterestRate += MIN(50.0, tmp);
+      this.dbgStr += String.format("\tInterest to Sales - zInterestRate : %.2f\t%.2f\n", this.zInterestRate, tmp);
+    }
+    this.zScore += this.zInterestRate;
+
+    /**
+     * Minor Zombie factors worth 20.0 points each
+     */
+
+    final double minorMax = -10.0;
+
+    /**
+     * Cash Flow
+     */
+    ttm = this.cdr.getCashflowQdata().getTtm();
+    this.dbgStr += SipOutput.buildArray("Cash Flow ", this.cdr.getCashflowQdata().dArr, 10, 2) + Utils.NL;
+    this.dbgStr += String.format("\tCash Flow TTM : %.2f\n", ttm);
+    if (ttm <= 0.0) {
+      this.zCashFlow += minorMax * (-2.0);
+      this.dbgStr += String.format("\tTTM CashFlow neg - zCashFlow : %.2f\n", this.zCashFlow);
+    }
+    this.zScore += this.zCashFlow;
 
     /**
      * Sales
@@ -204,66 +354,14 @@ public class ZData {
     this.dbgStr += String.format("\tQoQ : %.2f%%%n", qtr);
     this.dbgStr += String.format("\tYoY : %.2f%%\t%.2f\t%.2f%n", ttm, this.cdr.getSalesQdata().getTtm(), this.cdr.getSalesQdata().getPrevTtm());
     if (qtr < 0.0) {
-      this.zSales += Math.abs(Math.max(-10.0, qtr));
+      this.zSales += Math.abs(Math.max(minorMax, qtr));
       this.dbgStr += String.format("\tMost recent Sales QoQ growth neg - zSales : %.2f\t%.2f\n", this.zSales, qtr);
     }
-    else {
-      this.zSales -= Math.min(15.0, qtr);
-      this.dbgStr += String.format("\tMost recent Sales QoQ growth pos - zSales : %.2f\t%.2f\n", this.zSales, qtr);
-    }
     if (ttm < 0.0) {
-      this.zSales += Math.abs(Math.max(-10.0, ttm));
+      this.zSales += Math.abs(Math.max(minorMax, ttm));
       this.dbgStr += String.format("\tMost recent Sales YoY growth neg - zSales : %.2f\t%.2f\n", this.zSales, ttm);
     }
-    else {
-      this.zSales -= Math.min(15.0, ttm);
-      this.dbgStr += String.format("\tMost recent Sales YoY growth pos - zSales : %.2f\t%.2f\n", this.zSales, ttm);
-    }
     this.zScore += this.zSales;
-
-    /**
-     * Cash from Ops
-     */
-    this.dbgStr += SipOutput.buildArray("Cash From Ops ", this.cdr.getCashFromOpsQdata().dArr, 10, 2) + Utils.NL;
-    ttm = this.cdr.getCashFromOpsQdata().getTtm();
-    if (ttm < 0.0) {
-      this.zCashFromOps += 35.0;
-      this.dbgStr += String.format("\tTTM Cash From Ops neg adding 35.0 - zNet : %.2f\t%.2f\n", this.zCashFromOps, ttm);
-    }
-    else {
-      qtr = this.cdr.getCashFromOpsQdata().getQoQ();
-      ttm = this.cdr.getCashFromOpsQdata().getYoY();
-      this.dbgStr += String.format("\tQoQ : %.2f%%%n", qtr);
-      this.dbgStr += String.format("\tYoY : %.2f%%\t%.2f\t%.2f%n", ttm, this.cdr.getCashFromOpsQdata().getTtm(),
-          this.cdr.getCashFromOpsQdata().getPrevTtm());
-      if (qtr < 0.0) {
-        this.zCashFromOps += Math.abs(Math.max(-10.0, qtr));
-        this.dbgStr += String.format("\tMost recent QoQ CashFromOps growth neg - zCashFromOps : %.2f\t%.2f\n", this.zCashFromOps, qtr);
-      }
-      if (ttm < 0.0) {
-        this.zCashFromOps += Math.abs(Math.max(-10.0, ttm));
-        this.dbgStr += String.format("\tMost recent YoY CashFromOps growth neg - zCashFromOps : %.2f\t%.2f\n", this.zCashFromOps, ttm);
-      }
-
-//      if (this.cdr.getFcfQdata().getMostRecent() < 0.0) {
-//        this.zCashFromOps += 10.0;
-//        this.dbgStr += String.format("\tFCF neg adding 10 - zCashFromOps : %.2f\t%.2f\n", this.zCashFromOps, this.cdr.getFcfQdata().getMostRecent());
-//      }
-    }
-    this.zScore += this.zCashFromOps;
-
-    /**
-     * Cash Flow
-     */
-    ttm = this.cdr.getCashflowQdata().getTtm();
-    this.dbgStr += SipOutput.buildArray("Cash Flow ", this.cdr.getCashflowQdata().dArr, 10, 2) + Utils.NL;
-    this.dbgStr += String.format("\tCash Flow TTM : %.2f\n", ttm);
-    if (ttm < 0.0) {
-      double ratio = Math.abs(ttm / this.cdr.getSalesQdata().getTtm() * 100.0) + 15.0;
-      this.zCashFlow += Math.min(35, ratio);
-      this.dbgStr += String.format("\tTTM CashFlow neg - zCashFlow : %.2f\t%.2f\t%.2f\n", this.zCashFlow, ratio, this.cdr.getSalesQdata().getTtm());
-    }
-    this.zScore += this.zCashFlow;
 
     /**
      * Net income
@@ -274,121 +372,38 @@ public class ZData {
     this.dbgStr += String.format("\tQoQ : %.2f%%%n", qtr);
     this.dbgStr += String.format("\tYoY : %.2f%%\t%.2f\t%.2f%n", ttm, this.cdr.getNetIncQdata().getTtm(), this.cdr.getNetIncQdata().getPrevTtm());
     if (qtr < 0.0) {
-      this.zNet += Math.abs(Math.max(-17.5, qtr));
+      this.zNet += Math.abs(Math.max(minorMax, qtr));
       this.dbgStr += String.format("\tMost recent QoQ Net Income growth neg - zNet : %.2f\t%.2f\n", this.zNet, qtr);
     }
     if (ttm < 0.0) {
-      this.zNet += Math.abs(Math.max(-17.5, ttm));
+      this.zNet += Math.abs(Math.max(minorMax, ttm));
       this.dbgStr += String.format("\tMost recent YoY Net Income growth neg - zNet : %.2f\t%.2f\n", this.zNet, ttm);
     }
     this.zScore += this.zNet;
 
-    /**
-     * Equity
-     */
-    seq = this.cdr.getEquityQdata().getQseqQ();
-    this.dbgStr += SipOutput.buildArray("Equity ", this.cdr.getEquityQdata().dArr, 10, 2) + Utils.NL;
-    this.dbgStr += String.format("\tQtoQ : %.2f%%%n", seq);
-    if (this.cdr.getEquityQdata().getMostRecent() <= 0.0) {
-      if (seq > 0.0) {
-        this.zEquity += 25.0;
-        this.dbgStr += String.format("\tEquity neg - zEquity : %.2f\n", this.zEquity);
-
-      }
-      else {
-        this.zEquity += 35.0;
-        this.dbgStr += String.format("\tEquity neg and Most recent growth neg - zEquity : %.2f\n", this.zEquity);
-      }
-      if (this.cdr.getLtDebtQdata().getMostRecent() > 0.0) {
-        this.zLtDebtEquity = 25.0;
-        this.dbgStr += String.format("\tLT Debt to Zero Equity - zLtDebtEquity : %.2f\n", this.zLtDebtEquity);
-      }
-    }
-    else {
-      if (seq < 0.0) {
-        this.zEquity += Math.abs(Math.max(-25.0, seq));
-        this.dbgStr += String.format("\tEquity Most recent growth neg - zEquity : %.2f\t%.2f\n", this.zEquity, seq);
-      }
-
-      final double ltDtoE = this.cdr.getLtDebtQdata().getMostRecent() / this.cdr.getEquityQdata().getMostRecent();
-      this.dbgStr += SipOutput.buildArray("LT Debt ", this.cdr.getLtDebtQdata().dArr, 10, 2) + Utils.NL;
-      if (ltDtoE > 1.0) {
-        final double tmp = ltDtoE * 5.0;
-        this.zLtDebtEquity = Math.min(35.0, tmp);
-        this.dbgStr += String.format("\tLT Debt to Equity - zLtDebtEquity : %.2f\t%.2f\n", this.zLtDebtEquity, tmp);
-      }
-    }
-    this.zScore += this.zEquity + this.zLtDebtEquity;
-
-    /**
-     * EPS Estimate Q0 Growth
-     */
-    qtr = this.cdr.getEpsEstQ0Growth();
-    this.dbgStr += String.format("EPS Growth Est : %.2f%n", qtr);
-    if (qtr < 0.0) {
-      this.zEps += Math.abs(Math.max(-20.0, qtr));
-      this.dbgStr += String.format("\tEPS Growth neg - zEPS : %.2f\t%.2f\t%.2f\t%.2f\n", this.zEps, qtr, this.cdr.getEpsEstQ0(),
-          this.cdr.getEpsDilContQdata().get(4));
-    }
-    this.zScore += this.zEps;
-
-    /**
-     * Interest Rate
-     */
-    qtr = this.cdr.getCurrInterestRate() * 100.0;
-    this.dbgStr += String.format("Interest Rate : %.2f%n", qtr);
-    if (qtr > 2.99) {
-      final double tmp = (qtr * 3.5) - qtr;
-      this.zInterestRate = Math.min(35.0, tmp);
-      final double totDebt = this.cdr.getLtDebtQdata().get(2) + this.cdr.getStDebtQdata().get(2);
-      this.dbgStr += String.format("\tHigh Interest Rate - zInterestRate : %.2f\t%.2f\t%.2f\t%.2f%n", this.zInterestRate, tmp, totDebt,
-          this.cdr.getIntTotQdata().getTtm());
-    }
-    this.zScore += this.zInterestRate;
-
-    /**
-     *
-     * Growth
-     */
-    final double y1net = this.cdr.getFd().getIncSheetData().getNetIncYr()[1];
-    final double y3net = this.cdr.getFd().getIncSheetData().getNetIncYr()[3];
-    final double gr = MarketTools.getChange(y1net, y3net);
-    this.dbgStr += String.format("LT Net Growth : %.2f\t%.2f\t%.2f%n", gr, y1net, y3net);
-    this.dbgStr += SipOutput.buildArray("\tAnnual Net ", this.cdr.getFd().getIncSheetData().getNetIncYr(), 10, 2) + Utils.NL;
-    if (gr < 0.0) {
-      this.zGrowth3Yr = Math.abs(Math.max(-25.0, gr));
-      this.dbgStr += String.format("\tLT Net Growth - zGrowth3Yr : %.2f\t%.2f\n", this.zGrowth3Yr, gr);
-    }
-    this.zScore += this.zGrowth3Yr;
-
-    /**
-     * Working Capital
-     */
-    double ratio = 0.0;
-    if (this.cdr.getCurrAssetsQdata().getMostRecent() > 0.0) {
-      final double tmp = this.cdr.getCurrLiabQdata().getMostRecent() / this.cdr.getCurrAssetsQdata().getMostRecent();
-      this.dbgStr += String.format("Working Capital : %.2f\t%.2f\t%.2f%n", tmp, this.cdr.getCurrLiabQdata().getMostRecent(),
-          this.cdr.getCurrAssetsQdata().getMostRecent());
-      if (tmp > 1.0) {
-        ratio = 15.0 + (tmp * 10.0);
-        this.zWorkingCapital = Math.min(35.0, ratio);
-        this.dbgStr += String.format("\tWC neg - zWorkingCapital : %.2f\t%.2f\n", this.zWorkingCapital, ratio);
-      }
-    }
-    this.zScore += this.zWorkingCapital;
-
-    /**
-     * Tangible Assets
-     */
-    double ta = this.cdr.getTanAssetsQdata().getQseqQ();
-    this.dbgStr += String.format("Tangible Asset Growth : %.2f%n", ta);
-    if (ta < 0.0) {
-      this.zTangibleAssets = Math.abs(Math.max(-35.0, ta));
-      this.dbgStr += String.format("\tTangible Asset growth neg - zTangibleAssets : %.2f\t%.2f\n", this.zTangibleAssets, ta);
-    }
-    this.zScore += this.zTangibleAssets;
-
     return this.dbgStr;
+  }
+
+  /**
+   * 
+   * @param d
+   * @param e
+   * @param Maxval
+   * @return
+   */
+  private double POW(double d, double e, double Maxval) {
+    double tmp = MIN(Math.pow(d, e), Maxval);
+    return tmp;
+  }
+
+  /**
+   * 
+   * @param bound
+   * @param val
+   * @return
+   */
+  private double MIN(double bound, double val) {
+    return Math.min(bound, val);
   }
 
   public double getzTangibleAssets() {

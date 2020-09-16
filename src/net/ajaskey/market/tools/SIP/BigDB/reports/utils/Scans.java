@@ -86,9 +86,47 @@ public class Scans {
     final List<String> possibles = CompanySummary.get(year, qtr, SnpEnum.NONE, DowEnum.NONE, ExchEnum.MAJOR, lowPrice, lowVolume);
     final List<FieldData> fdList = FieldData.getListFromMemory(possibles, year, qtr);
 
-    final List<CompanyDerived> dRList = CompanyDerived.processList(fdList);
+    final List<CompanyDerived> drList = CompanyDerived.processList(fdList);
 
-    return dRList;
+    return drList;
+  }
+
+  /**
+   * 
+   * @param year
+   * @param qtr
+   * @return
+   */
+  public static List<CompanyDerived> findSpx(int year, int qtr) {
+
+    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
+    MarketTools.parseSipData(year, qtr, ft, false);
+    CompanyDerived.loadDb(year, qtr, ft);
+
+    final List<String> possibles = CompanySummary.get(year, qtr, SnpEnum.SP500, DowEnum.NONE, ExchEnum.NONE, 0, 0);
+    final List<FieldData> fdList = FieldData.getListFromMemory(possibles, year, qtr);
+
+    final List<CompanyDerived> drList = CompanyDerived.processList(fdList);
+    return drList;
+  }
+
+  /**
+   * 
+   * @param year
+   * @param qtr
+   * @return
+   */
+  public static List<CompanyDerived> findSml(int year, int qtr) {
+
+    final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
+    MarketTools.parseSipData(year, qtr, ft, false);
+    CompanyDerived.loadDb(year, qtr, ft);
+
+    final List<String> possibles = CompanySummary.get(year, qtr, SnpEnum.SP600, DowEnum.NONE, ExchEnum.NONE, 0, 0);
+    final List<FieldData> fdList = FieldData.getListFromMemory(possibles, year, qtr);
+
+    final List<CompanyDerived> drList = CompanyDerived.processList(fdList);
+    return drList;
   }
 
 }
