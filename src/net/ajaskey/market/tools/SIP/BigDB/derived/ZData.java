@@ -255,18 +255,22 @@ public class ZData {
       this.dbgStr += String.format("\tDebt To Equity - zDebt : %.2f\ttmp=POW(2.5,debtToEquity) %.2f\n", this.zDebt, tmp);
     }
     else if (ta > 0.0) {
-      tmp = 25.0;
-      tmp += ZData.POW(2.5, debtToTa, MAXVAL);
+      tmp = 50.0;
+      if (debtToTa > 0.99) {
+        tmp += ZData.POW(5.0, debtToTa, MAXVAL);
+      }
       score = ZData.MIN(125.0, tmp);
       this.zDebt = score;
-      this.dbgStr += String.format("\tDebt To Tangible Assets - zDebt : %.2f\ttmp=25+POW(2.5,debtToTa) %.2f\n", this.zDebt, tmp);
+      this.dbgStr += String.format("\tDebt To Tangible Assets - zDebt : %.2f\ttmp=50+POW(5.0,debtToTa) %.2f\n", this.zDebt, tmp);
     }
     else if (salesTtm > 0.0) {
-      tmp = 50.0;
-      tmp += ZData.POW(2.0, debtToSales, MAXVAL);
+      tmp = 75.0;
+      if (debtToSales > 0.99) {
+        tmp += ZData.POW(2.0, debtToSales, MAXVAL);
+      }
       score = ZData.MIN(125.0, tmp);
       this.zDebt = score;
-      this.dbgStr += String.format("\tDebt To Sales - zDebt : %.2f\ttmp=50+POW(2.0,debtToSales) %.2f\n", this.zDebt, tmp);
+      this.dbgStr += String.format("\tDebt To Sales - zDebt : %.2f\ttmp=75+POW(2.0,debtToSales) %.2f\n", this.zDebt, tmp);
     }
     else if (totDebt > 0.0) {
       this.zDebt = 125.0;
