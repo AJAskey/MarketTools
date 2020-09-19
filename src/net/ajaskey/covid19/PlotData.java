@@ -8,6 +8,7 @@ public class PlotData {
   private int            totalCases;
   private int            totalDeaths;
   private int            totalTests;
+  private int            newDeaths;
   private long           population;
 
   public PlotData(DateTime dt) {
@@ -15,13 +16,15 @@ public class PlotData {
     this.totalCases = 0;
     this.totalDeaths = 0;
     this.totalTests = 0;
+    this.newDeaths = 0;
     this.population = 0L;
   }
 
-  public PlotData(DateTime dt, int tc, int td, int tt, long pop) {
+  public PlotData(DateTime dt, int tc, int td, int nd, int tt, long pop) {
     this.date = new DateTime(dt);
     this.totalCases = tc;
     this.totalDeaths = td;
+    this.newDeaths = nd;
     this.totalTests = tt;
     this.population = pop;
   }
@@ -38,6 +41,10 @@ public class PlotData {
     return this.totalDeaths;
   }
 
+  public int getNewDeaths() {
+    return this.newDeaths;
+  }
+
   public int getTotalTests() {
     return this.totalTests;
   }
@@ -52,6 +59,10 @@ public class PlotData {
 
   public void incTotalDeaths(int td) {
     this.totalDeaths += td;
+  }
+
+  public void incNewDeaths(int nd) {
+    this.newDeaths += nd;
   }
 
   public void incTotalTests(int tt) {

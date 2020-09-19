@@ -35,7 +35,7 @@ public class WriteZombies {
 //      }
 
       if (!cdr.getFd().getSector().contains("Financials")) {
-        if (cdr.getZdata().getzScore() > 119.99) {
+        if (cdr.getZdata().getzScore() > 174.99) {
           if (Options.isOptionable(cdr.getFd().getTicker())) {
             int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
             if (qtrs > 4) {

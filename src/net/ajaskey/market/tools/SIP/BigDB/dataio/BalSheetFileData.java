@@ -552,6 +552,10 @@ public class BalSheetFileData implements Serializable {
     this.ltInvestQtr = SipUtils.parseDoubles(fldQtr, ptrQtr, 8);
     this.ltInvestYr = SipUtils.parseDoubles(fldYr, ptrYr, 7);
 
+    if (this.ticker.equalsIgnoreCase("ES")) {
+      System.out.println("");
+    }
+
     ptrQtr += 8;
     ptrYr += 7;
     this.goodwillQtr = SipUtils.parseDoubles(fldQtr, ptrQtr, 8);

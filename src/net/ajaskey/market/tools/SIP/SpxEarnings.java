@@ -48,7 +48,7 @@ public class SpxEarnings {
    */
   public static void main(String[] args) throws FileNotFoundException {
 
-    final List<String> input = TextUtils.readTextFile("sipdata/SPX-Earnings.txt", true);
+    final List<String> input = TextUtils.readTextFile("data/SPX-Earnings.txt", true);
 
     for (final String s : input) {
       final SpxEarnings data = new SpxEarnings(s);
@@ -57,8 +57,9 @@ public class SpxEarnings {
       }
     }
 
-    final List<String> allSectors = SpxEarnings.findSectors(SpxEarnings.spxList);
-    final List<String> allIndustries = SpxEarnings.findIndustries(SpxEarnings.spxList);
+    // final List<String> allSectors = SpxEarnings.findSectors(SpxEarnings.spxList);
+    // final List<String> allIndustries =
+    // SpxEarnings.findIndustries(SpxEarnings.spxList);
 
     final TickerPriceData spxData = new TickerPriceData("WI", "SPX");
     final double spxPrice = spxData.getLatest();
@@ -70,34 +71,34 @@ public class SpxEarnings {
     String fname = String.format("%s/SPX_%s_Historic_Earnings.txt", dir, today);
     SpxEarnings.spxTe = SpxEarnings.process(SpxEarnings.spxList, spxPrice, fname);
 
-    for (final String sec : allSectors) {
-      final List<SpxEarnings> seList = SpxEarnings.findSectors(SpxEarnings.spxList, sec);
-      SpxEarnings.process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, sec, today));
-    }
-
-    dir += "/industry";
-    Utils.makeDir(dir);
-
-    for (final String ind : allIndustries) {
-      final List<SpxEarnings> seList = SpxEarnings.findIndustries(SpxEarnings.spxList, ind);
-      SpxEarnings.process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, ind, today));
-    }
-
-    /**
-     * Estimate 50 decline in earnings
-     */
-    final double earningsDrop = 0.65;
-    final List<SpxEarnings> estList = new ArrayList<>();
-    for (final SpxEarnings se : SpxEarnings.spxList) {
-      final SpxEarnings tmp = new SpxEarnings(se);
-      tmp.est1 = tmp.incEps[1] * earningsDrop;
-      tmp.estNet1 = tmp.est1 * tmp.shares[1];
-      tmp.incEps[0] = tmp.est1;
-      estList.add(tmp);
-    }
-    dir = "sipout/earnings";
-    fname = String.format("%s/SPX_%s_Estimated_Earnings.txt", dir, today);
-    SpxEarnings.process(estList, 0.0, fname);
+//    for (final String sec : allSectors) {
+//      final List<SpxEarnings> seList = SpxEarnings.findSectors(SpxEarnings.spxList, sec);
+//      SpxEarnings.process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, sec, today));
+//    }
+//
+//    dir += "/industry";
+//    Utils.makeDir(dir);
+//
+//    for (final String ind : allIndustries) {
+//      final List<SpxEarnings> seList = SpxEarnings.findIndustries(SpxEarnings.spxList, ind);
+//      SpxEarnings.process(seList, 0.0, String.format("%s/%s_%s_Historic-Earnings.txt", dir, ind, today));
+//    }
+//
+//    /**
+//     * Estimate 50 decline in earnings
+//     */
+//    final double earningsDrop = 0.65;
+//    final List<SpxEarnings> estList = new ArrayList<>();
+//    for (final SpxEarnings se : SpxEarnings.spxList) {
+//      final SpxEarnings tmp = new SpxEarnings(se);
+//      tmp.est1 = tmp.incEps[1] * earningsDrop;
+//      tmp.estNet1 = tmp.est1 * tmp.shares[1];
+//      tmp.incEps[0] = tmp.est1;
+//      estList.add(tmp);
+//    }
+//    dir = "sipout/earnings";
+//    fname = String.format("%s/SPX_%s_Estimated_Earnings.txt", dir, today);
+//    SpxEarnings.process(estList, 0.0, fname);
 
   }
 
@@ -328,54 +329,54 @@ public class SpxEarnings {
    */
   public SpxEarnings(String s) {
 
-    final String ss = s.replace("\"", "");
-    final String fld[] = ss.split("\t");
-
-    this.ticker = fld[0].trim();
-    this.name = fld[1].trim();
-    this.exchange = fld[2].trim();
-    this.sector = fld[3].trim();
-    this.industry = fld[4].trim();
-
-    this.currentFiscalYear = new DateTime(fld[5].trim(), SpxEarnings.sdf);
-    this.lastQtrEps = new DateTime(fld[6].trim(), SpxEarnings.sdf);
-
-    this.mktCap[1] = SipUtils.parseDouble(fld[7].trim());
-    this.mktCap[2] = SipUtils.parseDouble(fld[8].trim());
-    this.mktCap[3] = SipUtils.parseDouble(fld[9].trim());
-    this.mktCap[4] = SipUtils.parseDouble(fld[10].trim());
-    this.mktCap[5] = SipUtils.parseDouble(fld[11].trim());
-    this.mktCap[6] = SipUtils.parseDouble(fld[12].trim());
-    this.mktCap[7] = SipUtils.parseDouble(fld[13].trim());
-
-    this.incEps[1] = SipUtils.parseDouble(fld[14].trim());
-    this.incEps[2] = SipUtils.parseDouble(fld[15].trim());
-    this.incEps[3] = SipUtils.parseDouble(fld[16].trim());
-    this.incEps[4] = SipUtils.parseDouble(fld[17].trim());
-    this.incEps[5] = SipUtils.parseDouble(fld[18].trim());
-    this.incEps[6] = SipUtils.parseDouble(fld[19].trim());
-    this.incEps[7] = SipUtils.parseDouble(fld[20].trim());
-
-    this.shares[1] = SipUtils.parseDouble(fld[21].trim());
-    this.shares[2] = SipUtils.parseDouble(fld[22].trim());
-    this.shares[3] = SipUtils.parseDouble(fld[23].trim());
-    this.shares[4] = SipUtils.parseDouble(fld[24].trim());
-    this.shares[5] = SipUtils.parseDouble(fld[25].trim());
-    this.shares[6] = SipUtils.parseDouble(fld[26].trim());
-    this.shares[7] = SipUtils.parseDouble(fld[27].trim());
-
-    this.est1 = SipUtils.parseDouble(fld[28].trim());
-
-    this.shares[0] = this.shares[1];
-    this.mktCap[0] = this.mktCap[1];
-    this.incEps[0] = this.est1 * this.shares[0];
-
-    this.currentFiscalYear.setSdf(SpxEarnings.sdfout);
-    this.lastQtrEps.setSdf(SpxEarnings.sdfout);
-
-    this.valid = true;
-
     try {
+
+      final String ss = s.replace("\"", "");
+      final String fld[] = ss.split("\t");
+
+      this.ticker = fld[0].trim();
+      this.name = fld[1].trim();
+      this.exchange = fld[2].trim();
+      this.sector = fld[3].trim();
+      this.industry = fld[4].trim();
+
+      this.currentFiscalYear = new DateTime(fld[5].trim(), SpxEarnings.sdf);
+      this.lastQtrEps = new DateTime(fld[6].trim(), SpxEarnings.sdf);
+
+      this.mktCap[1] = SipUtils.parseDouble(fld[7].trim());
+      this.mktCap[2] = SipUtils.parseDouble(fld[8].trim());
+      this.mktCap[3] = SipUtils.parseDouble(fld[9].trim());
+      this.mktCap[4] = SipUtils.parseDouble(fld[10].trim());
+      this.mktCap[5] = SipUtils.parseDouble(fld[11].trim());
+      this.mktCap[6] = SipUtils.parseDouble(fld[12].trim());
+      this.mktCap[7] = SipUtils.parseDouble(fld[13].trim());
+
+      this.incEps[1] = SipUtils.parseDouble(fld[14].trim());
+      this.incEps[2] = SipUtils.parseDouble(fld[15].trim());
+      this.incEps[3] = SipUtils.parseDouble(fld[16].trim());
+      this.incEps[4] = SipUtils.parseDouble(fld[17].trim());
+      this.incEps[5] = SipUtils.parseDouble(fld[18].trim());
+      this.incEps[6] = SipUtils.parseDouble(fld[19].trim());
+      this.incEps[7] = SipUtils.parseDouble(fld[20].trim());
+
+      this.shares[1] = SipUtils.parseDouble(fld[21].trim());
+      this.shares[2] = SipUtils.parseDouble(fld[22].trim());
+      this.shares[3] = SipUtils.parseDouble(fld[23].trim());
+      this.shares[4] = SipUtils.parseDouble(fld[24].trim());
+      this.shares[5] = SipUtils.parseDouble(fld[25].trim());
+      this.shares[6] = SipUtils.parseDouble(fld[26].trim());
+      this.shares[7] = SipUtils.parseDouble(fld[27].trim());
+
+      this.est1 = SipUtils.parseDouble(fld[28].trim());
+
+      this.shares[0] = this.shares[1];
+      this.mktCap[0] = this.mktCap[1];
+      this.incEps[0] = this.est1 * this.shares[0];
+
+      this.currentFiscalYear.setSdf(SpxEarnings.sdfout);
+      this.lastQtrEps.setSdf(SpxEarnings.sdfout);
+
+      this.valid = true;
 
     }
     catch (final Exception e) {

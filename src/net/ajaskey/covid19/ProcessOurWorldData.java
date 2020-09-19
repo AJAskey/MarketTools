@@ -61,10 +61,12 @@ public class ProcessOurWorldData {
    * @param fname
    */
   private static void mergeCurrentUS(String fname) {
+
     List<String> data = TextUtils.readTextFile(fname, true);
     int usCases = Integer.parseInt(data.get(0).trim());
     int usDeaths = Integer.parseInt(data.get(1).trim());
     DateTime today = new DateTime();
+
     for (OurWorldData owd : owdList) {
       if (owd.getLocation().equalsIgnoreCase("United States")) {
         if (owd.getDate().isEqual(today)) {
@@ -109,6 +111,7 @@ public class ProcessOurWorldData {
 
     for (final PlotData pd : pdList) {
       for (final OurWorldData owd : owdList) {
+
         if (owd.getDate().isEqual(pd.getDate())) {
           if (owd.getTotal_cases() > 0) {
             pd.incTotalCases(owd.getTotal_cases());
@@ -121,6 +124,10 @@ public class ProcessOurWorldData {
           }
           if (owd.getPopulation() > 0) {
             pd.incPopulation(owd.getPopulation());
+          }
+
+          if (owd.getNew_deaths() > 0) {
+            pd.incNewDeaths(owd.getNew_deaths());
           }
         }
       }
@@ -136,6 +143,7 @@ public class ProcessOurWorldData {
    * @return
    */
   private static List<OurWorldData> get(String continent, String location) {
+
     final List<OurWorldData> retList = new ArrayList<>();
 
     for (final OurWorldData owd : ProcessOurWorldData.owdList) {
@@ -180,7 +188,8 @@ public class ProcessOurWorldData {
     else {
       plotList = new ArrayList<>();
       for (final OurWorldData owd : newList) {
-        plotList.add(new PlotData(owd.getDate(), owd.getTotal_cases(), owd.getTotal_deaths(), owd.getTotal_tests(), owd.getPopulation()));
+        plotList.add(
+            new PlotData(owd.getDate(), owd.getTotal_cases(), owd.getTotal_deaths(), owd.getNew_deaths(), owd.getTotal_tests(), owd.getPopulation()));
       }
     }
 
@@ -224,6 +233,15 @@ public class ProcessOurWorldData {
           pw.println(s);
           lastDeathKnt = pd.getTotalDeaths();
         }
+      }
+    }
+
+    fname = String.format("%s_%s_NewDeaths.csv", cont, loc);
+    filename = path + fname;
+    try (PrintWriter pw = new PrintWriter(filename)) {
+      for (final PlotData pd : plotList) {
+        final String s = String.format("%s,%d", pd.getDate().format("yyyy-MM-dd"), pd.getNewDeaths());
+        pw.println(s);
       }
     }
 
