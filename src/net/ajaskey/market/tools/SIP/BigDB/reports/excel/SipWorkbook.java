@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -18,10 +20,13 @@ public class SipWorkbook implements AutoCloseable {
   Workbook             wb;
   private OutputStream os;
 
-  public SipWorkbook(String wbName) {
+  private String filename;
+
+  private SipWorkbook(String wbName) {
 
     try {
-      this.os = new FileOutputStream(new File(wbName));
+      filename = String.format("%s.xlsx", wbName);
+      this.os = new FileOutputStream(new File(filename));
       this.wb = new XSSFWorkbook();
       this.valid = true;
     }
@@ -41,6 +46,18 @@ public class SipWorkbook implements AutoCloseable {
     this.flush();
     this.os.close();
     this.wb.close();
+  }
+
+  public DataFormat createDataFormat() {
+    return wb.createDataFormat();
+  }
+
+  public Workbook getWorkbook() {
+    return wb;
+  }
+
+  public CellStyle createCellStyle() {
+    return wb.createCellStyle();
   }
 
   public void flush() throws IOException {
@@ -86,19 +103,22 @@ public class SipWorkbook implements AutoCloseable {
     return sheet;
   }
 
-  public void setValue(Row row, int cellId, Double val) {
+  public Cell setValue(Row row, int cellId, Double val) {
     final Cell cell = this.setCell(row, cellId);
     cell.setCellValue(val);
+    return cell;
   }
 
-  public void setValue(Row row, int cellId, Integer val) {
+  public Cell setValue(Row row, int cellId, Integer val) {
     final Cell cell = this.setCell(row, cellId);
     cell.setCellValue(val);
+    return cell;
   }
 
-  public void setValue(Row row, int cellId, String val) {
+  public Cell setValue(Row row, int cellId, String val) {
     final Cell cell = this.setCell(row, cellId);
     cell.setCellValue(val);
+    return cell;
   }
 
   public void setValue(Sheet sheet, int rowId, int cellId, Double val) {
@@ -116,5 +136,9 @@ public class SipWorkbook implements AutoCloseable {
     this.setRow(sheet, rowId);
     final Cell cell = this.setCell(sheet, rowId, cellId);
     cell.setCellValue(val);
+  }
+
+  public static SipWorkbook create(String wbName) {
+    return new SipWorkbook(wbName);
   }
 }

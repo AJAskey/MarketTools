@@ -285,22 +285,24 @@ public class ZData {
     final double intRate = this.cdr.getCurrInterestRate();
     final double totInterest = totDebtPrev * intRate;
     double intToSales = 0.0;
+    double salesIntRatio = 0.0;
     if (salesTtm > 0.0) {
       intToSales = totInterest / salesTtm * 100.0;
+      salesIntRatio = salesTtm / totInterest;
     }
     this.dbgStr += String.format("Interest          :\ttotDebt=%.2f\tintRate=%.2f\ttotInterest=%.2f%n", totDebtPrev, intRate * 100.0, totInterest);
-    this.dbgStr += String.format(" Int to Sales     :\t%.2f%n", intToSales);
+    this.dbgStr += String.format(" Int to Sales     :\t%.2f\tsalesIntRatio=%.2f%n", intToSales, salesIntRatio);
     tmp = 0.0;
     if (intRate > 0.035) {
 
       tmp = ZData.POW(1.8, intRate * 100.0, MAXVAL);
-      this.zInterestRate += ZData.MIN(50.0, tmp);
+      this.zInterestRate += ZData.MIN(62.5, tmp);
       this.dbgStr += String.format("\tInterest - zInterestRate : %.2f\ttmp=POW(1.8,intRate) %.2f\n", this.zInterestRate, tmp);
     }
     if (intToSales > 0.0) {
-      tmp = ZData.POW(2.5, intToSales, MAXVAL);
-      this.zInterestRate += ZData.MIN(50.0, tmp);
-      this.dbgStr += String.format("\tInterest to Sales - zInterestRate : %.2f\ttmp=POW(2.5,intToSales) %.2f\n", this.zInterestRate, tmp);
+      tmp = ZData.POW(1.6, intToSales, MAXVAL);
+      this.zInterestRate += ZData.MIN(62.5, tmp);
+      this.dbgStr += String.format("\tInterest to Sales - zInterestRate : %.2f\ttmp=POW(1.6,intToSales) %.2f\n", this.zInterestRate, tmp);
     }
     this.zScore += this.zInterestRate;
 

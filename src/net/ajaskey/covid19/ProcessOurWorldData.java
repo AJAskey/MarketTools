@@ -210,6 +210,21 @@ public class ProcessOurWorldData {
       }
     }
 
+    fname = String.format("%s_%s_CurrentTests.csv", cont, loc);
+    filename = path + fname;
+    try (PrintWriter pw = new PrintWriter(filename)) {
+      for (int i = 30; i < plotList.size(); i++) {
+        final PlotData pd = plotList.get(i);
+        final int tt = plotList.get(i).getTotalTests();
+        final int tt30 = plotList.get(i - 30).getTotalTests();
+        final int ct = tt - tt30;
+        if (ct > 1000000) {
+          final String s = String.format("%s,%d", pd.getDate().format("yyyy-MM-dd"), ct);
+          pw.println(s);
+        }
+      }
+    }
+
     fname = String.format("%s_%s_CurrentCases.csv", cont, loc);
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {

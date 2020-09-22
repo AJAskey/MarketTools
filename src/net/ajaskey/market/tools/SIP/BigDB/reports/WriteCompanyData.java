@@ -179,7 +179,7 @@ public class WriteCompanyData {
     final String index = ", " + MarketTools.getSnpIndexStr(fd);
     final String exch = ", " + fd.getExchange().toString();
 
-    pw.printf("\t%s, %s%s%s%n", fd.getSector(), fd.getIndustry(), index, exch);
+    pw.printf("\t%s, %s%s%s%n", Utilities.cleanSecInd(fd.getSector()), Utilities.cleanSecInd(fd.getIndustry()), index, exch);
     String sNumEmp = "?";
     if (MarketTools.getNumEmployees(fd) > 0) {
       sNumEmp = Utils.ifmt(MarketTools.getNumEmployees(fd), 12);

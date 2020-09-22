@@ -35,7 +35,7 @@ public class WriteZombies {
 //      }
 
       if (!cdr.getFd().getSector().contains("Financials")) {
-        if (cdr.getZdata().getzScore() > 174.99) {
+        if (cdr.getZdata().getzScore() > 149.99) {
           if (Options.isOptionable(cdr.getFd().getTicker())) {
             int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
             if (qtrs > 4) {
@@ -97,6 +97,9 @@ public class WriteZombies {
 
         pwCsv.printf("%s:US,%n", cdr.getFd().getTicker());
         pwTxt.printf("%s%n", cdr.getFd().getTicker());
+        if (rank > 50) {
+          break;
+        }
 
       }
     }
