@@ -75,11 +75,45 @@ public class WriteZombies {
 
       pw.printf("Created : %s\t%s%n", now, "This file is subject to change without notice.");
       pw.println("Pre-filtered for AMEX, NASDAQ, NYSE companies over $20 and average trading volume of at least 500K.");
-      // pw.println("---------------------------------------------------------------------------------------------------");
       pw.println("\nSeq : this quarter versus last quarter.");
       pw.println("QoQ : this quarter versus same quarter a year ago.");
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
-      pw.println("");
+
+      pw.printf("%nScoring%n");
+      pw.printf("\tWorking Capital%n\t\tratio = Current Liabililtes / (Current Assets + FCF12m) -- Assume FCF level will continue going forward.%n");
+      pw.printf("\t\tif (ratio > 1)%n\t\t\tzWorkingCapital = POW(ratio, 9.25) -- Max 150%n");
+
+      pw.printf("\tDebt -- Try Debt vs TanAssets for common comparison as many companies do not have positive Equity.%n");
+      pw.printf("\t\tTanAssets = All Assets - Goodwill%n");
+      pw.printf("\t\tif (Equity > 0) AND (Debt to Equity > 1)%n");
+      pw.printf("\t\t\tif (Debt to TanAssets > 1)%n");
+      pw.printf("\t\t\t\tzDebt = POW(5.0, Debt to TanAssets) -- MAX 125%n");
+      pw.printf("\t\t\telse%n\t\t\t\tzDebt = POW(2.5, Debt to Equity) -- MAX 125%n");
+      pw.printf("\t\telse if (TanAssets > 0) AND (Debt To TanAssets > 1)%n");
+      pw.printf("\t\t\tzDebt = 50 + POW(5.0, Debt to TanAssets) -- Start at 50 becaue negative Equity ; MAX 125%n");
+      pw.printf("\t\telse if (Sales12m > 0) AND (Debt To Sales > 1)%n");
+      pw.printf("\t\t\tzDebt = 75 + POW(2.0, Debt to Sales) -- Start at 75 because negative Equity and TanAssets ; MAX 125%n");
+      pw.printf("\t\telse if (Debt > 0)%n\t\t\tzDebt = 125%n");
+
+      pw.printf("\tDebt vs TanAssets -- Debt flows into TanAssets = GOOD ; Debt up and TanAssets down = BAD%n");
+      pw.printf("\t\tTanAssets = All Assets - Goodwill%n");
+      pw.printf("\t\ttaChg = TanAssets - TanAssets Year Ago%n");
+      pw.printf("\t\tdebtChg = Total Debt - Total Debt Year Ago%n");
+      pw.printf("\t\tratio = debtChg / taChg%n");
+      pw.printf("\t\tif (ratio > 1) AND (debtChg > 0)%n");
+      pw.printf("\t\t\tzDebtVsTa = POW(4.25, ratio) -- MAX 75%n");
+      pw.printf("\t\telse if (debtChg > 0) AND (taChg < 0)%n");
+      pw.printf("\t\t\tzDebtVsTa = 75%n");
+
+      pw.printf("\tInterest rates and payments%n");
+      pw.printf("\t\tIntRate = Interest Paid / Total Debt%n");
+      pw.printf("\t\tif (IntRate > 0.35) -- Arbitrarily say rates less than 3.5%% are not a problem.%n");
+      pw.printf("\t\t\tzInterest = POW(1.80, IntRate*100.0) -- MAX 62.5%n");
+      pw.printf("\t\tIntToSales = Interest Paid / Sales12m%n");
+      pw.printf("\t\tif (IntToSales > 0)%n");
+      pw.printf("\t\t\tzInterest += POW(5.0, IntToSales*10.0) -- MAX 62.5%n");
+
+      pw.printf("%n---------------------------------------------------------------------------------------------------%n%n");
 
       int rank = 1;
       for (final CompanyDerived cdr : dList) {

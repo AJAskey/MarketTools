@@ -124,13 +124,14 @@ public class WriteCompanyData {
     }
     pw.println(Utils.NL + cdr.getNetMarginQdata().fmtGrowth1QNoUnit("Net Margin "));
     pw.println(cdr.getOpMarginQdata().fmtGrowth1QNoUnit("Op Margin "));
-    pw.println(cdr.getRoeQdata().fmtGrowth1QNoUnit("ROE "));
-    // System.out.println(ca.roeQdata);
-    pw.println(cdr.getPeQdata().fmtGrowth1QNoUnit("PE "));
 
-    // pw.printf("%n%s%n",
-    // WriteCompanyData.formatData(cdr.getEpsDilContQdata().fmtGrowth1QEps("EPS"),
-    // cdr.getEpsDilContQdata()));
+    double equity = cdr.getEquityQdata().getMostRecent();
+    double roe = 0.0;
+    if (cdr.getNetIncQdata().getTtm() > 0.0 && equity > 0.0) {
+      roe = cdr.getNetIncQdata().getTtm() / equity * 100.0;
+    }
+    pw.printf("\tROE               : %13.2f%n", roe);
+    pw.println(cdr.getPeQdata().fmtGrowth1QNoUnit("PE "));
 
     final double y1net = cdr.getFd().getIncSheetData().getNetIncYr()[1];
     final double y4net = cdr.getFd().getIncSheetData().getNetIncYr()[3];

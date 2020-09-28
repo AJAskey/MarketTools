@@ -39,12 +39,14 @@ public class MarketTools {
   public static double getChange(double mostRecent, double previous) {
     double ret = 0.0;
     try {
-      double chg = (mostRecent - previous) / Math.abs(previous) * 100.0;
-      if (chg > 0.0) {
-        ret = Math.min(999.99, chg);
-      }
-      else {
-        ret = Math.max(-999.99, chg);
+      if (previous != 0.0) {
+        double chg = (mostRecent - previous) / Math.abs(previous) * 100.0;
+        if (chg > 0.0) {
+          ret = Math.min(999.99, chg);
+        }
+        else {
+          ret = Math.max(-999.99, chg);
+        }
       }
     }
     catch (Exception e) {

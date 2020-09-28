@@ -8,7 +8,11 @@ public class Utilities {
     if (idx > 0) {
       ret = secInd.substring(idx + 1).trim();
     }
-    return ret.replace(",", ";");
+    return cleanForCsv(ret);
+  }
+
+  public static String cleanForCsv(String str) {
+    return str.replace(",", ";");
   }
 
 }
