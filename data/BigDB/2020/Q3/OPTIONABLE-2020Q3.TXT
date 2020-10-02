@@ -41,6 +41,7 @@
 "ACCO"	T
 "ACEL"	F
 "ACER"	F
+"ACET"	T
 "ACGL"	T
 "ACH"	T
 "ACHC"	T
@@ -85,7 +86,6 @@
 "ADTX"	F
 "ADUS"	T
 "ADVM"	F
-"ADVV"	F
 "AE"	F
 "AEE"	T
 "AEG"	T
@@ -153,7 +153,6 @@
 "AIRT"	F
 "AIT"	F
 "AIV"	T
-"AIXN"	F
 "AIZ"	T
 "AJG"	T
 "AJRD"	T
@@ -185,7 +184,6 @@
 "ALGT"	T
 "ALID"	F
 "ALIM"	T
-"ALJJ"	F
 "ALK"	T
 "ALKS"	T
 "ALL"	T
@@ -207,6 +205,7 @@
 "ALTG"	F
 "ALTM"	F
 "ALTR"	F
+"ALUS"	F
 "ALV"	T
 "ALVR"	F
 "ALX"	F
@@ -240,7 +239,6 @@
 "AMOT"	T
 "AMP"	T
 "AMPH"	F
-"AMPY"	F
 "AMRB"	F
 "AMRC"	T
 "AMRH"	F
@@ -251,6 +249,7 @@
 "AMS"	F
 "AMSC"	T
 "AMSF"	F
+"AMST"	F
 "AMSWA"	F
 "AMT"	T
 "AMTB"	F
@@ -258,6 +257,7 @@
 "AMTI"	F
 "AMTX"	F
 "AMWD"	T
+"AMWL"	F
 "AMX"	T
 "AMZN"	T
 "AN"	T
@@ -278,7 +278,6 @@
 "ANNX"	F
 "ANPC"	F
 "ANSS"	T
-"ANTE"	F
 "ANTM"	T
 "ANVS"	F
 "ANY"	T
@@ -294,9 +293,9 @@
 "APDN"	T
 "APEI"	T
 "APEN"	F
+"APEX"	F
 "APG"	F
 "APH"	T
-"APHE"	F
 "API"	F
 "APLE"	F
 "APLS"	F
@@ -319,14 +318,12 @@
 "APXT"	F
 "APYX"	F
 "AQB"	F
-"AQMS"	F
 "AQST"	F
 "AQUA"	F
 "AR"	T
 "ARA"	T
 "ARAV"	F
 "ARAY"	T
-"ARC"	T
 "ARCAY"	F
 "ARCB"	T
 "ARCE"	F
@@ -355,16 +352,16 @@
 "ARPO"	F
 "ARQT"	F
 "ARR"	T
+"ARRT"	F
 "ARTNA"	F
 "ARTW"	F
 "ARVN"	F
 "ARW"	T
 "ARWR"	T
+"ASAN"	F
 "ASAV"	F
 "ASB"	T
 "ASC"	T
-"ASFI"	F
-"ASFT"	F
 "ASGN"	T
 "ASH"	T
 "ASIX"	T
@@ -394,6 +391,7 @@
 "ATGE"	F
 "ATGN"	F
 "ATH"	T
+"ATHA"	F
 "ATHE"	F
 "ATHM"	T
 "ATHX"	T
@@ -419,7 +417,6 @@
 "ATUS"	F
 "ATV"	F
 "ATVI"	T
-"ATXG"	F
 "ATXI"	F
 "AU"	T
 "AUB"	F
@@ -495,7 +492,6 @@
 "BANC"	T
 "BAND"	F
 "BANF"	F
-"BANM"	F
 "BANR"	T
 "BAP"	T
 "BASFY"	F
@@ -518,7 +514,6 @@
 "BBSI"	T
 "BBVA"	T
 "BBW"	T
-"BBX"	F
 "BBY"	T
 "BC"	T
 "BCAUY"	F
@@ -553,6 +548,7 @@
 "BEAT"	T
 "BECN"	T
 "BEDU"	F
+"BEEM"	F
 "BEKE"	F
 "BELFA"	F
 "BELP"	F
@@ -568,16 +564,17 @@
 "BFC"	F
 "BFGX"	F
 "BFIN"	F
+"BFNH"	F
 "BFS"	F
 "BFST"	F
 "BG"	T
 "BGCP"	T
 "BGFV"	T
+"BGLC"	F
 "BGNE"	F
 "BGS"	T
 "BGSF"	F
 "BH"	F
-"BHAT"	F
 "BHB"	F
 "BHC"	F
 "BHE"	T
@@ -598,6 +595,7 @@
 "BILL"	F
 "BIMI"	F
 "BIO"	T
+"BIOC"	F
 "BIOQ"	F
 "BIOX"	F
 "BIP"	T
@@ -660,6 +658,7 @@
 "BNED"	F
 "BNFT"	T
 "BNKL"	F
+"BNL"	F
 "BNR"	F
 "BNS"	T
 "BNSO"	F
@@ -667,8 +666,8 @@
 "BNTX"	F
 "BOCH"	F
 "BOH"	F
-"BOID"	F
 "BOKF"	T
+"BOMH"	F
 "BOMN"	F
 "BONL"	F
 "BOOM"	T
@@ -689,14 +688,15 @@
 "BPTH"	F
 "BPY"	F
 "BPYU"	F
+"BQ"	F
 "BR"	T
+"BRANF"	F
 "BRBMF"	F
 "BRBR"	F
 "BRBS"	F
 "BRBW"	F
 "BRC"	T
 "BRDCY"	F
-"BREW"	T
 "BRFS"	T
 "BRG"	T
 "BRID"	F
@@ -711,7 +711,6 @@
 "BRPA"	F
 "BRRE"	F
 "BRSF"	F
-"BRST"	F
 "BRT"	F
 "BRX"	F
 "BRY"	F
@@ -730,6 +729,7 @@
 "BSTG"	F
 "BSVN"	F
 "BSX"	T
+"BSY"	F
 "BTAI"	F
 "BTBT"	F
 "BTCY"	F
@@ -741,6 +741,7 @@
 "BURL"	T
 "BUSE"	F
 "BV"	T
+"BVH"	F
 "BVN"	T
 "BVXV"	F
 "BW"	F
@@ -764,6 +765,7 @@
 "BY"	F
 "BYD"	T
 "BYFC"	F
+"BYIN"	F
 "BYND"	F
 "BYSI"	F
 "BZH"	T
@@ -818,6 +820,7 @@
 "CAWW"	F
 "CB"	T
 "CBAN"	F
+"CBAT"	F
 "CBAY"	F
 "CBB"	T
 "CBD"	T
@@ -842,20 +845,18 @@
 "CCBC"	F
 "CCBG"	F
 "CCC"	T
+"CCCL"	F
 "CCEL"	F
 "CCEP"	F
 "CCF"	F
 "CCFN"	F
-"CCGN"	F
 "CCI"	T
 "CCJ"	T
 "CCK"	T
 "CCL"	T
-"CCLP"	T
 "CCM"	F
 "CCMP"	T
 "CCNB"	F
-"CCNC"	F
 "CCNE"	F
 "CCO"	T
 "CCOI"	T
@@ -864,12 +865,12 @@
 "CCRC"	F
 "CCRN"	T
 "CCS"	F
-"CCSB"	F
 "CCU"	F
 "CCUR"	T
 "CCX U"	F
 "CCXI"	T
 "CCYC"	F
+"CD"	F
 "CDAY"	F
 "CDE"	T
 "CDEVY"	F
@@ -945,12 +946,12 @@
 "CHMA"	F
 "CHMG"	F
 "CHMI"	F
+"CHND"	F
 "CHNG"	F
 "CHNR"	F
 "CHRA"	F
 "CHRS"	F
 "CHRW"	T
-"CHS"	T
 "CHSCP"	F
 "CHT"	T
 "CHTR"	T
@@ -961,7 +962,7 @@
 "CI"	T
 "CIA"	T
 "CIB"	F
-"CIBH"	F
+"CIBHD"	F
 "CIBN"	F
 "CIBY"	F
 "CIEN"	T
@@ -972,6 +973,7 @@
 "CIM"	T
 "CINF"	T
 "CINR"	F
+"CINV"	F
 "CIO"	T
 "CIR"	T
 "CISO"	F
@@ -979,7 +981,6 @@
 "CIVB"	F
 "CIX"	F
 "CIZN"	F
-"CJJD"	F
 "CJREF"	F
 "CKH"	T
 "CKPT"	F
@@ -1008,6 +1009,7 @@
 "CLNE"	T
 "CLNH"	F
 "CLNY"	F
+"CLOW"	F
 "CLPHY"	F
 "CLPR"	F
 "CLPS"	F
@@ -1041,6 +1043,7 @@
 "CMP"	T
 "CMPI"	F
 "CMPR"	T
+"CMPS"	F
 "CMRE"	T
 "CMRX"	T
 "CMS"	T
@@ -1065,7 +1068,6 @@
 "CNK"	T
 "CNLPL"	F
 "CNMD"	T
-"CNNB"	F
 "CNNE"	F
 "CNO"	T
 "CNOB"	F
@@ -1079,7 +1081,6 @@
 "CNTG"	F
 "CNTY"	T
 "CNX"	T
-"CNXM"	F
 "CNXN"	F
 "CO"	F
 "CODA"	F
@@ -1127,7 +1128,6 @@
 "CPKF"	F
 "CPLG"	F
 "CPLP"	T
-"CPMD"	F
 "CPRI"	F
 "CPRT"	T
 "CPRX"	T
@@ -1138,7 +1138,6 @@
 "CPST"	F
 "CPT"	T
 "CPTP"	F
-"CQCQ"	F
 "CQP"	T
 "CR"	F
 "CRAI"	T
@@ -1169,7 +1168,9 @@
 "CRS"	T
 "CRSA"	F
 "CRSP"	F
+"CRSR"	F
 "CRT"	F
+"CRTD"	F
 "CRTO"	T
 "CRTX"	F
 "CRUS"	T
@@ -1214,7 +1215,6 @@
 "CTIB"	F
 "CTIC"	T
 "CTK"	F
-"CTL"	T
 "CTLT"	T
 "CTMX"	F
 "CTO"	F
@@ -1227,13 +1227,14 @@
 "CTT"	F
 "CTTAY"	F
 "CTVA"	F
-"CTVZ"	F
+"CTXR"	F
 "CTXS"	T
 "CUB"	T
 "CUBE"	T
 "CUBI"	F
 "CUE"	F
 "CUEN"	F
+"CUII"	F
 "CUK"	F
 "CULL"	F
 "CULP"	F
@@ -1288,6 +1289,7 @@
 "CYD"	T
 "CYDY"	F
 "CYH"	T
+"CYRN"	F
 "CYRX"	F
 "CYTK"	T
 "CZFS"	F
@@ -1311,7 +1313,6 @@
 "DB"	T
 "DBD"	T
 "DBI"	F
-"DBUB"	F
 "DBX"	F
 "DCI"	T
 "DCMYY"	F
@@ -1331,6 +1332,7 @@
 "DECK"	T
 "DEI"	T
 "DELL"	F
+"DEN"	F
 "DENN"	T
 "DEO"	T
 "DESP"	F
@@ -1369,7 +1371,6 @@
 "DLPH"	T
 "DLR"	T
 "DLTH"	F
-"DLTI"	F
 "DLTR"	T
 "DLX"	T
 "DMAC"	F
@@ -1418,6 +1419,7 @@
 "DSX"	T
 "DT"	F
 "DTE"	T
+"DTEA"	T
 "DTEGY"	F
 "DTIL"	F
 "DTRK"	F
@@ -1438,6 +1440,7 @@
 "DXR"	F
 "DY"	T
 "DYAI"	F
+"DYN"	T
 "DYNR"	F
 "DZSI"	T
 "E"	T
@@ -1504,7 +1507,6 @@
 "EL"	T
 "ELA"	F
 "ELAN"	F
-"ELCQ"	F
 "ELF"	T
 "ELLH"	F
 "ELLO"	F
@@ -1567,6 +1569,7 @@
 "EQH"	F
 "EQIX"	T
 "EQNR"	F
+"EQOS"	F
 "EQR"	T
 "EQT"	T
 "ERF"	T
@@ -1575,7 +1578,6 @@
 "ERII"	T
 "ERJ"	T
 "ERKH"	F
-"EROS"	T
 "ES"	T
 "ESALY"	F
 "ESBK"	F
@@ -1583,6 +1585,7 @@
 "ESCA"	F
 "ESE"	T
 "ESEA"	F
+"ESGC"	F
 "ESGR"	F
 "ESI"	F
 "ESLT"	F
@@ -1625,10 +1628,10 @@
 "EVR"	T
 "EVRG"	F
 "EVRI"	T
-"EVSI"	F
 "EVTC"	T
 "EW"	T
 "EWBC"	T
+"EWST"	F
 "EXAS"	T
 "EXC"	T
 "EXEL"	T
@@ -1642,7 +1645,6 @@
 "EXPE"	T
 "EXPI"	F
 "EXPO"	F
-"EXPR"	T
 "EXR"	T
 "EXSR"	F
 "EXTN"	F
@@ -1650,6 +1652,7 @@
 "EYE"	F
 "EYEG"	F
 "EYEN"	F
+"EZOO"	F
 "EZPW"	T
 "F"	T
 "FAF"	T
@@ -1718,14 +1721,13 @@
 "FGBI"	F
 "FGEN"	T
 "FGNV"	F
-"FGOVF"	F
 "FHB"	T
 "FHI"	F
 "FHN"	T
 "FI"	T
 "FIBK"	F
 "FICO"	T
-"FIIIU"	F
+"FIII"	F
 "FINV"	F
 "FIS"	T
 "FISI"	F
@@ -1795,7 +1797,6 @@
 "FORM"	T
 "FORR"	T
 "FORTY"	F
-"FOSI"	F
 "FOSL"	T
 "FOUR"	F
 "FOXA"	T
@@ -1822,6 +1823,7 @@
 "FRME"	F
 "FRMO"	F
 "FRO"	T
+"FROG"	F
 "FRPH"	F
 "FRPT"	T
 "FRT"	T
@@ -1844,6 +1846,7 @@
 "FTFT"	F
 "FTHM"	F
 "FTI"	F
+"FTIVU"	F
 "FTK"	T
 "FTLF"	F
 "FTNT"	T
@@ -1877,6 +1880,7 @@
 "GASS"	T
 "GATX"	T
 "GAU"	F
+"GB"	F
 "GBCI"	T
 "GBIO"	F
 "GBL"	F
@@ -1893,6 +1897,7 @@
 "GDEN"	F
 "GDOT"	T
 "GDP"	F
+"GDRX"	F
 "GDRZF"	F
 "GDS"	F
 "GDYN"	F
@@ -1906,7 +1911,6 @@
 "GEOS"	T
 "GERN"	T
 "GES"	T
-"GEVO"	T
 "GFASY"	F
 "GFED"	F
 "GFF"	T
@@ -1915,10 +1919,10 @@
 "GGAL"	T
 "GGB"	T
 "GGG"	F
+"GGROU"	F
 "GH"	F
 "GHC"	F
 "GHG"	F
-"GHHHD"	F
 "GHL"	T
 "GHM"	F
 "GHMP"	F
@@ -1939,7 +1943,6 @@
 "GLDD"	T
 "GLEO U"	F
 "GLG"	F
-"GLGI"	F
 "GLIBA"	F
 "GLMD"	F
 "GLNG"	T
@@ -1949,6 +1952,7 @@
 "GLP"	T
 "GLPI"	T
 "GLRE"	T
+"GLSI"	F
 "GLT"	T
 "GLUU"	T
 "GLW"	T
@@ -1991,11 +1995,13 @@
 "GORO"	T
 "GOSS"	F
 "GOVB"	F
+"GOVX"	F
 "GPC"	T
 "GPI"	T
 "GPK"	T
 "GPMT"	F
 "GPN"	T
+"GPOX"	F
 "GPP"	F
 "GPRE"	T
 "GPRK"	F
@@ -2003,10 +2009,11 @@
 "GPS"	T
 "GPX"	F
 "GRA"	T
-"GRAF"	F
 "GRAM"	F
+"GRAY"	F
 "GRBK"	T
 "GRC"	T
+"GRCY"	F
 "GRIF"	F
 "GRIL"	F
 "GRIN"	F
@@ -2016,13 +2023,13 @@
 "GROW"	T
 "GRP.U"	F
 "GRPN"	T
+"GRTDD"	F
 "GRTS"	F
 "GRTX"	F
 "GRUB"	T
 "GRVY"	F
 "GRWC"	F
 "GRWG"	F
-"GRYN"	F
 "GS"	T
 "GSAH"	F
 "GSBC"	F
@@ -2035,6 +2042,7 @@
 "GSL"	T
 "GSMG"	F
 "GSS"	T
+"GSUM"	F
 "GSX"	F
 "GT"	T
 "GTEC"	F
@@ -2043,18 +2051,17 @@
 "GTHX"	F
 "GTIM"	F
 "GTLS"	T
-"GTMAY"	F
 "GTN"	T
 "GTPS"	F
 "GTS"	T
 "GTT"	T
-"GTX"	F
+"GTXMQ"	F
 "GTY"	T
 "GTYH"	F
 "GURE"	F
 "GV"	T
-"GVA"	T
 "GVFF"	F
+"GVP"	F
 "GWB"	F
 "GWGH"	F
 "GWHP"	F
@@ -2123,6 +2130,7 @@
 "HFWA"	F
 "HGBL"	F
 "HGEN"	F
+"HGSH"	F
 "HGV"	T
 "HHC"	T
 "HHR"	F
@@ -2281,7 +2289,6 @@
 "ICUI"	F
 "IDA"	F
 "IDCC"	T
-"IDEX"	F
 "IDN"	F
 "IDRA"	T
 "IDWM"	F
@@ -2299,7 +2306,6 @@
 "IFRX"	F
 "IGC"	F
 "IGIC"	F
-"IGLDF"	F
 "IGMS"	F
 "IGOI"	F
 "IGT"	T
@@ -2358,7 +2364,7 @@
 "INSG"	T
 "INSM"	T
 "INSP"	F
-"INSUU"	F
+"INSU"	F
 "INSW"	F
 "INT"	T
 "INTC"	T
@@ -2379,7 +2385,6 @@
 "IOVA"	F
 "IP"	T
 "IPAR"	F
-"IPDN"	F
 "IPG"	T
 "IPGP"	T
 "IPHI"	T
@@ -2420,6 +2425,7 @@
 "ITIC"	F
 "ITOS"	F
 "ITRI"	T
+"ITRM"	F
 "ITRN"	F
 "ITT"	T
 "ITUB"	T
@@ -2429,13 +2435,11 @@
 "IVR"	T
 "IVV"	T
 "IVZ"	T
-"IWBB"	F
 "IX"	F
 "IYY"	F
-"IZEA"	F
 "J"	F
 "JACK"	T
-"JAGGD"	F
+"JAGGF"	F
 "JAKK"	T
 "JAMF"	F
 "JAN"	F
@@ -2458,8 +2462,6 @@
 "JELD"	T
 "JFBC"	F
 "JFIN"	F
-"JFK"	F
-"JFU"	F
 "JG"	F
 "JHG"	F
 "JHX"	F
@@ -2469,7 +2471,6 @@
 "JKS"	T
 "JLL"	T
 "JLMC"	F
-"JMDAD"	F
 "JMIA"	F
 "JMP"	F
 "JNCE"	F
@@ -2552,7 +2553,6 @@
 "KN"	T
 "KNBWY"	F
 "KNDI"	T
-"KNIT"	F
 "KNL"	T
 "KNMCY"	F
 "KNOP"	T
@@ -2566,7 +2566,6 @@
 "KOF"	T
 "KOP"	T
 "KOPN"	T
-"KOS"	T
 "KOSS"	F
 "KPTI"	T
 "KR"	T
@@ -2585,6 +2584,7 @@
 "KRUS"	F
 "KRYS"	F
 "KSBI"	F
+"KSPN"	F
 "KSS"	T
 "KSU"	T
 "KT"	T
@@ -2662,6 +2662,7 @@
 "LGF.A"	F
 "LGHL"	F
 "LGIH"	T
+"LGIQ"	F
 "LGL"	F
 "LGND"	T
 "LH"	T
@@ -2683,7 +2684,6 @@
 "LIVE"	F
 "LIVN"	T
 "LIVX"	F
-"LIXT"	F
 "LIZI"	F
 "LJPC"	T
 "LKFN"	F
@@ -2706,7 +2706,6 @@
 "LNC"	T
 "LNDC"	T
 "LNG"	T
-"LNGB"	F
 "LNN"	T
 "LNT"	F
 "LNTH"	F
@@ -2746,13 +2745,13 @@
 "LSAC"	F
 "LSBK"	F
 "LSCC"	T
+"LSF"	F
 "LSI"	T
 "LSTR"	T
 "LSXMA"	T
 "LSYN"	F
 "LTBR"	F
 "LTC"	F
-"LTDH"	F
 "LTHM"	F
 "LTMAQ"	F
 "LTRN"	F
@@ -2761,6 +2760,7 @@
 "LUB"	F
 "LUKOY"	F
 "LULU"	T
+"LUMN"	F
 "LUMO"	F
 "LUNA"	F
 "LUNMF"	F
@@ -2771,6 +2771,7 @@
 "LW"	T
 "LWAY"	F
 "LX"	F
+"LXEH"	F
 "LXFR"	F
 "LXP"	T
 "LXRX"	T
@@ -2861,7 +2862,6 @@
 "MED"	T
 "MEDP"	F
 "MEDS"	F
-"MEET"	T
 "MEG"	F
 "MEI"	T
 "MEIP"	T
@@ -2917,7 +2917,6 @@
 "MITSY"	F
 "MITT"	T
 "MIXT"	F
-"MJCO"	F
 "MKC"	T
 "MKD"	F
 "MKGI"	F
@@ -2949,9 +2948,7 @@
 "MN"	T
 "MNCLU"	F
 "MNDO"	F
-"MNK"	T
 "MNKD"	T
-"MNLO"	F
 "MNOV"	F
 "MNPR"	F
 "MNR"	F
@@ -2963,6 +2960,7 @@
 "MNTX"	T
 "MO"	T
 "MOBL"	T
+"MOBQD"	F
 "MOD"	F
 "MODN"	T
 "MOFG"	F
@@ -2976,7 +2974,6 @@
 "MOS"	T
 "MOST"	F
 "MOSY"	T
-"MOTS"	F
 "MOV"	T
 "MOXC"	F
 "MPAA"	T
@@ -3025,7 +3022,9 @@
 "MT"	T
 "MTB"	T
 "MTBC"	F
+"MTC"	F
 "MTCH"	T
+"MTCR"	F
 "MTD"	F
 "MTDR"	T
 "MTEM"	F
@@ -3053,6 +3052,7 @@
 "MUX"	T
 "MVBF"	F
 "MVIS"	T
+"MVLY"	F
 "MVO"	T
 "MWA"	T
 "MWK"	F
@@ -3170,7 +3170,7 @@
 "NLTX"	F
 "NLY"	T
 "NM"	T
-"NMGX"	F
+"NMCI"	F
 "NMIH"	T
 "NMM"	T
 "NMR"	T
@@ -3178,7 +3178,6 @@
 "NMRK"	F
 "NMTC"	F
 "NNA"	F
-"NNAX"	F
 "NNBR"	T
 "NNDM"	F
 "NNI"	T
@@ -3190,6 +3189,7 @@
 "NOBH"	F
 "NOC"	T
 "NODK"	F
+"NOG"	T
 "NOK"	T
 "NOMD"	F
 "NOV"	T
@@ -3204,7 +3204,6 @@
 "NPSNY"	F
 "NPTN"	T
 "NPWI"	F
-"NR"	T
 "NRBO"	F
 "NRC"	F
 "NREF"	F
@@ -3250,7 +3249,6 @@
 "NUAN"	T
 "NUE"	T
 "NUMD"	F
-"NUNZ"	F
 "NURO"	F
 "NUS"	T
 "NUVA"	T
@@ -3274,6 +3272,7 @@
 "NVT"	F
 "NVTA"	T
 "NWBI"	F
+"NWCN"	F
 "NWE"	T
 "NWFL"	F
 "NWG"	F
@@ -3337,6 +3336,7 @@
 "OLLI"	T
 "OLN"	T
 "OLP"	F
+"OM"	F
 "OMAB"	F
 "OMC"	T
 "OMCL"	F
@@ -3466,6 +3466,7 @@
 "PBI"	T
 "PBIO"	F
 "PBIP"	F
+"PBNC"	F
 "PBPB"	T
 "PBR"	T
 "PBSV"	F
@@ -3508,7 +3509,6 @@
 "PED"	F
 "PEG"	T
 "PEGA"	T
-"PEI"	T
 "PEIX"	T
 "PEN"	F
 "PENN"	T
@@ -3527,10 +3527,10 @@
 "PFG"	T
 "PFGC"	T
 "PFHD"	F
+"PFHO"	F
 "PFIN"	F
 "PFIS"	F
 "PFLC"	F
-"PFNX"	F
 "PFPT"	T
 "PFS"	F
 "PFSI"	F
@@ -3543,6 +3543,7 @@
 "PGR"	T
 "PGRE"	F
 "PGTI"	T
+"PGTK"	F
 "PH"	T
 "PHAS"	F
 "PHAT"	F
@@ -3551,7 +3552,6 @@
 "PHIO"	F
 "PHM"	T
 "PHR"	F
-"PHUN"	F
 "PHX"	T
 "PI"	T
 "PICO"	T
@@ -3591,6 +3591,7 @@
 "PLRX"	F
 "PLSE"	F
 "PLT"	T
+"PLTR"	F
 "PLTYF"	F
 "PLUG"	T
 "PLUS"	F
@@ -3602,9 +3603,11 @@
 "PM"	T
 "PMBC"	F
 "PMD"	F
+"PME"	F
 "PMHG"	F
 "PMT"	T
 "PMTS"	T
+"PMVP"	F
 "PNBK"	F
 "PNC"	T
 "PNFP"	T
@@ -3631,6 +3634,7 @@
 "PPIH"	F
 "PPL"	T
 "PPSI"	F
+"PPWLO"	F
 "PQG"	F
 "PRA"	T
 "PRAA"	T
@@ -3638,6 +3642,7 @@
 "PRCP"	T
 "PRDO"	F
 "PRFT"	T
+"PRFX"	F
 "PRGO"	T
 "PRGS"	T
 "PRGX"	F
@@ -3645,10 +3650,10 @@
 "PRIM"	T
 "PRK"	T
 "PRLB"	T
+"PRLD"	F
 "PRLE"	F
 "PRMRF"	F
 "PRMW"	T
-"PRNB"	F
 "PRO"	T
 "PROG"	F
 "PROS"	F
@@ -3697,7 +3702,7 @@
 "PTGX"	F
 "PTI"	F
 "PTIX"	F
-"PTK U"	F
+"PTK"	F
 "PTNR"	F
 "PTON"	F
 "PTR"	T
@@ -3735,7 +3740,6 @@
 "QD"	F
 "QDEL"	T
 "QDMI"	F
-"QEP"	T
 "QEPC"	F
 "QFIN"	F
 "QGEN"	T
@@ -3762,6 +3766,7 @@
 "QUMU"	F
 "QUOT"	T
 "QURE"	T
+"QURT"	F
 "R"	T
 "RAD"	T
 "RADA"	F
@@ -3789,7 +3794,6 @@
 "RCL"	T
 "RCM"	F
 "RCMT"	F
-"RCON"	F
 "RCRT"	F
 "RCUS"	F
 "RDCM"	F
@@ -3808,7 +3812,6 @@
 "REAL"	F
 "REBL"	F
 "REDU"	F
-"REED"	T
 "REFR"	T
 "REG"	T
 "REGI"	T
@@ -3837,10 +3840,10 @@
 "RFL"	F
 "RFP"	T
 "RGA"	T
-"RGBD"	F
 "RGCO"	F
 "RGEN"	T
 "RGLD"	T
+"RGNP"	F
 "RGNX"	F
 "RGP"	F
 "RGR"	T
@@ -3852,7 +3855,6 @@
 "RHP"	T
 "RICK"	T
 "RICOY"	F
-"RIG"	T
 "RIGL"	T
 "RILY"	F
 "RIO"	T
@@ -3896,7 +3898,6 @@
 "ROG"	T
 "ROIC"	T
 "ROK"	T
-"ROKK"	F
 "ROKU"	F
 "ROL"	F
 "ROLL"	T
@@ -3929,7 +3930,6 @@
 "RTOKY"	F
 "RTRX"	T
 "RTSL"	F
-"RTTO"	F
 "RTX"	F
 "RUBY"	F
 "RUHN"	F
@@ -3958,13 +3958,11 @@
 "RYI"	T
 "RYN"	T
 "RYTM"	F
-"RZZN"	F
 "SA"	T
 "SABR"	T
 "SACH"	F
 "SAFE"	F
 "SAFM"	T
-"SAFO"	F
 "SAFT"	F
 "SAGE"	T
 "SAH"	T
@@ -3972,7 +3970,6 @@
 "SAIC"	T
 "SAIL"	F
 "SAL"	F
-"SALM"	F
 "SALT"	T
 "SAM"	T
 "SAMA"	F
@@ -3997,6 +3994,7 @@
 "SBFG"	F
 "SBGI"	T
 "SBH"	T
+"SBKK"	F
 "SBLK"	T
 "SBNY"	T
 "SBOW"	F
@@ -4020,6 +4018,7 @@
 "SCL"	F
 "SCMWY"	F
 "SCND"	F
+"SCON"	F
 "SCOR"	T
 "SCPE"	F
 "SCPH"	F
@@ -4037,9 +4036,9 @@
 "SD"	T
 "SDC"	F
 "SDGR"	F
+"SDWL"	F
 "SDXAY"	F
 "SE"	F
-"SEAC"	T
 "SEAS"	T
 "SEB"	F
 "SECI"	F
@@ -4051,6 +4050,7 @@
 "SELB"	F
 "SELF"	F
 "SEM"	T
+"SEMUF"	F
 "SENEA"	F
 "SEOAY"	F
 "SERV"	T
@@ -4115,7 +4115,6 @@
 "SIM"	F
 "SIMO"	T
 "SINA"	T
-"SINC"	F
 "SINO"	F
 "SINT"	F
 "SIRI"	T
@@ -4140,6 +4139,7 @@
 "SKYW"	T
 "SLAB"	T
 "SLB"	T
+"SLBG"	F
 "SLCA"	T
 "SLCT"	F
 "SLDB"	F
@@ -4171,6 +4171,7 @@
 "SMLR"	F
 "SMMC"	F
 "SMMF"	F
+"SMMT"	F
 "SMP"	T
 "SMPL"	F
 "SMSI"	T
@@ -4196,9 +4197,11 @@
 "SNNF"	F
 "SNNY"	F
 "SNOA"	F
+"SNOW"	T
 "SNP"	T
 "SNPS"	T
 "SNR"	T
+"SNSS"	T
 "SNV"	T
 "SNX"	T
 "SNY"	T
@@ -4214,7 +4217,6 @@
 "SOI"	F
 "SOL"	T
 "SOLO"	F
-"SOLQ"	F
 "SOLY"	F
 "SOMC"	F
 "SON"	T
@@ -4297,7 +4299,6 @@
 "SSSS"	F
 "SSTI"	F
 "SSTK"	T
-"SSY"	F
 "SSYS"	T
 "ST"	T
 "STAA"	T
@@ -4309,6 +4310,7 @@
 "STC"	T
 "STCB"	F
 "STE"	T
+"STEP"	F
 "STFC"	F
 "STG"	F
 "STIM"	F
@@ -4344,13 +4346,16 @@
 "SUI"	T
 "SUM"	T
 "SUME"	F
+"SUMO"	F
 "SUMR"	F
 "SUN"	T
 "SUND"	F
+"SUNW"	T
 "SUP"	F
 "SUPN"	T
 "SUPV"	F
 "SURF"	F
+"SVACU"	F
 "SVBI"	F
 "SVC"	F
 "SVIN"	F
@@ -4415,7 +4420,6 @@
 "TBNK"	F
 "TBPH"	F
 "TBTC"	F
-"TC"	F
 "TCBI"	T
 "TCBK"	F
 "TCCO"	F
@@ -4463,7 +4467,8 @@
 "TFX"	F
 "TG"	T
 "TGAN"	F
-"TGC"	F
+"TGB"	T
+"TGEN"	F
 "TGH"	F
 "TGI"	T
 "TGLS"	F
@@ -4473,7 +4478,7 @@
 "TGT"	T
 "TGTX"	T
 "TH"	F
-"THBRU"	F
+"THBR"	F
 "THC"	T
 "THCA"	F
 "THCBU"	F
@@ -4495,15 +4500,16 @@
 "TIPT"	F
 "TISI"	F
 "TITN"	T
+"TJBH"	F
 "TJX"	T
 "TK"	T
 "TKAGY"	F
+"TKAT"	F
 "TKC"	T
 "TKCI"	F
 "TKOMY"	F
 "TKR"	T
 "TLDN"	F
-"TLGT"	T
 "TLK"	F
 "TLKGY"	F
 "TLND"	F
@@ -4533,9 +4539,9 @@
 "TOFB"	F
 "TOGL"	F
 "TOL"	T
+"TOMZ"	F
 "TONJ"	F
 "TOPS"	F
-"TORC"	F
 "TOSYY"	F
 "TOT"	T
 "TOTA"	F
@@ -4574,7 +4580,6 @@
 "TROW"	T
 "TROX"	T
 "TRP"	T
-"TRQ"	T
 "TRS"	T
 "TRST"	T
 "TRT"	F
@@ -4596,6 +4601,7 @@
 "TSCO"	T
 "TSE"	T
 "TSEM"	T
+"TSHA"	F
 "TSLA"	T
 "TSM"	T
 "TSN"	T
@@ -4617,24 +4623,24 @@
 "TTSH"	F
 "TTWO"	T
 "TU"	T
+"TUESQ"	F
 "TUFN"	F
 "TUP"	T
 "TURN"	F
 "TUSK"	F
+"TUXS"	F
 "TV"	T
 "TVTY"	T
 "TW"	F
 "TWI"	T
 "TWIN"	F
 "TWLO"	T
-"TWMC"	F
 "TWNK"	T
 "TWO"	T
 "TWOU"	T
 "TWST"	F
 "TWTR"	T
 "TX"	T
-"TXCB"	F
 "TXG"	F
 "TXMD"	T
 "TXN"	T
@@ -4645,6 +4651,7 @@
 "TYL"	T
 "TZAC"	F
 "TZOO"	T
+"U"	F
 "UAA"	T
 "UAL"	T
 "UAVS"	F
@@ -4663,6 +4670,7 @@
 "UDR"	T
 "UE"	F
 "UEC"	T
+"UEEC"	F
 "UEIC"	F
 "UELMO"	F
 "UEPS"	T
@@ -4697,6 +4705,7 @@
 "UNF"	F
 "UNFI"	T
 "UNH"	T
+"UNIR"	F
 "UNIT"	T
 "UNM"	T
 "UNP"	T
@@ -4734,6 +4743,7 @@
 "UTL"	F
 "UTMD"	F
 "UTSI"	T
+"UTZ"	F
 "UUGRY"	F
 "UUU"	F
 "UVE"	T
@@ -4778,6 +4788,7 @@
 "VHC"	T
 "VHI"	F
 "VIAC"	F
+"VIAO"	F
 "VIAV"	T
 "VICI"	F
 "VICR"	T
@@ -4795,6 +4806,7 @@
 "VIVO"	T
 "VJET"	T
 "VKTX"	F
+"VLDR"	F
 "VLGEA"	F
 "VLO"	T
 "VLRS"	T
@@ -4810,6 +4822,7 @@
 "VNO"	T
 "VNOM"	T
 "VNRX"	F
+"VNT WI"	F
 "VNTR"	F
 "VOC"	T
 "VOD"	T
@@ -4848,6 +4861,7 @@
 "VTKLY"	F
 "VTOL"	F
 "VTR"	T
+"VTRU"	F
 "VTSI"	F
 "VTVT"	F
 "VUZI"	T
@@ -4857,6 +4871,7 @@
 "VVV"	T
 "VXRT"	F
 "VYGR"	F
+"VYNE"	F
 "VZ"	T
 "W"	T
 "WAB"	T
@@ -4888,17 +4903,14 @@
 "WEBC"	F
 "WEC"	T
 "WEDXF"	F
-"WEI"	F
 "WELL"	F
 "WELPP"	F
-"WELX"	F
 "WEN"	T
 "WERN"	T
 "WES"	T
 "WETF"	T
 "WETG"	F
 "WEX"	F
-"WEYL"	F
 "WEYS"	F
 "WF"	F
 "WFC"	T
@@ -4916,6 +4928,7 @@
 "WIMI"	F
 "WINA"	F
 "WING"	T
+"WINR"	F
 "WINT"	T
 "WIRE"	T
 "WISA"	F
@@ -4928,6 +4941,7 @@
 "WLFC"	F
 "WLK"	T
 "WLKP"	T
+"WLL"	T
 "WLMS"	F
 "WLTW"	T
 "WM"	T
@@ -4980,7 +4994,6 @@
 "WTT"	F
 "WTTR"	F
 "WU"	T
-"WUBA"	T
 "WVE"	F
 "WVFC"	F
 "WVVI"	F
@@ -4996,7 +5009,6 @@
 "X"	T
 "XAIR"	F
 "XAN"	F
-"XBIO"	F
 "XBIT"	T
 "XCUR"	F
 "XEC"	T
@@ -5025,6 +5037,7 @@
 "XSPA"	F
 "XTLB"	F
 "XYL"	T
+"XYNO"	F
 "Y"	F
 "YCBD"	F
 "YELP"	T
@@ -5040,8 +5053,10 @@
 "YRCW"	T
 "YRD"	T
 "YTEN"	F
+"YTFD"	F
 "YUM"	T
 "YUMC"	T
+"YUMM"	F
 "YVR"	F
 "YY"	T
 "YZCAY"	F
@@ -5069,7 +5084,6 @@
 "ZNH"	T
 "ZNTL"	F
 "ZS"	F
-"ZSAN"	F
 "ZTO"	T
 "ZTS"	T
 "ZUMZ"	T
