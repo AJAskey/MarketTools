@@ -119,7 +119,7 @@ public class CompanyDerived {
     System.out.println("CompanyDerived...");
 
     final int year = 2020;
-    final int qtr = 3;
+    final int qtr = 4;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
     MarketTools.parseSipData(year, qtr, ft, false);

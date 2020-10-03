@@ -196,12 +196,18 @@ public class ProcessOurWorldData {
     final String cont = continent.replace(" ", "").trim();
     final String loc = location.replace(" ", "").trim();
 
+    int lastPoint = plotList.size() - 1;
+    if (cont.equalsIgnoreCase("EUROPE")) {
+      lastPoint--;
+    }
+
     final String path = net.ajaskey.market.optuma.OptumaCommon.optumaPath + "DC\\";
     String fname = String.format("%s_%s_TotalCases.csv", cont, loc);
     String filename = path + fname;
     int lastCaseKnt = 0;
     try (PrintWriter pw = new PrintWriter(filename)) {
-      for (final PlotData pd : plotList) {
+      for (int i = 0; i <= lastPoint; i++) {
+        final PlotData pd = plotList.get(i);
         if (pd.getTotalCases() > lastCaseKnt) {
           final String s = String.format("%s,%d", pd.getDate().format("yyyy-MM-dd"), pd.getTotalCases());
           pw.println(s);
@@ -213,7 +219,7 @@ public class ProcessOurWorldData {
     fname = String.format("%s_%s_CurrentTests.csv", cont, loc);
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
-      for (int i = 30; i < plotList.size(); i++) {
+      for (int i = 30; i <= lastPoint; i++) {
         final PlotData pd = plotList.get(i);
         final int tt = plotList.get(i).getTotalTests();
         final int tt30 = plotList.get(i - 30).getTotalTests();
@@ -228,7 +234,7 @@ public class ProcessOurWorldData {
     fname = String.format("%s_%s_CurrentCases.csv", cont, loc);
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
-      for (int i = 30; i < plotList.size(); i++) {
+      for (int i = 30; i <= lastPoint; i++) {
         final PlotData pd = plotList.get(i);
         final int tc = plotList.get(i).getTotalCases();
         final int tc30 = plotList.get(i - 30).getTotalCases();
@@ -242,7 +248,8 @@ public class ProcessOurWorldData {
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
       int lastDeathKnt = 0;
-      for (final PlotData pd : plotList) {
+      for (int i = 0; i <= lastPoint; i++) {
+        final PlotData pd = plotList.get(i);
         if (pd.getTotalDeaths() > lastDeathKnt) {
           final String s = String.format("%s,%d", pd.getDate().format("yyyy-MM-dd"), pd.getTotalDeaths());
           pw.println(s);
@@ -254,7 +261,8 @@ public class ProcessOurWorldData {
     fname = String.format("%s_%s_NewDeaths.csv", cont, loc);
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
-      for (final PlotData pd : plotList) {
+      for (int i = 0; i <= lastPoint; i++) {
+        final PlotData pd = plotList.get(i);
         final String s = String.format("%s,%d", pd.getDate().format("yyyy-MM-dd"), pd.getNewDeaths());
         pw.println(s);
       }
@@ -264,7 +272,8 @@ public class ProcessOurWorldData {
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
       int lastTestKnt = 0;
-      for (final PlotData pd : plotList) {
+      for (int i = 0; i <= lastPoint; i++) {
+        final PlotData pd = plotList.get(i);
         if (pd.getTotalTests() > lastTestKnt) {
           final String s = String.format("%s,%d", pd.getDate().format("yyyy-MM-dd"), pd.getTotalTests());
           pw.println(s);
@@ -276,7 +285,7 @@ public class ProcessOurWorldData {
     fname = String.format("%s_%s_CFR.csv", cont, loc);
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
-      for (int i = 0; i < plotList.size(); i++) {
+      for (int i = 0; i <= lastPoint; i++) {
         PlotData pd = plotList.get(i);
         double tc = pd.getTotalCases();
         if (tc > 0) {
@@ -290,7 +299,7 @@ public class ProcessOurWorldData {
     fname = String.format("%s_%s_DeathsPerMillion.csv", cont, loc);
     filename = path + fname;
     try (PrintWriter pw = new PrintWriter(filename)) {
-      for (int i = 0; i < plotList.size(); i++) {
+      for (int i = 0; i <= lastPoint; i++) {
         PlotData pd = plotList.get(i);
         long pop = pd.getPopulation();
         if (pop > 0) {
@@ -298,6 +307,34 @@ public class ProcessOurWorldData {
           final String s = String.format("%s,%.5f", pd.getDate().format("yyyy-MM-dd"), dpm);
           pw.println(s);
         }
+      }
+    }
+
+    // Find Real CFR
+    double totDeaths = 0.0;
+    double totCases = 0.0;
+    for (int i = lastPoint - 14 + 1; i <= lastPoint; i++) {
+      PlotData pd = plotList.get(i);
+      totDeaths += (double) pd.getNewDeaths();
+      totCases += (double) (pd.getTotalCases() - plotList.get(i - 1).getTotalCases());
+    }
+    double lastCFR = totDeaths / totCases;
+    System.out.printf("%s %s current CFR = %.2f%n", cont, loc, lastCFR * 100.0);
+
+    fname = String.format("%s_%s_DeathProjection.csv", cont, loc);
+    filename = path + fname;
+    int timeBack = 35;
+    try (PrintWriter pw = new PrintWriter(filename)) {
+      for (int i = lastPoint - timeBack + 1; i <= lastPoint; i++) {
+        final PlotData pd = plotList.get(i);
+        final int tc = plotList.get(i).getTotalCases();
+        final int tcBack = plotList.get(i - timeBack).getTotalCases();
+        final int cc = tc - tcBack;
+        double projDeath = (double) cc * lastCFR / (double) timeBack;
+        DateTime projDate = new DateTime(pd.getDate());
+        projDate.add(DateTime.DATE, timeBack);
+        final String s = String.format("%s,%f", projDate.format("yyyy-MM-dd"), projDeath);
+        pw.println(s);
       }
     }
   }

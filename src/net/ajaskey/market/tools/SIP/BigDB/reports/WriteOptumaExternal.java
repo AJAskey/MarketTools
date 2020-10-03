@@ -23,7 +23,7 @@ public class WriteOptumaExternal {
     System.out.println("WriteOptumaExternal...");
 
     int year = 2020;
-    int qtr = 3;
+    int qtr = 4;
 
     final String filename = String.format("%s2020/Q3/OPTIONABLE-2020Q3.TXT", FieldData.inbasedir);
     Options.readOptionData(filename);

@@ -19,7 +19,7 @@ public class WriteOwership {
   public static void main(String[] args) throws FileNotFoundException {
 
     final int year = 2020;
-    final int qtr = 3;
+    final int qtr = 4;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
 
     MarketTools.parseSipData(year, qtr, ft, false);

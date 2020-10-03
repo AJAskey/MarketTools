@@ -140,7 +140,9 @@ public class TickerPriceData {
       System.out.printf("%s has %d prices.%n", this.id, this.numPrices);
     }
     catch (final IOException e) {
-      this.tickerPrices.clear();
+      if (this.tickerPrices != null) {
+        this.tickerPrices.clear();
+      }
       this.numPrices = 0;
       e.printStackTrace();
     }

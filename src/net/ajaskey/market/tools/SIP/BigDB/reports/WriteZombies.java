@@ -35,7 +35,7 @@ public class WriteZombies {
 //      }
 
       if (!cdr.getFd().getSector().contains("Financials")) {
-        if (cdr.getZdata().getzScore() > 149.99) {
+        if (cdr.getZdata().getzMajorScore() > 124.99) {
           if (Options.isOptionable(cdr.getFd().getTicker())) {
             int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
             if (qtrs > 4) {
@@ -58,7 +58,7 @@ public class WriteZombies {
 
     System.out.println("WriteZombies...");
 
-    List<CompanyDerived> dRList = Scans.findMajor(2020, 3, 20.0, 500000L);
+    List<CompanyDerived> dRList = Scans.findMajor(2020, 4, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteZombies.findZombies(dRList);
 
@@ -107,7 +107,7 @@ public class WriteZombies {
 
       pw.printf("\tInterest rates and payments%n");
       pw.printf("\t\tIntRate = Interest Paid / Total Debt%n");
-      pw.printf("\t\tif (IntRate > 0.35) -- Arbitrarily say rates less than 3.5%% are not a problem.%n");
+      pw.printf("\t\tif (IntRate > 0.30) -- Arbitrarily say rates less than 3.0%% are not a problem.%n");
       pw.printf("\t\t\tzInterest = POW(1.80, IntRate*100.0) -- MAX 62.5%n");
       pw.printf("\t\tIntToSales = Interest Paid / Sales12m%n");
       pw.printf("\t\tif (IntToSales > 0)%n");
@@ -131,7 +131,7 @@ public class WriteZombies {
 
         pwCsv.printf("%s:US,%n", cdr.getFd().getTicker());
         pwTxt.printf("%s%n", cdr.getFd().getTicker());
-        if (rank > 50) {
+        if (rank > 100) {
           break;
         }
 

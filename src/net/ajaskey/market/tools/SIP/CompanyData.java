@@ -51,10 +51,10 @@ public class CompanyData {
 //  protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
 //  protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
 
-  protected final static String balsheetFile     = "data/BigDB/2020/Q3/BALSHEET-QTR-2020Q3.TXT";
-  protected final static String cashFile         = "data/BigDB/2020/Q3/CASH-2020Q3.TXT";
-  protected final static String incstatementFile = "data/BigDB/2020/Q3/INCOME-QTR-2020Q3.TXT";
-  protected final static String miscFile         = "data/BigDB/2020/Q3/US-STOCKS-MISC.TXT";
+  protected final static String balsheetFile     = "data/BigDB/2020/Q4/BALSHEET-QTR-2020Q4.TXT";
+  protected final static String cashFile         = "data/BigDB/2020/Q4/CASH-2020Q4.TXT";
+  protected final static String incstatementFile = "data/BigDB/2020/Q4/INCOME-QTR-2020Q4.TXT";
+  protected final static String miscFile         = "data/BigDB/2020/Q4/US-STOCKS-MISC.TXT";
 
   private final static String           NL  = Utils.NL;
   private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");

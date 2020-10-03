@@ -53,7 +53,7 @@ public class WriteSupplyDemand {
 
     System.out.println("SuppyDemand...");
 
-    List<CompanyDerived> dRList = Scans.findMajor(2020, 3, 20.0, 500000L);
+    List<CompanyDerived> dRList = Scans.findMajor(2020, 4, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteSupplyDemand.findSupplyDemand(dRList);
 

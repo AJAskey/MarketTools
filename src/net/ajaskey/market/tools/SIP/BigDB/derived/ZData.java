@@ -62,11 +62,12 @@ public class ZData {
   private final FieldData      fd;
   private double               zCashFlow;
   private double               zDebt;
+  private double               zDebtVsTa;
   private double               zInterest;
   private final boolean        zIsZombie;
+  private double               zMajorScore;
   private double               zNet;
   private double               zSales;
-  private double               zDebtVsTa;
   private double               zScore;
   private final double         zTangibleAssets;
   private double               zWorkingCapital;
@@ -85,6 +86,7 @@ public class ZData {
     this.zInterest = 0.0;
     this.zDebt = 0.0;
     this.zScore = 0.0;
+    this.zMajorScore = 0.0;
     this.zIsZombie = false;
     this.zWorkingCapital = 0.0;
     this.zTangibleAssets = 0.0;
@@ -103,6 +105,10 @@ public class ZData {
 
   public double getzInterestRate() {
     return this.zInterest;
+  }
+
+  public double getzMajorScore() {
+    return this.zMajorScore;
   }
 
   public double getzNet() {
@@ -138,7 +144,7 @@ public class ZData {
   public String toString() {
 
     String ret = "";
-    ret += Utils.TAB + "Zombie Score        : " + SipOutput.fmt(this.zScore, 13, 2) + Utils.NL;
+    ret += Utils.TAB + "Zombie Major Score  : " + SipOutput.fmt(this.zMajorScore, 13, 2) + "  (" + SipOutput.fmt(this.zScore, 1, 2) + ")" + Utils.NL;
     ret += Utils.TAB + "  *Working Capital  : " + SipOutput.fmt(this.zWorkingCapital, 13, 2) + Utils.NL;
     ret += Utils.TAB + "  *Debt             : " + SipOutput.fmt(this.zDebt, 13, 2) + Utils.NL;
     ret += Utils.TAB + "  *Interest         : " + SipOutput.fmt(this.zInterest, 13, 2) + Utils.NL;
@@ -205,8 +211,8 @@ public class ZData {
       this.dbgStr += String.format("Working Capital : ratio=%.2f\tcurrLiab=%.2f\tcurrAssets=%.2f\tfcfTtm=%.2f%n", ratio, currLiab, currAssets,
           fcfTtm);
       if (ratio > 1.0) {
-        tmp = POW(ratio, 9.25, MAXVAL);
-        score = MIN(tmp, 150.0);
+        tmp = ZData.POW(ratio, 9.25, MAXVAL);
+        score = ZData.MIN(tmp, 150.0);
         this.zWorkingCapital = score;
         this.dbgStr += String.format(
             "\tWC neg with not enough available CashFromOps - zWorkingCapital : ratio=%.2f\tzWorkingCapital=%.2f\ttmp=%.2f\tscore=%.2f ==> POW(ratio, 9.25)\n",
@@ -217,7 +223,7 @@ public class ZData {
       this.zWorkingCapital = 150.0;
       this.dbgStr += String.format("\tWC with CurrAssets neg - zWorkingCapital : %.2f\t%.2f\n", this.zWorkingCapital, currAssets);
     }
-    this.zScore += this.zWorkingCapital;
+    this.zMajorScore += this.zWorkingCapital;
 
     /**
      * Debt
@@ -293,32 +299,32 @@ public class ZData {
         this.dbgStr += String.format("\tDebt without backup - zDebt : %.2f\n", this.zDebt);
       }
     }
-    this.zScore += this.zDebt;
+    this.zMajorScore += this.zDebt;
 
     /**
      * Debt to Tangible Assets
      */
-    double tanAssets = cdr.getTanAssetsQdata().get(1);
-    double tanAssetsYr = cdr.getTanAssetsQdata().get(5);
-    double debt = cdr.getStDebtQdata().get(1) + cdr.getLtDebtQdata().get(1);
-    double debtYr = cdr.getStDebtQdata().get(5) + cdr.getLtDebtQdata().get(5);
-    double taChg = tanAssets - tanAssetsYr;
-    double debtChg = debt - debtYr;
+    final double tanAssets = this.cdr.getTanAssetsQdata().get(1);
+    final double tanAssetsYr = this.cdr.getTanAssetsQdata().get(5);
+    final double debt = this.cdr.getStDebtQdata().get(1) + this.cdr.getLtDebtQdata().get(1);
+    final double debtYr = this.cdr.getStDebtQdata().get(5) + this.cdr.getLtDebtQdata().get(5);
+    final double taChg = tanAssets - tanAssetsYr;
+    final double debtChg = debt - debtYr;
     ratio = debtChg / taChg;
-    dbgStr += String.format("Debt to TanAssets%n");
-    dbgStr += String.format("\tTA/TAYr/TAChg      \t%15.2f\t%15.2f\t%9.2f%n", tanAssets, tanAssetsYr, taChg);
-    dbgStr += String.format("\tDebt/DebyYr/DebtChg\t%15.2f\t%15.2f\t%9.2f%n", debt, debtYr, debtChg);
-    dbgStr += String.format("\tratio\t%.2f%n", ratio);
+    this.dbgStr += String.format("Debt to TanAssets%n");
+    this.dbgStr += String.format("\tTA/TAYr/TAChg      \t%15.2f\t%15.2f\t%9.2f%n", tanAssets, tanAssetsYr, taChg);
+    this.dbgStr += String.format("\tDebt/DebyYr/DebtChg\t%15.2f\t%15.2f\t%9.2f%n", debt, debtYr, debtChg);
+    this.dbgStr += String.format("\tratio\t%.2f%n", ratio);
     if (ratio > 1.0 && debtChg > 0.0) {
       tmp = ZData.POW(4.25, ratio, MAXVAL);
-      this.zDebtVsTa = MIN(tmp, 75.0);
-      dbgStr += String.format("\tzDebtVsTa\t%.2f\ttmp=%.2f%n", this.zDebtVsTa, tmp);
+      this.zDebtVsTa = ZData.MIN(tmp, 75.0);
+      this.dbgStr += String.format("\tzDebtVsTa\t%.2f\ttmp=%.2f%n", this.zDebtVsTa, tmp);
     }
-    else if ((debtChg > 0.0) && (taChg < 0.0)) {
+    else if (debtChg > 0.0 && taChg < 0.0) {
       this.zDebtVsTa = 75.0;
-      dbgStr += String.format("\ttaChg neg while debtChg pos - zDebtVsTa\t%.2f%n", this.zDebtVsTa);
+      this.dbgStr += String.format("\ttaChg neg while debtChg pos - zDebtVsTa\t%.2f%n", this.zDebtVsTa);
     }
-    this.zScore += this.zDebtVsTa;
+    this.zMajorScore += this.zDebtVsTa;
 
     /**
      * Interest
@@ -335,7 +341,7 @@ public class ZData {
     this.dbgStr += String.format("Interest          :\ttotDebt=%.2f\tintRate=%.2f\ttotInterest=%.2f%n", totDebtPrev, intRate * 100.0, totInterest);
     this.dbgStr += String.format(" Int to Sales     :\t%.2f\tsalesIntRatio=%.2f%n", intToSales, salesIntRatio);
     tmp = 0.0;
-    if (intRate > 0.035) {
+    if (intRate > 0.030) {
 
       tmp = ZData.POW(1.8, intRate * 100.0, MAXVAL);
       this.zInterest += ZData.MIN(62.5, tmp);
@@ -346,7 +352,9 @@ public class ZData {
       this.zInterest += ZData.MIN(62.5, tmp);
       this.dbgStr += String.format("\tInterest to Sales - zInterestRate : %.2f\ttmp=POW(5.0,intToSales*10.0) %.2f\n", this.zInterest, tmp);
     }
-    this.zScore += this.zInterest;
+    this.zMajorScore += this.zInterest;
+
+    this.zScore = this.zMajorScore;
 
     /**
      * Minor Zombie factors worth 20.0 points each
