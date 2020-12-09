@@ -38,6 +38,28 @@ public class ProcessOurWorldData {
 
       ProcessOurWorldData.printData("North America", "United States", false);
       ProcessOurWorldData.printData("Asia", "India", false);
+      ProcessOurWorldData.printData("Europe", "France", false);
+      ProcessOurWorldData.printData("Europe", "Germany", false);
+      ProcessOurWorldData.printData("Europe", "Italy", false);
+      ProcessOurWorldData.printData("Europe", "Austria", false);
+      ProcessOurWorldData.printData("Europe", "Bulgaria", false);
+      ProcessOurWorldData.printData("Europe", "Switzerland", false);
+      ProcessOurWorldData.printData("Europe", "Kosovo", false);
+      ProcessOurWorldData.printData("Europe", "Denmark", false);
+      ProcessOurWorldData.printData("Europe", "Spain", false);
+      ProcessOurWorldData.printData("Europe", "United Kingdom", false);
+      ProcessOurWorldData.printData("Europe", "Greece", false);
+      ProcessOurWorldData.printData("Europe", "Croatia", false);
+      ProcessOurWorldData.printData("Europe", "Hungary", false);
+      ProcessOurWorldData.printData("Europe", "Ireland", false);
+      ProcessOurWorldData.printData("Europe", "Romania", false);
+      ProcessOurWorldData.printData("Europe", "Montenegro", false);
+      ProcessOurWorldData.printData("Europe", "Norway", false);
+      ProcessOurWorldData.printData("Europe", "Poland", false);
+      ProcessOurWorldData.printData("Europe", "Sweden", false);
+      ProcessOurWorldData.printData("Europe", "Portugal", false);
+      ProcessOurWorldData.printData("Europe", "Russia", false);
+      ProcessOurWorldData.printData("Europe", "Ukraine", false);
 
       ProcessOurWorldData.printData("", "World", false);
 
