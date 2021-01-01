@@ -42,7 +42,7 @@ public class IndexGrowth extends CompanyData {
   static double   day730 = 0.0;
   static DateTime qDate  = null;
   // static final DateTime recentQtr = new DateTime(2020, DateTime.JANUARY, 31);
-  static final DateTime  recentQtr = new DateTime(2020, DateTime.APRIL, 30);
+  static final DateTime  recentQtr = new DateTime(2020, DateTime.SEPTEMBER, 14);
   static TickerPriceData spxData   = null;
 
   static DateTime yesterday = new DateTime();
@@ -99,9 +99,12 @@ public class IndexGrowth extends CompanyData {
       // Filter For Index
       for (final CompanyData cd : CompanyData.companyList) {
         if (IndexGrowth.isMatch(cd, IndexGrowth.recentQtr, criteria)) {
+          // System.out.println(cd.ticker);
           indexList.add(cd);
         }
       }
+      System.out.println("indexList   : " + indexList.size());
+      System.out.println("companyList : " + companyList.size());
 
       final List<CompanyData> notIndexList = new ArrayList<>();
       // Filter For Index
@@ -110,6 +113,8 @@ public class IndexGrowth extends CompanyData {
           notIndexList.add(cd);
         }
       }
+      System.out.println("notIndexList : " + notIndexList.size());
+
       try (PrintWriter pw = new PrintWriter("sipout/NoEarningsReported.txt")) {
         for (final CompanyData cd : notIndexList) {
           pw.printf("%-10s %s %10s %50s %55s%n", cd.ticker, cd.eoq, cd.spIndex, cd.sector, cd.industry);
@@ -133,7 +138,10 @@ public class IndexGrowth extends CompanyData {
 
       TotalData td = new TotalData(IndexGrowth.day0, IndexGrowth.day365, IndexGrowth.day730);
       for (final CompanyData cd : indexList) {
-        td.add(cd);
+        if (!cd.ticker.equals("BRK.A")) {
+          td.add(cd);
+          System.out.println("Adding : " + cd.ticker);
+        }
       }
 
       td.sum();
@@ -194,7 +202,7 @@ public class IndexGrowth extends CompanyData {
 
       // Check RealEstate
       if (industry.equalsIgnoreCase("REALESTATE")) {
-        System.out.printf("%s\t--\t%s%n", industry, cd.industry);
+        // System.out.printf("%s\t--\t%s%n", industry, cd.industry);
         if (cd.industry.equalsIgnoreCase("HOMEBUILDING")) {
           return true;
         }
@@ -208,7 +216,7 @@ public class IndexGrowth extends CompanyData {
 
       // Check Semiconductor
       if (industry.equalsIgnoreCase("SEMICONDUCTOR")) {
-        System.out.printf("%s\t--\t%s%n", industry, cd.industry);
+        // System.out.printf("%s\t--\t%s%n", industry, cd.industry);
         if (cd.industry.toUpperCase().contains("SEMICONDUCTOR")) {
           return true;
         }
@@ -217,7 +225,7 @@ public class IndexGrowth extends CompanyData {
 
       // Check Retailers
       if (industry.equalsIgnoreCase("RETAILERS")) {
-        System.out.printf("%s\t--\t%s%n", industry, cd.industry);
+        // System.out.printf("%s\t--\t%s%n", industry, cd.industry);
         if (cd.industry.toUpperCase().contains("RETAILERS")) {
           return true;
         }
@@ -226,7 +234,7 @@ public class IndexGrowth extends CompanyData {
 
       // Check TRANSPORTS
       if (industry.equalsIgnoreCase("TRANSPORTS")) {
-        System.out.printf("%s\t--\t%s%n", industry, cd.industry);
+        // System.out.printf("%s\t--\t%s%n", industry, cd.industry);
         if (cd.industry.toUpperCase().equalsIgnoreCase("AIRLINES")) {
           return true;
         }
@@ -398,7 +406,7 @@ public class IndexGrowth extends CompanyData {
     // All industries stats
     //
     for (final String ind : allIndustries) {
-      System.out.println(ind);
+      // System.out.println(ind);
 
       final List<CompanyData> cFromInd = new ArrayList<>();
 
@@ -420,7 +428,8 @@ public class IndexGrowth extends CompanyData {
           if (process) {
 
             cFromInd.add(cd);
-            System.out.printf("Adding : %s\t--\t%s, %s, %s%n", ind, cd.ticker, cd.sector, cd.industry);
+            // System.out.printf("Adding : %s\t--\t%s, %s, %s%n", ind, cd.ticker, cd.sector,
+            // cd.industry);
             td.add(cd);
 
             String q1Str = cd.eoq.format("MMM-yyyy");
@@ -449,9 +458,9 @@ public class IndexGrowth extends CompanyData {
 
         final List<CompanyData> cdSorted = IndexGrowth.updateScore(td, cFromInd);
 
-        System.out.println(td.getKnt());
-        System.out.println(cFromInd.size());
-        System.out.println(cdSorted.size());
+        // System.out.println(td.getKnt());
+        // System.out.println(cFromInd.size());
+        // System.out.println(cdSorted.size());
 
         for (final CompanyData cd : cdSorted) {
           pw.printf("  %7s : %10.1f%n", cd.ticker, cd.gscore);
@@ -480,7 +489,7 @@ public class IndexGrowth extends CompanyData {
     // All industries stats
     //
     for (final String sec : allSectors) {
-      System.out.println(sec);
+      // System.out.println(sec);
 
       final List<CompanyData> cFromSec = new ArrayList<>();
 
@@ -501,7 +510,8 @@ public class IndexGrowth extends CompanyData {
 
           if (doProcess) {
             cFromSec.add(cd);
-            System.out.printf("Adding : %s\t--\t%s, %s, %s%n", sec, cd.ticker, cd.sector, cd.industry);
+            // System.out.printf("Adding : %s\t--\t%s, %s, %s%n", sec, cd.ticker, cd.sector,
+            // cd.industry);
             td.add(cd);
 
             String q1Str = cd.eoq.format("MMM-yyyy");

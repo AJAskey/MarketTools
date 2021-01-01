@@ -30,7 +30,7 @@ public class WriteOptumaExternal {
 
     List<CompanyDerived> dRList = Scans.findMajor(year, qtr, 5.0, 5000L);
 
-    try (PrintWriter pw = new PrintWriter("data/OptumaExternalData.csv")) {
+    try (PrintWriter pw = new PrintWriter("D:/dev/MarketTools - dev/lists/OptumaExternalData.csv")) {
 
       pw.println(
           "Code, CityExt, StateExt, CountryExt, SectorExt, IndustryExt, EmpExt, FloatExt, TurnoverExt, QGrowthExt, QEstGrowthExt, YGrowthExt, OptionableExt, InsiderOwnExt,"

@@ -468,4 +468,15 @@ public class OurWorldData {
     return ret;
   }
 
+  public String toSummary() {
+    String ret = String.format("%-25s %-25s %s %12d", continent, location, date.format("yyyy-MMM-dd"), total_deaths);
+    return ret;
+  }
+
+  public String toEUReport() {
+    String ret = String.format("%s,%s,%s,%d,%f,%f,%f,%d", continent, location, date.format("yyyy-MMM-dd"), population, median_age, aged_65_older,
+        aged_70_older, total_deaths);
+    return ret;
+  }
+
 }

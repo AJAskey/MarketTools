@@ -186,7 +186,7 @@ public class PriceData {
   @Override
   public String toString() {
 
-    final String ret = String.format("%s, %.2f, %.2f, %.2f, %.2f, %d", this.date.format("yyyy-MM-dd"), this.open, this.high, this.low, this.close,
+    final String ret = String.format("%s, %.2f, %.2f, %.2f, %.2f, %10d", this.date.format("yyyy-MM-dd"), this.open, this.high, this.low, this.close,
         this.volume);
     return ret;
   }

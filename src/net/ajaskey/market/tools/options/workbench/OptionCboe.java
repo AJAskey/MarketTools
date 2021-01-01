@@ -62,6 +62,7 @@ public class OptionCboe {
     OptionCboe.icodes.add("IWO");
     OptionCboe.icodes.add("RUT");
     OptionCboe.icodes.add("DIA");
+    OptionCboe.icodes.add("OEX");
 
     final String ext[] = { "dat" };
     final List<File> files = Utils.getDirTree("data/options", ext);
@@ -80,8 +81,10 @@ public class OptionCboe {
 
       for (final String s : OptionCboe.icodes) {
         pw.printf("%s ", s.toUpperCase());
+        System.out.printf("%s ", s.toUpperCase());
       }
       pw.printf("%n%n");
+      System.out.printf("%n%n");
 
       for (final String code : codes) {
 
@@ -90,16 +93,18 @@ public class OptionCboe {
         new OptionCboe(code, opt);
 
         if (OptionCboe.isIcode(code)) {
-          System.out.println("Found icode : " + code);
+          // System.out.println("Found icode : " + code);
           osIndex.addToStats(opt);
         }
 
         pw.printf("%n%s\t%s%n", code.toUpperCase(), opt.lastTrade);
+        System.out.printf("%n%s\t%s%n", code.toUpperCase(), opt.lastTrade);
 
         // System.out.println(opt);
 
         final OptionStatistics os = new OptionStatistics(opt);
         pw.println(os);
+        System.out.println(os);
 
         opt.writeBasefile();
 
@@ -108,8 +113,9 @@ public class OptionCboe {
       }
     }
 
-    OptionCollection oc = OptionCollection.get("OEX", new DateTime("2020-Nov-20", "yyyy-MMM-dd"), "PUT");
-    System.out.println(oc);
+    // OptionCollection oc = OptionCollection.get("OEX", new DateTime("2020-Nov-20",
+    // "yyyy-MMM-dd"), "PUT");
+    // System.out.println(oc);
 
     System.out.println(osIndex.toSumString());
 

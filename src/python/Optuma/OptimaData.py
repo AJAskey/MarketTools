@@ -2,7 +2,7 @@ from Optuma.CboeFile import process_raw_files, process_cboe_data
 from Optuma.ETF_Processor import cboe_codes, etf_codes, etf_test
 from Tda_Options import td_api_key
 from Tda_Options.PutCall_Processor import process_option
-from Tda_Options.RealizedVol import process_rvol
+from Tda_Options.RealizedVol import process_rvol, process_rvol_rt
 from Tda_Options.TDA_Interface import call_tda
 from Tda_Options.TdaProcessOptions import get_iv
 
@@ -13,7 +13,8 @@ if __name__ == '__main__':
     outdata = []
     # for c in ['OEX', 'VIX']:
     for c in etf_codes:
-        rvol = process_rvol(c, 22)
+
+        rvol = process_rvol_rt(c, 22)
 
         if c in cboe_codes:
             pt, cl, poi, coi, civ, piv, iv, ul, pcost, ccost, poicost, coicost = process_cboe_data(c)

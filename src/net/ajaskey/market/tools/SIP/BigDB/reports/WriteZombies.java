@@ -58,7 +58,10 @@ public class WriteZombies {
 
     System.out.println("WriteZombies...");
 
-    List<CompanyDerived> dRList = Scans.findMajor(2020, 4, 20.0, 500000L);
+    int year = 2020;
+    int qtr = 4;
+
+    List<CompanyDerived> dRList = Scans.findMajor(year, qtr, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteZombies.findZombies(dRList);
 
@@ -75,6 +78,7 @@ public class WriteZombies {
 
       pw.printf("Created : %s\t%s%n", now, "This file is subject to change without notice.");
       pw.println("Pre-filtered for AMEX, NASDAQ, NYSE companies over $20 and average trading volume of at least 500K.");
+      pw.printf("Using the most recent %d Q%d data.%n", year, qtr);
       pw.println("\nSeq : this quarter versus last quarter.");
       pw.println("QoQ : this quarter versus same quarter a year ago.");
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");

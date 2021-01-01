@@ -198,7 +198,9 @@ public class OptionStatistics {
       Utils.df = new DecimalFormat("#,###,##0.00", Utils.decimalFormatSymbols);
     }
 
-    String ret = String.format("%s -- %s -- %s%n", this.header.toUpperCase(), " ", " ");
+    // String ret = String.format("%s -- %s -- %s%n", this.header.toUpperCase(), "
+    // ", " ");
+    String ret = String.format("%n%s%n", this.header.toUpperCase());
 
     ret += String.format("%n  Put Volume       : %s%n", Utils.lfmt(this.putVol, fldLen));
     ret += String.format("  Put OI           : %s%n", Utils.lfmt(this.putOi, fldLen));

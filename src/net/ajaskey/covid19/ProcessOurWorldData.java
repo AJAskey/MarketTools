@@ -14,13 +14,19 @@ public class ProcessOurWorldData {
 
   static List<OurWorldData> owdList = new ArrayList<>();
 
+  static List<String> dList = null;
+
+  static String[] EU = { "Austria", "Italy", "Italy", "Belgium", "Latvia", "Bulgaria", "Lithuania", "Croatia", "Luxembourg", "Cyprus", "Malta",
+      "Czechia", "Netherlands", "Denmark", "Poland", "Estonia", "Portugal", "Finland", "Romania", "France", "Slovakia", "Germany", "Slovenia",
+      "Greece", "Spain", "Hungary", "Sweden", "Ireland", "United Kingdom" };
+
   /**
    *
    * @param args
    */
   public static void main(String[] args) {
 
-    final List<String> dList = TextUtils.readTextFile("data/owid-covid-data.txt", true);
+    dList = TextUtils.readTextFile("data/owid-covid-data.txt", true);
     // final List<String> dList = OurWorldData.downloadLatest();
 
     System.out.println(dList.get(0));
@@ -31,6 +37,44 @@ public class ProcessOurWorldData {
         ProcessOurWorldData.owdList.add(owd);
       }
     }
+
+    //processSummary();
+
+     processOptuma();
+  }
+
+  /**
+   * 
+   * @param country
+   * @return
+   */
+  private static boolean isEU(String country) {
+    for (String s : EU) {
+      if (country.equalsIgnoreCase(s)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * 
+   */
+  public static void processSummary() {
+    DateTime dt = new DateTime();
+    dt.add(DateTime.DATE, -1);
+    for (OurWorldData owd : owdList) {
+      if (owd.getDate().sameDate(dt)) {
+        if (isEU(owd.getLocation())) {
+          System.out.println(owd.toEUReport());
+        }
+      }
+    }
+  }
+
+  public static void processOptuma() {
+
+    // final List<String> dList = OurWorldData.downloadLatest();
 
     try {
 
