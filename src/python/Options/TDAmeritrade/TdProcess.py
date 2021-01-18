@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 from OptionData import OptionData
 from TDAmeritrade import td_api_key
@@ -17,6 +17,27 @@ def process(data):
     return retlist
 
 
+def buildstr(data):
+    tmp = "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}{}".format(
+        data.type, datetime_to_str(data.expiration),
+        data.daysToExpiration, data.strike, data.oi, data.volume,
+        data.bid, data.ask, data.last, data.mark,
+        data.volatility, data.delta, data.gamma, data.theta, data.vega, data.rho,
+        datetime_to_str(data.tradeTime),
+        "\n")
+    ret = tmp.replace("nan,", "0.0,")
+    return ret
+
+
+def header(file, cod, underlying):
+    file.write("Type, Expiration, Days, Strike, OI, Volume, Bid, Ask, Last, Mark,")
+    file.write("IV, Delta, Gamma, Theta, Vega, Rho, LastTrade,,")
+    file.write(cod)
+    file.write(", ")
+    file.write(str(underlying))
+    file.write("\n")
+
+
 if __name__ == '__main__':
     code = 'SPY'
 
@@ -31,12 +52,16 @@ if __name__ == '__main__':
         calls = process(content['callExpDateMap'])
         puts = process(content['putExpDateMap'])
 
-        for c in calls:
-            if c.valid:
-                print(c)
-        for p in puts:
-            if p.valid:
-                print(p)
+        strToday = date.today().strftime("%Y%m%d")
+        filename = "out/{c}-{d}.csv".format(c=code, d=strToday)
+        print(filename)
+        with open(filename, 'w') as fp:
+            header(fp, code, ul)
+            for c in calls:
+                if c.valid:
+                    fp.write(buildstr(c))
+            for p in puts:
+                if p.valid:
+                    fp.write(buildstr(p))
 
         print('Underlying : ', ul)
-
