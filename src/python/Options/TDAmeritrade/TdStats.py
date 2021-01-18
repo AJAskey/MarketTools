@@ -23,10 +23,13 @@ def process(data, s):
                             if jd.type == "PUT":
                                 s.totalPutsOi += jd.oi
                                 s.totalPutsVol += jd.volume
+                                s.dollarPutsOi += float(jd.oi) * float(jd.last)
+                                s.dollarPutsVol += float(jd.volume) * float(jd.last)
                             elif jd.type == "CALL":
                                 s.totalCallsOi += jd.oi
                                 s.totalCallsVol += jd.volume
-
+                                s.dollarCallsOi += float(jd.oi) * float(jd.last)
+                                s.dollarCallsVol += float(jd.volume) * float(jd.last)
 
 if __name__ == '__main__':
 
@@ -34,11 +37,12 @@ if __name__ == '__main__':
                  'KIE', 'KRE', 'PICK', 'RING', 'SLV', 'SMH', 'UUP', 'WOOD', 'XHB', 'XLB', 'XLC', 'XLE',
                  'XLF', 'XLI', 'XLK', 'XLP', 'XLRE', 'XLU', 'XLV', 'XLY', 'XRT', 'QQQ', 'SPY']
 
-    test_codes = ['SPY', 'QQQ']
+    test_codes = ['SPY', 'QQQ', 'IWM', 'DIA', 'XLB', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLU', 'XLV', 'XLY']
 
     url = r"https://api.tdameritrade.com/v1/marketdata/chains"
 
     statlist = []
+    totstats = Statistics("Combined")
 
     for code in test_codes:
 
@@ -51,8 +55,21 @@ if __name__ == '__main__':
             process(content['callExpDateMap'], stats)
             process(content['putExpDateMap'], stats)
 
+            totstats.totalPutsVol += stats.totalPutsVol
+            totstats.totalCallsVol += stats.totalCallsVol
+            totstats.totalPutsOi += stats.totalPutsOi
+            totstats.totalCallsOi += stats.totalCallsOi
+
+            totstats.dollarPutsVol += stats.dollarPutsVol
+            totstats.dollarCallsVol += stats.dollarCallsVol
+            totstats.dollarPutsOi += stats.dollarPutsOi
+            totstats.dollarCallsOi += stats.dollarCallsOi
+
             statlist.append(stats)
 
     for s in statlist:
         s.calc()
         print(s)
+
+    totstats.calc()
+    print(totstats)
