@@ -1,16 +1,7 @@
-# This is a sample Python script.
+from Utilities import read_json, datadir, print_json
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    filename = datadir + "/SPY-20210119.json"
+    data = read_json(filename)
+    print_json(data)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

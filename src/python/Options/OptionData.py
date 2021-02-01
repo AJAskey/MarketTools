@@ -18,31 +18,39 @@ class OptionData:
         self.description = jsondata['description']
         self.type = jsondata['putCall']
 
-        self.oi = jsondata['openInterest']
+        self.oi = int(jsondata['openInterest'])
 
         if self.oi > 0:
-            self.tradeTime = ms_to_datetime(jsondata['tradeTimeInLong'])
-            self.quoteTime = ms_to_datetime(jsondata['quoteTimeInLong'])
-            self.expirationDate = ms_to_datetime(jsondata['expirationDate'])
 
-            tmp = jsondata['volatility']
-            self.volatility = float(tmp)
-
-            self.delta = jsondata['delta']
-            self.gamma = jsondata['gamma']
-            self.theta = jsondata['theta']
-            self.vega = jsondata['vega']
-            self.rho = jsondata['rho']
-
-            self.strike = jsondata['strikePrice']
-            self.bid = jsondata['bid']
-            self.ask = jsondata['ask']
-            self.last = jsondata['last']
-            self.mark = jsondata['mark']
-            self.volume = jsondata['totalVolume']
             self.daysToExpiration = jsondata['daysToExpiration']
+            if self.daysToExpiration > 2:
 
-            self.valid = True
+                self.strike = float(jsondata['strikePrice'])
+
+                self.tradeTime = ms_to_datetime(jsondata['tradeTimeInLong'])
+                self.quoteTime = ms_to_datetime(jsondata['quoteTimeInLong'])
+                self.expirationDate = ms_to_datetime(jsondata['expirationDate'])
+
+                self.volatility = float(jsondata['volatility'])
+                self.tvalue = float(jsondata['theoreticalOptionValue'])
+
+                self.delta = float(jsondata['delta'])
+                self.gamma = float(jsondata['gamma'])
+                self.theta = float(jsondata['theta'])
+                self.vega = float(jsondata['vega'])
+                self.rho = float(jsondata['rho'])
+
+                self.bid = float(jsondata['bid'])
+                self.ask = float(jsondata['ask'])
+                self.last = float(jsondata['last'])
+                self.mark = float(jsondata['mark'])
+                self.volume = int(jsondata['totalVolume'])
+
+                self.premium = 0.0
+                if self.mark > 0.0:
+                    self.premium = (abs(self.delta) + self.theta) / self.mark
+
+                self.valid = True
 
     def __str__(self):
         dt = datetime_to_str(self.expiration)
