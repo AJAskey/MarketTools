@@ -21,37 +21,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Optuma" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TDAmeritrade" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\dev\MarketTools - dev\src\python\Options\Optuma" />
       <recent name="D:\dev\MarketTools - dev\src\python\Options\TDAmeritrade" />
+      <recent name="D:\dev\MarketTools - dev\src\python\Options\Optuma" />
     </key>
   </component>
   <component name="RunManager" selected="Python.TdStats">
-    <configuration name="DownloadOptionData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Options" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TDAmeritrade" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\dev\MarketTools - dev\src\python\Options\TDAmeritrade\DownloadOptionData.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="PriceData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Options" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,9 +77,6 @@
       <module name="Options" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TDAmeritrade" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -160,7 +136,6 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.TdProcess" />
-      <item itemvalue="Python.DownloadOptionData" />
       <item itemvalue="Python.TdStats" />
       <item itemvalue="Python.PriceData" />
       <item itemvalue="Python.TdOptuma" />
@@ -171,7 +146,6 @@
         <item itemvalue="Python.TdOptuma" />
         <item itemvalue="Python.PriceData" />
         <item itemvalue="Python.TdProcess" />
-        <item itemvalue="Python.DownloadOptionData" />
       </list>
     </recent_temporary>
   </component>
@@ -196,23 +170,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/TDAmeritrade/TdProcess.py</url>
-          <line>119</line>
+          <line>124</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/TDAmeritrade/TdStats.py</url>
-          <line>100</line>
+          <line>102</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/TDAmeritrade/TdStats.py</url>
-          <line>73</line>
+          <line>85</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/TDAmeritrade/PriceData.py</url>
           <line>25</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TDAmeritrade/TdProcess.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TDAmeritrade/TdStats.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

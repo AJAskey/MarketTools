@@ -3,6 +3,11 @@ import requests
 
 
 def call_tda(url, params):
-    page = requests.get(url=url, params=params)
-    content = json.loads(page.content)
+
+    try:
+        page = requests.get(url=url, params=params)
+        content = json.loads(page.content)
+    except:
+        content = ""
+
     return content

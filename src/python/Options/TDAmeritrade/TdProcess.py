@@ -18,6 +18,7 @@ def process(data):
 
 
 def get_realvol(cod, td):
+
     tdscaler = 252.0 / float(td)
 
     today = datetime.now()
@@ -28,6 +29,10 @@ def get_realvol(cod, td):
     urlPrice = r"https://api.tdameritrade.com/v1/marketdata/{}/pricehistory".format(cod)
     parm = dict(apikey=td_api_key, periodType='month', frequencyType='daily', startDate=stdate)
     jsondata = call_tda(urlPrice, parm)
+    knt = len(jsondata)
+    if knt < 1:
+        print("get_realvol() with no return data for ", cod)
+        return 0.0
 
     cnd = jsondata['candles']
     # print_json(cnd)
