@@ -22,6 +22,7 @@ public class WriteCompanyData {
     final FieldData fd = cdr.getFd();
 
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getSalesQdata().fmtGrowth4Q("Sales 12m"), cdr.getSalesQdata()));
+    pw.printf("%s%n", WriteCompanyData.formatData(cdr.getCogsQdata().fmtGrowth4Q("COGS 12m"), cdr.getCogsQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getGrossOpIncQdata().fmtGrowth4Q("Ops Income 12m"), cdr.getGrossOpIncQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getNetIncQdata().fmtGrowth4Q("Net Income 12m"), cdr.getNetIncQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getIntTotQdata().fmtGrowth4Q("Interest 12m"), cdr.getIntTotQdata()));
@@ -143,8 +144,20 @@ public class WriteCompanyData {
     pw.printf("%s%n", WriteCompanyData.formatData(s, cdr.getEpsDilContQdata()));
     tmp = MarketTools.getChange(cdr.getEpsEstY1(), cdr.getEpsDilContQdata().getTtm());
     pw.printf("\tY1 Est Growth     : %13.2f %% (%.2f to %.2f)%n", tmp, cdr.getEpsDilContQdata().getTtm(), cdr.getEpsEstY1());
+
     tmp = MarketTools.getChange(cdr.getEpsEstY2(), cdr.getEpsEstY1());
-    pw.printf("\tY2 Est Growth     : %13.2f %% (%.2f to %.2f)%n", tmp, cdr.getEpsEstY1(), cdr.getEpsEstY2());
+    double pe = 0.0;
+    double estY2 = cdr.getEpsEstY2();
+    if (estY2 > 0.0) {
+      pe = cdr.getPricesQdata().getMostRecent() / estY2;
+    }
+    pw.printf("\tY2 Est Growth     : %13.2f %% (%.2f to %.2f)", tmp, cdr.getEpsEstY1(), cdr.getEpsEstY2());
+    if (pe > 0.0) {
+      pw.printf(" [Forward PE=%.2f]%n", pe);
+    }
+    else {
+      pw.println("");
+    }
 
     pw.printf("%n\tFloat             : %s M%n", Utils.fmt(MarketTools.getFloatshr(fd), 13));
     double d = MarketTools.getInsiderOwnership(fd);

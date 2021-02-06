@@ -12,9 +12,7 @@ public class Options {
 
   public static void main(String[] args) {
 
-    final String filename = String.format("%s2020/Q3/OPTIONABLE-2020Q3.TXT", FieldData.inbasedir);
-
-    Options.readOptionData(filename);
+    Options.readOptionData();
 
     for (final Options opt : Options.optList) {
       System.out.println(opt);
@@ -26,9 +24,15 @@ public class Options {
    * 
    * @param fname
    */
-  public static void readOptionData(String fname) {
+  public static void readOptionData() {
 
+    final String fname = String.format("%s2021/Q1/OPTIONABLE-2021Q1.TXT", FieldData.inbasedir);
     final List<String> oData = TextUtils.readTextFile(fname, true);
+
+    if (oData.size() == 0) {
+      System.out.printf("ERROR... Option Data from %s not found!%n", fname);
+      return;
+    }
 
     for (final String s : oData) {
       final String ss = s.replace("\"", "");

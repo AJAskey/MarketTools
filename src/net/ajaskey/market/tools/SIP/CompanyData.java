@@ -51,10 +51,10 @@ public class CompanyData {
 //  protected final static String incstatementFile = "sipdata/US-STOCKS-INCOMESTMTQTR.TXT";
 //  protected final static String miscFile         = "sipdata/US-STOCKS-MISC.TXT";
 
-  protected final static String balsheetFile     = "data/BigDB/2020/Q4/BALSHEET-QTR-2020Q4.TXT";
-  protected final static String cashFile         = "data/BigDB/2020/Q4/CASH-2020Q4.TXT";
-  protected final static String incstatementFile = "data/BigDB/2020/Q4/INCOME-QTR-2020Q4.TXT";
-  protected final static String miscFile         = "data/BigDB/2020/Q4/US-STOCKS-MISC.TXT";
+  protected final static String balsheetFile     = "data/BigDB/2021/Q1/BALSHEET-QTR-2021Q1.TXT";
+  protected final static String cashFile         = "data/BigDB/2021/Q1/CASH-2021Q1.TXT";
+  protected final static String incstatementFile = "data/BigDB/2021/Q1/INCOME-QTR-2021Q1.TXT";
+  protected final static String miscFile         = "data/BigDB/2021/Q1/US-STOCKS-MISC.TXT";
 
   private final static String           NL  = Utils.NL;
   private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -212,7 +212,7 @@ public class CompanyData {
     }
 
     List<CompanyData> filteredList = new ArrayList<>();
-    final DateTime endDt = new DateTime(2018, DateTime.JULY, 31);
+    final DateTime endDt = new DateTime(2020, DateTime.JULY, 31);
     for (final CompanyData cd : CompanyData.companyList) {
       final DateTime dt = new DateTime(cd.eoq);
       if (dt.isGreaterThanOrEqual(endDt)) {

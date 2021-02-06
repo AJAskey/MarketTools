@@ -120,7 +120,13 @@ public class PriceData {
 
   /**
    * This method serves as a constructor for the class.
-   *
+   * 
+   * @param dt DateTime of data
+   * @param o  Open price
+   * @param h  High price
+   * @param l  Low price
+   * @param c  Close price
+   * @param v  Volume
    */
   public PriceData(final DateTime dt, final double o, final double h, final double l, final double c, final long v) {
 

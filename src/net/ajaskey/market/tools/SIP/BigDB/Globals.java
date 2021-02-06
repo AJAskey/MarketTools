@@ -29,7 +29,7 @@ public class Globals {
 
   public static List<FieldDataYear> allDataList = new ArrayList<>();
 
-  final public static int endYear   = 2020;
+  final public static int endYear   = 2021;
   final public static int startYear = 2018;
 
   /**

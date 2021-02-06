@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.Options;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 import net.ajaskey.market.tools.SIP.BigDB.reports.utils.Scans;
@@ -19,8 +18,7 @@ public class WriteSupplyDemand {
    */
   public static List<CompanyDerived> findSupplyDemand(List<CompanyDerived> dRList) {
 
-    final String filename = String.format("%s2020/Q3/OPTIONABLE-2020Q3.TXT", FieldData.inbasedir);
-    Options.readOptionData(filename);
+    Options.readOptionData();
 
     final List<CompanyDerived> zList = new ArrayList<>();
 
@@ -53,7 +51,7 @@ public class WriteSupplyDemand {
 
     System.out.println("SuppyDemand...");
 
-    List<CompanyDerived> dRList = Scans.findMajor(2020, 4, 20.0, 500000L);
+    List<CompanyDerived> dRList = Scans.findMajor(2021, 1, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteSupplyDemand.findSupplyDemand(dRList);
 

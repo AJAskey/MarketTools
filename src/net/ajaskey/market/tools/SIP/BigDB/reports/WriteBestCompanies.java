@@ -158,7 +158,7 @@ public class WriteBestCompanies {
 
     Debug.init("debug/BestCompany.dbg");
 
-    List<CompanyDerived> dRList = Scans.findMajor(2020, 3, 20.0, 500000L);
+    List<CompanyDerived> dRList = Scans.findMajor(2021, 1, 20.0, 500000L);
 
     final List<CompanyDerived> dList = WriteBestCompanies.findBest(dRList);
 

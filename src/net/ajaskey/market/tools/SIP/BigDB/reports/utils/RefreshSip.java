@@ -7,8 +7,8 @@ public class RefreshSip {
 
   public static void main(String[] args) {
 
-    int year = 2020;
-    int qtr = 4;
+    int year = 2021;
+    int qtr = 1;
     final FiletypeEnum ft = FiletypeEnum.BIG_BINARY;
     MarketTools.parseSipData(year, qtr, ft, true);
     System.out.println("Done.");

@@ -22,11 +22,10 @@ public class WriteOptumaExternal {
 
     System.out.println("WriteOptumaExternal...");
 
-    int year = 2020;
-    int qtr = 4;
+    int year = 2021;
+    int qtr = 1;
 
-    final String filename = String.format("%s2020/Q3/OPTIONABLE-2020Q3.TXT", FieldData.inbasedir);
-    Options.readOptionData(filename);
+    Options.readOptionData();
 
     List<CompanyDerived> dRList = Scans.findMajor(year, qtr, 5.0, 5000L);
 

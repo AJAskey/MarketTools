@@ -23,6 +23,6 @@ public class OptumaCommon {
 
   public final static String optumaPath = "d:\\data2\\MA\\CSV Data\\";
 
-  public final static String optumaPricePath = "D:\\data2\\optuma\\";
+  public final static String optumaPricePath = "D:\\data2\\optuma\\"; // "D:\\data2\\optuma\\";
 
 }

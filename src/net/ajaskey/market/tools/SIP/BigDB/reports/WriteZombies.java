@@ -23,8 +23,8 @@ public class WriteZombies {
    */
   public static List<CompanyDerived> findZombies(List<CompanyDerived> dRList) {
 
-    final String filename = String.format("%s2020/Q3/OPTIONABLE-2020Q3.TXT", FieldData.inbasedir);
-    Options.readOptionData(filename);
+    final String filename = String.format("%s2021/Q1/OPTIONABLE-2021Q1.TXT", FieldData.inbasedir);
+    Options.readOptionData();
 
     final List<CompanyDerived> zList = new ArrayList<>();
 
@@ -39,7 +39,9 @@ public class WriteZombies {
           if (Options.isOptionable(cdr.getFd().getTicker())) {
             int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
             if (qtrs > 4) {
-              zList.add(cdr);
+              if (grossZombie(cdr)) {
+                zList.add(cdr);
+              }
             }
           }
         }
@@ -47,6 +49,29 @@ public class WriteZombies {
     }
 
     return zList;
+  }
+
+  /**
+   * Needs at least one negative financial Zombie characteristic.
+   * 
+   * @param cdr Company data
+   * @return True of Zombie characteristic found, False otherwise
+   */
+  private static boolean grossZombie(CompanyDerived cdr) {
+
+    boolean ret = false;
+    final double lowval = 0.0001;
+
+    if (cdr.getNetIncQdata().getTtm() < lowval) {
+      ret = true;
+    }
+    else if (cdr.getGrossOpIncQdata().getTtm() < lowval) {
+      ret = true;
+    }
+    else if (cdr.getWorkingCapitalQdata().getTtm() < lowval) {
+      ret = true;
+    }
+    return ret;
   }
 
   /**
@@ -58,8 +83,8 @@ public class WriteZombies {
 
     System.out.println("WriteZombies...");
 
-    int year = 2020;
-    int qtr = 4;
+    int year = 2021;
+    int qtr = 1;
 
     List<CompanyDerived> dRList = Scans.findMajor(year, qtr, 20.0, 500000L);
 
@@ -84,6 +109,7 @@ public class WriteZombies {
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
 
       pw.printf("%nScoring%n");
+      pw.printf("\tRequires one of these negative over past 12 months: Operating Income, Net Income, Working Capital.%n");
       pw.printf("\tWorking Capital%n\t\tratio = Current Liabililtes / (Current Assets + FCF12m) -- Assume FCF level will continue going forward.%n");
       pw.printf("\t\tif (ratio > 1)%n\t\t\tzWorkingCapital = POW(ratio, 9.25) -- Max 150%n");
 

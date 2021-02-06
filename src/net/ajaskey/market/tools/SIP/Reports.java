@@ -852,6 +852,7 @@ public class Reports {
     double salesps = cd.id.sales.getTtm() / cd.shares.getTtmAvg();
     double pSales = cd.lastPrice / salesps;
     pw.printf("%n%s :: SalesPS=%.2f --> pSales=%.2f%n", cd.id.sales.fmtGrowth4Q("Sales 12m"), salesps, pSales);
+    pw.println(cd.id.cogs.fmtGrowth4Q("COGS 12m"));
     pw.println(cd.id.grossOpIncome.fmtGrowth4Q("Ops Income 12m"));
     pw.println(cd.id.netIncome.fmtGrowth4Q("Net Income 12m"));
     pw.println(cd.id.totalInterest.fmtGrowth4Q("Interest Paid 12m"));

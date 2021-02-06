@@ -17,8 +17,8 @@ public class WriteSpxNetGrowth {
 
     System.out.println("SPX Net Growth...");
 
-    final int year = 2020;
-    final int qtr = 3;
+    final int year = 2021;
+    final int qtr = 1;
 
     final List<CompanyDerived> drList = Scans.findSpx(year, qtr);
 

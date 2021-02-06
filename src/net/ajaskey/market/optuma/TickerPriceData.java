@@ -31,7 +31,7 @@ import net.ajaskey.common.Utils;
  * This class allows reading and usage of Optuma ticker data exported during
  * price updates within Optuma. The Optuma exchange must be setup to write out
  * text files.
- * 
+ *
  * @author Andy Askey
  *
  */
@@ -40,7 +40,7 @@ public class TickerPriceData {
   static private List<DateTime> holidays = new ArrayList<>();
 
   public static void main(final String[] args) {
-    final TickerPriceData code = new TickerPriceData("NASDAQ", "aapl");
+    final TickerPriceData code = new TickerPriceData("US", "aapl");
     System.out.println(code);
     System.out.println("Latest      : " + code.getLatest());
     System.out.println("Latest Date : " + code.getLatestDate());
@@ -49,7 +49,7 @@ public class TickerPriceData {
     System.out.println(dt + "\t" + pd);
     PriceData tpd = code.getOffset(125);
     System.out.println(tpd);
-    tpd = code.getOffset(125000);
+    tpd = code.getOffset(7500);
     System.out.println(tpd);
   }
 
@@ -60,15 +60,11 @@ public class TickerPriceData {
     TickerPriceData.holidays.add(new DateTime(2020, DateTime.APRIL, 10));
   }
 
-  private String id;
-
-  final private String NL = Utils.NL;
-
-  private int numPrices = 0;
-
-  private String ticker;
-
-  private List<PriceData> tickerPrices = null;
+  protected List<PriceData> tickerPrices = null;
+  private String            id;
+  final private String      NL           = Utils.NL;
+  private int               numPrices    = 0;
+  private String            ticker;
 
   public TickerPriceData(String code) {
     final String tkr[] = code.split(" ");
@@ -100,7 +96,7 @@ public class TickerPriceData {
    * This method serves as a constructor for the class.
    *
    */
-  public void build(String exch, String code, String desc) {
+  private void build(String exch, String code, String desc) {
     //
     if (TickerPriceData.holidays.size() < 1) {
       TickerPriceData.addHolidays();
@@ -108,7 +104,10 @@ public class TickerPriceData {
     //
     String exchange = "";
     try {
-      if (exch.toUpperCase().contains("NEW YORK")) {
+      if (exch.toUpperCase().contains("US")) {
+        exchange = "US";
+      }
+      else if (exch.toUpperCase().contains("NEW YORK")) {
         exchange = "NYSE";
       }
       else if (exch.toUpperCase().contains("NASDAQ")) {

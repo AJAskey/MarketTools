@@ -797,6 +797,10 @@ public class CompanyDerived {
     return this.zdata;
   }
 
+  public String getTicker() {
+    return this.getFd().getTicker();
+  }
+
   public boolean isValid() {
     return this.valid;
   }
