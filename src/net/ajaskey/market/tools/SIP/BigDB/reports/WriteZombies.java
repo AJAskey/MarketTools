@@ -68,7 +68,7 @@ public class WriteZombies {
     else if (cdr.getGrossOpIncQdata().getTtm() < lowval) {
       ret = true;
     }
-    else if (cdr.getWorkingCapitalQdata().getTtm() < lowval) {
+    else if ((cdr.getWorkingCapitalQdata().getTtm() < lowval) && (cdr.getEquityQdata().getMostRecent() < lowval)) {
       ret = true;
     }
     return ret;
@@ -152,10 +152,8 @@ public class WriteZombies {
         WriteCompanyData.write(pw, cdr);
         WriteCompanyData.writeQuarterly(pw, cdr);
 
-        WriteCompanyData.writeCompanyInfo(pwSnap, cdr);
-        pwSnap.printf("\tZScore            : %13.2f%n", cdr.getZdata().getzScore());
-        WriteCompanyData.writeQuarterly(pwSnap, cdr);
-        pwSnap.println("");
+        // Snapshot
+        WriteCompanyData.writeSnapshot(pwSnap, cdr);
 
         pw.println(Utils.NL + cdr.getZdata());
 

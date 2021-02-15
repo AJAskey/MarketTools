@@ -62,16 +62,18 @@ class HappyPathTest {
     tickers.add("UAL");
     tickers.add("RCL");
 
-    final List<FieldData> fdList = FieldData.getQFromDb(year, quarter, ft);
+    final List<FieldData> fdList = FieldData.getQFromMemory(tickers, year, quarter);
 
-    CompanyDerived.processList(tickers, year, quarter, fdList);
+    List<CompanyDerived> agList = CompanyDerived.processList(fdList);
+
     try {
-      CompanyDerived.write(year, quarter);
+      CompanyDerived.write("sipout/test-company", agList, false);
     }
     catch (FileNotFoundException e) {
+      // TODO Auto-generated catch block
       e.printStackTrace();
-      org.junit.Assert.fail("CompanyAggregate.write() Exception thrown");
     }
+
   }
 
   @Test
@@ -109,7 +111,7 @@ class HappyPathTest {
     double[] cashFin = { 0.0, -14645.0, -8915.0, -10209.0, -8686.0, -7601.0, -13216.0, -7384.0, -6039.0 };
     org.junit.Assert.assertArrayEquals(cashFin, MarketTools.getCashFromFinQtr(fd), 0.01);
 
-    CompanyDerived ca = new CompanyDerived(year, quarter, fd);
+    CompanyDerived ca = new CompanyDerived(fd);
 
     double[] netCash = { 0.0, 2859.0, 1765.0, 3609.0, 7422.0, 5919.0, -4316.0, 6273.0, 5379.0 };
     org.junit.Assert.assertArrayEquals(netCash, ca.getNetcashflowQdata().dArr, 0.01);

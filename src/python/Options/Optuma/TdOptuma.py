@@ -44,10 +44,9 @@ if __name__ == '__main__':
               'PG', 'PH', 'TMO', 'UNH', 'UPS', 'V', 'VZ', 'WMT', 'XOM']
     codes2.sort()
 
-    codes3 = ['VUZI', 'TXN', 'TWLO', 'TSCO', 'TER', 'SNPS', 'SHAK', 'SCCO', 'REGI', 'QRVO', 'QCOM', 'PACB', 'ON',
-              'NUAN', 'NTLA', 'NFLX', 'NDAQ', 'LYV', 'LRCX', 'LLY', 'KMX', 'KLAC', 'KKR', 'IIVI', 'IAC',
-              'HALO', 'GNRC', 'GM', 'FTAI', 'ETSY', 'ENTG', 'EMR', 'DM', 'DKS', 'DFS', 'DAR', 'CZR', 'CORT', 'CI',
-              'CHGG', 'CALX', 'AVGO', 'ATVI', 'APPS', 'AMAT', 'ALB', 'ADI', 'AAXN', 'IPHI']
+    codes3 = ['ADI', 'AMAT', 'APPS', 'ATVI', 'CALX', 'CHGG', 'CORT', 'CZR', 'DAR', 'DFS', 'DKS', 'DM', 'EMR', 'ENTG',
+              'ETSY', 'EVRI', 'FTAI', 'GM', 'HALO', 'IIVI', 'KKR', 'KMX', 'LYV', 'NTLA', 'NUAN', 'NWSA', 'ON',
+              'PACB', 'QCOM', 'QRVO', 'RCII', 'REGI', 'SCCO', 'SHAK', 'SNAP', 'TER', 'TSCO', 'VCEL', 'VUZI']
     codes3.sort()
 
     codes12 = codes1 + codes2

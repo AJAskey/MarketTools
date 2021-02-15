@@ -16,6 +16,9 @@ class GlobalsHappyPathTest {
     boolean b = Globals.checkLists(2020, 2);
     org.junit.Assert.assertFalse(b);
 
+    sipb = MarketTools.parseSipData(2020, 2, FiletypeEnum.BIG_BINARY, false);
+    org.junit.Assert.assertTrue(sipb);
+
     MarketTools.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);
 
     MarketTools.setQMemory(2020, 2, FiletypeEnum.BIG_BINARY);

@@ -224,6 +224,63 @@ public class WriteCompanyData {
   }
 
   /**
+   * 
+   * @param pw
+   * @param cdr
+   */
+  public static void writeSnapshot(PrintWriter pw, CompanyDerived cdr) {
+
+    final FieldData fd = cdr.getFd();
+
+    pw.println(" " + fd.getTicker());
+    pw.printf("\t%s : %s, %s%n", fd.getName(), MarketTools.getCity(fd), MarketTools.getState(fd));
+
+    final String index = ", " + MarketTools.getSnpIndexStr(fd);
+    final String exch = ", " + fd.getExchange().toString();
+
+    pw.printf("\t%s, %s%s%s%n", Utilities.cleanSecInd(fd.getSector()), Utilities.cleanSecInd(fd.getIndustry()), index, exch);
+    String sNumEmp = "?";
+    if (MarketTools.getNumEmployees(fd) > 0) {
+      sNumEmp = Utils.ifmt(MarketTools.getNumEmployees(fd), 12);
+    }
+    pw.printf("\tEmployees     : %s%n", sNumEmp);
+
+    final String dat = MarketTools.getLatestQtrEps(fd).format("yyyy-MMM-dd");
+    pw.printf("\t10Q Date      :  %s%n", dat);
+
+    String s = String.format("\tPrice         :  %11.2f", MarketTools.getPrice(fd));
+    pw.println(s);
+
+    pw.printf("%n\tMarket Cap        : %s M%n", Utils.fmt(MarketTools.getMktCap(fd), 13));
+
+    s = String.format("%s", cdr.getSharesQdata().fmtGrowth1Q("Shares"));
+    pw.println(s);
+
+    final double sc = cdr.getSharesQdata().deltaQ(1, 2);
+    if (sc < -0.250) {
+      final double bbest = Math.abs(sc) * ((MarketTools.getPrice52hi(fd) + MarketTools.getPrice52lo(fd)) / 2.0);
+      pw.printf("\tShare Change 12m  : %s M (Buyback Est= $%sM)%n", Utils.fmt(sc, 13), Utils.fmt(bbest, 1));
+    }
+
+    pw.printf("\tZScore            : %13.2f%n", cdr.getZdata().getzScore());
+
+    pw.printf("%n%s%n", WriteCompanyData.formatData(cdr.getGrossOpIncQdata().fmtGrowth4Q("Ops Income 12m"), cdr.getGrossOpIncQdata()));
+    pw.printf("%s%n", WriteCompanyData.formatData(cdr.getNetIncQdata().fmtGrowth4Q("Net Income 12m"), cdr.getNetIncQdata()));
+    pw.printf("\tWorking Capital   : %s M (Ratio=%.2f)%n", Utils.fmt(cdr.getWorkingCapitalQdata().getMostRecent(), 13),
+        cdr.getCurrentRatioQdata().getMostRecent());
+    pw.printf("%s%n", WriteCompanyData.formatData(cdr.getEquityQdata().fmtGrowth1Q("Sharehldr Equity"), cdr.getEquityQdata()));
+    pw.printf("%s%n", WriteCompanyData.formatData(cdr.getTanAssetsQdata().fmtGrowth1Q("Tangible Assets"), cdr.getTanAssetsQdata()));
+
+    final double totdebt = MarketTools.getStDebtQtr(fd)[2] + MarketTools.getLtDebtQtr(fd)[2];
+    String td = Utils.fmt(totdebt, 13);
+    pw.printf("\tTotal Debt        : %s M%n", td);
+
+    WriteCompanyData.writeQuarterly(pw, cdr);
+    pw.println("");
+
+  }
+
+  /**
    *
    * @param fname
    * @param agList

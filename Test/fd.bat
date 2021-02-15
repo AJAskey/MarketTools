@@ -1,0 +1,1 @@
+java -cp %RANDOOP_JAR%;d:\temp\mt.jar randoop.main.Main gentests --classlist=fd.txt --time-limit=15 --regression-test-basename=DataIoTests --junit-package-name=net.ajaskey.market.tools.SIP.BigDB.dataio

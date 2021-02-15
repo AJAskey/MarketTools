@@ -26,13 +26,13 @@ class Statistics:
         self.putpremium = 0.0
         self.premium = 0.0
 
-    def __str__(self, tmp1=None):
+    def __str__(self):
         width = 15
 
         s_totalPutsVol = "{:,d}".format(self.totalPutsVol)
         s_totalCallsVol = "{:,d}".format(self.totalCallsVol)
 
-        ret = "{}:\n\tVolume Put   : {}\t\tCall : {}\t : {:.2f}\n".format(
+        ret = " {}:\n\tVolume Put   : {}\t\tCall : {}\t : {:.2f}\n".format(
             self.code, s_totalPutsVol.rjust(width), s_totalCallsVol.rjust(width), self.putcall)
 
         s_dollarPutsVol = "${:,d}".format(int(self.dollarPutsVol*100.0))

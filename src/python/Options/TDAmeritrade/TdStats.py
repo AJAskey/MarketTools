@@ -84,7 +84,7 @@ if __name__ == '__main__':
     main_codes = ['XLB', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLU', 'XLV', 'XLY', 'XHB', 'XRT', 'SMH',
                   'IBB', 'IWM', 'DIA', 'QQQ', 'SPY']
 
-    bond_codes = ['TLT']
+    misc_codes = ['TLT', 'SLV', 'GLD']
 
     test_codes = ['QQQ', 'SPY']
 

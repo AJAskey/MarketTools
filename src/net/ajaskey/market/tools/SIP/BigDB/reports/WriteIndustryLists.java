@@ -40,6 +40,11 @@ public class WriteIndustryLists {
       System.out.println(s);
     }
     System.out.println(industryList.size());
+    final List<String> sectorList = WriteIndustryLists.getSectorList(cdrList);
+    for (final String s : sectorList) {
+      System.out.println(s);
+    }
+    System.out.println(sectorList.size());
 
     WriteIndustryLists.buildEnergyList(cdrList);
     WriteIndustryLists.buildChemicalsList(cdrList);
@@ -55,6 +60,8 @@ public class WriteIndustryLists {
     WriteIndustryLists.buildTransportsList(cdrList);
     WriteIndustryLists.buildRecreationList(cdrList);
     WriteIndustryLists.buildHealthCareList(cdrList);
+
+    WriteIndustryLists.buildSectorMaterials(cdrList);
 
   }
 
@@ -190,6 +197,10 @@ public class WriteIndustryLists {
     WriteIndustryLists.writeList(list, "ind_insurance.csv");
   }
 
+  /**
+   *
+   * @param dRList
+   */
   private static void buildMetalsList(List<CompanyDerived> dRList) {
     final List<CompanyDerived> list = new ArrayList<>();
 
@@ -197,13 +208,20 @@ public class WriteIndustryLists {
       final String ind = cdr.getFd().getIndustry();
       final int id = WriteIndustryLists.getId(ind, 3);
       if (id == 512) {
-        list.add(cdr);
+        final int id2 = WriteIndustryLists.getId(ind, 8);
+        if (id2 != 51202010) {
+          list.add(cdr);
+        }
       }
     }
 
     WriteIndustryLists.writeList(list, "ind_metals.csv");
   }
 
+  /**
+   *
+   * @param dRList
+   */
   private static void buildRealEstateList(List<CompanyDerived> dRList) {
     final List<CompanyDerived> list = new ArrayList<>();
 
@@ -218,6 +236,10 @@ public class WriteIndustryLists {
     WriteIndustryLists.writeList(list, "ind_realestate.csv");
   }
 
+  /**
+   *
+   * @param dRList
+   */
   private static void buildRecreationList(List<CompanyDerived> dRList) {
     final List<CompanyDerived> list = new ArrayList<>();
 
@@ -232,6 +254,10 @@ public class WriteIndustryLists {
     WriteIndustryLists.writeList(list, "ind_recreation.csv");
   }
 
+  /**
+   *
+   * @param dRList
+   */
   private static void buildRetailList(List<CompanyDerived> dRList) {
     final List<CompanyDerived> list = new ArrayList<>();
 
@@ -246,6 +272,24 @@ public class WriteIndustryLists {
     WriteIndustryLists.writeList(list, "ind_retail.csv");
   }
 
+  private static void buildSectorMaterials(List<CompanyDerived> dRList) {
+    final List<CompanyDerived> list = new ArrayList<>();
+
+    for (final CompanyDerived cdr : dRList) {
+      final String sec = cdr.getFd().getSector();
+      if (sec.equals("51  - Basic Materials")) {
+        list.add(cdr);
+      }
+    }
+
+    WriteIndustryLists.writeList(list, "sec_materials.csv");
+
+  }
+
+  /**
+   *
+   * @param dRList
+   */
   private static void buildTransportsList(List<CompanyDerived> dRList) {
     final List<CompanyDerived> list = new ArrayList<>();
 
@@ -271,6 +315,11 @@ public class WriteIndustryLists {
     return ret;
   }
 
+  /**
+   *
+   * @param dRList
+   * @return
+   */
   private static List<String> getIndustryList(List<CompanyDerived> dRList) {
     final Set<String> indSet = new HashSet<>();
     for (final CompanyDerived cdr : dRList) {
@@ -282,6 +331,27 @@ public class WriteIndustryLists {
     return new ArrayList<>(retList);
   }
 
+  /**
+   *
+   * @param dRList
+   * @return
+   */
+  private static List<String> getSectorList(List<CompanyDerived> dRList) {
+    final Set<String> secSet = new HashSet<>();
+    for (final CompanyDerived cdr : dRList) {
+      secSet.add(cdr.getFd().getSector());
+    }
+
+    final List<String> retList = new ArrayList<>(secSet);
+    Collections.sort(retList);
+    return new ArrayList<>(retList);
+  }
+
+  /**
+   *
+   * @param list
+   * @param fname
+   */
   private static void writeList(List<CompanyDerived> list, String fname) {
     Collections.sort(list, new SortByMCap());
     try (PrintWriter pw = new PrintWriter(WriteIndustryLists.listDir + fname)) {

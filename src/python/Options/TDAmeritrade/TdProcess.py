@@ -32,29 +32,32 @@ def get_realvol(cod, td):
     knt = len(jsondata)
     if knt < 1:
         print("get_realvol() with no return data for ", cod)
-        return 0.0
+        return float(0.0)
 
-    cnd = jsondata['candles']
-    # print_json(cnd)
+    try:
+        cnd = jsondata['candles']
+        # print_json(cnd)
 
-    knt = int(0)
-    preval = float(0.0)
-    summ = float(0.0)
-    for val in reversed(cnd):
-        close = float(val['close'])
-        if knt > 0 and preval > 0.0:
-            nlog = math.log(close / preval) ** 2
-            summ += nlog
-        knt += 1
-        if knt > td:
-            break
-        preval = close
-        # ms = val['datetime']
-        # dt = datetime.fromtimestamp(ms / 1000)
-        # print(dt, close, knt)
+        knt = int(0)
+        preval = float(0.0)
+        summ = float(0.0)
+        for val in reversed(cnd):
+            close = float(val['close'])
+            if knt > 0 and preval > 0.0:
+                nlog = math.log(close / preval) ** 2
+                summ += nlog
+            knt += 1
+            if knt > td:
+                break
+            preval = close
+            # ms = val['datetime']
+            # dt = datetime.fromtimestamp(ms / 1000)
+            # print(dt, close, knt)
 
-    num = summ * tdscaler
-    rv = math.sqrt(num) * 100.0
+        num = summ * tdscaler
+        rv = math.sqrt(num) * 100.0
+    except:
+        rv = float(0.0)
 
     return rv
 
