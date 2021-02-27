@@ -54,17 +54,18 @@ class OptionData:
 
     def __str__(self):
         dt = datetime_to_str(self.expiration)
-        ret = "{:s}, {:s}, {:s}, {:d}, {:d}, {:d}, {:.2f}, {:.2f}, {:.2f}, {:.2f}, {:.2f}, {:.2f}". \
+        ret1 = "{} {} {} {} oi:{} vol:{} dte:{}\n bid:{:.2f} ask:{:.2f} last:{:.2f} mark:{:.2f}". \
             format(self.code,
                    self.type,
                    dt,
+                   self.strike,
                    self.oi,
                    self.volume,
                    self.daysToExpiration,
-                   self.strike,
                    self.bid,
                    self.ask,
                    self.last,
-                   self.mark,
-                   self.volatility)
-        return ret
+                   self.mark)
+        ret2 = "\n iv:{:d} delta:{:.2f} theta:{:.2f}".\
+            format(int(self.volatility), self.delta, self.theta)
+        return ret1 + ret2

@@ -1,4 +1,4 @@
-from OptionData import OptionData
+from TDAmeritrade.OptionData import OptionData
 from TDAmeritrade import td_api_key
 from TDAmeritrade.Statistics import Statistics
 from TDAmeritrade.TDA_Interface import call_tda
@@ -18,16 +18,17 @@ def process(data, opts):
                 if jd.valid:
                     if jd.oi > 0:
                         if jd.mark > 0.0:
-                            if jd.type == "PUT":
-                                opts.totalPutsOi += jd.oi
-                                opts.totalPutsVol += jd.volume
-                                opts.dollarPutsOi += float(jd.oi) * float(jd.last)
-                                opts.dollarPutsVol += float(jd.volume) * float(jd.last)
-                            elif jd.type == "CALL":
-                                opts.totalCallsOi += jd.oi
-                                opts.totalCallsVol += jd.volume
-                                opts.dollarCallsOi += float(jd.oi) * float(jd.last)
-                                opts.dollarCallsVol += float(jd.volume) * float(jd.last)
+                            if jd.daysToExpiration > 0:
+                                if jd.type == "PUT":
+                                    opts.totalPutsOi += jd.oi
+                                    opts.totalPutsVol += jd.volume
+                                    opts.dollarPutsOi += float(jd.oi) * float(jd.last)
+                                    opts.dollarPutsVol += float(jd.volume) * float(jd.last)
+                                elif jd.type == "CALL":
+                                    opts.totalCallsOi += jd.oi
+                                    opts.totalCallsVol += jd.volume
+                                    opts.dollarCallsOi += float(jd.oi) * float(jd.last)
+                                    opts.dollarCallsVol += float(jd.volume) * float(jd.last)
 
 
 def is_success(cnt):
@@ -81,7 +82,7 @@ def process_code(cod):
 
 if __name__ == '__main__':
 
-    main_codes = ['XLB', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLU', 'XLV', 'XLY', 'XHB', 'XRT', 'SMH',
+    main_codes = ['XLB', 'XLC', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLU', 'XLV', 'XLY', 'XHB', 'XRT', 'SMH',
                   'IBB', 'IWM', 'DIA', 'QQQ', 'SPY']
 
     misc_codes = ['TLT', 'SLV', 'GLD']

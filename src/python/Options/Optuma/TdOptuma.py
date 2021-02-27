@@ -1,6 +1,6 @@
 import time
 
-from OptionData import OptionData
+from TDAmeritrade.OptionData import OptionData
 from TDAmeritrade import td_api_key
 from TDAmeritrade.Statistics import Statistics
 from TDAmeritrade.TDA_Interface import call_tda
@@ -53,17 +53,26 @@ if __name__ == '__main__':
     codes123 = codes1 + codes2 + codes3
 
     test_codes = ['SPY', 'QQQ']
+    zombie_codes = ['EXPE', 'SIX', 'BLMN', 'NCTY', 'LPI', 'FUN', 'JWN', 'MTCH', 'TUP', 'IRM', 'LVS', 'DAL', 'ICPT',
+                    'SGMS', 'OMER', 'PLCE', 'CVI', 'GDDY', 'SBGI', 'CNK', 'WYNN', 'SBAC', 'HTHT', 'LYV', 'NAV', 'NVTA',
+                    'NUAN', 'OLN', 'LSXMA', 'ABBV', 'GRPN', 'BUD', 'BURL', 'QURE', 'GES', 'ARNA', 'SPWR', 'ANF', 'IPHI',
+                    'GME', 'GPS', 'CZR', 'AVGO', 'AA', 'RMBS', 'VRSN', 'SNY', 'DPZ', 'CYTK']
+    zombie_codes.sort()
+
+    tmp_codes = set(codes123 + zombie_codes)
+    all_codes = list(tmp_codes)
+    all_codes.sort()
 
     url = r"https://api.tdameritrade.com/v1/marketdata/chains"
 
     statlist = []
 
     knt = 0
-    for code in codes123:
+    for code in codes1:
 
         knt += 1
-        if knt > 15:
-            time.sleep(3.0)
+        if knt > 10:
+            time.sleep(3.33)
             knt = 0
 
         p = dict(apikey=td_api_key, symbol=code)

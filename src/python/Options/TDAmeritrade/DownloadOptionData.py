@@ -9,7 +9,7 @@ codes = ['BOTZ', 'DIA', 'GLD', 'HYG', 'IAI', 'IBB', 'IEO', 'IEZ', 'IGE', 'IGV', 
          'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLRE', 'XLU', 'XLV', 'XLY', 'XRT']
 from Utilities import datadir
 
-# codes = ['SPY']
+codes = ['SPY']
 
 if __name__ == '__main__':
     today = date.today()

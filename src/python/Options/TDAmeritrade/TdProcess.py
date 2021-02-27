@@ -1,7 +1,7 @@
 import math
 from datetime import date, datetime, timedelta
 
-from OptionData import OptionData
+from TDAmeritrade.OptionData import OptionData
 from TDAmeritrade import td_api_key
 from TDAmeritrade.TDA_Interface import call_tda
 from Utilities import datetime_to_str
@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     url = r"https://api.tdameritrade.com/v1/marketdata/chains"
 
-    for code in etf_codes:
+    for code in test_codes:
 
         p = dict(apikey=td_api_key, symbol=code)
         content = call_tda(url, p)
