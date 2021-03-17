@@ -80,37 +80,13 @@ public class WriteCompanyData {
         cdr.getCurrentRatioQdata().getMostRecent());
     pw.printf("\tWC + FCF          : %s M%n", Utils.fmt(cdr.getWcFcfQdata().getMostRecent(), 13));
 
-    //
-
-//    double bvps = 0.0;
-//    if (cdr.getSharesQdata().getMostRecent() > 0.0) {
-//      bvps = cdr.getEquityQdata().getMostRecent() / cdr.getSharesQdata().getMostRecent();
-//    }
-//    else if (MarketTools.getFloatshr(fd) > 0.0) {
-//      bvps = cdr.getEquityQdata().getMostRecent() / MarketTools.getFloatshr(fd);
-//    }
-//    final String bv = String.format("%n%s\t- BVPS : %.2f", cdr.getEquityQdata().fmtGrowth1Q("Sharehldr Equity"), bvps);
-//    pw.println(bv);
-
     pw.printf("%n%s%n", WriteCompanyData.formatData(cdr.getEquityQdata().fmtGrowth1Q("Sharehldr Equity"), cdr.getEquityQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getTotalAssetsQdata().fmtGrowth1Q("Total Assets"), cdr.getTotalAssetsQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getGoodwillQdata().fmtGrowth1Q("Goodwill"), cdr.getGoodwillQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getTanAssetsQdata().fmtGrowth1Q("Tangible Assets"), cdr.getTanAssetsQdata()));
     pw.printf("%s%n", WriteCompanyData.formatData(cdr.getLtDebtQdata().fmtGrowth1Q("LT Debt"), cdr.getLtDebtQdata()));
 
-//    double taps = 0.0;
-//    if (cdr.getSharesQdata().getMostRecent() > 0.0) {
-//      taps = cdr.getTanAssetsQdata().getMostRecent() / cdr.getSharesQdata().getMostRecent();
-//    }
-//    else if (MarketTools.getFloatshr(fd) > 0.0) {
-//      taps = cdr.getTanAssetsQdata().getMostRecent() / MarketTools.getFloatshr(fd);
-//    }
-//    final String ta = String.format("%s\t- TAPS : %.2f", cdr.getTanAssetsQdata().fmtGrowth1Q("Tangible Assets"), taps);
-//    pw.println(ta);
-
-    // pw.println(cdr.getLtDebtQdata().fmtGrowth1Q("LT Debt"));
-
-    double totDebt = cdr.getLtDebtQdata().getMostRecent() + cdr.getStDebtQdata().getMostRecent();
+    double totDebt = cdr.getTotalDebt();
     String td = Utils.fmt(totDebt, 13);
     pw.printf("\tTotal Debt        : %s M%n", td);
     if (cdr.getEquityQdata().getMostRecent() > 0.0) {
@@ -123,6 +99,14 @@ public class WriteCompanyData {
       }
       pw.printf("\tDebt Tan Asset    : %s%n", Utils.fmt(tmp, 13));
     }
+    double netTangible = cdr.getNetTangible();
+    String netTanStr = Utils.fmt(netTangible, 13);
+    pw.printf("\tNet Tangible      : %s M%n", netTanStr);
+    double netBvps = cdr.getNetBvps();
+    String netBvpsStr = Utils.fmt(netBvps, 13);
+    pw.printf("\tNet BVPS          : %s%n", netBvpsStr);
+    pw.printf("%n\tCase status       : %s%n", cdr.getzState());
+
     pw.println(Utils.NL + cdr.getNetMarginQdata().fmtGrowth1QNoUnit("Net Margin "));
     pw.println(cdr.getOpMarginQdata().fmtGrowth1QNoUnit("Op Margin "));
 

@@ -8,7 +8,6 @@ import java.util.List;
 
 import net.ajaskey.common.DateTime;
 import net.ajaskey.common.Utils;
-import net.ajaskey.market.tools.SIP.BigDB.dataio.FieldData;
 import net.ajaskey.market.tools.SIP.BigDB.dataio.Options;
 import net.ajaskey.market.tools.SIP.BigDB.derived.CompanyDerived;
 import net.ajaskey.market.tools.SIP.BigDB.reports.utils.Scans;
@@ -23,23 +22,25 @@ public class WriteZombies {
    */
   public static List<CompanyDerived> findZombies(List<CompanyDerived> dRList) {
 
-    final String filename = String.format("%s2021/Q1/OPTIONABLE-2021Q1.TXT", FieldData.inbasedir);
+    // final String filename = String.format("%s2021/Q1/OPTIONABLE-2021Q1.TXT",
+    // FieldData.inbasedir);
     Options.readOptionData();
 
     final List<CompanyDerived> zList = new ArrayList<>();
 
     for (final CompanyDerived cdr : dRList) {
 
-//      if (cdr.getFd().getTicker().equalsIgnoreCase("BHVN")) {
-//        System.out.println("BVHN");
-//      }
-
       if (!cdr.getFd().getSector().contains("Financials")) {
         if (cdr.getZdata().getzMajorScore() > 124.99) {
           if (Options.isOptionable(cdr.getFd().getTicker())) {
             int qtrs = cdr.getSalesQdata().getQuarterDataKnt();
             if (qtrs > 4) {
-              if (grossZombie(cdr)) {
+              cdr.setzState(zombieness(cdr));
+              boolean case1 = getZombieStatus(cdr.getzState(), 1);
+              boolean case2 = getZombieStatus(cdr.getzState(), 2);
+              boolean case3 = getZombieStatus(cdr.getzState(), 3);
+
+              if (case1 || case2 || case3) {
                 zList.add(cdr);
               }
             }
@@ -52,25 +53,48 @@ public class WriteZombies {
   }
 
   /**
+   * 
+   * @param zbness
+   * @param i
+   * @return
+   */
+  private static boolean getZombieStatus(String zbness, int i) {
+    boolean ret = false;
+    String fld[] = zbness.split(" ");
+    if (fld[i - 1].equalsIgnoreCase("true")) {
+      ret = true;
+    }
+    return ret;
+  }
+
+  /**
    * Needs at least one negative financial Zombie characteristic.
    * 
    * @param cdr Company data
    * @return True of Zombie characteristic found, False otherwise
    */
-  private static boolean grossZombie(CompanyDerived cdr) {
-
-    boolean ret = false;
+  private static String zombieness(CompanyDerived cdr) {
+    String ret = "";
     final double lowval = 0.0001;
+    boolean case1 = false;
+    boolean case2 = false;
+    boolean case3 = false;
 
     if (cdr.getNetIncQdata().getTtm() < lowval) {
-      ret = true;
+      if (cdr.getGrossOpIncQdata().getTtm() < lowval) {
+        case1 = true;
+      }
     }
-    else if (cdr.getGrossOpIncQdata().getTtm() < lowval) {
-      ret = true;
+
+    if ((cdr.getWcFcfQdata().getTtm() < lowval) && (cdr.getEquityQdata().getMostRecent() < lowval)) {
+      case2 = true;
     }
-    else if ((cdr.getWorkingCapitalQdata().getTtm() < lowval) && (cdr.getEquityQdata().getMostRecent() < lowval)) {
-      ret = true;
+
+    if (cdr.getNetTangible() < lowval) {
+      case3 = true;
     }
+
+    ret = String.format("%s %s %s", case1, case2, case3);
     return ret;
   }
 
@@ -109,8 +133,11 @@ public class WriteZombies {
       pw.println("YoY : last 12m versus 12m a year ago.\n\n--------------------------");
 
       pw.printf("%nScoring%n");
-      pw.printf("\tRequires one of these negative over past 12 months: Operating Income, Net Income, Working Capital.%n");
-      pw.printf("\tWorking Capital%n\t\tratio = Current Liabililtes / (Current Assets + FCF12m) -- Assume FCF level will continue going forward.%n");
+      pw.printf("\tRequires at least one of these cases to be True.%n");
+      pw.printf("\t\tCase 1: Gross Operating Income and Net Income to be negative%n");
+      pw.printf("\t\tCase 2: Shareholder Equity and Working Capital plus FCF to be negative%n");
+      pw.printf("\t\tCase 3: Net Tangible Assets minus Total Debt to be negative%n");
+      pw.printf("\tWorking Capital%n\t\tratio = Current Liabilities / (Current Assets + FCF12m) -- Assume FCF level will continue going forward.%n");
       pw.printf("\t\tif (ratio > 1)%n\t\t\tzWorkingCapital = POW(ratio, 9.25) -- Max 150%n");
 
       pw.printf("\tDebt -- Try Debt vs TanAssets for common comparison as many companies do not have positive Equity.%n");
@@ -167,8 +194,14 @@ public class WriteZombies {
     }
     WriteZombies.findZombies(dList);
 
-    for (final CompanyDerived cdr : dList) {
-      System.out.println(cdr.getFd().getTicker());
+    try (PrintWriter pwPy = new PrintWriter("out/zombie-python-list.txt"); PrintWriter pw = new PrintWriter("sipout/zombies-all.txt")) {
+      pwPy.printf("%s", "zombie_codes = [");
+      for (final CompanyDerived cdr : dList) {
+        pwPy.printf(",'%s'", cdr.getTicker());
+        pw.println(cdr.getTicker());
+        System.out.println(cdr.getTicker());
+      }
+      pwPy.println("]");
     }
     System.out.println(dList.size());
     System.out.println("Done.");

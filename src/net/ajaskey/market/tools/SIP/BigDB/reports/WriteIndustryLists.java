@@ -353,12 +353,15 @@ public class WriteIndustryLists {
    * @param fname
    */
   private static void writeList(List<CompanyDerived> list, String fname) {
+    List<String> idxGroup = new ArrayList<>();
     Collections.sort(list, new SortByMCap());
     try (PrintWriter pw = new PrintWriter(WriteIndustryLists.listDir + fname)) {
       pw.println("Code,Exchange");
       int knt = 0;
       for (final CompanyDerived cdr : list) {
-        pw.printf("%S,US%n", cdr.getTicker());
+        String str = String.format("%S,US", cdr.getTicker());
+        pw.printf("%s%n", str);
+        idxGroup.add(str.replace(",", ":"));
         knt++;
         if (knt >= 20) {
           break;
@@ -366,6 +369,21 @@ public class WriteIndustryLists {
       }
     }
     catch (final FileNotFoundException e) {
+      e.printStackTrace();
+    }
+
+    String fname2 = String.format("out/customcode-%s", fname.replace(".csv", ".txt"));
+    double power = 1.0 / (double) idxGroup.size();
+    try (PrintWriter pw = new PrintWriter(fname2)) {
+      pw.printf("POWER(%s", idxGroup.get(0));
+      for (int i = 1; i < idxGroup.size(); i++) {
+        String s = idxGroup.get(i);
+        pw.printf(" * %s", s);
+      }
+      pw.printf(", POWER=%.4f)%n", power);
+    }
+    // POWER(BA:US * NOC:US * LMT:US * RTX:US, POWER=0.25)
+    catch (FileNotFoundException e) {
       e.printStackTrace();
     }
   }

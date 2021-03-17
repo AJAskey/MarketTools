@@ -102,13 +102,15 @@ public class ReadStockCharts {
       fname = fname.replace("-SC", "");
       final List<String> daData = ReadStockCharts.getData(f.getAbsolutePath());
 
-      try (PrintWriter pw = new PrintWriter(OptumaCommon.optumaPath + "\\DC\\" + fname + ".csv")) {
+      // try (PrintWriter pw = new PrintWriter(OptumaCommon.optumaPath + "\\DC\\" +
+      // fname + ".csv")) {
+      try (PrintWriter pw = new PrintWriter("out/" + fname + ".csv")) {
         for (final String s : daData) {
           // System.out.println(s);
           final String fld[] = s.split("\\s+");
           final PriceData ohlcv = new PriceData(fld, "MM-dd-yyyy", 1);
           if (ohlcv.isValid()) {
-            pw.println(ohlcv.toShortString());
+            pw.println(ohlcv.toShortString(10.0));
           }
         }
       }

@@ -293,6 +293,7 @@ public class CompanyDerived {
   private double          y2EstGrowth;
   private int             year;
   private ZData           zdata;
+  private String          zState;
 
   /**
    * Constructor
@@ -757,6 +758,24 @@ public class CompanyDerived {
     return turnover;
   }
 
+  public double getTotalDebt() {
+    double ret = this.getLtDebtQdata().getMostRecent() + this.getStDebtQdata().getMostRecent();
+    return ret;
+  }
+
+  public double getNetTangible() {
+    double ret = this.getTanAssetsQdata().getMostRecent() - this.getTotalDebt();
+    return ret;
+  }
+
+  public double getNetBvps() {
+    double ret = 0.0;
+    if (this.getSharesQdata().getMostRecent() > 0.0) {
+      ret = this.getNetTangible() / this.getSharesQdata().getMostRecent();
+    }
+    return ret;
+  }
+
   /**
    * Calculate the Zombie'ness' of the company
    *
@@ -973,6 +992,14 @@ public class CompanyDerived {
 
     this.zdata = new ZData(this);
 
+  }
+
+  public String getzState() {
+    return zState;
+  }
+
+  public void setzState(String z) {
+    this.zState = z;
   }
 
 }

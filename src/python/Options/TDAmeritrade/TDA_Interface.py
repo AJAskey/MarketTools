@@ -14,7 +14,7 @@ def call_tda(url, params):
     return content
 
 
-def get_tda_list(url, params, min_dte, max_dte, min_oi, min_vol, opt_type):
+def get_tda_list(url, params, min_dte, max_dte, min_oi, min_vol, min_price, max_iv, opt_type):
     ret = []
     ul = float(0.0)
     opt = call_tda(url, params)
@@ -35,7 +35,14 @@ def get_tda_list(url, params, min_dte, max_dte, min_oi, min_vol, opt_type):
                     if jd.valid:
                         if jd.oi >= min_oi:
                             if jd.volume >= min_vol:
-                                if (jd.daysToExpiration >= min_dte) and (jd.daysToExpiration <= max_dte):
-                                    if jd.mark > 0.0:
-                                        ret.append(jd)
+                                if jd.mark >= min_price:
+                                    if jd.volatility <= max_iv:
+                                        if (jd.daysToExpiration >= min_dte) and (jd.daysToExpiration <= max_dte):
+                                            if jd.mark > 0.0:
+                                                ret.append(jd)
     return ul, ret
+
+
+def print_opt_list(data):
+    for d in data:
+        print(d)

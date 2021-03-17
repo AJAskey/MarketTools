@@ -1,7 +1,7 @@
 import time
 
-from TDAmeritrade.OptionData import OptionData
 from TDAmeritrade import td_api_key
+from TDAmeritrade.OptionData import OptionData
 from TDAmeritrade.Statistics import Statistics
 from TDAmeritrade.TDA_Interface import call_tda
 from TDAmeritrade.TdProcess import get_avg_iv, get_realvol
@@ -32,6 +32,18 @@ def process(data, opts):
                                 opts.dollarCallsVol += float(jd.volume) * float(jd.last)
 
 
+def build_list(fname):
+    ret = []
+    f = open(file=fname, encoding='utf-8')
+    for line in f:
+        c = line.split(',')
+        cc = c[0].strip()
+        if cc != "Code":
+            ret.append(cc)
+    f.close()
+    return ret
+
+
 if __name__ == '__main__':
 
     codes1 = ['BOTZ', 'DIA', 'GLD', 'HYG', 'IAI', 'IBB', 'IEZ', 'IGV', 'ITA', 'IWM', 'IYT', 'JKG', 'JKJ',
@@ -44,22 +56,15 @@ if __name__ == '__main__':
               'PG', 'PH', 'TMO', 'UNH', 'UPS', 'V', 'VZ', 'WMT', 'XOM']
     codes2.sort()
 
-    codes3 = ['ADI', 'AMAT', 'APPS', 'ATVI', 'CALX', 'CHGG', 'CORT', 'CZR', 'DAR', 'DFS', 'DKS', 'DM', 'EMR', 'ENTG',
-              'ETSY', 'EVRI', 'FTAI', 'GM', 'HALO', 'IIVI', 'KKR', 'KMX', 'LYV', 'NTLA', 'NUAN', 'NWSA', 'ON',
-              'PACB', 'QCOM', 'QRVO', 'RCII', 'REGI', 'SCCO', 'SHAK', 'SNAP', 'TER', 'TSCO', 'VCEL', 'VUZI']
-    codes3.sort()
+    watchlist = build_list("D:/dev/MarketTools - dev/lists/watchlist.csv")
 
     codes12 = codes1 + codes2
-    codes123 = codes1 + codes2 + codes3
+    codes12w = codes1 + codes2 + watchlist
 
-    test_codes = ['SPY', 'QQQ']
-    zombie_codes = ['EXPE', 'SIX', 'BLMN', 'NCTY', 'LPI', 'FUN', 'JWN', 'MTCH', 'TUP', 'IRM', 'LVS', 'DAL', 'ICPT',
-                    'SGMS', 'OMER', 'PLCE', 'CVI', 'GDDY', 'SBGI', 'CNK', 'WYNN', 'SBAC', 'HTHT', 'LYV', 'NAV', 'NVTA',
-                    'NUAN', 'OLN', 'LSXMA', 'ABBV', 'GRPN', 'BUD', 'BURL', 'QURE', 'GES', 'ARNA', 'SPWR', 'ANF', 'IPHI',
-                    'GME', 'GPS', 'CZR', 'AVGO', 'AA', 'RMBS', 'VRSN', 'SNY', 'DPZ', 'CYTK']
+    zombie_codes = build_list("D:/dev/eclipse-markettools/MarketTools/sipout/Zombies2-sc.txt")
     zombie_codes.sort()
 
-    tmp_codes = set(codes123 + zombie_codes)
+    tmp_codes = set(codes12w + zombie_codes)
     all_codes = list(tmp_codes)
     all_codes.sort()
 
@@ -68,7 +73,7 @@ if __name__ == '__main__':
     statlist = []
 
     knt = 0
-    for code in codes1:
+    for code in all_codes:
 
         knt += 1
         if knt > 10:

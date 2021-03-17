@@ -184,6 +184,12 @@ public class PriceData {
     return ret;
   }
 
+  public String toShortString(double scaler) {
+
+    final String ret = String.format("%s, %.2f", this.date.format("yyyy-MM-dd"), this.close / scaler);
+    return ret;
+  }
+
   /*
    * (non-Javadoc)
    *

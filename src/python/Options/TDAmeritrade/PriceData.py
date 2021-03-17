@@ -2,12 +2,11 @@ from datetime import datetime
 
 from TDAmeritrade import td_api_key
 from TDAmeritrade.TDA_Interface import call_tda
-from Utilities import ms_to_datetime, datetime_to_str, datetime_to_ms
+from Utilities import ms_to_datetime, datetime_to_ms
 
-if __name__ == '__main__':
-    code = 'TNX'
-    scaler = float(10.0)
 
+def process(code, scaler, outfile=""):
+    # start_date = datetime(2020, 7, 1)
     start_date = datetime(1980, 1, 1)
     start_ms = datetime_to_ms(start_date)
 
@@ -28,3 +27,8 @@ if __name__ == '__main__':
         str = "{}, {:.2f}".format(tmp, close)
         print(str)
     print(code)
+
+
+if __name__ == '__main__':
+    # process("VIX", 1.0)
+    process("TLT", 100.0)
